@@ -108,7 +108,7 @@
 }
 .flow-key { padding: .9em 1em; text-align: center; line-height: 1.3; }
 
-/* ---- hand-made SVG figures: the diagram language of the book-infographic skill ---------------- */
+/* ---- hand-made SVG figures: the app's diagram language (also used by the charts below) -------- */
 /* Draw for a phone: viewBox about 340 wide; text sizes below are in viewBox units.               */
 
 .figure svg { display: block; width: 100%; height: auto; overflow: visible; font-family: var(--font); }
@@ -143,3 +143,146 @@
 .figure svg .off { fill: var(--muted); }
 .figure svg .c { text-anchor: middle; }
 .figure svg .e { text-anchor: end; }
+
+/* ---- SVG charts drawn from data (network, scenes, threads, cycle, layers) ---------------------- */
+/* Same classes as hand-made figures, plus these. Text sizes are in viewBox units (CSS px at the   */
+/* design width: 340 on a phone, 640 in the PDF).                                                  */
+
+.figure svg .t4 { font-size: 10px; fill: var(--muted); }
+.figure svg .tl { font-size: 10.5px; fill: var(--body); }
+.figure svg .tw.t4 { fill: var(--on-acc); }
+.figure svg .rail { fill: none; stroke: var(--hair); stroke-width: 1.2; }
+.figure svg .rail.dash { stroke-dasharray: 2 4; }
+.figure svg .life { fill: none; stroke: var(--mark); stroke-width: 2.4; }
+.figure svg .life.dim { stroke-dasharray: 1.5 4; stroke-width: 2; }
+.figure svg .join { stroke: var(--muted); stroke-width: 2.2; }
+.figure svg .join.key { stroke: var(--acc); stroke-width: 3; }
+.figure svg .dot { fill: var(--ink); }
+.figure svg .dot.key { fill: var(--acc); }
+.figure svg .ring { fill: var(--paper); stroke: var(--ink); stroke-width: 1.6; }
+.figure svg .tagbg { fill: var(--ink-box); }
+.figure svg .tag-t { font-size: 7.5px; font-weight: 700; letter-spacing: .06em; fill: var(--on-acc); }
+.figure svg .lay { fill: var(--acc); stroke: var(--acc); stroke-opacity: .35; stroke-width: 1; }
+.figure svg .ln.strong { stroke: var(--muted); stroke-width: 1.6; }
+.figure svg .link-label .bx { stroke: var(--line); }
+.figure svg .name { fill: var(--ink); }
+
+/* ---- timeline ----------------------------------------------------------------------------------- */
+
+.chart-timeline { list-style: none; display: flex; flex-direction: column; }
+.tl-item {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(3.6em, 26%) 1.4em 1fr;
+  column-gap: .5em;
+  padding-bottom: .9em;
+}
+.tl-item:last-child { padding-bottom: 0; }
+/* The line through the dots: from this dot to the next one. */
+.tl-item:not(:last-child)::before {
+  content: "";
+  position: absolute;
+  top: .75em;
+  bottom: -.15em;
+  left: calc(max(3.6em, 26%) + .5em + .7em - .75px);
+  width: 1.5px;
+  background: var(--line);
+}
+.tl-when { text-align: right; font-size: .86em; font-weight: 700; color: var(--acc-text); line-height: 1.5; }
+.tl-dot {
+  position: relative;
+  justify-self: center;
+  width: .72em;
+  height: .72em;
+  margin-top: .36em;
+  border-radius: 50%;
+  background: var(--card);
+  border: 2px solid var(--mark);
+  z-index: 1;
+}
+.tl-title { display: block; font-weight: 700; line-height: 1.3; }
+.tl-text { font-size: .95em; color: var(--body); line-height: 1.38; }
+.key-item .tl-dot { width: 1em; height: 1em; margin-top: .22em; background: var(--acc); border-color: var(--acc); }
+.key-item .tl-text { color: var(--ink); font-weight: 700; }
+
+/* ---- matrix ------------------------------------------------------------------------------------- */
+
+.chart-matrix { display: flex; flex-direction: column; gap: .6em; }
+.mx-grid { display: flex; flex-direction: column; }
+.mx-row {
+  display: grid;
+  grid-template-columns: minmax(6em, 1.5fr) repeat(var(--cols, 3), minmax(0, 1fr));
+  align-items: center;
+  min-height: 2.6em;
+  padding: 0 .6em;
+  border-bottom: 1px solid var(--hair);
+}
+.mx-headrow { min-height: 0; padding-bottom: .4em; border-bottom: 1px solid var(--line); align-items: end; }
+.mx-head { text-align: center; font-size: .74em; font-weight: 700; color: var(--acc-text); line-height: 1.2; }
+.mx-label { font-weight: 700; font-size: .95em; line-height: 1.25; padding: .4em 0; }
+.mx-row.focus { background: var(--tint); border-radius: var(--r-chip); border-bottom-color: transparent; }
+.mx-cell { justify-self: center; }
+.mx-cell.yes { width: .8em; height: .8em; border-radius: 50%; background: var(--ink); }
+.mx-row.focus .mx-cell.yes { background: var(--acc); }
+.mx-cell.no { width: .8em; height: 2px; border-radius: 1px; background: var(--faint); }
+.mx-key { padding: .8em 1em; text-align: center; line-height: 1.3; }
+
+/* ---- branches ----------------------------------------------------------------------------------- */
+
+.chart-branches { display: flex; flex-direction: column; }
+.br-start {
+  align-self: flex-start;
+  max-width: 85%;
+  padding: .75em 1em;
+  border-radius: var(--r);
+  background: var(--ink-box);
+  color: var(--on-acc);
+  font-weight: 700;
+  line-height: 1.3;
+}
+.br-options { list-style: none; display: flex; flex-direction: column; gap: .55em; margin: 0 0 0 1.3em; padding-top: .55em; }
+.br-opt {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: .15em;
+  margin-left: 1.3em;
+  padding: .7em .9em;
+  border-radius: var(--r);
+  border: 1px solid color-mix(in srgb, var(--acc) 45%, transparent);
+  background: var(--tint);
+  line-height: 1.3;
+}
+/* The branch: a line down from the start and across to each option. */
+.br-opt::before {
+  content: "";
+  position: absolute;
+  left: calc(-1.3em - 1px);
+  top: -.6em;
+  width: 1.3em;
+  height: calc(50% + .6em);
+  border-left: 1.5px solid var(--muted);
+  border-bottom: 1.5px solid var(--muted);
+  border-bottom-left-radius: 10px;
+  opacity: .8;
+}
+.br-opt:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  left: calc(-1.3em - 1px);
+  top: 50%;
+  bottom: -.6em;
+  border-left: 1.5px solid var(--muted);
+  opacity: .8;
+}
+.br-title { font-weight: 700; }
+.br-text { font-size: .9em; color: var(--body); }
+.br-opt.neg { background: var(--neg); border-color: var(--neg-line); }
+.br-opt.key-opt { background: var(--acc); border-color: var(--acc); color: var(--on-acc); }
+.br-opt.key-opt .br-text { color: var(--on-acc); }
+
+/* ---- maps (the ghostwriter-book skill's map.py): real places only ------------------------------ */
+.figure svg.map { overflow: hidden; }
+.figure svg .sea  { fill: color-mix(in srgb, var(--acc) 5%, var(--card)); stroke: var(--line); stroke-width: 1; }
+.figure svg .land { fill: var(--neg); stroke: var(--paper); stroke-width: .6; }
+.figure svg .pin  { stroke: var(--paper); stroke-width: 1.4; }

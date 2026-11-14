@@ -40,7 +40,11 @@
   text-align: left;
   transition: transform .12s ease;
 }
-.book-card:active { transform: scale(.985); }
+.book-card:has(.bc-open:active) { transform: scale(.985); }
+/* The open button covers the whole card; the other text sits under it, the actions above it. */
+.bc-open { position: absolute; inset: 0; border-radius: inherit; z-index: 1; }
+.bc-open:focus-visible { outline-offset: -3px; }
+.bc-actions { position: relative; z-index: 2; display: flex; gap: 8px; margin-top: auto; padding-top: 12px; }
 .book-card .label { font-size: .68rem; }
 
 .bc-top { display: flex; align-items: center; justify-content: space-between; gap: 8px; }

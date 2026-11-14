@@ -4,3 +4,5 @@ dev-dist/
 coverage/
 *.log
 .DS_Store
+# Book files, their extracted text and fact sheets (ghostwriter-book skill): never commit them.
+work/

@@ -5,6 +5,7 @@ import { h } from '../lib/dom.ts';
 import { canFullscreen, isFullscreen, isInstalled, toggleFullscreen } from '../lib/device.ts';
 import { GUIDE_NAMES } from '../screens/render.ts';
 import { schemePicker } from './scheme-picker.ts';
+import { pdfLink } from '../lib/pdf.ts';
 import type { Plan, PlanScreen } from '../model/plan.ts';
 
 export interface MenuActions {
@@ -41,6 +42,7 @@ export class Menu {
       h('div', { class: 'menu-actions' },
         h('button', { type: 'button', class: 'btn primary', onclick: () => actions.library() }, 'Library'),
         h('button', { type: 'button', class: 'btn', onclick: () => this.pick(0) }, 'Cover'),
+        pdfLink(b, 'Download PDF'),
         this.fsButton,
       ),
       schemePicker(),

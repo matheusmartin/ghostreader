@@ -38,7 +38,24 @@ export function rich(text: string, tag: 'p' | 'span' | 'div' = 'span', className
   return el;
 }
 
-/** Typographic quotes and apostrophes, as the book-infographic skill sets them. */
+/**
+ * Scene text: {when} in the accent colour and bold, [where] in bold, and **bold**.
+ * "{That night} Maude waits in [the kitchen]." The marks are part of the sentence.
+ */
+export function sceneText(text: string, tag: 'p' | 'span' = 'p', className?: string): HTMLElement {
+  const el = document.createElement(tag);
+  if (className) el.className = className;
+  el.innerHTML = escapeHtml(smartQuotes(text))
+    .replace(/\{([^{}]+)\}/g, '<b class="when">$1</b>')
+    .replace(/\[([^[\]]+)\]/g, '<b class="where">$1</b>')
+    .replace(/\*\*(.+?)\*\*/g, '<b>$1</b>');
+  return el;
+}
+
+/** Scene text without its marks, for screen readers and word counts. */
+export const plainScene = (text: string) => text.replace(/[{}[\]]|\*\*/g, '');
+
+/** Typographic quotes and apostrophes, as The Economist style sets them. */
 export function smartQuotes(s: string): string {
   return s
     .replace(/(^|[\s(\[{—–-])"/g, '$1“')

@@ -40,7 +40,7 @@ Rules:
 
 ## Part colours
 
-The hues of the book-infographic design system, at one lightness so no part looks heavier than
+The hues of the original book-infographic print design, at one lightness so no part looks heavier than
 another: OKLCH L 0.53 on light pages, 0.64 on dark pages. Dark pages have their own lighter steps;
 they are not the light colours inverted.
 
@@ -71,3 +71,10 @@ For future charts that show several things at once (story threads, factions):
 - **Magnitude** (how much): one hue, light to dark: the part's tint, fill, then text step.
 - **Polarity** (for and against): two poles, terracotta (p1) and slate (front), with grey in the
   middle.
+
+## Charts and the PDF
+
+Charts follow the same roles: the one key element (the centre of a cast map, the turning-point
+scene, the conclusion) in the accent colour, everything else in ink and grey, names on tint pills.
+Data charts (bars, story threads) have no key element; their caption says what the marks mean.
+The PDF always prints on Paper, on white, whatever page colour the reader chose.

@@ -1,9 +1,11 @@
-/* Design tokens, from the book-infographic design system (references/design-system.md).
+/* Design tokens (docs/design.md). The system began as the book-infographic skill's print design.
    Colour has a meaning: accent = focus · ink = text · tint = summary and entities ·
    grey = ordinary · faint = inactive, away or still to come. */
 
 :root {
-  --font: "Helvetica Neue", Helvetica, Arial, "Liberation Sans", "Nimbus Sans", system-ui, sans-serif;
+  /* Helvetica first: Linux maps it to Liberation Sans and Windows to Arial, both with Helvetica's
+     widths, so charts measured with Helvetica metrics (src/charts/svg.ts) fit everywhere. */
+  --font: Helvetica, "Helvetica Neue", Arial, "Liberation Sans", "Nimbus Sans", system-ui, sans-serif;
 
   --r: 14px;
   --r-chip: 8px;

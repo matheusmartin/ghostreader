@@ -7,13 +7,19 @@
 //   Chapter  any unit of the book's table of contents: prologue, chapter, epilogue, appendix,
 //            and the guide's own overview pages (Who's who, The book in one page…).
 //   Section  an optional group of screens inside a chapter ("Key concepts", "Test yourself").
-//   Screen   one piece of information: what one swipe shows.
+//   Screen   one piece of information: what one swipe shows. In the PDF, one block.
+//
+// The same file makes the app and the PDF. `only: "pdf"` marks detail for the PDF alone
+// (a longer synopsis, the full cast); `only: "app"` marks a screen the PDF leaves out.
 
 export type BookType = 'fiction' | 'reading' | 'done';
 
-/** Colour theme, as in the book-infographic design system: front matter and overviews, then one per part. */
+/** Colour theme, as in the design system: front matter and overviews, then one per part. */
 export type Theme = 'front' | 'p1' | 'p2' | 'p3' | 'p4' | 'p5';
 export const THEMES: readonly Theme[] = ['front', 'p1', 'p2', 'p3', 'p4', 'p5'];
+
+/** Where a screen or section shows: in the app only, or in the PDF only. Default: both. */
+export type Only = 'app' | 'pdf';
 
 export interface Book {
   format: 1;
@@ -32,7 +38,20 @@ export interface Book {
   upTo?: string;
   /** Demo content: the library marks it as a sample. */
   sample?: boolean;
+  /** Where the content comes from. Not shown to the reader. */
+  source?: Source;
   parts: Part[];
+}
+
+export interface Source {
+  /** "book-file": written from the book itself (EPUB, PDF, text); "summaries": from summaries of the book. */
+  kind: 'book-file' | 'summaries';
+  /** "EPUB", "PDF", "Project Gutenberg text"… */
+  file?: string;
+  /** Date the guide was written or last regenerated (YYYY-MM-DD). */
+  written?: string;
+  /** Version of the ghostwriter-book skill that wrote it. */
+  skill?: string;
 }
 
 export interface Part {
@@ -63,6 +82,7 @@ export interface Chapter {
 export interface Section {
   id?: string;
   title: string;
+  only?: Only;
   screens: Screen[];
 }
 
@@ -73,13 +93,18 @@ export type Screen =
   | ListScreen
   | QuizScreen
   | TextScreen
+  | ScenesScreen
   | ChartScreen
   | FigureScreen;
 
 export type ScreenType = Screen['type'];
 
+interface ScreenBase {
+  only?: Only;
+}
+
 /** The point first: In short, Core idea, Thesis, Story so far, with an optional takeaway. */
-export interface SummaryScreen {
+export interface SummaryScreen extends ScreenBase {
   type: 'summary';
   label: string;
   text: string;
@@ -87,7 +112,7 @@ export interface SummaryScreen {
 }
 
 /** Named items: key concepts, key points, examples, who they are. */
-export interface PointsScreen {
+export interface PointsScreen extends ScreenBase {
   type: 'points';
   label: string;
   /** 'bar' (default): accent bar on the left · 'box': white boxes, for examples. */
@@ -96,36 +121,60 @@ export interface PointsScreen {
 }
 
 /** Numbered steps: the logic, main claims. The last step is the conclusion. */
-export interface StepsScreen {
+export interface StepsScreen extends ScreenBase {
   type: 'steps';
   label: string;
   steps: string[];
 }
 
 /** Rows of name and text: cast list, places, threads, how the parts connect. */
-export interface ListScreen {
+export interface ListScreen extends ScreenBase {
   type: 'list';
   label: string;
   rows: { name: string; text: string; meta?: string }[];
 }
 
 /** Test yourself / Recall: the reader taps a question to see its answer. */
-export interface QuizScreen {
+export interface QuizScreen extends ScreenBase {
   type: 'quiz';
   label: string;
   questions: { q: string; a: string }[];
 }
 
-export interface TextScreen {
+export interface TextScreen extends ScreenBase {
   type: 'text';
   label?: string;
   paragraphs: string[];
 }
 
-interface ChartBase {
+/**
+ * Fiction: the scenes of a chapter and who is in each one. The app shows a chart (one row per
+ * person, one column per scene) and then the scenes as a numbered list; the PDF shows both.
+ * Scene text weaves in the time and the place: "{That night} Maude waits in [the kitchen]."
+ */
+export interface ScenesScreen extends ScreenBase {
+  type: 'scenes';
+  label?: string;
+  /** Rows of the chart, top to bottom. Put people who meet next to each other. `tag`: "New". */
+  people: { name: string; tag?: string }[];
+  scenes: Scene[];
+}
+
+export interface Scene {
+  /** One or two sentences with one {when} and one [where]. */
+  text: string;
+  /** People in the scene. */
+  with: string[];
+  /** People there only at a distance: by letter or phone, overheard, asleep. Never just talked about. */
+  off?: string[];
+  /** The turning point of the chapter (one scene). */
+  key?: boolean;
+}
+
+interface ChartBase extends ScreenBase {
   type: 'chart';
   label?: string;
-  /** One line under data charts: what the marks mean. */
+  /** One line under the chart: what the marks mean. */
   caption?: string;
 }
 
@@ -153,15 +202,81 @@ export interface FlowChart extends ChartBase {
   key?: string;
 }
 
-export type ChartScreen = BarsChart | CompareChart | FlowChart;
+/** Events or stages in order, with the time the book gives. One `key`: the turning point. */
+export interface TimelineChart extends ChartBase {
+  chart: 'timeline';
+  items: { when: string; title?: string; text: string; key?: boolean }[];
+}
+
+/**
+ * Who or what connects to whom: a cast map (fiction) or a concept map (non-fiction).
+ * `centre` (1–2 names) sits in the middle; the first one is the key element. `nodes` sit on a
+ * ring around it, in order (keep a group together). Links join any two names.
+ */
+export interface NetworkChart extends ChartBase {
+  chart: 'network';
+  centre: string[];
+  nodes: { name: string; note?: string; tag?: string }[];
+  links: { from: string; to: string; label?: string; arrow?: boolean }[];
+}
+
+/** Fiction: where each story thread appears, chapter by chapter. */
+export interface ThreadsChart extends ChartBase {
+  chart: 'threads';
+  /** Column labels: the chapter numbers covered ("1", "2"…, "P", "E"). */
+  columns: string[];
+  threads: { name: string; text?: string; appears: string[]; major?: string[] }[];
+}
+
+/** A loop that feeds itself: 3–6 steps, the last leads back to the first. One `key` node. */
+export interface CycleChart extends ChartBase {
+  chart: 'cycle';
+  nodes: { title: string; text?: string; key?: boolean }[];
+  /** Short note in the middle of the loop. */
+  centre?: string;
+}
+
+/** Items compared on features: a dot for yes, a dash for no. `focus` tints a row. */
+export interface MatrixChart extends ChartBase {
+  chart: 'matrix';
+  columns: string[];
+  rows: { label: string; cells: boolean[]; focus?: boolean }[];
+  key?: string;
+}
+
+/** One situation, 2–4 possible outcomes. `key`: the outcome the book argues for. */
+export interface BranchesChart extends ChartBase {
+  chart: 'branches';
+  start: string;
+  options: { title: string; text?: string; key?: boolean; negative?: boolean }[];
+}
+
+/** Nested levels, outer ring first; the innermost ring is the key element. */
+export interface LayersChart extends ChartBase {
+  chart: 'layers';
+  rings: { title: string; text?: string }[];
+}
+
+export type ChartScreen =
+  | BarsChart
+  | CompareChart
+  | FlowChart
+  | TimelineChart
+  | NetworkChart
+  | ThreadsChart
+  | CycleChart
+  | MatrixChart
+  | BranchesChart
+  | LayersChart;
 export type ChartKind = ChartScreen['chart'];
 
 /**
- * A hand-made diagram as inline SVG, in the diagram language of the book-infographic skill
- * (classes bx, bt, bn, bi, k, ln, la, ar, ara, t1, t2, t3, tw, ta, c, e…).
- * Draw it for a phone: viewBox about 340 wide. Scripts and event attributes are removed.
+ * A hand-made diagram as inline SVG, in the app's diagram language
+ * (classes bx, bt, bn, bi, k, ln, la, ar, ara, t1, t2, t3, tw, ta, c, e…). Maps come from the
+ * skill's map script. Draw it for a phone: viewBox about 340 wide. Scripts and event attributes
+ * are removed.
  */
-export interface FigureScreen {
+export interface FigureScreen extends ScreenBase {
   type: 'figure';
   label?: string;
   svg: string;

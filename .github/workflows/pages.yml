@@ -1,4 +1,4 @@
-# Builds the app, runs the tests and publishes dist/ to GitHub Pages.
+# Builds the app and one PDF per book, runs the tests and publishes dist/ to GitHub Pages.
 # One-time setup in the repository: Settings → Pages → Build and deployment → Source: GitHub Actions.
 name: Deploy to GitHub Pages
 
@@ -27,6 +27,9 @@ jobs:
           node-version: 22
           cache: npm
       - run: npm ci
+      # Chromium prints the PDFs (scripts/build-pdfs.mjs); --with-deps also installs Liberation Sans,
+      # which has Helvetica's widths, so charts fit as measured.
+      - run: npx playwright install --with-deps chromium
       - run: npm test
       - run: npm run build
       - uses: actions/configure-pages@v6
