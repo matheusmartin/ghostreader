@@ -56,7 +56,14 @@ npm run dev
 `.npmrc` sets `legacy-peer-deps`, because npm 10 fails to resolve Vitest's optional peer
 dependencies.
 
-The build uses relative paths, so `dist/` works from any folder, for example GitHub Pages.
+The build uses relative paths, so `dist/` works from any folder.
+
+## Deploy
+
+`.github/workflows/pages.yml` builds the app, runs the tests and publishes it to GitHub Pages on
+every push to `main` (or the current working branch). One-time setup: in the repository, open
+Settings → Pages → Build and deployment and set Source to **GitHub Actions**. The site is then at
+`https://<owner>.github.io/<repository>/`.
 
 ## Add a book
 
