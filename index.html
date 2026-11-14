@@ -5,8 +5,16 @@
     <!-- viewport-fit=cover: draw under the notch and the home indicator; the CSS keeps text in the safe area. -->
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
     <meta name="description" content="Read books with charts, infographics and summaries." />
-    <meta name="theme-color" content="#fbf8f2" media="(prefers-color-scheme: light)" />
-    <meta name="theme-color" content="#15171c" media="(prefers-color-scheme: dark)" />
+    <meta name="theme-color" content="#fafafa" />
+    <!-- Page colour before the first paint, so it never flashes. Same rules as src/lib/scheme.ts. -->
+    <script>
+      (function () {
+        var ok = ['paper', 'quiet', 'warm', 'dusk', 'night'], c = 'auto';
+        try { c = localStorage.getItem('ghostwriter:scheme') || 'auto'; } catch (e) {}
+        if (ok.indexOf(c) < 0) c = matchMedia('(prefers-color-scheme: dark)').matches ? 'dusk' : 'paper';
+        document.documentElement.setAttribute('data-scheme', c);
+      })();
+    </script>
     <!-- iPhone and iPad: full screen when opened from the home screen. -->
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="mobile-web-app-capable" content="yes" />

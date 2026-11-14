@@ -46,3 +46,13 @@ describe('routes', () => {
     expect(parseRoute(readHash('nexus', 'ch5', 2))).toEqual({ name: 'read', bookId: 'nexus', chapterId: 'ch5', n: 2 });
   });
 });
+
+describe('page colour', () => {
+  it('resolves Auto from the device mode and keeps a fixed choice', async () => {
+    const { resolveScheme } = await import('../src/lib/scheme.ts');
+    expect(resolveScheme('auto', false)).toBe('paper');
+    expect(resolveScheme('auto', true)).toBe('dusk');
+    expect(resolveScheme('night', false)).toBe('night');
+    expect(resolveScheme('quiet', true)).toBe('quiet');
+  });
+});

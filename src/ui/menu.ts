@@ -1,9 +1,10 @@
-// The book menu, opened by a tap: contents (parts, chapters, sections), the library, full screen,
-// and a reminder of the gestures. Chapters not written yet show only their number.
+// The book menu, opened by a tap: the library, full screen, page colour, contents (parts,
+// chapters, sections) and a reminder of the gestures. Chapters not written yet show only their number.
 
 import { h } from '../lib/dom.ts';
 import { canFullscreen, isFullscreen, isInstalled, toggleFullscreen } from '../lib/device.ts';
 import { GUIDE_NAMES } from '../screens/render.ts';
+import { schemePicker } from './scheme-picker.ts';
 import type { Plan, PlanScreen } from '../model/plan.ts';
 
 export interface MenuActions {
@@ -42,6 +43,7 @@ export class Menu {
         h('button', { type: 'button', class: 'btn', onclick: () => this.pick(0) }, 'Cover'),
         this.fsButton,
       ),
+      schemePicker(),
       this.toc,
       h('dl', { class: 'menu-help' },
         h('dt', null, 'Swipe up · down'), h('dd', null, 'Next · previous screen'),
@@ -66,7 +68,8 @@ export class Menu {
     this.el.hidden = false;
     void this.el.offsetHeight; // start the slide-in from the closed state
     this.el.classList.add('open');
-    this.toc.querySelector<HTMLElement>('.current')?.scrollIntoView({ block: 'center' });
+    // 'nearest' keeps the top of the menu (actions, page colour) in view when it can.
+    this.toc.querySelector<HTMLElement>('.current')?.scrollIntoView({ block: 'nearest' });
   }
 
   close(): void {

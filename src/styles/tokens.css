@@ -4,20 +4,7 @@
 
 :root {
   --font: "Helvetica Neue", Helvetica, Arial, "Liberation Sans", "Nimbus Sans", system-ui, sans-serif;
-
-  --ink: #1d2433;
-  --body: #2b3140;
-  --muted: #5f646e;
-  --faint: #958e82;
-  --line: #d6cfc2;
-  --hair: #e6dfd3;
-  --paper: #fbf8f2;
-  --card: #ffffff;
-  --neg: #efebe4;
-  --neg-line: #b3aa9b;
   --on-acc: #ffffff;
-  /* Ink-filled shapes with white text (the opening question of an argument map). */
-  --ink-box: #1d2433;
 
   --r: 14px;
   --r-chip: 8px;
@@ -30,39 +17,88 @@
 
   /* Height of the reader's indicator under the top safe area. */
   --hud-h: calc(26px + 3.2rem);
-
-  color-scheme: light dark;
 }
 
-/* Themes: theme-front for the cover and overviews, p1–p5 for the parts in order.
-   --acc shapes and big numbers · --acc-text small accent text · --tint light fills */
-:root, .theme-front { --acc: #95661a; --acc-text: #7d5512; --tint: #f5ead3; --acc-light: #e9c37a; }
-.theme-p1 { --acc: #b8513a; --acc-text: #8f3a27; --tint: #f6e2db; --acc-light: #f0a48f; }
-.theme-p2 { --acc: #227f7a; --acc-text: #17625e; --tint: #d9eeec; --acc-light: #8fd6d0; }
-.theme-p3 { --acc: #544a95; --acc-text: #3f3778; --tint: #e3e0f2; --acc-light: #b8b0ec; }
-.theme-p4 { --acc: #5f7a2e; --acc-text: #465c1f; --tint: #e7eed8; --acc-light: #bcd58d; }
-.theme-p5 { --acc: #9a3e6b; --acc-text: #782c52; --tint: #f3dfe8; --acc-light: #eaa6c6; }
+/* ---- page colours (schemes) --------------------------------------------------------------------
+   The reader picks one in the menu (src/lib/scheme.ts). "Auto" uses Paper, or Dusk when the
+   device is in dark mode. Any element can carry data-scheme, so the picker's swatches show their
+   own colours. Every text colour passes WCAG AA on its page; body text passes AAA. */
 
-/* --acc-fg: accent used as text (big numbers). Same as --acc on paper, lighter on dark. */
-:root, .theme-front, .theme-p1, .theme-p2, .theme-p3, .theme-p4, .theme-p5 { --acc-fg: var(--acc); }
+/* A · Paper: neutral off-white. Dark text on a bright page reads best in a lit room. */
+:root, [data-scheme="paper"] {
+  --paper: #fafafa; --card: #ffffff;
+  --ink: #1b1f27; --body: #2c313b; --muted: #5c616b; --faint: #989ba1;
+  --line: #d8dadf; --hair: #e7e8eb; --neg: #eeeff1; --neg-line: #b3b6bd;
+  --ink-box: #1d2433;
+  --tint-mix: 13%;
+  color-scheme: light;
+}
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --ink: #ecebe6;
-    --body: #d8d6d0;
-    --muted: #a4a39d;
-    --faint: #75726b;
-    --line: #3d4048;
-    --hair: #2e3139;
-    --paper: #15171c;
-    --card: #1e2128;
-    --neg: #25272d;
-    --neg-line: #5d5b56;
-    --ink-box: #3a4152;
-  }
-  :root, .theme-front, .theme-p1, .theme-p2, .theme-p3, .theme-p4, .theme-p5 {
-    --acc-text: var(--acc-light);
-    --acc-fg: var(--acc-light);
-    --tint: color-mix(in srgb, var(--acc) 26%, var(--paper));
-  }
+/* B · Quiet: light grey, less glare than white. */
+[data-scheme="quiet"] {
+  --paper: #eeeff1; --card: #fbfbfc;
+  --ink: #1d2129; --body: #2d323b; --muted: #575c66; --faint: #8f939a;
+  --line: #d0d3d8; --hair: #dfe1e5; --neg: #e2e4e7; --neg-line: #a9adb4;
+  --ink-box: #1d2433;
+  --tint-mix: 15%;
+  color-scheme: light;
+}
+
+/* C · Warm: a light warm white, with the design system's ochre for the cover and overviews. */
+[data-scheme="warm"] {
+  --paper: #fdfcf9; --card: #ffffff;
+  --ink: #1d2433; --body: #2b3140; --muted: #5d626c; --faint: #97928a;
+  --line: #e0dcd5; --hair: #eeebe5; --neg: #f2f0ec; --neg-line: #b9b3a9;
+  --ink-box: #1d2433;
+  --tint-mix: 11%;
+  color-scheme: light;
+}
+
+/* D · Dusk: soft dark for the evening. Text at about 87 % white, never pure white. */
+[data-scheme="dusk"] {
+  --paper: #16181d; --card: #1f2229;
+  --ink: #e6e6e3; --body: #cfcfcb; --muted: #9d9ea2; --faint: #6f7075;
+  --line: #3a3d45; --hair: #2b2e35; --neg: #24262c; --neg-line: #5b5d63;
+  --ink-box: #3a4152;
+  --tint-mix: 24%;
+  color-scheme: dark;
+}
+
+/* E · Night: black page, dimmed text, for reading in bed. Least light from the screen. */
+[data-scheme="night"] {
+  --paper: #000000; --card: #111214;
+  --ink: #cacac6; --body: #b4b4b0; --muted: #86878b; --faint: #5d5e62;
+  --line: #2a2b30; --hair: #1c1d21; --neg: #16171a; --neg-line: #4a4b50;
+  --ink-box: #2c313c;
+  --tint-mix: 22%;
+  color-scheme: dark;
+}
+
+/* ---- part colours ------------------------------------------------------------------------------
+   theme-front for the cover and overviews, p1–p5 for the parts in order.
+   Raw values: --acc shapes · --acc-dark accent text on light pages · --acc-light on dark pages. */
+
+:root, .theme-front { --acc: #3f5873; --acc-dark: #2f445c; --acc-light: #a9bdd6; }
+.theme-p1 { --acc: #b8513a; --acc-dark: #8f3a27; --acc-light: #f0a48f; }
+.theme-p2 { --acc: #227f7a; --acc-dark: #17625e; --acc-light: #8fd6d0; }
+.theme-p3 { --acc: #544a95; --acc-dark: #3f3778; --acc-light: #b8b0ec; }
+.theme-p4 { --acc: #5f7a2e; --acc-dark: #465c1f; --acc-light: #bcd58d; }
+.theme-p5 { --acc: #9a3e6b; --acc-dark: #782c52; --acc-light: #eaa6c6; }
+
+/* Front colour per scheme: ochre on Warm, a lighter slate on the dark pages. */
+[data-scheme="warm"], [data-scheme="warm"] .theme-front { --acc: #95661a; --acc-dark: #7d5512; --acc-light: #e9c37a; }
+[data-scheme="dusk"], [data-scheme="dusk"] .theme-front,
+[data-scheme="night"], [data-scheme="night"] .theme-front { --acc: #4f6a8a; }
+
+/* Derived tokens, computed where the part colour is set:
+   --acc-text small accent text · --acc-fg accent as large text · --tint light fills */
+:root, [data-scheme], [class*="theme-"] {
+  --acc-text: var(--acc-dark);
+  --acc-fg: var(--acc);
+  --tint: color-mix(in srgb, var(--acc) var(--tint-mix), var(--paper));
+}
+[data-scheme="dusk"], [data-scheme="dusk"] [class*="theme-"],
+[data-scheme="night"], [data-scheme="night"] [class*="theme-"] {
+  --acc-text: var(--acc-light);
+  --acc-fg: var(--acc-light);
 }

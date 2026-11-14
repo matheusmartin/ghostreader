@@ -13,6 +13,9 @@ import { parseRoute, readHash } from './router.ts';
 import { renderLibrary } from './ui/library.ts';
 import { Reader } from './ui/reader.ts';
 import { startPwa } from './pwa.ts';
+import { startScheme } from './lib/scheme.ts';
+
+startScheme();
 
 const root = document.getElementById('app')!;
 let view: { destroy(): void } | null = null;

@@ -216,6 +216,41 @@
 .menu-author { color: var(--muted); font-size: .9rem; }
 .menu-actions { display: flex; flex-wrap: wrap; gap: 8px; margin: 16px 0 6px; }
 
+.scheme-picker { margin-top: 18px; }
+.scheme-picker > .label { font-size: .66rem; margin-bottom: 8px; }
+.scheme-list { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 4px; }
+.scheme-opt {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+  min-height: 44px;
+  padding: 2px 0;
+  font-size: .72rem;
+  color: var(--muted);
+}
+.scheme-opt[aria-checked="true"] { color: var(--ink); font-weight: 700; }
+.swatch-ring { padding: 2px; border-radius: 50%; border: 2px solid transparent; }
+.scheme-opt[aria-checked="true"] .swatch-ring { border-color: var(--ink); }
+/* The swatch carries its own data-scheme, so these colours are the scheme's, not the page's. */
+.swatch {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+  overflow: hidden;
+  background: var(--paper);
+  color: var(--ink);
+  box-shadow: inset 0 0 0 1px var(--line);
+  font-size: .9rem;
+  font-weight: 700;
+}
+.swatch.split > span { position: absolute; inset: 0; background: var(--paper); }
+.swatch.split > span + span { clip-path: polygon(100% 0, 100% 100%, 0 100%); }
+.scheme-note { margin-top: 6px; font-size: .75rem; color: var(--muted); }
+
 .toc-part { margin-top: 18px; }
 .toc-part h3 { font-size: .66rem; margin-bottom: 4px; }
 .toc-part ol { list-style: none; }
