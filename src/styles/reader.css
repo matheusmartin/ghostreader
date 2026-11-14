@@ -265,8 +265,8 @@
 }
 .toc-num { min-width: 2.2em; font-weight: 700; color: var(--acc-fg); font-variant-numeric: tabular-nums; }
 .toc-title { flex: 1; font-weight: 700; }
-.toc-ch.later { color: var(--faint); }
-.toc-ch.later .toc-num { color: var(--faint); }
+.toc-ch.later { color: var(--muted); }
+.toc-ch.later .toc-num { color: var(--muted); }
 .toc-ch.later .toc-title { font-weight: 400; font-size: .9rem; }
 .toc-ch.current > button { color: var(--acc-text); }
 .toc-ch.current > button::after { content: "You are here"; font-size: .7rem; font-weight: 700; color: var(--muted); }

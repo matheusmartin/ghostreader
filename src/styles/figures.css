@@ -16,11 +16,10 @@
   width: var(--w, 0);
   min-width: 3px;
   border-radius: 0 6px 6px 0;
-  background: var(--muted);
-  opacity: .65;
+  background: var(--mark);
 }
 .bar-value { color: var(--muted); font-variant-numeric: tabular-nums; }
-.bar-row.focus .bar { background: var(--acc); opacity: 1; }
+.bar-row.focus .bar { background: var(--acc); }
 .bar-row.focus .bar-label { color: var(--ink); font-weight: 700; }
 .bar-row.focus .bar-value { color: var(--acc-text); font-weight: 700; }
 
@@ -130,7 +129,7 @@
 .figure svg .ara  { fill: none; stroke: var(--acc); stroke-width: 1.5; stroke-opacity: .8; marker-end: url(#arw); }
 .figure svg .dash { stroke-dasharray: 2 5; }
 .figure svg .yes  { fill: var(--acc); }
-.figure svg .past { fill: var(--muted); fill-opacity: .7; }
+.figure svg .past { fill: var(--mark); }
 .figure svg .later { fill: none; stroke: var(--faint); stroke-width: 1; }
 
 .figure svg text { fill: var(--ink); font-size: 12px; }
@@ -141,6 +140,6 @@
 .figure svg .tb { font-weight: 700; }
 .figure svg .tw { fill: var(--on-acc); }
 .figure svg .ta { fill: var(--acc-text); font-weight: 700; }
-.figure svg .off { fill: var(--faint); }
+.figure svg .off { fill: var(--muted); }
 .figure svg .c { text-anchor: middle; }
 .figure svg .e { text-anchor: end; }

@@ -55,7 +55,7 @@
   font-weight: 700;
   color: var(--ink);
 }
-.bm-chip.later { background: transparent; border: 1px dashed var(--faint); color: var(--faint); font-weight: 400; }
+.bm-chip.later { background: transparent; border: 1px dashed var(--faint); color: var(--muted); font-weight: 400; }
 .bm-chip.key { background: var(--acc); border-color: var(--acc); color: var(--on-acc); }
 
 /* ---- chapter opener --------------------------------------------------------------------------- */

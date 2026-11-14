@@ -4,7 +4,6 @@
 
 :root {
   --font: "Helvetica Neue", Helvetica, Arial, "Liberation Sans", "Nimbus Sans", system-ui, sans-serif;
-  --on-acc: #ffffff;
 
   --r: 14px;
   --r-chip: 8px;
@@ -29,7 +28,7 @@
   --paper: #fafafa; --card: #ffffff;
   --ink: #1b1f27; --body: #2c313b; --muted: #5c616b; --faint: #989ba1;
   --line: #d8dadf; --hair: #e7e8eb; --neg: #eeeff1; --neg-line: #b3b6bd;
-  --ink-box: #1d2433;
+  --mark: #8a8c91; --ink-box: #1d2433; --on-acc: #ffffff;
   --tint-mix: 13%;
   color-scheme: light;
 }
@@ -39,7 +38,7 @@
   --paper: #eeeff1; --card: #fbfbfc;
   --ink: #1d2129; --body: #2d323b; --muted: #575c66; --faint: #8f939a;
   --line: #d0d3d8; --hair: #dfe1e5; --neg: #e2e4e7; --neg-line: #a9adb4;
-  --ink-box: #1d2433;
+  --mark: #83858a; --ink-box: #1d2433; --on-acc: #ffffff;
   --tint-mix: 15%;
   color-scheme: light;
 }
@@ -49,7 +48,7 @@
   --paper: #fdfcf9; --card: #ffffff;
   --ink: #1d2433; --body: #2b3140; --muted: #5d626c; --faint: #97928a;
   --line: #e0dcd5; --hair: #eeebe5; --neg: #f2f0ec; --neg-line: #b9b3a9;
-  --ink-box: #1d2433;
+  --mark: #8b8d92; --ink-box: #1d2433; --on-acc: #ffffff;
   --tint-mix: 11%;
   color-scheme: light;
 }
@@ -59,7 +58,8 @@
   --paper: #16181d; --card: #1f2229;
   --ink: #e6e6e3; --body: #cfcfcb; --muted: #9d9ea2; --faint: #6f7075;
   --line: #3a3d45; --hair: #2b2e35; --neg: #24262c; --neg-line: #5b5d63;
-  --ink-box: #3a4152;
+  /* On dark pages accent and ink shapes are light, so the text on them is dark. */
+  --mark: #67696e; --ink-box: #c9ccd3; --on-acc: #111318;
   --tint-mix: 24%;
   color-scheme: dark;
 }
@@ -69,36 +69,40 @@
   --paper: #000000; --card: #111214;
   --ink: #cacac6; --body: #b4b4b0; --muted: #86878b; --faint: #5d5e62;
   --line: #2a2b30; --hair: #1c1d21; --neg: #16171a; --neg-line: #4a4b50;
-  --ink-box: #2c313c;
+  --mark: #5c5e63; --ink-box: #a7aab1; --on-acc: #111318;
   --tint-mix: 22%;
   color-scheme: dark;
 }
 
 /* ---- part colours ------------------------------------------------------------------------------
-   theme-front for the cover and overviews, p1–p5 for the parts in order.
-   Raw values: --acc shapes · --acc-dark accent text on light pages · --acc-light on dark pages. */
+   theme-front for the cover and overviews (a neutral slate: the frame, not a part), p1–p5 for the
+   parts in order. Hues of the book-infographic design system, all at one lightness (OKLCH L 0.53
+   on light pages, 0.64 on dark pages), checked with the data-viz skill's validator: lightness band,
+   chroma floor, 3:1 against the page, colour-blind separation (worst pair p1–p2, ΔE 7.5: legal
+   because every part is also named in text). docs/design.md has the table.
+   Raw values per theme: fill and text for light pages, fill and text for dark pages. */
 
-:root, .theme-front { --acc: #3f5873; --acc-dark: #2f445c; --acc-light: #a9bdd6; }
-.theme-p1 { --acc: #b8513a; --acc-dark: #8f3a27; --acc-light: #f0a48f; }
-.theme-p2 { --acc: #227f7a; --acc-dark: #17625e; --acc-light: #8fd6d0; }
-.theme-p3 { --acc: #544a95; --acc-dark: #3f3778; --acc-light: #b8b0ec; }
-.theme-p4 { --acc: #5f7a2e; --acc-dark: #465c1f; --acc-light: #bcd58d; }
-.theme-p5 { --acc: #9a3e6b; --acc-dark: #782c52; --acc-light: #eaa6c6; }
+:root, .theme-front { --fill-l: #3f5873; --text-l: #2f445c; --fill-d: #6c8fb6; --text-d: #a9bdd6; }
+.theme-p1 { --fill-l: #a54e3a; --text-l: #76382a; --fill-d: #ca6f5a; --text-d: #efb4a6; }
+.theme-p2 { --fill-l: #007e68; --text-l: #005b4b; --fill-d: #05a388; --text-d: #92d4c1; }
+.theme-p3 { --fill-l: #685fad; --text-l: #4a447b; --fill-d: #8780d1; --text-d: #c0bef1; }
+.theme-p4 { --fill-l: #5a781e; --text-l: #405618; --fill-d: #7a9943; --text-d: #b8cd9b; }
+.theme-p5 { --fill-l: #9f4b72; --text-l: #713652; --fill-d: #c36c93; --text-d: #eab1c9; }
 
-/* Front colour per scheme: ochre on Warm, a lighter slate on the dark pages. */
-[data-scheme="warm"], [data-scheme="warm"] .theme-front { --acc: #95661a; --acc-dark: #7d5512; --acc-light: #e9c37a; }
-[data-scheme="dusk"], [data-scheme="dusk"] .theme-front,
-[data-scheme="night"], [data-scheme="night"] .theme-front { --acc: #4f6a8a; }
+/* Warm keeps the design system's ochre for the cover and overviews. */
+[data-scheme="warm"], [data-scheme="warm"] .theme-front { --fill-l: #95661a; --text-l: #7d5512; }
 
 /* Derived tokens, computed where the part colour is set:
-   --acc-text small accent text · --acc-fg accent as large text · --tint light fills */
+   --acc shapes · --acc-text small accent text · --acc-fg accent as large text · --tint light fills */
 :root, [data-scheme], [class*="theme-"] {
-  --acc-text: var(--acc-dark);
-  --acc-fg: var(--acc);
+  --acc: var(--fill-l);
+  --acc-text: var(--text-l);
+  --acc-fg: var(--fill-l);
   --tint: color-mix(in srgb, var(--acc) var(--tint-mix), var(--paper));
 }
 [data-scheme="dusk"], [data-scheme="dusk"] [class*="theme-"],
 [data-scheme="night"], [data-scheme="night"] [class*="theme-"] {
-  --acc-text: var(--acc-light);
-  --acc-fg: var(--acc-light);
+  --acc: var(--fill-d);
+  --acc-text: var(--text-d);
+  --acc-fg: var(--text-d);
 }

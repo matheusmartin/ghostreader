@@ -24,6 +24,10 @@ Keyboard and mouse wheel do the same moves (arrows, Space, Page Up / Down, Enter
 - a rail on the right edge: one pip per screen of the chapter, grouped by section (vertical swipes
   move along it).
 
+**Page colour.** Paper (off-white) by day and Dusk (soft dark) when the device is in dark mode.
+The menu also offers Quiet, Warm and Night. Colours, roles and contrast rules:
+[docs/design.md](docs/design.md).
+
 **Full screen.** Installed to the home screen, the app opens full screen (`display: fullscreen`;
 on iPhone and iPad, under the status bar). In a browser tab, it asks for full screen when you open
 a book. It keeps the screen on while you read (Wake Lock), and it works offline: the service worker
@@ -46,7 +50,7 @@ npm run dev
 | `npm run dev` | Development server, also on the local network (open it on your phone) |
 | `npm run build` | Type check and production build in `dist/` |
 | `npm run preview` | Serve the production build (service worker included) |
-| `npm test` | Unit tests |
+| `npm test` | Unit tests, including the colour contrast checks |
 | `npm run validate` | Check every book file in `src/books/` |
 
 `.npmrc` sets `legacy-peer-deps`, because npm 10 fails to resolve Vitest's optional peer
@@ -77,7 +81,8 @@ src/
   screens/render.ts  one renderer per screen type; fit-to-screen
   charts/            charts from data (bars, compare, flow) and the book map
   lib/               DOM helpers, SVG sanitiser, full screen and wake lock
-  styles/            design tokens (from the skill's design system), light and dark
+  styles/            design tokens: page colours and part colours (docs/design.md)
+  lib/scheme.ts      page colour choice; ui/scheme-picker.ts draws the picker
 ```
 
 To add a screen type: add it to `Screen` in `model/types.ts`, check it in `model/validate.ts`,
