@@ -4,12 +4,15 @@ import './styles/library.css';
 import './styles/reader.css';
 import './styles/screens.css';
 import './styles/figures.css';
+import './styles/print.css';
 
 import { loadBook } from './data/books.ts';
 import { forgetOldData } from './lib/storage.ts';
 import { enterFullscreen, keepAwake } from './lib/device.ts';
 import { buildPlan, locate } from './model/plan.ts';
 import { parseRoute, readHash } from './router.ts';
+import { renderPrint } from './print/print.ts';
+import { renderCheck } from './ui/check.ts';
 import { renderLibrary } from './ui/library.ts';
 import { Reader } from './ui/reader.ts';
 import { startPwa } from './pwa.ts';
@@ -44,7 +47,20 @@ async function route() {
     return;
   }
   const book = loaded.book;
+
+  if (r.name === 'print') {
+    view?.destroy();
+    view = renderPrint(root, book, { back: leaveBook });
+    document.title = `${book.title} – PDF – Ghostwriter`;
+    return;
+  }
   const plan = buildPlan(book);
+  if (r.name === 'check') {
+    view?.destroy();
+    view = renderCheck(root, plan);
+    return;
+  }
+
   // A link or a reload can name a screen; otherwise the book opens at its cover.
   const start = (r.chapterId !== undefined ? locate(plan, r.chapterId, r.n) : null) ?? 0;
 

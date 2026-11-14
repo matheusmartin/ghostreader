@@ -4,6 +4,7 @@ import { h } from '../lib/dom.ts';
 import { canFullscreen, isFullscreen, isInstalled, toggleFullscreen } from '../lib/device.ts';
 import { loadAllBooks, type LoadedBook } from '../data/books.ts';
 import { GUIDE_NAMES } from '../screens/render.ts';
+import { pdfLink } from '../lib/pdf.ts';
 import { installPrompt, onUpdateReady, applyUpdate } from '../pwa.ts';
 import type { Theme } from '../model/types.ts';
 
@@ -75,10 +76,13 @@ function card(loaded: LoadedBook, theme: Theme, opts: LibraryOptions): HTMLEleme
   }
   const b = loaded.book;
   const kicker = [GUIDE_NAMES[b.type], b.upTo ? `to ${b.upTo}` : ''].filter(Boolean).join(' · ');
-  return h('button', { type: 'button', class: `book-card theme-${theme}`, onclick: () => opts.open(b.id) },
+  // The whole card opens the book; the PDF link sits on top of it.
+  return h('div', { class: `book-card theme-${theme}` },
+    h('button', { type: 'button', class: 'bc-open', onclick: () => opts.open(b.id), 'aria-label': `Read ${b.title}` }),
     h('span', { class: 'bc-top' }, h('span', { class: 'label' }, kicker), b.sample ? h('span', { class: 'tag grey' }, 'Sample') : null),
     h('span', { class: 'bc-title' }, b.title),
     b.subtitle ? h('span', { class: 'bc-sub' }, b.subtitle) : null,
     h('span', { class: 'bc-author' }, b.author),
+    h('span', { class: 'bc-actions' }, pdfLink(b, 'Download PDF', 'btn small')),
   );
 }

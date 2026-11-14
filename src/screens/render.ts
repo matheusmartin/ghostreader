@@ -2,12 +2,13 @@
 // without scrolling. `fitScreen` shrinks the type a little when a screen is too full; the real
 // fix is to split the content into two screens.
 
-import { append, h, rich, type Child } from '../lib/dom.ts';
+import { append, h, rich, sceneText, type Child } from '../lib/dom.ts';
 import { sanitizeSvg } from '../lib/sanitize.ts';
-import { renderChart } from '../charts/charts.ts';
+import { DEFAULT_CAPTION, isSvgChart, PHONE_WIDTH, renderChart } from '../charts/charts.ts';
+import { sceneChart } from '../charts/scenes.ts';
 import { bookMap } from '../charts/bookmap.ts';
-import type { Plan, PlanScreen } from '../model/plan.ts';
-import type { BookType, Screen } from '../model/types.ts';
+import type { Plan, PlanScreen, SceneListScreen } from '../model/plan.ts';
+import type { BookType, ScenesScreen, Screen } from '../model/types.ts';
 
 export interface ScreenContext {
   plan: Plan;
@@ -35,7 +36,8 @@ export function renderScreen(ps: PlanScreen, ctx: ScreenContext): HTMLElement {
     case 'cover': cover(body, ctx); break;
     case 'opener': opener(body, ps, ctx); break;
     case 'end': end(body, ctx); break;
-    default: content(body, c);
+    case 'scene-list': sceneList(body, c); break;
+    default: renderBlock(body, c);
   }
   const ch = ps.chapter;
   const where = ch.kind === 'chapter' ? `${ch.number} ${ch.title}, screen ${ps.inChapter + 1} of ${ch.count}` : ch.title;
@@ -107,9 +109,42 @@ function end(body: HTMLElement, ctx: ScreenContext) {
   );
 }
 
+/** The scenes of a scenes block as a numbered list; the numbers match the chart's columns. */
+function sceneList(body: HTMLElement, v: SceneListScreen) {
+  add(body, label('What happens'), sceneItems(v.source, v.from, v.to, false));
+}
+
+export function sceneItems(src: ScenesScreen, from: number, to: number, withPeople: boolean): HTMLElement {
+  return h('ol', { class: 'scene-list', start: from + 1 },
+    src.scenes.slice(from, to).map((sc, k) =>
+      h('li', { class: `scene${sc.key ? ' key-scene' : ''}` },
+        h('span', { class: 'scene-n', 'aria-hidden': 'true' }, String(from + k + 1)),
+        h('div', { class: 'scene-body' },
+          sceneText(sc.text, 'p', 'scene-text'),
+          withPeople
+            ? h('p', { class: 'scene-people' }, [...sc.with, ...(sc.off ?? []).map((o) => `${o} (at a distance)`)].join(', '))
+            : null,
+        ),
+      ),
+    ),
+  );
+}
+
+/** "Who is where": the scene chart of a scenes block. */
+export function sceneFigure(src: ScenesScreen, width = PHONE_WIDTH): HTMLElement {
+  return h('div', { class: 'figure svg-figure' }, sceneChart(src, width));
+}
+
 // ---- screens the author writes ----------------------------------------------------------------
 
-function content(body: HTMLElement, s: Screen) {
+export interface BlockOptions {
+  /** Design width of SVG charts: 340 on a phone, 640 in the PDF. */
+  width?: number;
+}
+
+/** Renders one authored screen into `body`. The print view uses it for most blocks too. */
+export function renderBlock(body: HTMLElement, s: Screen, opts: BlockOptions = {}) {
+  const width = opts.width ?? PHONE_WIDTH;
   switch (s.type) {
     case 'summary':
       add(body, 
@@ -182,13 +217,23 @@ function content(body: HTMLElement, s: Screen) {
       add(body, s.label ? label(s.label) : '', h('div', { class: 'prose' }, s.paragraphs.map((p) => rich(p, 'p'))));
       break;
 
-    case 'chart':
-      add(body, 
-        s.label ? label(s.label) : '',
-        h('div', { class: 'figure' }, renderChart(s)),
-        s.caption ? h('p', { class: 'cap' }, s.caption) : null,
+    case 'scenes':
+      add(body,
+        label(s.label ?? 'Who is where'),
+        sceneFigure(s, width),
+        h('p', { class: 'cap' }, 'Columns: the scenes in order. Dot: in the scene · ring: there from a distance'),
       );
       break;
+
+    case 'chart': {
+      const caption = s.caption ?? DEFAULT_CAPTION[s.chart];
+      add(body,
+        s.label ? label(s.label) : '',
+        h('div', { class: `figure${isSvgChart(s.chart) ? ' svg-figure' : ''}` }, renderChart(s, width)),
+        caption ? h('p', { class: 'cap' }, caption) : null,
+      );
+      break;
+    }
 
     case 'figure': {
       const svg = sanitizeSvg(s.svg);

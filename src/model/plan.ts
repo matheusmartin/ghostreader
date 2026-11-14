@@ -4,13 +4,92 @@
 //   swipe up / down     → next / previous screen (flows across chapters)
 //   swipe left / right  → start of the next / previous chapter
 //
-// The plan adds three kinds of screens the author does not write: the cover (first), a chapter
-// opener (first screen of each chapter, unless `opener: false`) and the end (last).
+// The plan adds screens the author does not write: the cover (first), a chapter opener (first
+// screen of each chapter, unless `opener: false`) and the end (last). Some blocks become more
+// than one screen, so that each screen holds one piece of information:
+//   scenes          → the "who is where" chart, then the scenes as a numbered list (2–4 per screen)
+//   threads chart   → one chart per 18 chapters, then the thread list when threads have a text
+// Screens and sections marked `only: "pdf"` are left out.
 
-import type { Book, Chapter, Screen, Theme } from './types.ts';
+import type { Book, Chapter, ListScreen, Screen, ScenesScreen, Section, Theme, ThreadsChart } from './types.ts';
 
-export type AutoScreen = { type: 'cover' } | { type: 'opener' } | { type: 'end' };
+/** A part of a scenes block, shown as a numbered list: scenes[from] to scenes[to - 1]. */
+export interface SceneListScreen { type: 'scene-list'; source: ScenesScreen; from: number; to: number }
+export type AutoScreen = { type: 'cover' } | { type: 'opener' } | { type: 'end' } | SceneListScreen;
 export type AnyScreen = Screen | AutoScreen;
+
+export type Target = 'app' | 'pdf';
+const shows = (only: Target | undefined, target: Target) => only === undefined || only === target;
+
+/** The authored screens of a chapter for one target, by section (`null`: the chapter has no sections). */
+export function chapterBlocks(ch: Chapter, target: Target): { section: Section | null; screens: Screen[] }[] {
+  if (ch.screens) return [{ section: null, screens: ch.screens.filter((s) => shows(s.only, target)) }];
+  return (ch.sections ?? [])
+    .filter((sec) => shows(sec.only, target))
+    .map((sec) => ({ section: sec, screens: sec.screens.filter((s) => shows(s.only, target)) }))
+    .filter((b) => b.screens.length > 0);
+}
+
+export const hasBlocks = (ch: Chapter, target: Target) => chapterBlocks(ch, target).some((b) => b.screens.length > 0);
+
+/** Most words of scene text on one list screen, and most scenes. */
+const SCENE_WORDS = 90;
+const SCENES_PER_SCREEN = 4;
+/** Most chapter columns in one thread chart on a phone. */
+export const THREAD_COLUMNS = 18;
+
+const words = (s: string) => s.replace(/[{}[\]*]/g, '').split(/\s+/).filter(Boolean).length;
+
+/** Splits n items into balanced runs so no run exceeds the limits. Returns [from, to) pairs. */
+export function sceneRuns(scenes: { text: string }[]): [number, number][] {
+  const total = scenes.reduce((sum, s) => sum + words(s.text), 0);
+  const parts = Math.max(Math.ceil(total / SCENE_WORDS), Math.ceil(scenes.length / SCENES_PER_SCREEN), 1);
+  const target = total / parts;
+  const runs: [number, number][] = [];
+  let from = 0;
+  let acc = 0;
+  scenes.forEach((s, i) => {
+    const w = words(s.text);
+    const left = scenes.length - i;
+    const runsLeft = parts - runs.length;
+    const full = i - from >= SCENES_PER_SCREEN;
+    const long = acc + w > target * 1.15 && runsLeft > 1 && left >= runsLeft - 1;
+    if (i > from && (full || long)) {
+      runs.push([from, i]);
+      from = i;
+      acc = 0;
+    }
+    acc += w;
+  });
+  runs.push([from, scenes.length]);
+  return runs;
+}
+
+/** A thread chart with more columns than a phone can show becomes several charts. */
+export function threadRanges(c: ThreadsChart): ThreadsChart[] {
+  const n = c.columns.length;
+  if (n <= THREAD_COLUMNS) return [c];
+  const parts = Math.ceil(n / THREAD_COLUMNS);
+  const size = Math.ceil(n / parts);
+  const out: ThreadsChart[] = [];
+  for (let a = 0; a < n; a += size) {
+    const cols = c.columns.slice(a, a + size);
+    const inRange = (x: string) => cols.includes(x);
+    out.push({
+      ...c,
+      label: `${c.label ?? 'Story threads'} · ${cols[0]}–${cols[cols.length - 1]}`,
+      columns: cols,
+      threads: c.threads.map((t) => ({ ...t, appears: t.appears.filter(inRange), major: t.major?.filter(inRange) })),
+    });
+  }
+  return out;
+}
+
+/** The thread list that follows a thread chart, when the threads have a text. */
+export function threadList(c: ThreadsChart): ListScreen | null {
+  const rows = c.threads.filter((t) => t.text).map((t) => ({ name: t.name, text: t.text! }));
+  return rows.length > 0 ? { type: 'list', label: c.label ?? 'Story threads', rows } : null;
+}
 
 export interface PlanPart {
   id: string;
@@ -105,24 +184,39 @@ export function buildPlan(book: Book): Plan {
       id: ch.id, kind: 'chapter', number: ch.number, title: ch.title, length: ch.length,
       part, first: -1, count: 0, sections: [], order: -1,
     };
-    const hasContent = (ch.screens?.length ?? 0) > 0 || (ch.sections ?? []).some((s) => s.screens.length > 0);
-    if (!hasContent) return pc;
+    const blocks = chapterBlocks(ch, 'app');
+    if (!blocks.some((b) => b.screens.length > 0)) return pc;
 
     pc.order = chapters.length;
     chapters.push(pc);
     if (ch.opener !== false) add(pc, { type: 'opener' }, null);
-    for (const s of ch.screens ?? []) add(pc, s, null);
-    (ch.sections ?? []).forEach((sec, i) => {
-      const ps: PlanSection = { id: sec.id ?? `${ch.id}-s${i + 1}`, title: sec.title, first: -1, count: 0 };
-      pc.sections.push(ps);
-      for (const s of sec.screens) add(pc, s, ps);
-    });
+    for (const { section, screens } of blocks) {
+      let ps: PlanSection | null = null;
+      if (section) {
+        const i = (ch.sections ?? []).indexOf(section);
+        ps = { id: section.id ?? `${ch.id}-s${i + 1}`, title: section.title, first: -1, count: 0 };
+        pc.sections.push(ps);
+      }
+      for (const s of screens) for (const view of expand(s)) add(pc, view, ps);
+    }
     return pc;
   }
 
   add(pseudoChapter('end', pseudoPart('_end')), { type: 'end' }, null);
 
   return { book, parts, chapters, screens };
+}
+
+/** The screens one authored block becomes in the app. */
+function expand(s: Screen): AnyScreen[] {
+  if (s.type === 'scenes') {
+    return [s, ...sceneRuns(s.scenes).map(([from, to]): SceneListScreen => ({ type: 'scene-list', source: s, from, to }))];
+  }
+  if (s.type === 'chart' && s.chart === 'threads') {
+    const list = threadList(s);
+    return [...threadRanges(s), ...(list ? [list] : [])];
+  }
+  return [s];
 }
 
 // ---- navigation ----------------------------------------------------------------------------

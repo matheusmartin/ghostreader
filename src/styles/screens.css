@@ -185,3 +185,25 @@
 
 .figure { width: 100%; }
 .cap { font-size: .82em; color: var(--muted); line-height: 1.35; margin-top: -.4em; }
+
+/* ---- scene list (fiction): numbers match the columns of the scene chart --------------------- */
+
+.scene-list { list-style: none; display: flex; flex-direction: column; gap: 1em; }
+.scene { display: grid; grid-template-columns: 1.9em 1fr; gap: .7em; align-items: start; }
+.scene-n {
+  display: grid;
+  place-items: center;
+  width: 1.75em;
+  height: 1.75em;
+  border-radius: 50%;
+  border: 1.5px solid var(--mark);
+  font-size: .9em;
+  font-weight: 700;
+  color: var(--ink);
+}
+.key-scene .scene-n { background: var(--acc); border-color: var(--acc); color: var(--on-acc); }
+.scene-text { font-size: 1.05em; line-height: 1.42; color: var(--body); }
+.scene-text .when { color: var(--acc-text); }
+.scene-text .where { color: var(--ink); }
+.key-scene .scene-text { color: var(--ink); }
+.scene-people { margin-top: .3em; font-size: .8em; color: var(--muted); }

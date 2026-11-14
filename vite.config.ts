@@ -34,6 +34,16 @@ export default defineConfig({
         // Precache the app and every book, so the whole library works offline.
         globPatterns: ['**/*.{js,css,html,svg,png,webmanifest}'],
         navigateFallback: 'index.html',
+        // A PDF opened in a tab is a navigation too: never answer it with the app.
+        navigateFallbackDenylist: [/\/pdf\//],
+        // PDFs are built after the app, so they are not precached: keep each one once downloaded.
+        runtimeCaching: [
+          {
+            urlPattern: ({ url }) => url.pathname.includes('/pdf/') && url.pathname.endsWith('.pdf'),
+            handler: 'NetworkFirst',
+            options: { cacheName: 'pdf', expiration: { maxEntries: 30 } },
+          },
+        ],
       },
     }),
   ],

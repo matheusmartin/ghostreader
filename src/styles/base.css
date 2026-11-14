@@ -79,6 +79,8 @@ button {
   font-weight: 700;
   color: var(--ink);
 }
+.btn.small { min-height: 38px; padding: 0 .9em; font-size: .8rem; }
+a.btn { text-decoration: none; }
 .btn.primary { background: var(--ink); border-color: var(--ink); color: var(--paper); }
 .btn:active { transform: scale(.97); }
 
