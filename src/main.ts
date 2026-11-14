@@ -6,15 +6,17 @@ import './styles/screens.css';
 import './styles/figures.css';
 
 import { loadBook } from './data/books.ts';
-import { loadPosition, savePosition } from './data/progress.ts';
+import { forgetOldData } from './lib/storage.ts';
 import { enterFullscreen, keepAwake } from './lib/device.ts';
-import { buildPlan, locate, progressAt } from './model/plan.ts';
+import { buildPlan, locate } from './model/plan.ts';
 import { parseRoute, readHash } from './router.ts';
 import { renderLibrary } from './ui/library.ts';
 import { Reader } from './ui/reader.ts';
 import { startPwa } from './pwa.ts';
 import { startScheme } from './lib/scheme.ts';
 
+// The app keeps no record of what you read. Delete reading places saved by earlier versions.
+forgetOldData();
 startScheme();
 
 const root = document.getElementById('app')!;
@@ -43,11 +45,8 @@ async function route() {
   }
   const book = loaded.book;
   const plan = buildPlan(book);
-  const saved = loadPosition(book.id);
-  const start =
-    (r.chapterId !== undefined ? locate(plan, r.chapterId, r.n) : null) ??
-    (saved ? locate(plan, saved.chapter, saved.n) : null) ??
-    0;
+  // A link or a reload can name a screen; otherwise the book opens at its cover.
+  const start = (r.chapterId !== undefined ? locate(plan, r.chapterId, r.n) : null) ?? 0;
 
   view?.destroy();
   const sleep = keepAwake();
@@ -56,16 +55,8 @@ async function route() {
     start,
     exit: leaveBook,
     arrived(ps) {
-      const ch = ps.chapter;
-      savePosition(book.id, {
-        chapter: ch.id,
-        n: ps.inChapter,
-        progress: progressAt(plan, ps.index),
-        where: ch.kind === 'chapter' ? `${ch.number} ${ch.title}` : ch.kind === 'cover' ? 'Cover' : 'End',
-        at: Date.now(),
-      });
-      // Keep the address in step with the place, without adding a history entry per swipe.
-      history.replaceState(history.state, '', readHash(book.id, ch.id, ps.inChapter));
+      // Keep the address in step with the screen, so a reload stays on it. Nothing is saved.
+      history.replaceState(history.state, '', readHash(book.id, ps.chapter.id, ps.inChapter));
     },
   });
   reader.attach(root);

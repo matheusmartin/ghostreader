@@ -143,16 +143,6 @@ The last step is the conclusion and is set in bold.
 
 The reader taps a question to see its answer. There is no separate answers page.
 
-### highlights — the reader's highlights and notes
-
-```json
-{ "type": "highlights", "label": "Your highlights",
-  "items": [{ "text": "Paraphrase of the highlight", "loc": "Loc 1952", "note": "The reader's own note" }],
-  "more": 8 }
-```
-
-Paraphrase highlights (never quote the book). Copy the reader's notes unchanged.
-
 ### text — short prose
 
 ```json
@@ -166,8 +156,8 @@ Every chart takes an optional `label` and `caption` (one line under data charts:
 **bars** — real numbers only. `focus` draws a bar in the accent colour.
 
 ```json
-{ "type": "chart", "chart": "bars", "caption": "Highlights per section, counted from your file",
-  "data": [{ "label": "Ch 5 Decisions", "value": 12, "focus": true }] }
+{ "type": "chart", "chart": "bars", "caption": "Numbers from the table in the chapter",
+  "data": [{ "label": "First item", "value": 12, "focus": true }, { "label": "Second item", "value": 7 }] }
 ```
 
 **compare** — two columns, row by row; `key` is the conclusion; `negative` greys one column.
@@ -204,3 +194,8 @@ groups make an argument map. Groups can take a `theme`.
 
 The rules of the book-infographic skill still apply: book content only, confirmed details only,
 no quotations, no opinions, no spoilers past `upTo`, sentence case, British spelling.
+
+The app represents the book and nothing else. A book file never holds the reader's highlights,
+notes, ratings or other personal data, so the skill's "Your highlights" page and fields have no
+place here. For a `done` guide (book summary) without highlights, the skill's own rule applies:
+each section page uses The logic and Examples in the book instead.

@@ -1,7 +1,7 @@
 {
   "name": "ghostwriter",
   "private": true,
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Progressive web app that helps you read a book with charts, infographics and summaries.",
   "type": "module",
   "scripts": {

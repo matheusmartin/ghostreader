@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { buildPlan, contentChapters, locate, nextChapter, nextScreen, prevChapter, prevScreen, progressAt } from '../src/model/plan.ts';
+import { buildPlan, contentChapters, locate, nextChapter, nextScreen, prevChapter, prevScreen } from '../src/model/plan.ts';
 import type { Book } from '../src/model/types.ts';
 
 const book: Book = {
@@ -91,10 +91,5 @@ describe('navigation', () => {
     expect(locate(plan, 'c3', 99)).toBe(7);
     expect(locate(plan, 'c2', 0)).toBeNull();
     expect(locate(plan, 'nope', 0)).toBeNull();
-  });
-
-  it('reports progress from cover to end', () => {
-    expect(progressAt(plan, 0)).toBe(0);
-    expect(progressAt(plan, plan.screens.length - 1)).toBe(1);
   });
 });

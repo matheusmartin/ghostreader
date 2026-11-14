@@ -9,7 +9,7 @@ export interface ValidationResult {
 }
 
 const BOOK_TYPES = ['fiction', 'reading', 'done'];
-const SCREEN_TYPES = ['summary', 'points', 'steps', 'list', 'quiz', 'highlights', 'text', 'chart', 'figure'];
+const SCREEN_TYPES = ['summary', 'points', 'steps', 'list', 'quiz', 'text', 'chart', 'figure'];
 const CHART_KINDS = ['bars', 'compare', 'flow'];
 const ID = /^[a-z0-9][a-z0-9-]*$/i;
 
@@ -97,15 +97,6 @@ export function validateBook(raw: unknown): ValidationResult {
           str(q, 'q', qp);
           str(q, 'a', qp);
         });
-        break;
-      case 'highlights':
-        str(s, 'label', p);
-        objList(s, 'items', p, (h, hp) => {
-          str(h, 'text', hp);
-          str(h, 'loc', hp, false);
-          str(h, 'note', hp, false);
-        });
-        if (s.more !== undefined && !(Number.isInteger(s.more) && (s.more as number) > 0)) err(p, '"more" must be a positive whole number');
         break;
       case 'text':
         str(s, 'label', p, false);

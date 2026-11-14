@@ -21,6 +21,14 @@ describe('bundled books', () => {
 });
 
 describe('validateBook', () => {
+  it('rejects personal data: there is no highlights or notes screen', () => {
+    const { errors } = validateBook({
+      format: 1, id: 'x', type: 'done', title: 'X', author: 'Y', lead: 'Z',
+      parts: [{ id: 'p', chapters: [{ id: 'c', number: '1', title: 'One', screens: [{ type: 'highlights', label: 'Your highlights', items: [] }] }] }],
+    });
+    expect(errors).toEqual(['parts[0].chapters[0].screens[0]: "type" must be one of summary, points, steps, list, quiz, text, chart, figure']);
+  });
+
   it('reports every problem with its path', () => {
     const { book, errors } = validateBook({
       format: 1,

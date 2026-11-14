@@ -9,7 +9,7 @@ Colour has a meaning. Use a colour only for its role.
 
 | Role | Token | Used for |
 |---|---|---|
-| Accent | `--acc` | The one key element of a diagram, the focus bar of a data chart, numbers, the stripe, the progress strip |
+| Accent | `--acc` | The one key element of a diagram, the focus bar of a data chart, numbers, the progress strip |
 | Accent text | `--acc-text`, `--acc-fg` | Labels and item titles; large numbers |
 | Tint | `--tint` | Summary box, cover panel, entity boxes. The part colour mixed into the page colour |
 | Ink | `--ink`, `--body` | Text; ink shapes (`--ink-box`) such as an opening question |

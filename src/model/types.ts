@@ -1,4 +1,5 @@
 // The book format: what a content author (person or Claude) writes in src/books/<id>.json.
+// A book file holds the book's own content only: no reader highlights, notes or other personal data.
 // docs/content-format.md describes every field with examples.
 //
 // Hierarchy:  Book → Part → Chapter → Section (optional) → Screen
@@ -71,7 +72,6 @@ export type Screen =
   | StepsScreen
   | ListScreen
   | QuizScreen
-  | HighlightsScreen
   | TextScreen
   | ChartScreen
   | FigureScreen;
@@ -114,16 +114,6 @@ export interface QuizScreen {
   type: 'quiz';
   label: string;
   questions: { q: string; a: string }[];
-}
-
-/** The reader's own highlights (paraphrased, with location) and notes (their words, unchanged). */
-export interface HighlightsScreen {
-  type: 'highlights';
-  label: string;
-  sample?: boolean;
-  items: { text: string; loc?: string; note?: string }[];
-  /** "N more highlights in this section". */
-  more?: number;
 }
 
 export interface TextScreen {

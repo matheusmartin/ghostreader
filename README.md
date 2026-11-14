@@ -6,8 +6,8 @@ of screens, and you move through them with your finger.
 
 ## How it works
 
-- **Library**: the main screen shows every book with the place where you stopped.
-- **Read mode**: tap a book. The app goes full screen and shows one screen at a time.
+- **Library**: the main screen shows every book.
+- **Read mode**: tap a book. The app goes full screen and shows one screen at a time, from the cover.
 
 | Gesture | Move |
 |---|---|
@@ -19,14 +19,16 @@ Keyboard and mouse wheel do the same moves (arrows, Space, Page Up / Down, Enter
 
 **Where am I.** A chapter can take many screens, so the reader always shows its place:
 
-- a strip at the top: one segment per chapter, filled as you read (horizontal swipes move along it);
-- number, part, chapter title and section, and screen *n* of *N* in the chapter;
-- a rail on the right edge: one pip per screen of the chapter, grouped by section (vertical swipes
-  move along it).
+- a strip at the top: one segment per chapter, filled up to the current screen;
+- under it: number, part, chapter title and section, and screen *n* of *N* in the chapter.
 
 **Page colour.** Paper (off-white) by day and Dusk (soft dark) when the device is in dark mode.
 The menu also offers Quiet, Warm and Night. Colours, roles and contrast rules:
 [docs/design.md](docs/design.md).
+
+**Book only, no personal data.** The app shows the book's content and nothing else: no highlights,
+notes or ratings, and it keeps no record of what or how far you read. It stores two settings on
+the device: the page colour and whether the gesture hint was shown.
 
 **Full screen.** Installed to the home screen, the app opens full screen (`display: fullscreen`;
 on iPhone and iPad, under the status bar). In a browser tab, it asks for full screen when you open
@@ -68,8 +70,9 @@ Settings → Pages → Build and deployment and set Source to **GitHub Actions**
 ## Add a book
 
 Write `src/books/<id>.json` in the format of [docs/content-format.md](docs/content-format.md),
-then run `npm run validate`. The two sample books use only content from the book-infographic
-skill's examples (Nexus, Chapter 5); the other chapters are listed but not written.
+then run `npm run validate`. The sample book (Nexus, book summary) uses only content from the
+book-infographic skill's examples: The book in one page and Chapter 5. The other chapters are
+listed but not written.
 
 ## Code map
 
@@ -87,7 +90,7 @@ src/
   ui/library.ts      main screen
   screens/render.ts  one renderer per screen type; fit-to-screen
   charts/            charts from data (bars, compare, flow) and the book map
-  lib/               DOM helpers, SVG sanitiser, full screen and wake lock
+  lib/               DOM helpers, SVG sanitiser, full screen and wake lock, settings storage
   styles/            design tokens: page colours and part colours (docs/design.md)
   lib/scheme.ts      page colour choice; ui/scheme-picker.ts draws the picker
 ```

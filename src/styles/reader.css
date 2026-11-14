@@ -24,20 +24,12 @@
   display: flex;
   padding:
     calc(var(--safe-t) + var(--hud-h) + 10px)
-    calc(var(--safe-r) + 28px)
+    calc(var(--safe-r) + 24px)
     calc(var(--safe-b) + 20px)
     calc(var(--safe-l) + 24px);
   background: var(--paper);
   will-change: transform;
   contain: layout paint;
-}
-/* The part's colour stripe on the left edge, as on the printed pages. */
-.screen::before {
-  content: "";
-  position: absolute;
-  inset: 0 auto 0 0;
-  width: 5px;
-  background: var(--acc);
 }
 .screen[data-type="cover"] { padding-top: calc(var(--safe-t) + 26px); }
 .screen[data-type="end"] { padding-top: calc(var(--safe-t) + 26px); }
@@ -66,7 +58,7 @@
   background: #d33;
 }
 
-/* ---- indicator: chapter strip, breadcrumb, screen rail --------------------------------------- */
+/* ---- indicator: chapter strip and breadcrumb ---------------------------------------------------- */
 
 .hud {
   position: absolute;
@@ -131,30 +123,6 @@
 .hud.quiet { background: transparent; }
 .hud.quiet::after, .hud.quiet .hud-where { opacity: 0; }
 
-.rail {
-  position: absolute;
-  top: calc(var(--safe-t) + var(--hud-h) + 16px);
-  bottom: calc(var(--safe-b) + 20px);
-  right: calc(var(--safe-r) + 10px);
-  width: 4px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  gap: 9px;
-  pointer-events: none;
-  z-index: 2;
-  transition: opacity .25s;
-}
-.rail.quiet { opacity: 0; }
-.rail-group { display: flex; flex-direction: column; gap: 3px; min-height: 0; flex: 0 1 auto; }
-.pip {
-  flex: 0 1 14px;
-  min-height: 3px;
-  border-radius: 2px;
-  background: var(--line);
-  transition: background-color .2s;
-}
-.pip.on { background: var(--acc); }
 
 /* ---- first-time gesture hint ------------------------------------------------------------------ */
 

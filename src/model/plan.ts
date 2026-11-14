@@ -154,11 +154,6 @@ export function locate(plan: Plan, chapterId: string, n = 0): number | null {
   return ch.first + Math.min(Math.max(0, Math.floor(n)), ch.count - 1);
 }
 
-/** Reading progress from 0 (cover) to 1 (end). */
-export function progressAt(plan: Plan, i: number): number {
-  return plan.screens.length > 1 ? i / (plan.screens.length - 1) : 1;
-}
-
 /** Chapters with content, without the cover and end: what the progress strip and contents show. */
 export function contentChapters(plan: Plan): PlanChapter[] {
   return plan.chapters.filter((c) => c.kind === 'chapter');

@@ -32,20 +32,13 @@
   display: flex;
   flex-direction: column;
   gap: 4px;
-  min-height: 13rem;
-  padding: 18px 18px 16px 22px;
+  min-height: 10rem;
+  padding: 18px;
   border-radius: 16px;
   background: var(--tint);
   overflow: hidden;
   text-align: left;
   transition: transform .12s ease;
-}
-.book-card::before {
-  content: "";
-  position: absolute;
-  inset: 0 auto 0 0;
-  width: 5px;
-  background: var(--acc);
 }
 .book-card:active { transform: scale(.985); }
 .book-card .label { font-size: .68rem; }
@@ -54,22 +47,6 @@
 .bc-title { font-size: 1.7rem; font-weight: 700; line-height: 1.05; letter-spacing: -.015em; margin-top: 8px; }
 .bc-sub { font-size: .88rem; color: var(--body); }
 .bc-author { font-size: .95rem; font-weight: 700; margin-top: 4px; }
-.bc-foot { display: grid; gap: 7px; margin-top: auto; padding-top: 16px; }
-.bc-bar {
-  display: block;
-  height: 4px;
-  border-radius: 2px;
-  background: color-mix(in srgb, var(--acc) 18%, transparent);
-  overflow: hidden;
-}
-.bc-bar-fill {
-  display: block;
-  height: 100%;
-  width: calc(var(--p, 0) * 100%);
-  background: var(--acc);
-}
-.bc-where { font-size: .8rem; color: var(--muted); }
 
 .book-card.broken { background: var(--neg); }
-.book-card.broken::before { background: var(--neg-line); }
 .bc-error { font-size: .85rem; color: var(--body); }

@@ -1,7 +1,6 @@
 /* Screen content. Every size is in em of .screen-body, so fitScreen() can scale a full screen. */
 
 .screen-body > .label { margin-bottom: -.3em; }
-.label-row { display: flex; align-items: center; gap: .6em; margin-bottom: -.3em; }
 
 .hint { text-align: center; color: var(--muted); font-size: .85em; }
 
@@ -176,17 +175,6 @@
   color: var(--ink);
   line-height: 1.4;
 }
-
-/* ---- highlights -------------------------------------------------------------------------------- */
-
-.hl { list-style: none; display: flex; flex-direction: column; }
-.hl li { padding: .7em 0; border-bottom: 1px solid var(--hair); }
-.hl li:first-child { border-top: 1px solid var(--line); }
-.hl-text { line-height: 1.4; }
-.hl-loc { display: block; margin-top: .15em; font-size: .78em; color: var(--muted); }
-.hl-note { margin-top: .5em; padding: .65em .85em; border-radius: var(--r); background: var(--tint); }
-.hl-note .label { font-size: .62em; margin-bottom: .2em; }
-.hl-more { color: var(--muted); font-size: .88em; }
 
 /* ---- prose ------------------------------------------------------------------------------------- */
 

@@ -8,7 +8,7 @@
 
 import { h } from '../lib/dom.ts';
 import { prefersReducedMotion } from '../lib/device.ts';
-import { getFlag, setFlag } from '../data/progress.ts';
+import { getFlag, setFlag } from '../lib/storage.ts';
 import { attachSwipe, shouldCommit, type Axis } from '../input/gestures.ts';
 import { attachKeys, attachWheel, type Move } from '../input/keys.ts';
 import { nextChapter, nextScreen, prevChapter, prevScreen, type Plan, type PlanScreen } from '../model/plan.ts';
@@ -69,7 +69,7 @@ export class Reader {
         h('b', null, 'Tap'), ' for the menu.',
       );
     }
-    this.el = h('div', { class: 'reader' }, this.stage, this.hud.el, this.hud.rail, this.hint, this.menu.el);
+    this.el = h('div', { class: 'reader' }, this.stage, this.hud.el, this.hint, this.menu.el);
   }
 
   get plan(): Plan {

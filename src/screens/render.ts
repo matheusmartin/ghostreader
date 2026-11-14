@@ -178,22 +178,6 @@ function content(body: HTMLElement, s: Screen) {
       );
       break;
 
-    case 'highlights':
-      add(body, 
-        h('div', { class: 'label-row' }, label(s.label), s.sample ? tag('Sample', 'grey') : null),
-        h('ul', { class: 'hl' },
-          s.items.map((it) =>
-            h('li', null,
-              rich(it.text, 'p', 'hl-text'),
-              it.loc ? h('span', { class: 'hl-loc' }, it.loc) : null,
-              it.note ? h('div', { class: 'hl-note' }, label('Your note', 'span'), h('p', null, it.note)) : null,
-            ),
-          ),
-        ),
-        s.more ? h('p', { class: 'hl-more' }, `${s.more} more highlight${s.more === 1 ? '' : 's'} in this section`) : null,
-      );
-      break;
-
     case 'text':
       add(body, s.label ? label(s.label) : '', h('div', { class: 'prose' }, s.paragraphs.map((p) => rich(p, 'p'))));
       break;
