@@ -63,7 +63,7 @@ The build uses relative paths, so `dist/` works from any folder.
 ## Deploy
 
 `.github/workflows/pages.yml` builds the app, runs the tests and publishes it to GitHub Pages on
-every push to `main` (or the current working branch). One-time setup: in the repository, open
+every push to `main`, and on demand from the Actions tab. One-time setup: in the repository, open
 Settings → Pages → Build and deployment and set Source to **GitHub Actions**. The site is then at
 `https://<owner>.github.io/<repository>/`.
 
@@ -73,6 +73,13 @@ Write `src/books/<id>.json` in the format of [docs/content-format.md](docs/conte
 then run `npm run validate`. The sample book (Nexus, book summary) uses only content from the
 book-infographic skill's examples: The book in one page and Chapter 5. The other chapters are
 listed but not written.
+
+## The book-infographic skill
+
+The skill this app replaces is in `.claude/skills/book-infographic/`, so Claude Code loads it when
+it works in this repository. It holds the content rules the app follows: book content only,
+the three guide types, the design system and the writing style. It still makes the A4 PDF guides.
+Its own licence is in `.claude/skills/book-infographic/LICENSE.txt`.
 
 ## Code map
 
