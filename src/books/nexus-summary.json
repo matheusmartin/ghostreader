@@ -1,0 +1,259 @@
+{
+  "format": 1,
+  "id": "nexus-summary",
+  "type": "done",
+  "sample": true,
+  "title": "Nexus",
+  "subtitle": "A Brief History of Information Networks from the Stone Age to AI",
+  "author": "Yuval Noah Harari",
+  "year": 2024,
+  "lead": "Information connects people more than it informs them. Networks built on it give power faster than wisdom. AI, the first non-human member of these networks, needs institutions that correct their own errors.",
+  "parts": [
+    {
+      "id": "overview",
+      "label": "Overview",
+      "theme": "front",
+      "chapters": [
+        {
+          "id": "book-in-one-page",
+          "number": "B",
+          "title": "The book in one page",
+          "screens": [
+            {
+              "type": "summary",
+              "label": "Thesis",
+              "text": "Information mainly connects people rather than informing them. Networks built on it give power faster than wisdom; only strong self-correcting institutions can keep AI, the first non-human member of our networks, in check.",
+              "takeaway": { "label": "One thing", "text": "Ask whether a network can find and fix its own errors." }
+            },
+            {
+              "type": "chart",
+              "chart": "flow",
+              "label": "The argument",
+              "start": "Why is a \"wise\" species so self-destructive?",
+              "groups": [
+                { "label": "Part I · Human Networks", "theme": "p1", "items": ["Information connects, not informs", "Stories and documents make order", "Self-correction makes wisdom"] },
+                { "label": "Part II · The Inorganic Network", "theme": "p2", "items": ["AI is an agent, not a tool", "Always on: endless surveillance", "Often wrong: the alignment problem"] },
+                { "label": "Part III · Computer Politics", "theme": "p3", "items": ["Democracy needs a conversation", "Dictators may lose control too", "Risk of a Silicon Curtain"] }
+              ],
+              "key": "Build institutions that correct their errors"
+            },
+            {
+              "type": "steps",
+              "label": "Main claims",
+              "steps": [
+                "Information's main job is to connect people into networks, not to reveal truth.",
+                "Every network balances truth and order; shared fictions often supply the order.",
+                "Self-correcting institutions, not more information, make networks wiser.",
+                "AI is an agent that can decide and create, not a tool.",
+                "Humans must agree on shared rules for AI, or risk digital empires and a split world."
+              ]
+            },
+            {
+              "type": "list",
+              "label": "How the parts connect",
+              "rows": [
+                { "name": "Prologue · The question", "text": "Why do power and information grow faster than wisdom?" },
+                { "name": "Part I · Human Networks", "text": "History: how stories, documents and institutions balanced truth and order." },
+                { "name": "Part II · The Inorganic Network", "text": "Why computers change the game: they act, watch and err at scale." },
+                { "name": "Part III · Computer Politics", "text": "What this means for democracy, dictatorship and world politics." },
+                { "name": "Epilogue · The answer", "text": "Build institutions that can find and correct their own errors." }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "your-highlights",
+          "number": "H",
+          "title": "Your highlights and notes",
+          "screens": [
+            {
+              "type": "summary",
+              "label": "Your reading",
+              "text": "84 highlights and 12 notes, from a Kindle notebook export. All placed by the export's chapter headings. **Sample data.**"
+            },
+            {
+              "type": "chart",
+              "chart": "bars",
+              "caption": "Highlights per section, counted from your file",
+              "data": [
+                { "label": "Prologue", "value": 6 },
+                { "label": "Ch 1 Information", "value": 11 },
+                { "label": "Ch 2 Stories", "value": 9 },
+                { "label": "Ch 3 Documents", "value": 7 },
+                { "label": "Ch 4 Errors", "value": 10 },
+                { "label": "Ch 5 Decisions", "value": 12, "focus": true },
+                { "label": "Ch 6 The New Members", "value": 8 },
+                { "label": "Ch 7 Relentless", "value": 5 },
+                { "label": "Ch 8 Fallible", "value": 6 },
+                { "label": "Ch 9 Democracies", "value": 4 },
+                { "label": "Ch 10 Totalitarianism", "value": 3 },
+                { "label": "Ch 11 The Silicon Curtain", "value": 2 },
+                { "label": "Epilogue", "value": 1 }
+              ]
+            },
+            {
+              "type": "points",
+              "label": "What you marked most",
+              "items": [
+                { "title": "Self-correction · 21 highlights", "text": "How science, courts and a free press find and fix errors." },
+                { "title": "Stories and order · 17 highlights", "text": "How shared fictions let strangers cooperate." },
+                { "title": "AI as an agent · 14 highlights", "text": "Why algorithms decide and create, unlike earlier tools." },
+                { "title": "Truth and order · 12 highlights", "text": "Why networks often choose order over truth." },
+                { "title": "Surveillance · 9 highlights", "text": "What changes when the network never sleeps." }
+              ]
+            },
+            {
+              "type": "list",
+              "label": "Your notes by section",
+              "rows": [
+                { "name": "Ch 1 Information", "text": "2 notes" },
+                { "name": "Ch 4 Errors", "text": "3 notes" },
+                { "name": "Ch 5 Decisions", "text": "4 notes" },
+                { "name": "Ch 8 Fallible", "text": "2 notes" },
+                { "name": "Ch 9 Democracies", "text": "1 note" }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "opening",
+      "label": "Opening",
+      "theme": "front",
+      "chapters": [{ "id": "prologue", "number": "P", "title": "Prologue" }]
+    },
+    {
+      "id": "part-1",
+      "label": "Part I",
+      "title": "Human Networks",
+      "theme": "p1",
+      "chapters": [
+        { "id": "ch1", "number": "01", "title": "What Is Information?" },
+        { "id": "ch2", "number": "02", "title": "Stories: Unlimited Connections" },
+        { "id": "ch3", "number": "03", "title": "Documents: The Bite of the Paper Tigers" },
+        { "id": "ch4", "number": "04", "title": "Errors: The Fantasy of Infallibility" },
+        {
+          "id": "ch5",
+          "number": "05",
+          "title": "Decisions: A Brief History of Democracy and Totalitarianism",
+          "sections": [
+            {
+              "title": "In short",
+              "screens": [
+                {
+                  "type": "summary",
+                  "label": "In short",
+                  "text": "Democracy spreads information and corrects its errors through many independent institutions. Totalitarianism pulls all information to one centre that claims it cannot be wrong, so its mistakes grow hidden.",
+                  "takeaway": { "label": "Takeaway", "text": "A healthy democracy is noisy on purpose: its friction is how it finds its mistakes." }
+                },
+                {
+                  "type": "chart",
+                  "chart": "compare",
+                  "columns": ["Democracy", "Totalitarianism"],
+                  "negative": 1,
+                  "rows": [
+                    ["Information spread over many nodes", "All information pulled to one centre"],
+                    ["Press and courts expose errors", "Bad news blocked on its way up"],
+                    ["Leaders can be voted out", "The centre claims it cannot be wrong"],
+                    ["Three Mile Island: fast learning", "Chernobyl: a bigger disaster"]
+                  ],
+                  "key": "Judge a democracy by its free conversation"
+                }
+              ]
+            },
+            {
+              "title": "Key points",
+              "screens": [
+                {
+                  "type": "points",
+                  "label": "Key points",
+                  "items": [
+                    { "title": "Democracy is a conversation", "text": "Not only majority rule: free media, courts and rights let errors be exposed and losers try again." },
+                    { "title": "Populism", "text": "Claims that one leader alone speaks for \"the people\", and attacks the institutions that check power." },
+                    { "title": "Media made both", "text": "Newspapers, telegraph and radio made mass democracy and totalitarianism possible." }
+                  ]
+                }
+              ]
+            },
+            {
+              "title": "Your highlights",
+              "screens": [
+                {
+                  "type": "highlights",
+                  "label": "Your highlights",
+                  "sample": true,
+                  "items": [
+                    { "text": "Elections alone do not make a democracy; the free conversation around them does.", "loc": "Loc 1890" },
+                    {
+                      "text": "Dictatorships learn badly because bad news does not reach the top.",
+                      "loc": "Loc 1952",
+                      "note": "Same at work: people hide bad news from managers. How do we reward reporting errors?"
+                    }
+                  ]
+                },
+                {
+                  "type": "highlights",
+                  "label": "Your highlights",
+                  "sample": true,
+                  "items": [
+                    { "text": "Ancient empires could not be democracies: millions of citizens could not talk together.", "loc": "Loc 2011" },
+                    { "text": "Party, state and secret police watch each other, so no independent node can grow.", "loc": "Loc 2140" }
+                  ],
+                  "more": 8
+                }
+              ]
+            },
+            {
+              "title": "Recall",
+              "screens": [
+                {
+                  "type": "quiz",
+                  "label": "Recall",
+                  "questions": [
+                    {
+                      "q": "What does Harari mean when he calls democracy a conversation?",
+                      "a": "A free exchange protected by rights, courts and media, in which errors can be exposed and losers can try again."
+                    },
+                    {
+                      "q": "In information terms, why did Chernobyl become worse than Three Mile Island?",
+                      "a": "Soviet secrecy blocked bad news on its way up, so the error grew; open reporting let America learn fast."
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "part-2",
+      "label": "Part II",
+      "title": "The Inorganic Network",
+      "theme": "p2",
+      "chapters": [
+        { "id": "ch6", "number": "06", "title": "The New Members: How Computers Are Different from the Printing Press" },
+        { "id": "ch7", "number": "07", "title": "Relentless: The Network Is Always On" },
+        { "id": "ch8", "number": "08", "title": "Fallible: The Network Is Often Wrong" }
+      ]
+    },
+    {
+      "id": "part-3",
+      "label": "Part III",
+      "title": "Computer Politics",
+      "theme": "p3",
+      "chapters": [
+        { "id": "ch9", "number": "09", "title": "Democracies: Can We Still Hold a Conversation?" },
+        { "id": "ch10", "number": "10", "title": "Totalitarianism: All Power to the Algorithms?" },
+        { "id": "ch11", "number": "11", "title": "The Silicon Curtain: Global Empire or Global Split?" }
+      ]
+    },
+    {
+      "id": "closing",
+      "label": "Closing",
+      "theme": "front",
+      "chapters": [{ "id": "epilogue", "number": "E", "title": "Epilogue" }]
+    }
+  ]
+}

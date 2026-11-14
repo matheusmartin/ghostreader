@@ -1,0 +1,68 @@
+/* Design tokens, from the book-infographic design system (references/design-system.md).
+   Colour has a meaning: accent = focus · ink = text · tint = summary and entities ·
+   grey = ordinary · faint = inactive, away or still to come. */
+
+:root {
+  --font: "Helvetica Neue", Helvetica, Arial, "Liberation Sans", "Nimbus Sans", system-ui, sans-serif;
+
+  --ink: #1d2433;
+  --body: #2b3140;
+  --muted: #5f646e;
+  --faint: #958e82;
+  --line: #d6cfc2;
+  --hair: #e6dfd3;
+  --paper: #fbf8f2;
+  --card: #ffffff;
+  --neg: #efebe4;
+  --neg-line: #b3aa9b;
+  --on-acc: #ffffff;
+  /* Ink-filled shapes with white text (the opening question of an argument map). */
+  --ink-box: #1d2433;
+
+  --r: 14px;
+  --r-chip: 8px;
+
+  /* Safe areas: the app draws under the status bar and the home indicator. */
+  --safe-t: env(safe-area-inset-top, 0px);
+  --safe-r: env(safe-area-inset-right, 0px);
+  --safe-b: env(safe-area-inset-bottom, 0px);
+  --safe-l: env(safe-area-inset-left, 0px);
+
+  /* Height of the reader's indicator under the top safe area. */
+  --hud-h: calc(26px + 3.2rem);
+
+  color-scheme: light dark;
+}
+
+/* Themes: theme-front for the cover and overviews, p1–p5 for the parts in order.
+   --acc shapes and big numbers · --acc-text small accent text · --tint light fills */
+:root, .theme-front { --acc: #95661a; --acc-text: #7d5512; --tint: #f5ead3; --acc-light: #e9c37a; }
+.theme-p1 { --acc: #b8513a; --acc-text: #8f3a27; --tint: #f6e2db; --acc-light: #f0a48f; }
+.theme-p2 { --acc: #227f7a; --acc-text: #17625e; --tint: #d9eeec; --acc-light: #8fd6d0; }
+.theme-p3 { --acc: #544a95; --acc-text: #3f3778; --tint: #e3e0f2; --acc-light: #b8b0ec; }
+.theme-p4 { --acc: #5f7a2e; --acc-text: #465c1f; --tint: #e7eed8; --acc-light: #bcd58d; }
+.theme-p5 { --acc: #9a3e6b; --acc-text: #782c52; --tint: #f3dfe8; --acc-light: #eaa6c6; }
+
+/* --acc-fg: accent used as text (big numbers). Same as --acc on paper, lighter on dark. */
+:root, .theme-front, .theme-p1, .theme-p2, .theme-p3, .theme-p4, .theme-p5 { --acc-fg: var(--acc); }
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --ink: #ecebe6;
+    --body: #d8d6d0;
+    --muted: #a4a39d;
+    --faint: #75726b;
+    --line: #3d4048;
+    --hair: #2e3139;
+    --paper: #15171c;
+    --card: #1e2128;
+    --neg: #25272d;
+    --neg-line: #5d5b56;
+    --ink-box: #3a4152;
+  }
+  :root, .theme-front, .theme-p1, .theme-p2, .theme-p3, .theme-p4, .theme-p5 {
+    --acc-text: var(--acc-light);
+    --acc-fg: var(--acc-light);
+    --tint: color-mix(in srgb, var(--acc) 26%, var(--paper));
+  }
+}

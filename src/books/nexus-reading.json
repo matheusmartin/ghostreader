@@ -1,0 +1,230 @@
+{
+  "format": 1,
+  "id": "nexus-reading",
+  "type": "reading",
+  "sample": true,
+  "title": "Nexus",
+  "subtitle": "A Brief History of Information Networks from the Stone Age to AI",
+  "author": "Yuval Noah Harari",
+  "year": 2024,
+  "upTo": "Chapter 5",
+  "lead": "Information connects people more than it informs them. Networks built on it give power faster than wisdom. AI, the first non-human member of these networks, needs institutions that correct their own errors.",
+  "parts": [
+    {
+      "id": "opening",
+      "label": "Opening",
+      "theme": "front",
+      "chapters": [
+        {
+          "id": "prologue",
+          "number": "P",
+          "title": "Prologue"
+        }
+      ]
+    },
+    {
+      "id": "part-1",
+      "label": "Part I",
+      "title": "Human Networks",
+      "theme": "p1",
+      "chapters": [
+        {
+          "id": "ch1",
+          "number": "01",
+          "title": "What Is Information?"
+        },
+        {
+          "id": "ch2",
+          "number": "02",
+          "title": "Stories: Unlimited Connections"
+        },
+        {
+          "id": "ch3",
+          "number": "03",
+          "title": "Documents: The Bite of the Paper Tigers"
+        },
+        {
+          "id": "ch4",
+          "number": "04",
+          "title": "Errors: The Fantasy of Infallibility"
+        },
+        {
+          "id": "ch5",
+          "number": "05",
+          "title": "Decisions: A Brief History of Democracy and Totalitarianism",
+          "sections": [
+            {
+              "title": "Core idea",
+              "screens": [
+                {
+                  "type": "summary",
+                  "label": "Core idea",
+                  "text": "Democracy spreads information across many independent nodes and can correct its own errors. Totalitarianism pulls all information to one centre that claims it cannot be wrong. The difference is how information flows, not only who votes.",
+                  "takeaway": {
+                    "label": "Takeaway",
+                    "text": "A healthy democracy is noisy on purpose: its friction is how it finds its mistakes."
+                  }
+                },
+                {
+                  "type": "figure",
+                  "alt": "Two networks. In a democracy, government, courts, free press, citizens, experts and parties are linked to each other and to public debate. In a totalitarian state, army, police, press, courts, factories and citizens all report to the party-state.",
+                  "svg": "<svg viewBox=\"0 0 340 512\" xmlns=\"http://www.w3.org/2000/svg\"><text class=\"t2 ta c\" x=\"170\" y=\"14\">Democracy: distributed</text><line class=\"ln\" x1=\"170\" y1=\"46\" x2=\"282\" y2=\"92\"/><line class=\"ln\" x1=\"282\" y1=\"92\" x2=\"282\" y2=\"186\"/><line class=\"ln\" x1=\"282\" y1=\"186\" x2=\"170\" y2=\"232\"/><line class=\"ln\" x1=\"170\" y1=\"232\" x2=\"58\" y2=\"186\"/><line class=\"ln\" x1=\"58\" y1=\"186\" x2=\"58\" y2=\"92\"/><line class=\"ln\" x1=\"58\" y1=\"92\" x2=\"170\" y2=\"46\"/><line class=\"la\" x1=\"170\" y1=\"139\" x2=\"170\" y2=\"46\"/><line class=\"la\" x1=\"170\" y1=\"139\" x2=\"282\" y2=\"92\"/><line class=\"la\" x1=\"170\" y1=\"139\" x2=\"282\" y2=\"186\"/><line class=\"la\" x1=\"170\" y1=\"139\" x2=\"170\" y2=\"232\"/><line class=\"la\" x1=\"170\" y1=\"139\" x2=\"58\" y2=\"186\"/><line class=\"la\" x1=\"170\" y1=\"139\" x2=\"58\" y2=\"92\"/><rect class=\"bx\" x=\"126\" y=\"32\" width=\"88\" height=\"28\" rx=\"14\"/><text class=\"t2 c\" x=\"170\" y=\"50\">Government</text><rect class=\"bx\" x=\"238\" y=\"78\" width=\"88\" height=\"28\" rx=\"14\"/><text class=\"t2 c\" x=\"282\" y=\"96\">Courts</text><rect class=\"bx\" x=\"238\" y=\"172\" width=\"88\" height=\"28\" rx=\"14\"/><text class=\"t2 c\" x=\"282\" y=\"190\">Free press</text><rect class=\"bx\" x=\"126\" y=\"218\" width=\"88\" height=\"28\" rx=\"14\"/><text class=\"t2 c\" x=\"170\" y=\"236\">Citizens</text><rect class=\"bx\" x=\"14\" y=\"172\" width=\"88\" height=\"28\" rx=\"14\"/><text class=\"t2 c\" x=\"58\" y=\"190\">Experts</text><rect class=\"bx\" x=\"14\" y=\"78\" width=\"88\" height=\"28\" rx=\"14\"/><text class=\"t2 c\" x=\"58\" y=\"96\">Parties</text><circle class=\"k\" cx=\"170\" cy=\"139\" r=\"30\"/><text class=\"t2 tw c\" x=\"170\" y=\"135\">Public</text><text class=\"t2 tw c\" x=\"170\" y=\"150\">debate</text><g transform=\"translate(0 262)\"><text class=\"t2 ta c\" x=\"170\" y=\"14\">Totalitarianism: centralised</text><line class=\"ara\" x1=\"170\" y1=\"46\" x2=\"170.0\" y2=\"101.0\"/><line class=\"ara\" x1=\"282\" y1=\"92\" x2=\"205.0\" y2=\"124.3\"/><line class=\"ara\" x1=\"282\" y1=\"186\" x2=\"205.0\" y2=\"153.7\"/><line class=\"ara\" x1=\"170\" y1=\"232\" x2=\"170.0\" y2=\"177.0\"/><line class=\"ara\" x1=\"58\" y1=\"186\" x2=\"135.0\" y2=\"153.7\"/><line class=\"ara\" x1=\"58\" y1=\"92\" x2=\"135.0\" y2=\"124.3\"/><rect class=\"bn\" x=\"126\" y=\"32\" width=\"88\" height=\"28\" rx=\"14\"/><text class=\"t2 c\" x=\"170\" y=\"50\">Army</text><rect class=\"bn\" x=\"238\" y=\"78\" width=\"88\" height=\"28\" rx=\"14\"/><text class=\"t2 c\" x=\"282\" y=\"96\">Police</text><rect class=\"bn\" x=\"238\" y=\"172\" width=\"88\" height=\"28\" rx=\"14\"/><text class=\"t2 c\" x=\"282\" y=\"190\">Press</text><rect class=\"bn\" x=\"126\" y=\"218\" width=\"88\" height=\"28\" rx=\"14\"/><text class=\"t2 c\" x=\"170\" y=\"236\">Courts</text><rect class=\"bn\" x=\"14\" y=\"172\" width=\"88\" height=\"28\" rx=\"14\"/><text class=\"t2 c\" x=\"58\" y=\"190\">Factories</text><rect class=\"bn\" x=\"14\" y=\"78\" width=\"88\" height=\"28\" rx=\"14\"/><text class=\"t2 c\" x=\"58\" y=\"96\">Citizens</text><circle class=\"bi\" cx=\"170\" cy=\"139\" r=\"32\"/><text class=\"t2 tw c\" x=\"170\" y=\"135\">Party-</text><text class=\"t2 tw c\" x=\"170\" y=\"150\">state</text></g></svg>"
+                }
+              ]
+            },
+            {
+              "title": "Key concepts",
+              "screens": [
+                {
+                  "type": "points",
+                  "label": "Key concepts",
+                  "items": [
+                    {
+                      "title": "Democracy is a conversation",
+                      "text": "Not only majority rule. It needs free media, courts and rights, so that errors can be exposed and losers can try again."
+                    },
+                    {
+                      "title": "Populism",
+                      "text": "Claims that one leader alone speaks for \"the people\", and attacks the courts, media and experts that check power."
+                    }
+                  ]
+                },
+                {
+                  "type": "points",
+                  "label": "Key concepts",
+                  "items": [
+                    {
+                      "title": "The totalitarian trinity",
+                      "text": "Party, state and secret police watch each other and everyone else, so no independent source of information can grow."
+                    },
+                    {
+                      "title": "Scale needs media",
+                      "text": "Large democracies became possible only with newspapers, telegraph and radio, the same tools that made totalitarianism possible."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "title": "The logic",
+              "screens": [
+                {
+                  "type": "steps",
+                  "label": "The logic",
+                  "steps": [
+                    "Politics is a question of how information flows.",
+                    "Democracy spreads information; dictatorship centralises it.",
+                    "Central networks block bad news on its way up.",
+                    "Mass media made both mass democracy and totalitarianism possible.",
+                    "Judge a democracy by its free conversation, not only by elections."
+                  ]
+                }
+              ]
+            },
+            {
+              "title": "Examples in the book",
+              "screens": [
+                {
+                  "type": "points",
+                  "label": "Examples in the book",
+                  "style": "box",
+                  "items": [
+                    {
+                      "title": "Stalin's \"kulaks\"",
+                      "text": "A category invented at the centre and imposed on farmers."
+                    },
+                    {
+                      "title": "Three Mile Island and Chernobyl",
+                      "text": "Open reporting brought fast learning; secrecy, a bigger disaster."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "title": "Test yourself",
+              "screens": [
+                {
+                  "type": "quiz",
+                  "label": "Test yourself",
+                  "questions": [
+                    {
+                      "q": "Why can a country hold elections and still not be a democracy, in Harari's terms?",
+                      "a": "Democracy is a free conversation protected by rights, courts and media. Without them, elections only confirm the ruler."
+                    },
+                    {
+                      "q": "Why does bad news travel badly in a centralised network?",
+                      "a": "Every message must pass through the centre, and people fear reporting failure, so errors stay hidden until they grow."
+                    },
+                    {
+                      "q": "Which technologies made mass democracy possible, and why did they also help dictators?",
+                      "a": "Newspapers, telegraph and radio let millions share one conversation, and also let a centre watch and control millions."
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "part-2",
+      "label": "Part II",
+      "title": "The Inorganic Network",
+      "theme": "p2",
+      "chapters": [
+        {
+          "id": "ch6",
+          "number": "06",
+          "title": "The New Members: How Computers Are Different from the Printing Press"
+        },
+        {
+          "id": "ch7",
+          "number": "07",
+          "title": "Relentless: The Network Is Always On"
+        },
+        {
+          "id": "ch8",
+          "number": "08",
+          "title": "Fallible: The Network Is Often Wrong"
+        }
+      ]
+    },
+    {
+      "id": "part-3",
+      "label": "Part III",
+      "title": "Computer Politics",
+      "theme": "p3",
+      "chapters": [
+        {
+          "id": "ch9",
+          "number": "09",
+          "title": "Democracies: Can We Still Hold a Conversation?"
+        },
+        {
+          "id": "ch10",
+          "number": "10",
+          "title": "Totalitarianism: All Power to the Algorithms?"
+        },
+        {
+          "id": "ch11",
+          "number": "11",
+          "title": "The Silicon Curtain: Global Empire or Global Split?"
+        }
+      ]
+    },
+    {
+      "id": "closing",
+      "label": "Closing",
+      "theme": "front",
+      "chapters": [
+        {
+          "id": "epilogue",
+          "number": "E",
+          "title": "Epilogue"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "name": "ghostwriter",
+  "private": true,
+  "version": "0.1.0",
+  "description": "Progressive web app that helps you read a book with charts, infographics and summaries.",
+  "type": "module",
+  "scripts": {
+    "dev": "vite --host",
+    "build": "tsc && vite build",
+    "preview": "vite preview --host",
+    "check": "tsc",
+    "test": "vitest run",
+    "validate": "vitest run tests/books.test.ts"
+  },
+  "devDependencies": {
+    "@types/node": "22.20.5",
+    "typescript": "7.0.2",
+    "vite": "8.3.5",
+    "vite-plugin-pwa": "2.0.0",
+    "vitest": "5.0.5",
+    "workbox-window": "7.4.1"
+  }
+}

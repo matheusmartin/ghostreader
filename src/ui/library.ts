@@ -1,0 +1,92 @@
+// The main screen: every book in src/books, with the place where the reader stopped.
+
+import { h } from '../lib/dom.ts';
+import { canFullscreen, isFullscreen, isInstalled, toggleFullscreen } from '../lib/device.ts';
+import { loadAllBooks, type LoadedBook } from '../data/books.ts';
+import { loadPosition } from '../data/progress.ts';
+import { GUIDE_NAMES } from '../screens/render.ts';
+import { installPrompt, onUpdateReady, applyUpdate } from '../pwa.ts';
+import type { Theme } from '../model/types.ts';
+
+export interface LibraryOptions {
+  open(bookId: string): void;
+}
+
+const CARD_THEMES: Theme[] = ['p2', 'p1', 'p3', 'front', 'p4', 'p5'];
+
+export function renderLibrary(root: HTMLElement, opts: LibraryOptions): { destroy(): void } {
+  const grid = h('div', { class: 'lib-grid', 'aria-busy': 'true' });
+  const actions = h('div', { class: 'lib-actions' });
+  const el = h('div', { class: 'library' },
+    h('header', { class: 'lib-head' },
+      h('div', null,
+        h('h1', null, 'Ghostwriter'),
+        h('p', null, 'Read with charts, infographics and summaries.'),
+      ),
+      actions,
+    ),
+    grid,
+  );
+  root.append(el);
+
+  const syncActions = () => {
+    actions.replaceChildren();
+    const update = onUpdateReady.ready;
+    if (update) actions.append(h('button', { type: 'button', class: 'btn primary', onclick: () => applyUpdate() }, 'Update app'));
+    const prompt = installPrompt.event;
+    if (prompt && !isInstalled()) {
+      actions.append(h('button', { type: 'button', class: 'btn', onclick: () => void installPrompt.show().then(syncActions) }, 'Install'));
+    }
+    if (canFullscreen() && !isInstalled()) {
+      actions.append(h('button', { type: 'button', class: 'btn', onclick: () => void toggleFullscreen() }, isFullscreen() ? 'Exit full screen' : 'Full screen'));
+    }
+  };
+  syncActions();
+  const offUpdate = onUpdateReady.subscribe(syncActions);
+  const offInstall = installPrompt.subscribe(syncActions);
+  document.addEventListener('fullscreenchange', syncActions);
+
+  let alive = true;
+  void loadAllBooks().then((books) => {
+    if (!alive) return;
+    grid.removeAttribute('aria-busy');
+    grid.replaceChildren(...books.map((b, i) => card(b, CARD_THEMES[i % CARD_THEMES.length], opts)));
+    if (books.length === 0) grid.append(h('p', { class: 'lib-empty' }, 'No books yet. Add a book file to src/books.'));
+  });
+
+  return {
+    destroy() {
+      alive = false;
+      offUpdate();
+      offInstall();
+      document.removeEventListener('fullscreenchange', syncActions);
+      el.remove();
+    },
+  };
+}
+
+function card(loaded: LoadedBook, theme: Theme, opts: LibraryOptions): HTMLElement {
+  if (!loaded.book) {
+    return h('div', { class: 'book-card broken' },
+      h('span', { class: 'label' }, 'Cannot open'),
+      h('span', { class: 'bc-title' }, `${loaded.id}.json`),
+      h('span', { class: 'bc-error' }, loaded.errors[0] ?? 'Unknown error'),
+      loaded.errors.length > 1 ? h('span', { class: 'bc-error' }, `and ${loaded.errors.length - 1} more problems`) : null,
+    );
+  }
+  const b = loaded.book;
+  const saved = loadPosition(b.id);
+  const bar = h('span', { class: 'bc-bar-fill' });
+  bar.style.setProperty('--p', String(saved?.progress ?? 0));
+  const kicker = [GUIDE_NAMES[b.type], b.upTo ? `to ${b.upTo}` : ''].filter(Boolean).join(' · ');
+  return h('button', { type: 'button', class: `book-card theme-${theme}`, onclick: () => opts.open(b.id) },
+    h('span', { class: 'bc-top' }, h('span', { class: 'label' }, kicker), b.sample ? h('span', { class: 'tag grey' }, 'Sample') : null),
+    h('span', { class: 'bc-title' }, b.title),
+    b.subtitle ? h('span', { class: 'bc-sub' }, b.subtitle) : null,
+    h('span', { class: 'bc-author' }, b.author),
+    h('span', { class: 'bc-foot' },
+      h('span', { class: 'bc-bar' }, bar),
+      h('span', { class: 'bc-where' }, saved ? `Continue · ${saved.where}` : 'Not started'),
+    ),
+  );
+}

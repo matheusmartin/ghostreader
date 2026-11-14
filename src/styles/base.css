@@ -1,0 +1,90 @@
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html {
+  /* One fluid base size: about 15 px on a phone, up to 21 px on a tablet. Screens size everything in em. */
+  font-size: clamp(15px, calc(10.5px + 1.15vmin), 21px);
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+html, body {
+  height: 100%;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font);
+  /* No pull-to-refresh, no bounce of the whole page. */
+  overscroll-behavior: none;
+}
+
+body {
+  line-height: 1.4;
+  -webkit-font-smoothing: antialiased;
+  -webkit-tap-highlight-color: transparent;
+  font-kerning: normal;
+}
+
+#app { min-height: 100%; }
+
+b, strong { font-weight: 700; }
+
+button {
+  font: inherit;
+  color: inherit;
+  background: none;
+  border: 0;
+  cursor: pointer;
+  text-align: inherit;
+  touch-action: manipulation;
+}
+
+:focus-visible { outline: 2px solid var(--acc); outline-offset: 2px; border-radius: 4px; }
+
+[hidden] { display: none !important; }
+
+/* One label style for every small label: bold, capitals, tracked, accent colour. */
+.label {
+  display: block;
+  font-size: .72em;
+  font-weight: 700;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--acc-text);
+}
+
+.tag {
+  display: inline-block;
+  font-size: .62em;
+  font-weight: 700;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  line-height: 1;
+  padding: .35em .6em .3em;
+  border-radius: 99px;
+  background: var(--ink);
+  color: var(--paper);
+  vertical-align: middle;
+}
+.tag.grey { background: var(--line); color: var(--ink); }
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  padding: 0 1.1em;
+  border-radius: 99px;
+  border: 1px solid var(--line);
+  background: var(--card);
+  font-size: .9rem;
+  font-weight: 700;
+  color: var(--ink);
+}
+.btn.primary { background: var(--ink); border-color: var(--ink); color: var(--paper); }
+.btn:active { transform: scale(.97); }
+
+.key {
+  background: var(--acc);
+  color: var(--on-acc);
+  font-weight: 700;
+  border-radius: var(--r);
+}
