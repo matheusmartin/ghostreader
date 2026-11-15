@@ -237,7 +237,7 @@ def cmd_facts(args, guide, work, say):
 
 # ------------------------------------------------------------------ names and numbers
 
-NAME = re.compile(r"[A-Z][\w'-]*")
+NAME = re.compile(r"(?<![\w'-])[A-Z][\w'-]*")
 NUMBER = re.compile(r'(?<![\w.])\d[\d,]*(?:\.\d+)?')
 
 
