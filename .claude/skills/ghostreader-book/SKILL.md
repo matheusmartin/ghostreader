@@ -1,12 +1,12 @@
 ---
-name: ghostwriter-book
-description: Writes or updates a book guide for the Ghostwriter app in this repository - four files, one per style (Map, Recap, Recall, Layers), src/books/<guide>-<style>.json, each making both the swipe screens and a downloadable A4 PDF; the library shows them as one tile with a style choice. The guide holds only the book's own parts and chapters, in the book's order - no overview, key concepts or other guide-made chapter. Three types, chosen by the user - Story guide (fiction - scene charts of who is where, who is who, relations), Reading guide (non-fiction, to follow the argument while reading) and Book summary (non-fiction, a finished book). Reads the book from an EPUB, PDF, text, Markdown or HTML file, or from summaries when no file is given. Diagrams first - networks, flows, cycles, timelines - text only where a picture cannot carry the idea. Use when the user asks to add, write, summarise, update or regenerate a book, story guide, reading guide, book summary, infographic or PDF for the app, even if they only name the book. Do not use for a short summary in chat, book recommendations, reviews, or changes to the app's code.
+name: ghostreader-book
+description: Writes or updates a book guide for the Ghostreader app in this repository - four files, one per style (Map, Recap, Recall, Layers), src/books/<guide>-<style>.json, each making both the swipe screens and a downloadable A4 PDF; the library shows them as one tile with a style choice. The guide holds only the book's own parts and chapters, in the book's order - no overview, key concepts or other guide-made chapter. Three types, chosen by the user - Story guide (fiction - scene charts of who is where, who is who, relations), Reading guide (non-fiction, to follow the argument while reading) and Book summary (non-fiction, a finished book). Reads the book from an EPUB, PDF, text, Markdown or HTML file, or from summaries when no file is given. Diagrams first - networks, flows, cycles, timelines - text only where a picture cannot carry the idea. Use when the user asks to add, write, summarise, update or regenerate a book, story guide, reading guide, book summary, infographic or PDF for the app, even if they only name the book. Do not use for a short summary in chat, book recommendations, reviews, or changes to the app's code.
 metadata:
   version: "1.4.0"
 compatibility: Node 22 with `npm install` done (Vitest; Playwright with Chromium for the screen check and the PDF). Python 3.9+ for the book extractor and maps; PDF books also need poppler-utils (pdftotext) or the pypdf package.
 ---
 
-# Ghostwriter book
+# Ghostreader book
 
 ## Overview
 
@@ -47,7 +47,7 @@ Principles:
 the title, ask with this block (also when the user asks how to use the skill):
 
 ```
-Ghostwriter book
+Ghostreader book
 Type:     Fiction | Non-fiction reading | Non-fiction done   (required)
 Title:    Pride and Prejudice                (required)
 Author:   Jane Austen                        (recommended)
@@ -89,7 +89,7 @@ Copy this checklist into the task list and tick it off:
 never be committed, the repository is public). Then run, from the repository root:
 
 ```bash
-python3 -I .claude/skills/ghostwriter-book/scripts/extract_book.py work/<id>/book.epub --out work/<id>/source
+python3 -I .claude/skills/ghostreader-book/scripts/extract_book.py work/<id>/book.epub --out work/<id>/source
 ```
 
 It writes one numbered text file per section of the book's table of contents, `toc.json` (title,
@@ -156,7 +156,7 @@ one line, the point it adds, a recap, key moments, the concepts to remember, thr
 "before this chapter". The format is in `references/styles.md`. Then build the three files:
 
 ```bash
-python3 -I .claude/skills/ghostwriter-book/scripts/build_styles.py src/books/<guide>-map.json work/<guide>/styles.json
+python3 -I .claude/skills/ghostreader-book/scripts/build_styles.py src/books/<guide>-map.json work/<guide>/styles.json
 ```
 
 The script copies diagrams, key points, logic and PDF detail from the Map file, so fix those in

@@ -61,7 +61,7 @@ export interface Source {
   file?: string;
   /** Date the guide was written or last regenerated (YYYY-MM-DD). */
   written?: string;
-  /** Version of the ghostwriter-book skill that wrote it. */
+  /** Version of the ghostreader-book skill that wrote it. */
   skill?: string;
 }
 

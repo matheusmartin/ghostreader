@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Draw a real-geography map (country outlines + numbered places) as an SVG for a Ghostwriter
+"""Draw a real-geography map (country outlines + numbered places) as an SVG for a Ghostreader
 "figure" screen. The SVG uses the app's figure classes, so it follows the page colour.
 
 Usage:

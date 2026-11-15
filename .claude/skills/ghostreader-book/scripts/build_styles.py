@@ -5,7 +5,7 @@ Every guide is written in all four styles (references/styles.md). Write the Map 
 (src/books/<guide>-map.json, with "guide" and "style": "map"), then the per-style texts in
 work/<id>/styles.json, then run:
 
-    python3 -I .claude/skills/ghostwriter-book/scripts/build_styles.py \\
+    python3 -I .claude/skills/ghostreader-book/scripts/build_styles.py \\
         src/books/<guide>-map.json work/<id>/styles.json
 
 It writes src/books/<guide>-recap.json, -recall.json and -layers.json next to the Map file:

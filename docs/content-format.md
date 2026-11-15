@@ -5,7 +5,7 @@ has `"id": "nexus-reading"`. Add a file, run `npm run validate`, and the book is
 the next build. The same file makes the app's screens and the book's A4 PDF.
 
 The types in `src/model/types.ts` are the exact definition. This page explains them. The
-ghostwriter-book skill (`.claude/skills/ghostwriter-book/`) writes these files: it says which
+ghostreader-book skill (`.claude/skills/ghostreader-book/`) writes these files: it says which
 screens each guide type uses and how to choose a chart.
 
 ## Hierarchy
@@ -66,7 +66,7 @@ with its number only (titles can spoil). Use this for guides written while readi
 | `year` | no | Year of first publication. |
 | `edition` | no | Only when it matters. |
 | `upTo` | no | Last chapter covered, for guides written while reading. |
-| `style` | no | How the file summarises: `map` (diagrams first), `recap` (the story so far, in words), `recall` (questions first) or `layers` (one line, three points, detail). Shown on the cover, in the menu and in the PDF name. The ghostwriter-book skill has the recipe of each (`references/styles.md`). |
+| `style` | no | How the file summarises: `map` (diagrams first), `recap` (the story so far, in words), `recall` (questions first) or `layers` (one line, three points, detail). Shown on the cover, in the menu and in the PDF name. The ghostreader-book skill has the recipe of each (`references/styles.md`). |
 | `guide` | no | The guide the file belongs to. A guide has all four styles, one file each, with the id `<guide>-<style>` (`nexus-summary-recap`); the library shows them as one tile with a button per style, and the menu switches style at the same chapter. `npm test` checks that every guide has all four. An old link to `#/read/<guide>/…` opens the Map file. |
 | `sample` | no | `true` marks demo content in the library. |
 | `source` | no | Where the content comes from, not shown to readers: `{ "kind": "book-file" \| "summaries", "file": "EPUB", "written": "2026-11-14", "skill": "1.0.0" }`. |
@@ -288,7 +288,7 @@ ring is the key element.
 
 ## Content rules
 
-The rules of the ghostwriter-book skill apply (`.claude/skills/ghostwriter-book/references/`):
+The rules of the ghostreader-book skill apply (`.claude/skills/ghostreader-book/references/`):
 book content only, confirmed details only, no quotations, no opinions, no spoilers past `upTo`,
 sentence case, British spelling. `npm run validate` checks the ones a program can check.
 

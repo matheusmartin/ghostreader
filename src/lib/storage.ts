@@ -2,7 +2,7 @@
 // Kept: three settings, the page colour (lib/scheme.ts), the style chosen in the library, and
 // whether the gesture hint was shown.
 
-const PREFIX = 'ghostwriter:';
+const PREFIX = 'ghostreader:';
 
 export function getFlag(name: string): boolean {
   try {
@@ -36,9 +36,22 @@ export function setSetting(name: string, value: string): void {
   }
 }
 
-/** Deletes the reading places that versions before 0.2 saved for each book. */
+/** The prefix of the app's old name (Ghostwriter). Its settings move to PREFIX. */
+const OLD_PREFIX = 'ghostwriter:';
+
+/**
+ * Moves the settings kept under the app's old name to the new name, then deletes the reading
+ * places that versions before 0.2 saved for each book.
+ */
 export function forgetOldData(): void {
   try {
+    for (const key of Object.keys(localStorage)) {
+      if (!key.startsWith(OLD_PREFIX)) continue;
+      const name = key.slice(OLD_PREFIX.length);
+      const value = localStorage.getItem(key);
+      if (value !== null && localStorage.getItem(PREFIX + name) === null) localStorage.setItem(PREFIX + name, value);
+      localStorage.removeItem(key);
+    }
     for (const key of Object.keys(localStorage)) {
       if (key.startsWith(`${PREFIX}position:`)) localStorage.removeItem(key);
     }

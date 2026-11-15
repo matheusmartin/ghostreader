@@ -1,4 +1,4 @@
-# Ghostwriter
+# Ghostreader
 
 A progressive web app that helps you read a book with charts, infographics and summaries.
 A chapter is a series of screens, and you move through them with your finger. Every book also has
@@ -13,7 +13,7 @@ Every guide comes in four styles, to help you go back to a book after a long pau
 (diagrams first), **Recap** (the story so far, in words), **Recall** (questions first, answers on a
 tap) and **Layers** (one line, three points, then the detail). The library shows one tile per book
 with a button for each style; it remembers your choice, and the menu in a book switches style at
-the same chapter. Research and recipes: `.claude/skills/ghostwriter-book/references/styles.md`.
+the same chapter. Research and recipes: `.claude/skills/ghostreader-book/references/styles.md`.
 
 ## How it works
 
@@ -103,8 +103,8 @@ Settings → Pages → Build and deployment and set Source to **GitHub Actions**
 ## Add a book
 
 Ask Claude Code in this repository, for example "Add a story guide of Pride and Prejudice up to
-Chapter 6" with the book file attached. The **ghostwriter-book** skill
-(`.claude/skills/ghostwriter-book/`) does the work:
+Chapter 6" with the book file attached. The **ghostreader-book** skill
+(`.claude/skills/ghostreader-book/`) does the work:
 
 1. Extracts the book's text from an EPUB, PDF, TXT, Markdown or HTML file into `work/<id>/`
    (`scripts/extract_book.py`). `work/` is in `.gitignore`: book text is never committed.
