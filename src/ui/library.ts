@@ -19,7 +19,7 @@ export function renderLibrary(root: HTMLElement, opts: LibraryOptions): { destro
   const el = h('div', { class: 'library' },
     h('header', { class: 'lib-head' },
       h('div', null,
-        h('h1', null, 'Ghostwriter'),
+        h('h1', null, 'Ghostreader'),
         h('p', null, 'Read with charts, infographics and summaries.'),
       ),
       actions,

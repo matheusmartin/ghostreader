@@ -281,7 +281,7 @@
 .br-opt.key-opt { background: var(--acc); border-color: var(--acc); color: var(--on-acc); }
 .br-opt.key-opt .br-text { color: var(--on-acc); }
 
-/* ---- maps (the ghostwriter-book skill's map.py): real places only ------------------------------ */
+/* ---- maps (the ghostreader-book skill's map.py): real places only ------------------------------ */
 .figure svg.map { overflow: hidden; }
 .figure svg .sea  { fill: color-mix(in srgb, var(--acc) 5%, var(--card)); stroke: var(--line); stroke-width: 1; }
 .figure svg .land { fill: var(--neg); stroke: var(--paper); stroke-width: .6; }

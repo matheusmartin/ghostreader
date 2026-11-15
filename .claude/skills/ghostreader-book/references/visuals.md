@@ -130,7 +130,7 @@ The app removes scripts, event attributes, `style`, links and images.
    `{"id": "m1", "mode": "overview", "places": [{"n": 1, "name": "Bath", "country": "United Kingdom"}, {"n": 2, "label": "The Peak District", "lat": 53.3, "lon": -1.8}]}`
    (`name` + `country` looks the place up in `assets/geo/places.csv`; a region or a place not
    found takes `label`, `lat`, `lon`). `"mode": "section"` with one `"key": true` for a chapter map.
-2. `python3 -I .claude/skills/ghostwriter-book/scripts/map.py work/<id>/map1.json --out work/<id>/map1.svg`
+2. `python3 -I .claude/skills/ghostreader-book/scripts/map.py work/<id>/map1.json --out work/<id>/map1.svg`
    (`--width 640` for a PDF-only map). Check the coordinates it prints.
 3. Put the SVG text in a `figure` (`"svg"`), with `alt` and the caption "Today's borders; places
    from outside the book", then a `list` "Places" (number, the book's name for the place, what

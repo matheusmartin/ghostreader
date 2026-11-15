@@ -10,7 +10,8 @@
     <script>
       (function () {
         var ok = ['paper', 'quiet', 'warm', 'dusk', 'night', 'one-light', 'solarized-light', 'gruvbox-light', 'rose-pine-dawn', 'one-dark', 'mariana', 'monokai', 'solarized-dark', 'gruvbox-dark', 'ayu-mirage', 'rose-pine'], c = 'auto';
-        try { c = localStorage.getItem('ghostwriter:scheme') || 'auto'; } catch (e) {}
+        // 'ghostwriter:scheme': the app's old name; src/lib/storage.ts moves it to the new key.
+        try { c = localStorage.getItem('ghostreader:scheme') || localStorage.getItem('ghostwriter:scheme') || 'auto'; } catch (e) {}
         if (ok.indexOf(c) < 0) c = matchMedia('(prefers-color-scheme: dark)').matches ? 'dusk' : 'paper';
         document.documentElement.setAttribute('data-scheme', c);
       })();
@@ -19,10 +20,10 @@
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-    <meta name="apple-mobile-web-app-title" content="Ghostwriter" />
+    <meta name="apple-mobile-web-app-title" content="Ghostreader" />
     <link rel="icon" href="icons/icon.svg" type="image/svg+xml" />
     <link rel="apple-touch-icon" href="icons/apple-touch-icon.png" />
-    <title>Ghostwriter</title>
+    <title>Ghostreader</title>
   </head>
   <body>
     <!-- Arrow head for SVG figures (classes ar, ara). It takes the colour of the line. -->
@@ -34,7 +35,7 @@
       </defs>
     </svg>
     <div id="app"></div>
-    <noscript>Ghostwriter needs JavaScript.</noscript>
+    <noscript>Ghostreader needs JavaScript.</noscript>
     <script type="module" src="/src/main.ts"></script>
   </body>
 </html>

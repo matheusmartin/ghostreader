@@ -1,5 +1,5 @@
 // Content checks for a valid book (run validate.ts first). Each problem is "<path>: <message>".
-// They enforce the writing rules of the ghostwriter-book skill that a program can check:
+// They enforce the writing rules of the ghostreader-book skill that a program can check:
 //
 //   limits      words per field and items per block, strict for phone screens (one screen must
 //               fit without scrolling) and looser for blocks marked only: "pdf"

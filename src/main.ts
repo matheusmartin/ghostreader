@@ -18,7 +18,8 @@ import { Reader } from './ui/reader.ts';
 import { startPwa } from './pwa.ts';
 import { startScheme } from './lib/scheme.ts';
 
-// The app keeps no record of what you read. Delete reading places saved by earlier versions.
+// The app keeps no record of what you read. Move settings kept under the old name (Ghostwriter)
+// and delete reading places saved by earlier versions.
 forgetOldData();
 startScheme();
 
@@ -36,7 +37,7 @@ async function route() {
     openedFromLibrary = false;
     view?.destroy();
     view = renderLibrary(root, { open: openBook });
-    document.title = 'Ghostwriter';
+    document.title = 'Ghostreader';
     return;
   }
 
@@ -58,7 +59,7 @@ async function route() {
   if (r.name === 'print') {
     view?.destroy();
     view = renderPrint(root, book, { back: leaveBook });
-    document.title = `${book.title} – PDF – Ghostwriter`;
+    document.title = `${book.title} – PDF – Ghostreader`;
     return;
   }
   const plan = buildPlan(book);
@@ -91,7 +92,7 @@ async function route() {
       sleep();
     },
   };
-  document.title = `${book.title} – Ghostwriter`;
+  document.title = `${book.title} – Ghostreader`;
 }
 
 function openBook(bookId: string) {

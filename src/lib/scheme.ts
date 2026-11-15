@@ -28,7 +28,7 @@ export const SCHEMES: { id: SchemeChoice; name: string }[] = [
   { id: 'rose-pine', name: 'Rosé Pine' },
 ];
 
-const KEY = 'ghostwriter:scheme';
+const KEY = 'ghostreader:scheme';
 const IDS = SCHEMES.map((s) => s.id);
 const darkQuery = () => matchMedia('(prefers-color-scheme: dark)');
 

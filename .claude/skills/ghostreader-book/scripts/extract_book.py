@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """Turn a book file (EPUB, PDF, TXT, Markdown or HTML) into numbered plain text, one file per
-section of the book's table of contents, for writing a Ghostwriter guide.
+section of the book's table of contents, for writing a Ghostreader guide.
 
 Usage:
     python3 extract_book.py BOOK_FILE --out work/<book-id>/source [--split REGEX]

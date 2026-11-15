@@ -13,8 +13,8 @@ export default defineConfig({
       injectRegister: false,
       includeAssets: ['icons/icon.svg', 'icons/apple-touch-icon.png'],
       manifest: {
-        name: 'Ghostwriter',
-        short_name: 'Ghostwriter',
+        name: 'Ghostreader',
+        short_name: 'Ghostreader',
         description: 'Read books with charts, infographics and summaries.',
         lang: 'en',
         start_url: './',
