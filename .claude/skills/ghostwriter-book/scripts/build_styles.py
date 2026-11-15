@@ -10,8 +10,10 @@ work/<id>/styles.json, then run:
 
 It writes src/books/<guide>-recap.json, -recall.json and -layers.json next to the Map file:
 diagrams, key points, logic and PDF detail come from the Map chapters; the new screens come from
-the styles file. It stops with a message when the styles file lacks a written chapter. Run
-`npm run validate` afterwards: the limits and writing rules apply to these files too.
+the styles file. The files have exactly the Map file's parts and chapters, the book's own: the
+script adds no chapter, and it stops when the Map file has a guide-made overview chapter (number
+S, B, K, W, T or M) or the styles file lacks a written chapter. Run `npm run validate` afterwards:
+the limits and writing rules apply to these files too.
 """
 import argparse
 import copy
@@ -20,7 +22,7 @@ import os
 import sys
 
 STYLES = ('recap', 'recall', 'layers')
-OVERVIEW = {'S', 'B', 'K', 'W', 'T', 'M'}
+GUIDE_MADE = {'S', 'B', 'K', 'W', 'T', 'M'}  # overview chapters of earlier versions: not allowed
 
 
 def fail(msg):
@@ -70,13 +72,6 @@ def quiz(label, qa):
     return {'type': 'quiz', 'label': label, 'questions': [{'q': x['q'], 'a': x['a']} for x in qa]}
 
 
-def in_threes(label, qa):
-    n = (len(qa) + 2) // 3
-    if n == 1:
-        return [quiz(label, qa)]
-    return [quiz(f'{label} {i + 1} of {n}', qa[i * 3:i * 3 + 3]) for i in range(n)]
-
-
 def chapter_screens(ch):
     if 'sections' in ch:
         return [s for sec in ch['sections'] for s in sec['screens']]
@@ -91,9 +86,12 @@ def build(map_book, notes, style):
     chapters = notes.get('chapters', {})
     question = notes.get('question', '')
 
+    made = [ch['id'] for part in book['parts'] for ch in part['chapters'] if ch['number'] in GUIDE_MADE]
+    if made:
+        fail(f'the Map file has guide-made chapters ({", ".join(made)}): a guide holds only the book\'s own chapters')
+
     # Reading order of written chapters, for Layers' "argument so far".
-    order = [ch['id'] for part in book['parts'] for ch in part['chapters']
-             if ch['number'] not in OVERVIEW and chapter_screens(ch)]
+    order = [ch['id'] for part in book['parts'] for ch in part['chapters'] if chapter_screens(ch)]
     missing = [cid for cid in order if cid not in chapters]
     if missing:
         fail(f'styles file has no entry for: {", ".join(missing)}')
@@ -101,13 +99,6 @@ def build(map_book, notes, style):
     for part in book['parts']:
         new_chapters = []
         for ch in part['chapters']:
-            if ch['number'] in OVERVIEW:
-                if ch['number'] == 'B':
-                    continue  # the style's S chapter takes the place of The book in one page
-                if ch['number'] == 'K' and style == 'recall' and notes.get('cards'):
-                    ch = recall_k(ch, notes)
-                new_chapters.append(ch)
-                continue
             screens = chapter_screens(ch)
             if not screens:
                 new_chapters.append(ch)
@@ -117,28 +108,7 @@ def build(map_book, notes, style):
             ch['screens'] = RECIPES[style](ch['id'], screens, n, order, chapters, question, notes)
             new_chapters.append(ch)
         part['chapters'] = new_chapters
-
-    ov = notes.get('overview', {}).get(style)
-    if not ov:
-        fail(f'styles file has no overview for {style}')
-    s_chapter = {'id': ov['id'], 'number': 'S', 'title': ov['title'], 'screens': copy.deepcopy(ov['screens'])}
-    overview_part = next((p for p in book['parts'] if all(c['number'] in OVERVIEW for c in p['chapters'])), None)
-    if overview_part is None:
-        overview_part = {'id': 'overview', 'label': 'Overview', 'chapters': []}
-        book['parts'].insert(0, overview_part)
-    overview_part['chapters'].insert(0, s_chapter)
     return book
-
-
-def recall_k(ch, notes):
-    screens = chapter_screens(ch)
-    keep = notes.get('recall_charts')
-    charts = [s for s in app(screens) if s['type'] == 'chart' and (keep is None or s.get('label') in keep)]
-    if keep:
-        charts.sort(key=lambda s: keep.index(s['label']))
-    out = {k: v for k, v in ch.items() if k not in ('screens', 'sections')}
-    out['screens'] = copy.deepcopy(charts) + in_threes('Concept cards', notes['cards']) + pdf_only(screens)
-    return out
 
 
 def recap(cid, screens, n, order, chapters, question, notes):

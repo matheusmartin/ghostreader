@@ -13,8 +13,8 @@ screens each guide type uses and how to choose a chart.
 ```
 Book
 └── Part        a part or volume ("Part I · Human Networks"); a book without parts has one part
-    └── Chapter any unit of the contents: prologue, chapter, epilogue, appendix,
-        │       and overview pages (Who's who, The book in one page)
+    └── Chapter any unit of the book's contents: prologue, chapter, epilogue, appendix
+        │       (only the book's own: no overview pages)
         └── Section (optional) a group of screens in a chapter ("Key concepts", "Test yourself")
             └── Screen   one piece of information: what one swipe shows
 ```
@@ -78,7 +78,8 @@ with its number only (titles can spoil). Use this for guides written while readi
 ```
 
 - `label` and `title` are optional. Together they make the kicker: "Part I · Human Networks".
-  Front and back matter use `"label": "Opening"` and `"label": "Closing"`.
+  Use the book's own labels and titles. Front and back matter outside the book's parts (a
+  prologue, an epilogue) go in a part without `label` and `title`; its kicker is the book's title.
 - There is no colour field. The whole book uses one colour scheme; chapters are told apart only by
   the breaks in the progress strip (docs/design.md).
 
@@ -90,7 +91,9 @@ with its number only (titles can spoil). Use this for guides written while readi
 ```
 
 - `number`: "01", "02" … for chapters; `P` prologue or preface, `I` introduction, `E` epilogue,
-  `C` conclusion, `A1` appendix; `S` (where you stopped), `B` (the book in one page), `K` (key concepts), `W`, `T`, `M` for overview pages.
+  `C` conclusion, `A1` appendix, each only when the book has that section. A guide has only the
+  book's own chapters: `npm run validate` reports the numbers `S`, `B`, `K`, `W`, `T` and `M`,
+  which marked the guide-made overview pages of earlier versions.
 - `title`: the real title. An untitled chapter is "Chapter 7". Never invent a title.
 - `length`: the real length (words or pages). The book map sizes chips by length only when every
   chapter has one; never estimate.
@@ -150,7 +153,7 @@ The last step is the conclusion and is set in bold.
 ### list — rows of name and text
 
 ```json
-{ "type": "list", "label": "Who's who",
+{ "type": "list", "label": "Everyone in this chapter",
   "rows": [{ "name": "Elizabeth Bennet", "text": "Second daughter; quick and witty", "meta": "Bennets" }] }
 ```
 
