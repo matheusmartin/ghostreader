@@ -31,15 +31,21 @@ const ratio = (a: string, b: string) => {
 const mix = (a: string, b: string, p: number) =>
   '#' + hex(a).map((v, i) => Math.round(v * p + hex(b)[i] * (1 - p)).toString(16).padStart(2, '0')).join('');
 
-// Every page colour the picker offers (Auto is Paper or Dusk).
+// Every theme the picker offers (Auto is Paper or Dusk).
 const SCHEMES = PICKER.map((s) => s.id).filter((id) => id !== 'auto');
+
+it('index.html applies every theme before the first paint', () => {
+  const html = readFileSync(new URL('../index.html', import.meta.url), 'utf8');
+  const ok = html.match(/var ok = \[([^\]]*)\]/)?.[1].match(/'[\w-]+'/g)?.map((s) => s.slice(1, -1));
+  expect(ok?.slice().sort()).toEqual([...SCHEMES].sort());
+});
 
 for (const id of SCHEMES) {
   const sel = `[data-scheme="${id}"]`;
   const t = { ...tokens(':root'), ...(id === 'paper' ? tokens(':root') : {}), ...tokens(sel) };
   const dark = t['color-scheme'] === 'dark';
 
-  describe(`page colour ${id}`, () => {
+  describe(`theme ${id}`, () => {
     it('text colours reach 4.5:1 on the page and on cards', () => {
       for (const k of ['--ink', '--body', '--muted']) {
         expect(ratio(t[k], t['--paper']), `${k} on paper`).toBeGreaterThanOrEqual(4.5);

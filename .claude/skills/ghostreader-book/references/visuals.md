@@ -5,7 +5,7 @@ chapter's app screens are charts, scenes or figures. Text screens carry what a p
 point of the chapter in two sentences, the meaning of a term, a test question.
 
 The fields of every type are in `docs/content-format.md`. This page says which visual to use and
-how to make it read well. The app draws every chart from data, in the page colour the reader
+how to make it read well. The app draws every chart from data, in the theme the reader
 chose, on a phone and (wider, with more room) in the PDF; there is nothing to lay out by hand.
 
 ## Which visual for which idea

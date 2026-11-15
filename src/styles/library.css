@@ -13,7 +13,6 @@
 }
 
 .lib-head h1 { font-size: 2.3rem; line-height: 1; letter-spacing: -.02em; }
-.lib-head p { color: var(--muted); margin-top: 6px; }
 /* The pointer to the menu: a tap opens it too. */
 .lib-hint {
   display: inline-flex;

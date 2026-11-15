@@ -25,11 +25,11 @@ The reader moves through the screens in this order:
 |---|---|---|
 | Swipe up / down | ↓ ↑, Space, Page Down / Up | Next / previous screen. Continues into the next chapter. |
 | Swipe left / right | → ← | Start of the next / previous chapter. |
-| Hold anywhere (0.6 s) | Enter, Esc | Menu: style, page colour, contents, library, full screen. |
+| Hold anywhere (0.6 s) | Enter, Esc | Menu: style, theme, contents, library, full screen. |
 
 The app adds three screens that you do not write:
 
-- **Cover**: first screen. Title, subtitle, author, edition, lead and the book map.
+- **Cover**: first screen. Title, subtitle, author, edition and the book map.
 - **Chapter opener**: first screen of each chapter. Number, part, title and the list of sections.
   Set `"opener": false` on a chapter to leave it out.
 - **End**: last screen.
@@ -50,7 +50,6 @@ with its number only (titles can spoil). Use this for guides written while readi
   "year": 2024,
   "edition": "Portuguese translation, 2025",
   "upTo": "Chapter 5",
-  "lead": "Information connects people more than it informs them. …",
   "parts": [ … ]
 }
 ```
@@ -61,7 +60,6 @@ with its number only (titles can spoil). Use this for guides written while readi
 | `id` | yes | Letters, digits and hyphens. Same as the file name. |
 | `type` | yes | `fiction` (story guide), `reading` (reading guide) or `done` (book summary). |
 | `title`, `author` | yes | |
-| `lead` | yes | The central situation (fiction) or the whole argument (non-fiction), 35 words or fewer. |
 | `subtitle` | no | Series, the book's own subtitle, or the English title. |
 | `year` | no | Year of first publication. |
 | `edition` | no | Only when it matters. |

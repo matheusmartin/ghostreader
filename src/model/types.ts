@@ -36,8 +36,6 @@ export interface Book {
   year?: number;
   /** Edition line for the cover, only when it matters ("Portuguese translation, 2025"). */
   edition?: string;
-  /** The central situation (fiction) or the whole argument (non-fiction), ≤ 35 words. */
-  lead: string;
   /** Last chapter covered ("Chapter 6"), for guides written while reading. */
   upTo?: string;
   /** How the guide summarises (see Style). Default: map. */

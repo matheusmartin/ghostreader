@@ -8,6 +8,7 @@
     "dev": "vite --host",
     "build": "tsc && vite build && node scripts/build-pdfs.mjs",
     "build:pdf": "node scripts/build-pdfs.mjs",
+    "build:icons": "node scripts/build-icons.mjs",
     "check:screens": "node scripts/check-screens.mjs",
     "preview": "vite preview --host",
     "check": "tsc",

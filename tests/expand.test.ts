@@ -13,7 +13,7 @@ const scenes: ScenesScreen = {
 };
 
 const book: Book = {
-  format: 1, id: 'b', type: 'fiction', title: 'B', author: 'C', lead: 'D',
+  format: 1, id: 'b', type: 'fiction', title: 'B', author: 'C',
   parts: [{ id: 'p', chapters: [
     { id: 'c1', number: '01', title: 'One', screens: [
       { type: 'summary', label: 'In short', text: 'x' },

@@ -1,4 +1,4 @@
-// "Page colour": one round swatch per scheme, drawn in that scheme's own colours.
+// "Theme": one round swatch per theme, drawn in that theme's own colours, all in one grid.
 
 import { h } from '../lib/dom.ts';
 import { SCHEMES, getSchemeChoice, setSchemeChoice, type SchemeChoice } from '../lib/scheme.ts';
@@ -9,7 +9,7 @@ export function schemePicker(): HTMLElement {
     const chosen = getSchemeChoice();
     for (const [id, b] of buttons) b.setAttribute('aria-checked', String(id === chosen));
   };
-  const list = h('div', { class: 'scheme-list', role: 'radiogroup', 'aria-label': 'Page colour' },
+  const list = h('div', { class: 'scheme-list', role: 'radiogroup', 'aria-label': 'Theme' },
     SCHEMES.map(({ id, name }) => {
       const swatch = id === 'auto'
         ? h('span', { class: 'swatch split' }, h('span', { 'data-scheme': 'paper' }), h('span', { 'data-scheme': 'dusk' }))
@@ -27,7 +27,7 @@ export function schemePicker(): HTMLElement {
   );
   sync();
   return h('section', { class: 'scheme-picker' },
-    h('h3', { class: 'label' }, 'Page colour'),
+    h('h3', { class: 'label' }, 'Theme'),
     list,
     h('p', { class: 'scheme-note' }, 'Auto: Paper by day, Dusk when your device is in dark mode.'),
   );

@@ -143,7 +143,7 @@ describe('routes', () => {
   });
 });
 
-describe('page colour', () => {
+describe('theme', () => {
   it('resolves Auto from the device mode and keeps a fixed choice', async () => {
     const { resolveScheme } = await import('../src/lib/scheme.ts');
     expect(resolveScheme('auto', false)).toBe('paper');

@@ -1,6 +1,6 @@
 // The PDF: the whole book on A4 pages, built from the same book file as the app.
 //
-//   cover       title, author, lead, book map and contents
+//   cover       title, author, book map and contents
 //   chapters    one page (or more) per chapter: every block for the PDF, including the ones
 //               marked only: "pdf" (detail the phone screens leave out), in a wider layout
 //   answers     the answers of every "Test yourself", by chapter
@@ -42,7 +42,7 @@ export function renderPrint(root: HTMLElement, book: Book, opts: { back(): void 
   const doc = h('div', { class: 'print' }, pages);
   const el = h('div', { class: 'print-view' }, toolbar, doc);
 
-  // Print on Paper, whatever page colour the reader chose.
+  // Print on Paper, whatever theme the reader chose.
   const html = document.documentElement;
   const scheme = html.getAttribute('data-scheme');
   html.setAttribute('data-scheme', 'paper');
@@ -50,7 +50,7 @@ export function renderPrint(root: HTMLElement, book: Book, opts: { back(): void 
   root.append(el);
   void document.fonts.ready.then(() => requestAnimationFrame(() => { html.dataset.printReady = '1'; }));
 
-  // The PDF is always on Paper: no page colour here.
+  // The PDF is always on Paper: no theme here.
   const offMenu = useMenu({
     label: `${guideLabel(book)} · PDF`,
     title: book.title,
@@ -59,7 +59,7 @@ export function renderPrint(root: HTMLElement, book: Book, opts: { back(): void 
       h('button', { type: 'button', class: 'btn primary', onclick: () => { closeMenu(); print(); } }, 'Print or save as PDF'),
       h('button', { type: 'button', class: 'btn', onclick: () => { closeMenu(); opts.back(); } }, 'Back'),
     ],
-    pageColour: false,
+    theme: false,
     help: [HOLD_HELP],
   });
 
@@ -96,7 +96,6 @@ function cover(book: Book, plan: Plan): HTMLElement {
       book.subtitle ? h('p', { class: 'cover-sub' }, book.subtitle) : null,
       h('p', { class: 'cover-author' }, book.author),
       book.edition ? h('p', { class: 'cover-edition' }, book.edition) : null,
-      rich(book.lead, 'p', 'cover-lead'),
     ),
     bookMap(plan),
     h('nav', { class: 'pcontents', 'aria-label': 'Contents' },

@@ -26,7 +26,7 @@ reports them.
 ## Fiction — Story guide
 
 **Purpose:** follow the story while reading: who is who, who is where, what happens, chapter by
-chapter. Charts first, little text. Lead: the central situation, ≤ 35 words, never the ending.
+chapter. Charts first, little text.
 
 ### Across the chapters
 
@@ -72,7 +72,7 @@ Short-story collections: one chapter per story. Plays: one chapter per act.
 ## Non-fiction reading — Reading guide
 
 **Purpose:** understand the book and follow the argument while reading: what each chapter claims,
-the terms it uses, how the reasoning moves. Lead: the argument of the chapters covered, ≤ 35 words.
+the terms it uses, how the reasoning moves.
 
 No overview chapter: the book's concepts are shown in the chapters that introduce them
 (`references/concepts.md`). A map of real places, as for fiction, goes in the chapter whose
@@ -97,11 +97,10 @@ argument moves across them.
 ## Non-fiction done — Book summary
 
 **Purpose:** a summary of a finished book to keep and review: a short part per chapter of the
-book, in the book's order. Always the whole book. Lead: the whole argument, ≤ 35 words.
+book, in the book's order. Always the whole book.
 
-No overview chapter: no "book in one page" and no key concepts chapter. The whole argument is
-the cover's lead; each concept is shown in the chapter that introduces it
-(`references/concepts.md`).
+No overview chapter: no "book in one page" and no key concepts chapter. Each concept is shown
+in the chapter that introduces it (`references/concepts.md`).
 
 ### Chapter recipe
 
@@ -125,7 +124,6 @@ They come from `src/model/lint.ts`; a recipe above may be stricter.
 | Block | App · PDF-only |
 |---|---|
 | Labels | ≤ 5 words, sentence case, no full stop |
-| Book lead | ≤ 35 words |
 | summary | text 50 · 80 words; takeaway 22 · 30 |
 | points | 4 · 10 items; title 6 words; text 30 · 45 |
 | steps | 6 · 10 steps; 18 · 28 words each |

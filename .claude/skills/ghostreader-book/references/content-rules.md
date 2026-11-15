@@ -12,7 +12,7 @@ who's who, story threads, "the book in one page" or "where you stopped").
   life, reviews, reception, sales, adaptations, comparisons with other books.
 - Summaries and study guides may be used only to learn what the book says (summaries mode, below).
   Ignore their background, context and analysis sections.
-- Leads, takeaways and "why it matters" lines rest on what the book says or shows.
+- Takeaways and "why it matters" lines rest on what the book says or shows.
 - Only exceptions: the year of first publication (`year`); map outlines and place positions (map
   captions say so).
 
@@ -60,13 +60,13 @@ order**; summaries also leave out key events and give too much weight to the end
   "not in this guide yet", with their number only.
 - Read only the text up to the limit; with summaries, use only chapter-level sources for the
   included chapters. Ignore later events if a source mentions them.
-- Cover lead, cast roles and relations: as known at the limit.
+- Cast roles and relations: as known at the limit.
 - No words that hint at later events ("eventually", "will turn out", "in the end"). The validator
   reports the common ones; time marks inside a chapter ("{Later that night}") are fine.
 
 ## Spoilers in normal mode
 
-Lead, cast roles and relations never reveal twists, deaths, secret identities or the
+Cast roles and relations never reveal twists, deaths, secret identities or the
 ending, even for a whole-book guide: the reader may not have finished. Chapter screens may tell
 what happens in that chapter.
 

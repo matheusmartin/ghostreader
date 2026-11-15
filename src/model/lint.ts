@@ -22,7 +22,6 @@ const GUIDE_MADE = new Set(['S', 'B', 'K', 'W', 'T', 'M']);
 /** [app, pdf] limits. */
 type Lim = readonly [number, number];
 const L = {
-  lead: 35,
   label: 5,
   caption: 16,
   summary: [50, 80], takeaway: [22, 30],
@@ -85,9 +84,6 @@ export function lintBook(book: Book): string[] {
     const ws = text.split(/\s+/).filter((w) => /\p{L}/u.test(w) && !/^(I|II|III|IV|V|VI|Mr|Mrs|Ms|Dr|St|·)$/.test(w));
     if (ws.length >= 2 && ws.every((w) => /^[\p{Lu}]/u.test(w))) say(path, `"${field}" is in title case: use sentence case ("${sentenceCase(text)}")`);
   };
-
-  limit('', 'lead', book.lead, L.lead);
-  style('', book.lead);
 
   book.parts.forEach((part, pi) => part.chapters.forEach((ch, ci) => {
     const cp = `parts[${pi}].chapters[${ci}]`;

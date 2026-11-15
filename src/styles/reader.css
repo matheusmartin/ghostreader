@@ -229,7 +229,7 @@ html.menu-open, html.menu-open body { overflow: hidden; }
 
 .scheme-picker { margin-top: 18px; }
 .scheme-picker > .label { font-size: .66rem; margin-bottom: 8px; }
-.scheme-list { display: grid; grid-template-columns: repeat(auto-fill, minmax(4.1rem, 1fr)); gap: 8px 4px; }
+.scheme-list { display: grid; grid-template-columns: repeat(auto-fill, minmax(4.1rem, 1fr)); gap: 8px 10px; }
 .scheme-opt {
   display: flex;
   flex-direction: column;
@@ -242,6 +242,7 @@ html.menu-open, html.menu-open body { overflow: hidden; }
   text-align: center;
   color: var(--muted);
 }
+.scheme-opt { min-width: 0; }
 .scheme-opt[aria-checked="true"] { color: var(--ink); font-weight: 700; }
 .swatch-ring { padding: 2px; border-radius: 50%; border: 2px solid transparent; }
 .scheme-opt[aria-checked="true"] .swatch-ring { border-color: var(--ink); }

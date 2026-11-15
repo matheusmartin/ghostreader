@@ -1,5 +1,5 @@
 // The main screen: every book in src/books, one tile per guide. Each book opens at its cover, in
-// the style chosen in the menu. Everything else (style, page colour, full screen, install, update)
+// the style chosen in the menu. Everything else (style, theme, full screen, install, update)
 // is in the menu: hold anywhere (ui/menu.ts).
 
 import { h } from '../lib/dom.ts';
@@ -24,13 +24,12 @@ export function renderLibrary(root: HTMLElement, opts: LibraryOptions): { destro
     hint.replaceChildren(
       onUpdateReady.ready
         ? h('span', null, h('b', null, 'Update ready.'), ' Hold anywhere for the menu.')
-        : h('span', null, h('b', null, 'Hold'), ' anywhere for the menu: style, page colour and more.'),
+        : h('span', null, h('b', null, 'Hold'), ' anywhere for the menu: style, theme and more.'),
     );
   };
   const el = h('div', { class: 'library' },
     h('header', { class: 'lib-head' },
       h('h1', null, 'Ghostreader'),
-      h('p', null, 'Read with charts, infographics and summaries.'),
       hint,
     ),
     grid,
@@ -45,7 +44,6 @@ export function renderLibrary(root: HTMLElement, opts: LibraryOptions): { destro
   const offMenu = useMenu({
     label: 'Library',
     title: 'Ghostreader',
-    sub: 'Read with charts, infographics and summaries.',
     // The style books open in. A book without that style opens in Map (or its first style).
     top: () => {
       const offered = STYLES.filter((s) => guides.some((g) => g.styles[s]));

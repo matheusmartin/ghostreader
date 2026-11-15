@@ -56,7 +56,6 @@ html.printing body { background: var(--neg); }
 .pg-cover .cover-title { font-size: 34pt; margin-top: 4mm; }
 .pg-cover .cover-sub { font-size: 12pt; }
 .pg-cover .cover-author { font-size: 13pt; }
-.pg-cover .cover-lead { font-size: 11.5pt; }
 .pg-cover .bookmap { font-size: 9pt; }
 
 .pcontents { columns: 2; column-gap: 9mm; }

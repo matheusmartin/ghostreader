@@ -74,7 +74,6 @@ function cover(body: HTMLElement, ctx: ScreenContext) {
       b.subtitle ? h('p', { class: 'cover-sub' }, b.subtitle) : null,
       h('p', { class: 'cover-author' }, b.author),
       b.edition ? h('p', { class: 'cover-edition' }, b.edition) : null,
-      rich(b.lead, 'p', 'cover-lead'),
     ),
     bookMap(ctx.plan, { onPick: (ch) => ctx.jump(ch.first) }),
     h('p', { class: 'hint' }, 'Swipe up to begin'),
