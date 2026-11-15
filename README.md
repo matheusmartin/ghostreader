@@ -4,9 +4,10 @@ A progressive web app that helps you read a book with charts, infographics and s
 A chapter is a series of screens, and you move through them with your finger. Every book also has
 a downloadable A4 PDF with more detail, made from the same book file.
 
-Three guide types: **Story guide** (fiction: cast map, a "who is where" chart of each chapter's
-scenes, story threads), **Reading guide** (non-fiction, while you read) and **Book summary**
-(non-fiction, a finished book).
+Three guide types: **Story guide** (fiction: a "who is where" chart of each chapter's scenes, who
+is who and how they relate), **Reading guide** (non-fiction, while you read) and **Book summary**
+(non-fiction, a finished book). A guide holds only the book's own parts and chapters, in the
+book's order: no overview or key concepts chapter of its own.
 
 Every guide comes in four styles, to help you go back to a book after a long pause: **Map**
 (diagrams first), **Recap** (the story so far, in words), **Recall** (questions first, answers on a
@@ -109,7 +110,7 @@ Chapter 6" with the book file attached. The **ghostwriter-book** skill
    (`scripts/extract_book.py`). `work/` is in `.gitignore`: book text is never committed.
 2. Writes a fact sheet per chapter, every fact with its place in the text, and lists the book's
    own concepts and distinctions (for example Nexus's objective, subjective and intersubjective
-   reality). Each gets a chart in its chapter and a row in the K · Key concepts overview.
+   reality). Each gets a chart in the chapter that introduces it.
 3. Writes the Map file `src/books/<guide>-map.json` from the fact sheets, diagrams first, with
    PDF-only detail; then the texts of the other styles, from which `scripts/build_styles.py` builds
    the Recap, Recall and Layers files.
@@ -124,7 +125,7 @@ To write a book file by hand, follow [docs/content-format.md](docs/content-forma
 `npm run validate`.
 
 The library has **Nexus** by Yuval Noah Harari: a book summary of every chapter, written from the
-EPUB, in each of the four styles. Story guides for fiction use the same format: see the scenes and threads charts in
+EPUB, in each of the four styles. Story guides for fiction use the same format: see the scenes and network charts in
 [docs/content-format.md](docs/content-format.md).
 
 ## Code map

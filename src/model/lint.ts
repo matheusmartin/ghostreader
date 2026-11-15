@@ -7,13 +7,17 @@
 //               British spelling (-ise, colour, centre…); no quotations from the book
 //   spoilers    with "upTo": no words that look past the limit ("eventually", "in the end")
 //   charts      scene text with the {when} and [where] the book gives; ring links between neighbours
-//   concepts    a non-fiction guide has a written K · Key concepts overview chapter
+//   structure   only the book's own chapters: no guide-made overview chapter (S, B, K, W, T, M)
 //
 // `npm run validate` fails on any problem in a bundled book.
 
 import type { Book, NetworkChart, Screen, ScenesScreen } from './types.ts';
 
 type Target = 'app' | 'pdf';
+
+/** Numbers of the overview chapters earlier skill versions added (Where you stopped, The book in
+ * one page, Key concepts, Who's who, Story threads, map). A guide has only the book's chapters. */
+const GUIDE_MADE = new Set(['S', 'B', 'K', 'W', 'T', 'M']);
 
 /** [app, pdf] limits. */
 type Lim = readonly [number, number];
@@ -87,6 +91,9 @@ export function lintBook(book: Book): string[] {
 
   book.parts.forEach((part, pi) => part.chapters.forEach((ch, ci) => {
     const cp = `parts[${pi}].chapters[${ci}]`;
+    if (GUIDE_MADE.has(ch.number)) {
+      say(cp, `number "${ch.number}" marks a guide-made overview chapter ("${ch.title}"): a guide holds only the book's own chapters, so remove it`);
+    }
     const visit = (s: Screen, path: string, target: Target) => {
       screen(s, path, s.only ?? target);
       walkStrings(s, path, (p, text) => style(p, text));
@@ -98,13 +105,6 @@ export function lintBook(book: Book): string[] {
       sec.screens.forEach((s, i) => visit(s, `${sp}.screens[${i}]`, sec.only === 'pdf' ? 'pdf' : 'app'));
     });
   }));
-
-  // The book's own concepts and distinctions are shown in an overview chapter (skill: concepts.md).
-  if (book.type !== 'fiction') {
-    const k = book.parts.flatMap((p) => p.chapters).find((c) => c.number === 'K');
-    const written = (k?.screens?.length ?? 0) + (k?.sections?.reduce((n, s) => n + s.screens.length, 0) ?? 0) > 0;
-    if (!written) say('', 'add the "K · Key concepts" overview chapter, with screens: the book\'s concepts and distinctions');
-  }
   return out;
 
   function style(path: string, text: string) {

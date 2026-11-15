@@ -43,14 +43,15 @@ indirect · the members with a definition and an example each, in your own words
 
 Then, in the plan (step 4, kept as a list in `work/<id>/concepts.md`), gather every item from every
 fact sheet into one **concept inventory**, in book order, with the chapter that introduces each. A
-concept that later chapters build on is marked **core**: it goes into the overview's charts.
+concept that later chapters build on is marked **core**: it always gets a chart in the chapter
+that introduces it, and later chapters may name it again in their points.
 
 ## Show it (step 6)
 
 Every distinction (contrast, typology, views) gets a chart in the chapter that introduces it: the
 chapter's diagram, or one more chart in that chapter. A defined concept gets a chart when it has a
 shape to show (kinds, parts, causes, links); otherwise a key point names it. A minor item, met in
-one or two paragraphs and never built on, needs only its row in K · Key concepts. Choose the chart
+one or two paragraphs and never built on, needs only a key point or its row in "Terms". Choose the chart
 by the shape of the idea:
 
 | Shape | Chart | How |
@@ -66,17 +67,18 @@ by the shape of the idea:
 
 Then:
 
-- **K · Key concepts** (overview chapter, non-fiction; `references/guides.md`): the core items as
-  charts, and every item as a row in a `list` "Key concepts" (name in the book's words, a
-  definition ≤ 18 words, `meta` the chapter: "Ch 2"). The app list holds up to 8 rows; a fuller
-  `only: "pdf"` list holds all of them.
+- **No key concepts chapter.** The guide has only the book's own chapters
+  (`references/guides.md`), so each concept lives in the chapter that introduces it: its chart,
+  and its row in that chapter's PDF-only `list` "Terms" (name in the book's words, a definition
+  ≤ 18 words). A minor item needs only the key point or the Terms row.
 - **Points and terms** may name a concept again, but a concept that appears only in text has not
   been shown: it still needs its chart.
-- With a limit (`upTo`): only concepts introduced up to the limit, in the chapters and in K.
+- With a limit (`upTo`): only concepts introduced up to the limit.
 
 ## Check it (step 7)
 
-Go through the inventory line by line and find each item on a screen: its chart in the chapter
-that introduces it (minor items excepted), and its row in K · Key concepts. Add what is missing. Then read the chapter's
+Go through the inventory line by line and find each item on a screen of the chapter that
+introduces it: its chart (minor items excepted), a key point or its row in "Terms". Add what is
+missing. Then read the chapter's
 text once more for a distinction you did not record: a pair of terms set against each other more
 than once is the most common miss.

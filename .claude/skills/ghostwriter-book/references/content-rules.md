@@ -3,6 +3,9 @@
 ## Book content only
 
 Everything in a guide comes from the book: its text, its table of contents, its copyright page.
+Its structure too: the guide has the book's parts and chapters, in the book's order, under the
+book's names, and no chapter, part, section or label of its own (no overview, key concepts,
+who's who, story threads, "the book in one page" or "where you stopped").
 
 - Never add, mention or rely on information from outside the book, even when it is true:
   background, history, dates, numbers, people or places the book does not mention, the author's
@@ -57,13 +60,13 @@ order**; summaries also leave out key events and give too much weight to the end
   "not in this guide yet", with their number only.
 - Read only the text up to the limit; with summaries, use only chapter-level sources for the
   included chapters. Ignore later events if a source mentions them.
-- Cover lead, overview chapters, cast roles, thread names and relations: as known at the limit.
+- Cover lead, cast roles and relations: as known at the limit.
 - No words that hint at later events ("eventually", "will turn out", "in the end"). The validator
   reports the common ones; time marks inside a chapter ("{Later that night}") are fine.
 
 ## Spoilers in normal mode
 
-Lead, cast roles, relations and thread names never reveal twists, deaths, secret identities or the
+Lead, cast roles and relations never reveal twists, deaths, secret identities or the
 ending, even for a whole-book guide: the reader may not have finished. Chapter screens may tell
 what happens in that chapter.
 

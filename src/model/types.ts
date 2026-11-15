@@ -4,8 +4,8 @@
 //
 // Hierarchy:  Book → Part → Chapter → Section (optional) → Screen
 //   Part     a part or volume of the book ("Part I · Human Networks"); a book without parts has one.
-//   Chapter  any unit of the book's table of contents: prologue, chapter, epilogue, appendix,
-//            and the guide's own overview pages (Who's who, The book in one page…).
+//   Chapter  any unit of the book's table of contents: prologue, chapter, epilogue, appendix.
+//            Only the book's own: a guide adds no overview chapter of its own.
 //   Section  an optional group of screens inside a chapter ("Key concepts", "Test yourself").
 //   Screen   one piece of information: what one swipe shows. In the PDF, one block.
 //
@@ -67,7 +67,7 @@ export interface Source {
 
 export interface Part {
   id: string;
-  /** Short name: "Part I", "Volume Two", "Opening". */
+  /** The book's short name for the part: "Part I", "Volume Two". Leave out for a prologue or epilogue outside the parts. */
   label?: string;
   /** Name the book gives the part: "Human Networks". */
   title?: string;
@@ -76,7 +76,7 @@ export interface Part {
 
 export interface Chapter {
   id: string;
-  /** "05", "P" (prologue), "E" (epilogue), "B" (book in one page)… */
+  /** "05", "P" (prologue), "E" (epilogue), "A1" (appendix)… */
   number: string;
   /** The real title; an untitled chapter is "Chapter 7". */
   title: string;

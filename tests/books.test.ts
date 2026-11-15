@@ -36,10 +36,10 @@ describe('bundled books', () => {
     for (const [guide, styles] of guides) expect(styles.sort(), guide).toEqual(['layers', 'map', 'recall', 'recap']);
   });
 
-  it('keeps title, author and chapters the same across the styles of a guide', () => {
+  it('keeps title, author, parts and chapters the same across the styles of a guide', () => {
     const books = Object.values(files) as Book[];
     const shape = (b: Book) => JSON.stringify([b.title, b.author, b.type, b.upTo,
-      b.parts.slice(1).map((p) => p.chapters.map((c) => [c.id, c.number, c.title]))]);
+      b.parts.map((p) => [p.label, p.title, p.chapters.map((c) => [c.id, c.number, c.title])])]);
     for (const b of books) {
       const map = books.find((m) => m.guide === b.guide && m.style === 'map');
       expect(shape(b), b.id).toBe(shape(map!));

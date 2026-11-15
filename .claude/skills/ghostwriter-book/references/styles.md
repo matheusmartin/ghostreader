@@ -4,8 +4,8 @@ The app's main job is to help a reader **go back to a book after a long pause**:
 happened or what was argued, remember the concepts, and know where they stopped. A style is a way
 to summarise for that job. The type (Story guide, Reading guide, Book summary) says what the book
 is; the style says how the guide summarises it. Every style keeps the same rules: book content
-only, anchors, concept inventory and K · Key concepts (or W · Who's who for fiction), the limits
-of `src/model/lint.ts`, and the checks.
+only, the book's own parts and chapters only (no overview or other guide-made chapter), anchors,
+the concept inventory, the limits of `src/model/lint.ts`, and the checks.
 
 **Every guide is written in all four styles**, one file each, so the reader can choose and switch:
 `src/books/<guide>-map.json`, `-recap.json`, `-recall.json`, `-layers.json`, each with
@@ -25,38 +25,19 @@ Recall and Layers files from both (see "The styles file" below).
 | **Recall** | Questions first, answers on a tap | You want it to stick, and accept a little effort | Retrieval beats rereading on delayed tests (Roediger and Karpicke 2006); questions before review improve memory of what they ask, even when answered wrongly (pretesting research) |
 | **Layers** | One line, then three points, then the detail | You want to choose how deep to go | Readers prefer a hierarchy of summaries to a flat one and learn as much (Christensen et al. 2014: 92% preferred it); readers scan overviews, then section summaries, then detail |
 
-## Overview chapter `S`
+## No overview chapter
 
-Recap, Recall and Layers open with an overview chapter numbered `S`, before `K`. With a limit
-(`upTo`) it covers everything up to the limit and never anything after it, and it ends where the
-reader stopped. A Book summary covers the whole book, so its `S` has no "where you stopped" screen
-or open questions; instead, every chapter can be the place to resume (Recap: "Before this
-chapter").
-
-| Style | `S` with a limit | `S` in a Book summary |
-|---|---|---|
-| Recap | Where you stopped | The book in brief: the whole argument, chapter by chapter, the argument map |
-| Recall | Warm-up | Warm-up: one question per chapter, then the book in brief |
-| Layers | The book so far | The book at a glance: the book in one line, in one paragraph, one line per chapter, the argument map |
+No style adds a chapter of its own: every file has exactly the book's parts and chapters. What
+helps a reader resume sits inside the chapters: Recap's "Before this chapter" (everything before
+it), Recall's "Try to remember" questions, Layers' "The argument so far" chart. With a limit
+(`upTo`), nothing in any chapter looks past the limit.
 
 ## Map
 
-The recipes in `references/guides.md`, unchanged. Overview: the type's chapters (B, K; W, T, M
-for fiction). Chapters: summary, the chapter's diagrams, key points, the logic, examples.
+The recipes in `references/guides.md`, unchanged: summary, the chapter's diagrams, key points,
+the logic, examples.
 
 ## Recap
-
-**S · Where you stopped**
-1. `summary` "The story so far": the book up to the limit in ≤ 50 words (fiction: what has
-   happened; non-fiction: the argument so far). Takeaway "Keep in mind": the one idea to carry on
-   with.
-2. `list` "Chapter by chapter": one row per chapter covered, name "03 · Short title", ≤ 18 words.
-   More than eight chapters: split the list, or group by part.
-3. `summary` "Where you stopped": the end of the last chapter covered, in more detail (≤ 50
-   words). Takeaway "Next in the book" only when the text itself says what comes next.
-4. `chart` "The argument so far" (`flow`) or, for fiction, "Characters so far" (`network`).
-5. `list` "Open questions": questions or threads the book has raised and not yet answered, as
-   the text raises them (`meta`: the chapter). Never guess at answers.
 
 **Chapters**
 | Screen | Limit |
@@ -70,15 +51,6 @@ for fiction). Chapters: summary, the chapter's diagrams, key points, the logic, 
 
 ## Recall
 
-**S · Warm-up**
-1. `quiz` "Warm-up" screens, three questions each: at least one per chapter covered and two or
-   three on the last chapter. Questions about the main points, not trivia.
-2. `summary` "Where you stopped", as in Recap, after the questions.
-
-**K · Key concepts** (fiction: W · Who's who): the core charts, then `quiz` "Concept cards"
-(question "What is …?", answer = the definition) in screens of three. The full list stays as a
-PDF-only `list`.
-
 **Chapters**
 | Screen | Limit |
 |---|---|
@@ -89,11 +61,6 @@ PDF-only `list`.
 | PDF: `text` "The chapter in full", `list` "Terms" | as in the Map recipes |
 
 ## Layers
-
-**S · The book so far**
-1. `list` "In one line each": one row per chapter, ≤ 12 words.
-2. `summary` "In one paragraph": the book up to the limit, ≤ 50 words.
-3. `chart` "The argument so far" (`flow`, groups by part).
 
 **Chapters**
 | Screen | Limit |
@@ -126,14 +93,7 @@ quotations, the same limits). `scripts/build_styles.py` reads it with the Map fi
       "remember": [{ "title": "Intersubjective reality", "text": "Laws, gods, nations and money …" }],
       "questions": [{ "q": "Is a pizza's price objective, subjective or intersubjective?", "a": "Intersubjective …" }]
     }
-  },
-  "overview": {
-    "recap": { "id": "book-in-brief", "title": "The book in brief", "screens": [] },
-    "recall": { "id": "warm-up", "title": "Warm-up", "screens": [] },
-    "layers": { "id": "book-at-a-glance", "title": "The book at a glance", "screens": [] }
-  },
-  "cards": [{ "q": "What is intersubjective reality?", "a": "What exists in the communication between many minds …" }],
-  "recall_charts": ["Three views of information", "Three kinds of reality"]
+  }
 }
 ```
 
@@ -144,13 +104,12 @@ quotations, the same limits). `scripts/build_styles.py` reads it with the Map fi
 | `chapters.<id>` | all three | one entry per written chapter (the script stops when one is missing) |
 | `main` | all three | label of the chapter's main diagram in the Map file (default: its first chart or scenes) |
 | `before` | Recap | "Before this chapter", ≤ 50 words; leave out in the first chapter |
-| `line` | Layers, S | the chapter in one sentence, ≤ 12 words |
+| `line` | Layers | the chapter in one sentence ("In one line"), ≤ 20 words |
 | `point`, `key` | Layers | the point the chapter adds (≤ 7 words, an item of later charts) and its conclusion (≤ 10 words) |
 | `recap`, `moments`, `remember` | Recap | as in the Recap recipe |
 | `questions` | Recall | three, as in the Recall recipe |
-| `overview.<style>` | each | the `S` chapter: its id, title and screens, written as book screens |
-| `cards`, `recall_charts` | Recall | concept cards for K (screens of three), and which K charts Recall keeps |
 
-The Map file keeps The book in one page (`B`); the other styles replace it with their `S`. Fix a
-diagram, a key point or PDF detail in the Map file and run the script again: the other files are
-generated and never edited by hand.
+The script copies the Map file's parts and chapters as they are and adds nothing: it stops when
+the Map file has a guide-made chapter (number `S`, `B`, `K`, `W`, `T` or `M`). Fix a diagram, a
+key point or PDF detail in the Map file and run the script again: the other files are generated
+and never edited by hand.

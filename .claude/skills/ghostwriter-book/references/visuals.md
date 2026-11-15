@@ -13,8 +13,8 @@ chose, on a phone and (wider, with more room) in the PDF; there is nothing to la
 | The content is… | Use | Key element (accent) |
 |---|---|---|
 | who is in which scene, who meets whom (fiction chapter) | `scenes` | the turning-point scene |
-| who is who and how people relate (fiction overview) | `chart: "network"` (cast map) | the main character (centre) |
-| where each plotline moves (fiction overview) | `chart: "threads"` | none: a data chart |
+| who is who and how people relate (fiction chapter: "Relations now") | `chart: "network"` (relations) | the main character (centre) |
+| where each plotline moves across chapters | `chart: "threads"` (not in the recipes: a guide has no overview chapter to hold it) | none: a data chart |
 | how concepts connect; what supports or weakens what | `chart: "network"` (concept map), `arrow: true` for direction | the central idea (centre) |
 | kinds the book defines (three kinds of reality), each with a definition | `chart: "flow"`, one group per kind | the `key`: what the set means |
 | kinds told apart by examples or features | `chart: "matrix"` (kinds as columns or rows) | the `focus` row, the `key` |

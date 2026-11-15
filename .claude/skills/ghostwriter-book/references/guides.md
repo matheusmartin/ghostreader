@@ -3,56 +3,44 @@
 These are the recipes of the Map style, the file every guide starts with. Recap, Recall and Layers
 are built from it (`references/styles.md`); everything else here applies to every style.
 
-Every guide has the same frame: a first part `{ "id": "overview", "label": "Overview" }` with the
-overview chapters, then the book's own parts and chapters in order (a book without parts has one
-part without a label). Only the sections the book's contents list has: never add a prologue,
-introduction or epilogue. The whole book uses one colour scheme, so there is no colour field. The
-app adds the cover, the chapter openers and the end screen; the PDF adds a cover with contents and
-an answers page.
+Every guide has the same frame: the book's own parts and chapters, in the book's order, under the
+book's names, and nothing else. A book without parts has one part without a label; a prologue or
+epilogue outside the book's parts sits in a part without a label. Never add a chapter, part,
+section or label of the guide's own: no overview, key concepts, who's who, story threads, map or
+"the book in one page" chapter, no prologue, introduction or epilogue the book does not have, no
+part labels such as "Overview", "Opening" or "Closing". Each chapter's screens summarise that
+chapter. The whole book uses one colour scheme, so there is no colour field. The app adds the
+cover, the chapter openers and the end screen; the PDF adds a cover with contents and an answers
+page.
 
 Each recipe lists the **app screens** in order, then the **PDF-only blocks**. App screens must
 fit a phone (`npm run check:screens`); PDF-only blocks carry the detail. When the app and the PDF
 need two sizes of the same block, write both: the short one `"only": "app"`, the full one
 `"only": "pdf"`.
 
-Overview chapter numbers: `W` Who's who, `T` Story threads, `M` map, `B` The book in one page,
-`K` Key concepts. Book chapters: `"01"`, `"02"`…; `P` prologue or preface, `I` introduction, `E`
-epilogue, `C` conclusion, `A1` appendix.
+Chapter numbers: `"01"`, `"02"`…; `P` prologue or preface, `I` introduction, `E` epilogue, `C`
+conclusion, `A1` appendix, each only when the book has that section. The letters `S`, `B`, `K`,
+`W`, `T` and `M` marked the guide-made overview chapters of earlier versions; `npm run validate`
+reports them.
 
 ## Fiction — Story guide
 
-**Purpose:** follow the story while reading: who is who, who is where, what happens, which threads
-move. Charts first, little text. Lead: the central situation, ≤ 35 words, never the ending.
+**Purpose:** follow the story while reading: who is who, who is where, what happens, chapter by
+chapter. Charts first, little text. Lead: the central situation, ≤ 35 words, never the ending.
 
-### Overview chapters
+### Across the chapters
 
-**W · Who's who** (as known at the limit)
-- App: `chart: "network"`, label "Characters" (with a limit: "Characters to Chapter 6"). Centre:
-  the main character (1–2 names). Nodes: up to 10 others, in ring order, grouped (family,
-  household, faction), each with `note` = the group. Links: the most important relations only,
-  labels ≤ 4 words ("Sisters", "Bad start", "Admires her"); linked ring nodes next to each other.
-  `only: "app"` when the PDF has a fuller map.
-- App: `list` "Cast": every character on the map: name, role ≤ 18 words, `meta` = group.
-  At most 8 rows a screen: split into "Cast" and "Cast, continued" when needed.
-- PDF-only: a fuller `network` (up to 16 nodes, 18 links) and a full cast `list` (every named
-  character, up to 30 rows).
-
-**T · Story threads**
-- App: `summary` "Story so far" (≤ 50 words, only the chapters covered, in order).
-- App: `chart: "threads"`: `columns` = the chapter numbers covered; 3–8 threads, names ≤ 3 words
-  (never how a thread ends); `appears` and `major` per thread; `text` ≤ 15 words on what the
-  thread is about. The app splits a long tracker into 18-chapter charts and adds the thread list.
-
-**M · Where the story happens** — only when the story moves between real places that matter.
-- App: `figure` with the SVG from `scripts/map.py` (`--width 340`), alt text, caption "Today's
-  borders; places from outside the book". Then `list` "Places": number and the book's name for the
-  place, what happens there (≤ 18 words), `meta` "Ch 3".
-- Invented places get no map. A story that stays in one town gets no map.
-
-**K · The story's world** — only when the story has concepts of its own that the plot depends on
-(ranks, laws, codes, invented words, a magic system; `references/concepts.md`).
-- One chart per concept (as for non-fiction K), then `list` "Key concepts" with the chapter where
-  each first appears. With a limit, only what the reader has met by then.
+There is no cast map, thread tracker or map chapter. What a reader needs to keep sits in the
+chapter where the book gives it:
+- **Who is who**: `points` "Who they are" in every chapter (new people first), and a `network`
+  "Relations now" in the first chapter that brings the main cast together and in each chapter that
+  changes many relations: as known at the end of that chapter.
+- **Real places**: when the story moves between real places that matter, a `figure` with the SVG
+  from `scripts/map.py` (`--width 340`) in the chapter that moves, with only that chapter's places,
+  alt text and the caption "Today's borders; places from outside the book". Invented places, or a
+  story that stays in one town, get no map.
+- **The story's own concepts** (ranks, laws, codes, invented words, a magic system;
+  `references/concepts.md`): a chart in the chapter that introduces each.
 
 ### Chapter recipe
 
@@ -71,7 +59,8 @@ move. Charts first, little text. Lead: the central situation, ≤ 35 words, neve
 | In short | 1–2 sentences, ≤ 35 words; Why it matters: 1 sentence ≤ 20 words, nothing from later chapters |
 | Scenes | 3–8 scenes in book order, one `key` (the turning point), ≤ 8 people; scene text one or two sentences ≤ 35 words with the time `{when}` and the place `[where]` woven in, as far as the book gives them (one of each, at least one) |
 | Who they are | 2–4 people: new people first (`tag: "New"` on a first appearance in the book; none in the first chapter), then people whose role or relation changes here; ≤ 25 words each |
-| Optional | a `network` "Relations now" when the chapter changes many relations; a `timeline` when it jumps in time; a `quiz` "Test yourself" (1–2 questions) last |
+| Relations now | `network`: in the first chapter that brings the main cast together and when the chapter changes many relations (see above); centre the main character, up to 10 others in ring order, link labels ≤ 4 words |
+| Optional | a `figure` map (see above); a `timeline` when it jumps in time; a `quiz` "Test yourself" (1–2 questions) last |
 | PDF: What happens in full | 150–300 words, events in order, your own words |
 | PDF: Everyone in this chapter | every named person who appears: who they are and what they do here (≤ 20 words) |
 
@@ -85,10 +74,9 @@ Short-story collections: one chapter per story. Plays: one chapter per act.
 **Purpose:** understand the book and follow the argument while reading: what each chapter claims,
 the terms it uses, how the reasoning moves. Lead: the argument of the chapters covered, ≤ 35 words.
 
-### Overview chapters
-
-- **K · Key concepts** (required; `references/concepts.md`), up to the limit: as for Book summary.
-- Optional `M` map, as for fiction, when the book's argument moves across real places.
+No overview chapter: the book's concepts are shown in the chapters that introduce them
+(`references/concepts.md`). A map of real places, as for fiction, goes in the chapter whose
+argument moves across them.
 
 ### Chapter recipe
 
@@ -108,27 +96,12 @@ the terms it uses, how the reasoning moves. Lead: the argument of the chapters c
 
 ## Non-fiction done — Book summary
 
-**Purpose:** a summary of a finished book to keep and review: the whole argument, then a short
-part per chapter. Always the whole book. Lead: the whole argument, ≤ 35 words.
+**Purpose:** a summary of a finished book to keep and review: a short part per chapter of the
+book, in the book's order. Always the whole book. Lead: the whole argument, ≤ 35 words.
 
-### Overview chapters
-
-**B · The book in one page**
-- `summary` "Thesis" (2 sentences ≤ 40 words) + takeaway "One thing" (≤ 20 words: if the reader
-  remembers one thing).
-- `chart: "flow"` "The argument": `start` = the opening question; one group per part (label "Part
-  I · Title", 2–3 points ≤ 6 words); `key` = the conclusion.
-- `steps` "Main claims": 5 claims ≤ 18 words, in book order.
-- `chart: "network"` "The big ideas": the central idea in the centre, the book's main concepts on
-  the ring, labelled links (how they relate).
-- `list` "How the parts connect": one row per part, ≤ 20 words: what it adds to the argument.
-
-**K · Key concepts** (required; `references/concepts.md`)
-- One chart per core concept or distinction, in book order: the views of the book's main subject,
-  its typologies, its central contrasts (2–5 charts).
-- `list` "Key concepts", `only: "app"`: the eight most important items: name in the book's words,
-  definition ≤ 18 words, `meta` the chapter ("Ch 2").
-- `list` "Key concepts", `only: "pdf"`: every item of the concept inventory, in book order.
+No overview chapter: no "book in one page" and no key concepts chapter. The whole argument is
+the cover's lead; each concept is shown in the chapter that introduces it
+(`references/concepts.md`).
 
 ### Chapter recipe
 

@@ -4,10 +4,7 @@ import type { Book, Screen } from '../src/model/types.ts';
 
 const bookWith = (screens: Screen[], extra: Partial<Book> = {}): Book => ({
   format: 1, id: 'b', type: 'reading', title: 'B', author: 'C', lead: 'A short lead.',
-  parts: [{ id: 'p', chapters: [
-    { id: 'c', number: '01', title: 'One', screens },
-    { id: 'k', number: 'K', title: 'Key concepts', screens: [{ type: 'list', label: 'Key concepts', rows: [{ name: 'Term', text: 'A short definition.' }] }] },
-  ] }],
+  parts: [{ id: 'p', chapters: [{ id: 'c', number: '01', title: 'One', screens }] }],
   ...extra,
 });
 
@@ -62,9 +59,15 @@ describe('lintBook', () => {
     expect(problems[0]).toContain('"A" and "C" are not next to each other');
   });
 
-  it('asks non-fiction guides for a K · Key concepts chapter, but not fiction', () => {
-    const noK: Partial<Book> = { parts: [{ id: 'p', chapters: [{ id: 'c', number: '01', title: 'One', screens: [] }] }] };
-    expect(lintBook(bookWith([], noK))).toContain('add the "K · Key concepts" overview chapter, with screens: the book\'s concepts and distinctions');
-    expect(lintBook(bookWith([], { ...noK, type: 'fiction' }))).toEqual([]);
+  it('reports guide-made overview chapters: a guide holds only the book\'s own chapters', () => {
+    const withK: Partial<Book> = { parts: [{ id: 'p', chapters: [
+      { id: 'c', number: '01', title: 'One', screens: [] },
+      { id: 'k', number: 'K', title: 'Key concepts', screens: [{ type: 'list', label: 'Key concepts', rows: [{ name: 'Term', text: 'A short definition.' }] }] },
+    ] }] };
+    expect(lintBook(bookWith([], withK))).toEqual([
+      'parts[0].chapters[1]: number "K" marks a guide-made overview chapter ("Key concepts"): a guide holds only the book\'s own chapters, so remove it',
+    ]);
+    expect(lintBook(bookWith([], { ...withK, type: 'fiction' }))).toHaveLength(1);
+    expect(lintBook(bookWith([]))).toEqual([]);
   });
 });

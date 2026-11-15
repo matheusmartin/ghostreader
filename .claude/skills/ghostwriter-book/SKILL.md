@@ -1,8 +1,8 @@
 ---
 name: ghostwriter-book
-description: Writes or updates a book guide for the Ghostwriter app in this repository - four files, one per style (Map, Recap, Recall, Layers), src/books/<guide>-<style>.json, each making both the swipe screens and a downloadable A4 PDF; the library shows them as one tile with a style choice. Three types, chosen by the user - Story guide (fiction - cast map, scene charts of who is where, story threads), Reading guide (non-fiction, to follow the argument while reading) and Book summary (non-fiction, a finished book). Reads the book from an EPUB, PDF, text, Markdown or HTML file, or from summaries when no file is given. Diagrams first - networks, flows, cycles, timelines - text only where a picture cannot carry the idea. Use when the user asks to add, write, summarise, update or regenerate a book, story guide, reading guide, book summary, infographic or PDF for the app, even if they only name the book. Do not use for a short summary in chat, book recommendations, reviews, or changes to the app's code.
+description: Writes or updates a book guide for the Ghostwriter app in this repository - four files, one per style (Map, Recap, Recall, Layers), src/books/<guide>-<style>.json, each making both the swipe screens and a downloadable A4 PDF; the library shows them as one tile with a style choice. The guide holds only the book's own parts and chapters, in the book's order - no overview, key concepts or other guide-made chapter. Three types, chosen by the user - Story guide (fiction - scene charts of who is where, who is who, relations), Reading guide (non-fiction, to follow the argument while reading) and Book summary (non-fiction, a finished book). Reads the book from an EPUB, PDF, text, Markdown or HTML file, or from summaries when no file is given. Diagrams first - networks, flows, cycles, timelines - text only where a picture cannot carry the idea. Use when the user asks to add, write, summarise, update or regenerate a book, story guide, reading guide, book summary, infographic or PDF for the app, even if they only name the book. Do not use for a short summary in chat, book recommendations, reviews, or changes to the app's code.
 metadata:
-  version: "1.3.0"
+  version: "1.4.0"
 compatibility: Node 22 with `npm install` done (Vitest; Playwright with Chromium for the screen check and the PDF). Python 3.9+ for the book extractor and maps; PDF books also need poppler-utils (pdftotext) or the pypdf package.
 ---
 
@@ -19,6 +19,10 @@ four; the library shows them as one tile with a style choice. The app shows each
 Principles:
 - **Book content only.** Everything comes from the book. Nothing from outside it
   (`references/content-rules.md`).
+- **The book's structure only.** The guide's contents list is the book's contents list: the same
+  parts and chapters, in the same order, under the book's names. The guide adds no chapter, part,
+  section or label of its own: no overview, key concepts, who's who, story threads, map, "the book
+  in one page" or "where you stopped" chapter. Each chapter's screens summarise that chapter.
 - **Show, then tell.** Each idea gets the diagram that shows its links: who is with whom, what
   causes what, what feeds back. Text carries what a picture cannot (`references/visuals.md`).
 - **Every claim is traceable.** Facts come from the extracted text with an anchor (section and
@@ -68,11 +72,12 @@ Copy this checklist into the task list and tick it off:
 - [ ] 2 Read docs/content-format.md, references/guides.md (the type), references/styles.md (the
         style), references/visuals.md, references/concepts.md, references/content-rules.md, references/writing-style.md
 - [ ] 3 Text: extract the book file into work/<id>/source (or gather summaries)
-- [ ] 4 Plan: id, parts, chapters (real titles and word counts), overview chapters, cast and threads
+- [ ] 4 Plan: id, the book's own parts and chapters (real titles and word counts), concept
+        inventory; fiction: the cast
 - [ ] 5 Fact sheets: work/<id>/facts/<chapter-id>.md, every fact with its anchor, and the
         concepts and distinctions the chapter introduces (references/concepts.md)
 - [ ] 6 Write the Map file src/books/<guide>-map.json chapter by chapter: app screens, then
-        PDF-only detail; a visual for every distinction, and the K · Key concepts overview
+        PDF-only detail; a visual for every distinction, in the chapter that introduces it
 - [ ] 6b Write work/<guide>/styles.json and run scripts/build_styles.py: the Recap, Recall and
         Layers files (references/styles.md)
 - [ ] 7 Verify every chapter against its anchors and the concept inventory; fix what does not hold
@@ -108,16 +113,21 @@ scenes.
 - **Parts and chapters** from `toc.json`: every chapter of the book, in order, with its real
   title (untitled: "Chapter 7"), number and `length` (its word count; all chapters or none). Part
   titles are kickers, not pages. Chapters after the limit are listed without screens.
-- **Only the book's own sections.** A prologue, preface, introduction, epilogue, conclusion or
-  appendix is in the guide only if the book's contents list has it, under the book's name for it.
-  Never add one, and never turn the first chapter into an "Introduction". The overview chapters
-  below are the guide's own and always sit in the Overview part, never among the book's parts.
-- **Overview chapters** for the type (`references/guides.md`), in a first part labelled
-  "Overview". There is no colour field: the whole book uses one colour scheme.
+- **Only the book's own parts, chapters and sections.** A prologue, preface, introduction,
+  epilogue, conclusion or appendix is in the guide only if the book's contents list has it, under
+  the book's name for it. Never add one, never turn the first chapter into an "Introduction", and
+  never add a chapter of the guide's own (overview, key concepts, who's who, story threads, map,
+  the book in one page, where you stopped).
+- **Part labels from the book.** Use the book's own part labels and titles ("Part I", "Human
+  Networks"). A prologue or epilogue outside the book's parts goes in a part with no `label` and
+  no `title` (the app shows the book's title as its kicker). Never invent a label such as
+  "Overview", "Opening" or "Closing". There is no colour field: the whole book uses one colour
+  scheme.
 - **Concept inventory** (`references/concepts.md`): every concept the book defines and every
   distinction it draws, directly or indirectly, with the chapter that introduces it.
-- Fiction: the cast (who is main, groups), 3–8 thread names, and whether real places matter
-  (a map). Non-fiction: the book's own terms, and which diagram fits each chapter.
+- Fiction: the cast (who is main, groups), and whether real places matter (a map in the
+  chapters where the story moves between them). Non-fiction: the book's own terms, and which
+  diagram fits each chapter.
 
 **5 · Fact sheets.** Read each chapter's text file in full and write
 `work/<id>/facts/<chapter-id>.md`: only what the text says, each line with its anchor.
@@ -143,8 +153,7 @@ chapters, send a short progress note after each part.
 
 **6b · The other styles.** From the same fact sheets, write `work/<guide>/styles.json`: per chapter
 one line, the point it adds, a recap, key moments, the concepts to remember, three questions, and
-"before this chapter"; plus the `S` overview screens of each style and the concept cards. The format
-is in `references/styles.md`. Then build the three files:
+"before this chapter". The format is in `references/styles.md`. Then build the three files:
 
 ```bash
 python3 -I .claude/skills/ghostwriter-book/scripts/build_styles.py src/books/<guide>-map.json work/<guide>/styles.json
@@ -155,8 +164,10 @@ the Map file and run it again; never edit the generated files by hand.
 
 **7 · Verify.** For each chapter, check every name, scene, relation, claim and number against its
 anchor in the text. Then go through the concept inventory: every concept and distinction must
-appear on a screen (a chart for each distinction, in the chapter that introduces it, and a row in
-K · Key concepts); add what is missing. If you can start a subagent, give it the chapter's text file and the
+appear on a screen of the chapter that introduces it (a chart for each distinction; a chart, a key
+point or a row in the PDF-only "Terms" list for each concept); add what is missing. Last, compare
+the guide's contents with the book's contents list: remove any chapter, part or label the book
+does not have. If you can start a subagent, give it the chapter's text file and the
 chapter's JSON and ask for a claim-by-claim check (fresh eyes find more: research found that
 summarisers err most on what characters feel, want or know, on relations, and on the order of
 events). Fix or remove each claim that does not hold; never "improve" one from memory.
@@ -203,24 +214,27 @@ asked for); never `work/`. Then write:
 - Diagrams first: every chapter has at least one chart; at least half of a chapter's app screens
   are charts, scenes or figures (`references/visuals.md`).
 - Concepts and distinctions the book introduces are shown, not just named: a chart for each in
-  the chapter that introduces it, and every one in K · Key concepts (`references/concepts.md`).
+  the chapter that introduces it (`references/concepts.md`).
 - Tests are welcome but come last: at most one quiz per chapter, after the visuals.
 - One idea per app screen, within the limits; more detail goes in PDF-only blocks.
-- One colour scheme for the whole book; only the guide's overview chapters and the book's own
-  sections, never an invented prologue or introduction.
+- One colour scheme for the whole book. Only the book's own parts, chapters and sections: no
+  overview or key concepts chapter, no invented prologue, introduction or part label.
 
 ## Common mistakes
 
 - Writing only one style → every guide has all four files; the library shows one tile per guide.
 
 - A concept the book defines, or a contrast it builds across chapters, only mentioned in a text
-  block → give it a chart (`references/concepts.md`) and a row in K · Key concepts.
-- A "Prologue" or "Introduction" chapter that the book's contents list does not have → remove it.
+  block → give it a chart in the chapter that introduces it (`references/concepts.md`).
+- A chapter, part or label the book's contents list does not have ("Key concepts", "The book in
+  one page", "Who's who", "Warm-up", "Overview", "Opening", an invented "Prologue" or
+  "Introduction") → remove it. The guide's contents are the book's contents; `npm run validate`
+  reports the old overview chapter numbers (S, B, K, W, T, M).
 
 - Writing from memory or a study guide when the book file is there → write from the fact sheet.
 - A wall of points and steps with one chart → find the diagram: who connects to whom, what leads
   to what, what loops back.
-- A cast map whose linked nodes sit on opposite sides of the ring → list linked nodes next to
+- A relations network whose linked nodes sit on opposite sides of the ring → list linked nodes next to
   each other in `nodes`, or link them to the centre.
 - Scene text without `{when}` or `[where]`, or a "when · where" heading in front of it → weave
   them into the sentence: "{That night} Maude waits in [the kitchen]." Mark only what the book
@@ -230,7 +244,7 @@ asked for); never `work/`. Then write:
 - The same block in the app and in the PDF twice → an app version `only: "app"` and a fuller
   `only: "pdf"` version.
 - Inventing a chapter title, a year, a place or a number → leave it out.
-- A thread name or cast role that gives away the ending, or "eventually" with a limit.
+- A cast role or relation label that gives away the ending, or "eventually" with a limit.
 - Committing `work/` or quoting the book: the repository and the site are public.
 
 ## Reference files
@@ -238,7 +252,7 @@ asked for); never `work/`. Then write:
 | File | Read when |
 |---|---|
 | `docs/content-format.md` | step 2: every screen and chart type, with its JSON fields |
-| `references/guides.md` | step 2: the type's overview chapters, chapter recipe, PDF detail and limits |
+| `references/guides.md` | step 2: the frame, the type's chapter recipe, PDF detail and limits |
 | `references/visuals.md` | steps 4–6: which diagram for which idea; layout rules for each chart |
 | `references/concepts.md` | steps 4–7: find, record and show the book's concepts and distinctions |
 | `references/styles.md` | steps 6 and 6b: the four styles (Map, Recap, Recall, Layers), their research basis, recipes and the styles.json format |
