@@ -73,6 +73,10 @@ Then:
   ≤ 18 words). A minor item needs only the key point or the Terms row.
 - **Points and terms** may name a concept again, but a concept that appears only in text has not
   been shown: it still needs its chart.
+- **Stable cues.** A core concept keeps its inventory name, in the book's words, on every screen
+  of every chapter and style; a later chart that shows it again uses the same chart kind and the
+  same labels for its members (the three kinds of reality are always "Objective", "Subjective" and
+  "Intersubjective", in the same order). A cue the reader learned must work again.
 - With a limit (`upTo`): only concepts introduced up to the limit.
 
 ## Check it (step 7)

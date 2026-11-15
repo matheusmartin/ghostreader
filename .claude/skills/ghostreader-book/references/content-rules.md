@@ -58,8 +58,12 @@ order**; summaries also leave out key events and give too much weight to the end
 - Screens only up to and including the limit (front matter before it included, back matter
   excluded). Later chapters are listed in the book file without screens: the app shows them as
   "not in this guide yet", with their number only.
-- Read only the text up to the limit; with summaries, use only chapter-level sources for the
-  included chapters. Ignore later events if a source mentions them.
+- **The spoiler gate.** After extraction, move every text file after the limit out of `source/`
+  into `work/<guide>/after-limit/`, so no writer or verifier can read it. `check_guide.py names`
+  then reports any name or number the book has not given by that chapter. Delete every claim
+  without an anchor: for a famous book, the model's own memory of the plot leaks in.
+- With summaries, use only chapter-level sources for the included chapters. Ignore later events
+  if a source mentions them.
 - Cast roles and relations: as known at the limit.
 - No words that hint at later events ("eventually", "will turn out", "in the end"). The validator
   reports the common ones; time marks inside a chapter ("{Later that night}") are fine.
@@ -68,7 +72,16 @@ order**; summaries also leave out key events and give too much weight to the end
 
 Cast roles and relations never reveal twists, deaths, secret identities or the
 ending, even for a whole-book guide: the reader may not have finished. Chapter screens may tell
-what happens in that chapter.
+what happens in that chapter, and in the chapters before it, never after it (the resume rule:
+the reader opens the last chapter they read).
+
+- Roles and relation labels say what the book has shown by the end of that chapter, and change
+  in the chapter where the book changes them.
+- "Still open" lists only questions the book itself has raised by then, phrased as the stakes
+  ("Will Lydia's elopement ruin her sisters' chances?"), never as a hint of the answer. A question
+  the book answers later stays open until that chapter.
+- "Where it stops" and "Before this chapter" never say what the next chapter does, unless the
+  book itself announces it (an author's bridge: "the next part looks at computers").
 
 ## Summaries mode (no book file)
 

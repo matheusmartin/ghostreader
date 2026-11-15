@@ -56,3 +56,14 @@ current edition). `npm run validate` checks the rules marked [checked].
 - Labels: two to four words. Node names and notes: as short as the book allows.
 - The point first: a summary says what happens or what the author claims, then why it matters.
 - One idea per sentence, one idea per screen.
+
+## For a reader coming back
+
+- [checked] **Causes, not sequences**: "because", "so", "which leads to". Not "and then", and no
+  sentence or item that starts with "Then" (time marks in scenes and timeline times excepted).
+- **A role with a name** at its first mention on a screen: "Jaggers, the lawyer who holds the
+  money"; "Kramer, a witch-hunting inquisitor". Names fade first; roles last.
+- **One name per thing**: the same words for a concept, person or group in every chapter and
+  style, the book's own. A reader's cue must not change from screen to screen.
+- **Plain tense**: present tense for the state of play ("Elizabeth distrusts Wickham"); past
+  tense for what happened in an earlier chapter ("Darcy's letter exposed him").

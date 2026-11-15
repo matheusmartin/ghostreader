@@ -96,6 +96,12 @@ with its number only (titles can spoil). Use this for guides written while readi
 - `length`: the real length (words or pages). The book map sizes chips by length only when every
   chapter has one; never estimate.
 - Use `screens` (a list of screens) or `sections` (a list of `{ "title", "screens" }`), not both.
+- In a guide file (one with `guide`), every written chapter ends with the resume screens: a
+  `points` screen "Where it stands" with four fixed items, then optionally a `list` "Still open"
+  with 1–3 rows. The items are "When and where", "Who is there", "What they want", "What just
+  happened" (fiction) or "The question", "Established so far", "This chapter adds", "Where it
+  stops" (non-fiction). `npm run validate` checks them; the skill's `references/styles.md` says
+  what goes in them.
 
 ## App and PDF: `only`
 

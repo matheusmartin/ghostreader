@@ -6,3 +6,4 @@ coverage/
 .DS_Store
 # Book files, their extracted text and fact sheets (ghostreader-book skill): never commit them.
 work/
+__pycache__/
