@@ -4,7 +4,7 @@
 
 import { h } from '../lib/dom.ts';
 import { canFullscreen, isFullscreen, isInstalled, toggleFullscreen } from '../lib/device.ts';
-import { GUIDE_NAMES } from '../screens/render.ts';
+import { guideLabel } from '../screens/render.ts';
 import { schemePicker } from './scheme-picker.ts';
 import { pdfLink } from '../lib/pdf.ts';
 import { shareLink } from '../lib/share.ts';
@@ -39,7 +39,7 @@ export class Menu {
     this.sheet = h('div', { class: 'menu-sheet', role: 'dialog', 'aria-modal': 'true', 'aria-label': `${b.title} menu` },
       h('div', { class: 'menu-head' },
         h('div', null,
-          h('span', { class: 'label' }, GUIDE_NAMES[b.type]),
+          h('span', { class: 'label' }, guideLabel(b)),
           h('h2', { class: 'menu-title' }, b.title),
           h('p', { class: 'menu-author' }, b.author),
         ),

@@ -2,7 +2,7 @@
 // so an author can fix a whole file in one pass. `npm run validate` runs it on every bundled book,
 // together with the content checks of lint.ts.
 
-import type { Book } from './types.ts';
+import { STYLES, type Book } from './types.ts';
 
 export interface ValidationResult {
   book: Book | null;
@@ -293,6 +293,7 @@ export function validateBook(raw: unknown): ValidationResult {
   str(raw, 'id', '');
   if (typeof raw.id === 'string' && !ID.test(raw.id)) err('', '"id" may use only letters, digits and hyphens');
   if (!BOOK_TYPES.includes(raw.type as string)) err('', `"type" must be one of ${BOOK_TYPES.join(', ')}`);
+  if (raw.style !== undefined && !STYLES.includes(raw.style as never)) err('', `"style" must be one of ${STYLES.join(', ')}`);
   str(raw, 'title', '');
   str(raw, 'author', '');
   str(raw, 'lead', '');

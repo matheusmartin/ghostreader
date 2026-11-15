@@ -8,6 +8,12 @@ Three guide types: **Story guide** (fiction: cast map, a "who is where" chart of
 scenes, story threads), **Reading guide** (non-fiction, while you read) and **Book summary**
 (non-fiction, a finished book).
 
+Four styles, to help you go back to a book after a long pause: **Map** (diagrams first, the
+default), **Recap** (the story so far, in words, up to where you stopped), **Recall** (questions
+first, answers on a tap) and **Layers** (one line, three points, then the detail). The library has
+the full Nexus summary in each style, to compare. Research and recipes:
+`.claude/skills/ghostwriter-book/references/styles.md`.
+
 ## How it works
 
 - **Library**: the main screen shows every book.
@@ -113,8 +119,8 @@ real places come from its `scripts/map.py` (Natural Earth data, public domain).
 To write a book file by hand, follow [docs/content-format.md](docs/content-format.md) and run
 `npm run validate`.
 
-The library has one book: **Nexus** by Yuval Noah Harari (book summary of every chapter, written
-from the EPUB). Story guides for fiction use the same format: see the scenes and threads charts in
+The library has **Nexus** by Yuval Noah Harari: a book summary of every chapter, written from the
+EPUB, in each of the four styles. Story guides for fiction use the same format: see the scenes and threads charts in
 [docs/content-format.md](docs/content-format.md).
 
 ## Code map
