@@ -1,5 +1,5 @@
 // What the app keeps on the device. No personal data: no reading place, no progress, no notes.
-// Kept: three settings, the page colour (lib/scheme.ts), the style chosen in the library, and
+// Kept: three settings, the page colour (lib/scheme.ts), the style chosen in the menu, and
 // whether the gesture hint was shown.
 
 const PREFIX = 'ghostreader:';

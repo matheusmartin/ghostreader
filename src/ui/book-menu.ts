@@ -3,14 +3,14 @@
 // only their number.
 
 import { h } from '../lib/dom.ts';
-import { guideLabel, STYLE_NAMES } from '../screens/render.ts';
+import { guideLabel } from '../screens/render.ts';
 import { pdfLink } from '../lib/pdf.ts';
 import { shareLink } from '../lib/share.ts';
 import { setSetting } from '../lib/storage.ts';
 import { guideStyles, siblingId } from '../data/books.ts';
 import { readHash } from '../router.ts';
 import { closeMenu, HOLD_HELP, type MenuPage } from './menu.ts';
-import type { Style } from '../model/types.ts';
+import { stylePicker } from './style-picker.ts';
 import type { Plan, PlanScreen } from '../model/plan.ts';
 
 export interface BookMenuActions {
@@ -49,27 +49,17 @@ export function bookMenu(plan: Plan, actions: BookMenuActions): MenuPage {
   };
 
   /** The other styles of this guide: switching opens the same chapter in that style. */
-  const stylePicker = (): HTMLElement | null => {
-    const styles = guideStyles(b);
-    if (styles.length < 2) return null;
-    const current = b.style ?? 'map';
-    const switchStyle = (s: Style) => {
+  const styles = (): HTMLElement | null => {
+    const all = guideStyles(b);
+    if (all.length < 2) return null;
+    return stylePicker(all, b.style ?? 'map', (s) => {
       const id = siblingId(b, s);
-      if (!id || current === s) return;
+      if (!id) return;
       setSetting('style', s);
       closeMenu();
       const ch = actions.at().chapter;
       location.replace(ch.kind === 'chapter' ? readHash(id, ch.id, 0) : readHash(id));
-    };
-    return h('div', { class: 'style-picker' },
-      h('span', { class: 'label' }, 'Style'),
-      h('div', { class: 'style-list', role: 'radiogroup', 'aria-label': 'Style' },
-        styles.map((s) =>
-          h('button', { type: 'button', class: 'style-opt', role: 'radio', 'aria-checked': String(s === current), onclick: () => switchStyle(s) },
-            STYLE_NAMES[s]),
-        ),
-      ),
-    );
+    });
   };
 
   const toc = (): HTMLElement => {
@@ -119,7 +109,7 @@ export function bookMenu(plan: Plan, actions: BookMenuActions): MenuPage {
       pdfLink(b, 'Download PDF'),
       shareButton(),
     ],
-    top: () => [stylePicker()],
+    top: () => [styles()],
     bottom: () => [toc()],
     help: [
       ['Swipe up · down', 'Next · previous screen'],
