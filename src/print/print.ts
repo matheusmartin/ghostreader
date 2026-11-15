@@ -74,7 +74,7 @@ function printPlan(plan: Plan, chapters: Map<string, Chapter>): Plan {
 
 function cover(book: Book, plan: Plan): HTMLElement {
   const kicker = [GUIDE_NAMES[book.type], book.upTo ? `to ${book.upTo}` : ''].filter(Boolean).join(' · ');
-  return h('section', { class: 'pg pg-cover theme-front' },
+  return h('section', { class: 'pg pg-cover' },
     h('div', { class: 'jacket' },
       h('span', { class: 'label' }, kicker),
       h('h1', { class: 'cover-title' }, book.title),
@@ -87,7 +87,7 @@ function cover(book: Book, plan: Plan): HTMLElement {
     h('nav', { class: 'pcontents', 'aria-label': 'Contents' },
       h('h2', { class: 'label' }, 'Contents'),
       plan.parts.map((part) =>
-        h('div', { class: `pc-part theme-${part.theme}` },
+        h('div', { class: 'pc-part' },
           h('h3', { class: 'pc-kicker' }, part.kicker),
           h('ol', null,
             contentsRows(part).map(({ number, title, later }) =>
@@ -123,7 +123,7 @@ function contentsRows(part: PlanPart): { number: string; title: string; later: b
 
 function chapterPage(ch: Chapter, part: PlanPart, answers: Answers[]): HTMLElement {
   const quizzes: QuizScreen[] = [];
-  const page = h('section', { class: `pg pg-chapter theme-${part.theme}` },
+  const page = h('section', { class: 'pg pg-chapter' },
     h('header', { class: 'ph' },
       h('span', { class: 'ph-num' }, ch.number),
       h('div', { class: 'ph-text' },
@@ -185,7 +185,7 @@ function block(s: Screen, quizzes: QuizScreen[]): HTMLElement {
 }
 
 function answersPage(answers: Answers[]): HTMLElement {
-  return h('section', { class: 'pg pg-answers theme-front' },
+  return h('section', { class: 'pg pg-answers' },
     h('header', { class: 'ph' },
       h('span', { class: 'ph-num' }, 'A'),
       h('div', { class: 'ph-text' }, h('span', { class: 'label' }, 'Test yourself'), h('h1', { class: 'ph-title' }, 'Answers')),

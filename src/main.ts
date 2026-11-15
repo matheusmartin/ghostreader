@@ -71,8 +71,10 @@ async function route() {
     start,
     exit: leaveBook,
     arrived(ps) {
-      // Keep the address in step with the screen, so a reload stays on it. Nothing is saved.
-      history.replaceState(history.state, '', readHash(book.id, ps.chapter.id, ps.inChapter));
+      // Keep the address in step with the screen: a reload, a bookmark or a shared link opens the
+      // same screen (menu: "Share this screen"). The cover is the book's own address. Nothing is saved.
+      const hash = ps.chapter.kind === 'cover' ? readHash(book.id) : readHash(book.id, ps.chapter.id, ps.inChapter);
+      history.replaceState(history.state, '', hash);
     },
   });
   reader.attach(root);

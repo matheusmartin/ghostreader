@@ -26,13 +26,22 @@ Keyboard and mouse wheel do the same moves (arrows, Space, Page Up / Down, Enter
 - a strip at the top: one segment per chapter, filled up to the current screen;
 - under it: number, part, chapter title and section, and screen *n* of *N* in the chapter.
 
+The whole book uses one colour scheme. The only thing that changes between chapters is the small
+break between segments in the strip.
+
+**Links.** Every screen has its own address, `#/read/<book>/<chapter>/<n>`, and the address bar
+follows the screen you are on. Bookmark it or send it: it opens on the same screen. In full
+screen or in the installed app, where there is no address bar, the menu has **Share this screen**
+(the phone's share sheet, or copy the link).
+
 **PDF.** "Download PDF" on each book in the library and in the reader's menu. The PDF has the
 book on A4 pages: a cover with the book map and contents, every chapter with all its charts
 (larger, with the full scene lists and thread lists), the detail marked for the PDF only (longer
 synopses, full casts), and an answers page for the test questions.
 
 **Page colour.** Paper (off-white) by day and Dusk (soft dark) when the device is in dark mode.
-The menu also offers Quiet, Warm and Night. Colours, roles and contrast rules:
+The menu also offers Quiet, Warm and Night. Each has one accent colour for the whole book.
+Colours, roles and contrast rules:
 [docs/design.md](docs/design.md).
 
 **Book only, no personal data.** The app shows the book's content and nothing else: no highlights,
@@ -90,7 +99,9 @@ Chapter 6" with the book file attached. The **ghostwriter-book** skill
 
 1. Extracts the book's text from an EPUB, PDF, TXT, Markdown or HTML file into `work/<id>/`
    (`scripts/extract_book.py`). `work/` is in `.gitignore`: book text is never committed.
-2. Writes a fact sheet per chapter, every fact with its place in the text.
+2. Writes a fact sheet per chapter, every fact with its place in the text, and lists the book's
+   own concepts and distinctions (for example Nexus's objective, subjective and intersubjective
+   reality). Each gets a chart in its chapter and a row in the K · Key concepts overview.
 3. Writes `src/books/<id>.json` from the fact sheets, diagrams first, with PDF-only detail.
 4. Checks every chapter against the text, then runs `npm run validate`, `npm run check:screens`
    and `npm run build`.
@@ -102,9 +113,9 @@ real places come from its `scripts/map.py` (Natural Earth data, public domain).
 To write a book file by hand, follow [docs/content-format.md](docs/content-format.md) and run
 `npm run validate`.
 
-The samples: **Pride and Prejudice** (story guide to Chapter 6, written from the Project Gutenberg
-text; the novel is in the public domain) and **Nexus** (book summary; only The book in one page
-and Chapter 5). Their other chapters are listed but not written.
+The library has one book: **Nexus** by Yuval Noah Harari (book summary of every chapter, written
+from the EPUB). Story guides for fiction use the same format: see the scenes and threads charts in
+[docs/content-format.md](docs/content-format.md).
 
 ## Code map
 
@@ -128,7 +139,7 @@ src/
   print/print.ts     the PDF: the book on A4 pages (#/print/<book>)
   ui/check.ts        the screen check (#/check/<book>), used by scripts/check-screens.mjs
   lib/               DOM helpers, SVG sanitiser, PDF link, full screen and wake lock, settings storage
-  styles/            design tokens: page colours and part colours (docs/design.md); print.css
+  styles/            design tokens: page colours and the accent (docs/design.md); print.css
   lib/scheme.ts      page colour choice; ui/scheme-picker.ts draws the picker
 scripts/
   build-pdfs.mjs     dist/ → dist/pdf/<book>.pdf with Chromium

@@ -6,13 +6,10 @@ import { loadAllBooks, type LoadedBook } from '../data/books.ts';
 import { GUIDE_NAMES } from '../screens/render.ts';
 import { pdfLink } from '../lib/pdf.ts';
 import { installPrompt, onUpdateReady, applyUpdate } from '../pwa.ts';
-import type { Theme } from '../model/types.ts';
 
 export interface LibraryOptions {
   open(bookId: string): void;
 }
-
-const CARD_THEMES: Theme[] = ['p2', 'p1', 'p3', 'front', 'p4', 'p5'];
 
 export function renderLibrary(root: HTMLElement, opts: LibraryOptions): { destroy(): void } {
   const grid = h('div', { class: 'lib-grid', 'aria-busy': 'true' });
@@ -50,7 +47,7 @@ export function renderLibrary(root: HTMLElement, opts: LibraryOptions): { destro
   void loadAllBooks().then((books) => {
     if (!alive) return;
     grid.removeAttribute('aria-busy');
-    grid.replaceChildren(...books.map((b, i) => card(b, CARD_THEMES[i % CARD_THEMES.length], opts)));
+    grid.replaceChildren(...books.map((b) => card(b, opts)));
     if (books.length === 0) grid.append(h('p', { class: 'lib-empty' }, 'No books yet. Add a book file to src/books.'));
   });
 
@@ -65,7 +62,7 @@ export function renderLibrary(root: HTMLElement, opts: LibraryOptions): { destro
   };
 }
 
-function card(loaded: LoadedBook, theme: Theme, opts: LibraryOptions): HTMLElement {
+function card(loaded: LoadedBook, opts: LibraryOptions): HTMLElement {
   if (!loaded.book) {
     return h('div', { class: 'book-card broken' },
       h('span', { class: 'label' }, 'Cannot open'),
@@ -77,7 +74,7 @@ function card(loaded: LoadedBook, theme: Theme, opts: LibraryOptions): HTMLEleme
   const b = loaded.book;
   const kicker = [GUIDE_NAMES[b.type], b.upTo ? `to ${b.upTo}` : ''].filter(Boolean).join(' · ');
   // The whole card opens the book; the PDF link sits on top of it.
-  return h('div', { class: `book-card theme-${theme}` },
+  return h('div', { class: 'book-card' },
     h('button', { type: 'button', class: 'bc-open', onclick: () => opts.open(b.id), 'aria-label': `Read ${b.title}` }),
     h('span', { class: 'bc-top' }, h('span', { class: 'label' }, kicker), b.sample ? h('span', { class: 'tag grey' }, 'Sample') : null),
     h('span', { class: 'bc-title' }, b.title),

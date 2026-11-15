@@ -73,7 +73,7 @@ const arrow = () => h('div', { class: 'flow-arrow', 'aria-hidden': 'true' });
 function flow(c: FlowChart): HTMLElement {
   const groups = h('div', { class: 'flow-groups' },
     c.groups.map((g) =>
-      h('div', { class: `flow-group${g.theme ? ` theme-${g.theme}` : ''}` },
+      h('div', { class: 'flow-group' },
         g.label ? rich(g.label, 'div', 'flow-group-label') : null,
         g.items.map((it) => rich(it, 'div', 'flow-item')),
       ),

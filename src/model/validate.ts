@@ -2,7 +2,7 @@
 // so an author can fix a whole file in one pass. `npm run validate` runs it on every bundled book,
 // together with the content checks of lint.ts.
 
-import { THEMES, type Book } from './types.ts';
+import type { Book } from './types.ts';
 
 export interface ValidationResult {
   book: Book | null;
@@ -59,8 +59,9 @@ export function validateBook(raw: unknown): ValidationResult {
     });
     return (list ?? []).filter(isObj);
   };
+  // One colour scheme for the whole book: parts and groups no longer take a colour.
   const theme = (o: Obj, path: string) => {
-    if (o.theme !== undefined && !THEMES.includes(o.theme as never)) err(path, `"theme" must be one of ${THEMES.join(', ')}`);
+    if (o.theme !== undefined) err(path, '"theme" is no longer used (one colour for the whole book): remove it');
   };
   const only = (o: Obj, path: string) => {
     if (o.only !== undefined && o.only !== 'app' && o.only !== 'pdf') err(path, '"only" must be "app" or "pdf"');

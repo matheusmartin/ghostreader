@@ -21,7 +21,7 @@ export function bookMap(plan: Plan, opts: BookMapOptions = {}): HTMLElement {
 
   return h('div', { class: 'bookmap' },
     plan.parts.map((part) =>
-      h('div', { class: `bm-row theme-${part.theme}` },
+      h('div', { class: 'bm-row' },
         h('div', { class: 'bm-label' }, part.label ?? part.title ?? part.kicker),
         h('div', { class: 'bm-chips' },
           part.chapters.map((ch) => {

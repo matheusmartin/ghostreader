@@ -55,9 +55,8 @@ describe('buildPlan', () => {
     expect(contentChapters(plan).map((c) => c.id)).toEqual(['c1', 'c3', 'c4']);
   });
 
-  it('builds the part kicker and default themes', () => {
+  it('builds the part kicker', () => {
     expect(plan.parts.map((p) => p.kicker)).toEqual(['Part I · Start', 'Middle']);
-    expect(plan.parts.map((p) => p.theme)).toEqual(['p1', 'p2']);
   });
 
   it('records sections with their first screen and count; the opener has no section', () => {

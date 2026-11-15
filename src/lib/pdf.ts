@@ -6,7 +6,7 @@ import { GUIDE_NAMES } from '../screens/render.ts';
 import { printHash } from '../router.ts';
 import type { Book } from '../model/types.ts';
 
-/** "Austen - Pride and Prejudice (1813) - Story Guide - to Chapter 6.pdf" */
+/** "Harari - Nexus (2024) - Book Summary.pdf"; a guide written while reading adds "to Chapter 6". */
 export function pdfFileName(b: Book): string {
   const surname = b.author.trim().split(/\s+/).pop() ?? b.author;
   const guide = GUIDE_NAMES[b.type].replace(/\b\w/g, (c) => c.toUpperCase());

@@ -11,7 +11,7 @@
 //   threads chart   → one chart per 18 chapters, then the thread list when threads have a text
 // Screens and sections marked `only: "pdf"` are left out.
 
-import type { Book, Chapter, ListScreen, Screen, ScenesScreen, Section, Theme, ThreadsChart } from './types.ts';
+import type { Book, Chapter, ListScreen, Screen, ScenesScreen, Section, ThreadsChart } from './types.ts';
 
 /** A part of a scenes block, shown as a numbered list: scenes[from] to scenes[to - 1]. */
 export interface SceneListScreen { type: 'scene-list'; source: ScenesScreen; from: number; to: number }
@@ -97,7 +97,6 @@ export interface PlanPart {
   title?: string;
   /** "Part I · Human Networks": the label and title together, or the book title. */
   kicker: string;
-  theme: Theme;
   /** Every chapter of the part, also the ones not written yet. */
   chapters: PlanChapter[];
 }
@@ -144,8 +143,6 @@ export interface Plan {
   screens: PlanScreen[];
 }
 
-const PART_THEMES: Theme[] = ['p1', 'p2', 'p3', 'p4', 'p5'];
-
 export function buildPlan(book: Book): Plan {
   const screens: PlanScreen[] = [];
   const chapters: PlanChapter[] = [];
@@ -160,7 +157,7 @@ export function buildPlan(book: Book): Plan {
     screens.push({ index: screens.length, key: `${chapter.id}/${inChapter}`, content, chapter, section, inChapter });
   };
 
-  const pseudoPart = (id: string): PlanPart => ({ id, kicker: book.title, theme: 'front', chapters: [] });
+  const pseudoPart = (id: string): PlanPart => ({ id, kicker: book.title, chapters: [] });
   const pseudoChapter = (kind: 'cover' | 'end', part: PlanPart): PlanChapter => {
     const ch: PlanChapter = { id: `_${kind}`, kind, number: '', title: book.title, part, first: -1, count: 0, sections: [], order: chapters.length };
     part.chapters.push(ch);
@@ -170,11 +167,9 @@ export function buildPlan(book: Book): Plan {
 
   add(pseudoChapter('cover', pseudoPart('_cover')), { type: 'cover' }, null);
 
-  let partThemeIndex = 0;
   const parts = book.parts.map((part): PlanPart => {
-    const theme = part.theme ?? PART_THEMES[partThemeIndex++ % PART_THEMES.length];
     const kicker = [part.label, part.title].filter(Boolean).join(' · ') || book.title;
-    const planPart: PlanPart = { id: part.id, label: part.label, title: part.title, kicker, theme, chapters: [] };
+    const planPart: PlanPart = { id: part.id, label: part.label, title: part.title, kicker, chapters: [] };
     for (const ch of part.chapters) planPart.chapters.push(planChapter(ch, planPart));
     return planPart;
   });

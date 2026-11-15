@@ -7,6 +7,7 @@
 //               British spelling (-ise, colour, centre…); no quotations from the book
 //   spoilers    with "upTo": no words that look past the limit ("eventually", "in the end")
 //   charts      scene text with the {when} and [where] the book gives; ring links between neighbours
+//   concepts    a non-fiction guide has a written K · Key concepts overview chapter
 //
 // `npm run validate` fails on any problem in a bundled book.
 
@@ -59,7 +60,7 @@ const IZE = /\b([a-z]{2,})iz(e|es|ed|ing|ation|ations|er|ers)\b/gi;
 const IZE_OK = new Set(['maize', 'baize', 'capsize', 'capsized', 'belize']);
 const SPOILER = /\b(eventually|ultimately|will turn out|turns out later|in the end|will later|later in the book|will prove)\b/i;
 /** Keys whose strings are not prose: names, ids and settings. */
-const NOT_PROSE = new Set(['type', 'chart', 'only', 'style', 'theme', 'tag', 'svg', 'from', 'to', 'with', 'off', 'appears', 'major', 'columns']);
+const NOT_PROSE = new Set(['type', 'chart', 'only', 'style', 'tag', 'svg', 'from', 'to', 'with', 'off', 'appears', 'major', 'columns']);
 
 const words = (s: string) => s.replace(/[{}[\]*]/g, '').split(/\s+/).filter((w) => /[\p{L}\p{N}]/u.test(w)).length;
 
@@ -97,6 +98,13 @@ export function lintBook(book: Book): string[] {
       sec.screens.forEach((s, i) => visit(s, `${sp}.screens[${i}]`, sec.only === 'pdf' ? 'pdf' : 'app'));
     });
   }));
+
+  // The book's own concepts and distinctions are shown in an overview chapter (skill: concepts.md).
+  if (book.type !== 'fiction') {
+    const k = book.parts.flatMap((p) => p.chapters).find((c) => c.number === 'K');
+    const written = (k?.screens?.length ?? 0) + (k?.sections?.reduce((n, s) => n + s.screens.length, 0) ?? 0) > 0;
+    if (!written) say('', 'add the "K · Key concepts" overview chapter, with screens: the book\'s concepts and distinctions');
+  }
   return out;
 
   function style(path: string, text: string) {

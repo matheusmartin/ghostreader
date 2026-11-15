@@ -14,10 +14,6 @@
 
 export type BookType = 'fiction' | 'reading' | 'done';
 
-/** Colour theme, as in the design system: front matter and overviews, then one per part. */
-export type Theme = 'front' | 'p1' | 'p2' | 'p3' | 'p4' | 'p5';
-export const THEMES: readonly Theme[] = ['front', 'p1', 'p2', 'p3', 'p4', 'p5'];
-
 /** Where a screen or section shows: in the app only, or in the PDF only. Default: both. */
 export type Only = 'app' | 'pdf';
 
@@ -60,7 +56,6 @@ export interface Part {
   label?: string;
   /** Name the book gives the part: "Human Networks". */
   title?: string;
-  theme?: Theme;
   chapters: Chapter[];
 }
 
@@ -198,7 +193,7 @@ export interface CompareChart extends ChartBase {
 export interface FlowChart extends ChartBase {
   chart: 'flow';
   start?: string;
-  groups: { label?: string; theme?: Theme; items: string[] }[];
+  groups: { label?: string; items: string[] }[];
   key?: string;
 }
 

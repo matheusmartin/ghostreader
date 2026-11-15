@@ -58,7 +58,7 @@ describe('validateBook', () => {
     expect(book).toBeNull();
     expect(errors).toEqual([
       '"type" must be one of fiction, reading, done',
-      'parts[0]: "theme" must be one of front, p1, p2, p3, p4, p5',
+      'parts[0]: "theme" is no longer used (one colour for the whole book): remove it',
       'parts[0].chapters[0].screens[0]: missing "text"',
       'parts[0].chapters[0].screens[1]: "chart" must be one of bars, compare, flow, timeline, network, threads, cycle, matrix, branches, layers',
       'parts[0].chapters[1]: id "c" is used twice',

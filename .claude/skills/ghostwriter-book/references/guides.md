@@ -1,10 +1,11 @@
 # Guide types
 
-Every guide has the same frame: a first part `{ "id": "overview", "label": "Overview",
-"theme": "front" }` with the overview chapters, then the book's own parts and chapters in order
-(themes `p1`–`p5` follow the parts; a book without parts has one part without a label). The app
-adds the cover, the chapter openers and the end screen; the PDF adds a cover with contents and an
-answers page.
+Every guide has the same frame: a first part `{ "id": "overview", "label": "Overview" }` with the
+overview chapters, then the book's own parts and chapters in order (a book without parts has one
+part without a label). Only the sections the book's contents list has: never add a prologue,
+introduction or epilogue. The whole book uses one colour scheme, so there is no colour field. The
+app adds the cover, the chapter openers and the end screen; the PDF adds a cover with contents and
+an answers page.
 
 Each recipe lists the **app screens** in order, then the **PDF-only blocks**. App screens must
 fit a phone (`npm run check:screens`); PDF-only blocks carry the detail. When the app and the PDF
@@ -12,7 +13,7 @@ need two sizes of the same block, write both: the short one `"only": "app"`, the
 `"only": "pdf"`.
 
 Overview chapter numbers: `W` Who's who, `T` Story threads, `M` map, `B` The book in one page,
-`K` Key terms. Book chapters: `"01"`, `"02"`…; `P` prologue or preface, `I` introduction, `E`
+`K` Key concepts. Book chapters: `"01"`, `"02"`…; `P` prologue or preface, `I` introduction, `E`
 epilogue, `C` conclusion, `A1` appendix.
 
 ## Fiction — Story guide
@@ -44,6 +45,11 @@ move. Charts first, little text. Lead: the central situation, ≤ 35 words, neve
   borders; places from outside the book". Then `list` "Places": number and the book's name for the
   place, what happens there (≤ 18 words), `meta` "Ch 3".
 - Invented places get no map. A story that stays in one town gets no map.
+
+**K · The story's world** — only when the story has concepts of its own that the plot depends on
+(ranks, laws, codes, invented words, a magic system; `references/concepts.md`).
+- One chart per concept (as for non-fiction K), then `list` "Key concepts" with the chapter where
+  each first appears. With a limit, only what the reader has met by then.
 
 ### Chapter recipe
 
@@ -78,8 +84,8 @@ the terms it uses, how the reasoning moves. Lead: the argument of the chapters c
 
 ### Overview chapters
 
+- **K · Key concepts** (required; `references/concepts.md`), up to the limit: as for Book summary.
 - Optional `M` map, as for fiction, when the book's argument moves across real places.
-- Optional `K · Key terms` (PDF-only is fine): `list` of the book's own terms, in book order.
 
 ### Chapter recipe
 
@@ -87,6 +93,7 @@ the terms it uses, how the reasoning moves. Lead: the argument of the chapters c
 |---|---|
 | `summary` "Core idea" + takeaway "Takeaway" | 2–3 sentences ≤ 45 words; takeaway 1 sentence ≤ 20 words |
 | The chapter's diagram | the one chart that shows how the chapter's argument works (`references/visuals.md`) |
+| Concept charts | one chart for each concept or distinction the chapter introduces (`references/concepts.md`); it can be the chapter's diagram |
 | `points` "Key concepts" | up to 4: name ≤ 4 words, explanation ≤ 28 words |
 | `steps` "The logic" | 5 steps ≤ 14 words; the last is the conclusion |
 | `points` "Examples in the book", `style: "box"` | 2–3: name ≤ 6 words, ≤ 20 words |
@@ -107,11 +114,18 @@ part per chapter. Always the whole book. Lead: the whole argument, ≤ 35 words.
 - `summary` "Thesis" (2 sentences ≤ 40 words) + takeaway "One thing" (≤ 20 words: if the reader
   remembers one thing).
 - `chart: "flow"` "The argument": `start` = the opening question; one group per part (label "Part
-  I · Title", its theme, 2–3 points ≤ 6 words); `key` = the conclusion.
+  I · Title", 2–3 points ≤ 6 words); `key` = the conclusion.
 - `steps` "Main claims": 5 claims ≤ 18 words, in book order.
 - `chart: "network"` "The big ideas": the central idea in the centre, the book's main concepts on
   the ring, labelled links (how they relate).
 - `list` "How the parts connect": one row per part, ≤ 20 words: what it adds to the argument.
+
+**K · Key concepts** (required; `references/concepts.md`)
+- One chart per core concept or distinction, in book order: the views of the book's main subject,
+  its typologies, its central contrasts (2–5 charts).
+- `list` "Key concepts", `only: "app"`: the eight most important items: name in the book's words,
+  definition ≤ 18 words, `meta` the chapter ("Ch 2").
+- `list` "Key concepts", `only: "pdf"`: every item of the concept inventory, in book order.
 
 ### Chapter recipe
 
@@ -119,6 +133,7 @@ part per chapter. Always the whole book. Lead: the whole argument, ≤ 35 words.
 |---|---|
 | `summary` "In short" + "Takeaway" | 2 sentences ≤ 40 words; takeaway ≤ 20 words |
 | The chapter's diagram | as in the reading guide |
+| Concept charts | one chart for each concept or distinction the chapter introduces (`references/concepts.md`) |
 | `points` "Key points" | exactly 3: name ≤ 4 words, ≤ 25 words |
 | `steps` "The logic" | 5 steps; the last is the conclusion |
 | `points` "Examples in the book", `style: "box"` | 2 |
