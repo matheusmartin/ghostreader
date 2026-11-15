@@ -11,7 +11,7 @@ scenes, story threads), **Reading guide** (non-fiction, while you read) and **Bo
 Four styles, to help you go back to a book after a long pause: **Map** (diagrams first, the
 default), **Recap** (the story so far, in words, up to where you stopped), **Recall** (questions
 first, answers on a tap) and **Layers** (one line, three points, then the detail). The library has
-Nexus up to Chapter 3 in each style, to compare. Research and recipes:
+the full Nexus summary in each style, to compare. Research and recipes:
 `.claude/skills/ghostwriter-book/references/styles.md`.
 
 ## How it works
@@ -120,7 +120,7 @@ To write a book file by hand, follow [docs/content-format.md](docs/content-forma
 `npm run validate`.
 
 The library has **Nexus** by Yuval Noah Harari: a book summary of every chapter, written from the
-EPUB, and four reading guides up to Chapter 3, one per style. Story guides for fiction use the same format: see the scenes and threads charts in
+EPUB, in each of the four styles. Story guides for fiction use the same format: see the scenes and threads charts in
 [docs/content-format.md](docs/content-format.md).
 
 ## Code map

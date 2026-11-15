@@ -17,11 +17,19 @@ cover and the PDF name show the style ("Reading guide · Recap · to Chapter 3")
 | **Recall** | Questions first, answers on a tap | You want it to stick, and accept a little effort | Retrieval beats rereading on delayed tests (Roediger and Karpicke 2006); questions before review improve memory of what they ask, even when answered wrongly (pretesting research) |
 | **Layers** | One line, then three points, then the detail | You want to choose how deep to go | Readers prefer a hierarchy of summaries to a flat one and learn as much (Christensen et al. 2014: 92% preferred it); readers scan overviews, then section summaries, then detail |
 
-## Where you stopped: overview chapter `S`
+## Overview chapter `S`
 
-Recap, Recall and Layers open with an overview chapter numbered `S`, before `K`. It covers
-everything up to the limit (`upTo`), or the whole book for a Book summary, and never anything
-after it.
+Recap, Recall and Layers open with an overview chapter numbered `S`, before `K`. With a limit
+(`upTo`) it covers everything up to the limit and never anything after it, and it ends where the
+reader stopped. A Book summary covers the whole book, so its `S` has no "where you stopped" screen
+or open questions; instead, every chapter can be the place to resume (Recap: "Before this
+chapter").
+
+| Style | `S` with a limit | `S` in a Book summary |
+|---|---|---|
+| Recap | Where you stopped | The book in brief: the whole argument, chapter by chapter, the argument map |
+| Recall | Warm-up | Warm-up: one question per chapter, then the book in brief |
+| Layers | The book so far | The book at a glance: the book in one line, in one paragraph, one line per chapter, the argument map |
 
 ## Map
 
@@ -45,6 +53,7 @@ for fiction). Chapters: summary, the chapter's diagrams, key points, the logic, 
 **Chapters**
 | Screen | Limit |
 |---|---|
+| `summary` "Before this chapter" | everything before this chapter, ≤ 50 words, no takeaway; not in the first chapter. The screen to read when you resume here |
 | `text` "Recap" | the chapter retold in order, two short paragraphs, ≤ 120 words |
 | `list` "Key moments" | 4–6 rows: examples, scenes or claims in book order, ≤ 18 words |
 | the chapter's diagram | one chart (fiction: the scenes chart) |
@@ -91,5 +100,5 @@ PDF-only `list`.
 ## Choosing
 
 Ask for the style with the other inputs; without an answer, write a Map. To compare styles, write
-the same chapters in several styles as separate books (`<id>-map`, `<id>-recap` …) and let the
-reader try them; then keep the one they choose.
+the same book in several styles as separate books (`nexus-summary` as the Map, `nexus-recap`,
+`nexus-recall`, `nexus-layers`) and let the reader try them; then keep the one they choose.

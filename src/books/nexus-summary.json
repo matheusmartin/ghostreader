@@ -2,6 +2,7 @@
   "format": 1,
   "id": "nexus-summary",
   "type": "done",
+  "style": "map",
   "title": "Nexus",
   "subtitle": "A Brief History of Information Networks from the Stone Age to AI",
   "author": "Yuval Noah Harari",
