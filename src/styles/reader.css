@@ -229,7 +229,7 @@ html.menu-open, html.menu-open body { overflow: hidden; }
 
 .scheme-picker { margin-top: 18px; }
 .scheme-picker > .label { font-size: .66rem; margin-bottom: 8px; }
-.scheme-list { display: grid; grid-template-columns: repeat(auto-fill, minmax(4.1rem, 1fr)); gap: 8px 4px; }
+.scheme-list { display: grid; grid-template-columns: repeat(auto-fill, minmax(4.1rem, 1fr)); gap: 8px 10px; }
 .scheme-opt {
   display: flex;
   flex-direction: column;
@@ -242,6 +242,7 @@ html.menu-open, html.menu-open body { overflow: hidden; }
   text-align: center;
   color: var(--muted);
 }
+.scheme-opt { min-width: 0; }
 .scheme-opt[aria-checked="true"] { color: var(--ink); font-weight: 700; }
 .swatch-ring { padding: 2px; border-radius: 50%; border: 2px solid transparent; }
 .scheme-opt[aria-checked="true"] .swatch-ring { border-color: var(--ink); }
@@ -266,6 +267,38 @@ html.menu-open, html.menu-open body { overflow: hidden; }
 .swatch.split > span { position: absolute; inset: 0; background: var(--paper); }
 .swatch.split > span + span { clip-path: polygon(100% 0, 100% 100%, 0 100%); }
 .scheme-note { margin-top: 6px; font-size: .75rem; color: var(--muted); }
+/* The code editors' themes: a section that opens, so the menu stays short. */
+.scheme-more { margin-top: 12px; border-top: 1px solid var(--hair); }
+.scheme-more > summary {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 44px;
+  font-size: .88rem;
+  font-weight: 700;
+  color: var(--ink);
+  cursor: pointer;
+  list-style: none;
+}
+.scheme-more > summary::-webkit-details-marker { display: none; }
+/* A chevron that turns when the section is open. */
+.scheme-more > summary::before {
+  content: "";
+  width: 7px;
+  height: 7px;
+  margin: 0 3px 0 2px;
+  border-right: 2px solid currentColor;
+  border-bottom: 2px solid currentColor;
+  transform: rotate(-45deg);
+  transition: transform .15s;
+}
+.scheme-more[open] > summary::before { transform: rotate(45deg); }
+.scheme-count { font-size: .75rem; font-weight: 400; color: var(--muted); }
+.scheme-more > .scheme-note { margin: 0 0 4px; }
+.scheme-more > .label { font-size: .66rem; margin: 12px 0 8px; }
+@media (prefers-reduced-motion: reduce) {
+  .scheme-more > summary::before { transition: none; }
+}
 
 .toc-part { margin-top: 18px; }
 .toc-part h3 { font-size: .66rem; margin-bottom: 4px; }

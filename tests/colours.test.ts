@@ -34,6 +34,12 @@ const mix = (a: string, b: string, p: number) =>
 // Every page colour the picker offers (Auto is Paper or Dusk).
 const SCHEMES = PICKER.map((s) => s.id).filter((id) => id !== 'auto');
 
+it('index.html applies every page colour before the first paint', () => {
+  const html = readFileSync(new URL('../index.html', import.meta.url), 'utf8');
+  const ok = html.match(/var ok = \[([^\]]*)\]/)?.[1].match(/'[\w-]+'/g)?.map((s) => s.slice(1, -1));
+  expect(ok?.slice().sort()).toEqual([...SCHEMES].sort());
+});
+
 for (const id of SCHEMES) {
   const sel = `[data-scheme="${id}"]`;
   const t = { ...tokens(':root'), ...(id === 'paper' ? tokens(':root') : {}), ...tokens(sel) };

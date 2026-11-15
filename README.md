@@ -50,9 +50,9 @@ book on A4 pages: a cover with the book map and contents, every chapter with all
 synopses, full casts), and an answers page for the test questions.
 
 **Page colour.** Paper (off-white) by day and Dusk (soft dark) when the device is in dark mode.
-The menu also offers Quiet, Warm and Night, and eleven schemes from code editors (One Light and
-One Dark from Atom and Zed, Mariana and Monokai from Sublime Text, Solarized, Gruvbox, Ayu Mirage
-and Rosé Pine). Each has one accent colour for the whole book.
+The menu also offers Quiet, Warm and Night, and, under "From code editors", 43 schemes with the
+editors' names: every theme built into Atom, Sublime Text and Zed (for example One Dark, Monokai,
+Solarized, Gruvbox, Ayu and Cobalt), plus Rosé Pine. Each has one accent colour for the whole book.
 Colours, roles and contrast rules:
 [docs/design.md](docs/design.md).
 

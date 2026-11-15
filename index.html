@@ -9,7 +9,7 @@
     <!-- Page colour before the first paint, so it never flashes. Same rules as src/lib/scheme.ts. -->
     <script>
       (function () {
-        var ok = ['paper', 'quiet', 'warm', 'dusk', 'night', 'one-light', 'solarized-light', 'gruvbox-light', 'rose-pine-dawn', 'one-dark', 'mariana', 'monokai', 'solarized-dark', 'gruvbox-dark', 'ayu-mirage', 'rose-pine'], c = 'auto';
+        var ok = ['paper', 'quiet', 'warm', 'dusk', 'night', 'atom-light', 'ayu-light', 'base16-tomorrow-light', 'breakers', 'celeste', 'dawn', 'eiffel', 'gruvbox-light', 'gruvbox-light-hard', 'gruvbox-light-soft', 'idle', 'iplastic', 'lazy', 'mac-classic', 'magicwb-amiga', 'one-light', 'rose-pine-dawn', 'sixteen', 'slush-and-poppies', 'solarized-light', 'all-hallows-eve', 'amy', 'atom-dark', 'ayu-dark', 'ayu-mirage', 'base16-tomorrow-dark', 'blackboard', 'cobalt', 'espresso-libre', 'gruvbox-dark', 'gruvbox-dark-hard', 'gruvbox-dark-soft', 'mariana', 'monokai', 'monokai-bright', 'one-dark', 'pastels-on-dark', 'rose-pine', 'solarized-dark', 'spacecadet', 'sunburst', 'twilight', 'zenburnesque'], c = 'auto';
         // 'ghostwriter:scheme': the app's old name; src/lib/storage.ts moves it to the new key.
         try { c = localStorage.getItem('ghostreader:scheme') || localStorage.getItem('ghostwriter:scheme') || 'auto'; } catch (e) {}
         if (ok.indexOf(c) < 0) c = matchMedia('(prefers-color-scheme: dark)').matches ? 'dusk' : 'paper';

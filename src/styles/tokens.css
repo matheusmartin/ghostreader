@@ -90,9 +90,188 @@
 [data-scheme="warm"] { --fill-l: #95661a; --text-l: #7d5512; }
 
 /* ---- schemes from code editors -----------------------------------------------------------------
-   Atom, Zed and Sublime Text themes, each with its own page and accent (still one accent for the
-   whole book). The editors' colours, moved only where tests/colours.test.ts needs it (noted per
-   scheme). They come after the accent above, so their accent wins on the root element. */
+   Every theme built into Atom (its syntax themes), Sublime Text (Color Scheme - Default and
+   Color Scheme - Legacy) and Zed (assets/themes), with the editors' names; plus Rosé Pine and
+   Rosé Pine Dawn, which earlier Zed versions had built in. Each has its own page and accent (still
+   one accent for the whole book). Page, text and accent are the editor's colours, moved only where
+   tests/colours.test.ts or the AAA rule for body text needs it (noted per scheme); the greys and
+   lines are mixed from the editor's text and page colours. They come after the accent above, so
+   their accent wins on the root element. */
+
+/* -- light -- */
+
+/* Atom Light · Atom */
+[data-scheme="atom-light"] {
+  --paper: #ffffff; --card: #f9f9f9;
+  --ink: #555555; --body: #595959; --muted: #727171; --faint: #b3b3b3;
+  --line: #e7e7e7; --hair: #f2f2f2; --neg: #f7f7f7; --neg-line: #c2c2c2;
+  --mark: #908f8f; --ink-box: #555555; --on-acc: #ffffff;
+  --tint-mix: 12%;
+  --fill-l: #008080; --text-l: #027070;
+  color-scheme: light;
+}
+
+/* Ayu Light · Zed */
+[data-scheme="ayu-light"] {
+  /* Adjusted from the editor for contrast: fill #fa8d3e → #b35b12, ink #5c6166 → #53585c */
+  --paper: #fcfcfc; --card: #f6f7f7;
+  --ink: #53585c; --body: #53585c; --muted: #6e7072; --faint: #b4b6b9;
+  --line: #e6e6e7; --hair: #f0f0f1; --neg: #f5f5f5; --neg-line: #c2c4c6;
+  --mark: #8c8e91; --ink-box: #53585c; --on-acc: #fcfcfc;
+  --tint-mix: 12%;
+  --fill-l: #b35b12; --text-l: #a04e02;
+  color-scheme: light;
+}
+
+/* Base16 Tomorrow Light · Atom */
+[data-scheme="base16-tomorrow-light"] {
+  /* Adjusted from the editor for contrast: fill #b294bb → #886b91 */
+  --paper: #ffffff; --card: #f7f7f7;
+  --ink: #1d1f21; --body: #383a3c; --muted: #707071; --faint: #999a9b;
+  --line: #dfe0e0; --hair: #eeeeee; --neg: #f5f5f5; --neg-line: #aeaeaf;
+  --mark: #8f9090; --ink-box: #1d1f21; --on-acc: #ffffff;
+  --tint-mix: 12%;
+  --fill-l: #886b91; --text-l: #795d82;
+  color-scheme: light;
+}
+
+/* Breakers · Sublime Text */
+[data-scheme="breakers"] {
+  /* Adjusted from the editor for contrast: fill #5c99d6 → #3b77b2 */
+  --paper: #fcfdfd; --card: #f5f6f6;
+  --ink: #333333; --body: #4b4b4b; --muted: #706f6f; --faint: #a2a2a2;
+  --line: #e0e1e1; --hair: #edeeee; --neg: #f3f4f4; --neg-line: #b4b4b4;
+  --mark: #8f8e8e; --ink-box: #333333; --on-acc: #fcfdfd;
+  --tint-mix: 12%;
+  --fill-l: #3b77b2; --text-l: #2c68a2;
+  color-scheme: light;
+}
+
+/* Celeste · Sublime Text */
+[data-scheme="celeste"] {
+  /* Adjusted from the editor for contrast: fill #f5862e → #b75c08 */
+  --paper: #ffffff; --card: #f6f6f6;
+  --ink: #000000; --body: #1f1f1f; --muted: #706f6f; --faint: #8c8c8c;
+  --line: #dbdbdb; --hair: #ececec; --neg: #f4f4f4; --neg-line: #a3a3a3;
+  --mark: #8c8c8c; --ink-box: #000000; --on-acc: #ffffff;
+  --tint-mix: 12%;
+  --fill-l: #b75c08; --text-l: #a1510a;
+  color-scheme: light;
+}
+
+/* Dawn · Sublime Text */
+[data-scheme="dawn"] {
+  --paper: #f9f9f9; --card: #fdfdfd;
+  --ink: #080808; --body: #252525; --muted: #727171; --faint: #8d8d8d;
+  --line: #d7d7d7; --hair: #e7e7e7; --neg: #eeeeee; --neg-line: #a2a2a2;
+  --mark: #8c8b8b; --ink-box: #080808; --on-acc: #f9f9f9;
+  --tint-mix: 12%;
+  --fill-l: #794938; --text-l: #6a3b2b;
+  color-scheme: light;
+}
+
+/* Eiffel · Sublime Text */
+[data-scheme="eiffel"] {
+  --paper: #ffffff; --card: #f6f6f6;
+  --ink: #000000; --body: #1f1f1f; --muted: #706f6f; --faint: #8c8c8c;
+  --line: #dbdbdb; --hair: #ececec; --neg: #f4f4f4; --neg-line: #a3a3a3;
+  --mark: #8c8c8c; --ink-box: #000000; --on-acc: #ffffff;
+  --tint-mix: 12%;
+  --fill-l: #0100b6; --text-l: #010094;
+  color-scheme: light;
+}
+
+/* Gruvbox Light · Zed */
+[data-scheme="gruvbox-light"] {
+  --paper: #fbf1c7; --card: #f9f5d7;
+  --ink: #282828; --body: #3c3836; --muted: #665c54; --faint: #a89984;
+  --line: #d5c4a1; --hair: #ebdbb2; --neg: #f2e5bc; --neg-line: #bdae93;
+  --mark: #928374; --ink-box: #3c3836; --on-acc: #fbf1c7;
+  --tint-mix: 12%;
+  --fill-l: #af3a03; --text-l: #8f3002;
+  color-scheme: light;
+}
+
+/* Gruvbox Light Hard · Zed */
+[data-scheme="gruvbox-light-hard"] {
+  --paper: #f9f5d7; --card: #fbf1c7;
+  --ink: #282828; --body: #3c3836; --muted: #665c54; --faint: #a89984;
+  --line: #d5c4a1; --hair: #ebdbb2; --neg: #f2e5bc; --neg-line: #bdae93;
+  --mark: #928374; --ink-box: #3c3836; --on-acc: #f9f5d7;
+  --tint-mix: 12%;
+  --fill-l: #af3a03; --text-l: #8f3002;
+  color-scheme: light;
+}
+
+/* Gruvbox Light Soft · Zed */
+[data-scheme="gruvbox-light-soft"] {
+  /* Adjusted for contrast: mark #928374 → #7c6f64, the next Gruvbox grey */
+  --paper: #f2e5bc; --card: #fbf1c7;
+  --ink: #282828; --body: #3c3836; --muted: #665c54; --faint: #a89984;
+  --line: #d5c4a1; --hair: #ebdbb2; --neg: #ebdbb2; --neg-line: #bdae93;
+  --mark: #7c6f64; --ink-box: #3c3836; --on-acc: #fbf1c7;
+  --tint-mix: 12%;
+  --fill-l: #af3a03; --text-l: #8f3002;
+  color-scheme: light;
+}
+
+/* IDLE · Sublime Text */
+[data-scheme="idle"] {
+  /* Adjusted from the editor for contrast: fill #ff5600 → #d14502 */
+  --paper: #ffffff; --card: #f6f6f6;
+  --ink: #000000; --body: #1f1f1f; --muted: #706f6f; --faint: #8c8c8c;
+  --line: #dbdbdb; --hair: #ececec; --neg: #f4f4f4; --neg-line: #a3a3a3;
+  --mark: #8c8c8c; --ink-box: #000000; --on-acc: #ffffff;
+  --tint-mix: 12%;
+  --fill-l: #d14502; --text-l: #b93d06;
+  color-scheme: light;
+}
+
+/* iPlastic · Sublime Text */
+[data-scheme="iplastic"] {
+  /* Adjusted from the editor for contrast: fill #009933 → #027c28 */
+  --paper: #eeeeee; --card: #f8f8f8;
+  --ink: #000000; --body: #1d1d1d; --muted: #6b6a6a; --faint: #838383;
+  --line: #cdcdcd; --hair: #dcdcdc; --neg: #e3e3e3; --neg-line: #989898;
+  --mark: #838383; --ink-box: #000000; --on-acc: #eeeeee;
+  --tint-mix: 12%;
+  --fill-l: #027c28; --text-l: #016b21;
+  color-scheme: light;
+}
+
+/* LAZY · Sublime Text */
+[data-scheme="lazy"] {
+  --paper: #ffffff; --card: #f6f6f6;
+  --ink: #000000; --body: #1f1f1f; --muted: #706f6f; --faint: #8c8c8c;
+  --line: #dbdbdb; --hair: #ececec; --neg: #f4f4f4; --neg-line: #a3a3a3;
+  --mark: #8c8c8c; --ink-box: #000000; --on-acc: #ffffff;
+  --tint-mix: 12%;
+  --fill-l: #3b5bb5; --text-l: #2e4ca5;
+  color-scheme: light;
+}
+
+/* Mac Classic · Sublime Text */
+[data-scheme="mac-classic"] {
+  --paper: #ffffff; --card: #f6f6f6;
+  --ink: #000000; --body: #1f1f1f; --muted: #706f6f; --faint: #8c8c8c;
+  --line: #dbdbdb; --hair: #ececec; --neg: #f4f4f4; --neg-line: #a3a3a3;
+  --mark: #8c8c8c; --ink-box: #000000; --on-acc: #ffffff;
+  --tint-mix: 12%;
+  --fill-l: #0000ff; --text-l: #012bc1;
+  color-scheme: light;
+}
+
+/* MagicWB (Amiga) · Sublime Text */
+[data-scheme="magicwb-amiga"] {
+  /* Adjusted from the editor for contrast: fill #0000ff → #0004ef */
+  --paper: #969696; --card: #b0b0b0;
+  --ink: #000000; --body: #000000; --muted: #2e2d2d; --faint: #525252;
+  --line: #818181; --hair: #8b8b8b; --neg: #8f8f8f; --neg-line: #606060;
+  --mark: #464545; --ink-box: #000000; --on-acc: #ffffff;
+  --tint-mix: 12%;
+  --fill-l: #0004ef; --text-l: #000471;
+  color-scheme: light;
+}
 
 /* One Light · Atom, Zed */
 [data-scheme="one-light"] {
@@ -106,30 +285,7 @@
   color-scheme: light;
 }
 
-/* Solarized Light · Atom, Zed, Sublime Text */
-[data-scheme="solarized-light"] {
-  /* Adjusted from the editor for contrast: fill #268bd2 → #2079ba, text #1f6ea6 → #1e6ba2, mark #93a1a1 → #7e9393 */
-  --paper: #fdf6e3; --card: #fffbf0;
-  --ink: #073642; --body: #3e555c; --muted: #586e75; --faint: #93a1a1;
-  --line: #e4ddc8; --hair: #eee8d5; --neg: #eee8d5; --neg-line: #b5b09f;
-  --mark: #7e9393; --ink-box: #073642; --on-acc: #ffffff;
-  --tint-mix: 12%;
-  --fill-l: #2079ba; --text-l: #1e6ba2;
-  color-scheme: light;
-}
-
-/* Gruvbox Light · Zed, Sublime Text */
-[data-scheme="gruvbox-light"] {
-  --paper: #fbf1c7; --card: #f9f5d7;
-  --ink: #282828; --body: #3c3836; --muted: #665c54; --faint: #a89984;
-  --line: #d5c4a1; --hair: #ebdbb2; --neg: #f2e5bc; --neg-line: #bdae93;
-  --mark: #928374; --ink-box: #3c3836; --on-acc: #fbf1c7;
-  --tint-mix: 12%;
-  --fill-l: #af3a03; --text-l: #8f3002;
-  color-scheme: light;
-}
-
-/* Rosé Pine Dawn · Zed */
+/* Rosé Pine Dawn · Zed Legacy Themes extension (built into earlier Zed versions) */
 [data-scheme="rose-pine-dawn"] {
   /* Adjusted from the editor for contrast: muted #797593 → #716d8c, mark #9893a5 → #8f8a9f */
   --paper: #faf4ed; --card: #fffaf3;
@@ -141,15 +297,172 @@
   color-scheme: light;
 }
 
-/* One Dark · Atom, Zed */
-[data-scheme="one-dark"] {
-  /* Adjusted from the editor for contrast: body #abb2bf → #b1b8c3, muted #9198a5 → #979ea9 */
-  --paper: #282c34; --card: #2f343e;
-  --ink: #dcdfe4; --body: #b1b8c3; --muted: #979ea9; --faint: #5c6370;
-  --line: #3e4451; --hair: #353a44; --neg: #2c3039; --neg-line: #5c6370;
-  --mark: #747b88; --ink-box: #abb2bf; --on-acc: #1e2127;
-  --tint-mix: 22%;
-  --fill-l: #61afef; --text-l: #8ec6f5; --fill-d: #61afef; --text-d: #8ec6f5;
+/* Sixteen · Sublime Text */
+[data-scheme="sixteen"] {
+  /* Adjusted from the editor for contrast: fill #3d9ee0 → #067bbb */
+  --paper: #ffffff; --card: #f9f9f9;
+  --ink: #545454; --body: #595959; --muted: #727171; --faint: #b2b2b2;
+  --line: #e7e7e7; --hair: #f2f2f2; --neg: #f7f7f7; --neg-line: #c1c1c1;
+  --mark: #908f8f; --ink-box: #545454; --on-acc: #ffffff;
+  --tint-mix: 12%;
+  --fill-l: #067bbb; --text-l: #086ca4;
+  color-scheme: light;
+}
+
+/* Slush & Poppies · Sublime Text */
+[data-scheme="slush-and-poppies"] {
+  --paper: #f1f1f1; --card: #f9f9f9;
+  --ink: #000000; --body: #1d1d1d; --muted: #6d6c6c; --faint: #858585;
+  --line: #cfcfcf; --hair: #dfdfdf; --neg: #e6e6e6; --neg-line: #9a9a9a;
+  --mark: #858585; --ink-box: #000000; --on-acc: #f1f1f1;
+  --tint-mix: 12%;
+  --fill-l: #c03030; --text-l: #ae1b21;
+  color-scheme: light;
+}
+
+/* Solarized Light · Atom, Sublime Text (Zed: Legacy Themes extension) */
+[data-scheme="solarized-light"] {
+  /* Adjusted from the editor for contrast: fill #268bd2 → #2079ba, text #1f6ea6 → #1e6ba2, mark #93a1a1 → #7e9393 */
+  --paper: #fdf6e3; --card: #fffbf0;
+  --ink: #073642; --body: #3e555c; --muted: #586e75; --faint: #93a1a1;
+  --line: #e4ddc8; --hair: #eee8d5; --neg: #eee8d5; --neg-line: #b5b09f;
+  --mark: #7e9393; --ink-box: #073642; --on-acc: #ffffff;
+  --tint-mix: 12%;
+  --fill-l: #2079ba; --text-l: #1e6ba2;
+  color-scheme: light;
+}
+
+/* -- dark -- */
+
+/* All Hallow's Eve · Sublime Text */
+[data-scheme="all-hallows-eve"] {
+  --paper: #000000; --card: #0f0f0f;
+  --ink: #ffffff; --body: #ebebeb; --muted: #818181; --faint: #5c5c5c;
+  --line: #292929; --hair: #171717; --neg: #0a0a0a; --neg-line: #5c5c5c;
+  --mark: #737373; --ink-box: #ebebeb; --on-acc: #000000;
+  --tint-mix: 20%;
+  --fill-l: #cc7833; --text-l: #e48e4b; --fill-d: #cc7833; --text-d: #e48e4b;
+  color-scheme: dark;
+}
+
+/* Amy · Sublime Text */
+[data-scheme="amy"] {
+  --paper: #200020; --card: #2b0c2d;
+  --ink: #e3e3ff; --body: #d0d0ff; --muted: #8b7ca5; --faint: #5f4b70;
+  --line: #3c2144; --hair: #301334; --neg: #270829; --neg-line: #5f4b70;
+  --mark: #6f5e84; --ink-box: #d0d0ff; --on-acc: #150015;
+  --tint-mix: 20%;
+  --fill-l: #a080ff; --text-l: #b39ffd; --fill-d: #a080ff; --text-d: #b39ffd;
+  color-scheme: dark;
+}
+
+/* Atom Dark · Atom */
+[data-scheme="atom-dark"] {
+  --paper: #1d1f21; --card: #27292b;
+  --ink: #dcdedd; --body: #c5c8c6; --muted: #8e9291; --faint: #595c5c;
+  --line: #383a3b; --hair: #2c2e30; --neg: #242628; --neg-line: #595c5c;
+  --mark: #6b6e6d; --ink-box: #c5c8c6; --on-acc: #131415;
+  --tint-mix: 20%;
+  --fill-l: #96cbfe; --text-l: #96cbfe; --fill-d: #96cbfe; --text-d: #96cbfe;
+  color-scheme: dark;
+}
+
+/* Ayu Dark · Zed */
+[data-scheme="ayu-dark"] {
+  --paper: #0d1016; --card: #181a20;
+  --ink: #d9d7d3; --body: #bfbdb6; --muted: #838482; --faint: #4d4e50;
+  --line: #292c30; --hair: #1d2024; --neg: #14171c; --neg-line: #4d4e50;
+  --mark: #636464; --ink-box: #bfbdb6; --on-acc: #080a0e;
+  --tint-mix: 20%;
+  --fill-l: #ffb353; --text-l: #ffb353; --fill-d: #ffb353; --text-d: #ffb353;
+  color-scheme: dark;
+}
+
+/* Ayu Mirage · Zed */
+[data-scheme="ayu-mirage"] {
+  --paper: #1f2430; --card: #242936;
+  --ink: #e6e4dc; --body: #cccac2; --muted: #8a9199; --faint: #5c6773;
+  --line: #3a4256; --hair: #2b3242; --neg: #232834; --neg-line: #5c6773;
+  --mark: #707a8c; --ink-box: #cccac2; --on-acc: #1f2430;
+  --tint-mix: 18%;
+  --fill-l: #ffcc66; --text-l: #ffd580; --fill-d: #ffcc66; --text-d: #ffd580;
+  color-scheme: dark;
+}
+
+/* Base16 Tomorrow Dark · Atom */
+[data-scheme="base16-tomorrow-dark"] {
+  --paper: #1d1f21; --card: #27292b;
+  --ink: #dcdedd; --body: #c5c8c6; --muted: #8e9291; --faint: #595c5c;
+  --line: #383a3b; --hair: #2c2e30; --neg: #242628; --neg-line: #595c5c;
+  --mark: #6b6e6d; --ink-box: #c5c8c6; --on-acc: #131415;
+  --tint-mix: 20%;
+  --fill-l: #b294bb; --text-l: #c8aad2; --fill-d: #b294bb; --text-d: #c8aad2;
+  color-scheme: dark;
+}
+
+/* Blackboard · Sublime Text */
+[data-scheme="blackboard"] {
+  --paper: #0c1021; --card: #1a1e2e;
+  --ink: #f8f8f8; --body: #e5e5e7; --muted: #848790; --faint: #61646e;
+  --line: #323543; --hair: #212534; --neg: #15192a; --neg-line: #61646e;
+  --mark: #767882; --ink-box: #e5e5e7; --on-acc: #080a15;
+  --tint-mix: 20%;
+  --fill-l: #fbde2d; --text-l: #fbde2d; --fill-d: #fbde2d; --text-d: #fbde2d;
+  color-scheme: dark;
+}
+
+/* Cobalt · Sublime Text */
+[data-scheme="cobalt"] {
+  --paper: #002240; --card: #0f2f4b;
+  --ink: #ffffff; --body: #ebedf0; --muted: #8698a7; --faint: #5c7285;
+  --line: #29455f; --hair: #173651; --neg: #0a2b48; --neg-line: #5c7285;
+  --mark: #738596; --ink-box: #ebedf0; --on-acc: #00162a;
+  --tint-mix: 20%;
+  --fill-l: #ff9d00; --text-l: #febf7e; --fill-d: #ff9d00; --text-d: #febf7e;
+  color-scheme: dark;
+}
+
+/* Espresso Libre · Sublime Text */
+[data-scheme="espresso-libre"] {
+  --paper: #2a211c; --card: #332924;
+  --ink: #d7cec4; --body: #bdae9d; --muted: #9e9184; --faint: #5f544a;
+  --line: #423831; --hair: #372e28; --neg: #302721; --neg-line: #5f544a;
+  --mark: #7b6f64; --ink-box: #bdae9d; --on-acc: #1b1512;
+  --tint-mix: 20%;
+  --fill-l: #ff9358; --text-l: #fdb794; --fill-d: #ff9358; --text-d: #fdb794;
+  color-scheme: dark;
+}
+
+/* Gruvbox Dark · Zed */
+[data-scheme="gruvbox-dark"] {
+  --paper: #282828; --card: #32302f;
+  --ink: #fbf1c7; --body: #ebdbb2; --muted: #bdae93; --faint: #7c6f64;
+  --line: #504945; --hair: #3c3836; --neg: #32302f; --neg-line: #665c54;
+  --mark: #928374; --ink-box: #ebdbb2; --on-acc: #1d2021;
+  --tint-mix: 20%;
+  --fill-l: #fe8019; --text-l: #ffa65c; --fill-d: #fe8019; --text-d: #ffa65c;
+  color-scheme: dark;
+}
+
+/* Gruvbox Dark Hard · Zed */
+[data-scheme="gruvbox-dark-hard"] {
+  --paper: #1d2021; --card: #282828;
+  --ink: #fbf1c7; --body: #ebdbb2; --muted: #bdae93; --faint: #7c6f64;
+  --line: #504945; --hair: #32302f; --neg: #282828; --neg-line: #665c54;
+  --mark: #928374; --ink-box: #ebdbb2; --on-acc: #1d2021;
+  --tint-mix: 20%;
+  --fill-l: #fe8019; --text-l: #ffa65c; --fill-d: #fe8019; --text-d: #ffa65c;
+  color-scheme: dark;
+}
+
+/* Gruvbox Dark Soft · Zed */
+[data-scheme="gruvbox-dark-soft"] {
+  --paper: #32302f; --card: #3c3836;
+  --ink: #fbf1c7; --body: #ebdbb2; --muted: #bdae93; --faint: #7c6f64;
+  --line: #665c54; --hair: #504945; --neg: #3c3836; --neg-line: #7c6f64;
+  --mark: #928374; --ink-box: #ebdbb2; --on-acc: #1d2021;
+  --tint-mix: 20%;
+  --fill-l: #fe8019; --text-l: #ffa65c; --fill-d: #fe8019; --text-d: #ffa65c;
   color-scheme: dark;
 }
 
@@ -176,7 +489,52 @@
   color-scheme: dark;
 }
 
-/* Solarized Dark · Atom, Zed, Sublime Text */
+/* Monokai Bright · Sublime Text */
+[data-scheme="monokai-bright"] {
+  --paper: #272822; --card: #34342e;
+  --ink: #f8f8f2; --body: #e7e7e1; --muted: #9d9e97; --faint: #72736d;
+  --line: #484943; --hair: #3a3b35; --neg: #2f302a; --neg-line: #72736d;
+  --mark: #858680; --ink-box: #e7e7e1; --on-acc: #191a16;
+  --tint-mix: 20%;
+  --fill-l: #f92672; --text-l: #fd6f91; --fill-d: #f92672; --text-d: #fd6f91;
+  color-scheme: dark;
+}
+
+/* One Dark · Atom, Zed */
+[data-scheme="one-dark"] {
+  /* Adjusted from the editor for contrast: body #abb2bf → #b1b8c3, muted #9198a5 → #979ea9 */
+  --paper: #282c34; --card: #2f343e;
+  --ink: #dcdfe4; --body: #b1b8c3; --muted: #979ea9; --faint: #5c6370;
+  --line: #3e4451; --hair: #353a44; --neg: #2c3039; --neg-line: #5c6370;
+  --mark: #747b88; --ink-box: #abb2bf; --on-acc: #1e2127;
+  --tint-mix: 22%;
+  --fill-l: #61afef; --text-l: #8ec6f5; --fill-d: #61afef; --text-d: #8ec6f5;
+  color-scheme: dark;
+}
+
+/* Pastels on Dark · Sublime Text */
+[data-scheme="pastels-on-dark"] {
+  --paper: #211e1e; --card: #2c2929;
+  --ink: #e9e9e9; --body: #dadada; --muted: #939191; --faint: #646262;
+  --line: #3f3c3c; --hair: #322f2f; --neg: #282626; --neg-line: #646262;
+  --mark: #747373; --ink-box: #dadada; --on-acc: #151414;
+  --tint-mix: 20%;
+  --fill-l: #a1a1ff; --text-l: #babcff; --fill-d: #a1a1ff; --text-d: #babcff;
+  color-scheme: dark;
+}
+
+/* Rosé Pine · Zed Legacy Themes extension (built into earlier Zed versions) */
+[data-scheme="rose-pine"] {
+  --paper: #191724; --card: #1f1d2e;
+  --ink: #e0def4; --body: #cfcbe6; --muted: #908caa; --faint: #6e6a86;
+  --line: #403d52; --hair: #26233a; --neg: #21202e; --neg-line: #524f67;
+  --mark: #6e6a86; --ink-box: #e0def4; --on-acc: #191724;
+  --tint-mix: 22%;
+  --fill-l: #c4a7e7; --text-l: #d9c6f2; --fill-d: #c4a7e7; --text-d: #d9c6f2;
+  color-scheme: dark;
+}
+
+/* Solarized Dark · Atom, Sublime Text (Zed: Legacy Themes extension) */
 [data-scheme="solarized-dark"] {
   /* Adjusted from the editor for contrast: fill #268bd2 → #3294da, body #93a1a1 → #a5adad, muted #839496 → #8f9c9e */
   --paper: #002b36; --card: #073642;
@@ -188,36 +546,47 @@
   color-scheme: dark;
 }
 
-/* Gruvbox Dark · Zed, Sublime Text */
-[data-scheme="gruvbox-dark"] {
-  --paper: #282828; --card: #32302f;
-  --ink: #fbf1c7; --body: #ebdbb2; --muted: #bdae93; --faint: #7c6f64;
-  --line: #504945; --hair: #3c3836; --neg: #32302f; --neg-line: #665c54;
-  --mark: #928374; --ink-box: #ebdbb2; --on-acc: #1d2021;
+/* SpaceCadet · Sublime Text */
+[data-scheme="spacecadet"] {
+  --paper: #0d0d0d; --card: #191a19;
+  --ink: #dde6cf; --body: #ccd5bf; --muted: #808578; --faint: #585b53;
+  --line: #2e302c; --hair: #20211e; --neg: #151615; --neg-line: #585b53;
+  --mark: #6b6f64; --ink-box: #ccd5bf; --on-acc: #080808;
   --tint-mix: 20%;
-  --fill-l: #fe8019; --text-l: #ffa65c; --fill-d: #fe8019; --text-d: #ffa65c;
+  --fill-l: #a8885a; --text-l: #be9d6f; --fill-d: #a8885a; --text-d: #be9d6f;
   color-scheme: dark;
 }
 
-/* Ayu Mirage · Zed, Sublime Text */
-[data-scheme="ayu-mirage"] {
-  --paper: #1f2430; --card: #242936;
-  --ink: #e6e4dc; --body: #cccac2; --muted: #8a9199; --faint: #5c6773;
-  --line: #3a4256; --hair: #2b3242; --neg: #232834; --neg-line: #5c6773;
-  --mark: #707a8c; --ink-box: #cccac2; --on-acc: #1f2430;
-  --tint-mix: 18%;
-  --fill-l: #ffcc66; --text-l: #ffd580; --fill-d: #ffcc66; --text-d: #ffd580;
+/* Sunburst · Sublime Text */
+[data-scheme="sunburst"] {
+  --paper: #000000; --card: #0f0f0f;
+  --ink: #f8f8f8; --body: #e4e4e4; --muted: #7d7d7d; --faint: #595959;
+  --line: #282828; --hair: #161616; --neg: #0a0a0a; --neg-line: #595959;
+  --mark: #707070; --ink-box: #e4e4e4; --on-acc: #000000;
+  --tint-mix: 20%;
+  --fill-l: #e28964; --text-l: #fa9f79; --fill-d: #e28964; --text-d: #fa9f79;
   color-scheme: dark;
 }
 
-/* Rosé Pine · Zed */
-[data-scheme="rose-pine"] {
-  --paper: #191724; --card: #1f1d2e;
-  --ink: #e0def4; --body: #cfcbe6; --muted: #908caa; --faint: #6e6a86;
-  --line: #403d52; --hair: #26233a; --neg: #21202e; --neg-line: #524f67;
-  --mark: #6e6a86; --ink-box: #e0def4; --on-acc: #191724;
-  --tint-mix: 22%;
-  --fill-l: #c4a7e7; --text-l: #d9c6f2; --fill-d: #c4a7e7; --text-d: #d9c6f2;
+/* Twilight · Sublime Text */
+[data-scheme="twilight"] {
+  --paper: #141414; --card: #222222;
+  --ink: #f8f8f8; --body: #e6e6e6; --muted: #8a8a89; --faint: #666666;
+  --line: #383838; --hair: #292929; --neg: #1d1d1d; --neg-line: #666666;
+  --mark: #7b7b7b; --ink-box: #e6e6e6; --on-acc: #0d0d0d;
+  --tint-mix: 20%;
+  --fill-l: #cda869; --text-l: #e4be7f; --fill-d: #cda869; --text-d: #e4be7f;
+  color-scheme: dark;
+}
+
+/* Zenburnesque · Sublime Text */
+[data-scheme="zenburnesque"] {
+  --paper: #404040; --card: #494949;
+  --ink: #ebebeb; --body: #dedede; --muted: #babab9; --faint: #797979;
+  --line: #595959; --hair: #4e4e4e; --neg: #464646; --neg-line: #797979;
+  --mark: #8f8f8e; --ink-box: #dedede; --on-acc: #2a2a2a;
+  --tint-mix: 20%;
+  --fill-l: #f09040; --text-l: #ffbb87; --fill-d: #f09040; --text-d: #ffbb87;
   color-scheme: dark;
 }
 
@@ -230,13 +599,29 @@
   --tint: color-mix(in srgb, var(--acc) var(--tint-mix), var(--paper));
 }
 [data-scheme="dusk"], [data-scheme="night"],
-[data-scheme="one-dark"],
+[data-scheme="all-hallows-eve"],
+[data-scheme="amy"],
+[data-scheme="atom-dark"],
+[data-scheme="ayu-dark"],
+[data-scheme="ayu-mirage"],
+[data-scheme="base16-tomorrow-dark"],
+[data-scheme="blackboard"],
+[data-scheme="cobalt"],
+[data-scheme="espresso-libre"],
+[data-scheme="gruvbox-dark"],
+[data-scheme="gruvbox-dark-hard"],
+[data-scheme="gruvbox-dark-soft"],
 [data-scheme="mariana"],
 [data-scheme="monokai"],
+[data-scheme="monokai-bright"],
+[data-scheme="one-dark"],
+[data-scheme="pastels-on-dark"],
+[data-scheme="rose-pine"],
 [data-scheme="solarized-dark"],
-[data-scheme="gruvbox-dark"],
-[data-scheme="ayu-mirage"],
-[data-scheme="rose-pine"] {
+[data-scheme="spacecadet"],
+[data-scheme="sunburst"],
+[data-scheme="twilight"],
+[data-scheme="zenburnesque"] {
   --acc: var(--fill-d);
   --acc-text: var(--text-d);
   --acc-fg: var(--text-d);
