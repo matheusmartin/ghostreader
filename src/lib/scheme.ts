@@ -2,7 +2,10 @@
 // Paper in light mode, Dusk in dark mode. index.html applies the saved choice before the
 // first paint, with the same rules, so the page never flashes the wrong colour.
 
-export type Scheme = 'paper' | 'quiet' | 'warm' | 'dusk' | 'night';
+export type Scheme =
+  | 'paper' | 'quiet' | 'warm' | 'dusk' | 'night'
+  // From code editors (styles/tokens.css): Atom, Zed and Sublime Text themes.
+  | 'one-light' | 'solarized-light' | 'gruvbox-light' | 'rose-pine-dawn' | 'one-dark' | 'mariana' | 'monokai' | 'solarized-dark' | 'gruvbox-dark' | 'ayu-mirage' | 'rose-pine';
 export type SchemeChoice = 'auto' | Scheme;
 
 export const SCHEMES: { id: SchemeChoice; name: string }[] = [
@@ -12,6 +15,17 @@ export const SCHEMES: { id: SchemeChoice; name: string }[] = [
   { id: 'warm', name: 'Warm' },
   { id: 'dusk', name: 'Dusk' },
   { id: 'night', name: 'Night' },
+  { id: 'one-light', name: 'One Light' },
+  { id: 'solarized-light', name: 'Solarized Light' },
+  { id: 'gruvbox-light', name: 'Gruvbox Light' },
+  { id: 'rose-pine-dawn', name: 'Rosé Pine Dawn' },
+  { id: 'one-dark', name: 'One Dark' },
+  { id: 'mariana', name: 'Mariana' },
+  { id: 'monokai', name: 'Monokai' },
+  { id: 'solarized-dark', name: 'Solarized Dark' },
+  { id: 'gruvbox-dark', name: 'Gruvbox Dark' },
+  { id: 'ayu-mirage', name: 'Ayu Mirage' },
+  { id: 'rose-pine', name: 'Rosé Pine' },
 ];
 
 const KEY = 'ghostwriter:scheme';

@@ -35,6 +35,26 @@ Rules:
 | Dusk | `#16181d` | Default in dark mode |
 | Night | `#000000` | Reading in bed; dimmed text |
 
+From code editors (Atom, Zed, Sublime Text), each with its own page and accent:
+
+| Scheme | Editors | Page | Accent |
+|---|---|---|---|
+| One Light | Atom, Zed | `#fafafa` | `#2c6cf2` blue |
+| Solarized Light | Atom, Zed, Sublime Text | `#fdf6e3` | `#2079ba` blue |
+| Gruvbox Light | Zed, Sublime Text | `#fbf1c7` | `#af3a03` orange |
+| Rosé Pine Dawn | Zed | `#faf4ed` | `#286983` pine |
+| One Dark | Atom, Zed | `#282c34` | `#61afef` blue |
+| Mariana | Sublime Text | `#303841` | `#f9ae58` orange |
+| Monokai | Sublime Text | `#272822` | `#a6e22e` green |
+| Solarized Dark | Atom, Zed, Sublime Text | `#002b36` | `#3294da` blue |
+| Gruvbox Dark | Zed, Sublime Text | `#282828` | `#fe8019` orange |
+| Ayu Mirage | Zed, Sublime Text | `#1f2430` | `#ffcc66` gold |
+| Rosé Pine | Zed | `#191724` | `#c4a7e7` iris |
+
+They keep the editors' colours, moved only where a contrast rule needs it; `tokens.css` notes
+each change (for example One Light's blue `#4078f2` → `#2c6cf2`, so white text on it reaches 4.5:1).
+Each still has one accent for the whole book.
+
 "Auto" (the default choice) uses Paper, or Dusk when the device is in dark mode.
 
 ## Accent
