@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """Draw a real-geography map (country outlines + numbered places) as an SVG for a Ghostreader
-"figure" screen. The SVG uses the app's figure classes, so it follows the page colour.
+"figure" screen. The SVG uses the app's figure classes, so it follows the theme.
 
 Usage:
     python3 map.py SPEC.json [--out MAP.svg] [--width 340]   (without --out the SVG goes to stdout)

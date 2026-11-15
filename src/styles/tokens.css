@@ -20,7 +20,7 @@
   --hud-h: calc(26px + 3.2rem);
 }
 
-/* ---- page colours (schemes) --------------------------------------------------------------------
+/* ---- themes (data-scheme) ------------------------------------------------------------------------
    The reader picks one in the menu (src/lib/scheme.ts). "Auto" uses Paper, or Dusk when the
    device is in dark mode. Any element can carry data-scheme, so the picker's swatches show their
    own colours. Every text colour passes WCAG AA on its page; body text passes AAA. */
@@ -80,7 +80,7 @@
    One accent for the whole book: every part and chapter uses the same colours, so nothing on the
    page changes from chapter to chapter except the breaks in the progress strip. The accent is the
    design system's terracotta (OKLCH L 0.53 on light pages, 0.64 on dark pages); Warm uses its
-   ochre instead. tests/colours.test.ts checks 3:1 for shapes and 4.5:1 for text in every page colour.
+   ochre instead. tests/colours.test.ts checks 3:1 for shapes and 4.5:1 for text in every theme.
    Raw values: fill and text for light pages, fill and text for dark pages. */
 
 /* Named as well as :root, so a picker swatch of these schemes shows terracotta on any page. */
@@ -89,14 +89,14 @@
 }
 [data-scheme="warm"] { --fill-l: #95661a; --text-l: #7d5512; }
 
-/* ---- schemes from code editors -----------------------------------------------------------------
+/* ---- themes from code editors ------------------------------------------------------------------
    Every theme built into Atom (its syntax themes), Sublime Text (Color Scheme - Default and
    Color Scheme - Legacy) and Zed (assets/themes), with the editors' names; plus Rosé Pine and
-   Rosé Pine Dawn, which earlier Zed versions had built in. Each has its own page and accent (still
-   one accent for the whole book). Page, text and accent are the editor's colours, moved only where
-   tests/colours.test.ts or the AAA rule for body text needs it (noted per scheme); the greys and
-   lines are mixed from the editor's text and page colours. They come after the accent above, so
-   their accent wins on the root element. */
+   Rosé Pine Dawn, which earlier Zed versions had built in. The menu shows them in one grid with
+   Ghostreader's own. Each has its own page and accent (still one accent for the whole book). Page,
+   text and accent are the editor's colours, moved only where tests/colours.test.ts or the AAA rule
+   for body text needs it (noted per theme); the greys and lines are mixed from the editor's text
+   and page colours. They come after the accent above, so their accent wins on the root element. */
 
 /* -- light -- */
 
@@ -590,7 +590,7 @@
   color-scheme: dark;
 }
 
-/* Derived tokens, computed where the page colour is set:
+/* Derived tokens, computed where the theme is set:
    --acc shapes · --acc-text small accent text · --acc-fg accent as large text · --tint light fills */
 :root, [data-scheme] {
   --acc: var(--fill-l);

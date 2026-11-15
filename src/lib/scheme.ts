@@ -1,62 +1,61 @@
-// Page colour (scheme). The choice is kept on this device. "Auto" follows the device:
+// Theme (called "scheme" in the code). The choice is kept on this device. "Auto" follows the device:
 // Paper in light mode, Dusk in dark mode. index.html applies the saved choice before the
 // first paint, with the same rules, so the page never flashes the wrong colour.
 
-/** Ghostreader's own page colours, then the code editors' themes (styles/tokens.css): every theme
- * built into Atom, Sublime Text and Zed, with the editors' names, in light and dark groups. */
-export type SchemeGroup = 'ghostreader' | 'light' | 'dark';
-
+/** The themes (styles/tokens.css): Auto, then the light themes and the dark themes, each A to Z.
+ * Paper, Quiet, Warm, Dusk and Night are Ghostreader's; the others are every theme built into
+ * Atom, Sublime Text and Zed, with the editors' names. */
 export const SCHEMES = [
-  { id: 'auto', name: 'Auto', group: 'ghostreader' },
-  { id: 'paper', name: 'Paper', group: 'ghostreader' },
-  { id: 'quiet', name: 'Quiet', group: 'ghostreader' },
-  { id: 'warm', name: 'Warm', group: 'ghostreader' },
-  { id: 'dusk', name: 'Dusk', group: 'ghostreader' },
-  { id: 'night', name: 'Night', group: 'ghostreader' },
-  { id: 'atom-light', name: 'Atom Light', group: 'light' },
-  { id: 'ayu-light', name: 'Ayu Light', group: 'light' },
-  { id: 'base16-tomorrow-light', name: 'Base16 Tomorrow Light', group: 'light' },
-  { id: 'breakers', name: 'Breakers', group: 'light' },
-  { id: 'celeste', name: 'Celeste', group: 'light' },
-  { id: 'dawn', name: 'Dawn', group: 'light' },
-  { id: 'eiffel', name: 'Eiffel', group: 'light' },
-  { id: 'gruvbox-light', name: 'Gruvbox Light', group: 'light' },
-  { id: 'gruvbox-light-hard', name: 'Gruvbox Light Hard', group: 'light' },
-  { id: 'gruvbox-light-soft', name: 'Gruvbox Light Soft', group: 'light' },
-  { id: 'idle', name: 'IDLE', group: 'light' },
-  { id: 'iplastic', name: 'iPlastic', group: 'light' },
-  { id: 'lazy', name: 'LAZY', group: 'light' },
-  { id: 'mac-classic', name: 'Mac Classic', group: 'light' },
-  { id: 'magicwb-amiga', name: 'MagicWB (Amiga)', group: 'light' },
-  { id: 'one-light', name: 'One Light', group: 'light' },
-  { id: 'rose-pine-dawn', name: 'Rosé Pine Dawn', group: 'light' },
-  { id: 'sixteen', name: 'Sixteen', group: 'light' },
-  { id: 'slush-and-poppies', name: 'Slush & Poppies', group: 'light' },
-  { id: 'solarized-light', name: 'Solarized Light', group: 'light' },
-  { id: 'all-hallows-eve', name: "All Hallow's Eve", group: 'dark' },
-  { id: 'amy', name: 'Amy', group: 'dark' },
-  { id: 'atom-dark', name: 'Atom Dark', group: 'dark' },
-  { id: 'ayu-dark', name: 'Ayu Dark', group: 'dark' },
-  { id: 'ayu-mirage', name: 'Ayu Mirage', group: 'dark' },
-  { id: 'base16-tomorrow-dark', name: 'Base16 Tomorrow Dark', group: 'dark' },
-  { id: 'blackboard', name: 'Blackboard', group: 'dark' },
-  { id: 'cobalt', name: 'Cobalt', group: 'dark' },
-  { id: 'espresso-libre', name: 'Espresso Libre', group: 'dark' },
-  { id: 'gruvbox-dark', name: 'Gruvbox Dark', group: 'dark' },
-  { id: 'gruvbox-dark-hard', name: 'Gruvbox Dark Hard', group: 'dark' },
-  { id: 'gruvbox-dark-soft', name: 'Gruvbox Dark Soft', group: 'dark' },
-  { id: 'mariana', name: 'Mariana', group: 'dark' },
-  { id: 'monokai', name: 'Monokai', group: 'dark' },
-  { id: 'monokai-bright', name: 'Monokai Bright', group: 'dark' },
-  { id: 'one-dark', name: 'One Dark', group: 'dark' },
-  { id: 'pastels-on-dark', name: 'Pastels on Dark', group: 'dark' },
-  { id: 'rose-pine', name: 'Rosé Pine', group: 'dark' },
-  { id: 'solarized-dark', name: 'Solarized Dark', group: 'dark' },
-  { id: 'spacecadet', name: 'SpaceCadet', group: 'dark' },
-  { id: 'sunburst', name: 'Sunburst', group: 'dark' },
-  { id: 'twilight', name: 'Twilight', group: 'dark' },
-  { id: 'zenburnesque', name: 'Zenburnesque', group: 'dark' },
-] as const satisfies readonly { id: string; name: string; group: SchemeGroup }[];
+  { id: 'auto', name: 'Auto' },
+  { id: 'atom-light', name: 'Atom Light' },
+  { id: 'ayu-light', name: 'Ayu Light' },
+  { id: 'base16-tomorrow-light', name: 'Base16 Tomorrow Light' },
+  { id: 'breakers', name: 'Breakers' },
+  { id: 'celeste', name: 'Celeste' },
+  { id: 'dawn', name: 'Dawn' },
+  { id: 'eiffel', name: 'Eiffel' },
+  { id: 'gruvbox-light', name: 'Gruvbox Light' },
+  { id: 'gruvbox-light-hard', name: 'Gruvbox Light Hard' },
+  { id: 'gruvbox-light-soft', name: 'Gruvbox Light Soft' },
+  { id: 'idle', name: 'IDLE' },
+  { id: 'iplastic', name: 'iPlastic' },
+  { id: 'lazy', name: 'LAZY' },
+  { id: 'mac-classic', name: 'Mac Classic' },
+  { id: 'magicwb-amiga', name: 'MagicWB (Amiga)' },
+  { id: 'one-light', name: 'One Light' },
+  { id: 'paper', name: 'Paper' },
+  { id: 'quiet', name: 'Quiet' },
+  { id: 'rose-pine-dawn', name: 'Rosé Pine Dawn' },
+  { id: 'sixteen', name: 'Sixteen' },
+  { id: 'slush-and-poppies', name: 'Slush & Poppies' },
+  { id: 'solarized-light', name: 'Solarized Light' },
+  { id: 'warm', name: 'Warm' },
+  { id: 'all-hallows-eve', name: "All Hallow's Eve" },
+  { id: 'amy', name: 'Amy' },
+  { id: 'atom-dark', name: 'Atom Dark' },
+  { id: 'ayu-dark', name: 'Ayu Dark' },
+  { id: 'ayu-mirage', name: 'Ayu Mirage' },
+  { id: 'base16-tomorrow-dark', name: 'Base16 Tomorrow Dark' },
+  { id: 'blackboard', name: 'Blackboard' },
+  { id: 'cobalt', name: 'Cobalt' },
+  { id: 'dusk', name: 'Dusk' },
+  { id: 'espresso-libre', name: 'Espresso Libre' },
+  { id: 'gruvbox-dark', name: 'Gruvbox Dark' },
+  { id: 'gruvbox-dark-hard', name: 'Gruvbox Dark Hard' },
+  { id: 'gruvbox-dark-soft', name: 'Gruvbox Dark Soft' },
+  { id: 'mariana', name: 'Mariana' },
+  { id: 'monokai', name: 'Monokai' },
+  { id: 'monokai-bright', name: 'Monokai Bright' },
+  { id: 'night', name: 'Night' },
+  { id: 'one-dark', name: 'One Dark' },
+  { id: 'pastels-on-dark', name: 'Pastels on Dark' },
+  { id: 'rose-pine', name: 'Rosé Pine' },
+  { id: 'solarized-dark', name: 'Solarized Dark' },
+  { id: 'spacecadet', name: 'SpaceCadet' },
+  { id: 'sunburst', name: 'Sunburst' },
+  { id: 'twilight', name: 'Twilight' },
+  { id: 'zenburnesque', name: 'Zenburnesque' },
+] as const satisfies readonly { id: string; name: string }[];
 
 export type SchemeChoice = (typeof SCHEMES)[number]['id'];
 export type Scheme = Exclude<SchemeChoice, 'auto'>;
@@ -94,7 +93,7 @@ let current: SchemeChoice = 'auto';
 export function applyScheme(): void {
   const root = document.documentElement;
   root.dataset.scheme = resolveScheme(current, darkQuery().matches);
-  // Browser and system bars take the page colour.
+  // Browser and system bars take the theme's page colour.
   const paper = getComputedStyle(root).getPropertyValue('--paper').trim();
   document.querySelector('meta[name="theme-color"]')?.setAttribute('content', paper);
 }

@@ -3,9 +3,9 @@
 //
 //   head        what this screen is (the library, a book, a book's PDF)
 //   actions     the screen's own buttons, then the app's: full screen, install, update
-//   top         the screen's sections above the page colour (a book: style)
-//   page colour every screen but the PDF view, which is always Paper
-//   bottom      the screen's sections below the page colour (a book: contents)
+//   top         the screen's sections above the theme (a book: style)
+//   theme       every screen but the PDF view, which is always Paper
+//   bottom      the screen's sections below the theme (a book: contents)
 //   help        the gestures
 //
 // Each screen gives its part with useMenu() and takes it back when it closes.
@@ -27,8 +27,8 @@ export interface MenuPage {
   actions?(): Part[];
   top?(): Part[];
   bottom?(): Part[];
-  /** False: no page colour picker. */
-  pageColour?: boolean;
+  /** False: no theme picker. */
+  theme?: boolean;
   /** Gesture → what it does. */
   help?: [string, string][];
   /** The menu closed. */
@@ -136,7 +136,7 @@ export function openMenu(): void {
   void el.offsetHeight; // start the slide-in from the closed state
   el.classList.add('open');
   sheet.scrollTop = 0;
-  // The current chapter, if any; 'nearest' keeps the top of the menu (actions, page colour) in view when it can.
+  // The current chapter, if any; 'nearest' keeps the top of the menu (actions, theme) in view when it can.
   sheet.querySelector<HTMLElement>('[aria-current="true"]')?.scrollIntoView({ block: 'nearest' });
 }
 
@@ -168,7 +168,7 @@ function build() {
     ),
     h('div', { class: 'menu-actions' }, actions()),
     p.top?.() ?? [],
-    p.pageColour === false ? null : schemePicker(),
+    p.theme === false ? null : schemePicker(),
     p.bottom?.() ?? [],
     p.help?.length
       ? h('dl', { class: 'menu-help' }, p.help.flatMap(([dt, dd]) => [h('dt', null, dt), h('dd', null, dd)]))

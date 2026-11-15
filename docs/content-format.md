@@ -25,7 +25,7 @@ The reader moves through the screens in this order:
 |---|---|---|
 | Swipe up / down | ↓ ↑, Space, Page Down / Up | Next / previous screen. Continues into the next chapter. |
 | Swipe left / right | → ← | Start of the next / previous chapter. |
-| Hold anywhere (0.6 s) | Enter, Esc | Menu: style, page colour, contents, library, full screen. |
+| Hold anywhere (0.6 s) | Enter, Esc | Menu: style, theme, contents, library, full screen. |
 
 The app adds three screens that you do not write:
 

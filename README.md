@@ -19,7 +19,7 @@ it), and in a book it switches style at the same chapter. Research and recipes: 
 
 - **Library**: the main screen shows every book.
 - **Menu**: hold a finger still anywhere, on every screen (library, book, PDF view), for the menu.
-  It is the one way to everything else: style, page colour, full screen, install, update, and in a
+  It is the one way to everything else: style, theme, full screen, install, update, and in a
   book also the library, contents, PDF and share. Esc opens it on a keyboard.
 - **Read mode**: tap a book. The app goes full screen and shows one screen at a time, from the cover.
 
@@ -27,7 +27,7 @@ it), and in a book it switches style at the same chapter. Research and recipes: 
 |---|---|
 | Swipe up / down | Next / previous screen (continues into the next chapter) |
 | Swipe left / right | Start of the next / previous chapter |
-| Hold anywhere, on every screen (0.6 s) | Menu: style, page colour, contents, library, full screen |
+| Hold anywhere, on every screen (0.6 s) | Menu: style, theme, contents, library, full screen |
 
 Keyboard and mouse wheel do the same moves (arrows, Space, Page Up / Down, Enter, Esc).
 
@@ -49,16 +49,16 @@ book on A4 pages: a cover with the book map and contents, every chapter with all
 (larger, with the full scene lists and thread lists), the detail marked for the PDF only (longer
 synopses, full casts), and an answers page for the test questions.
 
-**Page colour.** Paper (off-white) by day and Dusk (soft dark) when the device is in dark mode.
-The menu also offers Quiet, Warm and Night, and, under "From code editors", 43 schemes with the
-editors' names: every theme built into Atom, Sublime Text and Zed (for example One Dark, Monokai,
-Solarized, Gruvbox, Ayu and Cobalt), plus Rosé Pine. Each has one accent colour for the whole book.
+**Theme.** Paper (off-white) by day and Dusk (soft dark) when the device is in dark mode. The
+menu shows 48 themes in one grid: Quiet, Warm and Night, and every theme built into Atom, Sublime
+Text and Zed, with the editors' names (for example One Dark, Monokai, Solarized, Gruvbox, Ayu and
+Cobalt), plus Rosé Pine. Each has one accent colour for the whole book.
 Colours, roles and contrast rules:
 [docs/design.md](docs/design.md).
 
 **Book only, no personal data.** The app shows the book's content and nothing else: no highlights,
 notes or ratings, and it keeps no record of what or how far you read. It stores three settings on
-the device: the page colour, the style chosen in the menu and whether the gesture hint was shown.
+the device: the theme, the style chosen in the menu and whether the gesture hint was shown.
 
 **Full screen.** Installed to the home screen, the app opens full screen (`display: fullscreen`;
 on iPhone and iPad, under the status bar). In a browser tab, it asks for full screen when you open
@@ -144,7 +144,7 @@ src/
   input/keys.ts      keyboard and wheel
   ui/reader.ts       read mode: the stage, drag-to-slide transitions, moves
   ui/hud.ts          the "where am I" indicator
-  ui/menu.ts         the one menu for the whole app: hold anywhere; page colour, full screen, install, update
+  ui/menu.ts         the one menu for the whole app: hold anywhere; theme, full screen, install, update
   ui/book-menu.ts    the reader's part of the menu: library, style, contents, PDF, share
   ui/style-picker.ts the style buttons in the menu (library and book)
   ui/library.ts      main screen
@@ -156,8 +156,8 @@ src/
   print/print.ts     the PDF: the book on A4 pages (#/print/<book>)
   ui/check.ts        the screen check (#/check/<book>), used by scripts/check-screens.mjs
   lib/               DOM helpers, SVG sanitiser, PDF link, full screen and wake lock, settings storage
-  styles/            design tokens: page colours and the accent (docs/design.md); print.css
-  lib/scheme.ts      page colour choice; ui/scheme-picker.ts draws the picker
+  styles/            design tokens: themes and the accent (docs/design.md); print.css
+  lib/scheme.ts      theme choice; ui/scheme-picker.ts draws the picker
 scripts/
   build-pdfs.mjs     dist/ → dist/pdf/<book>.pdf with Chromium
   check-screens.mjs  every screen of every book at three sizes

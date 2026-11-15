@@ -42,7 +42,7 @@ export function renderPrint(root: HTMLElement, book: Book, opts: { back(): void 
   const doc = h('div', { class: 'print' }, pages);
   const el = h('div', { class: 'print-view' }, toolbar, doc);
 
-  // Print on Paper, whatever page colour the reader chose.
+  // Print on Paper, whatever theme the reader chose.
   const html = document.documentElement;
   const scheme = html.getAttribute('data-scheme');
   html.setAttribute('data-scheme', 'paper');
@@ -50,7 +50,7 @@ export function renderPrint(root: HTMLElement, book: Book, opts: { back(): void 
   root.append(el);
   void document.fonts.ready.then(() => requestAnimationFrame(() => { html.dataset.printReady = '1'; }));
 
-  // The PDF is always on Paper: no page colour here.
+  // The PDF is always on Paper: no theme here.
   const offMenu = useMenu({
     label: `${guideLabel(book)} · PDF`,
     title: book.title,
@@ -59,7 +59,7 @@ export function renderPrint(root: HTMLElement, book: Book, opts: { back(): void 
       h('button', { type: 'button', class: 'btn primary', onclick: () => { closeMenu(); print(); } }, 'Print or save as PDF'),
       h('button', { type: 'button', class: 'btn', onclick: () => { closeMenu(); opts.back(); } }, 'Back'),
     ],
-    pageColour: false,
+    theme: false,
     help: [HOLD_HELP],
   });
 
