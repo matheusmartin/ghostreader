@@ -16,6 +16,9 @@ chose, on a phone and (wider, with more room) in the PDF; there is nothing to la
 | who is who and how people relate (fiction overview) | `chart: "network"` (cast map) | the main character (centre) |
 | where each plotline moves (fiction overview) | `chart: "threads"` | none: a data chart |
 | how concepts connect; what supports or weakens what | `chart: "network"` (concept map), `arrow: true` for direction | the central idea (centre) |
+| kinds the book defines (three kinds of reality), each with a definition | `chart: "flow"`, one group per kind | the `key`: what the set means |
+| kinds told apart by examples or features | `chart: "matrix"` (kinds as columns or rows) | the `focus` row, the `key` |
+| rival views or uses of the same thing (naive and populist views) | `chart: "branches"` | the book's own view (`key`) |
 | a chain of causes or steps; an argument from a question to a conclusion | `chart: "flow"` | the conclusion (`key`) |
 | a process that feeds itself (vicious or virtuous circle) | `chart: "cycle"` | the node that drives the loop |
 | two things contrasted point by point (X vs Y, before vs after) | `chart: "compare"` | the verdict (`key`) |
@@ -27,7 +30,8 @@ chose, on a phone and (wider, with more room) in the PDF; there is nothing to la
 | real places | `figure` from `scripts/map.py` + a `list` of places | the key place (section maps) |
 | anything else that needs a drawing | `figure` (hand-made SVG, see below) | one `k` shape |
 
-Vary the diagrams: the same chart kind on at most two chapters in a row (fiction scenes excepted).
+Every concept or distinction the book introduces gets one of these charts in the chapter that
+introduces it (`references/concepts.md`). Vary the diagrams: the same chart kind on at most two chapters in a row (fiction scenes excepted).
 Never put a chart in for decoration: if the chapter's idea has no structure to show, a short
 `steps` or `points` screen is the honest choice, and the next chapter gets the chart.
 

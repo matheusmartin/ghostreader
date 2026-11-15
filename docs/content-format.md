@@ -72,13 +72,13 @@ with its number only (titles can spoil). Use this for guides written while readi
 ## Part
 
 ```json
-{ "id": "part-1", "label": "Part I", "title": "Human Networks", "theme": "p1", "chapters": [ … ] }
+{ "id": "part-1", "label": "Part I", "title": "Human Networks", "chapters": [ … ] }
 ```
 
 - `label` and `title` are optional. Together they make the kicker: "Part I · Human Networks".
   Front and back matter use `"label": "Opening"` and `"label": "Closing"`.
-- `theme` is the colour: `front` for overviews and front or back matter, `p1` … `p5` for the parts
-  in order. Without a theme, parts take `p1` … `p5` in order.
+- There is no colour field. The whole book uses one colour scheme; chapters are told apart only by
+  the breaks in the progress strip (docs/design.md).
 
 ## Chapter
 
@@ -88,7 +88,7 @@ with its number only (titles can spoil). Use this for guides written while readi
 ```
 
 - `number`: "01", "02" … for chapters; `P` prologue or preface, `I` introduction, `E` epilogue,
-  `C` conclusion, `A1` appendix; `B`, `H`, `W`, `T` for overview pages.
+  `C` conclusion, `A1` appendix; `B` (the book in one page), `K` (key concepts), `W`, `T`, `M` for overview pages.
 - `title`: the real title. An untitled chapter is "Chapter 7". Never invent a title.
 - `length`: the real length (words or pages). The book map sizes chips by length only when every
   chapter has one; never estimate.
@@ -213,11 +213,11 @@ Every chart takes an optional `label` and `caption` (one line under data charts:
 ```
 
 **flow** — a start, groups of points, and a key conclusion. One group is a simple flow; two or three
-groups make an argument map. Groups can take a `theme`.
+groups make an argument map.
 
 ```json
 { "type": "chart", "chart": "flow", "start": "Opening question",
-  "groups": [{ "label": "Part I", "theme": "p1", "items": ["Point", "Point"] }],
+  "groups": [{ "label": "Part I", "items": ["Point", "Point"] }],
   "key": "Conclusion" }
 ```
 

@@ -1,11 +1,13 @@
-// The book menu, opened by a tap: the library, full screen, page colour, contents (parts,
-// chapters, sections) and a reminder of the gestures. Chapters not written yet show only their number.
+// The book menu, opened by a tap: the library, a link to this screen, full screen, page colour,
+// contents (parts, chapters, sections) and a reminder of the gestures. Chapters not written yet show
+// only their number.
 
 import { h } from '../lib/dom.ts';
 import { canFullscreen, isFullscreen, isInstalled, toggleFullscreen } from '../lib/device.ts';
 import { GUIDE_NAMES } from '../screens/render.ts';
 import { schemePicker } from './scheme-picker.ts';
 import { pdfLink } from '../lib/pdf.ts';
+import { shareLink } from '../lib/share.ts';
 import type { Plan, PlanScreen } from '../model/plan.ts';
 
 export interface MenuActions {
@@ -18,6 +20,9 @@ export class Menu {
   private sheet: HTMLElement;
   private toc: HTMLElement;
   private fsButton: HTMLButtonElement | null = null;
+  private shareButton: HTMLButtonElement;
+  private at: PlanScreen | null = null;
+  private shareTimer = 0;
 
   private plan: Plan;
   private actions: MenuActions;
@@ -27,6 +32,7 @@ export class Menu {
     this.actions = actions;
     const b = plan.book;
     this.toc = h('nav', { class: 'toc', 'aria-label': 'Contents' });
+    this.shareButton = h('button', { type: 'button', class: 'btn', onclick: () => void this.share() }, 'Share this screen');
     if (canFullscreen() && !isInstalled()) {
       this.fsButton = h('button', { type: 'button', class: 'btn', onclick: () => void toggleFullscreen().then(() => this.syncFs()) }, 'Full screen');
     }
@@ -43,6 +49,7 @@ export class Menu {
         h('button', { type: 'button', class: 'btn primary', onclick: () => actions.library() }, 'Library'),
         h('button', { type: 'button', class: 'btn', onclick: () => this.pick(0) }, 'Cover'),
         pdfLink(b, 'Download PDF'),
+        this.shareButton,
         this.fsButton,
       ),
       schemePicker(),
@@ -65,6 +72,8 @@ export class Menu {
   }
 
   open(at: PlanScreen): void {
+    this.at = at;
+    this.resetShare();
     this.buildToc(at);
     this.syncFs();
     this.el.hidden = false;
@@ -86,6 +95,28 @@ export class Menu {
 
   destroy(): void {
     document.removeEventListener('fullscreenchange', this.syncFs);
+    clearTimeout(this.shareTimer);
+  }
+
+  /** The address bar always names the current screen (main.ts), so the link is the page address. */
+  private async share() {
+    const ch = this.at?.chapter;
+    const b = this.plan.book;
+    const title = ch && ch.kind === 'chapter' ? `${b.title} · ${ch.number} ${ch.title}` : b.title;
+    const result = await shareLink(location.href, title);
+    if (result === 'copied') this.flashShare('Link copied');
+    else if (result === 'failed') this.flashShare('Copy the address to share');
+  }
+
+  private flashShare(text: string) {
+    this.shareButton.textContent = text;
+    clearTimeout(this.shareTimer);
+    this.shareTimer = window.setTimeout(() => this.resetShare(), 2400);
+  }
+
+  private resetShare() {
+    clearTimeout(this.shareTimer);
+    this.shareButton.textContent = 'Share this screen';
   }
 
   private pick(index: number) {
@@ -100,7 +131,7 @@ export class Menu {
   private buildToc(at: PlanScreen) {
     this.toc.replaceChildren(
       ...this.plan.parts.map((part) =>
-        h('section', { class: `toc-part theme-${part.theme}` },
+        h('section', { class: 'toc-part' },
           h('h3', { class: 'label' }, part.kicker),
           h('ol', null,
             part.chapters.map((ch) => {

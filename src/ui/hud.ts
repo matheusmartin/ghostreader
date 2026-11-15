@@ -13,12 +13,11 @@ export class Hud {
   private title = h('span', { class: 'hud-title' });
   private section = h('span', { class: 'hud-section' });
   private pos = h('span', { class: 'hud-pos', 'aria-live': 'polite' });
-  private theme = '';
 
   constructor(plan: Plan) {
     const strip = h('div', { class: 'hud-strip', 'aria-hidden': 'true' },
       contentChapters(plan).map((ch) => {
-        const seg = h('span', { class: `seg theme-${ch.part.theme}` }, h('span', { class: 'seg-fill' }));
+        const seg = h('span', { class: 'seg' }, h('span', { class: 'seg-fill' }));
         seg.style.flexGrow = String(ch.count);
         this.segs.set(ch, seg);
         return seg;
@@ -32,11 +31,6 @@ export class Hud {
 
   update(ps: PlanScreen): void {
     const ch = ps.chapter;
-    const theme = `theme-${ch.part.theme}`;
-    if (this.theme) this.el.classList.remove(this.theme);
-    this.el.classList.add(theme);
-    this.theme = theme;
-
     // Strip: chapters before this one full, this one in part, later ones empty.
     for (const [c, seg] of this.segs) {
       const fill = ch.kind === 'end' || c.order < ch.order ? 1 : c === ch ? (ps.inChapter + 1) / c.count : 0;

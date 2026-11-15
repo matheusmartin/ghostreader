@@ -3,7 +3,7 @@
 // It serves dist/, opens #/print/<book> in Chromium (Playwright) and saves each page as a PDF.
 //
 //   node scripts/build-pdfs.mjs            every book in src/books
-//   node scripts/build-pdfs.mjs nexus-summary pride-and-prejudice-story
+//   node scripts/build-pdfs.mjs nexus-summary
 //   SKIP_PDF=1 npm run build               build the app without PDFs (no Chromium needed)
 //
 // Exit codes: 0 = done, 1 = a book failed, 2 = setup error (no dist/, no Chromium).

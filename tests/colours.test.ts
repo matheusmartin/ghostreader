@@ -31,7 +31,6 @@ const mix = (a: string, b: string, p: number) =>
   '#' + hex(a).map((v, i) => Math.round(v * p + hex(b)[i] * (1 - p)).toString(16).padStart(2, '0')).join('');
 
 const SCHEMES = ['paper', 'quiet', 'warm', 'dusk', 'night'];
-const PARTS = ['front', 'p1', 'p2', 'p3', 'p4', 'p5'];
 
 for (const id of SCHEMES) {
   const sel = `[data-scheme="${id}"]`;
@@ -54,21 +53,16 @@ for (const id of SCHEMES) {
       expect(ratio(t['--on-acc'], t['--ink-box'])).toBeGreaterThanOrEqual(4.5);
     });
 
-    for (const part of PARTS) {
-      it(`part colour ${part}: shape 3:1, accent text 4.5:1 on page and tint, text on fill 4.5:1`, () => {
-        const raw = {
-          ...tokens(`.theme-${part}`, ...(part === 'front' ? [':root'] : [])),
-          ...(part === 'front' ? tokens(sel, `${sel} .theme-front`) : {}),
-        };
-        const fill = dark ? raw['--fill-d'] : raw['--fill-l'];
-        const text = dark ? raw['--text-d'] : raw['--text-l'];
-        const tint = mix(fill, t['--paper'], parseFloat(t['--tint-mix']) / 100);
-        expect(ratio(fill, t['--paper']), 'shape on page').toBeGreaterThanOrEqual(3);
-        expect(ratio(text, t['--paper']), 'accent text on page').toBeGreaterThanOrEqual(4.5);
-        expect(ratio(text, tint), 'accent text on tint').toBeGreaterThanOrEqual(4.5);
-        expect(ratio(t['--body'], tint), 'body text on tint').toBeGreaterThanOrEqual(4.5);
-        expect(ratio(t['--on-acc'], fill), 'text on accent fill').toBeGreaterThanOrEqual(4.5);
-      });
-    }
+    it('accent: shape 3:1, accent text 4.5:1 on page and tint, text on fill 4.5:1', () => {
+      const raw = { ...tokens(':root'), ...tokens(sel) };
+      const fill = dark ? raw['--fill-d'] : raw['--fill-l'];
+      const text = dark ? raw['--text-d'] : raw['--text-l'];
+      const tint = mix(fill, t['--paper'], parseFloat(t['--tint-mix']) / 100);
+      expect(ratio(fill, t['--paper']), 'shape on page').toBeGreaterThanOrEqual(3);
+      expect(ratio(text, t['--paper']), 'accent text on page').toBeGreaterThanOrEqual(4.5);
+      expect(ratio(text, tint), 'accent text on tint').toBeGreaterThanOrEqual(4.5);
+      expect(ratio(t['--body'], tint), 'body text on tint').toBeGreaterThanOrEqual(4.5);
+      expect(ratio(t['--on-acc'], fill), 'text on accent fill').toBeGreaterThanOrEqual(4.5);
+    });
   });
 }

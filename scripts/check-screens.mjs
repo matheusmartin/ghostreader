@@ -3,7 +3,7 @@
 // three window sizes and prints one FIX line per problem.
 //
 //   node scripts/check-screens.mjs                   every book in src/books
-//   node scripts/check-screens.mjs pride-and-prejudice-story
+//   node scripts/check-screens.mjs nexus-summary
 //
 // FIX  too full          the screen still overflows after its type was made 28 % smaller: split it
 // FIX  chart too small   an SVG chart had to shrink below 80 %: fewer rows or nodes, or split it

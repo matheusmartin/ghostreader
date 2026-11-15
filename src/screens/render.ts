@@ -42,7 +42,7 @@ export function renderScreen(ps: PlanScreen, ctx: ScreenContext): HTMLElement {
   const ch = ps.chapter;
   const where = ch.kind === 'chapter' ? `${ch.number} ${ch.title}, screen ${ps.inChapter + 1} of ${ch.count}` : ch.title;
   return h('section', {
-    class: `screen theme-${ch.part.theme}`,
+    class: 'screen',
     'data-type': c.type,
     'data-key': ps.key,
     'aria-roledescription': 'screen',

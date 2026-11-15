@@ -2,7 +2,7 @@
 name: ghostwriter-book
 description: Writes or updates a book guide for the Ghostwriter app in this repository - one file, src/books/<id>.json, that makes both the swipe screens and the downloadable A4 PDF. Three types, chosen by the user - Story guide (fiction - cast map, scene charts of who is where, story threads), Reading guide (non-fiction, to follow the argument while reading) and Book summary (non-fiction, a finished book). Reads the book from an EPUB, PDF, text, Markdown or HTML file, or from summaries when no file is given. Diagrams first - networks, flows, cycles, timelines - text only where a picture cannot carry the idea. Use when the user asks to add, write, summarise, update or regenerate a book, story guide, reading guide, book summary, infographic or PDF for the app, even if they only name the book. Do not use for a short summary in chat, book recommendations, reviews, or changes to the app's code.
 metadata:
-  version: "1.0.0"
+  version: "1.1.0"
 compatibility: Node 22 with `npm install` done (Vitest; Playwright with Chromium for the screen check and the PDF). Python 3.9+ for the book extractor and maps; PDF books also need poppler-utils (pdftotext) or the pypdf package.
 ---
 
@@ -61,12 +61,14 @@ Copy this checklist into the task list and tick it off:
 ```
 - [ ] 1 Inputs: type, title, author, limit, edition, book file
 - [ ] 2 Read docs/content-format.md, references/guides.md (the type), references/visuals.md,
-        references/content-rules.md, references/writing-style.md
+        references/concepts.md, references/content-rules.md, references/writing-style.md
 - [ ] 3 Text: extract the book file into work/<id>/source (or gather summaries)
 - [ ] 4 Plan: id, parts, chapters (real titles and word counts), overview chapters, cast and threads
-- [ ] 5 Fact sheets: work/<id>/facts/<chapter-id>.md, every fact with its anchor
-- [ ] 6 Write src/books/<id>.json chapter by chapter: app screens, then PDF-only detail
-- [ ] 7 Verify every chapter against its anchors; fix or remove what does not hold
+- [ ] 5 Fact sheets: work/<id>/facts/<chapter-id>.md, every fact with its anchor, and the
+        concepts and distinctions the chapter introduces (references/concepts.md)
+- [ ] 6 Write src/books/<id>.json chapter by chapter: app screens, then PDF-only detail;
+        a visual for every distinction, and the K · Key concepts overview
+- [ ] 7 Verify every chapter against its anchors and the concept inventory; fix what does not hold
 - [ ] 8 Check: npm run validate · npm run check:screens · npm run build, look at the PDF
 - [ ] 9 Deliver: commit src/books/<id>.json only; final message
 ```
@@ -98,8 +100,14 @@ scenes.
 - **Parts and chapters** from `toc.json`: every chapter of the book, in order, with its real
   title (untitled: "Chapter 7"), number and `length` (its word count; all chapters or none). Part
   titles are kickers, not pages. Chapters after the limit are listed without screens.
-- **Overview chapters** for the type (`references/guides.md`), in a first part with
-  `"theme": "front"`.
+- **Only the book's own sections.** A prologue, preface, introduction, epilogue, conclusion or
+  appendix is in the guide only if the book's contents list has it, under the book's name for it.
+  Never add one, and never turn the first chapter into an "Introduction". The overview chapters
+  below are the guide's own and always sit in the Overview part, never among the book's parts.
+- **Overview chapters** for the type (`references/guides.md`), in a first part labelled
+  "Overview". There is no colour field: the whole book uses one colour scheme.
+- **Concept inventory** (`references/concepts.md`): every concept the book defines and every
+  distinction it draws, directly or indirectly, with the chapter that introduces it.
 - Fiction: the cast (who is main, groups), 3–8 thread names, and whether real places matter
   (a map). Non-fiction: the book's own terms, and which diagram fits each chapter.
 
@@ -115,6 +123,9 @@ scenes.
 ## Relations
 - Darcy → Elizabeth: will not dance with her; she overhears. 005 p11
 ## Claims, terms, examples (non-fiction)
+## Concepts and distinctions (references/concepts.md)
+- {Three kinds of reality} typology · explicit · objective (exists whatever people think: stones) /
+  subjective (in one mind: pain) / intersubjective (between many minds: money, nations) · 011 p22–p25
 ```
 
 **6 · Write.** Work chapter by chapter from the fact sheets, never from memory: first the app
@@ -123,7 +134,9 @@ soon as it is done, and run `npm run validate` after every few chapters. For mor
 chapters, send a short progress note after each part.
 
 **7 · Verify.** For each chapter, check every name, scene, relation, claim and number against its
-anchor in the text. If you can start a subagent, give it the chapter's text file and the
+anchor in the text. Then go through the concept inventory: every concept and distinction must
+appear on a screen (a chart for each distinction, in the chapter that introduces it, and a row in
+K · Key concepts); add what is missing. If you can start a subagent, give it the chapter's text file and the
 chapter's JSON and ask for a claim-by-claim check (fresh eyes find more: research found that
 summarisers err most on what characters feel, want or know, on relations, and on the order of
 events). Fix or remove each claim that does not hold; never "improve" one from memory.
@@ -169,10 +182,18 @@ npm run build
   ten (`references/writing-style.md`).
 - Diagrams first: every chapter has at least one chart; at least half of a chapter's app screens
   are charts, scenes or figures (`references/visuals.md`).
+- Concepts and distinctions the book introduces are shown, not just named: a chart for each in
+  the chapter that introduces it, and every one in K · Key concepts (`references/concepts.md`).
 - Tests are welcome but come last: at most one quiz per chapter, after the visuals.
 - One idea per app screen, within the limits; more detail goes in PDF-only blocks.
+- One colour scheme for the whole book; only the guide's overview chapters and the book's own
+  sections, never an invented prologue or introduction.
 
 ## Common mistakes
+
+- A concept the book defines, or a contrast it builds across chapters, only mentioned in a text
+  block → give it a chart (`references/concepts.md`) and a row in K · Key concepts.
+- A "Prologue" or "Introduction" chapter that the book's contents list does not have → remove it.
 
 - Writing from memory or a study guide when the book file is there → write from the fact sheet.
 - A wall of points and steps with one chart → find the diagram: who connects to whom, what leads
@@ -197,6 +218,7 @@ npm run build
 | `docs/content-format.md` | step 2: every screen and chart type, with its JSON fields |
 | `references/guides.md` | step 2: the type's overview chapters, chapter recipe, PDF detail and limits |
 | `references/visuals.md` | steps 4–6: which diagram for which idea; layout rules for each chart |
+| `references/concepts.md` | steps 4–7: find, record and show the book's concepts and distinctions |
 | `references/content-rules.md` | step 2: book content only, accuracy, spoilers, summaries mode, copyright |
 | `references/writing-style.md` | step 6: The Economist style, short form |
 | `scripts/extract_book.py` | step 3 (`--help`) |

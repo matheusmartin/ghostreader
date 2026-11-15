@@ -4,7 +4,10 @@ import type { Book, Screen } from '../src/model/types.ts';
 
 const bookWith = (screens: Screen[], extra: Partial<Book> = {}): Book => ({
   format: 1, id: 'b', type: 'reading', title: 'B', author: 'C', lead: 'A short lead.',
-  parts: [{ id: 'p', chapters: [{ id: 'c', number: '01', title: 'One', screens }] }],
+  parts: [{ id: 'p', chapters: [
+    { id: 'c', number: '01', title: 'One', screens },
+    { id: 'k', number: 'K', title: 'Key concepts', screens: [{ type: 'list', label: 'Key concepts', rows: [{ name: 'Term', text: 'A short definition.' }] }] },
+  ] }],
   ...extra,
 });
 
@@ -57,5 +60,11 @@ describe('lintBook', () => {
     }]));
     expect(problems).toHaveLength(1);
     expect(problems[0]).toContain('"A" and "C" are not next to each other');
+  });
+
+  it('asks non-fiction guides for a K · Key concepts chapter, but not fiction', () => {
+    const noK: Partial<Book> = { parts: [{ id: 'p', chapters: [{ id: 'c', number: '01', title: 'One', screens: [] }] }] };
+    expect(lintBook(bookWith([], noK))).toContain('add the "K · Key concepts" overview chapter, with screens: the book\'s concepts and distinctions');
+    expect(lintBook(bookWith([], { ...noK, type: 'fiction' }))).toEqual([]);
   });
 });
