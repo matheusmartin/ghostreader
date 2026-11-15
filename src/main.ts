@@ -6,7 +6,7 @@ import './styles/screens.css';
 import './styles/figures.css';
 import './styles/print.css';
 
-import { loadBook } from './data/books.ts';
+import { loadBook, resolveBookId } from './data/books.ts';
 import { forgetOldData } from './lib/storage.ts';
 import { enterFullscreen, keepAwake } from './lib/device.ts';
 import { buildPlan, locate } from './model/plan.ts';
@@ -40,6 +40,13 @@ async function route() {
     return;
   }
 
+  // An old link may name the guide instead of one of its style files.
+  const resolved = resolveBookId(r.bookId);
+  if (resolved && resolved !== r.bookId) {
+    const rest = location.hash.split('/').slice(3).join('/');
+    location.replace(`#/${r.name}/${encodeURIComponent(resolved)}${rest ? `/${rest}` : ''}`);
+    return;
+  }
   const loaded = await loadBook(r.bookId);
   if (token !== routeToken) return;
   if (!loaded?.book) {

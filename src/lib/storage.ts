@@ -1,5 +1,6 @@
 // What the app keeps on the device. No personal data: no reading place, no progress, no notes.
-// Kept: two settings, the page colour (lib/scheme.ts) and whether the gesture hint was shown.
+// Kept: three settings, the page colour (lib/scheme.ts), the style chosen in the library, and
+// whether the gesture hint was shown.
 
 const PREFIX = 'ghostwriter:';
 
@@ -16,6 +17,22 @@ export function setFlag(name: string): void {
     localStorage.setItem(PREFIX + name, '1');
   } catch {
     /* private mode or storage full: the hint shows again next time */
+  }
+}
+
+export function getSetting(name: string): string | null {
+  try {
+    return localStorage.getItem(PREFIX + name);
+  } catch {
+    return null;
+  }
+}
+
+export function setSetting(name: string, value: string): void {
+  try {
+    localStorage.setItem(PREFIX + name, value);
+  } catch {
+    /* private mode or storage full: the default applies next time */
   }
 }
 

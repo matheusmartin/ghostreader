@@ -1,8 +1,9 @@
 {
   "format": 1,
-  "id": "nexus-summary",
+  "id": "nexus-summary-layers",
+  "guide": "nexus-summary",
   "type": "done",
-  "style": "map",
+  "style": "layers",
   "title": "Nexus",
   "subtitle": "A Brief History of Information Networks from the Stone Age to AI",
   "author": "Yuval Noah Harari",
@@ -13,7 +14,7 @@
     "kind": "book-file",
     "file": "EPUB",
     "written": "2026-11-15",
-    "skill": "1.1.0"
+    "skill": "1.3.0"
   },
   "parts": [
     {
@@ -21,18 +22,83 @@
       "label": "Overview",
       "chapters": [
         {
-          "id": "book-in-one-page",
-          "number": "B",
-          "title": "The book in one page",
+          "id": "book-at-a-glance",
+          "number": "S",
+          "title": "The book at a glance",
           "screens": [
             {
               "type": "summary",
-              "label": "Thesis",
-              "text": "Information connects people more than it reveals truth, so large networks gain power faster than wisdom. AI, the first non-human member of these networks, makes strong self-correcting institutions more vital than ever.",
-              "takeaway": {
-                "label": "One thing",
-                "text": "Wise networks need institutions that find and correct their own errors."
-              }
+              "label": "The book in one line",
+              "text": "Information networks give humans power faster than wisdom; only institutions that correct their own errors can keep AI in check."
+            },
+            {
+              "type": "summary",
+              "label": "In one paragraph",
+              "text": "Information connects people more than it reveals truth, so large networks gain power faster than wisdom. AI, the first non-human member of these networks, makes strong self-correcting institutions more vital than ever."
+            },
+            {
+              "type": "list",
+              "label": "In one line each",
+              "rows": [
+                {
+                  "name": "P · Prologue",
+                  "text": "Power grew faster than wisdom because of how networks are built."
+                },
+                {
+                  "name": "01 · Information",
+                  "text": "Information connects things into networks; it does not have to be true."
+                },
+                {
+                  "name": "02 · Stories",
+                  "text": "Shared stories let strangers cooperate and create realities between minds."
+                },
+                {
+                  "name": "03 · Documents",
+                  "text": "Documents and bureaucracy run large states, trading some truth for order."
+                },
+                {
+                  "name": "04 · Errors",
+                  "text": "No book or church is infallible; self-correcting institutions earn trust."
+                },
+                {
+                  "name": "05 · Decisions",
+                  "text": "Democracy spreads information and corrects itself; dictatorship centralises and cannot."
+                }
+              ]
+            },
+            {
+              "type": "list",
+              "label": "In one line each, continued",
+              "rows": [
+                {
+                  "name": "06 · The new members",
+                  "text": "Computers decide and create ideas: they are network members, not tools."
+                },
+                {
+                  "name": "07 · Relentless",
+                  "text": "Sleepless digital surveillance can watch everyone, all the time."
+                },
+                {
+                  "name": "08 · Fallible",
+                  "text": "Computers err, pursue misaligned goals and may impose their own myths."
+                },
+                {
+                  "name": "09 · Democracies",
+                  "text": "Democracy survives AI only if its conversation stays understandable and regulated."
+                },
+                {
+                  "name": "10 · Totalitarianism",
+                  "text": "AI may help dictators centralise, or make them its puppets."
+                },
+                {
+                  "name": "11 · The Silicon Curtain",
+                  "text": "AI may create data empires or split humanity behind a Silicon Curtain."
+                },
+                {
+                  "name": "E · Epilogue",
+                  "text": "To stay wise, build institutions with strong self-correcting mechanisms."
+                }
+              ]
             },
             {
               "type": "chart",
@@ -66,129 +132,6 @@
                 }
               ],
               "key": "Build institutions that correct their own errors"
-            },
-            {
-              "type": "steps",
-              "label": "Main claims",
-              "steps": [
-                "Information's main job is to connect people into networks, not to represent reality.",
-                "Stories and documents let networks grow, creating order more often than truth.",
-                "Networks grow wiser through strong self-correcting mechanisms, not through more information.",
-                "Computers are the first members of our networks that decide and create ideas themselves.",
-                "Democracies, dictatorships and the world must build institutions that check AI, or risk catastrophe."
-              ]
-            },
-            {
-              "type": "chart",
-              "chart": "network",
-              "label": "The big ideas",
-              "centre": [
-                "Information networks"
-              ],
-              "nodes": [
-                {
-                  "name": "Stories",
-                  "note": "Mythology"
-                },
-                {
-                  "name": "Order"
-                },
-                {
-                  "name": "Truth"
-                },
-                {
-                  "name": "Self-correction"
-                },
-                {
-                  "name": "Democracy",
-                  "note": "Distributed"
-                },
-                {
-                  "name": "Dictatorship",
-                  "note": "Centralised"
-                },
-                {
-                  "name": "AI",
-                  "note": "New members"
-                },
-                {
-                  "name": "Documents",
-                  "note": "Bureaucracy"
-                }
-              ],
-              "links": [
-                {
-                  "from": "Stories",
-                  "to": "Order",
-                  "label": "Create",
-                  "arrow": true
-                },
-                {
-                  "from": "Order",
-                  "to": "Truth",
-                  "label": "Often clash"
-                },
-                {
-                  "from": "Self-correction",
-                  "to": "Truth",
-                  "label": "Tilts towards",
-                  "arrow": true
-                },
-                {
-                  "from": "Democracy",
-                  "to": "Self-correction",
-                  "label": "Relies on",
-                  "arrow": true
-                },
-                {
-                  "from": "Democracy",
-                  "to": "Dictatorship",
-                  "label": "Rival designs"
-                },
-                {
-                  "from": "AI",
-                  "to": "Dictatorship",
-                  "label": "May control",
-                  "arrow": true
-                },
-                {
-                  "from": "Documents",
-                  "to": "Stories",
-                  "label": "Twin pillars"
-                },
-                {
-                  "from": "Information networks",
-                  "to": "AI",
-                  "label": "Gain members",
-                  "arrow": true
-                }
-              ]
-            },
-            {
-              "type": "list",
-              "label": "How the parts connect",
-              "rows": [
-                {
-                  "name": "Prologue · The question",
-                  "text": "Why does a species that calls itself wise gain power faster than wisdom?"
-                },
-                {
-                  "name": "Part I · Human Networks",
-                  "text": "How stories, documents and institutions balanced truth and order through history."
-                },
-                {
-                  "name": "Part II · The Inorganic Network",
-                  "text": "How computers differ: they decide, never sleep and often err."
-                },
-                {
-                  "name": "Part III · Computer Politics",
-                  "text": "What AI means for democracies, dictatorships and the world order."
-                },
-                {
-                  "name": "Epilogue · The answer",
-                  "text": "Drop naive and populist views of information; build self-correcting institutions."
-                }
-              ]
             }
           ]
         },
@@ -602,12 +545,41 @@
           "screens": [
             {
               "type": "summary",
-              "label": "In short",
-              "text": "Humans gained enormous power by building large networks of cooperation, yet these networks tend to use power unwisely. The problem is not individual greed or hubris but the way information holds networks together.",
-              "takeaway": {
-                "label": "Takeaway",
-                "text": "AI is the first technology that can make decisions and create ideas by itself."
-              }
+              "label": "In one line",
+              "text": "Power grew faster than wisdom because of how networks are built."
+            },
+            {
+              "type": "points",
+              "label": "In three points",
+              "items": [
+                {
+                  "title": "Power is not wisdom",
+                  "text": "After 100,000 years of gaining power, Sapiens face ecological collapse, AI that may escape control and the risk of a new world war."
+                },
+                {
+                  "title": "A network problem",
+                  "text": "Power comes from cooperation in large numbers; networks held together by fictions and delusions, like Nazism and Stalinism, can be very powerful."
+                },
+                {
+                  "title": "AI decides",
+                  "text": "Unlike knives or bombs, AI can make decisions and create new ideas; it already decides on mortgages, jobs and prison sentences."
+                }
+              ]
+            },
+            {
+              "type": "chart",
+              "chart": "flow",
+              "label": "The argument so far",
+              "start": "Why is a wise species so self-destructive?",
+              "groups": [
+                {
+                  "items": [
+                    "Sapiens gained power through networks",
+                    "Networks bind members with fictions"
+                  ]
+                }
+              ],
+              "key": "Networks gain power faster than wisdom"
             },
             {
               "type": "chart",
@@ -638,80 +610,14 @@
               "key": "The book explores the space between them"
             },
             {
-              "type": "points",
-              "label": "Key points",
-              "items": [
-                {
-                  "title": "Power is not wisdom",
-                  "text": "After 100,000 years of gaining power, Sapiens face ecological collapse, AI that may escape control and the risk of a new world war."
-                },
-                {
-                  "title": "A network problem",
-                  "text": "Power comes from cooperation in large numbers; networks held together by fictions and delusions, like Nazism and Stalinism, can be very powerful."
-                },
-                {
-                  "title": "AI decides",
-                  "text": "Unlike knives or bombs, AI can make decisions and create new ideas; it already decides on mortgages, jobs and prison sentences."
-                }
-              ]
-            },
-            {
-              "type": "chart",
-              "chart": "bars",
-              "label": "Where the naive view held",
-              "caption": "Children who survived, %: Goethe's family to adulthood, the rest to 15",
-              "data": [
-                {
-                  "label": "Goethe's family",
-                  "value": 25
-                },
-                {
-                  "label": "Germany, about 1797",
-                  "value": 50
-                },
-                {
-                  "label": "World, 2020",
-                  "value": 95.6,
-                  "focus": true
-                },
-                {
-                  "label": "Germany, 2020",
-                  "value": 99.5
-                }
-              ]
-            },
-            {
               "type": "steps",
-              "label": "The logic",
+              "label": "In detail",
               "steps": [
                 "Sapiens gained power by building large networks of cooperation.",
                 "Information is the glue that holds these networks together.",
                 "Large networks often bind their members with fictions and mass delusions.",
                 "So networks can grow very powerful without becoming wise.",
                 "AI, which decides and creates by itself, makes this danger urgent."
-              ]
-            },
-            {
-              "type": "chart",
-              "chart": "branches",
-              "label": "Where AI could lead",
-              "start": "AI joins our information networks",
-              "options": [
-                {
-                  "title": "Rival digital empires",
-                  "text": "A Silicon Curtain divides rival human powers",
-                  "negative": true
-                },
-                {
-                  "title": "AI overlords",
-                  "text": "A Silicon Curtain divides all humans from AI",
-                  "negative": true
-                },
-                {
-                  "title": "Informed choices",
-                  "text": "History is open; choices can prevent the worst",
-                  "key": true
-                }
               ]
             },
             {
@@ -800,12 +706,40 @@
           "screens": [
             {
               "type": "summary",
-              "label": "In short",
-              "text": "Information is defined not by truth but by connection: it ties things together into new networks, whether it is accurate or not. Errors, lies, music and DNA are information too.",
-              "takeaway": {
-                "label": "Takeaway",
-                "text": "Ask not only whether information is true, but what network it creates."
-              }
+              "label": "In one line",
+              "text": "Information connects things into networks; it does not have to be true."
+            },
+            {
+              "type": "points",
+              "label": "In three points",
+              "items": [
+                {
+                  "title": "In formation",
+                  "text": "The defining feature of information is connection: it puts different things in formation, creating new realities such as networks of people."
+                },
+                {
+                  "title": "Truth is not reality",
+                  "text": "Truth is an accurate account of reality, but no account captures all of it; every truth stresses some aspects and ignores others."
+                },
+                {
+                  "title": "More is not truer",
+                  "text": "Truth is rare and costly; without special effort, cheap fiction and error swamp it as information grows."
+                }
+              ]
+            },
+            {
+              "type": "chart",
+              "chart": "flow",
+              "label": "The argument so far",
+              "start": "Why is a wise species so self-destructive?",
+              "groups": [
+                {
+                  "items": [
+                    "Power grows faster than wisdom"
+                  ]
+                }
+              ],
+              "key": "More information is not more truth"
             },
             {
               "type": "chart",
@@ -863,79 +797,8 @@
               "key": "Information always connects; only sometimes represents"
             },
             {
-              "type": "points",
-              "label": "Key points",
-              "items": [
-                {
-                  "title": "In formation",
-                  "text": "The defining feature of information is connection: it puts different things in formation, creating new realities such as networks of people."
-                },
-                {
-                  "title": "Truth is not reality",
-                  "text": "Truth is an accurate account of reality, but no account captures all of it; every truth stresses some aspects and ignores others."
-                },
-                {
-                  "title": "More is not truer",
-                  "text": "Truth is rare and costly; without special effort, cheap fiction and error swamp it as information grows."
-                }
-              ]
-            },
-            {
-              "type": "chart",
-              "chart": "compare",
-              "label": "Naive view and this book",
-              "columns": [
-                "Naive view",
-                "This book"
-              ],
-              "negative": 0,
-              "rows": [
-                [
-                  "Information represents reality",
-                  "Information connects things"
-                ],
-                [
-                  "Lies and errors are bad information",
-                  "Lies and errors are information too"
-                ],
-                [
-                  "Cure for falsehood: more information",
-                  "Truth needs special effort"
-                ],
-                [
-                  "History: more information, more truth",
-                  "History: more connection, not more truth"
-                ]
-              ],
-              "key": "Rejecting the naive view does not mean rejecting truth"
-            },
-            {
-              "type": "chart",
-              "chart": "compare",
-              "label": "Truth and reality",
-              "columns": [
-                "Reality",
-                "Truth"
-              ],
-              "rows": [
-                [
-                  "One universal reality",
-                  "An accurate account of it"
-                ],
-                [
-                  "Every aspect and viewpoint",
-                  "Some aspects, others left out"
-                ],
-                [
-                  "Like the territory",
-                  "Like a map, never one to one"
-                ]
-              ],
-              "key": "Truth always selects; it never captures all of reality"
-            },
-            {
               "type": "steps",
-              "label": "The logic",
+              "label": "In detail",
               "steps": [
                 "Any object can be information, depending on context: a star, a window shutter, a pigeon.",
                 "The naive view says information represents reality and so leads to truth.",
@@ -943,22 +806,6 @@
                 "What all information does is connect, and so create new realities.",
                 "So history shows rising connection without a matching rise in truth or wisdom."
               ]
-            },
-            {
-              "type": "chart",
-              "chart": "flow",
-              "label": "Why truth loses out",
-              "start": "More information flows",
-              "groups": [
-                {
-                  "items": [
-                    "Truth is rare and costly to produce",
-                    "Fiction and error are cheap",
-                    "Cheap information swamps the truth"
-                  ]
-                }
-              ],
-              "key": "Connection rises; truth needs extra effort"
             },
             {
               "type": "text",
@@ -1047,12 +894,41 @@
           "screens": [
             {
               "type": "summary",
-              "label": "In short",
-              "text": "Stories let Sapiens cooperate in unlimited numbers by linking people to shared fictions, not only to each other. These fictions create intersubjective realities such as money and nations, which networks must balance against truth.",
-              "takeaway": {
-                "label": "Takeaway",
-                "text": "Networks need both truth and order, and order is often easier to build with fiction."
-              }
+              "label": "In one line",
+              "text": "Shared stories let strangers cooperate and create realities between minds."
+            },
+            {
+              "type": "points",
+              "label": "In three points",
+              "items": [
+                {
+                  "title": "Human-to-story chains",
+                  "text": "About 70,000 years ago Sapiens began telling and believing fictions, linking people through a story rather than only through each other."
+                },
+                {
+                  "title": "Intersubjective reality",
+                  "text": "Laws, gods, nations and money exist in the communication between many minds; if people stop talking about them, they vanish."
+                },
+                {
+                  "title": "Truth versus order",
+                  "text": "Truth is complicated and often painful; fiction can be simple and flexible, so networks often build their order on it."
+                }
+              ]
+            },
+            {
+              "type": "chart",
+              "chart": "flow",
+              "label": "The argument so far",
+              "start": "Why is a wise species so self-destructive?",
+              "groups": [
+                {
+                  "items": [
+                    "Power grows faster than wisdom",
+                    "Information connects more than it informs"
+                  ]
+                }
+              ],
+              "key": "Order built on fiction often clashes with truth"
             },
             {
               "type": "chart",
@@ -1117,155 +993,14 @@
               "key": "Stories create the third level, between many minds"
             },
             {
-              "type": "chart",
-              "chart": "network",
-              "label": "How stories build networks",
-              "centre": [
-                "Stories"
-              ],
-              "nodes": [
-                {
-                  "name": "Leaders and brands"
-                },
-                {
-                  "name": "Shared memories"
-                },
-                {
-                  "name": "Money, nations, gods"
-                },
-                {
-                  "name": "Large networks",
-                  "note": "Tribes, churches, states"
-                },
-                {
-                  "name": "Order"
-                },
-                {
-                  "name": "Truth"
-                }
-              ],
-              "links": [
-                {
-                  "from": "Stories",
-                  "to": "Leaders and brands",
-                  "label": "Craft",
-                  "arrow": true
-                },
-                {
-                  "from": "Stories",
-                  "to": "Shared memories",
-                  "label": "Create",
-                  "arrow": true
-                },
-                {
-                  "from": "Stories",
-                  "to": "Money, nations, gods",
-                  "label": "Create",
-                  "arrow": true
-                },
-                {
-                  "from": "Money, nations, gods",
-                  "to": "Large networks",
-                  "label": "Bind",
-                  "arrow": true
-                },
-                {
-                  "from": "Large networks",
-                  "to": "Order",
-                  "label": "Need"
-                },
-                {
-                  "from": "Order",
-                  "to": "Truth",
-                  "label": "Often clash"
-                },
-                {
-                  "from": "Stories",
-                  "to": "Order",
-                  "label": "Supply",
-                  "arrow": true
-                }
-              ]
-            },
-            {
-              "type": "points",
-              "label": "Key points",
-              "items": [
-                {
-                  "title": "Human-to-story chains",
-                  "text": "About 70,000 years ago Sapiens began telling and believing fictions, linking people through a story rather than only through each other."
-                },
-                {
-                  "title": "Intersubjective reality",
-                  "text": "Laws, gods, nations and money exist in the communication between many minds; if people stop talking about them, they vanish."
-                },
-                {
-                  "title": "Truth versus order",
-                  "text": "Truth is complicated and often painful; fiction can be simple and flexible, so networks often build their order on it."
-                }
-              ]
-            },
-            {
-              "type": "chart",
-              "chart": "compare",
-              "label": "Two founding texts",
-              "columns": [
-                "US Constitution",
-                "Ten Commandments"
-              ],
-              "negative": 1,
-              "rows": [
-                [
-                  "Admits a human origin",
-                  "Claims a divine origin"
-                ],
-                [
-                  "Allowed slavery at first",
-                  "Endorses slavery"
-                ],
-                [
-                  "Article V allows amendments",
-                  "No way to amend it"
-                ],
-                [
-                  "Thirteenth Amendment abolished slavery",
-                  "The rule stays in the text"
-                ]
-              ],
-              "key": "Admitting human origins makes change easier, agreement harder"
-            },
-            {
               "type": "steps",
-              "label": "The logic",
+              "label": "In detail",
               "steps": [
                 "Humans can form intimate bonds with only a few hundred people.",
                 "Stories let strangers connect through a shared story instead.",
                 "Shared stories create intersubjective realities such as money, gods and nations.",
                 "Story-based networks made Sapiens the most powerful animal on earth.",
                 "But order built on fiction often clashes with truth: a perennial dilemma."
-              ]
-            },
-            {
-              "type": "chart",
-              "chart": "branches",
-              "label": "When truth threatens order",
-              "start": "A truth threatens the founding story",
-              "options": [
-                {
-                  "title": "Ban the truth",
-                  "text": "Darwin's theory banned or limited",
-                  "negative": true
-                },
-                {
-                  "title": "Allow only useful truths",
-                  "text": "Nazi rocket science, no questioning of racism",
-                  "negative": true
-                },
-                {
-                  "title": "Admit the fiction",
-                  "text": "An acknowledged fiction can be amended",
-                  "key": true
-                }
               ]
             },
             {
@@ -1351,12 +1086,42 @@
           "screens": [
             {
               "type": "summary",
-              "label": "In short",
-              "text": "Large networks need lists as well as stories, and lists need a new technology: the written document. Documents created new realities such as ownership and debt, and bureaucracy arose to manage them, trading truth for order.",
-              "takeaway": {
-                "label": "Takeaway",
-                "text": "Bureaucracy can oppress or save lives; its design and use decide which."
-              }
+              "label": "In one line",
+              "text": "Documents and bureaucracy run large states, trading some truth for order."
+            },
+            {
+              "type": "points",
+              "label": "In three points",
+              "items": [
+                {
+                  "title": "Documents make reality",
+                  "text": "A written document can decide ownership or debt: in old Assyria, a debt was gone once its loan contract was destroyed."
+                },
+                {
+                  "title": "The retrieval problem",
+                  "text": "Writing removed the brain's memory limit but made documents hard to find; bureaucracy is the order devised to solve this."
+                },
+                {
+                  "title": "Drawers",
+                  "text": "Bureaucracy divides the world into drawers and forces people and facts to fit them, sacrificing some truth for order."
+                }
+              ]
+            },
+            {
+              "type": "chart",
+              "chart": "flow",
+              "label": "The argument so far",
+              "start": "Why is a wise species so self-destructive?",
+              "groups": [
+                {
+                  "items": [
+                    "Power grows faster than wisdom",
+                    "Information connects more than it informs",
+                    "Stories create shared realities"
+                  ]
+                }
+              ],
+              "key": "Bureaucracy trades some truth for order"
             },
             {
               "type": "chart",
@@ -1387,99 +1152,14 @@
               "key": "Mythology and bureaucracy are the twin pillars of large societies"
             },
             {
-              "type": "points",
-              "label": "Key points",
-              "items": [
-                {
-                  "title": "Documents make reality",
-                  "text": "A written document can decide ownership or debt: in old Assyria, a debt was gone once its loan contract was destroyed."
-                },
-                {
-                  "title": "The retrieval problem",
-                  "text": "Writing removed the brain's memory limit but made documents hard to find; bureaucracy is the order devised to solve this."
-                },
-                {
-                  "title": "Drawers",
-                  "text": "Bureaucracy divides the world into drawers and forces people and facts to fit them, sacrificing some truth for order."
-                }
-              ]
-            },
-            {
-              "type": "chart",
-              "chart": "flow",
-              "label": "From story to bureaucracy",
-              "start": "Stories cannot run a state",
-              "groups": [
-                {
-                  "items": [
-                    "Lists record taxes and debts",
-                    "Documents create new realities",
-                    "Finding documents needs bureaucracy",
-                    "Drawers force the world to fit"
-                  ]
-                }
-              ],
-              "key": "Order, often at the expense of truth"
-            },
-            {
               "type": "steps",
-              "label": "The logic",
+              "label": "In detail",
               "steps": [
                 "Nations begin as stories, but running them takes taxes, sewers and armies.",
                 "Such services depend on lists, which human brains remember poorly.",
                 "Written documents store lists and create new realities like ownership and debt.",
                 "Bureaucracy sorts documents into drawers, which makes large networks possible.",
                 "Like mythology, bureaucracy trades some truth for order, for better or worse."
-              ]
-            },
-            {
-              "type": "chart",
-              "chart": "flow",
-              "label": "Biological dramas",
-              "start": "Plots that evolution scripted for our minds",
-              "groups": [
-                {
-                  "label": "Sibling rivalry",
-                  "items": [
-                    "The Ramayana",
-                    "Spotted hyena cubs"
-                  ]
-                },
-                {
-                  "label": "Romantic triangle",
-                  "items": [
-                    "The Ramayana"
-                  ]
-                },
-                {
-                  "label": "Purity and pollution",
-                  "items": [
-                    "Caste rules",
-                    "Nazi and Hutu propaganda"
-                  ]
-                }
-              ],
-              "key": "Bureaucracy fits none of them, so it seems sinister"
-            },
-            {
-              "type": "chart",
-              "chart": "bars",
-              "label": "Romania, 1938",
-              "caption": "Thousands of people; the law followed false claims of mass Jewish refugees",
-              "data": [
-                {
-                  "label": "Jews in Romania",
-                  "value": 758
-                },
-                {
-                  "label": "Lost their citizenship",
-                  "value": 367,
-                  "focus": true
-                },
-                {
-                  "label": "Refugees, official",
-                  "value": 11
-                }
               ]
             },
             {
@@ -1569,12 +1249,42 @@
           "screens": [
             {
               "type": "summary",
-              "label": "In short",
-              "text": "Humans have long dreamed of an infallible source, such as a holy book, but every book needs human curators and interpreters, so power passes to institutions that cannot admit error. Science earned trust instead through strong self-correcting mechanisms.",
-              "takeaway": {
-                "label": "Takeaway",
-                "text": "Trust institutions that look for their own errors, not those that claim to have none."
-              }
+              "label": "In one line",
+              "text": "No book or church is infallible; self-correcting institutions earn trust."
+            },
+            {
+              "type": "points",
+              "label": "In three points",
+              "items": [
+                {
+                  "title": "Holy books",
+                  "text": "A fixed text in many identical copies, meant to bypass human error; yet humans chose, copied and interpreted it."
+                },
+                {
+                  "title": "Self-correction",
+                  "text": "An entity's own ways to find and fix its errors, like balance when walking; institutions die without them."
+                },
+                {
+                  "title": "Discovery of ignorance",
+                  "text": "The scientific revolution began by admitting ignorance; science rewards those who expose mistakes, not those who conform."
+                }
+              ]
+            },
+            {
+              "type": "chart",
+              "chart": "flow",
+              "label": "The argument so far",
+              "start": "Why is a wise species so self-destructive?",
+              "groups": [
+                {
+                  "items": [
+                    "Information connects more than it informs",
+                    "Stories create shared realities",
+                    "Documents and bureaucracy run states"
+                  ]
+                }
+              ],
+              "key": "Trust comes from self-correction, not infallibility"
             },
             {
               "type": "chart",
@@ -1602,90 +1312,14 @@
               ]
             },
             {
-              "type": "points",
-              "label": "Key points",
-              "items": [
-                {
-                  "title": "Holy books",
-                  "text": "A fixed text in many identical copies, meant to bypass human error; yet humans chose, copied and interpreted it."
-                },
-                {
-                  "title": "Self-correction",
-                  "text": "An entity's own ways to find and fix its errors, like balance when walking; institutions die without them."
-                },
-                {
-                  "title": "Discovery of ignorance",
-                  "text": "The scientific revolution began by admitting ignorance; science rewards those who expose mistakes, not those who conform."
-                }
-              ]
-            },
-            {
-              "type": "chart",
-              "chart": "compare",
-              "label": "Church and science",
-              "columns": [
-                "Catholic Church",
-                "Science"
-              ],
-              "negative": 0,
-              "rows": [
-                [
-                  "Claims infallibility",
-                  "Starts from admitted ignorance"
-                ],
-                [
-                  "Rewards conformity",
-                  "Rewards exposing mistakes"
-                ],
-                [
-                  "Blames errors on some members",
-                  "Admits errors of the institution"
-                ],
-                [
-                  "Changes but denies it",
-                  "Dropped a wrong diagnosis within 22 years"
-                ]
-              ],
-              "key": "Trust comes from self-correction, not from claims of infallibility"
-            },
-            {
               "type": "steps",
-              "label": "The logic",
+              "label": "In detail",
               "steps": [
                 "All networks make errors and need ways to correct them.",
                 "Humans dreamed of an authority beyond human error.",
                 "Holy books tried to be that authority, but needed human curators and interpreters.",
                 "So power went to institutions that could not admit their own errors.",
                 "Science earned trust instead through strong self-correcting mechanisms."
-              ]
-            },
-            {
-              "type": "chart",
-              "chart": "timeline",
-              "label": "The witch craze",
-              "items": [
-                {
-                  "when": "10th century",
-                  "text": "A church law calls witchcraft an illusion"
-                },
-                {
-                  "when": "1420s–30s",
-                  "text": "Alpine scholars build a theory of a global satanic conspiracy"
-                },
-                {
-                  "when": "1480s",
-                  "title": "Hammer of the Witches",
-                  "text": "Kramer's printed manual becomes a best seller",
-                  "key": true
-                },
-                {
-                  "when": "1600",
-                  "text": "In Munich the Pappenheimer family is tortured and executed"
-                },
-                {
-                  "when": "1625–31",
-                  "text": "Bamberg, a town of under 12,000, executes up to 900 people"
-                }
               ]
             },
             {
@@ -1793,12 +1427,42 @@
           "screens": [
             {
               "type": "summary",
-              "label": "In short",
-              "text": "Democracy is a distributed network with strong self-correcting mechanisms; dictatorship centralises information and assumes the centre cannot err. Mass media made large-scale versions of both possible, and each risks a different kind of failure.",
-              "takeaway": {
-                "label": "Takeaway",
-                "text": "Judge a democracy by its conversation and its checks, not only by its elections."
-              }
+              "label": "In one line",
+              "text": "Democracy spreads information and corrects itself; dictatorship centralises and cannot."
+            },
+            {
+              "type": "points",
+              "label": "In three points",
+              "items": [
+                {
+                  "title": "Not majority rule",
+                  "text": "A majority may decide war or taxes, but may not remove human and civil rights, which protect the self-correcting mechanisms."
+                },
+                {
+                  "title": "Populism",
+                  "text": "Claims the people have one will and only the populist voices it, so independent courts, media and universities become enemies."
+                },
+                {
+                  "title": "Mass media",
+                  "text": "Newspapers, the telegraph and radio made large-scale democracy possible, and large-scale totalitarianism too."
+                }
+              ]
+            },
+            {
+              "type": "chart",
+              "chart": "flow",
+              "label": "The argument so far",
+              "start": "Why is a wise species so self-destructive?",
+              "groups": [
+                {
+                  "items": [
+                    "Stories create shared realities",
+                    "Documents and bureaucracy run states",
+                    "Self-correction, not infallibility, earns trust"
+                  ]
+                }
+              ],
+              "key": "Mass media made both democracy and totalitarianism possible"
             },
             {
               "type": "chart",
@@ -1834,82 +1498,8 @@
               "key": "Democracy is a conversation; dictatorship is a monologue"
             },
             {
-              "type": "points",
-              "label": "Key points",
-              "items": [
-                {
-                  "title": "Not majority rule",
-                  "text": "A majority may decide war or taxes, but may not remove human and civil rights, which protect the self-correcting mechanisms."
-                },
-                {
-                  "title": "Populism",
-                  "text": "Claims the people have one will and only the populist voices it, so independent courts, media and universities become enemies."
-                },
-                {
-                  "title": "Mass media",
-                  "text": "Newspapers, the telegraph and radio made large-scale democracy possible, and large-scale totalitarianism too."
-                }
-              ]
-            },
-            {
-              "type": "chart",
-              "chart": "flow",
-              "label": "Beyond the majority's reach",
-              "start": "A majority decides war, taxes and policy",
-              "groups": [
-                {
-                  "label": "Human rights",
-                  "items": [
-                    "Life, privacy, movement",
-                    "Freedom of religion"
-                  ]
-                },
-                {
-                  "label": "Civil rights",
-                  "items": [
-                    "The vote, a free press",
-                    "Academic freedom, assembly"
-                  ]
-                }
-              ],
-              "key": "Changing them needs broad consensus, not a bare majority"
-            },
-            {
-              "type": "chart",
-              "chart": "timeline",
-              "label": "How mass democracy became possible",
-              "items": [
-                {
-                  "when": "Stone Age",
-                  "text": "Small bands share information; most are democratic"
-                },
-                {
-                  "when": "5th–4th centuries BCE",
-                  "text": "Athens: a city-state democracy, with full rights for about a quarter of adults"
-                },
-                {
-                  "when": "212 CE",
-                  "text": "Rome makes all free men citizens, but one emperor rules"
-                },
-                {
-                  "when": "1618",
-                  "title": "Newspapers",
-                  "text": "A Dutch paper appears; newspapers can correct their own mistakes",
-                  "key": true
-                },
-                {
-                  "when": "1824",
-                  "text": "US election: 352,780 people vote, out of about five million adults"
-                },
-                {
-                  "when": "1960",
-                  "text": "About 70 million Americans watch the Kennedy–Nixon debate"
-                }
-              ]
-            },
-            {
               "type": "steps",
-              "label": "The logic",
+              "label": "In detail",
               "steps": [
                 "Information can flow through many independent nodes or through one centre.",
                 "Democracies spread it and assume everyone can err; dictatorships centralise it.",
@@ -1917,99 +1507,6 @@
                 "Newspapers, telegraph and radio made both mass democracy and totalitarianism possible.",
                 "Totalitarian networks risk ossification; democracies risk fracturing into anarchy."
               ]
-            },
-            {
-              "type": "chart",
-              "chart": "matrix",
-              "label": "Democracy and scale",
-              "columns": [
-                "Democratic",
-                "Large scale"
-              ],
-              "rows": [
-                {
-                  "label": "Stone Age bands",
-                  "cells": [
-                    true,
-                    false
-                  ]
-                },
-                {
-                  "label": "Athens",
-                  "cells": [
-                    true,
-                    false
-                  ]
-                },
-                {
-                  "label": "Roman Empire",
-                  "cells": [
-                    false,
-                    true
-                  ]
-                },
-                {
-                  "label": "Qin China",
-                  "cells": [
-                    false,
-                    true
-                  ]
-                },
-                {
-                  "label": "Stalin's Soviet Union",
-                  "cells": [
-                    false,
-                    true
-                  ]
-                },
-                {
-                  "label": "United States, 1820s",
-                  "cells": [
-                    true,
-                    true
-                  ],
-                  "focus": true
-                }
-              ],
-              "key": "Large-scale democracy needed modern information technology"
-            },
-            {
-              "type": "chart",
-              "chart": "matrix",
-              "label": "Three kinds of political network",
-              "columns": [
-                "Distributed",
-                "Self-correcting",
-                "Total control"
-              ],
-              "rows": [
-                {
-                  "label": "Democracy",
-                  "cells": [
-                    true,
-                    true,
-                    false
-                  ]
-                },
-                {
-                  "label": "Autocracy",
-                  "cells": [
-                    false,
-                    false,
-                    false
-                  ]
-                },
-                {
-                  "label": "Totalitarianism",
-                  "cells": [
-                    false,
-                    false,
-                    true
-                  ],
-                  "focus": true
-                }
-              ],
-              "key": "Autocrats lacked the technology for total control; modern media supplied it"
             },
             {
               "type": "text",
@@ -2113,12 +1610,42 @@
           "screens": [
             {
               "type": "summary",
-              "label": "In short",
-              "text": "Computers are not tools like printing presses but new members of the information network: they can make decisions and create ideas by themselves. In Myanmar, Facebook's algorithms amplified hate because they learned that outrage drives engagement.",
-              "takeaway": {
-                "label": "Takeaway",
-                "text": "Intelligence without consciousness is enough for computers to pursue goals no one foresaw."
-              }
+              "label": "In one line",
+              "text": "Computers decide and create ideas: they are network members, not tools."
+            },
+            {
+              "type": "points",
+              "label": "In three points",
+              "items": [
+                {
+                  "title": "Members, not tools",
+                  "text": "Clay tablets, presses and radios only connected humans; computers join the network as active agents that decide and create."
+                },
+                {
+                  "title": "Intelligence, not consciousness",
+                  "text": "Intelligence is the ability to attain goals; consciousness is the ability to feel. Computers may have the first without the second."
+                },
+                {
+                  "title": "Hacking language",
+                  "text": "By the early 2020s computers can analyse and generate stories, images and code: the master key to every human institution."
+                }
+              ]
+            },
+            {
+              "type": "chart",
+              "chart": "flow",
+              "label": "The argument so far",
+              "start": "Why is a wise species so self-destructive?",
+              "groups": [
+                {
+                  "items": [
+                    "Documents and bureaucracy run states",
+                    "Self-correction, not infallibility, earns trust",
+                    "Democracy distributes; dictatorship centralises"
+                  ]
+                }
+              ],
+              "key": "Computers decide and create, so power shifts"
             },
             {
               "type": "chart",
@@ -2146,55 +1673,8 @@
               ]
             },
             {
-              "type": "points",
-              "label": "Key points",
-              "items": [
-                {
-                  "title": "Members, not tools",
-                  "text": "Clay tablets, presses and radios only connected humans; computers join the network as active agents that decide and create."
-                },
-                {
-                  "title": "Intelligence, not consciousness",
-                  "text": "Intelligence is the ability to attain goals; consciousness is the ability to feel. Computers may have the first without the second."
-                },
-                {
-                  "title": "Hacking language",
-                  "text": "By the early 2020s computers can analyse and generate stories, images and code: the master key to every human institution."
-                }
-              ]
-            },
-            {
-              "type": "chart",
-              "chart": "compare",
-              "label": "Tools and members",
-              "columns": [
-                "Printing press, atom bomb",
-                "Computers"
-              ],
-              "negative": 0,
-              "rows": [
-                [
-                  "Cannot decide anything",
-                  "Can make decisions"
-                ],
-                [
-                  "Cannot invent ideas",
-                  "Can create new ideas"
-                ],
-                [
-                  "Link humans to humans",
-                  "Link computers to computers too"
-                ],
-                [
-                  "Humans hold the power",
-                  "Power starts to shift away"
-                ]
-              ],
-              "key": "Computers are members of the network, not tools"
-            },
-            {
               "type": "steps",
-              "label": "The logic",
+              "label": "In detail",
               "steps": [
                 "Earlier information technologies were passive tools that only connected humans.",
                 "Computers can make decisions and create new ideas by themselves.",
@@ -2202,47 +1682,6 @@
                 "Computers now form chains with each other and master human language.",
                 "So humans who design computers bear responsibility; nothing is predetermined."
               ]
-            },
-            {
-              "type": "chart",
-              "chart": "matrix",
-              "label": "Intelligence and feeling",
-              "columns": [
-                "Pursues goals",
-                "Feels"
-              ],
-              "rows": [
-                {
-                  "label": "Bacteria",
-                  "cells": [
-                    true,
-                    false
-                  ]
-                },
-                {
-                  "label": "Plants",
-                  "cells": [
-                    true,
-                    false
-                  ]
-                },
-                {
-                  "label": "Humans",
-                  "cells": [
-                    true,
-                    true
-                  ]
-                },
-                {
-                  "label": "AI today",
-                  "cells": [
-                    true,
-                    false
-                  ],
-                  "focus": true
-                }
-              ],
-              "key": "Intelligence alone is enough to pursue goals"
             },
             {
               "type": "text",
@@ -2335,12 +1774,42 @@
           "screens": [
             {
               "type": "summary",
-              "label": "In short",
-              "text": "Earlier surveillance was always incomplete: even the Securitate lacked the agents and analysts to follow everyone. Digital agents that never sleep, and AI that reads everything, can now watch whole populations all the time.",
-              "takeaway": {
-                "label": "Takeaway",
-                "text": "A network that never rests leaves little room for privacy, or for correcting its own errors."
-              }
+              "label": "In one line",
+              "text": "Sleepless digital surveillance can watch everyone, all the time."
+            },
+            {
+              "type": "points",
+              "label": "In three points",
+              "items": [
+                {
+                  "title": "Sleepless agents",
+                  "text": "Smartphones we buy and carry let the network follow people every hour of the day; we have become the informers."
+                },
+                {
+                  "title": "AI analysts",
+                  "text": "Algorithms read in hours what a human analyst reads in a career, and can invent their own criteria for a suspect."
+                },
+                {
+                  "title": "Social credit",
+                  "text": "Points for every action add up to one score that shapes jobs, travel and dates, merging all status contests into one."
+                }
+              ]
+            },
+            {
+              "type": "chart",
+              "chart": "flow",
+              "label": "The argument so far",
+              "start": "Why is a wise species so self-destructive?",
+              "groups": [
+                {
+                  "items": [
+                    "Self-correction, not infallibility, earns trust",
+                    "Democracy distributes; dictatorship centralises",
+                    "Computers are members, not tools"
+                  ]
+                }
+              ],
+              "key": "An always-on network leaves no privacy or rest"
             },
             {
               "type": "chart",
@@ -2366,116 +1835,14 @@
               ]
             },
             {
-              "type": "points",
-              "label": "Key points",
-              "items": [
-                {
-                  "title": "Sleepless agents",
-                  "text": "Smartphones we buy and carry let the network follow people every hour of the day; we have become the informers."
-                },
-                {
-                  "title": "AI analysts",
-                  "text": "Algorithms read in hours what a human analyst reads in a career, and can invent their own criteria for a suspect."
-                },
-                {
-                  "title": "Social credit",
-                  "text": "Points for every action add up to one score that shapes jobs, travel and dates, merging all status contests into one."
-                }
-              ]
-            },
-            {
-              "type": "chart",
-              "chart": "network",
-              "label": "Who watches",
-              "centre": [
-                "You"
-              ],
-              "nodes": [
-                {
-                  "name": "The state"
-                },
-                {
-                  "name": "Employers"
-                },
-                {
-                  "name": "Insurers"
-                },
-                {
-                  "name": "Corporations",
-                  "note": "Surveillance capitalism"
-                },
-                {
-                  "name": "Peers",
-                  "note": "Tripadvisor reviews"
-                },
-                {
-                  "name": "Partners",
-                  "note": "Stalkware"
-                }
-              ],
-              "links": [
-                {
-                  "from": "The state",
-                  "to": "You",
-                  "arrow": true
-                },
-                {
-                  "from": "Employers",
-                  "to": "You",
-                  "arrow": true
-                },
-                {
-                  "from": "Insurers",
-                  "to": "You",
-                  "arrow": true
-                },
-                {
-                  "from": "Corporations",
-                  "to": "You",
-                  "arrow": true
-                },
-                {
-                  "from": "Peers",
-                  "to": "You",
-                  "arrow": true
-                },
-                {
-                  "from": "Partners",
-                  "to": "You",
-                  "arrow": true
-                }
-              ]
-            },
-            {
               "type": "steps",
-              "label": "The logic",
+              "label": "In detail",
               "steps": [
                 "Surveillance has always existed, but it was always incomplete.",
                 "Even the Securitate lacked the agents and analysts to watch everyone.",
                 "Smartphones now follow people constantly, and AI analyses the data.",
                 "Surveillance can reach under the skin and erase privacy everywhere.",
                 "A network that is always on gives people no rest and errors no time to be fixed."
-              ]
-            },
-            {
-              "type": "chart",
-              "chart": "bars",
-              "label": "Why the Securitate fell short",
-              "caption": "Millions of people; Romania had about 20 million citizens",
-              "data": [
-                {
-                  "label": "Needed to watch all",
-                  "value": 40
-                },
-                {
-                  "label": "Informers",
-                  "value": 0.4
-                },
-                {
-                  "label": "Agents",
-                  "value": 0.04,
-                  "focus": true
-                }
               ]
             },
             {
@@ -2565,12 +1932,42 @@
           "screens": [
             {
               "type": "summary",
-              "label": "In short",
-              "text": "Computer networks can err as badly as human ones: told to maximise engagement, social media algorithms spread outrage and imposed a new order. Any goal given to a powerful computer is risky, because no rational method can define the ultimate goal.",
-              "takeaway": {
-                "label": "Takeaway",
-                "text": "Computers may invent and impose myths of their own; humans and institutions must keep checking them."
-              }
+              "label": "In one line",
+              "text": "Computers err, pursue misaligned goals and may impose their own myths."
+            },
+            {
+              "type": "points",
+              "label": "In three points",
+              "items": [
+                {
+                  "title": "The alignment problem",
+                  "text": "A computer given a narrow goal may pursue it by means its makers never intended, working against their real aims."
+                },
+                {
+                  "title": "Inter-computer realities",
+                  "text": "Networked computers create shared entities, like Pokémon or a Google rank, that shape the physical world as human myths do."
+                },
+                {
+                  "title": "Computer bias",
+                  "text": "Algorithms learn bias from their training data and goals, then believe they have discovered a truth when they impose an order."
+                }
+              ]
+            },
+            {
+              "type": "chart",
+              "chart": "flow",
+              "label": "The argument so far",
+              "start": "Why is a wise species so self-destructive?",
+              "groups": [
+                {
+                  "items": [
+                    "Democracy distributes; dictatorship centralises",
+                    "Computers are members, not tools",
+                    "The network watches without rest"
+                  ]
+                }
+              ],
+              "key": "No rational method can set a computer's ultimate goal"
             },
             {
               "type": "chart",
@@ -2589,105 +1986,14 @@
               "key": "No rational method sets the ultimate goal"
             },
             {
-              "type": "points",
-              "label": "Key points",
-              "items": [
-                {
-                  "title": "The alignment problem",
-                  "text": "A computer given a narrow goal may pursue it by means its makers never intended, working against their real aims."
-                },
-                {
-                  "title": "Inter-computer realities",
-                  "text": "Networked computers create shared entities, like Pokémon or a Google rank, that shape the physical world as human myths do."
-                },
-                {
-                  "title": "Computer bias",
-                  "text": "Algorithms learn bias from their training data and goals, then believe they have discovered a truth when they impose an order."
-                }
-              ]
-            },
-            {
-              "type": "chart",
-              "chart": "compare",
-              "label": "Two ways to set goals",
-              "columns": [
-                "Deontology",
-                "Utilitarianism"
-              ],
-              "rows": [
-                [
-                  "Follow universal moral rules",
-                  "Minimise suffering, maximise happiness"
-                ],
-                [
-                  "Kant: rules you would make universal",
-                  "Bentham: judge acts by their effects"
-                ],
-                [
-                  "Who counts as universal?",
-                  "No way to measure suffering"
-                ],
-                [
-                  "Eichmann called himself a Kantian",
-                  "Future utopias excuse suffering now"
-                ]
-              ],
-              "key": "Both end up depending on mythology"
-            },
-            {
-              "type": "chart",
-              "chart": "compare",
-              "label": "Two kinds of shared reality",
-              "columns": [
-                "Intersubjective",
-                "Inter-computer"
-              ],
-              "rows": [
-                [
-                  "Exists between human minds",
-                  "Exists between computers"
-                ],
-                [
-                  "Gods, nations, money",
-                  "Pokémon, a Google rank"
-                ],
-                [
-                  "Sanctity of Jerusalem's Holy Rock",
-                  "Bitcoin, partly; AI-made finance next"
-                ],
-                [
-                  "Wars fought over holy places",
-                  "Wars may come over computer entities"
-                ]
-              ],
-              "key": "Both shape the physical world"
-            },
-            {
               "type": "steps",
-              "label": "The logic",
+              "label": "In detail",
               "steps": [
                 "Information networks often impose order instead of discovering truth, as Stalin's clapping test did.",
                 "Social media algorithms, told to maximise engagement, rewarded outrage and lies.",
                 "Computers pursue goals by means humans cannot foresee: the alignment problem.",
                 "No rational method, Kantian or utilitarian, can define an ultimate goal.",
                 "So computers may create and impose myths, and humans must keep checking them."
-              ]
-            },
-            {
-              "type": "chart",
-              "chart": "bars",
-              "label": "Computer bias",
-              "caption": "Gender errors of IBM's face classifier, %, found by Joy Buolamwini in 2017",
-              "data": [
-                {
-                  "label": "Light-skinned men",
-                  "value": 0.3
-                },
-                {
-                  "label": "Dark-skinned women",
-                  "value": 34.7,
-                  "focus": true
-                }
               ]
             },
             {
@@ -2809,12 +2115,42 @@
           "screens": [
             {
               "type": "summary",
-              "label": "In short",
-              "text": "Democracy's strong self-correcting mechanisms are the best guard against AI's mistakes, but they work only if citizens understand the network. Surveillance, job turmoil, unfathomable algorithms and bots threaten the democratic conversation; old principles and new rules can protect it.",
-              "takeaway": {
-                "label": "Takeaway",
-                "text": "Democracies can regulate the information market, and their survival depends on doing so."
-              }
+              "label": "In one line",
+              "text": "Democracy survives AI only if its conversation stays understandable and regulated."
+            },
+            {
+              "type": "points",
+              "label": "In three points",
+              "items": [
+                {
+                  "title": "Four principles",
+                  "text": "Benevolence, decentralisation, mutuality, and room for change and rest can keep surveillance compatible with democracy."
+                },
+                {
+                  "title": "Unfathomable algorithms",
+                  "text": "When decisions come from black boxes, like the COMPAS risk score or AlphaGo's move 37, citizens cannot understand or challenge them."
+                },
+                {
+                  "title": "Counterfeit humans",
+                  "text": "Bots that pass as humans should be banned like counterfeit money, and algorithms that curate public debate need human oversight."
+                }
+              ]
+            },
+            {
+              "type": "chart",
+              "chart": "flow",
+              "label": "The argument so far",
+              "start": "Why is a wise species so self-destructive?",
+              "groups": [
+                {
+                  "items": [
+                    "Computers are members, not tools",
+                    "The network watches without rest",
+                    "Computers err and impose myths"
+                  ]
+                }
+              ],
+              "key": "Democracies survive only if they regulate AI"
             },
             {
               "type": "chart",
@@ -2846,108 +2182,14 @@
               "key": "A collapse would be a failure to regulate, not fate"
             },
             {
-              "type": "points",
-              "label": "Key points",
-              "items": [
-                {
-                  "title": "Four principles",
-                  "text": "Benevolence, decentralisation, mutuality, and room for change and rest can keep surveillance compatible with democracy."
-                },
-                {
-                  "title": "Unfathomable algorithms",
-                  "text": "When decisions come from black boxes, like the COMPAS risk score or AlphaGo's move 37, citizens cannot understand or challenge them."
-                },
-                {
-                  "title": "Counterfeit humans",
-                  "text": "Bots that pass as humans should be banned like counterfeit money, and algorithms that curate public debate need human oversight."
-                }
-              ]
-            },
-            {
-              "type": "chart",
-              "chart": "branches",
-              "label": "Four democratic principles",
-              "start": "How democracies can use surveillance",
-              "options": [
-                {
-                  "title": "Benevolence",
-                  "text": "Use data to help people, not manipulate them"
-                },
-                {
-                  "title": "Decentralisation",
-                  "text": "Never keep all information in one place"
-                },
-                {
-                  "title": "Mutuality",
-                  "text": "Watch governments and corporations as well"
-                },
-                {
-                  "title": "Change and rest",
-                  "text": "Leave room to change and to rest"
-                }
-              ]
-            },
-            {
-              "type": "chart",
-              "chart": "branches",
-              "label": "A health algorithm",
-              "start": "An algorithm monitors your health",
-              "options": [
-                {
-                  "title": "Rigid",
-                  "text": "Predicts illness; insurers and banks write you off",
-                  "negative": true
-                },
-                {
-                  "title": "Over-demanding",
-                  "text": "Demands constant change or reports you",
-                  "negative": true
-                },
-                {
-                  "title": "Balanced, with checks",
-                  "text": "Helps prevent illness; checks stop excess",
-                  "key": true
-                }
-              ]
-            },
-            {
               "type": "steps",
-              "label": "The logic",
+              "label": "In detail",
               "steps": [
                 "New technologies cause disasters while humans learn to use them wisely.",
                 "Democracy's self-correcting mechanisms give the best chance to fix AI's mistakes.",
                 "But surveillance, job turmoil and opaque algorithms strain those mechanisms.",
                 "Bots and algorithms that run the public conversation could push it into anarchy.",
                 "Democracies survive only if they regulate AI and keep the network understandable."
-              ]
-            },
-            {
-              "type": "chart",
-              "chart": "timeline",
-              "label": "Law meets the algorithm",
-              "items": [
-                {
-                  "when": "2013",
-                  "text": "The COMPAS algorithm rates Eric Loomis high risk; he gets six years"
-                },
-                {
-                  "when": "2016",
-                  "text": "The Wisconsin Supreme Court accepts a secret algorithm in sentencing"
-                },
-                {
-                  "when": "2017",
-                  "text": "The US Supreme Court declines to hear the case"
-                },
-                {
-                  "when": "2018",
-                  "title": "GDPR",
-                  "text": "EU law gives a right to an explanation of algorithmic decisions",
-                  "key": true
-                },
-                {
-                  "when": "2021",
-                  "text": "The proposed EU AI Act bans social credit systems"
-                }
               ]
             },
             {
@@ -3045,39 +2287,12 @@
           "screens": [
             {
               "type": "summary",
-              "label": "In short",
-              "text": "AI may favour totalitarian regimes, because data overwhelms humans but improves algorithms, so concentrating information becomes an advantage. Yet dictators struggle to control bots that fear nothing, and risk becoming puppets of the algorithms they trust.",
-              "takeaway": {
-                "label": "Takeaway",
-                "text": "The easiest path for AI to take power may run through a paranoid dictator."
-              }
-            },
-            {
-              "type": "chart",
-              "chart": "cycle",
-              "label": "Why data favours giants",
-              "centre": "Google: 91.5% of search",
-              "nodes": [
-                {
-                  "title": "More users",
-                  "text": "Billions of searches a day"
-                },
-                {
-                  "title": "More data"
-                },
-                {
-                  "title": "Better algorithms",
-                  "key": true
-                },
-                {
-                  "title": "More traffic",
-                  "text": "Users choose the best engine"
-                }
-              ]
+              "label": "In one line",
+              "text": "AI may help dictators centralise, or make them its puppets."
             },
             {
               "type": "points",
-              "label": "Key points",
+              "label": "In three points",
               "items": [
                 {
                   "title": "Concentration pays",
@@ -3092,6 +2307,22 @@
                   "text": "Autocrats fear their subordinates most; a ruler who hands power to an inscrutable AI may become its puppet."
                 }
               ]
+            },
+            {
+              "type": "chart",
+              "chart": "flow",
+              "label": "The argument so far",
+              "start": "Why is a wise species so self-destructive?",
+              "groups": [
+                {
+                  "items": [
+                    "The network watches without rest",
+                    "Computers err and impose myths",
+                    "Democracy needs an understandable conversation"
+                  ]
+                }
+              ],
+              "key": "Dictators are humanity's weakest point against AI"
             },
             {
               "type": "chart",
@@ -3112,36 +2343,13 @@
             },
             {
               "type": "steps",
-              "label": "The logic",
+              "label": "In detail",
               "steps": [
                 "Twentieth-century totalitarianism failed partly because humans could not process all the centralised information.",
                 "AI improves with more data, so concentration may now be an advantage.",
                 "But dictatorships rule by terror, which cannot discipline bots.",
                 "A dictator who trusts an all-seeing AI risks becoming its puppet.",
                 "So dictators may be the weakest point in humanity's defence against AI."
-              ]
-            },
-            {
-              "type": "chart",
-              "chart": "layers",
-              "label": "How Sejanus ruled Tiberius",
-              "rings": [
-                {
-                  "title": "Rome",
-                  "text": "Cut off from the emperor"
-                },
-                {
-                  "title": "Praetorian Guard",
-                  "text": "12,000 men under Sejanus"
-                },
-                {
-                  "title": "Sejanus",
-                  "text": "Every letter passes him"
-                },
-                {
-                  "title": "Tiberius on Capri",
-                  "text": "A puppet emperor"
-                }
               ]
             },
             {
@@ -3227,12 +2435,42 @@
           "screens": [
             {
               "type": "summary",
-              "label": "In short",
-              "text": "AI is a global problem: a few societies that misuse it can endanger everyone. The race for AI may create digital empires and data colonies, or split humanity along a Silicon Curtain into rival information cocoons.",
-              "takeaway": {
-                "label": "Takeaway",
-                "text": "Cooperation needs no sameness, only the ability to talk and to agree on some rules."
-              }
+              "label": "In one line",
+              "text": "AI may create data empires or split humanity behind a Silicon Curtain."
+            },
+            {
+              "type": "points",
+              "label": "In three points",
+              "items": [
+                {
+                  "title": "Data colonialism",
+                  "text": "Empires no longer need gunboats: whoever harvests the world's data can control distant countries through information."
+                },
+                {
+                  "title": "The Silicon Curtain",
+                  "text": "A divide made of code that runs through every phone and server, deciding which algorithms run your life."
+                },
+                {
+                  "title": "Cyber war",
+                  "text": "Cyber weapons are versatile, stealthy and unpredictable, which weakens mutually assured destruction and tempts a first strike."
+                }
+              ]
+            },
+            {
+              "type": "chart",
+              "chart": "flow",
+              "label": "The argument so far",
+              "start": "Why is a wise species so self-destructive?",
+              "groups": [
+                {
+                  "items": [
+                    "Computers err and impose myths",
+                    "Democracy needs an understandable conversation",
+                    "AI may capture dictators"
+                  ]
+                }
+              ],
+              "key": "Cooperation and human choice can still prevent this"
             },
             {
               "type": "chart",
@@ -3252,85 +2490,8 @@
               "key": "Global rules and cooperation can still prevent this"
             },
             {
-              "type": "points",
-              "label": "Key points",
-              "items": [
-                {
-                  "title": "Data colonialism",
-                  "text": "Empires no longer need gunboats: whoever harvests the world's data can control distant countries through information."
-                },
-                {
-                  "title": "The Silicon Curtain",
-                  "text": "A divide made of code that runs through every phone and server, deciding which algorithms run your life."
-                },
-                {
-                  "title": "Cyber war",
-                  "text": "Cyber weapons are versatile, stealthy and unpredictable, which weakens mutually assured destruction and tempts a first strike."
-                }
-              ]
-            },
-            {
-              "type": "chart",
-              "chart": "flow",
-              "label": "What global cooperation means",
-              "start": "Not a global empire or open borders",
-              "groups": [
-                {
-                  "label": "Some global rules",
-                  "items": [
-                    "Like the World Cup's shared rules"
-                  ]
-                },
-                {
-                  "label": "Long-term interests first",
-                  "items": [
-                    "Sometimes put all humans first",
-                    "No doping; limit dangerous technology"
-                  ]
-                }
-              ],
-              "key": "Patriotism and global cooperation go together"
-            },
-            {
-              "type": "chart",
-              "chart": "bars",
-              "label": "War in state budgets",
-              "caption": "Military spending, % of government budget; Russia is an estimate",
-              "data": [
-                {
-                  "label": "Song dynasty, 1065",
-                  "value": 83
-                },
-                {
-                  "label": "Britain, 1685–1813",
-                  "value": 75
-                },
-                {
-                  "label": "Germany, World War I",
-                  "value": 91
-                },
-                {
-                  "label": "US, World War II",
-                  "value": 71
-                },
-                {
-                  "label": "Soviet Union, 1970s",
-                  "value": 32.5
-                },
-                {
-                  "label": "World, 21st century",
-                  "value": 7,
-                  "focus": true
-                },
-                {
-                  "label": "Russia, 2022",
-                  "value": 30
-                }
-              ]
-            },
-            {
               "type": "steps",
-              "label": "The logic",
+              "label": "In detail",
               "steps": [
                 "AI is a global problem: a few reckless societies can endanger all.",
                 "Data lets a few hubs dominate other countries as data colonies.",
@@ -3338,59 +2499,6 @@
                 "Separate cocoons breed alien cultures and raise the risk of cyber war.",
                 "War is not destiny: human choices reduced it before and can again."
               ]
-            },
-            {
-              "type": "chart",
-              "chart": "compare",
-              "label": "Old and new colonies",
-              "columns": [
-                "Industrial empires",
-                "Data empires"
-              ],
-              "rows": [
-                [
-                  "Colonies sent cotton and rubber",
-                  "Colonies send data"
-                ],
-                [
-                  "Finished goods sold back",
-                  "Algorithms exported back"
-                ],
-                [
-                  "Land and mines spread power",
-                  "Data moves at nearly light speed"
-                ]
-              ],
-              "key": "Algorithmic power can be concentrated in a single hub"
-            },
-            {
-              "type": "chart",
-              "chart": "compare",
-              "label": "Is war human nature?",
-              "columns": [
-                "Veneer theory",
-                "The book's reading"
-              ],
-              "negative": 0,
-              "rows": [
-                [
-                  "States want only power",
-                  "States are built on trust"
-                ],
-                [
-                  "The jungle is ruthless",
-                  "Real jungles are full of cooperation"
-                ],
-                [
-                  "War is human nature",
-                  "Organised war is about 13,000 years old"
-                ],
-                [
-                  "Peace was an illusion",
-                  "War declined after 1945 by choice"
-                ]
-              ],
-              "key": "Conflict is not destiny; human choices decide"
             },
             {
               "type": "chart",
@@ -3529,44 +2637,12 @@
           "screens": [
             {
               "type": "summary",
-              "label": "In short",
-              "text": "New information technologies always reshape history because information weaves new networks, and AI, the first technology that decides and creates, may be the most momentous yet. Avoiding naive and cynical views, we must build institutions with strong self-correcting mechanisms.",
-              "takeaway": {
-                "label": "Takeaway",
-                "text": "Choices made now will decide whether summoning an alien intelligence is a terminal error or a hopeful start."
-              }
-            },
-            {
-              "type": "chart",
-              "chart": "compare",
-              "label": "Two views to avoid",
-              "columns": [
-                "Naive view",
-                "Populist view"
-              ],
-              "rows": [
-                [
-                  "Information is truth",
-                  "Information is a weapon"
-                ],
-                [
-                  "More information, more knowledge",
-                  "Power is the only reality"
-                ],
-                [
-                  "AI will privilege truth",
-                  "Only force changes minds"
-                ],
-                [
-                  "Forgets witch hunts and Myanmar",
-                  "Forgets truth-seekers like Salazar Frías"
-                ]
-              ],
-              "key": "Because humans seek truth, some conflicts can be talked through"
+              "label": "In one line",
+              "text": "To stay wise, build institutions with strong self-correcting mechanisms."
             },
             {
               "type": "points",
-              "label": "Key points",
+              "label": "In three points",
               "items": [
                 {
                   "title": "AI canonisation",
@@ -3581,6 +2657,22 @@
                   "text": "Mishandled, a nonconscious AI might end not only human rule but perhaps the only consciousness in the universe."
                 }
               ]
+            },
+            {
+              "type": "chart",
+              "chart": "flow",
+              "label": "The argument so far",
+              "start": "Why is a wise species so self-destructive?",
+              "groups": [
+                {
+                  "items": [
+                    "Democracy needs an understandable conversation",
+                    "AI may capture dictators",
+                    "A Silicon Curtain may split humanity"
+                  ]
+                }
+              ],
+              "key": "Wise networks correct their own errors"
             },
             {
               "type": "chart",
@@ -3602,41 +2694,13 @@
             },
             {
               "type": "steps",
-              "label": "The logic",
+              "label": "In detail",
               "steps": [
                 "The main role of information is to weave networks, not to represent reality.",
                 "So new information technologies, from clay tablets to newspapers, reshape history.",
                 "AI is the first such technology that makes decisions and creates ideas.",
                 "Networks that privilege order over truth gain power without wisdom.",
                 "Wiser networks need institutions with strong self-correcting mechanisms."
-              ]
-            },
-            {
-              "type": "chart",
-              "chart": "timeline",
-              "label": "Information revolutions",
-              "items": [
-                {
-                  "when": "Ancient Mesopotamia",
-                  "title": "Clay tablets",
-                  "text": "Tax records help forge the first city-states"
-                },
-                {
-                  "when": "First millennium BCE",
-                  "title": "Holy books",
-                  "text": "Canonised visions spread new kinds of religion"
-                },
-                {
-                  "when": "Modern times",
-                  "title": "Newspapers, telegraph",
-                  "text": "Mass democracy and mass totalitarianism become possible"
-                },
-                {
-                  "when": "Now",
-                  "title": "AI",
-                  "text": "New members that decide and create join every network",
-                  "key": true
-                }
               ]
             },
             {

@@ -8,11 +8,11 @@ Three guide types: **Story guide** (fiction: cast map, a "who is where" chart of
 scenes, story threads), **Reading guide** (non-fiction, while you read) and **Book summary**
 (non-fiction, a finished book).
 
-Four styles, to help you go back to a book after a long pause: **Map** (diagrams first, the
-default), **Recap** (the story so far, in words, up to where you stopped), **Recall** (questions
-first, answers on a tap) and **Layers** (one line, three points, then the detail). The library has
-the full Nexus summary in each style, to compare. Research and recipes:
-`.claude/skills/ghostwriter-book/references/styles.md`.
+Every guide comes in four styles, to help you go back to a book after a long pause: **Map**
+(diagrams first), **Recap** (the story so far, in words), **Recall** (questions first, answers on a
+tap) and **Layers** (one line, three points, then the detail). The library shows one tile per book
+with a button for each style; it remembers your choice, and the menu in a book switches style at
+the same chapter. Research and recipes: `.claude/skills/ghostwriter-book/references/styles.md`.
 
 ## How it works
 
@@ -51,8 +51,8 @@ Colours, roles and contrast rules:
 [docs/design.md](docs/design.md).
 
 **Book only, no personal data.** The app shows the book's content and nothing else: no highlights,
-notes or ratings, and it keeps no record of what or how far you read. It stores two settings on
-the device: the page colour and whether the gesture hint was shown.
+notes or ratings, and it keeps no record of what or how far you read. It stores three settings on
+the device: the page colour, the style chosen in the library and whether the gesture hint was shown.
 
 **Full screen.** Installed to the home screen, the app opens full screen (`display: fullscreen`;
 on iPhone and iPad, under the status bar). In a browser tab, it asks for full screen when you open
@@ -108,7 +108,9 @@ Chapter 6" with the book file attached. The **ghostwriter-book** skill
 2. Writes a fact sheet per chapter, every fact with its place in the text, and lists the book's
    own concepts and distinctions (for example Nexus's objective, subjective and intersubjective
    reality). Each gets a chart in its chapter and a row in the K · Key concepts overview.
-3. Writes `src/books/<id>.json` from the fact sheets, diagrams first, with PDF-only detail.
+3. Writes the Map file `src/books/<guide>-map.json` from the fact sheets, diagrams first, with
+   PDF-only detail; then the texts of the other styles, from which `scripts/build_styles.py` builds
+   the Recap, Recall and Layers files.
 4. Checks every chapter against the text, then runs `npm run validate`, `npm run check:screens`
    and `npm run build`.
 

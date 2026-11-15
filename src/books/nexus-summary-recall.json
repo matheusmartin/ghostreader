@@ -1,6 +1,7 @@
 {
   "format": 1,
-  "id": "nexus-recall",
+  "id": "nexus-summary-recall",
+  "guide": "nexus-summary",
   "type": "done",
   "style": "recall",
   "title": "Nexus",
@@ -13,7 +14,7 @@
     "kind": "book-file",
     "file": "EPUB",
     "written": "2026-11-15",
-    "skill": "1.2.0"
+    "skill": "1.3.0"
   },
   "parts": [
     {

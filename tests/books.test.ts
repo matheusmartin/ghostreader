@@ -25,6 +25,26 @@ describe('bundled books', () => {
       expect(problems, problems.join('\n')).toEqual([]);
     });
   }
+
+  it('writes every guide in all four styles, one file each', () => {
+    const books = Object.values(files) as Book[];
+    const guides = new Map<string, string[]>();
+    for (const b of books) {
+      expect(b.guide, `${b.id}: every book file belongs to a guide ("guide")`).toBeTruthy();
+      guides.set(b.guide!, [...(guides.get(b.guide!) ?? []), b.style ?? 'map']);
+    }
+    for (const [guide, styles] of guides) expect(styles.sort(), guide).toEqual(['layers', 'map', 'recall', 'recap']);
+  });
+
+  it('keeps title, author and chapters the same across the styles of a guide', () => {
+    const books = Object.values(files) as Book[];
+    const shape = (b: Book) => JSON.stringify([b.title, b.author, b.type, b.upTo,
+      b.parts.slice(1).map((p) => p.chapters.map((c) => [c.id, c.number, c.title]))]);
+    for (const b of books) {
+      const map = books.find((m) => m.guide === b.guide && m.style === 'map');
+      expect(shape(b), b.id).toBe(shape(map!));
+    }
+  });
 });
 
 describe('validateBook', () => {
@@ -74,5 +94,14 @@ describe('style', () => {
   it('accepts the four styles and nothing else', () => {
     for (const style of ['map', 'recap', 'recall', 'layers']) expect(validateBook({ ...base, style }).errors).toEqual([]);
     expect(validateBook({ ...base, style: 'fancy' }).errors).toEqual(['"style" must be one of map, recap, recall, layers']);
+  });
+});
+
+describe('guide', () => {
+  const base = { format: 1, type: 'reading', title: 'T', author: 'A', lead: 'L', parts: [{ id: 'p', chapters: [{ id: 'c', number: '1', title: 'One', screens: [{ type: 'summary', label: 'In short', text: 'Text.' }] }] }] };
+  it('needs a style and the id "<guide>-<style>"', () => {
+    expect(validateBook({ ...base, id: 'x-recap', guide: 'x', style: 'recap' }).errors).toEqual([]);
+    expect(validateBook({ ...base, id: 'x-recap', guide: 'x' }).errors).toEqual(['a file with "guide" needs "style"']);
+    expect(validateBook({ ...base, id: 'x', guide: 'x', style: 'recap' }).errors).toEqual(['"id" must be "x-recap" ("<guide>-<style>")']);
   });
 });

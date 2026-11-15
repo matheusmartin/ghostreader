@@ -184,6 +184,10 @@
 .menu-author { color: var(--muted); font-size: .9rem; }
 .menu-actions { display: flex; flex-wrap: wrap; gap: 8px; margin: 16px 0 6px; }
 
+.style-picker { margin-top: 18px; }
+.style-picker > .label { font-size: .66rem; margin-bottom: 8px; display: block; }
+.style-list { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 6px; }
+
 .scheme-picker { margin-top: 18px; }
 .scheme-picker > .label { font-size: .66rem; margin-bottom: 8px; }
 .scheme-list { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 4px; }

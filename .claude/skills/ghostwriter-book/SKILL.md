@@ -1,8 +1,8 @@
 ---
 name: ghostwriter-book
-description: Writes or updates a book guide for the Ghostwriter app in this repository - one file, src/books/<id>.json, that makes both the swipe screens and the downloadable A4 PDF. Three types, chosen by the user - Story guide (fiction - cast map, scene charts of who is where, story threads), Reading guide (non-fiction, to follow the argument while reading) and Book summary (non-fiction, a finished book). Reads the book from an EPUB, PDF, text, Markdown or HTML file, or from summaries when no file is given. Diagrams first - networks, flows, cycles, timelines - text only where a picture cannot carry the idea. Use when the user asks to add, write, summarise, update or regenerate a book, story guide, reading guide, book summary, infographic or PDF for the app, even if they only name the book. Do not use for a short summary in chat, book recommendations, reviews, or changes to the app's code.
+description: Writes or updates a book guide for the Ghostwriter app in this repository - four files, one per style (Map, Recap, Recall, Layers), src/books/<guide>-<style>.json, each making both the swipe screens and a downloadable A4 PDF; the library shows them as one tile with a style choice. Three types, chosen by the user - Story guide (fiction - cast map, scene charts of who is where, story threads), Reading guide (non-fiction, to follow the argument while reading) and Book summary (non-fiction, a finished book). Reads the book from an EPUB, PDF, text, Markdown or HTML file, or from summaries when no file is given. Diagrams first - networks, flows, cycles, timelines - text only where a picture cannot carry the idea. Use when the user asks to add, write, summarise, update or regenerate a book, story guide, reading guide, book summary, infographic or PDF for the app, even if they only name the book. Do not use for a short summary in chat, book recommendations, reviews, or changes to the app's code.
 metadata:
-  version: "1.2.0"
+  version: "1.3.0"
 compatibility: Node 22 with `npm install` done (Vitest; Playwright with Chromium for the screen check and the PDF). Python 3.9+ for the book extractor and maps; PDF books also need poppler-utils (pdftotext) or the pypdf package.
 ---
 
@@ -10,8 +10,11 @@ compatibility: Node 22 with `npm install` done (Vitest; Playwright with Chromium
 
 ## Overview
 
-A guide is one JSON file, `src/books/<id>.json`. The app shows it as screens (one idea per swipe);
-the build prints the same file as an A4 PDF, with the extra detail marked `"only": "pdf"`.
+A guide is four JSON files, one per style: `src/books/<guide>-map.json`, `-recap.json`,
+`-recall.json` and `-layers.json` (`references/styles.md`). Every guide is always written in all
+four; the library shows them as one tile with a style choice. The app shows each file as screens
+(one idea per swipe); the build prints each as an A4 PDF, with the extra detail marked
+`"only": "pdf"`.
 
 Principles:
 - **Book content only.** Everything comes from the book. Nothing from outside it
@@ -26,7 +29,8 @@ Principles:
 | Term | Meaning |
 |---|---|
 | type | `fiction` (Story guide), `reading` (Reading guide) or `done` (Book summary), chosen by the user |
-| style | how the guide summarises: `map` (default), `recap`, `recall` or `layers` (`references/styles.md`) |
+| style | how a file summarises: `map`, `recap`, `recall` or `layers`. Every guide has all four (`references/styles.md`) |
+| guide | the id the four files share; each file's id is `<guide>-<style>` |
 | screen / block | one item of a chapter's `screens`: one swipe in the app, one block in the PDF |
 | app screen | a screen without `only`, or with `only: "app"`: must fit a phone screen |
 | PDF-only block | `only: "pdf"`: detail for the PDF, with looser limits |
@@ -44,7 +48,6 @@ Type:     Fiction | Non-fiction reading | Non-fiction done   (required)
 Title:    Pride and Prejudice                (required)
 Author:   Jane Austen                        (recommended)
 Up to:    Chapter 6                          (optional; Fiction and Non-fiction reading only)
-Style:    Map | Recap | Recall | Layers      (optional; default Map: references/styles.md)
 Edition:  Penguin Classics, 2003             (optional: shown on the cover)
 + the book file: EPUB, PDF, TXT, MD or HTML  (strongly recommended)
 ```
@@ -61,18 +64,20 @@ Edition:  Penguin Classics, 2003             (optional: shown on the cover)
 Copy this checklist into the task list and tick it off:
 
 ```
-- [ ] 1 Inputs: type, title, author, limit, style, edition, book file
+- [ ] 1 Inputs: type, title, author, limit, edition, book file (all four styles, always)
 - [ ] 2 Read docs/content-format.md, references/guides.md (the type), references/styles.md (the
         style), references/visuals.md, references/concepts.md, references/content-rules.md, references/writing-style.md
 - [ ] 3 Text: extract the book file into work/<id>/source (or gather summaries)
 - [ ] 4 Plan: id, parts, chapters (real titles and word counts), overview chapters, cast and threads
 - [ ] 5 Fact sheets: work/<id>/facts/<chapter-id>.md, every fact with its anchor, and the
         concepts and distinctions the chapter introduces (references/concepts.md)
-- [ ] 6 Write src/books/<id>.json chapter by chapter: app screens, then PDF-only detail;
-        a visual for every distinction, and the K · Key concepts overview
+- [ ] 6 Write the Map file src/books/<guide>-map.json chapter by chapter: app screens, then
+        PDF-only detail; a visual for every distinction, and the K · Key concepts overview
+- [ ] 6b Write work/<guide>/styles.json and run scripts/build_styles.py: the Recap, Recall and
+        Layers files (references/styles.md)
 - [ ] 7 Verify every chapter against its anchors and the concept inventory; fix what does not hold
 - [ ] 8 Check: npm run validate · npm run check:screens · npm run build, look at the PDF
-- [ ] 9 Deliver: commit src/books/<id>.json only; final message
+- [ ] 9 Deliver: commit the four src/books/<guide>-*.json files only; final message
 ```
 
 **3 · Text.** Put the book file in `work/<id>/` (the folder is in `.gitignore`: book text must
@@ -97,8 +102,9 @@ in the final message, and for fiction, tell them before you start: summaries mis
 scenes.
 
 **4 · Plan.** Decide before writing:
-- **id**: title and type in lower case with hyphens: `pride-and-prejudice-story`, `nexus-reading`,
-  `nexus-summary`.
+- **guide id**: title and type in lower case with hyphens: `pride-and-prejudice-story`,
+  `nexus-reading`, `nexus-summary`. The four files are `<guide>-map.json`, `<guide>-recap.json`,
+  `<guide>-recall.json` and `<guide>-layers.json`, each with `"guide"` and `"style"`.
 - **Parts and chapters** from `toc.json`: every chapter of the book, in order, with its real
   title (untitled: "Chapter 7"), number and `length` (its word count; all chapters or none). Part
   titles are kickers, not pages. Chapters after the limit are listed without screens.
@@ -131,9 +137,21 @@ scenes.
 ```
 
 **6 · Write.** Work chapter by chapter from the fact sheets, never from memory: first the app
-screens of the type's recipe, then the PDF-only blocks. Write each chapter into the book file as
+screens of the type's recipe, then the PDF-only blocks. Write each chapter into the Map file as
 soon as it is done, and run `npm run validate` after every few chapters. For more than 30
 chapters, send a short progress note after each part.
+
+**6b · The other styles.** From the same fact sheets, write `work/<guide>/styles.json`: per chapter
+one line, the point it adds, a recap, key moments, the concepts to remember, three questions, and
+"before this chapter"; plus the `S` overview screens of each style and the concept cards. The format
+is in `references/styles.md`. Then build the three files:
+
+```bash
+python3 -I .claude/skills/ghostwriter-book/scripts/build_styles.py src/books/<guide>-map.json work/<guide>/styles.json
+```
+
+The script copies diagrams, key points, logic and PDF detail from the Map file, so fix those in
+the Map file and run it again; never edit the generated files by hand.
 
 **7 · Verify.** For each chapter, check every name, scene, relation, claim and number against its
 anchor in the text. Then go through the concept inventory: every concept and distinction must
@@ -150,7 +168,7 @@ npm run validate
 ```
 
 ```bash
-npm run check:screens -- <id>
+npm run check:screens -- <guide>-map <guide>-recap <guide>-recall <guide>-layers
 ```
 
 ```bash
@@ -167,8 +185,8 @@ npm run build
   work/<id>/pdf` and open the images. No Chromium: `npx playwright install chromium`.
 - To see the app: `npm run dev`, then `http://localhost:5173/#/read/<id>` (and `#/print/<id>`).
 
-**9 · Deliver.** Commit only `src/books/<id>.json` (and app changes the user asked for); never
-`work/`. Then write:
+**9 · Deliver.** Commit only the four `src/books/<guide>-*.json` files (and app changes the user
+asked for); never `work/`. Then write:
 1. One line: the guide, its type, what it covers, how many chapters and screens.
 2. Based on the book file (its format) or on summaries; chapters skipped and why; maps.
 3. Checks: validate, screen check and PDF results.
@@ -192,6 +210,8 @@ npm run build
   sections, never an invented prologue or introduction.
 
 ## Common mistakes
+
+- Writing only one style → every guide has all four files; the library shows one tile per guide.
 
 - A concept the book defines, or a contrast it builds across chapters, only mentioned in a text
   block → give it a chart (`references/concepts.md`) and a row in K · Key concepts.
@@ -221,7 +241,8 @@ npm run build
 | `references/guides.md` | step 2: the type's overview chapters, chapter recipe, PDF detail and limits |
 | `references/visuals.md` | steps 4–6: which diagram for which idea; layout rules for each chart |
 | `references/concepts.md` | steps 4–7: find, record and show the book's concepts and distinctions |
-| `references/styles.md` | step 1 and 6: the four styles (Map, Recap, Recall, Layers), their research basis and recipes |
+| `references/styles.md` | steps 6 and 6b: the four styles (Map, Recap, Recall, Layers), their research basis, recipes and the styles.json format |
+| `scripts/build_styles.py` | step 6b: builds the Recap, Recall and Layers files from the Map file and styles.json |
 | `references/content-rules.md` | step 2: book content only, accuracy, spoilers, summaries mode, copyright |
 | `references/writing-style.md` | step 6: The Economist style, short form |
 | `scripts/extract_book.py` | step 3 (`--help`) |

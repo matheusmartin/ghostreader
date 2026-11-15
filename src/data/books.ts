@@ -1,8 +1,9 @@
 // The library: every src/books/<id>.json file is a book. Drop a file in that folder and it
 // appears in the library after the next build. Each file loads only when needed.
+// A guide comes in four styles, one file each ("<guide>-<style>"); the library groups them.
 
 import { validateBook } from '../model/validate.ts';
-import type { Book } from '../model/types.ts';
+import { STYLES, type Book, type Style } from '../model/types.ts';
 
 const files = import.meta.glob<unknown>('../books/*.json', { import: 'default' });
 
@@ -39,4 +40,48 @@ export function loadBook(id: string): Promise<LoadedBook | null> {
 export async function loadAllBooks(): Promise<LoadedBook[]> {
   const all = await Promise.all(bookIds().map(loadBook));
   return all.filter((b): b is LoadedBook => b !== null);
+}
+
+/** One tile of the library: a guide and its files by style, or one file without a guide. */
+export interface GuideEntry {
+  id: string;
+  styles: Partial<Record<Style, Book>>;
+  /** A file that did not validate: shown as its own broken tile. */
+  broken?: LoadedBook;
+}
+
+export function groupGuides(books: LoadedBook[]): GuideEntry[] {
+  const entries = new Map<string, GuideEntry>();
+  for (const b of books) {
+    if (!b.book) {
+      entries.set(b.id, { id: b.id, styles: {}, broken: b });
+      continue;
+    }
+    const key = b.book.guide ?? b.book.id;
+    const entry = entries.get(key) ?? { id: key, styles: {} };
+    entry.styles[b.book.style ?? 'map'] = b.book;
+    entries.set(key, entry);
+  }
+  return [...entries.values()];
+}
+
+/** The file of the same guide in another style, if there is one. */
+export function siblingId(book: Book, style: Style): string | null {
+  if (!book.guide) return null;
+  const id = `${book.guide}-${style}`;
+  return loaders.has(id) ? id : null;
+}
+
+/** The styles a book's guide has, in the standard order. */
+export function guideStyles(book: Book): Style[] {
+  return book.guide ? STYLES.filter((s) => loaders.has(`${book.guide}-${s}`)) : [];
+}
+
+/**
+ * The file to open for an id in a link. Links made before a guide had four styles name the guide
+ * itself ("nexus-summary"): they open its Map file.
+ */
+export function resolveBookId(id: string): string | null {
+  if (loaders.has(id)) return id;
+  return loaders.has(`${id}-map`) ? `${id}-map` : null;
 }

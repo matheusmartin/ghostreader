@@ -1,7 +1,7 @@
 # Guide types
 
-These are the recipes of the default style, Map. Recap, Recall and Layers change the overview
-and chapter screens as `references/styles.md` says; everything else here applies to every style.
+These are the recipes of the Map style, the file every guide starts with. Recap, Recall and Layers
+are built from it (`references/styles.md`); everything else here applies to every style.
 
 Every guide has the same frame: a first part `{ "id": "overview", "label": "Overview" }` with the
 overview chapters, then the book's own parts and chapters in order (a book without parts has one

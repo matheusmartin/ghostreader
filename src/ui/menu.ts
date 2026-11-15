@@ -4,10 +4,14 @@
 
 import { h } from '../lib/dom.ts';
 import { canFullscreen, isFullscreen, isInstalled, toggleFullscreen } from '../lib/device.ts';
-import { guideLabel } from '../screens/render.ts';
+import { guideLabel, STYLE_NAMES } from '../screens/render.ts';
 import { schemePicker } from './scheme-picker.ts';
 import { pdfLink } from '../lib/pdf.ts';
 import { shareLink } from '../lib/share.ts';
+import { setSetting } from '../lib/storage.ts';
+import { guideStyles, siblingId } from '../data/books.ts';
+import { readHash } from '../router.ts';
+import type { Book, Style } from '../model/types.ts';
 import type { Plan, PlanScreen } from '../model/plan.ts';
 
 /** How long (ms) after opening the menu ignores clicks: the tap's own click comes within this time. */
@@ -57,6 +61,7 @@ export class Menu {
         this.shareButton,
         this.fsButton,
       ),
+      this.stylePicker(b),
       schemePicker(),
       this.toc,
       h('dl', { class: 'menu-help' },
@@ -111,6 +116,32 @@ export class Menu {
   destroy(): void {
     document.removeEventListener('fullscreenchange', this.syncFs);
     clearTimeout(this.shareTimer);
+  }
+
+  /** The other styles of this guide: switching opens the same chapter in that style. */
+  private stylePicker(b: Book): HTMLElement | null {
+    const styles = guideStyles(b);
+    if (styles.length < 2) return null;
+    const current = b.style ?? 'map';
+    return h('div', { class: 'style-picker' },
+      h('span', { class: 'label' }, 'Style'),
+      h('div', { class: 'style-list', role: 'radiogroup', 'aria-label': 'Style' },
+        styles.map((s) =>
+          h('button', { type: 'button', class: 'style-opt', role: 'radio', 'aria-checked': String(s === current), onclick: () => this.switchStyle(s) },
+            STYLE_NAMES[s]),
+        ),
+      ),
+    );
+  }
+
+  private switchStyle(s: Style) {
+    const b = this.plan.book;
+    const id = siblingId(b, s);
+    if (!id || (b.style ?? 'map') === s) return;
+    setSetting('style', s);
+    this.close();
+    const ch = this.at?.chapter;
+    location.replace(ch && ch.kind === 'chapter' ? readHash(id, ch.id, 0) : readHash(id));
   }
 
   /** The address bar always names the current screen (main.ts), so the link is the page address. */

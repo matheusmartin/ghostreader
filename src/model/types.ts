@@ -42,6 +42,11 @@ export interface Book {
   upTo?: string;
   /** How the guide summarises (see Style). Default: map. */
   style?: Style;
+  /**
+   * The guide this file belongs to. A guide is written in all four styles, one file each, with the
+   * id "<guide>-<style>"; the library shows them as one tile with a style choice.
+   */
+  guide?: string;
   /** Demo content: the library marks it as a sample. */
   sample?: boolean;
   /** Where the content comes from. Not shown to the reader. */

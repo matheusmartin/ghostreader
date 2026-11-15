@@ -52,5 +52,22 @@
 .bc-sub { font-size: .88rem; color: var(--body); }
 .bc-author { font-size: .95rem; font-weight: 700; margin-top: 4px; }
 
+.bc-styles { position: relative; z-index: 2; display: grid; gap: 6px; margin-top: 12px; }
+.bc-style-list { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 6px; }
+.bc-style, .style-opt {
+  min-height: 40px;
+  padding: 0 .5em;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  background: var(--card);
+  color: var(--ink);
+  font: inherit;
+  font-size: .82rem;
+  font-weight: 700;
+  text-align: center;
+}
+.bc-style[aria-checked="true"], .style-opt[aria-checked="true"] { background: var(--acc); border-color: var(--acc); color: var(--on-acc); }
+.bc-hint { font-size: .82rem; color: var(--body); }
+
 .book-card.broken { background: var(--neg); }
 .bc-error { font-size: .85rem; color: var(--body); }
