@@ -30,7 +30,6 @@ export function renderLibrary(root: HTMLElement, opts: LibraryOptions): { destro
   const el = h('div', { class: 'library' },
     h('header', { class: 'lib-head' },
       h('h1', null, 'Ghostreader'),
-      h('p', null, 'Read with charts, infographics and summaries.'),
       hint,
     ),
     grid,
@@ -45,7 +44,6 @@ export function renderLibrary(root: HTMLElement, opts: LibraryOptions): { destro
   const offMenu = useMenu({
     label: 'Library',
     title: 'Ghostreader',
-    sub: 'Read with charts, infographics and summaries.',
     // The style books open in. A book without that style opens in Map (or its first style).
     top: () => {
       const offered = STYLES.filter((s) => guides.some((g) => g.styles[s]));
