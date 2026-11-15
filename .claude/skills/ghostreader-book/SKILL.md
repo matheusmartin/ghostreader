@@ -1,6 +1,6 @@
 ---
 name: ghostreader-book
-description: Writes or updates a book guide for the Ghostreader app in this repository - four files, one per style (Map, Recap, Recall, Layers), src/books/<guide>-<style>.json, each making both the swipe screens and a downloadable A4 PDF; the library shows them as one tile with a style choice. The guide holds only the book's own parts and chapters, in the book's order - no overview, key concepts or other guide-made chapter. Three types, chosen by the user - Story guide (fiction - scene charts of who is where, who is who, relations), Reading guide (non-fiction, to follow the argument while reading) and Book summary (non-fiction, a finished book). Reads the book from an EPUB, PDF, text, Markdown or HTML file, or from summaries when no file is given. Diagrams first - networks, flows, cycles, timelines - text only where a picture cannot carry the idea. Use when the user asks to add, write, summarise, update or regenerate a book, story guide, reading guide, book summary, infographic or PDF for the app, even if they only name the book. Do not use for a short summary in chat, book recommendations, reviews, or changes to the app's code.
+description: Writes or updates a book guide for the Ghostreader app in this repository - four files, one per style (Map, Recap, Recall, Layers), src/books/<guide>-<style>.json, each making both the swipe screens and a downloadable A4 PDF; the library shows them as one tile, and the menu chooses the style. The guide holds only the book's own parts and chapters, in the book's order - no overview, key concepts or other guide-made chapter. Three types, chosen by the user - Story guide (fiction - scene charts of who is where, who is who, relations), Reading guide (non-fiction, to follow the argument while reading) and Book summary (non-fiction, a finished book). Reads the book from an EPUB, PDF, text, Markdown or HTML file, or from summaries when no file is given. Diagrams first - networks, flows, cycles, timelines - text only where a picture cannot carry the idea. Use when the user asks to add, write, summarise, update or regenerate a book, story guide, reading guide, book summary, infographic or PDF for the app, even if they only name the book. Do not use for a short summary in chat, book recommendations, reviews, or changes to the app's code.
 metadata:
   version: "1.4.0"
 compatibility: Node 22 with `npm install` done (Vitest; Playwright with Chromium for the screen check and the PDF). Python 3.9+ for the book extractor and maps; PDF books also need poppler-utils (pdftotext) or the pypdf package.
@@ -12,7 +12,7 @@ compatibility: Node 22 with `npm install` done (Vitest; Playwright with Chromium
 
 A guide is four JSON files, one per style: `src/books/<guide>-map.json`, `-recap.json`,
 `-recall.json` and `-layers.json` (`references/styles.md`). Every guide is always written in all
-four; the library shows them as one tile with a style choice. The app shows each file as screens
+four; the library shows them as one tile, and the menu chooses the style. The app shows each file as screens
 (one idea per swipe); the build prints each as an A4 PDF, with the extra detail marked
 `"only": "pdf"`.
 

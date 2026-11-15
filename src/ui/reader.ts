@@ -9,15 +9,13 @@
 import { h } from '../lib/dom.ts';
 import { prefersReducedMotion } from '../lib/device.ts';
 import { getFlag, setFlag } from '../lib/storage.ts';
-import { attachSwipe, HOLD_TIME, shouldCommit, type Axis } from '../input/gestures.ts';
-
-/** The hold ring appears only after this long (ms), so taps and swipes do not flash it. */
-const RING_DELAY = 150;
+import { attachSwipe, shouldCommit, type Axis } from '../input/gestures.ts';
 import { attachKeys, attachWheel, type Move } from '../input/keys.ts';
 import { nextChapter, nextScreen, prevChapter, prevScreen, type Plan, type PlanScreen } from '../model/plan.ts';
 import { fitScreen, renderScreen, type ScreenContext } from '../screens/render.ts';
+import { bookMenu } from './book-menu.ts';
 import { Hud } from './hud.ts';
-import { Menu } from './menu.ts';
+import { isMenuOpen, useMenu } from './menu.ts';
 
 export interface ReaderOptions {
   plan: Plan;
@@ -46,16 +44,7 @@ export class Reader {
   readonly el: HTMLElement;
   private stage: HTMLElement;
   private hud: Hud;
-  private menu: Menu;
   private hint: HTMLElement | null = null;
-  /** Fills under a still finger while a long press builds up. */
-  private holdRing: HTMLElement = (() => {
-    const ring = h('div', { class: 'hold-ring', 'aria-hidden': 'true' });
-    ring.innerHTML = '<svg viewBox="0 0 80 80"><circle class="track" cx="40" cy="40" r="34"/><circle class="fill" cx="40" cy="40" r="34"/></svg>';
-    ring.style.setProperty('--ring-delay', `${RING_DELAY}ms`);
-    ring.style.setProperty('--ring-fill', `${HOLD_TIME - RING_DELAY}ms`);
-    return ring;
-  })();
   private index: number;
   private current: HTMLElement | null = null;
   private drag: Drag | null = null;
@@ -72,7 +61,6 @@ export class Reader {
     this.ctx = { plan, jump: (i) => this.jump(i), exit: () => opts.exit() };
     this.stage = h('main', { class: 'stage' });
     this.hud = new Hud(plan);
-    this.menu = new Menu(plan, { jump: (i) => this.jump(i), library: () => opts.exit() });
     if (!getFlag('hint-seen')) {
       this.hint = h('div', { class: 'hint-toast', role: 'status' },
         h('b', null, 'Swipe up'), ' for the next screen, ',
@@ -80,16 +68,7 @@ export class Reader {
         h('b', null, 'Hold'), ' anywhere for the menu.',
       );
     }
-    this.el = h('div', { class: 'reader' }, this.stage, this.hud.el, this.hint, this.holdRing, this.menu.el);
-  }
-
-  private showHoldRing(x: number, y: number) {
-    const ring = this.holdRing;
-    ring.classList.remove('on');
-    ring.style.left = `${x}px`;
-    ring.style.top = `${y}px`;
-    void ring.offsetWidth; // restart the fill
-    ring.classList.add('on');
+    this.el = h('div', { class: 'reader' }, this.stage, this.hud.el, this.hint);
   }
 
   get plan(): Plan {
@@ -108,15 +87,14 @@ export class Reader {
         end: (_axis, d, v) => this.dragEnd(d, v),
         cancel: () => this.dragEnd(this.drag?.last ?? 0, 0, false),
         // A tap does nothing on its own: buttons inside a screen (quiz, book map) handle their taps.
+        // A finger held still opens the menu, anywhere in the app (ui/menu.ts).
         tap: () => {},
-        // Hold a finger still anywhere for the menu; a ring fills under the finger meanwhile.
-        pressStart: (x, y) => this.showHoldRing(x, y),
-        pressEnd: () => this.holdRing.classList.remove('on'),
-        longPress: () => {
-          try { navigator.vibrate?.(12); } catch { /* no vibration */ }
-          this.menu.open(this.plan.screens[this.index]);
-        },
       }),
+      useMenu(bookMenu(this.plan, {
+        at: () => this.plan.screens[this.index],
+        jump: (i) => this.jump(i),
+        library: () => this.opts.exit(),
+      })),
       attachKeys((m) => this.onMove(m)),
       attachWheel(this.stage, (m) => this.onMove(m)),
     );
@@ -126,7 +104,7 @@ export class Reader {
       if (this.current) fitScreen(this.current);
     };
     addEventListener('resize', refit);
-    this.cleanups.push(() => removeEventListener('resize', refit), () => this.menu.destroy());
+    this.cleanups.push(() => removeEventListener('resize', refit));
   }
 
   destroy(): void {
@@ -144,11 +122,8 @@ export class Reader {
   }
 
   private onMove(m: Move) {
-    if (this.menu.isOpen) {
-      if (m === 'menu') this.menu.close();
-      return;
-    }
-    if (this.drag) return;
+    // Esc and Enter open and close the menu everywhere in the app (ui/menu.ts).
+    if (m === 'menu' || isMenuOpen() || this.drag) return;
     const i = this.index;
     const p = this.plan;
     switch (m) {
@@ -158,7 +133,6 @@ export class Reader {
       case 'prevChapter': return this.go(prevChapter(p, i), 'x', -1);
       case 'first': return this.jump(0);
       case 'last': return this.jump(p.screens.length - 1);
-      case 'menu': return this.menu.toggle(p.screens[i]);
     }
   }
 
@@ -201,7 +175,7 @@ export class Reader {
   // ---- drag ------------------------------------------------------------------------------------
 
   private dragStart(axis: Axis, d: number) {
-    if (this.menu.isOpen) return;
+    if (isMenuOpen()) return;
     this.settle();
     this.drag = { axis, dir: 0, target: null, incoming: null, size: this.size(axis), last: d };
     this.dragMove(d);

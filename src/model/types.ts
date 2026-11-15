@@ -44,7 +44,7 @@ export interface Book {
   style?: Style;
   /**
    * The guide this file belongs to. A guide is written in all four styles, one file each, with the
-   * id "<guide>-<style>"; the library shows them as one tile with a style choice.
+   * id "<guide>-<style>"; the library shows them as one tile, and the menu chooses the style.
    */
   guide?: string;
   /** Demo content: the library marks it as a sample. */

@@ -13,6 +13,7 @@ import { bookMap } from '../charts/bookmap.ts';
 import { PRINT_WIDTH, renderChart, DEFAULT_CAPTION } from '../charts/charts.ts';
 import { buildPlan, chapterBlocks, hasBlocks, threadList, type Plan, type PlanPart } from '../model/plan.ts';
 import { guideLabel, renderBlock, sceneFigure, sceneItems } from '../screens/render.ts';
+import { closeMenu, HOLD_HELP, useMenu } from '../ui/menu.ts';
 import type { Book, Chapter, QuizScreen, Screen } from '../model/types.ts';
 
 interface Answers { chapter: string; quizzes: QuizScreen[] }
@@ -49,8 +50,22 @@ export function renderPrint(root: HTMLElement, book: Book, opts: { back(): void 
   root.append(el);
   void document.fonts.ready.then(() => requestAnimationFrame(() => { html.dataset.printReady = '1'; }));
 
+  // The PDF is always on Paper: no page colour here.
+  const offMenu = useMenu({
+    label: `${guideLabel(book)} · PDF`,
+    title: book.title,
+    sub: book.author,
+    actions: () => [
+      h('button', { type: 'button', class: 'btn primary', onclick: () => { closeMenu(); print(); } }, 'Print or save as PDF'),
+      h('button', { type: 'button', class: 'btn', onclick: () => { closeMenu(); opts.back(); } }, 'Back'),
+    ],
+    pageColour: false,
+    help: [HOLD_HELP],
+  });
+
   return {
     destroy() {
+      offMenu();
       el.remove();
       html.classList.remove('printing');
       delete html.dataset.printReady;

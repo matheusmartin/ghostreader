@@ -11,20 +11,23 @@ book's order: no overview or key concepts chapter of its own.
 
 Every guide comes in four styles, to help you go back to a book after a long pause: **Map**
 (diagrams first), **Recap** (the story so far, in words), **Recall** (questions first, answers on a
-tap) and **Layers** (one line, three points, then the detail). The library shows one tile per book
-with a button for each style; it remembers your choice, and the menu in a book switches style at
-the same chapter. Research and recipes: `.claude/skills/ghostreader-book/references/styles.md`.
+tap) and **Layers** (one line, three points, then the detail). The library shows one tile per book.
+The style is in the menu: in the library it sets the style that books open in (the app remembers
+it), and in a book it switches style at the same chapter. Research and recipes: `.claude/skills/ghostreader-book/references/styles.md`.
 
 ## How it works
 
 - **Library**: the main screen shows every book.
+- **Menu**: hold a finger still anywhere, on every screen (library, book, PDF view), for the menu.
+  It is the one way to everything else: style, page colour, full screen, install, update, and in a
+  book also the library, contents, PDF and share. Esc opens it on a keyboard.
 - **Read mode**: tap a book. The app goes full screen and shows one screen at a time, from the cover.
 
 | Gesture | Move |
 |---|---|
 | Swipe up / down | Next / previous screen (continues into the next chapter) |
 | Swipe left / right | Start of the next / previous chapter |
-| Hold anywhere (0.6 s) | Menu: style, page colour, contents, library, full screen |
+| Hold anywhere, on every screen (0.6 s) | Menu: style, page colour, contents, library, full screen |
 
 Keyboard and mouse wheel do the same moves (arrows, Space, Page Up / Down, Enter, Esc).
 
@@ -55,7 +58,7 @@ Colours, roles and contrast rules:
 
 **Book only, no personal data.** The app shows the book's content and nothing else: no highlights,
 notes or ratings, and it keeps no record of what or how far you read. It stores three settings on
-the device: the page colour, the style chosen in the library and whether the gesture hint was shown.
+the device: the page colour, the style chosen in the menu and whether the gesture hint was shown.
 
 **Full screen.** Installed to the home screen, the app opens full screen (`display: fullscreen`;
 on iPhone and iPad, under the status bar). In a browser tab, it asks for full screen when you open
@@ -136,11 +139,14 @@ src/
   model/types.ts     the book format
   model/validate.ts  checks a book file and lists every problem
   model/plan.ts      book → flat list of screens with part, chapter and section; navigation
-  input/gestures.ts  swipe detection (pointer events): axis lock, drag, commit or spring back
+  input/gestures.ts  swipe detection (pointer events): axis lock, drag, commit or spring back;
+                     long press, on the whole window
   input/keys.ts      keyboard and wheel
   ui/reader.ts       read mode: the stage, drag-to-slide transitions, moves
   ui/hud.ts          the "where am I" indicator
-  ui/menu.ts         contents, library, full screen
+  ui/menu.ts         the one menu for the whole app: hold anywhere; page colour, full screen, install, update
+  ui/book-menu.ts    the reader's part of the menu: library, style, contents, PDF, share
+  ui/style-picker.ts the style buttons in the menu (library and book)
   ui/library.ts      main screen
   model/lint.ts      writing rules for book files: limits, style, spelling, spoilers
   screens/render.ts  one renderer per screen type; fit-to-screen

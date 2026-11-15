@@ -148,9 +148,11 @@
 .hint-toast.gone { opacity: 0; }
 @keyframes hint-in { from { opacity: 0; transform: translate(-50%, 8px); } }
 
-/* ---- menu ------------------------------------------------------------------------------------- */
+/* ---- menu: one for the whole app (ui/menu.ts), over every screen --------------------------------- */
 
-.menu { position: absolute; inset: 0; z-index: 10; }
+.menu { position: fixed; inset: 0; z-index: 20; }
+/* The screen under the open menu does not scroll. */
+html.menu-open, html.menu-open body { overflow: hidden; }
 .menu-backdrop {
   position: absolute;
   inset: 0;
@@ -187,10 +189,24 @@
 .style-picker { margin-top: 18px; }
 .style-picker > .label { font-size: .66rem; margin-bottom: 8px; display: block; }
 .style-list { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 6px; }
+.style-opt {
+  min-height: 40px;
+  padding: 0 .5em;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  background: var(--card);
+  color: var(--ink);
+  font: inherit;
+  font-size: .82rem;
+  font-weight: 700;
+  text-align: center;
+}
+.style-opt[aria-checked="true"] { background: var(--acc); border-color: var(--acc); color: var(--on-acc); }
+.style-hint { margin-top: 6px; font-size: .75rem; color: var(--muted); }
 
-/* Long press: a ring fills under the finger, then the menu opens (ui/reader.ts, input/gestures.ts). */
+/* Long press, on every screen: a ring fills under the finger, then the menu opens (ui/menu.ts, input/gestures.ts). */
 .hold-ring {
-  position: absolute;
+  position: fixed;
   left: 0;
   top: 0;
   width: 84px;
@@ -198,7 +214,7 @@
   transform: translate(-50%, -50%);
   pointer-events: none;
   opacity: 0;
-  z-index: 6;
+  z-index: 30;
 }
 .hold-ring svg { width: 100%; height: 100%; display: block; transform: rotate(-90deg); }
 .hold-ring circle { fill: none; stroke-width: 6; }

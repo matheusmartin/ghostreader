@@ -45,7 +45,7 @@ html.printing body { background: var(--neg); }
 @media print {
   /* White paper: the page colour token is a screen colour. */
   html.printing, html.printing body, .print-view, .print { background: #fff !important; }
-  .print-toolbar { display: none; }
+  .print-toolbar, .menu, .hold-ring { display: none; }
   .print .pg + .pg { break-before: page; }
 }
 
