@@ -184,9 +184,36 @@
 .menu-author { color: var(--muted); font-size: .9rem; }
 .menu-actions { display: flex; flex-wrap: wrap; gap: 8px; margin: 16px 0 6px; }
 
+.style-picker { margin-top: 18px; }
+.style-picker > .label { font-size: .66rem; margin-bottom: 8px; display: block; }
+.style-list { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 6px; }
+
+/* Long press: a ring fills under the finger, then the menu opens (ui/reader.ts, input/gestures.ts). */
+.hold-ring {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 84px;
+  height: 84px;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  opacity: 0;
+  z-index: 6;
+}
+.hold-ring svg { width: 100%; height: 100%; display: block; transform: rotate(-90deg); }
+.hold-ring circle { fill: none; stroke-width: 6; }
+.hold-ring .track { stroke: var(--line); fill: color-mix(in srgb, var(--paper) 70%, transparent); }
+.hold-ring .fill { stroke: var(--acc); stroke-linecap: round; stroke-dasharray: 213.6; stroke-dashoffset: 213.6; }
+.hold-ring.on { opacity: 1; transition: opacity .08s linear var(--ring-delay, 150ms); }
+.hold-ring.on .fill { animation: hold-fill var(--ring-fill, 450ms) linear var(--ring-delay, 150ms) forwards; }
+@keyframes hold-fill { to { stroke-dashoffset: 0; } }
+@media (prefers-reduced-motion: reduce) {
+  .hold-ring.on .fill { animation: none; stroke-dashoffset: 0; }
+}
+
 .scheme-picker { margin-top: 18px; }
 .scheme-picker > .label { font-size: .66rem; margin-bottom: 8px; }
-.scheme-list { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 4px; }
+.scheme-list { display: grid; grid-template-columns: repeat(auto-fill, minmax(4.1rem, 1fr)); gap: 8px 4px; }
 .scheme-opt {
   display: flex;
   flex-direction: column;
@@ -195,6 +222,8 @@
   min-height: 44px;
   padding: 2px 0;
   font-size: .72rem;
+  line-height: 1.15;
+  text-align: center;
   color: var(--muted);
 }
 .scheme-opt[aria-checked="true"] { color: var(--ink); font-weight: 700; }
@@ -215,6 +244,9 @@
   font-size: .9rem;
   font-weight: 700;
 }
+/* A short bar in the scheme's accent under "Aa". */
+.swatch:not(.split)::after { content: ""; position: absolute; bottom: 6px; width: 14px; height: 3px; border-radius: 2px; background: var(--acc); }
+.swatch:not(.split) { padding-bottom: 4px; }
 .swatch.split > span { position: absolute; inset: 0; background: var(--paper); }
 .swatch.split > span + span { clip-path: polygon(100% 0, 100% 100%, 0 100%); }
 .scheme-note { margin-top: 6px; font-size: .75rem; color: var(--muted); }

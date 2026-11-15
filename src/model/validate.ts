@@ -294,6 +294,11 @@ export function validateBook(raw: unknown): ValidationResult {
   if (typeof raw.id === 'string' && !ID.test(raw.id)) err('', '"id" may use only letters, digits and hyphens');
   if (!BOOK_TYPES.includes(raw.type as string)) err('', `"type" must be one of ${BOOK_TYPES.join(', ')}`);
   if (raw.style !== undefined && !STYLES.includes(raw.style as never)) err('', `"style" must be one of ${STYLES.join(', ')}`);
+  if (raw.guide !== undefined) {
+    if (typeof raw.guide !== 'string' || !ID.test(raw.guide)) err('', '"guide" may use only letters, digits and hyphens');
+    else if (raw.style === undefined) err('', 'a file with "guide" needs "style"');
+    else if (raw.id !== `${raw.guide}-${raw.style}`) err('', `"id" must be "${raw.guide}-${raw.style}" ("<guide>-<style>")`);
+  }
   str(raw, 'title', '');
   str(raw, 'author', '');
   str(raw, 'lead', '');

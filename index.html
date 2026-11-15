@@ -9,7 +9,7 @@
     <!-- Page colour before the first paint, so it never flashes. Same rules as src/lib/scheme.ts. -->
     <script>
       (function () {
-        var ok = ['paper', 'quiet', 'warm', 'dusk', 'night'], c = 'auto';
+        var ok = ['paper', 'quiet', 'warm', 'dusk', 'night', 'one-light', 'solarized-light', 'gruvbox-light', 'rose-pine-dawn', 'one-dark', 'mariana', 'monokai', 'solarized-dark', 'gruvbox-dark', 'ayu-mirage', 'rose-pine'], c = 'auto';
         try { c = localStorage.getItem('ghostwriter:scheme') || 'auto'; } catch (e) {}
         if (ok.indexOf(c) < 0) c = matchMedia('(prefers-color-scheme: dark)').matches ? 'dusk' : 'paper';
         document.documentElement.setAttribute('data-scheme', c);

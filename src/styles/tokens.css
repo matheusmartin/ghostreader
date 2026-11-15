@@ -83,8 +83,143 @@
    ochre instead. tests/colours.test.ts checks 3:1 for shapes and 4.5:1 for text in every page colour.
    Raw values: fill and text for light pages, fill and text for dark pages. */
 
-:root { --fill-l: #a54e3a; --text-l: #76382a; --fill-d: #ca6f5a; --text-d: #efb4a6; }
+/* Named as well as :root, so a picker swatch of these schemes shows terracotta on any page. */
+:root, [data-scheme="paper"], [data-scheme="quiet"], [data-scheme="dusk"], [data-scheme="night"] {
+  --fill-l: #a54e3a; --text-l: #76382a; --fill-d: #ca6f5a; --text-d: #efb4a6;
+}
 [data-scheme="warm"] { --fill-l: #95661a; --text-l: #7d5512; }
+
+/* ---- schemes from code editors -----------------------------------------------------------------
+   Atom, Zed and Sublime Text themes, each with its own page and accent (still one accent for the
+   whole book). The editors' colours, moved only where tests/colours.test.ts needs it (noted per
+   scheme). They come after the accent above, so their accent wins on the root element. */
+
+/* One Light · Atom, Zed */
+[data-scheme="one-light"] {
+  /* Adjusted from the editor for contrast: fill #4078f2 → #2c6cf2 */
+  --paper: #fafafa; --card: #ffffff;
+  --ink: #383a42; --body: #3f434c; --muted: #696c77; --faint: #a0a1a7;
+  --line: #dbdbdc; --hair: #e9e9ea; --neg: #f0f0f1; --neg-line: #b3b4b8;
+  --mark: #8a8c93; --ink-box: #383a42; --on-acc: #ffffff;
+  --tint-mix: 12%;
+  --fill-l: #2c6cf2; --text-l: #2f5fc4;
+  color-scheme: light;
+}
+
+/* Solarized Light · Atom, Zed, Sublime Text */
+[data-scheme="solarized-light"] {
+  /* Adjusted from the editor for contrast: fill #268bd2 → #2079ba, text #1f6ea6 → #1e6ba2, mark #93a1a1 → #7e9393 */
+  --paper: #fdf6e3; --card: #fffbf0;
+  --ink: #073642; --body: #3e555c; --muted: #586e75; --faint: #93a1a1;
+  --line: #e4ddc8; --hair: #eee8d5; --neg: #eee8d5; --neg-line: #b5b09f;
+  --mark: #7e9393; --ink-box: #073642; --on-acc: #ffffff;
+  --tint-mix: 12%;
+  --fill-l: #2079ba; --text-l: #1e6ba2;
+  color-scheme: light;
+}
+
+/* Gruvbox Light · Zed, Sublime Text */
+[data-scheme="gruvbox-light"] {
+  --paper: #fbf1c7; --card: #f9f5d7;
+  --ink: #282828; --body: #3c3836; --muted: #665c54; --faint: #a89984;
+  --line: #d5c4a1; --hair: #ebdbb2; --neg: #f2e5bc; --neg-line: #bdae93;
+  --mark: #928374; --ink-box: #3c3836; --on-acc: #fbf1c7;
+  --tint-mix: 12%;
+  --fill-l: #af3a03; --text-l: #8f3002;
+  color-scheme: light;
+}
+
+/* Rosé Pine Dawn · Zed */
+[data-scheme="rose-pine-dawn"] {
+  /* Adjusted from the editor for contrast: muted #797593 → #716d8c, mark #9893a5 → #8f8a9f */
+  --paper: #faf4ed; --card: #fffaf3;
+  --ink: #464261; --body: #575279; --muted: #716d8c; --faint: #9893a5;
+  --line: #dfdad9; --hair: #f2e9e1; --neg: #f2e9e1; --neg-line: #cecacd;
+  --mark: #8f8a9f; --ink-box: #575279; --on-acc: #fffaf3;
+  --tint-mix: 12%;
+  --fill-l: #286983; --text-l: #1f5468;
+  color-scheme: light;
+}
+
+/* One Dark · Atom, Zed */
+[data-scheme="one-dark"] {
+  /* Adjusted from the editor for contrast: body #abb2bf → #b1b8c3, muted #9198a5 → #979ea9 */
+  --paper: #282c34; --card: #2f343e;
+  --ink: #dcdfe4; --body: #b1b8c3; --muted: #979ea9; --faint: #5c6370;
+  --line: #3e4451; --hair: #353a44; --neg: #2c3039; --neg-line: #5c6370;
+  --mark: #747b88; --ink-box: #abb2bf; --on-acc: #1e2127;
+  --tint-mix: 22%;
+  --fill-l: #61afef; --text-l: #8ec6f5; --fill-d: #61afef; --text-d: #8ec6f5;
+  color-scheme: dark;
+}
+
+/* Mariana · Sublime Text */
+[data-scheme="mariana"] {
+  /* Adjusted from the editor for contrast: muted #a6acb9 → #a9afbb */
+  --paper: #303841; --card: #3a434e;
+  --ink: #eef1f5; --body: #d8dee9; --muted: #a9afbb; --faint: #65737e;
+  --line: #4a5562; --hair: #3d4650; --neg: #353e48; --neg-line: #65737e;
+  --mark: #7d8693; --ink-box: #d8dee9; --on-acc: #22272e;
+  --tint-mix: 20%;
+  --fill-l: #f9ae58; --text-l: #fac584; --fill-d: #f9ae58; --text-d: #fac584;
+  color-scheme: dark;
+}
+
+/* Monokai · Sublime Text */
+[data-scheme="monokai"] {
+  --paper: #272822; --card: #31322b;
+  --ink: #f8f8f2; --body: #e6e6df; --muted: #aeab9a; --faint: #75715e;
+  --line: #49483e; --hair: #3b3c35; --neg: #2f302a; --neg-line: #75715e;
+  --mark: #8f8b77; --ink-box: #f8f8f2; --on-acc: #1c1d18;
+  --tint-mix: 20%;
+  --fill-l: #a6e22e; --text-l: #c2ee6a; --fill-d: #a6e22e; --text-d: #c2ee6a;
+  color-scheme: dark;
+}
+
+/* Solarized Dark · Atom, Zed, Sublime Text */
+[data-scheme="solarized-dark"] {
+  /* Adjusted from the editor for contrast: fill #268bd2 → #3294da, body #93a1a1 → #a5adad, muted #839496 → #8f9c9e */
+  --paper: #002b36; --card: #073642;
+  --ink: #eee8d5; --body: #a5adad; --muted: #8f9c9e; --faint: #586e75;
+  --line: #0f4352; --hair: #073642; --neg: #05313d; --neg-line: #586e75;
+  --mark: #657b83; --ink-box: #93a1a1; --on-acc: #002b36;
+  --tint-mix: 24%;
+  --fill-l: #3294da; --text-l: #6cb4e8; --fill-d: #3294da; --text-d: #6cb4e8;
+  color-scheme: dark;
+}
+
+/* Gruvbox Dark · Zed, Sublime Text */
+[data-scheme="gruvbox-dark"] {
+  --paper: #282828; --card: #32302f;
+  --ink: #fbf1c7; --body: #ebdbb2; --muted: #bdae93; --faint: #7c6f64;
+  --line: #504945; --hair: #3c3836; --neg: #32302f; --neg-line: #665c54;
+  --mark: #928374; --ink-box: #ebdbb2; --on-acc: #1d2021;
+  --tint-mix: 20%;
+  --fill-l: #fe8019; --text-l: #ffa65c; --fill-d: #fe8019; --text-d: #ffa65c;
+  color-scheme: dark;
+}
+
+/* Ayu Mirage · Zed, Sublime Text */
+[data-scheme="ayu-mirage"] {
+  --paper: #1f2430; --card: #242936;
+  --ink: #e6e4dc; --body: #cccac2; --muted: #8a9199; --faint: #5c6773;
+  --line: #3a4256; --hair: #2b3242; --neg: #232834; --neg-line: #5c6773;
+  --mark: #707a8c; --ink-box: #cccac2; --on-acc: #1f2430;
+  --tint-mix: 18%;
+  --fill-l: #ffcc66; --text-l: #ffd580; --fill-d: #ffcc66; --text-d: #ffd580;
+  color-scheme: dark;
+}
+
+/* Rosé Pine · Zed */
+[data-scheme="rose-pine"] {
+  --paper: #191724; --card: #1f1d2e;
+  --ink: #e0def4; --body: #cfcbe6; --muted: #908caa; --faint: #6e6a86;
+  --line: #403d52; --hair: #26233a; --neg: #21202e; --neg-line: #524f67;
+  --mark: #6e6a86; --ink-box: #e0def4; --on-acc: #191724;
+  --tint-mix: 22%;
+  --fill-l: #c4a7e7; --text-l: #d9c6f2; --fill-d: #c4a7e7; --text-d: #d9c6f2;
+  color-scheme: dark;
+}
 
 /* Derived tokens, computed where the page colour is set:
    --acc shapes · --acc-text small accent text · --acc-fg accent as large text · --tint light fills */
@@ -94,7 +229,14 @@
   --acc-fg: var(--fill-l);
   --tint: color-mix(in srgb, var(--acc) var(--tint-mix), var(--paper));
 }
-[data-scheme="dusk"], [data-scheme="night"] {
+[data-scheme="dusk"], [data-scheme="night"],
+[data-scheme="one-dark"],
+[data-scheme="mariana"],
+[data-scheme="monokai"],
+[data-scheme="solarized-dark"],
+[data-scheme="gruvbox-dark"],
+[data-scheme="ayu-mirage"],
+[data-scheme="rose-pine"] {
   --acc: var(--fill-d);
   --acc-text: var(--text-d);
   --acc-fg: var(--text-d);

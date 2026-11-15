@@ -7,12 +7,20 @@ is; the style says how the guide summarises it. Every style keeps the same rules
 only, anchors, concept inventory and K · Key concepts (or W · Who's who for fiction), the limits
 of `src/model/lint.ts`, and the checks.
 
-Set it in the book file: `"style": "recap"`. Without `style` the guide is a Map. The library, the
-cover and the PDF name show the style ("Reading guide · Recap · to Chapter 3").
+**Every guide is written in all four styles**, one file each, so the reader can choose and switch:
+`src/books/<guide>-map.json`, `-recap.json`, `-recall.json`, `-layers.json`, each with
+`"guide": "<guide>"` and its `"style"`. The library shows one tile per guide with a button for
+each style (the choice is kept on the device); the reader's menu switches style at the same
+chapter; the cover and the PDF name show the style ("Book summary · Recap"). `npm test` fails when
+a guide lacks a style, or when the styles differ in title, author or chapters.
+
+How to write them: the Map file first (the recipes in `references/guides.md`), then a styles file
+with the texts only the other styles need, then `scripts/build_styles.py`, which builds the Recap,
+Recall and Layers files from both (see "The styles file" below).
 
 | Style | In one line | Best when | Research it rests on |
 |---|---|---|---|
-| **Map** (default) | Diagrams first: each idea as a chart | You remember best what you see; complex arguments, many links | Words with graphics beat words alone (Mayer, multimedia principle); studying concept maps helps (Nesbit and Adesope 2006, g ≈ 0.37) |
+| **Map** | Diagrams first: each idea as a chart | You remember best what you see; complex arguments, many links | Words with graphics beat words alone (Mayer, multimedia principle); studying concept maps helps (Nesbit and Adesope 2006, g ≈ 0.37) |
 | **Recap** | The story so far, in short prose, up to where you stopped | You want to be back in the book in two minutes | Spoiler-free recaps to the reading position (Kindle "Story So Far", 2026); restating the last part read helps resumption more than the general theme (LeDoux and Gordon 2006); summaries keep main points better than full texts (Reder and Anderson 1980) |
 | **Recall** | Questions first, answers on a tap | You want it to stick, and accept a little effort | Retrieval beats rereading on delayed tests (Roediger and Karpicke 2006); questions before review improve memory of what they ask, even when answered wrongly (pretesting research) |
 | **Layers** | One line, then three points, then the detail | You want to choose how deep to go | Readers prefer a hierarchy of summaries to a flat one and learn as much (Christensen et al. 2014: 92% preferred it); readers scan overviews, then section summaries, then detail |
@@ -97,8 +105,52 @@ PDF-only `list`.
 | `steps` "In detail" | 5 steps; the last is the conclusion |
 | PDF: `text` "The chapter in full", `list` "Terms" | as in the Map recipes |
 
-## Choosing
+## The styles file
 
-Ask for the style with the other inputs; without an answer, write a Map. To compare styles, write
-the same book in several styles as separate books (`nexus-summary` as the Map, `nexus-recap`,
-`nexus-recall`, `nexus-layers`) and let the reader try them; then keep the one they choose.
+`work/<guide>/styles.json`, written from the fact sheets like the Map file (book content only, no
+quotations, the same limits). `scripts/build_styles.py` reads it with the Map file:
+
+```json
+{
+  "question": "Why is a wise species so self-destructive?",
+  "first_items": ["Sapiens gained power through networks", "Networks bind members with fictions"],
+  "chapters": {
+    "ch2": {
+      "main": "Three kinds of reality",
+      "before": "So far: networks give power faster than wisdom, and information …",
+      "line": "Shared stories let strangers cooperate and create realities between minds.",
+      "point": "Stories create shared realities",
+      "key": "Order built on fiction often clashes with truth",
+      "recap": ["First paragraph …", "Second paragraph …"],
+      "moments": [{ "name": "Bitcoin pizza", "text": "Two pizzas for 10,000 bitcoins in 2010 …" }],
+      "remember": [{ "title": "Intersubjective reality", "text": "Laws, gods, nations and money …" }],
+      "questions": [{ "q": "Is a pizza's price objective, subjective or intersubjective?", "a": "Intersubjective …" }]
+    }
+  },
+  "overview": {
+    "recap": { "id": "book-in-brief", "title": "The book in brief", "screens": [] },
+    "recall": { "id": "warm-up", "title": "Warm-up", "screens": [] },
+    "layers": { "id": "book-at-a-glance", "title": "The book at a glance", "screens": [] }
+  },
+  "cards": [{ "q": "What is intersubjective reality?", "a": "What exists in the communication between many minds …" }],
+  "recall_charts": ["Three views of information", "Three kinds of reality"]
+}
+```
+
+| Field | Used by | Content |
+|---|---|---|
+| `question` | Layers | `start` of every "argument so far" chart: the book's question (≤ 12 words) |
+| `first_items` | Layers | items of the first chapter's "argument so far" chart (≤ 7 words each) |
+| `chapters.<id>` | all three | one entry per written chapter (the script stops when one is missing) |
+| `main` | all three | label of the chapter's main diagram in the Map file (default: its first chart or scenes) |
+| `before` | Recap | "Before this chapter", ≤ 50 words; leave out in the first chapter |
+| `line` | Layers, S | the chapter in one sentence, ≤ 12 words |
+| `point`, `key` | Layers | the point the chapter adds (≤ 7 words, an item of later charts) and its conclusion (≤ 10 words) |
+| `recap`, `moments`, `remember` | Recap | as in the Recap recipe |
+| `questions` | Recall | three, as in the Recall recipe |
+| `overview.<style>` | each | the `S` chapter: its id, title and screens, written as book screens |
+| `cards`, `recall_charts` | Recall | concept cards for K (screens of three), and which K charts Recall keeps |
+
+The Map file keeps The book in one page (`B`); the other styles replace it with their `S`. Fix a
+diagram, a key point or PDF detail in the Map file and run the script again: the other files are
+generated and never edited by hand.

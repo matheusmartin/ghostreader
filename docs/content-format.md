@@ -25,7 +25,7 @@ The reader moves through the screens in this order:
 |---|---|---|
 | Swipe up / down | ↓ ↑, Space, Page Down / Up | Next / previous screen. Continues into the next chapter. |
 | Swipe left / right | → ← | Start of the next / previous chapter. |
-| Tap | Enter, Esc | Menu: contents, library, full screen. |
+| Hold anywhere (0.6 s) | Enter, Esc | Menu: style, page colour, contents, library, full screen. |
 
 The app adds three screens that you do not write:
 
@@ -66,7 +66,8 @@ with its number only (titles can spoil). Use this for guides written while readi
 | `year` | no | Year of first publication. |
 | `edition` | no | Only when it matters. |
 | `upTo` | no | Last chapter covered, for guides written while reading. |
-| `style` | no | How the guide summarises: `map` (default: diagrams first), `recap` (the story so far, in words), `recall` (questions first) or `layers` (one line, three points, detail). Shown in the library, on the cover and in the PDF name. The ghostwriter-book skill has the recipe of each (`references/styles.md`). |
+| `style` | no | How the file summarises: `map` (diagrams first), `recap` (the story so far, in words), `recall` (questions first) or `layers` (one line, three points, detail). Shown on the cover, in the menu and in the PDF name. The ghostwriter-book skill has the recipe of each (`references/styles.md`). |
+| `guide` | no | The guide the file belongs to. A guide has all four styles, one file each, with the id `<guide>-<style>` (`nexus-summary-recap`); the library shows them as one tile with a button per style, and the menu switches style at the same chapter. `npm test` checks that every guide has all four. An old link to `#/read/<guide>/…` opens the Map file. |
 | `sample` | no | `true` marks demo content in the library. |
 | `source` | no | Where the content comes from, not shown to readers: `{ "kind": "book-file" \| "summaries", "file": "EPUB", "written": "2026-11-14", "skill": "1.0.0" }`. |
 

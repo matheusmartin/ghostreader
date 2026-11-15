@@ -1,5 +1,6 @@
 // Swipe input for the reader. One finger (or a mouse drag) moves the screen with it; on release
-// the move is committed or cancelled. A short touch without movement is a tap.
+// the move is committed or cancelled. A short touch without movement is a tap; a touch held still
+// for HOLD_TIME is a long press (it opens the menu).
 //
 // The element must have `touch-action: none`, so the browser does not scroll, zoom or
 // pull-to-refresh while the finger moves.
@@ -14,6 +15,12 @@ export interface SwipeHandlers {
   end(axis: Axis, delta: number, velocity: number): void;
   cancel(): void;
   tap(target: Element, x: number, y: number): void;
+  /** A finger is down and still: a long press may follow (show feedback). */
+  pressStart?(x: number, y: number): void;
+  /** The finger moved, lifted or the long press fired: hide the feedback. */
+  pressEnd?(): void;
+  /** The finger stayed still for HOLD_TIME. */
+  longPress?(x: number, y: number): void;
 }
 
 /** Movement before a touch becomes a drag, in px. */
@@ -24,6 +31,13 @@ export const COMMIT_DISTANCE = 0.22;
 export const FLICK_VELOCITY = 0.45;
 export const FLICK_MIN = 24;
 const TAP_TIME = 450;
+/**
+ * A still touch this long (ms) is a long press. Phones use about 500 ms; a little more avoids
+ * opening the menu while a reader rests a finger on the screen.
+ */
+export const HOLD_TIME = 600;
+/** After a long press the finger lifts over whatever opened; ignore the click that follows (ms). */
+const CLICK_AFTER_HOLD = 700;
 
 /** The axis of a drag once the finger has left the slop circle, else null. */
 export function lockAxis(dx: number, dy: number, slop = SLOP): Axis | null {
@@ -43,6 +57,16 @@ export function attachSwipe(el: HTMLElement, h: SwipeHandlers): () => void {
   let x0 = 0, y0 = 0, t0 = 0;
   let axis: Axis | null = null;
   let samples: { t: number; v: number }[] = [];
+  let holdTimer = 0;
+  let held = false;
+
+  const stopHold = () => {
+    if (holdTimer) {
+      clearTimeout(holdTimer);
+      holdTimer = 0;
+      h.pressEnd?.();
+    }
+  };
 
   const delta = (e: PointerEvent) => (axis === 'x' ? e.clientX - x0 : e.clientY - y0);
 
@@ -60,13 +84,26 @@ export function attachSwipe(el: HTMLElement, h: SwipeHandlers): () => void {
     t0 = e.timeStamp;
     axis = null;
     samples = [];
+    if (h.longPress) {
+      const pointer = e.pointerId;
+      h.pressStart?.(x0, y0);
+      holdTimer = window.setTimeout(() => {
+        holdTimer = 0;
+        held = true;
+        h.pressEnd?.();
+        // Keep the rest of this touch on the stage, even though the menu now covers it.
+        try { el.setPointerCapture(pointer); } catch { /* the pointer is already gone */ }
+        h.longPress?.(x0, y0);
+      }, HOLD_TIME);
+    }
   };
 
   const move = (e: PointerEvent) => {
-    if (e.pointerId !== id) return;
+    if (e.pointerId !== id || held) return;
     if (!axis) {
       axis = lockAxis(e.clientX - x0, e.clientY - y0);
       if (!axis) return;
+      stopHold();
       el.setPointerCapture(e.pointerId);
       h.start(axis, delta(e));
     }
@@ -78,7 +115,10 @@ export function attachSwipe(el: HTMLElement, h: SwipeHandlers): () => void {
 
   const up = (e: PointerEvent) => {
     if (e.pointerId !== id) return;
-    if (axis) {
+    stopHold();
+    if (held) {
+      swallowNextClick();
+    } else if (axis) {
       const d = delta(e);
       h.end(axis, d, velocity(samples, e.timeStamp, d));
     } else if (e.timeStamp - t0 < TAP_TIME && e.target instanceof Element) {
@@ -89,13 +129,16 @@ export function attachSwipe(el: HTMLElement, h: SwipeHandlers): () => void {
 
   const cancel = (e: PointerEvent) => {
     if (e.pointerId !== id) return;
+    stopHold();
     if (axis) h.cancel();
     reset();
   };
 
   const reset = () => {
+    stopHold();
     id = null;
     axis = null;
+    held = false;
     samples = [];
   };
 
@@ -108,12 +151,24 @@ export function attachSwipe(el: HTMLElement, h: SwipeHandlers): () => void {
   el.addEventListener('pointercancel', cancel);
   el.addEventListener('contextmenu', noMenu);
   return () => {
+    reset();
     el.removeEventListener('pointerdown', down);
     el.removeEventListener('pointermove', move);
     el.removeEventListener('pointerup', up);
     el.removeEventListener('pointercancel', cancel);
     el.removeEventListener('contextmenu', noMenu);
   };
+}
+
+/** Ignores the next click anywhere (the one the browser sends when a held finger lifts). */
+function swallowNextClick() {
+  const swallow = (e: Event) => {
+    e.preventDefault();
+    e.stopPropagation();
+    window.removeEventListener('click', swallow, true);
+  };
+  window.addEventListener('click', swallow, true);
+  setTimeout(() => window.removeEventListener('click', swallow, true), CLICK_AFTER_HOLD);
 }
 
 /** Speed over the last ~100 ms of the drag. */

@@ -4,6 +4,7 @@
 
 import { readFileSync } from 'node:fs';
 import { describe, expect, it } from 'vitest';
+import { SCHEMES as PICKER } from '../src/lib/scheme.ts';
 
 const css = readFileSync(new URL('../src/styles/tokens.css', import.meta.url), 'utf8').replace(/\/\*[\s\S]*?\*\//g, '');
 
@@ -30,7 +31,8 @@ const ratio = (a: string, b: string) => {
 const mix = (a: string, b: string, p: number) =>
   '#' + hex(a).map((v, i) => Math.round(v * p + hex(b)[i] * (1 - p)).toString(16).padStart(2, '0')).join('');
 
-const SCHEMES = ['paper', 'quiet', 'warm', 'dusk', 'night'];
+// Every page colour the picker offers (Auto is Paper or Dusk).
+const SCHEMES = PICKER.map((s) => s.id).filter((id) => id !== 'auto');
 
 for (const id of SCHEMES) {
   const sel = `[data-scheme="${id}"]`;
