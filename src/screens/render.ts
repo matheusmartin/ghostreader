@@ -8,7 +8,7 @@ import { DEFAULT_CAPTION, isSvgChart, PHONE_WIDTH, renderChart } from '../charts
 import { sceneChart } from '../charts/scenes.ts';
 import { bookMap } from '../charts/bookmap.ts';
 import type { Plan, PlanScreen, SceneListScreen } from '../model/plan.ts';
-import type { BookType, ScenesScreen, Screen } from '../model/types.ts';
+import type { Book, BookType, ScenesScreen, Screen, Style } from '../model/types.ts';
 
 export interface ScreenContext {
   plan: Plan;
@@ -23,6 +23,18 @@ export const GUIDE_NAMES: Record<BookType, string> = {
   reading: 'Reading guide',
   done: 'Book summary',
 };
+
+export const STYLE_NAMES: Record<Style, string> = {
+  map: 'Map',
+  recap: 'Recap',
+  recall: 'Recall',
+  layers: 'Layers',
+};
+
+/** "Reading guide · Recap · to Chapter 3": the guide type, its style when set, and the limit. */
+export function guideLabel(b: Book): string {
+  return [GUIDE_NAMES[b.type], b.style ? STYLE_NAMES[b.style] : '', b.upTo ? `to ${b.upTo}` : ''].filter(Boolean).join(' · ');
+}
 
 /** Element.append() would print null as "null"; this skips empty children. */
 const add = (el: HTMLElement, ...kids: (Child | Child[])[]) => append(el, kids);
@@ -54,7 +66,7 @@ export function renderScreen(ps: PlanScreen, ctx: ScreenContext): HTMLElement {
 
 function cover(body: HTMLElement, ctx: ScreenContext) {
   const b = ctx.plan.book;
-  const kicker = [GUIDE_NAMES[b.type], b.upTo ? `to ${b.upTo}` : ''].filter(Boolean).join(' · ');
+  const kicker = guideLabel(b);
   add(body, 
     h('div', { class: 'jacket' },
       h('div', { class: 'jacket-top' }, label(kicker, 'span'), b.sample ? tag('Sample', 'grey') : null),

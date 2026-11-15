@@ -12,7 +12,7 @@ import { h, rich } from '../lib/dom.ts';
 import { bookMap } from '../charts/bookmap.ts';
 import { PRINT_WIDTH, renderChart, DEFAULT_CAPTION } from '../charts/charts.ts';
 import { buildPlan, chapterBlocks, hasBlocks, threadList, type Plan, type PlanPart } from '../model/plan.ts';
-import { GUIDE_NAMES, renderBlock, sceneFigure, sceneItems } from '../screens/render.ts';
+import { guideLabel, renderBlock, sceneFigure, sceneItems } from '../screens/render.ts';
 import type { Book, Chapter, QuizScreen, Screen } from '../model/types.ts';
 
 interface Answers { chapter: string; quizzes: QuizScreen[] }
@@ -35,7 +35,7 @@ export function renderPrint(root: HTMLElement, book: Book, opts: { back(): void 
 
   const toolbar = h('div', { class: 'print-toolbar' },
     h('button', { type: 'button', class: 'btn', onclick: () => opts.back() }, 'Back'),
-    h('span', { class: 'print-note' }, `${GUIDE_NAMES[book.type]} · A4`),
+    h('span', { class: 'print-note' }, `${guideLabel(book)} · A4`),
     h('button', { type: 'button', class: 'btn primary', onclick: () => print() }, 'Print or save as PDF'),
   );
   const doc = h('div', { class: 'print' }, pages);
@@ -73,7 +73,7 @@ function printPlan(plan: Plan, chapters: Map<string, Chapter>): Plan {
 }
 
 function cover(book: Book, plan: Plan): HTMLElement {
-  const kicker = [GUIDE_NAMES[book.type], book.upTo ? `to ${book.upTo}` : ''].filter(Boolean).join(' · ');
+  const kicker = guideLabel(book);
   return h('section', { class: 'pg pg-cover' },
     h('div', { class: 'jacket' },
       h('span', { class: 'label' }, kicker),

@@ -14,6 +14,14 @@
 
 export type BookType = 'fiction' | 'reading' | 'done';
 
+/**
+ * How the guide summarises, for a reader who comes back to a book after a pause (skill:
+ * references/styles.md). map: diagrams first · recap: the story so far, in words · recall: questions
+ * before answers · layers: one line, then a paragraph, then the detail. Default: map.
+ */
+export type Style = 'map' | 'recap' | 'recall' | 'layers';
+export const STYLES: readonly Style[] = ['map', 'recap', 'recall', 'layers'];
+
 /** Where a screen or section shows: in the app only, or in the PDF only. Default: both. */
 export type Only = 'app' | 'pdf';
 
@@ -32,6 +40,8 @@ export interface Book {
   lead: string;
   /** Last chapter covered ("Chapter 6"), for guides written while reading. */
   upTo?: string;
+  /** How the guide summarises (see Style). Default: map. */
+  style?: Style;
   /** Demo content: the library marks it as a sample. */
   sample?: boolean;
   /** Where the content comes from. Not shown to the reader. */

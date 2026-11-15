@@ -66,6 +66,7 @@ with its number only (titles can spoil). Use this for guides written while readi
 | `year` | no | Year of first publication. |
 | `edition` | no | Only when it matters. |
 | `upTo` | no | Last chapter covered, for guides written while reading. |
+| `style` | no | How the guide summarises: `map` (default: diagrams first), `recap` (the story so far, in words), `recall` (questions first) or `layers` (one line, three points, detail). Shown in the library, on the cover and in the PDF name. The ghostwriter-book skill has the recipe of each (`references/styles.md`). |
 | `sample` | no | `true` marks demo content in the library. |
 | `source` | no | Where the content comes from, not shown to readers: `{ "kind": "book-file" \| "summaries", "file": "EPUB", "written": "2026-11-14", "skill": "1.0.0" }`. |
 
@@ -88,7 +89,7 @@ with its number only (titles can spoil). Use this for guides written while readi
 ```
 
 - `number`: "01", "02" … for chapters; `P` prologue or preface, `I` introduction, `E` epilogue,
-  `C` conclusion, `A1` appendix; `B` (the book in one page), `K` (key concepts), `W`, `T`, `M` for overview pages.
+  `C` conclusion, `A1` appendix; `S` (where you stopped), `B` (the book in one page), `K` (key concepts), `W`, `T`, `M` for overview pages.
 - `title`: the real title. An untitled chapter is "Chapter 7". Never invent a title.
 - `length`: the real length (words or pages). The book map sizes chips by length only when every
   chapter has one; never estimate.

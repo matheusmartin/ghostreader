@@ -1,0 +1,965 @@
+{
+  "format": 1,
+  "id": "nexus-recall",
+  "type": "reading",
+  "title": "Nexus",
+  "subtitle": "A Brief History of Information Networks from the Stone Age to AI",
+  "author": "Yuval Noah Harari",
+  "year": 2024,
+  "edition": "Uncorrected ebook, Random House, 2024",
+  "lead": "Information connects people more than it informs them. Stories and documents let networks grow huge, but they create order more readily than truth.",
+  "source": {
+    "kind": "book-file",
+    "file": "EPUB",
+    "written": "2026-11-15",
+    "skill": "1.2.0"
+  },
+  "parts": [
+    {
+      "id": "overview",
+      "label": "Overview",
+      "chapters": [
+        {
+          "id": "warm-up",
+          "number": "S",
+          "title": "Warm-up",
+          "screens": [
+            {
+              "type": "quiz",
+              "label": "Warm-up",
+              "questions": [
+                {
+                  "q": "What question does the prologue ask?",
+                  "a": "If Sapiens are so wise, why are they so self-destructive?"
+                },
+                {
+                  "q": "What does information always do, according to Chapter 1?",
+                  "a": "It connects things into networks, whether or not it represents reality."
+                },
+                {
+                  "q": "What did stories let Sapiens do?",
+                  "a": "Cooperate in unlimited numbers, by linking strangers through shared fictions."
+                }
+              ]
+            },
+            {
+              "type": "quiz",
+              "label": "Warm-up, continued",
+              "questions": [
+                {
+                  "q": "What are the three kinds of reality?",
+                  "a": "Objective (stones), subjective (pain) and intersubjective (money, nations), which exists between many minds."
+                },
+                {
+                  "q": "Why did states need written documents?",
+                  "a": "Taxes and services run on lists, which human brains remember poorly."
+                },
+                {
+                  "q": "What does bureaucracy give up for order?",
+                  "a": "Some truth: it forces people and facts into drawers."
+                }
+              ]
+            },
+            {
+              "type": "summary",
+              "label": "Where you stopped",
+              "text": "Chapter 3 ends with Harari's grandfather, who lost his Romanian citizenship in 1938 under a law built on false figures. Bureaucracy can save lives or destroy them, and AI is now taking over the work of both bureaucrats and mythmakers.",
+              "takeaway": {
+                "label": "Next in the book",
+                "text": "Chapter 4 asks how networks deal with their own errors."
+              }
+            }
+          ]
+        },
+        {
+          "id": "key-concepts",
+          "number": "K",
+          "title": "Key concepts",
+          "screens": [
+            {
+              "type": "chart",
+              "chart": "branches",
+              "label": "Three views of information",
+              "start": "What does information do?",
+              "options": [
+                {
+                  "title": "Naive view",
+                  "text": "Reveals truth; more information means more wisdom",
+                  "negative": true
+                },
+                {
+                  "title": "Populist view",
+                  "text": "A weapon; power is the only reality",
+                  "negative": true
+                },
+                {
+                  "title": "This book",
+                  "text": "Connects; truth takes extra effort",
+                  "key": true
+                }
+              ]
+            },
+            {
+              "type": "chart",
+              "chart": "flow",
+              "label": "Three kinds of reality",
+              "start": "What exists, and where?",
+              "groups": [
+                {
+                  "label": "Objective",
+                  "items": [
+                    "Exists whatever people think",
+                    "Stones, asteroids, calories"
+                  ]
+                },
+                {
+                  "label": "Subjective",
+                  "items": [
+                    "Exists in one mind",
+                    "Pain, love"
+                  ]
+                },
+                {
+                  "label": "Intersubjective",
+                  "items": [
+                    "Exists between many minds",
+                    "Laws, gods, nations, money"
+                  ]
+                }
+              ],
+              "key": "Stories create the intersubjective level"
+            },
+            {
+              "type": "quiz",
+              "label": "Concept cards",
+              "questions": [
+                {
+                  "q": "What is the naive view of information?",
+                  "a": "That more information leads to truth, and truth to power and wisdom."
+                },
+                {
+                  "q": "What is the populist view of information?",
+                  "a": "That information is a weapon and power the only reality."
+                },
+                {
+                  "q": "What is information, in Harari's sense?",
+                  "a": "Whatever connects things into networks, whether or not it represents reality."
+                }
+              ]
+            },
+            {
+              "type": "quiz",
+              "label": "Concept cards, continued",
+              "questions": [
+                {
+                  "q": "What is intersubjective reality?",
+                  "a": "What exists in the communication between many minds: laws, gods, nations, money."
+                },
+                {
+                  "q": "What is the perennial dilemma of every network?",
+                  "a": "It must both discover truth and keep order, and the two often clash."
+                },
+                {
+                  "q": "What is bureaucracy?",
+                  "a": "Order that sorts documents and people into drawers, trading some truth for order."
+                }
+              ]
+            },
+            {
+              "type": "list",
+              "label": "Key concepts",
+              "only": "pdf",
+              "rows": [
+                {
+                  "name": "Naive view of information",
+                  "text": "More information leads to truth, and truth to power and wisdom.",
+                  "meta": "Prologue"
+                },
+                {
+                  "name": "Populist view of information",
+                  "text": "Information is a weapon; power is the only reality.",
+                  "meta": "Prologue"
+                },
+                {
+                  "name": "Silicon Curtain",
+                  "text": "A divide of chips and code, between rival powers or between all humans and AI.",
+                  "meta": "Prologue"
+                },
+                {
+                  "name": "Information",
+                  "text": "What connects things into networks, whether or not it represents reality.",
+                  "meta": "Ch 1"
+                },
+                {
+                  "name": "Truth and reality",
+                  "text": "Truth is an accurate account of some aspects of reality; no account captures all of it.",
+                  "meta": "Ch 1"
+                },
+                {
+                  "name": "Objective and subjective facts",
+                  "text": "Facts about the world, and facts about what people feel or believe; both differ from errors.",
+                  "meta": "Ch 1"
+                },
+                {
+                  "name": "Misinformation and disinformation",
+                  "text": "An honest mistake and a deliberate lie, in the naive view's terms.",
+                  "meta": "Ch 1"
+                },
+                {
+                  "name": "Objective, subjective, intersubjective",
+                  "text": "What exists whatever people think, what exists in one mind, and what exists between many minds.",
+                  "meta": "Ch 2"
+                },
+                {
+                  "name": "Human-to-story chain",
+                  "text": "A link between many people through a shared story rather than personal ties.",
+                  "meta": "Ch 2"
+                },
+                {
+                  "name": "Truth and order",
+                  "text": "Every network must both discover truth and keep order; the two often clash.",
+                  "meta": "Ch 2"
+                },
+                {
+                  "name": "Noble lie and acknowledged fiction",
+                  "text": "A fiction that claims to be true, against one that admits its human origin and can be amended.",
+                  "meta": "Ch 2"
+                },
+                {
+                  "name": "Stories and lists",
+                  "text": "Stories are easy to remember and build identities; lists run services and need writing.",
+                  "meta": "Ch 3"
+                },
+                {
+                  "name": "Human-to-document chain",
+                  "text": "A link through documents, which gives power to administrators, accountants and lawyers.",
+                  "meta": "Ch 3"
+                },
+                {
+                  "name": "Bureaucracy",
+                  "text": "Rule by the writing desk: order that sorts documents and the world into drawers.",
+                  "meta": "Ch 3"
+                },
+                {
+                  "name": "Biological dramas",
+                  "text": "Plots scripted by evolution that our minds and our art understand, unlike bureaucracy.",
+                  "meta": "Ch 3"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "opening",
+      "label": "Opening",
+      "chapters": [
+        {
+          "id": "prologue",
+          "number": "P",
+          "title": "Prologue",
+          "length": 6887,
+          "screens": [
+            {
+              "type": "quiz",
+              "label": "Try to remember",
+              "questions": [
+                {
+                  "q": "Why does Harari reject the fables' explanation of self-destructive power?",
+                  "a": "They blame individual hubris, but power comes from large-scale cooperation, so the problem lies in how networks are built."
+                },
+                {
+                  "q": "What are the naive and the populist views of information?",
+                  "a": "Naive: more information brings truth and wisdom. Populist: information is a weapon and power the only reality."
+                },
+                {
+                  "q": "What makes AI different from earlier technologies?",
+                  "a": "It is the first technology that can make decisions and create new ideas by itself."
+                }
+              ]
+            },
+            {
+              "type": "summary",
+              "label": "In short",
+              "text": "Humans gained enormous power by building large networks of cooperation, yet these networks tend to use power unwisely. The problem is not individual greed or hubris but the way information holds networks together.",
+              "takeaway": {
+                "label": "Takeaway",
+                "text": "AI is the first technology that can make decisions and create ideas by itself."
+              }
+            },
+            {
+              "type": "chart",
+              "chart": "compare",
+              "label": "Two views of information",
+              "columns": [
+                "Naive view",
+                "Populist view"
+              ],
+              "rows": [
+                [
+                  "Information is the raw material of truth",
+                  "Information is a weapon"
+                ],
+                [
+                  "More information brings truth and wisdom",
+                  "Power is the only reality"
+                ],
+                [
+                  "Cure for bad information: more information",
+                  "Cure: your own research or a leader"
+                ],
+                [
+                  "Voiced by Reagan, Zuckerberg and Google",
+                  "Voiced by Trump, Bolsonaro and QAnon"
+                ]
+              ],
+              "key": "The book explores the space between them"
+            },
+            {
+              "type": "points",
+              "label": "Key points",
+              "items": [
+                {
+                  "title": "Power is not wisdom",
+                  "text": "After 100,000 years of gaining power, Sapiens face ecological collapse, AI that may escape control and the risk of a new world war."
+                },
+                {
+                  "title": "A network problem",
+                  "text": "Power comes from cooperation in large numbers; networks held together by fictions and delusions, like Nazism and Stalinism, can be very powerful."
+                },
+                {
+                  "title": "AI decides",
+                  "text": "Unlike knives or bombs, AI can make decisions and create new ideas; it already decides on mortgages, jobs and prison sentences."
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "label": "The chapter in full",
+              "only": "pdf",
+              "paragraphs": [
+                "Harari asks why a species that calls itself wise is so self-destructive. In 100,000 years Sapiens have gained enormous power, yet they now face ecological collapse, AI that may escape human control and the risk of a new world war. Old fables, from Phaethon to Goethe's Sorcerer's Apprentice, warn against summoning powers we cannot control, but they blame individual hubris and offer no answer except waiting for a god or a sorcerer to save us.",
+                "The book's main argument is that power always comes from cooperation in large numbers, and that the way large networks are built predisposes them to use power unwisely. This is a network problem, and more precisely an information problem. Information is the glue of networks, and it often binds people with fictions, fantasies and mass delusions. Nazism and Stalinism were among the most powerful networks in history, and they were held together by deeply deluded ideas.",
+                "Two views of information mislead us. The naive view, the semi-official creed of the computer age, holds that more information leads to truth, and truth to power and wisdom. It proved right about child mortality, but today every smartphone holds more information than the Library of Alexandria, and humanity is closer than ever to destroying itself. The populist view treats information as a weapon and power as the only reality; it ends by trusting a single leader. The book explores the space between these views.",
+                "AI raises the stakes because it is the first technology that can make decisions and create new ideas by itself. One danger is a Silicon Curtain that divides rival human powers; another is a curtain that divides all humans from AI overlords. History is not deterministic, so informed choices can still prevent the worst."
+              ]
+            },
+            {
+              "type": "points",
+              "label": "Examples in the book",
+              "style": "box",
+              "only": "pdf",
+              "items": [
+                {
+                  "title": "The Sorcerer's Apprentice",
+                  "text": "In Goethe's 1797 poem an apprentice enchants a broom he cannot stop, until the sorcerer returns. Harari notes that no sorcerer will save us."
+                },
+                {
+                  "title": "Goethe's children",
+                  "text": "Only three of Goethe's family's 12 children reached adulthood. By 2020, 95.6% of children worldwide passed their 15th birthday, thanks to medical data."
+                },
+                {
+                  "title": "Worried experts",
+                  "text": "In a 2023 survey of 2,778 AI researchers, more than a third gave at least a 10% chance of outcomes as bad as human extinction."
+                }
+              ]
+            },
+            {
+              "type": "list",
+              "label": "Terms",
+              "only": "pdf",
+              "rows": [
+                {
+                  "name": "Naive view of information",
+                  "text": "More information leads to truth, and truth to power and wisdom."
+                },
+                {
+                  "name": "Populist view of information",
+                  "text": "Information is a weapon in a struggle for power, the only reality."
+                },
+                {
+                  "name": "Silicon Curtain",
+                  "text": "A divide of chips and code, between rival powers or between humans and AI."
+                },
+                {
+                  "name": "Inorganic network",
+                  "text": "An information network whose members include computers, not only human brains."
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "part-1",
+      "label": "Part I",
+      "title": "Human Networks",
+      "chapters": [
+        {
+          "id": "ch1",
+          "number": "01",
+          "title": "What Is Information?",
+          "length": 4881,
+          "screens": [
+            {
+              "type": "quiz",
+              "label": "Try to remember",
+              "questions": [
+                {
+                  "q": "Can a pigeon be information?",
+                  "a": "Yes. Any object can be information in the right context, like the NILI spies' pigeon."
+                },
+                {
+                  "q": "Why is astrology information, though it is false?",
+                  "a": "It connected people and shaped history. Information is defined by connection, not by truth."
+                },
+                {
+                  "q": "Why does more information not bring more truth?",
+                  "a": "Truth is rare and costly; without special effort, cheap fiction and error swamp it."
+                }
+              ]
+            },
+            {
+              "type": "summary",
+              "label": "In short",
+              "text": "Information is defined not by truth but by connection: it ties things together into new networks, whether it is accurate or not. Errors, lies, music and DNA are information too.",
+              "takeaway": {
+                "label": "Takeaway",
+                "text": "Ask not only whether information is true, but what network it creates."
+              }
+            },
+            {
+              "type": "chart",
+              "chart": "matrix",
+              "label": "Represents or connects?",
+              "columns": [
+                "Accurate account",
+                "Connects"
+              ],
+              "rows": [
+                {
+                  "label": "Cher Ami's message",
+                  "cells": [
+                    true,
+                    true
+                  ]
+                },
+                {
+                  "label": "Moon landing footage",
+                  "cells": [
+                    true,
+                    true
+                  ]
+                },
+                {
+                  "label": "Moon-hoax video",
+                  "cells": [
+                    false,
+                    true
+                  ]
+                },
+                {
+                  "label": "Astrology",
+                  "cells": [
+                    false,
+                    true
+                  ]
+                },
+                {
+                  "label": "Music",
+                  "cells": [
+                    false,
+                    true
+                  ],
+                  "focus": true
+                },
+                {
+                  "label": "DNA",
+                  "cells": [
+                    false,
+                    true
+                  ]
+                }
+              ],
+              "key": "Information always connects; only sometimes represents"
+            },
+            {
+              "type": "points",
+              "label": "Key points",
+              "items": [
+                {
+                  "title": "In formation",
+                  "text": "The defining feature of information is connection: it puts different things in formation, creating new realities such as networks of people."
+                },
+                {
+                  "title": "Truth is not reality",
+                  "text": "Truth is an accurate account of reality, but no account captures all of it; every truth stresses some aspects and ignores others."
+                },
+                {
+                  "title": "More is not truer",
+                  "text": "Truth is rare and costly; without special effort, cheap fiction and error swamp it as information grows."
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "label": "The chapter in full",
+              "only": "pdf",
+              "paragraphs": [
+                "Harari looks at information in history rather than seeking a universal definition. Almost anything can be information in the right context: a star, a window shutter for a spy ring, a carrier pigeon for a besieged battalion. The naive view holds that something is information when it represents reality, and that information therefore leads to truth.",
+                "The book accepts that truth means an accurate account of reality, but stresses that truth is not reality itself. No account can capture every aspect of reality, just as a map at a scale of one to one would be no map at all. Truth always draws attention to some aspects and ignores others, though some accounts are more truthful than others.",
+                "Most information, however, does not represent anything. Astrology has had a huge historical impact; music synchronises people without being true or false; DNA does not describe a lion's body but helps produce it. The Bible contains serious errors about human origins and disease, yet it has connected billions of people. Errors, lies and fictions are information too. What all information does is connect things: it puts them in formation and so creates new realities.",
+                "Rejecting the naive view does not mean rejecting truth or embracing the populist view. Truthful information is rare and expensive, while fiction is cheap, so more information alone tends to swamp the truth. History shows a constant rise in connectivity without a matching rise in truthfulness or wisdom: Nazi race theory and Stalinist class theory helped tens of millions march together. The next chapter turns to the first information technology, the story."
+              ]
+            },
+            {
+              "type": "points",
+              "label": "Examples in the book",
+              "style": "box",
+              "only": "pdf",
+              "items": [
+                {
+                  "title": "Cher Ami",
+                  "text": "In October 1918 a carrier pigeon reportedly carried a note that stopped friendly artillery fire on more than 500 trapped American soldiers. The pigeon itself knew nothing."
+                },
+                {
+                  "title": "The NILI spy ring",
+                  "text": "In Palestine during the first world war, Sarah Aaronsohn signalled British ships with a window shutter; a stray pigeon later exposed the ring."
+                },
+                {
+                  "title": "Astrology",
+                  "text": "A global market worth $12.8bn in 2021; in Rome, casting the reigning emperor's horoscope was a capital offence."
+                },
+                {
+                  "title": "The moon landing",
+                  "text": "About 600 million people watched it in 1969. True footage connects people, but so does a conspiracy video claiming it never happened."
+                }
+              ]
+            },
+            {
+              "type": "list",
+              "label": "Terms",
+              "only": "pdf",
+              "rows": [
+                {
+                  "name": "Information",
+                  "text": "Whatever connects different things into a network, whether or not it represents reality."
+                },
+                {
+                  "name": "Truth",
+                  "text": "An accurate account of some aspects of one universal reality."
+                },
+                {
+                  "name": "Misinformation",
+                  "text": "An honest mistake, in the naive view."
+                },
+                {
+                  "name": "Disinformation",
+                  "text": "A deliberate lie, in the naive view."
+                },
+                {
+                  "name": "Counterspeech doctrine",
+                  "text": "The idea that the answer to false speech is more speech, as Justice Brandeis argued in 1927."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "ch2",
+          "number": "02",
+          "title": "Stories: Unlimited Connections",
+          "length": 7122,
+          "screens": [
+            {
+              "type": "quiz",
+              "label": "Try to remember",
+              "questions": [
+                {
+                  "q": "What let Sapiens cooperate in unlimited numbers?",
+                  "a": "Telling and believing shared fictional stories, which link strangers through the story itself."
+                },
+                {
+                  "q": "Is a pizza's price objective, subjective or intersubjective?",
+                  "a": "Intersubjective: it exists between many minds. Its calories are objective."
+                },
+                {
+                  "q": "How does the US Constitution differ from the Ten Commandments?",
+                  "a": "It admits its human origin and can be amended; the Commandments claim divine origin and cannot."
+                }
+              ]
+            },
+            {
+              "type": "summary",
+              "label": "In short",
+              "text": "Stories let Sapiens cooperate in unlimited numbers by linking people to shared fictions, not only to each other. These fictions create intersubjective realities such as money and nations, which networks must balance against truth.",
+              "takeaway": {
+                "label": "Takeaway",
+                "text": "Networks need both truth and order, and order is often easier to build with fiction."
+              }
+            },
+            {
+              "type": "chart",
+              "chart": "matrix",
+              "label": "Three kinds of reality",
+              "columns": [
+                "Objective",
+                "Subjective",
+                "Intersubjective"
+              ],
+              "rows": [
+                {
+                  "label": "A stone",
+                  "cells": [
+                    true,
+                    false,
+                    false
+                  ]
+                },
+                {
+                  "label": "A pizza's calories",
+                  "cells": [
+                    true,
+                    false,
+                    false
+                  ]
+                },
+                {
+                  "label": "Pain",
+                  "cells": [
+                    false,
+                    true,
+                    false
+                  ]
+                },
+                {
+                  "label": "Love",
+                  "cells": [
+                    false,
+                    true,
+                    false
+                  ]
+                },
+                {
+                  "label": "A pizza's price",
+                  "cells": [
+                    false,
+                    false,
+                    true
+                  ],
+                  "focus": true
+                },
+                {
+                  "label": "A nation",
+                  "cells": [
+                    false,
+                    false,
+                    true
+                  ]
+                }
+              ],
+              "key": "Stories create the third level, between many minds"
+            },
+            {
+              "type": "points",
+              "label": "Key points",
+              "items": [
+                {
+                  "title": "Human-to-story chains",
+                  "text": "About 70,000 years ago Sapiens began telling and believing fictions, linking people through a story rather than only through each other."
+                },
+                {
+                  "title": "Intersubjective reality",
+                  "text": "Laws, gods, nations and money exist in the communication between many minds; if people stop talking about them, they vanish."
+                },
+                {
+                  "title": "Truth versus order",
+                  "text": "Truth is complicated and often painful; fiction can be simple and flexible, so networks often build their order on it."
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "label": "The chapter in full",
+              "only": "pdf",
+              "paragraphs": [
+                "Sapiens rule the world because they alone can cooperate flexibly in unlimited numbers. Humans cannot form intimate bonds with more than a few hundred people, but about 70,000 years ago Sapiens began to tell and believe fictional stories. A story works as a central connector: millions can link to it without knowing each other. Charismatic leaders and brands are crafted stories of this kind, and shared stories can even give strangers common memories, as the Passover ritual does.",
+                "Before stories there were two levels of reality: objective (stones, asteroids) and subjective (pain, love). Stories add a third, intersubjective reality: laws, gods, nations, corporations and money, which exist in the communication between many minds. The calories in a pizza are objective, but its price is intersubjective. A state exists if enough people agree that it does.",
+                "Story-based networks made Sapiens the most powerful animal, and identities such as nations and religions are always intersubjective, not just masks for material interests. Since history is shaped by stories, new stories and talk can also avert conflict.",
+                "Power depends on truth and on order. Those who keep order usually command those who know the truth: physicists obey politicians and theologians. Fiction has two advantages: it can be simple, and it can be comforting where truth is painful. Plato proposed a noble lie to justify hierarchy. A third option is a fiction that admits it is one, like the US Constitution, which can be amended; the Ten Commandments claim divine origin and cannot be. Every network walks a tightrope between truth and order, and faster information technology makes the balance more urgent."
+              ]
+            },
+            {
+              "type": "points",
+              "label": "Examples in the book",
+              "style": "box",
+              "only": "pdf",
+              "items": [
+                {
+                  "title": "Two pizzas for 10,000 bitcoins",
+                  "text": "Laszlo Hanyecz paid 10,000 bitcoins for two pizzas in 2010; by November 2021 they were worth about $690m. The value was intersubjective."
+                },
+                {
+                  "title": "Cher Ami as a brand",
+                  "text": "A 2021 study found headquarters knew the battalion's position before the pigeon arrived; the heroic story was partly a branding campaign."
+                },
+                {
+                  "title": "The Manhattan Project",
+                  "text": "About 130,000 people built the bomb, but the physicists who knew the truth obeyed the politicians who kept order."
+                }
+              ]
+            },
+            {
+              "type": "list",
+              "label": "Terms",
+              "only": "pdf",
+              "rows": [
+                {
+                  "name": "Human-to-story chain",
+                  "text": "A link between many people through a shared story rather than personal ties."
+                },
+                {
+                  "name": "Brand",
+                  "text": "A story crafted around a product or a person, such as a leader."
+                },
+                {
+                  "name": "Intersubjective reality",
+                  "text": "Things that exist in the communication between many minds: laws, gods, nations, money."
+                },
+                {
+                  "name": "Noble lie",
+                  "text": "Plato's myth to make people accept a social hierarchy."
+                },
+                {
+                  "name": "Perennial dilemma",
+                  "text": "Every network must both discover truth and keep order, and the two often conflict."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "ch3",
+          "number": "03",
+          "title": "Documents: The Bite of the Paper Tigers",
+          "length": 9635,
+          "screens": [
+            {
+              "type": "quiz",
+              "label": "Try to remember",
+              "questions": [
+                {
+                  "q": "Why do lists need writing, when stories do not?",
+                  "a": "Brains remember stories easily but lists poorly, so taxes and debts needed an outside memory."
+                },
+                {
+                  "q": "What problem did bureaucracy solve?",
+                  "a": "Finding the right document: it sorts documents and people into drawers."
+                },
+                {
+                  "q": "Why do people distrust bureaucracy?",
+                  "a": "It fits none of the biological dramas our minds and stories are built for, so it seems faceless."
+                }
+              ]
+            },
+            {
+              "type": "summary",
+              "label": "In short",
+              "text": "Large networks need lists as well as stories, and lists need a new technology: the written document. Documents created new realities such as ownership and debt, and bureaucracy arose to manage them, trading truth for order.",
+              "takeaway": {
+                "label": "Takeaway",
+                "text": "Bureaucracy can oppress or save lives; its design and use decide which."
+              }
+            },
+            {
+              "type": "chart",
+              "chart": "compare",
+              "label": "Stories and lists",
+              "columns": [
+                "Stories",
+                "Lists"
+              ],
+              "rows": [
+                [
+                  "Easy to remember",
+                  "Hard to remember"
+                ],
+                [
+                  "The Ramayana recited by heart",
+                  "Tax records need writing"
+                ],
+                [
+                  "Inspire nations",
+                  "Run sewers, schools and armies"
+                ],
+                [
+                  "Mythmakers hold authority",
+                  "Officials and lawyers gain power"
+                ]
+              ],
+              "key": "Mythology and bureaucracy are the twin pillars of large societies"
+            },
+            {
+              "type": "points",
+              "label": "Key points",
+              "items": [
+                {
+                  "title": "Documents make reality",
+                  "text": "A written document can decide ownership or debt: in old Assyria, a debt was gone once its loan contract was destroyed."
+                },
+                {
+                  "title": "The retrieval problem",
+                  "text": "Writing removed the brain's memory limit but made documents hard to find; bureaucracy is the order devised to solve this."
+                },
+                {
+                  "title": "Drawers",
+                  "text": "Bureaucracy divides the world into drawers and forces people and facts to fit them, sacrificing some truth for order."
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "label": "The chapter in full",
+              "only": "pdf",
+              "paragraphs": [
+                "Nations are often first imagined by poets and dreamers, as Bialik and Herzl imagined a Jewish nation, but dreams alone cannot run a state. Armies need taxes and cities need sewers, and such services run on lists of property, payments and debts. Stories are easy to remember and lists are not, so complex taxation needed a non-organic technology: the written document. Lists and stories complement each other: myths make tax records legitimate, and tax records turn stories into schools and hospitals.",
+                "Documents can be wrong, as a clay tablet from Ur with a miscounted total shows, but they also create new realities. In oral communities ownership rested on the neighbours' agreement; in a literate state the document decides, and a distant authority can hold it. In old Assyria a debt died with its contract.",
+                "Writing created a new bottleneck: finding the right document. Bureaucracy is the order devised to solve this problem. It divides the world into drawers and forces people to fit its forms, and narrow goals in separate drawers can cause harm, from polluting officials to academic disciplines that ignore what falls between them. Even biology's species are conventions, yet a label such as endangered species can decide life or death.",
+                "Bureaucracy also does great good. John Snow's lists of cholera cases traced an epidemic to one water pump, and sewage systems, the real deep state, save millions. Because bureaucracy does not follow the biological dramas that our minds and our art understand, people find it hard to grasp and easy to suspect. It can also destroy lives, as a 1938 Romanian law did to Harari's grandfather. AI is now taking over the roles of both bureaucrats and mythmakers."
+              ]
+            },
+            {
+              "type": "points",
+              "label": "Examples in the book",
+              "style": "box",
+              "only": "pdf",
+              "items": [
+                {
+                  "title": "John Snow, 1854",
+                  "text": "By listing cholera patients and their water sources, Snow traced London's outbreak to the Broad Street pump, less than a metre from a cesspit."
+                },
+                {
+                  "title": "Bruno Luttinger",
+                  "text": "Harari's grandfather lost his Romanian citizenship in December 1938, with 367,000 of 758,000 Romanian Jews; he escaped to Palestine in 1940."
+                },
+                {
+                  "title": "Clean India",
+                  "text": "From 2014 to 2020 India's Clean India Mission spent about $10bn and built more than 100 million latrines."
+                },
+                {
+                  "title": "Kafka's Trial",
+                  "text": "Art handles death by a tiger well but death by a document poorly; Kafka's novel is one of the few works about a faceless bureaucracy."
+                }
+              ]
+            },
+            {
+              "type": "list",
+              "label": "Terms",
+              "only": "pdf",
+              "rows": [
+                {
+                  "name": "Written document",
+                  "text": "A non-organic memory that stores lists and can create new realities, like ownership."
+                },
+                {
+                  "name": "Retrieval problem",
+                  "text": "The difficulty of finding the right document once many are written."
+                },
+                {
+                  "name": "Bureaucracy",
+                  "text": "Rule by the writing desk: the order that sorts documents and the world into drawers."
+                },
+                {
+                  "name": "Human-to-document chain",
+                  "text": "A link through documents, which gives power to administrators, accountants and lawyers."
+                },
+                {
+                  "name": "Biological dramas",
+                  "text": "Plots scripted by evolution, such as sibling rivalry or purity and pollution, that our minds understand."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "ch4",
+          "number": "04",
+          "title": "Errors: The Fantasy of Infallibility",
+          "length": 15858
+        },
+        {
+          "id": "ch5",
+          "number": "05",
+          "title": "Decisions: A Brief History of Democracy and Totalitarianism",
+          "length": 23629
+        }
+      ]
+    },
+    {
+      "id": "part-2",
+      "label": "Part II",
+      "title": "The Inorganic Network",
+      "chapters": [
+        {
+          "id": "ch6",
+          "number": "06",
+          "title": "The New Members: How Computers Are Different from Printing Presses",
+          "length": 12160
+        },
+        {
+          "id": "ch7",
+          "number": "07",
+          "title": "Relentless: The Network Is Always On",
+          "length": 8409
+        },
+        {
+          "id": "ch8",
+          "number": "08",
+          "title": "Fallible: The Network Is Often Wrong",
+          "length": 15213
+        }
+      ]
+    },
+    {
+      "id": "part-3",
+      "label": "Part III",
+      "title": "Computer Politics",
+      "chapters": [
+        {
+          "id": "ch9",
+          "number": "09",
+          "title": "Democracies: Can We Still Hold a Conversation?",
+          "length": 14148
+        },
+        {
+          "id": "ch10",
+          "number": "10",
+          "title": "Totalitarianism: All Power to the Algorithms?",
+          "length": 3856
+        },
+        {
+          "id": "ch11",
+          "number": "11",
+          "title": "The Silicon Curtain: Global Empire or Global Split?",
+          "length": 11109
+        }
+      ]
+    },
+    {
+      "id": "closing",
+      "label": "Closing",
+      "chapters": [
+        {
+          "id": "epilogue",
+          "number": "E",
+          "title": "Epilogue",
+          "length": 3130
+        }
+      ]
+    }
+  ],
+  "style": "recall",
+  "upTo": "Chapter 3"
+}

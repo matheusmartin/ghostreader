@@ -2,7 +2,7 @@
 name: ghostwriter-book
 description: Writes or updates a book guide for the Ghostwriter app in this repository - one file, src/books/<id>.json, that makes both the swipe screens and the downloadable A4 PDF. Three types, chosen by the user - Story guide (fiction - cast map, scene charts of who is where, story threads), Reading guide (non-fiction, to follow the argument while reading) and Book summary (non-fiction, a finished book). Reads the book from an EPUB, PDF, text, Markdown or HTML file, or from summaries when no file is given. Diagrams first - networks, flows, cycles, timelines - text only where a picture cannot carry the idea. Use when the user asks to add, write, summarise, update or regenerate a book, story guide, reading guide, book summary, infographic or PDF for the app, even if they only name the book. Do not use for a short summary in chat, book recommendations, reviews, or changes to the app's code.
 metadata:
-  version: "1.1.0"
+  version: "1.2.0"
 compatibility: Node 22 with `npm install` done (Vitest; Playwright with Chromium for the screen check and the PDF). Python 3.9+ for the book extractor and maps; PDF books also need poppler-utils (pdftotext) or the pypdf package.
 ---
 
@@ -26,6 +26,7 @@ Principles:
 | Term | Meaning |
 |---|---|
 | type | `fiction` (Story guide), `reading` (Reading guide) or `done` (Book summary), chosen by the user |
+| style | how the guide summarises: `map` (default), `recap`, `recall` or `layers` (`references/styles.md`) |
 | screen / block | one item of a chapter's `screens`: one swipe in the app, one block in the PDF |
 | app screen | a screen without `only`, or with `only: "app"`: must fit a phone screen |
 | PDF-only block | `only: "pdf"`: detail for the PDF, with looser limits |
@@ -43,6 +44,7 @@ Type:     Fiction | Non-fiction reading | Non-fiction done   (required)
 Title:    Pride and Prejudice                (required)
 Author:   Jane Austen                        (recommended)
 Up to:    Chapter 6                          (optional; Fiction and Non-fiction reading only)
+Style:    Map | Recap | Recall | Layers      (optional; default Map: references/styles.md)
 Edition:  Penguin Classics, 2003             (optional: shown on the cover)
 + the book file: EPUB, PDF, TXT, MD or HTML  (strongly recommended)
 ```
@@ -59,9 +61,9 @@ Edition:  Penguin Classics, 2003             (optional: shown on the cover)
 Copy this checklist into the task list and tick it off:
 
 ```
-- [ ] 1 Inputs: type, title, author, limit, edition, book file
-- [ ] 2 Read docs/content-format.md, references/guides.md (the type), references/visuals.md,
-        references/concepts.md, references/content-rules.md, references/writing-style.md
+- [ ] 1 Inputs: type, title, author, limit, style, edition, book file
+- [ ] 2 Read docs/content-format.md, references/guides.md (the type), references/styles.md (the
+        style), references/visuals.md, references/concepts.md, references/content-rules.md, references/writing-style.md
 - [ ] 3 Text: extract the book file into work/<id>/source (or gather summaries)
 - [ ] 4 Plan: id, parts, chapters (real titles and word counts), overview chapters, cast and threads
 - [ ] 5 Fact sheets: work/<id>/facts/<chapter-id>.md, every fact with its anchor, and the
@@ -219,6 +221,7 @@ npm run build
 | `references/guides.md` | step 2: the type's overview chapters, chapter recipe, PDF detail and limits |
 | `references/visuals.md` | steps 4–6: which diagram for which idea; layout rules for each chart |
 | `references/concepts.md` | steps 4–7: find, record and show the book's concepts and distinctions |
+| `references/styles.md` | step 1 and 6: the four styles (Map, Recap, Recall, Layers), their research basis and recipes |
 | `references/content-rules.md` | step 2: book content only, accuracy, spoilers, summaries mode, copyright |
 | `references/writing-style.md` | step 6: The Economist style, short form |
 | `scripts/extract_book.py` | step 3 (`--help`) |

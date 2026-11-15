@@ -2,15 +2,16 @@
 // development there is no built file, so the link opens the print view instead.
 
 import { h } from './dom.ts';
-import { GUIDE_NAMES } from '../screens/render.ts';
+import { GUIDE_NAMES, STYLE_NAMES } from '../screens/render.ts';
 import { printHash } from '../router.ts';
 import type { Book } from '../model/types.ts';
 
-/** "Harari - Nexus (2024) - Book Summary.pdf"; a guide written while reading adds "to Chapter 6". */
+/** "Harari - Nexus (2024) - Book Summary.pdf"; a style and a limit add "- Recap - to Chapter 3". */
 export function pdfFileName(b: Book): string {
   const surname = b.author.trim().split(/\s+/).pop() ?? b.author;
   const guide = GUIDE_NAMES[b.type].replace(/\b\w/g, (c) => c.toUpperCase());
-  const name = [surname, `${b.title}${b.year ? ` (${b.year})` : ''}`, guide, b.upTo ? `to ${b.upTo}` : '']
+  const style = b.style ? STYLE_NAMES[b.style] : '';
+  const name = [surname, `${b.title}${b.year ? ` (${b.year})` : ''}`, guide, style, b.upTo ? `to ${b.upTo}` : '']
     .filter(Boolean)
     .join(' - ');
   return `${name.replace(/[/\\:*?"<>|]/g, '')}.pdf`;

@@ -3,7 +3,7 @@
 import { h } from '../lib/dom.ts';
 import { canFullscreen, isFullscreen, isInstalled, toggleFullscreen } from '../lib/device.ts';
 import { loadAllBooks, type LoadedBook } from '../data/books.ts';
-import { GUIDE_NAMES } from '../screens/render.ts';
+import { guideLabel } from '../screens/render.ts';
 import { pdfLink } from '../lib/pdf.ts';
 import { installPrompt, onUpdateReady, applyUpdate } from '../pwa.ts';
 
@@ -72,7 +72,7 @@ function card(loaded: LoadedBook, opts: LibraryOptions): HTMLElement {
     );
   }
   const b = loaded.book;
-  const kicker = [GUIDE_NAMES[b.type], b.upTo ? `to ${b.upTo}` : ''].filter(Boolean).join(' · ');
+  const kicker = guideLabel(b);
   // The whole card opens the book; the PDF link sits on top of it.
   return h('div', { class: 'book-card' },
     h('button', { type: 'button', class: 'bc-open', onclick: () => opts.open(b.id), 'aria-label': `Read ${b.title}` }),

@@ -68,3 +68,11 @@ describe('validateBook', () => {
     ]);
   });
 });
+
+describe('style', () => {
+  const base = { format: 1, id: 's', type: 'reading', title: 'T', author: 'A', lead: 'L', parts: [{ id: 'p', chapters: [{ id: 'c', number: '1', title: 'One', screens: [{ type: 'summary', label: 'In short', text: 'Text.' }] }] }] };
+  it('accepts the four styles and nothing else', () => {
+    for (const style of ['map', 'recap', 'recall', 'layers']) expect(validateBook({ ...base, style }).errors).toEqual([]);
+    expect(validateBook({ ...base, style: 'fancy' }).errors).toEqual(['"style" must be one of map, recap, recall, layers']);
+  });
+});
