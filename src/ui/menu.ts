@@ -67,7 +67,7 @@ export class Menu {
       h('dl', { class: 'menu-help' },
         h('dt', null, 'Swipe up · down'), h('dd', null, 'Next · previous screen'),
         h('dt', null, 'Swipe left · right'), h('dd', null, 'Next · previous chapter'),
-        h('dt', null, 'Tap'), h('dd', null, 'This menu'),
+        h('dt', null, 'Hold anywhere'), h('dd', null, 'This menu (Enter on a keyboard)'),
       ),
     );
     this.el = h('div', { class: 'menu', hidden: true },

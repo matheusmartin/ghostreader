@@ -23,7 +23,7 @@ the same chapter. Research and recipes: `.claude/skills/ghostwriter-book/referen
 |---|---|
 | Swipe up / down | Next / previous screen (continues into the next chapter) |
 | Swipe left / right | Start of the next / previous chapter |
-| Tap | Menu: contents, library, full screen |
+| Hold anywhere (0.6 s) | Menu: style, page colour, contents, library, full screen |
 
 Keyboard and mouse wheel do the same moves (arrows, Space, Page Up / Down, Enter, Esc).
 

@@ -9,7 +9,10 @@
 import { h } from '../lib/dom.ts';
 import { prefersReducedMotion } from '../lib/device.ts';
 import { getFlag, setFlag } from '../lib/storage.ts';
-import { attachSwipe, shouldCommit, type Axis } from '../input/gestures.ts';
+import { attachSwipe, HOLD_TIME, shouldCommit, type Axis } from '../input/gestures.ts';
+
+/** The hold ring appears only after this long (ms), so taps and swipes do not flash it. */
+const RING_DELAY = 150;
 import { attachKeys, attachWheel, type Move } from '../input/keys.ts';
 import { nextChapter, nextScreen, prevChapter, prevScreen, type Plan, type PlanScreen } from '../model/plan.ts';
 import { fitScreen, renderScreen, type ScreenContext } from '../screens/render.ts';
@@ -45,6 +48,14 @@ export class Reader {
   private hud: Hud;
   private menu: Menu;
   private hint: HTMLElement | null = null;
+  /** Fills under a still finger while a long press builds up. */
+  private holdRing: HTMLElement = (() => {
+    const ring = h('div', { class: 'hold-ring', 'aria-hidden': 'true' });
+    ring.innerHTML = '<svg viewBox="0 0 80 80"><circle class="track" cx="40" cy="40" r="34"/><circle class="fill" cx="40" cy="40" r="34"/></svg>';
+    ring.style.setProperty('--ring-delay', `${RING_DELAY}ms`);
+    ring.style.setProperty('--ring-fill', `${HOLD_TIME - RING_DELAY}ms`);
+    return ring;
+  })();
   private index: number;
   private current: HTMLElement | null = null;
   private drag: Drag | null = null;
@@ -66,10 +77,19 @@ export class Reader {
       this.hint = h('div', { class: 'hint-toast', role: 'status' },
         h('b', null, 'Swipe up'), ' for the next screen, ',
         h('b', null, 'left'), ' for the next chapter. ',
-        h('b', null, 'Tap'), ' for the menu.',
+        h('b', null, 'Hold'), ' anywhere for the menu.',
       );
     }
-    this.el = h('div', { class: 'reader' }, this.stage, this.hud.el, this.hint, this.menu.el);
+    this.el = h('div', { class: 'reader' }, this.stage, this.hud.el, this.hint, this.holdRing, this.menu.el);
+  }
+
+  private showHoldRing(x: number, y: number) {
+    const ring = this.holdRing;
+    ring.classList.remove('on');
+    ring.style.left = `${x}px`;
+    ring.style.top = `${y}px`;
+    void ring.offsetWidth; // restart the fill
+    ring.classList.add('on');
   }
 
   get plan(): Plan {
@@ -87,10 +107,14 @@ export class Reader {
         move: (_axis, d) => this.dragMove(d),
         end: (_axis, d, v) => this.dragEnd(d, v),
         cancel: () => this.dragEnd(this.drag?.last ?? 0, 0, false),
-        tap: (target) => {
-          // Buttons inside a screen (quiz, book map, contents) handle their own taps.
-          if (target.closest('button, a, input, select, textarea, label')) return;
-          this.menu.toggle(this.plan.screens[this.index]);
+        // A tap does nothing on its own: buttons inside a screen (quiz, book map) handle their taps.
+        tap: () => {},
+        // Hold a finger still anywhere for the menu; a ring fills under the finger meanwhile.
+        pressStart: (x, y) => this.showHoldRing(x, y),
+        pressEnd: () => this.holdRing.classList.remove('on'),
+        longPress: () => {
+          try { navigator.vibrate?.(12); } catch { /* no vibration */ }
+          this.menu.open(this.plan.screens[this.index]);
         },
       }),
       attachKeys((m) => this.onMove(m)),
