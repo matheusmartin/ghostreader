@@ -10,6 +10,9 @@ import { pdfLink } from '../lib/pdf.ts';
 import { shareLink } from '../lib/share.ts';
 import type { Plan, PlanScreen } from '../model/plan.ts';
 
+/** How long (ms) after opening the menu ignores clicks: the tap's own click comes within this time. */
+const MENU_CLICK_GUARD = 500;
+
 export interface MenuActions {
   jump(index: number): void;
   library(): void;
@@ -23,6 +26,8 @@ export class Menu {
   private shareButton: HTMLButtonElement;
   private at: PlanScreen | null = null;
   private shareTimer = 0;
+  /** Until this time (ms) the menu ignores clicks: see open(). */
+  private guardUntil = 0;
 
   private plan: Plan;
   private actions: MenuActions;
@@ -64,6 +69,15 @@ export class Menu {
       h('div', { class: 'menu-backdrop', onclick: () => this.close() }),
       this.sheet,
     );
+    // On a touch screen the tap that opens the menu is followed by a click at the same place, which
+    // would land on the menu that just opened: on the backdrop (closing it) or on a button (jumping
+    // to a chapter). Swallow clicks for a moment after the menu opens.
+    this.el.addEventListener('click', (e) => {
+      if (performance.now() < this.guardUntil) {
+        e.preventDefault();
+        e.stopPropagation();
+      }
+    }, true);
     document.addEventListener('fullscreenchange', this.syncFs);
   }
 
@@ -72,6 +86,7 @@ export class Menu {
   }
 
   open(at: PlanScreen): void {
+    this.guardUntil = performance.now() + MENU_CLICK_GUARD;
     this.at = at;
     this.resetShare();
     this.buildToc(at);
