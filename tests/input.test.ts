@@ -1,5 +1,5 @@
-import { describe, expect, it } from 'vitest';
-import { COMMIT_DISTANCE, FLICK_VELOCITY, lockAxis, shouldCommit } from '../src/input/gestures.ts';
+import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
+import { attachHold, COMMIT_DISTANCE, FLICK_VELOCITY, HOLD_TIME, lockAxis, shouldCommit, SLOP } from '../src/input/gestures.ts';
 import { moveForKey } from '../src/input/keys.ts';
 import { parseRoute, readHash } from '../src/router.ts';
 
@@ -20,6 +20,97 @@ describe('swipe classification', () => {
   });
 });
 
+describe('long press (the menu, on every screen)', () => {
+  // attachHold listens on the window; here the window is a plain EventTarget.
+  let win: EventTarget;
+  let calls: string[];
+  let enabled: boolean;
+  let detach: () => void;
+  const pointer = (type: string, init: Partial<PointerEvent> = {}) => {
+    const e = new Event(type, { cancelable: true });
+    Object.assign(e, { pointerId: 1, pointerType: 'touch', button: 0, isPrimary: true, clientX: 100, clientY: 200, ...init });
+    win.dispatchEvent(e);
+    return e;
+  };
+
+  beforeEach(() => {
+    vi.useFakeTimers();
+    win = new EventTarget();
+    vi.stubGlobal('addEventListener', win.addEventListener.bind(win));
+    vi.stubGlobal('removeEventListener', win.removeEventListener.bind(win));
+    vi.stubGlobal('window', { setTimeout, clearTimeout, addEventListener: win.addEventListener.bind(win), removeEventListener: win.removeEventListener.bind(win) });
+    vi.stubGlobal('Element', class {});
+    calls = [];
+    enabled = true;
+    detach = attachHold({
+      enabled: () => enabled,
+      pressStart: () => calls.push('start'),
+      pressEnd: () => calls.push('end'),
+      longPress: () => calls.push('long'),
+    });
+  });
+
+  afterEach(() => {
+    detach();
+    vi.useRealTimers();
+    vi.unstubAllGlobals();
+  });
+
+  it('fires after HOLD_TIME when the finger stays still', () => {
+    pointer('pointerdown');
+    vi.advanceTimersByTime(HOLD_TIME - 1);
+    expect(calls).toEqual(['start']);
+    vi.advanceTimersByTime(1);
+    expect(calls).toEqual(['start', 'end', 'long']);
+  });
+
+  it('does not fire when the finger moves, lifts, scrolls or is joined by a second finger', () => {
+    pointer('pointerdown');
+    pointer('pointermove', { clientX: 100 + SLOP });
+    pointer('pointerdown');
+    pointer('pointerup');
+    pointer('pointerdown');
+    win.dispatchEvent(new Event('scroll'));
+    pointer('pointerdown');
+    pointer('pointerdown', { pointerId: 2, isPrimary: false });
+    vi.advanceTimersByTime(HOLD_TIME * 2);
+    expect(calls).not.toContain('long');
+  });
+
+  it('does not start while the menu is open, or for the right mouse button', () => {
+    enabled = false;
+    pointer('pointerdown');
+    enabled = true;
+    pointer('pointerdown', { pointerType: 'mouse', button: 2 });
+    vi.advanceTimersByTime(HOLD_TIME * 2);
+    expect(calls).toEqual([]);
+  });
+
+  it('stops the browser menu for a touch, not for a mouse', () => {
+    pointer('pointerdown');
+    const touchMenu = new Event('contextmenu', { cancelable: true });
+    win.dispatchEvent(touchMenu);
+    expect(touchMenu.defaultPrevented).toBe(true);
+    pointer('pointerup');
+    pointer('pointerdown', { pointerType: 'mouse', button: 2 });
+    const mouseMenu = new Event('contextmenu', { cancelable: true });
+    win.dispatchEvent(mouseMenu);
+    expect(mouseMenu.defaultPrevented).toBe(false);
+  });
+
+  it('ignores the click that the lifted finger makes after a long press', () => {
+    pointer('pointerdown');
+    vi.advanceTimersByTime(HOLD_TIME);
+    pointer('pointerup');
+    const click = new Event('click', { cancelable: true });
+    win.dispatchEvent(click);
+    expect(click.defaultPrevented).toBe(true);
+    const next = new Event('click', { cancelable: true });
+    win.dispatchEvent(next);
+    expect(next.defaultPrevented).toBe(false);
+  });
+});
+
 describe('keys', () => {
   const k = (key: string, shiftKey = false) => moveForKey({ key, shiftKey, altKey: false, ctrlKey: false, metaKey: false });
   it('maps arrows to screens (up/down) and chapters (left/right)', () => {
@@ -30,6 +121,11 @@ describe('keys', () => {
     expect(k(' ')).toBe('next');
     expect(k(' ', true)).toBe('prev');
     expect(k('x')).toBeNull();
+  });
+
+  it('opens the menu with Esc and Enter', () => {
+    expect(k('Escape')).toBe('menu');
+    expect(k('Enter')).toBe('menu');
   });
 });
 

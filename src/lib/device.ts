@@ -4,7 +4,9 @@
 
 export function isInstalled(): boolean {
   return (
-    matchMedia('(display-mode: fullscreen), (display-mode: standalone)').matches ||
+    matchMedia('(display-mode: standalone)').matches ||
+    // A browser tab in full screen (Fullscreen API) also matches display-mode: fullscreen.
+    (matchMedia('(display-mode: fullscreen)').matches && !isFullscreen()) ||
     (navigator as Navigator & { standalone?: boolean }).standalone === true
   );
 }

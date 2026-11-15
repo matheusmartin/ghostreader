@@ -1,13 +1,14 @@
-// The main screen: every book in src/books. Each book opens at its cover.
+// The main screen: every book in src/books. Each book opens at its cover. Everything else (page
+// colour, full screen, install, update) is in the menu: hold anywhere (ui/menu.ts).
 
 import { h } from '../lib/dom.ts';
-import { canFullscreen, isFullscreen, isInstalled, toggleFullscreen } from '../lib/device.ts';
 import { groupGuides, loadAllBooks, type GuideEntry, type LoadedBook } from '../data/books.ts';
 import { getSetting, setSetting } from '../lib/storage.ts';
 import { STYLES, type Style } from '../model/types.ts';
 import { GUIDE_NAMES, STYLE_NAMES } from '../screens/render.ts';
 import { pdfLink } from '../lib/pdf.ts';
-import { installPrompt, onUpdateReady, applyUpdate } from '../pwa.ts';
+import { onUpdateReady } from '../pwa.ts';
+import { HOLD_HELP, openMenu, useMenu } from './menu.ts';
 
 export interface LibraryOptions {
   open(bookId: string): void;
@@ -15,35 +16,35 @@ export interface LibraryOptions {
 
 export function renderLibrary(root: HTMLElement, opts: LibraryOptions): { destroy(): void } {
   const grid = h('div', { class: 'lib-grid', 'aria-busy': 'true' });
-  const actions = h('div', { class: 'lib-actions' });
+  // The one pointer to the menu. When a new version waits, it says so: the update is in the menu.
+  const hint = h('button', { type: 'button', class: 'lib-hint', onclick: () => openMenu() });
+  const syncHint = () => {
+    hint.replaceChildren(
+      onUpdateReady.ready
+        ? h('span', null, h('b', null, 'Update ready.'), ' Hold anywhere for the menu.')
+        : h('span', null, h('b', null, 'Hold'), ' anywhere for the menu: page colour, full screen and more.'),
+    );
+  };
   const el = h('div', { class: 'library' },
     h('header', { class: 'lib-head' },
-      h('div', null,
-        h('h1', null, 'Ghostreader'),
-        h('p', null, 'Read with charts, infographics and summaries.'),
-      ),
-      actions,
+      h('h1', null, 'Ghostreader'),
+      h('p', null, 'Read with charts, infographics and summaries.'),
+      hint,
     ),
     grid,
   );
   root.append(el);
-
-  const syncActions = () => {
-    actions.replaceChildren();
-    const update = onUpdateReady.ready;
-    if (update) actions.append(h('button', { type: 'button', class: 'btn primary', onclick: () => applyUpdate() }, 'Update app'));
-    const prompt = installPrompt.event;
-    if (prompt && !isInstalled()) {
-      actions.append(h('button', { type: 'button', class: 'btn', onclick: () => void installPrompt.show().then(syncActions) }, 'Install'));
-    }
-    if (canFullscreen() && !isInstalled()) {
-      actions.append(h('button', { type: 'button', class: 'btn', onclick: () => void toggleFullscreen() }, isFullscreen() ? 'Exit full screen' : 'Full screen'));
-    }
-  };
-  syncActions();
-  const offUpdate = onUpdateReady.subscribe(syncActions);
-  const offInstall = installPrompt.subscribe(syncActions);
-  document.addEventListener('fullscreenchange', syncActions);
+  syncHint();
+  const offUpdate = onUpdateReady.subscribe(syncHint);
+  const offMenu = useMenu({
+    label: 'Library',
+    title: 'Ghostreader',
+    sub: 'Read with charts, infographics and summaries.',
+    help: [
+      ['Tap a book', 'Read it, in the style you chose'],
+      HOLD_HELP,
+    ],
+  });
 
   let alive = true;
   void loadAllBooks().then((books) => {
@@ -57,8 +58,7 @@ export function renderLibrary(root: HTMLElement, opts: LibraryOptions): { destro
     destroy() {
       alive = false;
       offUpdate();
-      offInstall();
-      document.removeEventListener('fullscreenchange', syncActions);
+      offMenu();
       el.remove();
     },
   };

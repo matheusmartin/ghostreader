@@ -1,6 +1,6 @@
 // Service worker and install prompt. The service worker precaches the app and every book, so
-// the library works offline. A new version waits: the library shows "Update app", and the
-// reader is never reloaded in the middle of a chapter.
+// the library works offline. A new version waits: the library says so, the menu shows "Update app",
+// and the reader is never reloaded in the middle of a chapter unless the reader asks for it.
 
 import { registerSW } from 'virtual:pwa-register';
 

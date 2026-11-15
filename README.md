@@ -18,13 +18,16 @@ the same chapter. Research and recipes: `.claude/skills/ghostreader-book/referen
 ## How it works
 
 - **Library**: the main screen shows every book.
+- **Menu**: hold a finger still anywhere, on every screen (library, book, PDF view), for the menu.
+  It is the one way to everything else: page colour, full screen, install, update, and in a book
+  also the library, style, contents, PDF and share. Esc opens it on a keyboard.
 - **Read mode**: tap a book. The app goes full screen and shows one screen at a time, from the cover.
 
 | Gesture | Move |
 |---|---|
 | Swipe up / down | Next / previous screen (continues into the next chapter) |
 | Swipe left / right | Start of the next / previous chapter |
-| Hold anywhere (0.6 s) | Menu: style, page colour, contents, library, full screen |
+| Hold anywhere, on every screen (0.6 s) | Menu: style, page colour, contents, library, full screen |
 
 Keyboard and mouse wheel do the same moves (arrows, Space, Page Up / Down, Enter, Esc).
 
@@ -136,11 +139,13 @@ src/
   model/types.ts     the book format
   model/validate.ts  checks a book file and lists every problem
   model/plan.ts      book → flat list of screens with part, chapter and section; navigation
-  input/gestures.ts  swipe detection (pointer events): axis lock, drag, commit or spring back
+  input/gestures.ts  swipe detection (pointer events): axis lock, drag, commit or spring back;
+                     long press, on the whole window
   input/keys.ts      keyboard and wheel
   ui/reader.ts       read mode: the stage, drag-to-slide transitions, moves
   ui/hud.ts          the "where am I" indicator
-  ui/menu.ts         contents, library, full screen
+  ui/menu.ts         the one menu for the whole app: hold anywhere; page colour, full screen, install, update
+  ui/book-menu.ts    the reader's part of the menu: library, style, contents, PDF, share
   ui/library.ts      main screen
   model/lint.ts      writing rules for book files: limits, style, spelling, spoilers
   screens/render.ts  one renderer per screen type; fit-to-screen

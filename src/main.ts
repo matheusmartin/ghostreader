@@ -14,6 +14,7 @@ import { parseRoute, readHash } from './router.ts';
 import { renderPrint } from './print/print.ts';
 import { renderCheck } from './ui/check.ts';
 import { renderLibrary } from './ui/library.ts';
+import { startMenu } from './ui/menu.ts';
 import { Reader } from './ui/reader.ts';
 import { startPwa } from './pwa.ts';
 import { startScheme } from './lib/scheme.ts';
@@ -22,6 +23,8 @@ import { startScheme } from './lib/scheme.ts';
 // and delete reading places saved by earlier versions.
 forgetOldData();
 startScheme();
+// Hold anywhere, on every screen, for the menu.
+startMenu();
 
 const root = document.getElementById('app')!;
 let view: { destroy(): void } | null = null;
