@@ -86,8 +86,9 @@ npm run dev
 | `npm test` | Unit tests, including the colour contrast checks and every book's content checks |
 | `npm run validate` | Check every book file in `src/books/`: format and writing rules |
 | `npm run check:screens` | Render every screen of every book at 360, 390 and 820 px; report screens that do not fit |
+| `npm run build:icons` | Draw the app icon and write every icon file in `public/icons/` (tab, app, Android, iPhone, one colour) |
 
-The PDFs and the screen check use Playwright's Chromium. `npm install` installs Playwright; if no
+The PDFs, the screen check and the icons use Playwright's Chromium. `npm install` installs Playwright; if no
 Chromium is found, run `npx playwright install chromium`. To build without PDFs: `SKIP_PDF=1 npm run build`.
 In development, "Download PDF" opens the print view (`#/print/<id>`) instead of a built file.
 
@@ -161,6 +162,7 @@ src/
 scripts/
   build-pdfs.mjs     dist/ → dist/pdf/<book>.pdf with Chromium
   check-screens.mjs  every screen of every book at three sizes
+  build-icons.mjs    the app icon: one drawing → public/icons/ (SVG and PNGs)
 ```
 
 To add a screen type: add it to `Screen` in `model/types.ts`, check it in `model/validate.ts` and
