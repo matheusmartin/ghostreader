@@ -301,7 +301,6 @@ export function validateBook(raw: unknown): ValidationResult {
   }
   str(raw, 'title', '');
   str(raw, 'author', '');
-  str(raw, 'lead', '');
   for (const k of ['subtitle', 'edition', 'upTo']) str(raw, k, '', false);
   if (raw.year !== undefined && !Number.isInteger(raw.year)) err('', '"year" must be a whole number');
   bool(raw, 'sample', '');

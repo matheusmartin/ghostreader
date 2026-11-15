@@ -1,6 +1,6 @@
 // The PDF: the whole book on A4 pages, built from the same book file as the app.
 //
-//   cover       title, author, lead, book map and contents
+//   cover       title, author, book map and contents
 //   chapters    one page (or more) per chapter: every block for the PDF, including the ones
 //               marked only: "pdf" (detail the phone screens leave out), in a wider layout
 //   answers     the answers of every "Test yourself", by chapter
@@ -96,7 +96,6 @@ function cover(book: Book, plan: Plan): HTMLElement {
       book.subtitle ? h('p', { class: 'cover-sub' }, book.subtitle) : null,
       h('p', { class: 'cover-author' }, book.author),
       book.edition ? h('p', { class: 'cover-edition' }, book.edition) : null,
-      rich(book.lead, 'p', 'cover-lead'),
     ),
     bookMap(plan),
     h('nav', { class: 'pcontents', 'aria-label': 'Contents' },

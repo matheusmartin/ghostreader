@@ -20,13 +20,6 @@
 .cover-sub { font-size: 1.05em; color: var(--body); line-height: 1.3; }
 .cover-author { font-size: 1.2em; font-weight: 700; margin-top: .5em; }
 .cover-edition { font-size: .9em; color: var(--muted); }
-.cover-lead {
-  font-size: 1.08em;
-  line-height: 1.4;
-  margin-top: .8em;
-  padding-top: .85em;
-  border-top: 1px solid color-mix(in srgb, var(--acc) 30%, transparent);
-}
 
 /* ---- book map --------------------------------------------------------------------------------- */
 

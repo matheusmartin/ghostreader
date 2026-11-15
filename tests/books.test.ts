@@ -50,7 +50,7 @@ describe('bundled books', () => {
 describe('validateBook', () => {
   it('rejects personal data: there is no highlights or notes screen', () => {
     const { errors } = validateBook({
-      format: 1, id: 'x', type: 'done', title: 'X', author: 'Y', lead: 'Z',
+      format: 1, id: 'x', type: 'done', title: 'X', author: 'Y',
       parts: [{ id: 'p', chapters: [{ id: 'c', number: '1', title: 'One', screens: [{ type: 'highlights', label: 'Your highlights', items: [] }] }] }],
     });
     expect(errors).toEqual(['parts[0].chapters[0].screens[0]: "type" must be one of summary, points, steps, list, quiz, text, scenes, chart, figure']);
@@ -63,7 +63,7 @@ describe('validateBook', () => {
       type: 'novel',
       title: 'X',
       author: 'Y',
-      lead: 'Z',
+     
       parts: [
         {
           id: 'p',
@@ -90,7 +90,7 @@ describe('validateBook', () => {
 });
 
 describe('style', () => {
-  const base = { format: 1, id: 's', type: 'reading', title: 'T', author: 'A', lead: 'L', parts: [{ id: 'p', chapters: [{ id: 'c', number: '1', title: 'One', screens: [{ type: 'summary', label: 'In short', text: 'Text.' }] }] }] };
+  const base = { format: 1, id: 's', type: 'reading', title: 'T', author: 'A', parts: [{ id: 'p', chapters: [{ id: 'c', number: '1', title: 'One', screens: [{ type: 'summary', label: 'In short', text: 'Text.' }] }] }] };
   it('accepts the four styles and nothing else', () => {
     for (const style of ['map', 'recap', 'recall', 'layers']) expect(validateBook({ ...base, style }).errors).toEqual([]);
     expect(validateBook({ ...base, style: 'fancy' }).errors).toEqual(['"style" must be one of map, recap, recall, layers']);
@@ -98,7 +98,7 @@ describe('style', () => {
 });
 
 describe('guide', () => {
-  const base = { format: 1, type: 'reading', title: 'T', author: 'A', lead: 'L', parts: [{ id: 'p', chapters: [{ id: 'c', number: '1', title: 'One', screens: [{ type: 'summary', label: 'In short', text: 'Text.' }] }] }] };
+  const base = { format: 1, type: 'reading', title: 'T', author: 'A', parts: [{ id: 'p', chapters: [{ id: 'c', number: '1', title: 'One', screens: [{ type: 'summary', label: 'In short', text: 'Text.' }] }] }] };
   it('needs a style and the id "<guide>-<style>"', () => {
     expect(validateBook({ ...base, id: 'x-recap', guide: 'x', style: 'recap' }).errors).toEqual([]);
     expect(validateBook({ ...base, id: 'x-recap', guide: 'x' }).errors).toEqual(['a file with "guide" needs "style"']);

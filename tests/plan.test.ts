@@ -8,7 +8,7 @@ const book: Book = {
   type: 'reading',
   title: 'Test',
   author: 'A. Author',
-  lead: 'A lead.',
+ 
   parts: [
     {
       id: 'p1',

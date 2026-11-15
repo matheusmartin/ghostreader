@@ -3,7 +3,7 @@ import { lintBook } from '../src/model/lint.ts';
 import type { Book, Screen } from '../src/model/types.ts';
 
 const bookWith = (screens: Screen[], extra: Partial<Book> = {}): Book => ({
-  format: 1, id: 'b', type: 'reading', title: 'B', author: 'C', lead: 'A short lead.',
+  format: 1, id: 'b', type: 'reading', title: 'B', author: 'C',
   parts: [{ id: 'p', chapters: [{ id: 'c', number: '01', title: 'One', screens }] }],
   ...extra,
 });
