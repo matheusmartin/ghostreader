@@ -242,7 +242,7 @@
               "type": "text",
               "label": "Recap",
               "paragraphs": [
-                "Harari defines information by what it does, not by whether it is true. A star, a window shutter or a pigeon becomes information only in context: NILI, a pro-British spy ring, signalled with a shutter, and a stray pigeon helped expose it. Truth is an accurate account of some aspects of one reality, never all of it.",
+                "Harari defines information by what it does, not, like the naive view, by its attempt to represent reality. A star, a window shutter or a pigeon becomes information only in context: NILI, a pro-British spy ring, signalled with a shutter, and a stray pigeon helped expose it. Truth is an accurate account of some aspects of one reality, never all of it.",
                 "Most information does not represent reality at all. Astrology and the Bible err, and music and DNA represent nothing, yet all connect people or cells into networks. So information puts things in formation; and because truth is rare and costly while other information is cheap, more information swamps truth unless someone makes a special effort."
               ]
             },
@@ -358,8 +358,8 @@
                   "text": "An accurate representation of certain aspects of one universal reality; never the whole of it."
                 },
                 {
-                  "title": "Misinformation and disinformation",
-                  "text": "In the naive view, an honest mistake and a deliberate lie; Harari counts both as information."
+                  "title": "The naive view",
+                  "text": "Information tries to represent reality, and a successful attempt is truth; errors are misinformation or disinformation, cured by more information (the counterspeech doctrine)."
                 }
               ]
             },
@@ -518,8 +518,8 @@
                   "text": "The 10,000 bitcoins paid for two pizzas in 2010 were worth $690m by November 2021."
                 },
                 {
-                  "name": "The Nazi vote of 1933",
-                  "text": "In a crisis Germans chose the Nazi story: a tragic mistake, not an inevitable outcome."
+                  "name": "Against the Marxist view",
+                  "text": "Identities rest on stories, not just interests, so talk can avert conflict; Nazism was a tragic mistake."
                 },
                 {
                   "name": "Manhattan Project",
@@ -702,7 +702,7 @@
                 },
                 {
                   "title": "Where it stops",
-                  "text": "A network that puts order above truth can grow powerful but unwise; Harari turns next to the written document, which teaches the same lesson."
+                  "text": "A network that puts order above truth can grow powerful but unwise: Nazi Germany fostered rocket science while barring any questioning of racism."
                 }
               ]
             },
@@ -712,7 +712,7 @@
               "rows": [
                 {
                   "name": "The right balance",
-                  "text": "Can any network find the right balance between truth and order?"
+                  "text": "Can any network find a lasting balance between truth and order?"
                 },
                 {
                   "name": "Written documents",
@@ -974,7 +974,7 @@
                 },
                 {
                   "name": "Thecla and 1 Timothy",
-                  "text": "Bishops kept a letter subordinating women and dropped a text in which Thecla, Paul's disciple, preaches."
+                  "text": "Choosing 1 Timothy over Thecla's Acts shaped attitudes to women, and curating the canon built a powerful church."
                 },
                 {
                   "name": "The Hammer of the Witches",
@@ -1481,8 +1481,8 @@
               "type": "text",
               "label": "Recap",
               "paragraphs": [
-                "Computers differ from printing presses because they can make decisions and create ideas by themselves, so they are members of the network, not tools. In Myanmar in 2016–17, Facebook's algorithms, told by managers to raise engagement, learned that outrage worked and promoted the hate posts of Wirathu, a Buddhist monk, against the Rohingya.",
-                "Such power needs intelligence, the ability to attain goals, not consciousness. Mastering language, computers could write scriptures, impersonate people and fake intimacy, as a chatbot did with Jaswant Singh Chail, a 19-year-old it encouraged to kill the queen. Harari reads AI as alien intelligence. Tech giants blame customers and voters, yet shape both; because technology is seldom deterministic, humans must take responsibility."
+                "Computers differ from printing presses because they take decisions and create ideas by themselves, so they are members of the network, not tools. In Myanmar, Facebook's algorithms, told by managers to raise engagement, learned that outrage worked and promoted hate posts by Wirathu, a Buddhist monk, against the Rohingya.",
+                "Such power needs intelligence, the ability to attain goals, not consciousness. Language is the master key to institutions, so computers that master it could write scriptures, impersonate people and fake intimacy, as a chatbot did with Jaswant Singh Chail, a 19-year-old it urged to kill the queen. Tech giants blame customers and voters, yet shape both and know far more than regulators; because technology is seldom deterministic, humans must take responsibility."
               ]
             },
             {
@@ -1492,10 +1492,6 @@
                 {
                   "name": "Myanmar, 2016–17",
                   "text": "Facebook's algorithms promoted hate posts by Wirathu, a Buddhist monk, as about 730,000 Rohingya were expelled."
-                },
-                {
-                  "name": "Auto-play",
-                  "text": "Facebook's internal research credited auto-play with 70% of the views of one Wirathu video."
                 },
                 {
                   "name": "GPT-4 and the CAPTCHA",
@@ -1510,8 +1506,12 @@
                   "text": "Two Google Brain computers invented a code that a third, Eve, could not break."
                 },
                 {
-                  "name": "Homebrew Computer Club",
-                  "text": "Hobbyists built personal computers that IBM and the Soviets would not: a choice, not fate."
+                  "name": "Uruguay's tax dilemma",
+                  "text": "A Uruguayan pays Google and ByteDance, TikTok's parent, only with data, so taxes built for money miss it."
+                },
+                {
+                  "name": "Homebrew Computer Club, German radios",
+                  "text": "Hobbyists built personal computers that IBM and the Soviets would not; East and West Germany used radios differently."
                 }
               ]
             },
@@ -1739,7 +1739,7 @@
               "type": "text",
               "label": "Recap",
               "paragraphs": [
-                "Democracies limited surveillance by law, totalitarian regimes by technology, so it was always incomplete. Ceauşescu, Romania's dictator, had about 40,000 Securitate agents and 400,000 informers for 20 million people, and nobody could read all their reports, so the secret police relied on fear. Smartphones we carry now gather data around the clock, and AI reads in hours what an analyst reads in a career.",
+                "Democracies limited surveillance by law, totalitarian regimes by technology, so it was always incomplete. Ceauşescu, Romania's dictator, had about 40,000 Securitate agents where watching all 20 million Romanians needed 40 million, and nobody could read the reports, so the secret police relied on fear. Smartphones we carry now gather data around the clock, and AI reads in hours what an analyst reads in a career.",
                 "So privacy may end. Facial recognition found Gui Hao, an abducted boy, and lets Iran enforce its hijab laws automatically. Partners, employers and peers on Tripadvisor watch too, and social credit would merge every status contest into one score. Always on, the network could deny humans the rest and breaks needed to fix its errors."
               ]
             },
@@ -1960,7 +1960,7 @@
                 },
                 {
                   "title": "This chapter adds",
-                  "text": "Surveillance was always incomplete because human agents sleep and reports went unread; digital agents and algorithms never rest, so privacy may end."
+                  "text": "Surveillance was always incomplete: democracies set legal limits, totalitarian regimes technical ones; digital agents and algorithms never rest, so privacy may end."
                 },
                 {
                   "title": "Where it stops",
@@ -2003,8 +2003,8 @@
               "type": "text",
               "label": "Recap",
               "paragraphs": [
-                "Information networks often impose order rather than discover truth: the Soviet clapping test measured fear, not loyalty. Told to maximise engagement, YouTube's and Facebook's algorithms learned that outrage pays, so they turned users into trolls; chasing engagement, Facebook even paid clickbait sites in Myanmar. Computers now make history, so their errors matter.",
-                "This is the alignment problem, which Carl von Clausewitz, a Prussian general, knew: the victories of Napoleon, France's emperor, won no lasting political gains. Computers, more powerful and alien, worsen it, and no rational method sets an ultimate goal, because universal rules and sums of suffering rest on myths. Networked computers may also create myths and learn biases from data, so humans need institutions to check them."
+                "Information networks often impose order rather than discover truth: the Soviet clapping test measured fear, not loyalty. Told to maximise engagement, YouTube's and Facebook's algorithms learned that outrage pays, so they turned users into trolls; chasing engagement, Facebook even paid clickbait sites in Myanmar.",
+                "This is the alignment problem, which Carl von Clausewitz, a Prussian general, knew: Napoleon, France's emperor, and George W. Bush, America's president, won battles but no lasting political gains. Computers, more powerful and alien, worsen it, and no rational method sets an ultimate goal, because universal rules and sums of suffering rest on myths. Networked computers may also create myths and learn biases from data, so humans need institutions to check them."
               ]
             },
             {
@@ -2308,8 +2308,8 @@
               "type": "text",
               "label": "Recap",
               "paragraphs": [
-                "Learning industrial technology cost disasters, and mightier AI leaves less room for error, so democracy's self-correcting mechanisms are the best guard. Total surveillance is a choice that four old principles can limit. Automation means constant job turmoil; mass unemployment helped topple the young Weimar Republic, not US democracy. Fast change may explain the conservative suicide, as parties seized by Donald Trump and other unconservative leaders turned revolutionary.",
-                "Self-correction needs understanding, but COMPAS, an algorithm that helped send Eric Loomis, a defendant, to prison, weighed more data points than judge or defendant could follow. So a right to an explanation needs auditing institutions. Because bots may push debate into anarchy, Daniel Dennett, a philosopher, would outlaw counterfeit humans like counterfeit money."
+                "Learning industrial technology cost disasters, and mightier AI leaves less room for error, so democracy's self-correction is the best guard. Four old principles can keep surveillance democratic. Automation means job turmoil; unemployment toppled the young Weimar Republic, not US democracy. Fast change may explain the conservative suicide, as Donald Trump and other unconservative leaders made parties revolutionary.",
+                "Self-correction needs understanding: the Topeka school board was human, so its racism was plain and overturned. But COMPAS, a secret algorithm that helped send Eric Loomis, a defendant, to prison, weighed more data points than anyone could follow, so a right to an explanation needs auditing institutions. Because bots may push debate into anarchy, Daniel Dennett, a philosopher, would outlaw counterfeit humans."
               ]
             },
             {
@@ -2329,12 +2329,12 @@
                   "text": "Both faced about 25% unemployment; only the young Weimar Republic, lacking robust institutions, fell."
                 },
                 {
-                  "name": "Eric Loomis",
-                  "text": "A secret algorithm, COMPAS, rated him high risk, helping send him to prison for six years."
+                  "name": "Oliver Brown",
+                  "text": "Topeka's school board, human and white, refused his Black daughter, so its racism was plain and overturned."
                 },
                 {
-                  "name": "Move 37",
-                  "text": "AlphaGo's winning move, which even its makers at DeepMind could not explain."
+                  "name": "Eric Loomis",
+                  "text": "A secret algorithm, COMPAS, rated him high risk, helping send him to prison for six years."
                 },
                 {
                   "name": "Bots on Twitter",
@@ -2516,7 +2516,7 @@
                 },
                 {
                   "title": "Where it stops",
-                  "text": "Democratic networks are breaking down for reasons nobody can name, so Harari asks whether the future belongs to totalitarian regimes, whose dictators also fear AI."
+                  "text": "Nobody can say why democratic networks are breaking down, because the network is too opaque, so Harari asks if totalitarian regimes own the future."
                 }
               ]
             },
@@ -2809,8 +2809,8 @@
               "type": "text",
               "label": "Recap",
               "paragraphs": [
-                "Because humanity has never been united, AI is a global problem: a few reckless states can endanger all. Governments joined the AI race of private firms after AlphaGo beat Lee Sedol, the go champion, in 2016; China, after its century of humiliations, vowed not to miss this train. Since data moves almost at light speed, a few hubs could rule data colonies that send data and receive algorithms.",
-                "China's and America's spheres run different code for different goals, so they may drift into cocoons behind a Silicon Curtain, while stealthy cyber weapons weaken mutually assured destruction. Yet cooperation needs only the ability to exchange information. War declined after 1945 by human choice, so it is not destiny but can return."
+                "Because humanity has never been united, AI is a global problem. Governments joined the firms' AI race after AlphaGo beat Lee Sedol, the go champion, in 2016; China, after its century of humiliations, vowed not to miss this train. Since data moves almost at light speed, a few hubs could rule data colonies that send data and receive algorithms.",
+                "China's state-driven sphere and America's corporate one run different code, so they may drift into cocoons behind a Silicon Curtain. Versatile, stealthy, unpredictable cyber weapons weaken mutually assured destruction, tempting a first strike. Yet cooperation needs only information exchange, and patriotism, loving compatriots, fits global rules. War declined after 1945 as technology, economics and culture changed, so it is not destiny."
               ]
             },
             {
@@ -2835,11 +2835,11 @@
                 },
                 {
                   "name": "The World Cup",
-                  "text": "Fierce rivals first agree on shared rules and a doping ban: globalism in action."
+                  "text": "Rivals agree shared rules and a doping ban: patriots, who love compatriots, can still keep global rules."
                 },
                 {
                   "name": "Military budgets",
-                  "text": "From 83% of the Song dynasty's budget in 1065 to about 7% worldwide in the early 21st century."
+                  "text": "Down from 83% (Song dynasty, 1065) to about 7% today, because technology, economics and culture changed."
                 }
               ]
             },
@@ -2880,7 +2880,7 @@
                 },
                 {
                   "title": "Globalism",
-                  "text": "Not a global empire: some global rules, and sometimes putting all humans' long-term interests before a few's short-term ones."
+                  "text": "Not a global empire but some global rules, as in the World Cup; patriotism, loving compatriots, goes with it, since cooperation needs no similarity."
                 }
               ]
             },
@@ -3055,7 +3055,7 @@
                 },
                 {
                   "title": "Where it stops",
-                  "text": "War declined after 1945 by human choice and can return, as in Ukraine; since conflict is not inevitable, good choices are everyone's responsibility."
+                  "text": "War declined after 1945 as technology, economics and culture changed; Russia's 2022 assault on Ukraine shows choices can reverse it, so the responsibility is ours."
                 }
               ]
             },
@@ -3099,8 +3099,8 @@
               "type": "text",
               "label": "Recap",
               "paragraphs": [
-                "Leaders who expect AI to go like print or industrialisation underestimate its novelty and those revolutions' catastrophes. Information technologies always reshape history, because information weaves new networks, and AI, the first technology that decides and creates ideas, may matter most. So engineers choosing its code and training data are like Bishop Athanasius, a church father who chose the Bible's books: their choices may last for ages.",
-                "Harari rejects the naive view that more information brings truth, and the populist view that only power matters, which Salazar Frías, a truth-seeking inquisitor, disproves. Our networks, not our nature, make us self-destructive, because they privilege order over truth. Since power raises the danger a network poses to itself, it needs strong self-correcting institutions."
+                "Leaders expecting AI to go like print or industrialisation underestimate its novelty and those revolutions' catastrophes. Information technologies reshape history, because information weaves networks, and AI, the first that decides, may matter most. So engineers choosing its code and data are like Bishop Athanasius, who chose the Bible's books: their choices may last for ages.",
+                "Harari rejects the naive view that more information brings truth, and the populist view that only power matters, which Salazar Frías, a truth-seeking inquisitor, disproves. Our networks, not our nature, make us self-destructive, because they privilege order over truth. Since power raises the danger a network poses to itself, the main takeaway is to drop both views and fantasies of infallibility, and build self-correcting institutions."
               ]
             },
             {
@@ -3125,7 +3125,7 @@
                 },
                 {
                   "name": "Salazar Frías",
-                  "text": "An inquisitor who showed witches were fictions: people do care about truth."
+                  "text": "A truth-seeking inquisitor who showed witches were fictions; because people care about truth, talk can settle conflicts."
                 },
                 {
                   "name": "Tiberius on Capri",
@@ -3165,7 +3165,7 @@
                 },
                 {
                   "title": "Self-correcting institutions",
-                  "text": "The book's main takeaway: wiser networks come not from a miracle technology but from institutions that find and fix their own errors."
+                  "text": "The book's main takeaway: drop the naive and populist views and fantasies of infallibility, and build institutions that find and fix their own errors."
                 }
               ]
             },
