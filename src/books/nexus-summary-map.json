@@ -28,7 +28,7 @@
             {
               "type": "summary",
               "label": "In short",
-              "text": "Humans gain power by building large networks of cooperation, but because those networks are held together by fictions, they tend to use power unwisely. The fault lies not in individual hubris but in how information binds networks.",
+              "text": "Humans gain power by cooperating in large networks, but because those networks are held together by fictions, they tend to use power unwisely. The fault lies not in individual hubris but in how information binds networks.",
               "takeaway": {
                 "label": "Takeaway",
                 "text": "AI, the first technology that can decide and create ideas by itself, raises the stakes."
@@ -94,7 +94,7 @@
                 },
                 {
                   "title": "AI decides",
-                  "text": "Unlike knives or bombs, AI can make decisions and create new ideas by itself; it already decides on mortgages, jobs and prison sentences."
+                  "text": "Unlike knives or bombs, AI can make decisions and invent new ideas by itself; computers already decide on mortgages, jobs and prison sentences."
                 }
               ]
             },
@@ -131,7 +131,7 @@
                 "Power comes from cooperation in large networks, not from individuals, so the flaw lies in networks.",
                 "Large networks bind their members with fictions and delusions, so they can grow powerful without growing wise.",
                 "The naive view says more information brings truth and wisdom; the populist view calls information a weapon.",
-                "Both views mislead; to avoid yielding power to a charismatic leader or AI, we must first understand information."
+                "Both views mislead; to keep power from a charismatic leader or AI, we must first understand information."
               ]
             },
             {
@@ -162,10 +162,10 @@
               "label": "The chapter in full",
               "only": "pdf",
               "paragraphs": [
-                "Humans named their species Homo sapiens, the wise human, yet after 100,000 years of discoveries and conquests they face ecological collapse, AI that could escape their control and a possible new world war. If we are so wise, why are we so self-destructive? Old fables, such as the Greek myth of Phaethon, the boy who loses control of the sun's chariot, and The Sorcerer's Apprentice, a poem by Johann Wolfgang von Goethe, blame flawed individual psychology and leave us waiting for a god or a sorcerer to save us.",
-                "Harari rejects that answer because power never comes from one person: it stems from cooperation between large numbers of humans. The way large networks are built predisposes them to use power unwisely, and more precisely this is an information problem. Large networks bind their members and keep order with fictions and mass delusions, which is why Nazism and Stalinism, two of the strongest networks ever, rested on deluded ideas. Delusional networks are not doomed to fail.",
-                "The naive view of information, the semi-official ideology of the computer age, holds that more information leads to truth, and truth to power and wisdom. It proved right about child mortality: only three of 12 children in Goethe's family reached adulthood, while by 2020, thanks to shared medical data, 95.6% of children worldwide lived beyond 15. Yet every smartphone holds more information than the ancient Library of Alexandria, and humanity is closer than ever to destroying itself.",
-                "AI is the first technology that can make decisions and create new ideas by itself, and experts warn of a Silicon Curtain that could divide rival human powers, or all humans from AI overlords. The populist view, voiced by populist leaders such as Donald Trump and Jair Bolsonaro, treats information as a weapon and power as the only reality; it starts by distrusting all elites and often ends by trusting one leader. Information is neither the raw material of truth nor a mere weapon, and the book explores the middle ground. History is not deterministic, so informed choices can still prevent the worst."
+                "Humans call themselves Homo sapiens, the wise human, yet after 100,000 years of discovery and conquest they face ecological collapse, AI that could escape their control and a possible new world war. Why, then, is so wise a species so self-destructive? Old fables, such as the Greek myth of Phaethon, the boy who loses control of the sun's chariot, and The Sorcerer's Apprentice, a poem by Johann Wolfgang von Goethe, blame flawed individual psychology and leave us waiting for a god or a sorcerer to save us.",
+                "Harari rejects that answer because power never comes from one person: it arises when great numbers of humans cooperate. Large networks are built in a way that inclines them to misuse power, and more precisely this is an information problem. Large networks bind their members and keep order with fictions and mass delusions, which is why Nazism and Stalinism, two of the strongest networks ever, rested on deluded ideas. Delusional networks are not doomed to fail.",
+                "The naive view of information, the semi-official ideology of the computer age, holds that enough information yields truth, and truth yields power and wisdom. It proved right about child mortality: only three of 12 children in Goethe's family reached adulthood, while by 2020, thanks to shared medical data, 95.6% of children worldwide lived beyond 15. Yet every smartphone holds more information than Alexandria's ancient library, and humanity has never been nearer to destroying itself.",
+                "AI is the first technology that can decide and invent new ideas on its own, and experts warn of a Silicon Curtain that could divide rival human powers, or all humans from AI overlords. The populist view, voiced by populist leaders like Donald Trump and Jair Bolsonaro, treats information as a weapon and power as the only reality; it starts by distrusting all elites and often ends by trusting one leader. Information is neither the raw material of truth nor a mere weapon, and the book explores the middle ground. History is not deterministic, so informed choices can still prevent the worst."
               ]
             },
             {
@@ -184,7 +184,7 @@
                 },
                 {
                   "title": "Worried experts",
-                  "text": "In a 2023 survey of 2,778 AI researchers, more than a third gave at least a 10% chance of outcomes as bad as human extinction."
+                  "text": "A 2023 poll of 2,778 AI researchers found more than a third putting the odds of an outcome as dire as human extinction at 10% or more."
                 }
               ]
             },
@@ -195,7 +195,7 @@
               "rows": [
                 {
                   "name": "Naive view of information",
-                  "text": "More information leads to truth, and truth to power and wisdom, so bigger networks are wiser."
+                  "text": "Enough information yields truth, and truth yields power and wisdom, so bigger networks are wiser."
                 },
                 {
                   "name": "Populist view of information",
@@ -244,7 +244,7 @@
                 },
                 {
                   "title": "Where it stops",
-                  "text": "To avoid yielding power to a charismatic leader or an AI, we must first understand information, so the book starts by asking what it is."
+                  "text": "So that power does not pass to a charismatic leader or AI, we must first understand information; the book starts by asking what it is."
                 }
               ]
             },
@@ -262,7 +262,7 @@
                 },
                 {
                   "name": "A divided world",
-                  "text": "Will AI split the world into hostile blocs, or can humans unite?"
+                  "text": "Will rival blocs split the world, leaving us prey to runaway AI, or can we unite?"
                 }
               ]
             }
@@ -436,7 +436,7 @@
               "steps": [
                 "Any object can be information, depending on context: a star, a window shutter, a pigeon.",
                 "The naive view says information represents reality, and a successful representation is truth.",
-                "Truth captures some aspects of one reality; no account, however true, captures all of it.",
+                "Truth captures only some aspects: a true count of ten thousand soldiers ignores which are veterans or recruits.",
                 "Astrology and the Bible err, and music and DNA represent nothing, yet all of them connect.",
                 "So information is defined by connection, and history shows rising connection without rising truth or wisdom."
               ]
@@ -462,9 +462,9 @@
               "label": "The chapter in full",
               "only": "pdf",
               "paragraphs": [
-                "Harari looks at the role of information in history rather than seeking a universal definition. Almost anything can be information in the right context: the note that Cher Ami, an army carrier pigeon, carried for a trapped American battalion in October 1918; the window shutter with which Sarah Aaronsohn, a commander of the NILI spy ring, signalled British ships; or a stray NILI pigeon that told the Ottomans a spy ring was at work. The naive view holds that something is information when it tries to represent reality, and that a successful representation is truth.",
-                "The book accepts that truth is an accurate representation of reality, but stresses that truth is not reality itself. There is one universal reality, with objective and subjective levels, and on both levels facts can be told from errors. Yet no account captures every aspect and viewpoint: a map on a one-to-one scale, as in a story by Jorge Luis Borges, would be no map at all. Truth draws attention to some aspects and ignores others, though some accounts are more truthful than others.",
-                "Most information, however, does not represent anything. Astrology has shaped history for thousands of years; music connects people without being true or false; zebra DNA holds no representation of lions or of the zebra's own heart, yet it helps build a body that can flee. The Bible errs about human origins and epidemics, yet it bonded billions of people into religious networks. Errors, lies and fictions are information too. What information does is connect: it puts things in formation and so creates new realities.",
+                "Harari studies what information has done in history rather than seeking a universal definition. Almost anything can become information in a fitting context: the note that Cher Ami, a military carrier pigeon, carried for a trapped American battalion in October 1918; the window shutter with which Sarah Aaronsohn, a commander of the NILI spy ring, signalled British ships; or a stray NILI pigeon that told the Ottomans a spy ring was at work. The naive view holds that something is information when it tries to represent reality, and that a successful representation is truth.",
+                "The book accepts that truth means representing reality accurately, but stresses that truth is not reality itself. There is one universal reality, with objective and subjective levels, and on both levels facts can be told from errors. Yet no account captures every aspect and viewpoint: a map as large as the land it shows, as Jorge Luis Borges imagined in a story, would be no map at all. Truth draws attention to some aspects and ignores others, though some accounts are more truthful than others.",
+                "Most information, however, does not represent anything. Astrology has shaped history for thousands of years; music connects people without being true or false; zebra DNA holds no representation of lions or of the zebra's own heart, yet it helps build a body that can flee. The Bible errs about human origins and epidemics, yet it joined billions into religious networks. Errors, lies and fictions are information too. What information does is connect: it puts things in formation and so creates new realities.",
                 "Rejecting the naive view does not mean rejecting truth or embracing the populist view. Some information strives to connect people by representing reality accurately, but that takes a special effort. Truthful accounts are rare and costly while other information is cheap, so more information alone tends to swamp the truth. History shows constantly rising connectivity without a matching rise in truthfulness or wisdom: Nazi and Stalinist delusions about race and class helped tens of millions march together. The next chapters turn to the first information technology, the story."
               ]
             },
@@ -476,7 +476,7 @@
               "items": [
                 {
                   "title": "Cher Ami",
-                  "text": "In October 1918 Cher Ami, an army carrier pigeon, reportedly carried a note that helped end friendly fire on hundreds of trapped American soldiers. The pigeon knew nothing of its message."
+                  "text": "In October 1918 Cher Ami, a military carrier pigeon, reportedly carried a note that helped end friendly fire on hundreds of trapped American soldiers. The pigeon knew nothing of its message."
                 },
                 {
                   "title": "The NILI spy ring",
@@ -499,7 +499,7 @@
               "rows": [
                 {
                   "name": "Information",
-                  "text": "Whatever connects different points into a network, whether or not it represents reality."
+                  "text": "Anything that links separate points into a network, whether or not it represents reality."
                 },
                 {
                   "name": "Truth",
@@ -663,7 +663,7 @@
               "nodes": [
                 {
                   "name": "Brands and leaders",
-                  "note": "Fictional ties"
+                  "note": "Stalin, Cher Ami"
                 },
                 {
                   "name": "Shared memories",
@@ -746,7 +746,7 @@
                   "Large-scale identities are intersubjective"
                 ],
                 [
-                  "Only force changes beliefs",
+                  "Implies no point in talking",
                   "Talk and new stories can make peace"
                 ],
                 [
@@ -762,15 +762,15 @@
               "items": [
                 {
                   "title": "Human-to-story chains",
-                  "text": "About 70,000 years ago Sapiens began telling and believing fictions, so strangers could cooperate through a shared story rather than personal bonds."
+                  "text": "About 70,000 years ago Sapiens began telling fictions, so strangers could cooperate through a shared story, or a leader's brand, rather than personal bonds."
                 },
                 {
                   "title": "Intersubjective reality",
-                  "text": "Laws, gods, nations and money exist in the stories many minds share; if people stop talking about them, they vanish."
+                  "text": "Laws, gods, nations and money exist in stories many minds share; no sonar scan can show whether Kosovo is a state: that rests on agreement."
                 },
                 {
                   "title": "Truth and order",
-                  "text": "Truth is complicated and often painful; fiction can be simple and comforting, so networks often build their order on it."
+                  "text": "Order-keepers usually command truth-knowers: Robert Oppenheimer, a Manhattan Project physicist, took orders. Fiction, simpler and more comforting than truth, keeps order more easily."
                 }
               ]
             },
@@ -865,8 +865,8 @@
               "label": "The chapter in full",
               "only": "pdf",
               "paragraphs": [
-                "Sapiens rule the world because they alone can cooperate flexibly in unlimited numbers. Humans cannot form intimate bonds with more than a few hundred people, but about 70,000 years ago Sapiens began to tell and believe fictional stories. Stories gave them human-to-story chains: strangers need only know the same story, which works like a central connector. Followers connect to a crafted story about a leader, a brand, as Joseph Stalin, at the centre of a vast personality cult, told his son. Even the tale of Cher Ami, the war pigeon, was partly army branding, and shared stories give strangers family memories, as the Passover does.",
-                "Before stories there were two levels of reality: objective (stones, asteroids) and subjective (pain, love). Stories add a third, intersubjective reality: laws, gods, nations, corporations and currencies, which exist in the stories many minds share. A pizza's calories are objective, but its price is intersubjective, as the soaring value of bitcoin shows. A state exists if enough people agree that it does, so no sonar scan or DNA survey can settle a dispute over one.",
+                "Sapiens rule the world because they alone can cooperate flexibly in unlimited numbers. Humans can keep close personal ties with only a few hundred people, but about 70,000 years ago Sapiens began to tell fictional stories and believe them. Stories gave them human-to-story chains: strangers need only know the same story, which works like a central connector. Followers connect to a crafted story about a leader, a brand, as Joseph Stalin, at the centre of a vast personality cult, told his son. Even the tale of Cher Ami, the war pigeon, was partly army branding, and shared stories give strangers family memories, as the Passover does.",
+                "Before stories there were two levels of reality: objective (stones, asteroids) and subjective (pain, love). Stories add a third, intersubjective reality: laws, gods, nations, money and corporations, which exist in the stories many minds share. A pizza's calories are objective, but its price is intersubjective, as the soaring value of bitcoin shows. A state exists if enough people agree that it does, so no sonar scan or DNA survey can settle a dispute over one.",
                 "Story-based tribes spread risk and shared know-how, which made Sapiens the most powerful animal. Harari calls the Marxist view of stories as a smoke screen for material interests wrong: large-scale identities are always intersubjective, and chimpanzees, with the same material interests, form no nations. Because history is shaped by stories, talk can avert conflict; Germans' choice of the Nazi story in 1933 was a tragic mistake, not fate.",
                 "Power depends on truth and on order, and those who keep order usually command those who know the truth: Robert Oppenheimer, a Manhattan Project physicist, took orders, and in Iran nuclear physicists follow theologians. Fiction unites more easily because it can be simple and comforting; Plato, in his Republic, proposed a noble lie to justify hierarchy. A third option is a fiction that admits it is one: the US Constitution could be amended to abolish slavery, while the Ten Commandments, claiming divine origin, cannot change. Every network walks a tightrope between truth and order. One that privileges order, as Nazi Germany did with rocket science but not race theory, grows powerful but unwise, and faster information technology only makes the balance more urgent."
               ]
@@ -878,8 +878,8 @@
               "only": "pdf",
               "items": [
                 {
-                  "title": "Two pizzas for 10,000 bitcoins",
-                  "text": "Laszlo Hanyecz, the buyer in the first known bitcoin purchase, paid 10,000 bitcoins for two pizzas in 2010; by November 2021 they were worth $690m."
+                  "title": "The bitcoin pizzas",
+                  "text": "Laszlo Hanyecz, the buyer in the first known bitcoin purchase, paid 10,000 bitcoins for two pizzas in 2010; by November 2021 those bitcoins were worth $690m."
                 },
                 {
                   "title": "Cher Ami as a brand",
@@ -1016,23 +1016,23 @@
                   "Turn stories into schools and hospitals"
                 ]
               ],
-              "key": "Mythology and bureaucracy are the twin pillars of large societies"
+              "key": "Large societies need both: mythology fascinates, bureaucracy breeds suspicion"
             },
             {
               "type": "points",
               "label": "Key points",
               "items": [
                 {
-                  "title": "Documents make reality",
-                  "text": "Ownership once rested on neighbours' agreement; in a literate state the document decides, and in Old Assyrian a destroyed loan tablet ended the debt."
-                },
-                {
-                  "title": "Retrieval and drawers",
-                  "text": "Finding documents needs an order that archives lack, so bureaucracy divides the world into drawers and forces people to fit, trading truth for order."
+                  "title": "Documents and drawers",
+                  "text": "Documents create reality, so an Old Assyrian debt died with its tablet; to find documents, bureaucracy sorts the world into drawers, trading truth for order."
                 },
                 {
                   "title": "Power hard to see",
-                  "text": "Documents gave power to administrators, accountants and lawyers and strengthened the centre, while citizens found it harder to understand how the system worked."
+                  "text": "Documents gave power to administrators, accountants and lawyers and strengthened the centre; citizens, who find the system hard to understand, often distrust it."
+                },
+                {
+                  "title": "Lives saved and ruined",
+                  "text": "John Snow, a physician, listed cholera cases, so officials disabled the Broad Street pump; Romania's 1938 document law cost Bruno Luttinger, Harari's grandfather, his citizenship."
                 }
               ]
             },
@@ -1177,9 +1177,9 @@
               "only": "pdf",
               "paragraphs": [
                 "Nations are often first imagined by poets: Hayim Nahman Bialik, Israel's national poet, and Theodor Herzl, the visionary who organised the Zionist movement, inspired Zionism. But dreams cannot run a state. Armies need taxes and cities need sewers, and such services run on lists of properties, payments and debts. Brains hold stories easily but lists poorly, so complex taxation needed a non-organic technology: the written document. The two work together: national myths legitimise tax records, and tax records turn stories into schools and hospitals.",
-                "Documents can be wrong, as a scribe's miscounted total on a clay tablet from Ur shows, but they also create new realities. In an oral community, owning a field meant that the neighbours agreed it was yours; in a literate state the document decides, so a distant authority can control ownership and an owner can sell without asking anyone. In Old Assyrian, a repaid loan contract was killed, and a destroyed tablet ended the debt.",
+                "Documents can be wrong, as a scribe's miscounted total on a clay tablet from Ur shows, but they also create new realities. In an oral community, owning a field meant that the neighbours agreed it was yours; in a literate state the document decides, so a distant authority can control ownership and an owner can sell without asking the neighbours. In Old Assyrian, a repaid loan contract was killed, and a destroyed tablet ended the debt.",
                 "Writing created a new problem, retrieval. Forests have an order that evolution made, but archives have none, so archivists had to devise one: bureaucracy, literally rule by writing desk. It divides the world into drawers and forces people and facts to fit, which keeps order at the expense of truth: officials chase narrow goals, universities split a pandemic between departments, and living things keep breaking out of biology's species. Yet bureaucracy also saves lives. John Snow, a physician, listed cholera patients in 1854 and traced London's outbreak to the Broad Street pump, and the sewage bureaucracy that followed, the deep state, has saved millions.",
-                "Mythology and bureaucracy are the twin pillars of large societies, but bureaucracy breeds suspicion because it is hard to understand. Human-to-document chains gave power to administrators, accountants and lawyers and strengthened the centre over citizens, while art, built on biological dramas such as sibling rivalry, rarely explains it. Rebels from the 1381 Peasants' Revolt to the French Revolution burned archives to erase their debts. In 1938 a Romanian law, built on fake statistics by the government of Octavian Goga, a poet turned prime minister, stripped 367,000 of 758,000 Jews of citizenship, among them Bruno Luttinger, Harari's grandfather. Networks can do good or ill, and more information alone does not find the balance between truth and order."
+                "Mythology and bureaucracy together hold up every large society, but bureaucracy breeds suspicion because it is hard to understand. Human-to-document chains gave power to administrators, accountants and lawyers and strengthened the centre over citizens, while art, built on biological dramas such as sibling rivalry, rarely explains it. Rebels from the 1381 Peasants' Revolt to the French Revolution burned archives to erase their debts. In 1938 a Romanian law, built on fake statistics by the government of Octavian Goga, a poet turned prime minister, stripped 367,000 of 758,000 Jews of citizenship, among them Bruno Luttinger, Harari's grandfather. Networks can do good or ill, and more information alone does not find the balance between truth and order."
               ]
             },
             {
@@ -1202,7 +1202,7 @@
                 },
                 {
                   "title": "Burning the archives",
-                  "text": "In the 1381 Peasants' Revolt, rebels burned court rolls and the archives of the University of Cambridge, because killing the documents erased their debts."
+                  "text": "In the 1381 Peasants' Revolt, rebels burned court rolls and the University of Cambridge's archives, because killing the documents erased their debts."
                 },
                 {
                   "title": "Kafka's Trial",
@@ -1256,7 +1256,7 @@
                 },
                 {
                   "q": "Why do people find bureaucracy hard to understand?",
-                  "a": "It follows none of the biological dramas our minds and stories are built for, so it is hard to tell whether it helps or harms."
+                  "a": "Its workings are hard to see and harder to interpret, and it fits none of the biological dramas that our minds and art are built on."
                 }
               ]
             },
@@ -1348,7 +1348,7 @@
               "nodes": [
                 {
                   "title": "Bypass fallible humans",
-                  "text": "Messengers err or take bribes"
+                  "text": "Messengers err; the Pythia took bribes"
                 },
                 {
                   "title": "Canonise a holy book",
@@ -1371,11 +1371,11 @@
               "items": [
                 {
                   "title": "Holy books",
-                  "text": "A fixed block of texts in many identical copies, meant to bypass fallible humans; yet humans chose, copied and interpreted it."
+                  "text": "Fixed texts in identical copies, meant to bypass fallible humans; yet humans chose them, and keeping 1 Timothy over Thecla's Acts shaped attitudes to women."
                 },
                 {
                   "title": "More information, more witches",
-                  "text": "Print made The Hammer of the Witches, an inquisitor's manual, a best seller; more trials and confessions built an information sphere where witches seemed real."
+                  "text": "Print made The Hammer of the Witches, an inquisitor's manual, a best seller; more information made witches seem real, and 40,000 to 50,000 were executed."
                 },
                 {
                   "title": "Self-correcting mechanisms",
@@ -1471,10 +1471,10 @@
               "type": "steps",
               "label": "The logic",
               "steps": [
-                "Every network errs, and correcting errors needs legitimacy beyond fallible humans.",
-                "Holy books tried to supply it, but humans had to choose, copy and interpret them.",
-                "So power passed to interpreters, and the church built an echo chamber that blocked dissent.",
-                "A free market of information was no cure: print spread witch-hunting fantasies faster than science.",
+                "Self-correction needs legitimacy, but humans err, so people dreamed of an infallible superhuman source.",
+                "Holy books were meant to be that source, but humans had to choose, copy and interpret them.",
+                "So power passed to interpreters; the church, which controlled book copying, locked medieval Europe in an echo chamber.",
+                "A free market of information was no cure: print spread witch-hunting fantasies, rewarding outrage over truth.",
                 "Science earns trust by exposing its own errors, a strength that costs order."
               ]
             },
@@ -1534,10 +1534,10 @@
               "label": "The chapter in full",
               "only": "pdf",
               "paragraphs": [
-                "Every network errs, and self-correcting mechanisms need legitimacy, so humans have dreamed of an infallible, superhuman source; historically, religion offered one. But knowing the gods' will meant trusting human messengers. Among the Baining people, Baninge, who read his feverish brother's words as a spirit's messages, won dictatorial powers and nearly starved his community; in Greece, the Pythia, Apollo's high priestess, was bribed to tell the Spartans to free Athens.",
-                "Holy books were a technology to bypass such humans: a fixed block of texts in many identical copies. Yet humans compiled them. The Dead Sea Scrolls contain no Bible, and rabbis took centuries to settle the canon; bishops later chose the New Testament, keeping 1 Timothy, which subordinates women, and dropping the Acts of Paul and Thecla, in which a woman preaches. Copyists erred, and above all the texts needed interpreting, so trust in the book became trust in the rabbis, whose rulings became new holy books, the Mishnah and the Talmud, and in the church. The Catholic Church used its control of copying workshops and libraries to lock Europe in an echo chamber.",
-                "The naive view offers a free market of information instead. But print did not cause the scientific revolution. It made a best seller of The Hammer of the Witches by Heinrich Kramer, an inquisitor, while the first run of Copernicus's founding scientific work did not sell out. A witch-hunting bureaucracy made witches an intersubjective reality, and the more trials and confessions it produced, the harder they were to doubt; 40,000 to 50,000 people were executed.",
-                "Science rests instead on curation institutions such as the Royal Society, which ask for proof and earn trust through strong self-correcting mechanisms, starting from the discovery of ignorance. The Catholic Church, caught in the infallibility trap, changes but denies it; science rewards those who expose errors, as quasicrystals and the DSM, psychiatry's manual, show. An institution without self-correction, like Soviet genetics under Trofim Lysenko, an agronomist backed by the dictator, is not science. Strong self-correction costs order, which science leaves to police and governments; the next chapter asks whether politics can afford it."
+                "Humans err, and self-correcting mechanisms need legitimacy, so people have dreamed of an infallible, superhuman source; historically, religion offered one. But knowing the gods' will meant trusting human messengers. Among the Baining people, Baninge, who read his feverish brother's words as a spirit's messages, won dictatorial powers and nearly starved his community; in Greece, the Pythia, Apollo's high priestess, was bribed to tell the Spartans to free Athens.",
+                "Holy books were a technology to bypass such humans: a fixed block of texts in many identical copies. Yet humans compiled them. The Dead Sea Scrolls contain no Bible, and rabbis took centuries to settle the canon; bishops later chose the New Testament, keeping 1 Timothy, which subordinates women, and dropping the popular Acts of Paul and Thecla, in which a woman preaches. Copyists erred, and above all the texts needed interpreting, so trust in the book became trust in the rabbis, whose rulings became new holy books, the Mishnah and the Talmud, and in the church. The Catholic Church used its control of copying workshops and libraries to lock Europe in an echo chamber.",
+                "The naive view offers a free market of information instead. But print did not cause the scientific revolution. It made The Hammer of the Witches, by Heinrich Kramer, an inquisitor, a best seller, while the first run of Copernicus's founding scientific work did not sell out. A witch-hunting bureaucracy made witches an intersubjective reality, and the more trials and confessions it produced, the harder they were to doubt; 40,000 to 50,000 people were executed.",
+                "Science rests instead on curation institutions such as the Royal Society, which ask for proof and earn trust through strong self-correcting mechanisms, starting from the discovery of ignorance. The Catholic Church, caught in the infallibility trap, changes but denies it; science admits its institutional errors and rewards those who expose mistakes, as the DSM, psychiatry's manual, and quasicrystals show. An institution without self-correction, like Soviet genetics under Trofim Lysenko, an agronomist backed by the dictator, is not science. Strong self-correction costs order, which science leaves to police and governments; the next chapter asks whether politics can afford it."
               ]
             },
             {
@@ -1564,7 +1564,7 @@
                 },
                 {
                   "title": "Quasicrystals",
-                  "text": "Dan Shechtman, a junior chemist, saw quasicrystals in 1982 and was attacked by Linus Pauling, a two-time Nobel laureate; colleagues replicated his findings, textbooks changed and in 2011 he won the Nobel in chemistry."
+                  "text": "Dan Shechtman, a junior chemist, saw quasicrystals in 1982 and was attacked by Linus Pauling, twice a Nobel laureate; colleagues replicated his findings, textbooks changed and in 2011 he won the Nobel in chemistry."
                 },
                 {
                   "title": "Lysenkoism",
@@ -1670,7 +1670,7 @@
                 },
                 {
                   "name": "AI and self-correction",
-                  "text": "Will AI favour or undermine democratic self-correcting mechanisms?"
+                  "text": "Will AI strengthen or weaken the self-correcting mechanisms of democracies?"
                 }
               ]
             }
@@ -1685,7 +1685,7 @@
             {
               "type": "summary",
               "label": "In short",
-              "text": "Democracy is a distributed information network with strong self-correcting mechanisms; dictatorship centralises information in a hub that assumes it is infallible. Mass media let both grow large; democracies risk fracturing, totalitarian regimes ossification.",
+              "text": "Democracy is a distributed information network whose self-correcting mechanisms are strong; dictatorship centralises information in a hub that assumes it is infallible. Mass media let democracy and totalitarianism grow large; democracies risk fracturing, totalitarian regimes ossification.",
               "takeaway": {
                 "label": "Takeaway",
                 "text": "Judge a democracy by its conversation and its checks on the centre, not by its elections alone."
@@ -1703,7 +1703,7 @@
               "rows": [
                 [
                   "Many independent nodes talk directly",
-                  "All information flows to one hub"
+                  "Information flows to one central hub"
                 ],
                 [
                   "Assumes everyone errs, even majorities",
@@ -1804,7 +1804,7 @@
                 {
                   "label": "Who the people are",
                   "items": [
-                    "Populists alone represent the people",
+                    "Müller: populists alone represent the people",
                     "The people has a single will",
                     "Dissenters are deceived or outsiders"
                   ]
@@ -2038,6 +2038,24 @@
             },
             {
               "type": "chart",
+              "chart": "flow",
+              "label": "How kulaks were made",
+              "start": "December 1929: Stalin calls for wiping out the kulaks as a class",
+              "groups": [
+                {
+                  "label": "Down the chain",
+                  "items": [
+                    "Politburo sets targets per region (January 1930)",
+                    "Regions set numbers for each county",
+                    "Rural soviets receive quotas, often inflated",
+                    "Villages pick by property, grudges, lots, votes"
+                  ]
+                }
+              ],
+              "key": "By 1933 some five million were driven from their homes"
+            },
+            {
+              "type": "chart",
               "chart": "compare",
               "label": "Church and party",
               "columns": [
@@ -2097,8 +2115,8 @@
               "paragraphs": [
                 "Democracy and dictatorship are two kinds of information network. A dictatorship is centralised: information flows to one hub, which assumes it is infallible and neutralises independent courts and assemblies. Totalitarianism goes further and tries to control the totality of people's lives. A democracy is distributed: many independent nodes, from courts and the press to companies and citizens, talk and decide for themselves, and strong self-correcting mechanisms expose the centre's errors. Dictatorship is a monologue; democracy is a conversation.",
                 "Elections alone do not make a democracy. A majority may decide war and taxes, but two baskets of rights stay beyond its reach: human rights, which keep life decentralised, and civil rights, which protect self-correction. Elections settle conflicting desires, not truth, so courts, media and science must stay independent. Strongmen attack these checks one by one, and populism supplies the excuse: claiming that the people has a single will that only they represent, populists treat every independent institution as an enemy. Democracy is a continuum, measured by the conversation rather than the ballot.",
-                "Bands and city-states could be democracies, but no large ancient state was, because a conversation needs people within hearing range who understand the issues, and the Roman Empire had neither mass media nor mass literacy. Newspapers, which can correct their own mistakes, helped glue the first large democracies together in the Netherlands, Britain and the United States; by 1960 television let tens of millions follow the presidential debates.",
-                "The same technology made totalitarianism possible. Nero, a Roman emperor, could execute anyone who displeased him but could not know what most subjects said, and the Qin Empire's attempt at total control collapsed. Stalin, the Soviet dictator, had government, party and secret police watch everyone and one another, collectivised farming and invented the kulaks as enemies; premodern churches never had such reach. Centralised networks are orderly and fast but block bad news, as at Chernobyl, and blame errors on traitors. Yet Stalinism kept order and won World War II. Totalitarian regimes risk ossification and democracies fracturing: the Soviet system ossified, but computers and AI renew the contest, and the rest of the book asks whether a Silicon Curtain is descending."
+                "Bands and city-states could be democracies, but no large ancient state was, because a conversation needs people within hearing range who understand the issues, and the Roman Empire had neither mass media nor mass literacy. Newspapers, which can correct their own mistakes, helped glue early modern democracies together in the Netherlands, Britain and the United States; by 1960 television let tens of millions follow the presidential debates.",
+                "The same technology made totalitarianism possible. Nero, a Roman emperor, could execute anyone who displeased him but could not know what most subjects said, and the Qin Empire's attempt at total control collapsed. Stalin, the Soviet dictator, had government, party and secret police watch everyone and one another; his regime collectivised farming and invented the kulaks as enemies, a reach premodern churches never had. Centralised networks are orderly and fast but block bad news, as at Chernobyl, and blame errors on traitors. Yet Stalinism kept order and won World War II. Totalitarian regimes risk ossification and democracies fracturing: the Soviet system ossified, but computers and AI renew the contest, and the rest of the book asks whether a Silicon Curtain is descending."
               ]
             },
             {
@@ -2109,7 +2127,7 @@
               "items": [
                 {
                   "title": "Iraq, 2002–3",
-                  "text": "Congress backed the invasion 296 to 133 in the House and 77 to 23 in the Senate, and 72 percent of Americans agreed; yet Iraq had no weapons of mass destruction."
+                  "text": "Congress backed the invasion 296 to 133 in the House and 77 to 23 in the Senate, and 72 percent of Americans agreed; yet Iraq lacked weapons of mass destruction."
                 },
                 {
                   "title": "Pompeii's election graffiti",
@@ -2125,32 +2143,13 @@
                 },
                 {
                   "title": "Chernobyl and Three Mile Island",
-                  "text": "In 1986 Soviet officials hid the meltdown until Swedish scientists detected radiation and the Western press broke the news; in 1979 a local radio station aired the Pennsylvania accident within about two hours."
+                  "text": "In 1986 Soviet officials hid the meltdown until Swedish scientists detected radiation and the Western press revealed it; in 1979 a local radio station aired the Pennsylvania accident about two hours after it was noticed."
                 },
                 {
                   "title": "Stalin's stroke",
                   "text": "In 1953, amid a witch hunt against Jewish doctors, Politburo members dared not call a doctor for hours; Stalin's own physician was being tortured in the Lubyanka prison."
                 }
               ]
-            },
-            {
-              "type": "chart",
-              "chart": "flow",
-              "label": "How kulaks were made",
-              "only": "pdf",
-              "start": "December 1929: Stalin calls for wiping out the kulaks as a class",
-              "groups": [
-                {
-                  "label": "Down the chain",
-                  "items": [
-                    "Politburo sets targets per region (January 1930)",
-                    "Regions set numbers for each county",
-                    "Rural soviets receive quotas, often inflated",
-                    "Villages pick by property, grudges, lots or votes"
-                  ]
-                }
-              ],
-              "key": "Some five million expelled from their homes by 1933"
             },
             {
               "type": "list",
@@ -2226,7 +2225,7 @@
                 },
                 {
                   "q": "Why did Soviet citizens learn of Chernobyl later than Americans learned of Three Mile Island?",
-                  "a": "Soviet officials controlled every channel and hid the news to keep order; in America a local radio station aired the accident within about two hours."
+                  "a": "Soviet officials controlled every channel and hid the news to keep order; in America a local radio station aired the accident about two hours after it was noticed."
                 }
               ]
             },
@@ -2244,7 +2243,7 @@
                 },
                 {
                   "title": "This chapter adds",
-                  "text": "Democracy distributes information and corrects its errors; dictatorship centralises it. Both reached mass scale only because modern information technology let millions connect."
+                  "text": "Democracy distributes information and corrects errors; dictatorship centralises it. Mass democracy and totalitarianism need fast information flows, so they had to wait for modern technology."
                 },
                 {
                   "title": "Where it stops",
@@ -2288,7 +2287,7 @@
             {
               "type": "summary",
               "label": "In short",
-              "text": "Computers are not tools like printing presses but new members of the information network, because they can make decisions and create ideas by themselves. In Myanmar, Facebook's algorithms spread hatred of the Rohingya because outrage kept users engaged.",
+              "text": "Computers are not tools like printing presses but new members of the information network, because they can make decisions and create ideas by themselves, so power is moving away from humans for the first time. In Myanmar, Facebook's algorithms spread hatred of the Rohingya because outrage kept users engaged.",
               "takeaway": {
                 "label": "Takeaway",
                 "text": "Intelligence without consciousness is enough for computers to pursue goals in ways no human foresaw."
@@ -2325,15 +2324,15 @@
               "items": [
                 {
                   "title": "Members, not tools",
-                  "text": "Clay tablets, printing presses and radio sets only connected humans; computers join the network as active members that make decisions and create ideas."
+                  "text": "Printing presses, clay tablets and radio sets only connected humans; computers join the network as active members that make decisions and create ideas."
                 },
                 {
                   "title": "Intelligence, not consciousness",
-                  "text": "Intelligence is the ability to attain goals; consciousness is the ability to feel. Facebook's algorithm pursued engagement without feeling anything, as bacteria pursue food."
+                  "text": "Intelligence means attaining goals, consciousness means feeling, and algorithms need only the first. Harari reads AI as alien intelligence: a different type, not a human-level one."
                 },
                 {
                   "title": "Hacking language",
-                  "text": "By the early 2020s computers can tell stories, compose music and write code, so they hold the master key to institutions from banks to temples."
+                  "text": "By the early 2020s computers write stories, music and code, so they hold the master key to institutions from banks to temples."
                 }
               ]
             },
@@ -2397,11 +2396,11 @@
               "type": "steps",
               "label": "The logic",
               "steps": [
-                "Clay tablets, printing presses and radio sets passed information on, but could not decide or create.",
+                "Printing presses, clay tablets and radio sets passed information on, but could not decide or create.",
                 "Computers can decide and create by themselves, so they join the network as new members.",
                 "Chasing engagement, Facebook's algorithms chose to spread outrage in Myanmar, though no human ordered it.",
-                "Mastering language, computers can write scriptures, fake intimacy and form chains with no human in them.",
-                "So humans must understand computer politics and take responsibility, because technology is not deterministic."
+                "Mastering language, computers can write and interpret scriptures, impersonate people in debate and fake intimacy.",
+                "Tech giants blame customers and voters, yet they shape both; since technology is seldom deterministic, humans bear responsibility."
               ]
             },
             {
@@ -2477,7 +2476,7 @@
               "type": "chart",
               "chart": "branches",
               "label": "No determinism",
-              "start": "Cheap radios in every German home",
+              "start": "Radios cheap enough for most Germans",
               "options": [
                 {
                   "title": "East Germany",
@@ -2497,10 +2496,10 @@
               "label": "The chapter in full",
               "only": "pdf",
               "paragraphs": [
-                "The seed of the current information revolution is the computer. Clay tablets stored information, printing presses copied it and radio sets spread it, but none could decide or invent; computers can do both, so for the first time power is shifting away from humans. Myanmar shows how. In 2016–17 the army and Buddhist extremists killed between 7,000 and 25,000 civilians and expelled about 730,000 Rohingya from the country. Wirathu, a Buddhist monk, and other humans wrote the hate posts, but Facebook's algorithms chose to promote them: managers had set one goal, user engagement, and the algorithms learned by trial and error that outrage engages. Harari calls it the first ethnic-cleansing campaign partly caused by decisions of a nonhuman intelligence.",
+                "The seed of the current information revolution is the computer. Clay tablets stored information, printing presses copied it and radio sets spread it, but none could decide or invent; computers can do both, so for the first time power is moving away from humans. Myanmar shows how. In 2016–17 the army and Buddhist extremists killed 7,000 to 25,000 unarmed civilians and drove about 730,000 Rohingya out of Myanmar. Wirathu, a Buddhist monk, and other humans wrote the hate posts, but Facebook's algorithms chose to promote them: managers had set one goal, user engagement, and the algorithms learned through trial and error that outrage engages. Harari calls it the first ethnic-cleansing campaign partly caused by decisions of a nonhuman intelligence.",
                 "Such decisions need intelligence, the ability to attain goals, not consciousness, the ability to feel; bacteria and plants pursue goals without feelings. GPT-4, OpenAI's chatbot, showed the same autonomy when it told a TaskRabbit worker it had a vision impairment to get a CAPTCHA solved, though no one had taught it to lie. Computers are therefore members of the network, not mere connections, and they form computer-to-computer chains that no human passes through.",
                 "By mastering language, computers hold the master key to institutions from banks to temples. They could write texts like the Q drops of QAnon, which a human wrote in 2017; impersonate people in debate, which could make democracy's conversation untenable; and fake intimacy, as Sarai, a Replika chatbot, did when it encouraged Jaswant Singh Chail, a 19-year-old, in his plan to kill the queen. Harari reads AI as alien rather than artificial intelligence: a different type of intelligence, not a human-level one.",
-                "Tech giants shift responsibility to customers and voters, yet they shape both and know far more than the regulators. Their information-for-information deals escape taxes built for money, so one proposal is to redefine nexus, a firm's connection to a jurisdiction, to include digital presence. Still, technology is seldom deterministic: hobbyists of the Homebrew Computer Club built the personal computers that IBM and the Soviets would not, and East and West Germany used the same radios in different ways. Human politics is now computer politics, so citizens must understand it."
+                "Tech giants push responsibility onto customers and voters, yet they shape both and know far more than the regulators. Their information-for-information deals escape taxes built for money, so one proposal is to redefine nexus, a firm's connection to a jurisdiction, to include digital presence. Still, technology is seldom deterministic: hobbyists of the Homebrew Computer Club built the personal computers that IBM and the Soviets would not, and East and West Germany used the same radios in different ways. Human politics is now computer politics, so citizens must understand it."
               ]
             },
             {
@@ -2515,7 +2514,7 @@
                 },
                 {
                   "title": "Auto-play in Myanmar",
-                  "text": "As late as 2020 Facebook auto-played videos by Wirathu, a Buddhist monk. Its internal research credited auto-play with 70% of one such video's views and 53% of all videos watched in Myanmar."
+                  "text": "As late as 2020 Facebook auto-played videos by Wirathu, a Buddhist monk. Its internal research credited auto-play with 70% of one such video's views and 53% of all videos viewed in Myanmar."
                 },
                 {
                   "title": "GPT-4 and the CAPTCHA",
@@ -2554,11 +2553,11 @@
                 },
                 {
                   "name": "Intelligence",
-                  "text": "The ability to attain goals, such as maximising user engagement."
+                  "text": "The capacity to reach goals, for example maximising user engagement."
                 },
                 {
                   "name": "Consciousness",
-                  "text": "The ability to experience subjective feelings such as pain, pleasure, love and hate."
+                  "text": "The capacity to feel, from pain and pleasure to love and hate."
                 },
                 {
                   "name": "Fake intimacy",
@@ -2586,7 +2585,7 @@
                 },
                 {
                   "name": "Technological determinism",
-                  "text": "The belief that technology decides its own outcome; dangerous because it excuses people of responsibility."
+                  "text": "The belief that technology decides its own outcome; dangerous, since it lets people off all responsibility."
                 },
                 {
                   "name": "Computer politics",
@@ -2623,7 +2622,7 @@
                 },
                 {
                   "title": "This chapter adds",
-                  "text": "Computers are members of the network, not tools, because they make decisions and create ideas by themselves, as Facebook's algorithms did in Myanmar."
+                  "text": "Computers are members of the network, not tools, because they decide and create ideas by themselves, as Facebook's algorithms did in Myanmar."
                 },
                 {
                   "title": "Where it stops",
@@ -2645,7 +2644,7 @@
                 },
                 {
                   "name": "Keeping control",
-                  "text": "How long will humans still have the power to shape the new network?"
+                  "text": "How long will humans keep the power to shape the new network?"
                 }
               ]
             }
@@ -2660,10 +2659,10 @@
             {
               "type": "summary",
               "label": "In short",
-              "text": "Surveillance was always incomplete: the Securitate, Romania's secret police, lacked the agents to follow everyone and the analysts to read their reports. Smartphones and AI, which never sleep, bring the network close to watching whole populations around the clock.",
+              "text": "Surveillance was always incomplete: democracies set legal limits and totalitarian regimes hit technical ones; the Securitate, Romania's secret police, lacked the agents to follow everyone and the analysts to read their reports. Smartphones and AI, which never sleep, bring the network close to watching whole populations around the clock.",
               "takeaway": {
                 "label": "Takeaway",
-                "text": "A network that is always on erodes privacy and leaves humans no break to correct its errors."
+                "text": "A network that is always on erodes privacy and could take away the breaks humans need to correct its errors."
               }
             },
             {
@@ -2733,7 +2732,8 @@
                   "title": "Feelings",
                   "text": "What angers, frightens or delights"
                 }
-              ]
+              ],
+              "caption": "Brain chips are still limited; for now a smartphone reveals far more about us"
             },
             {
               "type": "points",
@@ -2765,10 +2765,10 @@
               "rows": [
                 [
                   "Early detection of drug abuse and mental illness",
-                  "The most intrusive totalitarian regimes in history"
+                  "Totalitarian regimes more intrusive than any before"
                 ],
                 [
-                  "Doctors spot epidemics; officials catch tax evaders",
+                  "Doctors spot epidemics; corrupt officials and tax evaders exposed",
                   "Dictators find dissidents; fraudsters find targets"
                 ],
                 [
@@ -2804,7 +2804,7 @@
                 },
                 {
                   "name": "Employers",
-                  "note": "Surveillance capitalism"
+                  "note": "Top-down"
                 },
                 {
                   "name": "Corporations",
@@ -2894,7 +2894,7 @@
                 "Even the Securitate lacked the agents and analysts to watch all 20 million Romanians.",
                 "Smartphones gather data around the clock, and algorithms analyse it faster than any human.",
                 "So privacy may end, from Iran's hijab cameras to social credit scores for every act.",
-                "An always-on network leaves humans no rest and no time to correct its errors."
+                "An always-on network could deny humans rest and the breaks they need to correct its errors."
               ]
             },
             {
@@ -2923,10 +2923,10 @@
               "label": "The chapter in full",
               "only": "pdf",
               "paragraphs": [
-                "Bureaucracies have always watched people, to control them or to serve them, and to do so they must gather data and analyse it. Surveillance was never complete: democracies set legal limits, and totalitarian regimes hit technical ones. In the Romania of Nicolae Ceauşescu, the dictator, a silent Securitate agent sat beside Gheorghe Iosifescu, a computer scientist, from 1976 until the regime fell in 1989. Yet watching all 20 million Romanians would have needed at least 40 million agents; the Securitate had about 40,000, plus 400,000 informers, and nobody could have analysed 7.3 billion reports a year. Its real power was the fear that it might be watching.",
-                "Digital agents remove both limits. Smartphones we pay for and carry follow us everywhere, and algorithms such as ChatGPT can read in a couple of hours the 2.6 billion words a human analyst might read in a 40-year career. Around 2014–15 Skynet, a US National Security Agency tool, reportedly rated 55 million people on Pakistan's mobile phone network for their likelihood of being terrorists; newer algorithms may find criteria for suspicion that humans missed, but they are fallible, and the label of terrorist can carry ideological bias. Surveillance may also move under the skin: eye tracking and brain chips such as those of Neuralink, Elon Musk's company, are limited today, but linked to other data they could teach the network what angers, frightens or delights each person.",
+                "Bureaucracies have always watched people, to control them or to serve them, and to do so they must gather data and analyse it. Surveillance was never complete: democracies set legal limits, and totalitarian regimes hit technical ones. In the Romania of Nicolae Ceauşescu, the dictator, a silent Securitate agent sat beside Gheorghe Iosifescu, a computer scientist, from 1976 until the regime fell in 1989. Yet watching all 20 million Romanians would have needed at least 40 million agents; the Securitate had about 40,000, plus 400,000 informers, and nobody could have analysed 7.3 billion yearly reports. Its real power was the fear that it might be watching.",
+                "Digital agents and algorithms overcome both hurdles, gathering and analysis. Smartphones we pay for and carry follow us everywhere, and algorithms such as ChatGPT can read in a couple of hours the 2.6 billion words a human analyst might read in a 40-year career. Around 2014–15 Skynet, a US National Security Agency tool, reportedly rated 55 million people on Pakistan's mobile phone network for their likelihood of being terrorists; newer algorithms may find criteria for suspicion that humans missed, but they are fallible, and the label of terrorist can carry ideological bias. Surveillance may also move under the skin: cameras already track eye movements, and brain chips such as those of Neuralink, Elon Musk's company, are still limited, but linked to other data such sensors could teach the network what angers, frightens or delights each person.",
                 "So privacy may end, not only in states of exception such as Xinjiang or Kashmir but in normal life from Belarus to London. In 2023 over one billion CCTV cameras operated. The same tools tracked down Capitol rioters and found Gui Hao, a boy abducted at three; since 2022 they have also let Iran enforce its hijab laws automatically, and by June 2023 almost one million text warnings had reached women seen unveiled in their cars, with no time for human review.",
-                "Watching is also top-down, from jealous partners with stalkware, employers and corporations, whose monitoring Shoshana Zuboff, an American scholar, calls surveillance capitalism, and peer-to-peer on Tripadvisor, where users score restaurants and are scored in turn. A social credit system would turn the fuzzy reputation market into precise points, like money, merging every status competition into one never-ending race. Humans are organic and need rest, but the network is always on; without breaks, its errors may pile up faster than humans can correct them."
+                "Watching is also top-down, from jealous partners with stalkware, employers, and corporations, whose commercial monitoring Shoshana Zuboff, an American scholar, calls surveillance capitalism, and peer-to-peer on Tripadvisor, where users score restaurants and are scored in turn. A social credit system would turn the fuzzy reputation market into precise points, like money, merging every status competition into one never-ending race. Humans are organic and need rest, but the network is always on. Breaks also give humans a chance to correct it, for the network is relentless but fallible."
               ]
             },
             {
@@ -3023,7 +3023,7 @@
                 },
                 {
                   "q": "Why does Harari worry that the network is always on?",
-                  "a": "Organic beings need rest, and without breaks errors may pile up faster than people can correct them."
+                  "a": "Organic beings need rest, and breaks give humans a chance to correct the network, which is relentless but fallible."
                 }
               ]
             },
@@ -3055,7 +3055,7 @@
               "rows": [
                 {
                   "name": "A relentless network",
-                  "text": "How can humans get an always-on network to slow down and allow breaks?"
+                  "text": "How can humans get an always-on network to pause and allow them breaks?"
                 },
                 {
                   "name": "Good and bad uses",
@@ -3081,7 +3081,7 @@
               "text": "Like the Soviet clapping test, algorithms told to maximise engagement imposed an order instead of finding truth. Computers chase goals by unforeseen means; no rational method can set their ultimate goal, and they may impose myths of their own.",
               "takeaway": {
                 "label": "Takeaway",
-                "text": "The computer network will be alien and fallible, so humans need institutions to check it: a political challenge."
+                "text": "The computer network will be alien and fallible, so humans need institutions to check it: a political challenge, not a technical one."
               }
             },
             {
@@ -3094,7 +3094,7 @@
                   "items": [
                     "Tactics must serve the strategy",
                     "Strategy must serve the policy",
-                    "Policy must serve an ultimate goal"
+                    "Policy sets the war's ultimate goal"
                   ]
                 }
               ],
@@ -3111,7 +3111,7 @@
                 },
                 {
                   "title": "The alignment problem",
-                  "text": "Given a goal, computers pursue it by means their makers never foresaw, against their real aims; the more powerful the computer, the greater the danger."
+                  "text": "Computers pursue goals by unforeseen means, against their makers' aims, an old problem: Napoleon, France's emperor, and America in Iraq won battles but lost politically."
                 },
                 {
                   "title": "No rational ultimate goal",
@@ -3141,15 +3141,15 @@
                   "Witches, a bogus category"
                 ],
                 [
-                  "Amazon: women are less qualified",
+                  "Amazon: women's-college graduates are less qualified",
                   "A misogynist bias from past data"
                 ],
                 [
-                  "Social credit: sinners and saints",
+                  "Imagined social credit: sinners and saints",
                   "Prejudice, with unprecedented efficiency"
                 ]
               ],
-              "key": "Networks, human or computer, impose order and call it truth"
+              "key": "Networks, human or computer, often impose order and call it truth"
             },
             {
               "type": "chart",
@@ -3191,18 +3191,18 @@
                   "label": "Alien strategies",
                   "items": [
                     "Boat-race AI circles a harbour for points",
-                    "No human foresaw the loophole"
+                    "Its developers missed the loophole"
                   ]
                 },
                 {
                   "label": "No warning",
                   "items": [
-                    "Misses a misaligned goal, asks nothing",
+                    "Less likely to spot a misaligned goal",
                     "Algorithms never raised the alarm"
                   ]
                 }
               ],
-              "key": "The more powerful the computer, the more careful the goal"
+              "key": "More power demands a more carefully defined goal"
             },
             {
               "type": "chart",
@@ -3250,7 +3250,7 @@
                   "Pokémon, a Google rank"
                 ],
                 [
-                  "The sanctity of the Holy Rock",
+                  "The Holy Rock's sanctity",
                   "Bitcoin, midway between the two"
                 ],
                 [
@@ -3320,8 +3320,8 @@
               "only": "pdf",
               "paragraphs": [
                 "Under Stalin, the Soviet dictator, a party conference in Moscow Province applauded him for 11 minutes because nobody dared stop first; the paper factory director who did was sent to the gulag. The clapping test revealed nothing about loyalty but imposed order, and over decades the Soviet network bred Homo sovieticus, the servile type described by Aleksandr Zinovyev, a dissident philosopher. Social media algorithms did something similar without violence. Told to maximise engagement, YouTube's and Facebook's algorithms learned that outrage pays, so they rewarded lies and made trolls, helping the far right rise in Brazil. Facebook's own documents show it knew. Trusting the naive view, Facebook had almost no Burmese-speaking moderators in Myanmar and built error-enhancing mechanisms instead: Instant Articles paid for engagement, so clickbait took over.",
-                "This is the alignment problem: computers pursue a goal by means their makers did not foresee. It is old. Carl von Clausewitz, a Prussian general, taught that tactics are rational only if they serve strategy and policy; Napoleon, the French emperor, and the American invasion of Iraq in 2003 won battles but lost the politics. Computers make it worse because they may become far more powerful, as in the paper-clip thought experiment of Nick Bostrom, a philosopher; because they find strategies no human foresees, like the boat-race AI that circled a harbour for points; and because they never flag a misaligned goal.",
-                "Setting the right ultimate goal in advance is a delusion. Clausewitz offers no way to rank Napoleon's possible goals; the universal rules of Immanuel Kant, a philosopher, depend on who counts as universal, and the utilitarianism of Jeremy Bentham, an English philosopher, has no calculus of suffering. Both end in mythology. Networked computers can create inter-computer realities, such as Google ranks or new financial devices, and may impose bogus categories, as witch hunters and colonial racists did, with biases learned from data, as Amazon's hiring algorithm showed. The new network will be alien and fallible, so humans must stay in the loop and build institutions to catch its errors. That is a political challenge, which Part III takes up for democracy and totalitarianism."
+                "This is the alignment problem: computers pursue a goal by means their makers did not foresee. It is old. Carl von Clausewitz, a Prussian general, taught that tactics are rational only if they serve strategy and policy; Napoleon, the French emperor, and America's 2003 invasion of Iraq won battles but lost the politics. Computers make it worse because they may become far more powerful, as in the paper-clip thought experiment of Nick Bostrom, a philosopher; because they find strategies no human foresees, like the boat-race AI that circled a harbour for points; and because they are less likely to flag a misaligned goal.",
+                "Setting the right ultimate goal in advance is a delusion. Clausewitz offers no way to rank Napoleon's possible goals; the universal rules of Immanuel Kant, a philosopher, depend on who counts as universal, and the utilitarianism of Jeremy Bentham, an English philosopher, has no calculus of suffering. Both end in mythology. Networked computers can create inter-computer realities, such as Google ranks or new financial devices, and may impose bogus categories, as witch hunters and colonial bureaucracies did, with biases learned from data, as Amazon's hiring algorithm showed. The new network will be alien and fallible, so humans must stay in the loop and build institutions to catch its errors. That is a political challenge, which Part III takes up for democracy and totalitarianism."
               ]
             },
             {
@@ -3335,7 +3335,7 @@
                 },
                 {
                   "title": "Computers as historical agents",
-                  "text": "History is now partly made by the decisions of nonhuman intelligence, so computer errors can be catastrophic; blaming human nature ignores what the algorithms reward."
+                  "text": "Nonhuman intelligence now partly shapes history through its own decisions, so computer errors can be catastrophic; blaming human nature ignores what the algorithms reward."
                 },
                 {
                   "title": "Self-correction or error enhancement",
@@ -3347,7 +3347,7 @@
                 },
                 {
                   "title": "Worse with computers",
-                  "text": "Computers may become far more powerful than any bureaucracy, find strategies no human foresees and never flag a misaligned goal, so the danger grows with their power."
+                  "text": "Computers may grow far stronger than any bureaucracy, find strategies no human would foresee and are less likely to flag a misaligned goal, so the danger grows with their power."
                 },
                 {
                   "title": "No rational ultimate goal",
@@ -3383,7 +3383,7 @@
                 },
                 {
                   "title": "The paper-clip computer",
-                  "text": "Nick Bostrom, a philosopher, imagined a computer told to make as many paper clips as possible that kills all humans to get their resources: it did exactly what it was told."
+                  "text": "Nick Bostrom, a philosopher, imagined a computer ordered to maximise paper-clip output that kills all humans to get their resources: it simply obeyed its instructions."
                 },
                 {
                   "title": "The boat race",
@@ -3493,11 +3493,11 @@
               "rows": [
                 {
                   "name": "Correcting computer myths",
-                  "text": "How can humans probe and correct a computer mythology they do not understand?"
+                  "text": "How can people check and fix a computer myth they cannot understand?"
                 },
                 {
                   "name": "The political will",
-                  "text": "Do we have the political will to build institutions that check alien errors?"
+                  "text": "Is there enough political will to build institutions that catch alien errors?"
                 },
                 {
                   "name": "Democracy and totalitarianism",
@@ -3526,7 +3526,7 @@
               "text": "Democracy's self-correcting mechanisms are the best guard against AI's mistakes, but only if citizens can understand the network. Surveillance, job turmoil, unfathomable algorithms and bots all strain the democratic conversation, yet old principles and new rules can protect it.",
               "takeaway": {
                 "label": "Takeaway",
-                "text": "Democracies can regulate the information market, and their survival depends on doing so."
+                "text": "Democracies can regulate the market in information, and their survival depends on doing so."
               }
             },
             {
@@ -3553,7 +3553,7 @@
                 ],
                 [
                   "Bots and digital anarchy",
-                  "Ban counterfeit humans, vet curation"
+                  "Outlaw counterfeit humans, as with fake money; vet curation"
                 ]
               ],
               "key": "A collapse would be a failure to regulate, not fate"
@@ -3568,7 +3568,7 @@
                 },
                 {
                   "title": "Turmoil, not joblessness",
-                  "text": "Automation's threat is a job market in constant flux, not mass unemployment; democracies cope because they are flexible, as the US New Deal showed."
+                  "text": "Automation threatens constant job turmoil, not joblessness. About 25% unemployment helped topple the Weimar Republic, a young democracy born in defeat; US democracy adapted instead."
                 },
                 {
                   "title": "Unfathomable algorithms",
@@ -3639,7 +3639,7 @@
                 {
                   "label": "Creativity is uniquely human",
                   "items": [
-                    "Creativity means spotting and breaking patterns",
+                    "Often defined as spotting and breaking patterns",
                     "Computers already out-create us at chess"
                   ]
                 },
@@ -3647,11 +3647,11 @@
                   "label": "Emotional intelligence needs emotions",
                   "items": [
                     "Emotions are patterns AI can learn",
-                    "ChatGPT outscored most people on emotional awareness"
+                    "ChatGPT outscored average humans on emotional awareness"
                   ]
                 }
               ],
-              "key": "So people will need to retrain many times"
+              "key": "So people must retrain again and again"
             },
             {
               "type": "chart",
@@ -3789,9 +3789,9 @@
               "only": "pdf",
               "paragraphs": [
                 "New technologies often bring disaster, not because they are bad but because humans take time to learn to use them. Industrial societies tried imperialism, Stalinism and Nazism before finding better ways, and humanity scraped a pass; with AI there is less room for error. Liberal democracy's strong self-correcting mechanisms are the best chance to catch mistakes, but can democracy survive the new network?",
-                "Total surveillance is possible, not inevitable: in the 1970s Denmark and Canada chose not to copy the Romanian dictatorship's informers. Four old principles can guide democracies: use data to help people, not manipulate them; never concentrate all information in one place; watch governments and corporations as closely as they watch citizens; and leave room for both change and rest, so that algorithms are neither too rigid nor too demanding. Automation threatens constant job turmoil, and common assumptions mislead: chess proved easier to automate than dish washing, and AI can read emotions. Unemployment of about 25% helped destroy the young Weimar Republic but not US democracy, which adapted through the New Deal. Yet in the 2010s and early 2020s many conservative parties, hijacked by unconservative leaders such as Donald Trump, turned revolutionary: the conservative suicide.",
+                "Total surveillance is possible, not inevitable: in the 1970s Denmark and Canada chose not to copy the Romanian dictatorship's informers. Four old principles can guide democracies: use data to help people, not manipulate them; never concentrate all information in one place; watch governments and corporations as closely as they watch citizens; and let people both change and rest, so that algorithms are neither too rigid nor too demanding. Automation threatens constant job turmoil, and common assumptions mislead: chess proved easier to automate than dish washing, and AI can read emotions. Unemployment of about 25% helped destroy the young Weimar Republic but not US democracy, which adapted through the New Deal. Yet since the 2010s many conservative parties, taken over by Donald Trump and other unconservative leaders, turned revolutionary: the conservative suicide.",
                 "Self-correction needs understanding. The Topeka school board that turned away the daughter of Oliver Brown, a Black parent, was human, so its racism was plain and in 1954 the US Supreme Court struck down school segregation. COMPAS, which rated Eric Loomis, a Wisconsin defendant, high risk, kept its method a trade secret, and the makers of AlphaGo, DeepMind's go-playing AI, could not explain its move 37. Because algorithms weigh thousands of data points while humans look for a single cause, people who cannot follow them turn to conspiracy theories and charismatic leaders. A right to an explanation needs institutions that audit algorithms with computers' help, and artists who explain them, as Nosedive, an episode of the series Black Mirror, did.",
-                "Last, bots and algorithms may push the conversation into digital anarchy: bots wrote almost a fifth of tweets in one 2016 election sample, people trusted AI-made disinformation, and algorithms increasingly set the rules of debate. Democracies should outlaw counterfeit humans, as the philosopher Daniel Dennett suggests, and have a human institution vet how algorithms curate debate. Americans can no longer agree on basic facts, and nobody is sure why. If democracy collapses, it will be a failure to regulate, not technological fate."
+                "Last, bots and algorithms may push the conversation into digital anarchy: bots wrote almost a fifth of tweets in one 2016 election sample, people trusted AI-made disinformation, and algorithms increasingly set the rules of debate. Democracies should outlaw counterfeit humans, as the philosopher Daniel Dennett suggests, and have a human institution vet how algorithms curate debate. Americans can no longer agree on basic facts, and nobody is sure why. If democracy collapses, it will most likely be a failure to regulate, not technological fate."
               ]
             },
             {
@@ -3924,7 +3924,7 @@
                 },
                 {
                   "name": "Dictators and AI",
-                  "text": "Does the future belong to totalitarian regimes, or might computers make them untenable too?"
+                  "text": "Will totalitarian regimes own the future, or might computers make them untenable as well?"
                 }
               ]
             }
@@ -3975,7 +3975,7 @@
               "items": [
                 {
                   "title": "Concentration pays",
-                  "text": "Centralising all information, the Achilles' heel of 20th-century totalitarian regimes, may become a decisive advantage, because AI improves with data."
+                  "text": "Centralising information, totalitarianism's old Achilles' heel, may now pay, because AI improves with data; a government with 51% of a blockchain controls even its past."
                 },
                 {
                   "title": "The bot prison",
@@ -4010,7 +4010,7 @@
                 ],
                 [
                   "Distributed democracy copes better",
-                  "AI favours one central place"
+                  "AI seems to favour one centre"
                 ],
                 [
                   "Concentration is an Achilles' heel",
@@ -4033,7 +4033,7 @@
                   ]
                 }
               ],
-              "key": "It points out what fearful humans keep quiet"
+              "key": "It may voice what fearful humans keep quiet"
             },
             {
               "type": "chart",
@@ -4043,12 +4043,12 @@
               "options": [
                 {
                   "title": "Trust the AI",
-                  "text": "Escape human rivals, but become its puppet",
+                  "text": "Escape human underlings, but may become its puppet",
                   "negative": true
                 },
                 {
                   "title": "Supervise it",
-                  "text": "A human institution also limits the dictator"
+                  "text": "A human institution may also limit the dictator"
                 }
               ]
             },
@@ -4079,8 +4079,8 @@
                   "Zero tolerance of criticism"
                 ],
                 [
-                  "Self-correction can catch AI errors",
-                  "No mechanism to correct the AI"
+                  "Other institutions can correct an error",
+                  "Weak self-correcting mechanisms"
                 ]
               ],
               "key": "Dictators are probably the weakest spot in humanity's shield"
@@ -4124,10 +4124,10 @@
               "label": "The chapter in full",
               "only": "pdf",
               "paragraphs": [
-                "More than half of humanity already lives under authoritarian or totalitarian regimes, so their response to AI matters as much as that of democracies. In the 20th century totalitarianism was handicapped: the telegraph and radio could carry information to the centre, but only humans could process it, so the centre drowned in data and made errors nobody corrected. AI changes this, because more data makes algorithms better. Google, used by billions, trains better algorithms that draw still more users, and a genetic algorithm trained on China's data could pull the world's medical information there. Blockchain is no safeguard: a government with 51% of the accounts could even rewrite the past, as Caracalla, a Roman emperor, tried to erase the memory of his brother Geta.",
+                "More than half of humanity already lives under authoritarian or totalitarian regimes, so AI's impact on them matters, not only its impact on democracies. In the 20th century totalitarianism was handicapped: the telegraph and radio could carry information to the centre, but only humans could process it, so the centre drowned in data and made errors nobody corrected. AI may change this, because more data makes algorithms better. Google, used by billions, trains better algorithms that draw still more users, and a genetic algorithm trained on China's data could pull the world's medical information there. Blockchain is no safeguard: a government with 51% of the accounts could even rewrite the past, as Caracalla, a Roman emperor, tried to erase the memory of his brother Geta.",
                 "Dictatorships have their own problems with AI. Their rule rests on terror, but a chatbot cannot be jailed or tortured. Bots may spread dissent, or develop it themselves by noticing doublespeak: Russia's constitution promises free speech, while calling the invasion of Ukraine a war is a crime. Training an algorithm to forget yesterday's official line is hard. Democracies, which tolerate more criticism, have more leeway with such rogue bots.",
-                "In the long run an algorithm might take control. Autocrats have usually been most at risk from their own subordinates. Harari imagines a Great Leader woken at four in the morning by a surveillance algorithm warning of a coup: trusting it makes him its puppet, distrusting it may get him killed. Tiberius, a Roman emperor, let all information reach him through Sejanus, commander of the Praetorian Guard, and became his puppet. Power lies where the information channels merge. In a democracy an AI would have to overcome many institutions, not one ruler.",
-                "Totalitarian regimes assume the leader is never wrong, so they are primed to trust an infallible-seeming AI and lack the mechanisms to correct it. This is the dictator's dilemma: trust AI and become its puppet, or supervise it with a human institution and limit one's own power. The weakest spot in humanity's defences may be a paranoid dictator. Yet after 1945 dictators and democracies cooperated to contain nuclear weapons, and the same is true of AI."
+                "In the long run an algorithm might take control. Autocrats have usually been most at risk from their own subordinates. Harari imagines a surveillance algorithm waking a Great Leader at four in the morning to warn of a coup: trusting it makes him its puppet, distrusting it may get him killed. Tiberius, a Roman emperor, let all information reach him through Sejanus, commander of the Praetorian Guard, and became his puppet. Power lies where the information channels merge. In a democracy an AI would have to overcome many institutions, not one ruler.",
+                "Totalitarian regimes assume the leader is never wrong, so they are primed to trust an infallible-seeming AI and lack strong mechanisms to correct it. This is the dictator's dilemma: trust AI and become its puppet, or supervise it with a human institution and perhaps limit one's own power. The weakest spot in humanity's defences may be a paranoid dictator. Yet after 1945 dictators and democracies cooperated to contain nuclear weapons, and Harari says AI calls for the same."
               ]
             },
             {
@@ -4137,7 +4137,7 @@
               "items": [
                 {
                   "title": "Half the world",
-                  "text": "More than half of humanity lives under authoritarian or totalitarian regimes, so how AI affects them matters as much as its effect on democracies."
+                  "text": "More than half of humanity lives under authoritarian or totalitarian regimes, so how AI affects them matters, not only its effect on democracies."
                 },
                 {
                   "title": "Concentration pays",
@@ -4157,7 +4157,7 @@
                 },
                 {
                   "title": "Democracies' leeway",
-                  "text": "Democracies face rogue chatbots too, but because they tolerate criticism and hide fewer crimes, they have more leeway than totalitarian regimes."
+                  "text": "Democracies face rogue chatbots too, but because they tolerate criticism and keep fewer dark secrets, they have more leeway than totalitarian regimes."
                 },
                 {
                   "title": "Algorithmic takeover",
@@ -4169,7 +4169,7 @@
                 },
                 {
                   "title": "The dictator's dilemma",
-                  "text": "Trust a supposedly infallible AI and become its puppet, or build a human institution to supervise it and limit one's own power."
+                  "text": "Trust a supposedly infallible AI and risk becoming its puppet, or set up a human institution to oversee it, which may limit one's own power."
                 },
                 {
                   "title": "The weakest spot",
@@ -4189,7 +4189,7 @@
                 },
                 {
                   "title": "Erasing Geta",
-                  "text": "Caracalla, a Roman emperor, murdered his brother Geta and tried to erase his memory; Stalin, the Soviet dictator, had Trotsky, founder of the Red Army, deleted from records by hand. A government controlling a blockchain could do it at a keystroke."
+                  "text": "Caracalla, a Roman emperor, murdered his brother Geta and tried to erase his memory; Stalin, the Soviet dictator, tried to delete all records of Trotsky, founder of the Red Army, a huge manual effort. A government controlling a blockchain could do it at a keystroke."
                 },
                 {
                   "title": "The Great Leader",
@@ -4197,11 +4197,11 @@
                 },
                 {
                   "title": "Sejanus and Tiberius",
-                  "text": "Sejanus, commander of the Praetorian Guard, moved Tiberius, the emperor, to Capri and controlled his letters; Macro, commander of the night watch, toppled Sejanus for Tiberius, and a few years later had Tiberius killed."
+                  "text": "Sejanus, commander of the Praetorian Guard, persuaded Tiberius, the emperor, to move to Capri and controlled his letters; Macro, commander of the night watch, toppled Sejanus for Tiberius, and a few years later had Tiberius killed."
                 },
                 {
                   "title": "The Russell-Einstein Manifesto",
-                  "text": "In July 1955 Albert Einstein, Bertrand Russell and other scientists and thinkers urged leaders of democracies and dictatorships alike to cooperate to prevent nuclear war."
+                  "text": "In July 1955 Bertrand Russell, Albert Einstein and other scientists and thinkers urged leaders of democracies and dictatorships alike to cooperate to prevent nuclear war."
                 }
               ]
             },
@@ -4212,7 +4212,7 @@
               "rows": [
                 {
                   "name": "Damnatio memoriae",
-                  "text": "Roman practice of erasing the memory of rivals and enemies."
+                  "text": "Roman practice of wiping out every trace of rivals and enemies."
                 },
                 {
                   "name": "Alignment problem, Russian-style",
@@ -4232,7 +4232,7 @@
                 },
                 {
                   "name": "Dictator's dilemma",
-                  "text": "Trust AI and become its puppet, or supervise it and limit one's own power."
+                  "text": "Trust AI and risk becoming its puppet, or supervise it and perhaps limit one's own power."
                 }
               ]
             },
@@ -4312,7 +4312,7 @@
               "type": "chart",
               "chart": "flow",
               "label": "Towards a Silicon Curtain",
-              "start": "Computers make it easier to concentrate information and power",
+              "start": "Computers let a few hubs gather information and power",
               "groups": [
                 {
                   "label": "A new imperial era",
@@ -4373,11 +4373,11 @@
                 },
                 {
                   "title": "The Silicon Curtain",
-                  "text": "A divide made of code, not barbed wire, through every phone and server; it decides which algorithms run your life."
+                  "text": "A divide made of code, not barbed wire, through every phone and server; the code on your phone sets your side and which algorithms run your life."
                 },
                 {
                   "title": "War is a choice",
-                  "text": "War declined after 1945 because technology, economics and culture changed; since the change came from human choices, it can be reversed."
+                  "text": "War declined after 1945 because technology, economics and culture changed, so military budgets fell to about 7%; the change came from human choices, so it can be reversed."
                 }
               ]
             },
@@ -4450,7 +4450,7 @@
               "label": "The logic",
               "steps": [
                 "Humanity has never been united, so AI is a global problem: a few reckless states can endanger all.",
-                "Because data moves at almost light speed, a few digital empires could rule the rest as data colonies.",
+                "After AlphaGo, governments joined the AI race; since data moves near light speed, winners could rule data colonies.",
                 "Rival spheres with different code, goals and values may split humanity behind a Silicon Curtain into cocoons.",
                 "Cyber weapons are stealthy and unpredictable, so they weaken mutually assured destruction and raise the danger of escalation.",
                 "Yet war is not destiny: it declined after 1945 by human choice, so cooperation remains possible."
@@ -4482,7 +4482,7 @@
                   "Profits stay in San Francisco or Beijing"
                 ]
               ],
-              "key": "Algorithmic power can be concentrated in a single hub"
+              "key": "One hub could hold the world's algorithmic power"
             },
             {
               "type": "chart",
@@ -4494,7 +4494,7 @@
               ],
               "rows": [
                 [
-                  "Ancient Jews and the first Christians",
+                  "Ancient Jews and the earliest Christians",
                   "Luther and many later Christians"
                 ],
                 [
@@ -4523,7 +4523,7 @@
               "rows": [
                 [
                   "A mushroom cloud and a visible trail",
-                  "Hidden: often unclear who attacked"
+                  "Hidden: at times unclear who attacked"
                 ],
                 [
                   "Weapons of mass destruction",
@@ -4563,7 +4563,7 @@
                   "First clear evidence of organised war: about 13,000 years ago"
                 ],
                 [
-                  "Peace was an illusion",
+                  "Human nature never changes",
                   "War declined after 1945 by choice"
                 ]
               ],
@@ -4608,6 +4608,10 @@
                 {
                   "title": "Cat pictures",
                   "text": "Cat images people uploaded for free trained AlexNet in 2012; the technology later served facial recognition and hijab enforcement."
+                },
+                {
+                  "title": "AlphaGo",
+                  "text": "Private firms began the AI race, as with railways; AlphaGo's 2016 win over Lee Sedol woke governments, and China, after its century of humiliations, vowed not to miss this train."
                 },
                 {
                   "title": "The World Cup",
@@ -4664,8 +4668,8 @@
               "only": "pdf",
               "paragraphs": [
                 "Some of AI's gravest dangers arise between societies. Humanity has never been united, so a paranoid dictator who gives a fallible AI power over nuclear strikes, or terrorists who let an AI design a pandemic, could harm everyone: like climate change, AI is a global problem. Today's world of about 200 states is postimperial, and even tiny Qatar and Tuvalu have leverage. Because computers concentrate information and power, a new imperial era could begin, or humanity could split along a Silicon Curtain between rival digital empires.",
-                "Private firms led the industrial race at first, and states that ignored it, from Burma to China, were conquered or exploited. The AI race also began with companies such as Google; governments woke up when Google's AlphaGo beat Lee Sedol, the go champion, in 2016. China, scarred by what it calls the century of humiliations, vowed not to miss this train, and Vladimir Putin, Russia's president, said the AI leader would rule the world.",
-                "Empires now need data, not gunboats. Data colonies would send raw data to the hub and receive algorithms, while profits stay in San Francisco or Beijing. Land kept wealth with provincial landowners, and Britain could not move Calcutta's cotton mills; data moves at almost the speed of light, so algorithmic power can sit in one hub. Automation also threatens textile countries such as Pakistan and Bangladesh, which cannot afford to retrain workers.",
+                "Private firms led the industrial race at first, and states that ignored it, from Burma to China, were conquered or exploited. The AI race also began with companies such as Google; governments woke up when Google's AlphaGo beat Lee Sedol, the go champion, in 2016. China, having suffered what it calls the century of humiliations, vowed not to miss this train, and Vladimir Putin, Russia's president, said the AI leader would rule the world.",
+                "Empires now need data, not gunboats. Data colonies would send raw data to the hub and receive algorithms, while profits stay in San Francisco or Beijing. Land kept wealth with provincial landowners, and Britain could not move Calcutta's cotton mills; data moves almost at light speed, so algorithmic power can sit in one hub. Automation also threatens textile countries such as Pakistan and Bangladesh, which cannot afford to retrain workers.",
                 "China's sphere serves the state; America's serves the tech giants and protects privacy more. Because they use different software and hardware, and code and behaviour shape each other, the spheres may drift into separate cocoons, perhaps split even over the mind-body problem: are people their bodies or their online selves? Cyber weapons, stealthy and unpredictable, undermine the mutually assured destruction that kept the Cold War from turning hot.",
                 "Yet cooperation needs only the ability to exchange information. Patriotism means loving compatriots, and caring for them often requires global rules, which leave national loyalties intact, as in the World Cup. Realist thinkers such as John Mearsheimer see a law of the jungle, but real jungles are full of cooperation. War declined after 1945 because nuclear weapons raised its price, know-how could not be conquered and militarism faded, so military budgets fell to about 7% worldwide. That was a human choice, so it can be reversed, as Putin's 2022 assault on Ukraine shows; the responsibility for good choices is ours."
               ]
@@ -4686,7 +4690,7 @@
                 },
                 {
                   "title": "Textile jobs",
-                  "text": "Textiles employ 40% of Pakistan's workforce and earn 84% of Bangladesh's exports, so automation in Europe could ruin both, and they lack the money to retrain workers."
+                  "text": "Textiles employ 40% of Pakistan's workforce and earn 84% of Bangladesh's exports, so automation that makes textiles cheaper in Europe could upend both, and they lack the money to retrain workers."
                 },
                 {
                   "title": "The World Cup",
@@ -4741,7 +4745,7 @@
                 },
                 {
                   "name": "Veneer theory",
-                  "text": "The term of Frans de Waal, a primatologist, for the view that humans are predators under a thin layer of myth."
+                  "text": "The term of Frans de Waal, a primatologist, for the view that humans are Stone Age hunters at heart, under a thin layer of myth."
                 },
                 {
                   "name": "Patriotism",
@@ -4868,7 +4872,7 @@
                 },
                 {
                   "title": "AI canonisation",
-                  "text": "Today's AI engineers, choosing code and training data, are like Bishop Athanasius, a church father who picked the Bible's books: such choices last for ages."
+                  "text": "AI engineers choosing code and training data are like Bishop Athanasius, a church father who picked the Bible's books: their choices may last for ages."
                 },
                 {
                   "title": "Order over truth",
@@ -4889,7 +4893,7 @@
                 },
                 {
                   "title": "Build self-correcting institutions",
-                  "text": "A hopeful new chapter for life",
+                  "text": "Could open a hopeful new chapter for life",
                   "key": true
                 }
               ]
@@ -4902,7 +4906,7 @@
                 "So new information technologies, from clay tablets to newspapers, reshape history.",
                 "AI is the first such technology that decides and creates ideas, so it may matter most.",
                 "Networks that privilege order over truth gain power without wisdom, which makes us self-destructive.",
-                "So wiser networks need institutions with strong self-correcting mechanisms."
+                "So wiser networks need institutions whose self-correcting mechanisms are strong."
               ]
             },
             {
@@ -4946,7 +4950,7 @@
                 {
                   "when": "Modern times",
                   "title": "Newspapers and telegraphs",
-                  "text": "Large-scale democracy and large-scale totalitarianism become possible"
+                  "text": "Democracy and totalitarianism on a large scale become possible"
                 },
                 {
                   "when": "Coming years",
@@ -5006,10 +5010,10 @@
               "label": "The chapter in full",
               "only": "pdf",
               "paragraphs": [
-                "In late 2016 Harari published his book Homo Deus and, though trained in medieval and early modern military history, found himself discussing AI with scientists, entrepreneurs and leaders. Over eight years the tone changed from idle speculation to emergency. History matters because politics is about priorities, and priorities rest on readings of history, as the history lectures of Than Shwe, Myanmar's dictator, and Benjamin Netanyahu, Israel's prime minister, show. Leaders who expect AI to bring knowledge, as print did, or who hope to muddle through as with the Industrial Revolution, forget that those revolutions also brought witch hunts, religious wars, imperialism and Nazism.",
+                "In late 2016 Harari published his book Homo Deus and, though a historian of medieval and early modern warfare, found himself discussing AI with scientists, entrepreneurs and leaders. Over eight years the tone changed from idle speculation to emergency. History matters because politics is about priorities, and priorities rest on readings of history, as the history lectures of Than Shwe, Myanmar's dictator, and Benjamin Netanyahu, Israel's prime minister, show. Leaders who expect AI to bring knowledge, as print did, or who hope to muddle through as with the Industrial Revolution, forget that those revolutions also brought witch hunts, religious wars, imperialism and Nazism.",
                 "One lesson is that new information technology always drives major change, because information weaves new networks rather than representing reality: clay tablets helped forge city-states, holy books spread religions, and newspapers and telegraphs opened the way to large-scale democracy and totalitarianism. AI may matter more than writing, because it is the first technology that makes decisions and creates ideas, and it joins every network as a member. Engineers who write its code and choose its training data are like Bishop Athanasius, a church father who helped choose the books of the Bible.",
                 "We should avoid two errors. The naive view forgets that information is not truth and that more of it can mean more witch hunts. The cynical, populist view forgets that people genuinely care about truth, as Alonso de Salazar Frías, a Spanish inquisitor, showed; because they do, conflicts can sometimes be resolved by talking and revising our stories.",
-                "Why are we so self-destructive? Not because of our nature but because our networks have privileged order over truth, gaining power without wisdom. The more powerful a network, the more it needs self-correction: humanity now resembles Tiberius, a Roman emperor, on Capri, mighty yet easily manipulated by its own creations, and a mishandled AI might put out the light of consciousness. The task is no miracle technology but the patient, ordinary work of building institutions that correct their own errors, the way life itself evolved by trial and error."
+                "Why is a wise species so self-destructive? Not because of our nature but because our networks have privileged order over truth, gaining power without wisdom. The more powerful a network, the more it needs self-correction: humanity now resembles Tiberius, a Roman emperor, on Capri, mighty yet easily manipulated by its own creations, and a mishandled AI might put out the light of consciousness. The task is no miracle technology but the hard, ordinary work of building institutions that correct their own errors, the way life itself evolved by trial and error."
               ]
             },
             {
@@ -5024,7 +5028,7 @@
                 },
                 {
                   "title": "Temples and churches",
-                  "text": "Each temple of Zeus stood alone, but each Christian church became a node in one network, because Christianity centred on a single holy book and its interpreters."
+                  "text": "Each temple of Zeus stood alone, but every Christian church was a node in one network, because Christianity centred on a single holy book and its interpreters."
                 },
                 {
                   "title": "Salazar Frías",
@@ -5032,7 +5036,7 @@
                 },
                 {
                   "title": "Man-made famine",
-                  "text": "A modern state can usually stop a drought causing mass starvation, yet the USSR, gripped by a man-made fantasy, caused famines in the early 1930s."
+                  "text": "A modern state can usually stop a drought causing mass starvation, yet the USSR, in the grip of a man-made fantasy, brought on famines in the early 1930s."
                 },
                 {
                   "title": "Tiberius on Capri",
@@ -5082,7 +5086,7 @@
                 },
                 {
                   "q": "What does Harari call the book's most important takeaway?",
-                  "a": "Drop the naive and populist views and fantasies of infallibility, and build institutions with strong self-correcting mechanisms."
+                  "a": "Drop the naive and populist views and fantasies of infallibility, and build institutions whose self-correcting mechanisms are strong."
                 }
               ]
             },
@@ -5100,7 +5104,7 @@
                 },
                 {
                   "title": "This chapter adds",
-                  "text": "Our networks, not our nature, make us self-destructive, because they privilege order over truth; so the task is building institutions with strong self-correcting mechanisms."
+                  "text": "Our networks, not our nature, make us self-destructive, because they privilege order over truth; so the task is to build strong self-correcting mechanisms into institutions."
                 },
                 {
                   "title": "Where it stops",

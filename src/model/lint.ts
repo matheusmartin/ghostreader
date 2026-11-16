@@ -76,7 +76,7 @@ const SPELLING: Record<string, string> = {
   paralyze: 'paralyse', paralyzed: 'paralysed', program: 'programme (but "program" for computer code)', programs: 'programmes',
 };
 const IZE = /\b([a-z]{2,})iz(e|es|ed|ing|ation|ations|er|ers)\b/gi;
-const IZE_OK = new Set(['maize', 'baize', 'capsize', 'capsized', 'belize']);
+const IZE_OK = new Set(['maize', 'baize', 'capsize', 'capsized', 'belize', 'seize', 'seizes', 'seized', 'seizing', 'prize', 'prizes', 'prized', 'assize', 'assizes']);
 const SPOILER = /\b(eventually|ultimately|will turn out|turns out later|in the end|will later|later in the book|will prove)\b/i;
 /** Keys whose strings are not prose: names, ids and settings. */
 const NOT_PROSE = new Set(['type', 'chart', 'only', 'style', 'tag', 'svg', 'from', 'to', 'with', 'off', 'appears', 'major', 'columns']);

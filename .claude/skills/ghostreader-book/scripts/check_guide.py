@@ -276,6 +276,7 @@ ENDINGS = ('ations', 'ation', 'ings', 'ing', 'ness', 'less', 'ful', 'ers', 'er',
 def forms(w):
     """The word, its American spelling, and stems without common endings (4 letters at least)."""
     out = {w}
+    out.add(re.sub(r'i(er|est|es|ed)$', 'y', w))  # mightier -> mighty, studies -> study
     for a, b in BRITISH:
         out.add(re.sub(a, b, w))
     for f in list(out):
