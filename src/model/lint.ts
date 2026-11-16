@@ -8,10 +8,13 @@
 //   spoilers    with "upTo": no words that look past the limit ("eventually", "in the end")
 //   charts      scene text with the {when} and [where] the book gives; ring links between neighbours
 //   structure   only the book's own chapters: no guide-made overview chapter (S, B, K, W, T, M)
+//   resume      in a guide file, every written chapter ends with "Where it stands" (four fixed
+//               parts) and, optionally, "Still open": the screens a reader returns to
+//   causes      events are linked by cause ("because", "so"), not by time alone ("and then")
 //
 // `npm run validate` fails on any problem in a bundled book.
 
-import type { Book, NetworkChart, Screen, ScenesScreen } from './types.ts';
+import type { Book, BookType, NetworkChart, Screen, ScenesScreen } from './types.ts';
 
 type Target = 'app' | 'pdf';
 
@@ -45,6 +48,19 @@ const L = {
 
 const NAME_CHARS = 22;
 
+/** The resume screens at the end of every written chapter of a guide (skill: references/styles.md).
+ * "Where it stands" has these four parts, in this order. */
+export const WHERE_IT_STANDS = 'Where it stands';
+export const STILL_OPEN = 'Still open';
+export const STANDS_TITLES: Record<BookType, readonly string[]> = {
+  fiction: ['When and where', 'Who is there', 'What they want', 'What just happened'],
+  reading: ['The question', 'Established so far', 'This chapter adds', 'Where it stops'],
+  done: ['The question', 'Established so far', 'This chapter adds', 'Where it stops'],
+};
+const STILL_OPEN_ROWS = 3;
+/** "and then", or a sentence or item that starts with "Then": order without a cause. */
+const THEN = /\band then\b|(?:^|[.!?;:]\s+)then\b/i;
+
 // British spelling: whole words.
 const SPELLING: Record<string, string> = {
   color: 'colour', colors: 'colours', colored: 'coloured', colorful: 'colourful',
@@ -60,7 +76,7 @@ const SPELLING: Record<string, string> = {
   paralyze: 'paralyse', paralyzed: 'paralysed', program: 'programme (but "program" for computer code)', programs: 'programmes',
 };
 const IZE = /\b([a-z]{2,})iz(e|es|ed|ing|ation|ations|er|ers)\b/gi;
-const IZE_OK = new Set(['maize', 'baize', 'capsize', 'capsized', 'belize']);
+const IZE_OK = new Set(['maize', 'baize', 'capsize', 'capsized', 'belize', 'seize', 'seizes', 'seized', 'seizing', 'prize', 'prizes', 'prized', 'assize', 'assizes']);
 const SPOILER = /\b(eventually|ultimately|will turn out|turns out later|in the end|will later|later in the book|will prove)\b/i;
 /** Keys whose strings are not prose: names, ids and settings. */
 const NOT_PROSE = new Set(['type', 'chart', 'only', 'style', 'tag', 'svg', 'from', 'to', 'with', 'off', 'appears', 'major', 'columns']);
@@ -100,8 +116,34 @@ export function lintBook(book: Book): string[] {
       lab(sp, 'title', sec.title);
       sec.screens.forEach((s, i) => visit(s, `${sp}.screens[${i}]`, sec.only === 'pdf' ? 'pdf' : 'app'));
     });
+    if (book.guide) resume(ch.screens ?? ch.sections?.flatMap((sec) => sec.screens) ?? [], cp);
   }));
   return out;
+
+  /** A written chapter ends with "Where it stands", then optionally "Still open", in app and PDF. */
+  function resume(screens: Screen[], cp: string) {
+    if (!screens.some((s) => s.only !== 'pdf')) return;
+    const titles = STANDS_TITLES[book.type];
+    const n = screens.length;
+    const last = screens[n - 1];
+    const open = 'label' in last && last.label === STILL_OPEN ? last : undefined;
+    const stands = screens[open ? n - 2 : n - 1];
+    if (!stands || !('label' in stands) || stands.label !== WHERE_IT_STANDS) {
+      say(cp, `the last screens must be "${WHERE_IT_STANDS}" (points: ${titles.map((t) => `"${t}"`).join(', ')}), then optionally "${STILL_OPEN}"`);
+    } else if (stands.type !== 'points' || stands.only) {
+      say(cp, `"${WHERE_IT_STANDS}" must be a points screen in both the app and the PDF (no "only")`);
+    } else {
+      const got = stands.items.map((it) => it.title);
+      if (got.join('|') !== titles.join('|')) say(cp, `"${WHERE_IT_STANDS}" needs the items ${titles.map((t) => `"${t}"`).join(', ')}, in this order (has ${got.map((t) => `"${t}"`).join(', ')})`);
+    }
+    if (open) {
+      if (open.type !== 'list' || open.only) say(cp, `"${STILL_OPEN}" must be a list screen in both the app and the PDF (no "only")`);
+      else if (open.rows.length < 1 || open.rows.length > STILL_OPEN_ROWS) say(cp, `"${STILL_OPEN}" needs 1–${STILL_OPEN_ROWS} rows (has ${open.rows.length})`);
+    }
+    screens.forEach((s, i) => {
+      if (i < n - 2 && 'label' in s && (s.label === WHERE_IT_STANDS || s.label === STILL_OPEN)) say(cp, `"${s.label}" must be at the end of the chapter`);
+    });
+  }
 
   function style(path: string, text: string) {
     const abbr = text.match(/\b(Mr|Mrs|Ms|Dr|St)\./);
@@ -119,6 +161,10 @@ export function lintBook(book: Book): string[] {
     if (book.upTo) {
       const sp = text.replace(/\{[^{}]*\}/g, '').match(SPOILER);
       if (sp) say(path, `"${sp[0]}" looks past the limit (upTo ${book.upTo}): leave it out`);
+    }
+    // Time marks ({Then}) and timeline "when" fields may order events; prose must say why.
+    if (!/\.when$/.test(path) && THEN.test(text.replace(/\{[^{}]*\}/g, '').trim())) {
+      say(path, `"then" orders events without a cause: say why ("because", "so"), or cut it`);
     }
   }
 

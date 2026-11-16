@@ -15,6 +15,12 @@ tap) and **Layers** (one line, three points, then the detail). The library shows
 The style is in the menu: in the library it sets the style that books open in (the app remembers
 it), and in a book it switches style at the same chapter. Research and recipes: `.claude/skills/ghostreader-book/references/styles.md`.
 
+**Coming back after a pause.** Open the last chapter you read, in any style, and swipe through it.
+Every chapter ends with **Where it stands** (fiction: when and where, who is there, what they
+want, what just happened; non-fiction: the book's question, what is established so far, what this
+chapter adds, where it stops) and **Still open** (the questions the book has raised and not yet
+answered). Then go back to the book. No screen tells you about a chapter after it.
+
 ## How it works
 
 - **Library**: the main screen shows every book.
@@ -112,14 +118,16 @@ Chapter 6" with the book file attached. The **ghostreader-book** skill
 
 1. Extracts the book's text from an EPUB, PDF, TXT, Markdown or HTML file into `work/<id>/`
    (`scripts/extract_book.py`). `work/` is in `.gitignore`: book text is never committed.
-2. Writes a fact sheet per chapter, every fact with its place in the text, and lists the book's
-   own concepts and distinctions (for example Nexus's objective, subjective and intersubjective
-   reality). Each gets a chart in the chapter that introduces it.
+2. Writes a fact sheet per chapter, every fact with its place in the text, the facts a returning
+   reader must get back ("must carry"), and a ledger of the state at each chapter's end. It lists
+   the book's own concepts and distinctions (for example Nexus's objective, subjective and
+   intersubjective reality); each gets a chart in the chapter that introduces it.
 3. Writes the Map file `src/books/<guide>-map.json` from the fact sheets, diagrams first, with
-   PDF-only detail; then the texts of the other styles, from which `scripts/build_styles.py` builds
-   the Recap, Recall and Layers files.
-4. Checks every chapter against the text, then runs `npm run validate`, `npm run check:screens`
-   and `npm run build`.
+   PDF-only detail and the resume screens; then the texts of the other styles, from which
+   `scripts/build_styles.py` builds the Recap, Recall and Layers files.
+4. Checks every chapter against the text (`scripts/check_guide.py`: anchors, names and numbers in
+   the book; fresh reviewers claim by claim; a blind recall test), then runs `npm run validate`,
+   `npm run check:screens` and `npm run build`.
 
 The skill holds the content rules (book content only, no quotations, no spoilers), the writing
 style, the screen recipes of each guide type and the guidance on which chart fits which idea. Maps of

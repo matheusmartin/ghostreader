@@ -59,6 +59,44 @@ describe('lintBook', () => {
     expect(problems[0]).toContain('"A" and "C" are not next to each other');
   });
 
+  it('wants causes, not "and then"', () => {
+    expect(lintBook(bookWith([{ type: 'steps', label: 'The logic', steps: ['Print spreads, and then witch-hunts spread.', 'Then science wins.', 'Print spreads, so witch-hunts spread.'] }]))).toEqual([
+      'parts[0].chapters[0].screens[0].steps[0]: "then" orders events without a cause: say why ("because", "so"), or cut it',
+      'parts[0].chapters[0].screens[0].steps[1]: "then" orders events without a cause: say why ("because", "so"), or cut it',
+    ]);
+    // Time marks and timeline times may order events.
+    expect(lintBook(bookWith([{ type: 'chart', chart: 'timeline', items: [{ when: 'Then', text: 'The church splits.' }] }]))).toEqual([]);
+  });
+
+  describe('resume screens in a guide file', () => {
+    const stands = (titles: string[]): Screen => ({ type: 'points', label: 'Where it stands', items: titles.map((title) => ({ title, text: 'Text.' })) });
+    const open: Screen = { type: 'list', label: 'Still open', rows: [{ name: 'Jane and Bingley', text: 'Will Jane see Bingley again?' }] };
+    const summary: Screen = { type: 'summary', label: 'In short', text: 'Text.' };
+    const fiction = ['When and where', 'Who is there', 'What they want', 'What just happened'];
+    const guide = (screens: Screen[], type: Book['type'] = 'fiction') => lintBook(bookWith(screens, { guide: 'b', style: 'map', type }));
+
+    it('passes "Where it stands" last, or followed by "Still open"', () => {
+      expect(guide([summary, stands(fiction)])).toEqual([]);
+      expect(guide([summary, { ...summary, only: 'pdf' }, stands(fiction), open])).toEqual([]);
+      expect(guide([summary, stands(['The question', 'Established so far', 'This chapter adds', 'Where it stops'])], 'done')).toEqual([]);
+    });
+
+    it('reports a missing, misplaced or wrong "Where it stands"', () => {
+      expect(guide([summary])).toEqual([
+        'parts[0].chapters[0]: the last screens must be "Where it stands" (points: "When and where", "Who is there", "What they want", "What just happened"), then optionally "Still open"',
+      ]);
+      expect(guide([stands(fiction), summary, open])[0]).toContain('the last screens must be "Where it stands"');
+      expect(guide([summary, stands(['When and where', 'Who is there'])])).toEqual([
+        'parts[0].chapters[0]: "Where it stands" needs the items "When and where", "Who is there", "What they want", "What just happened", in this order (has "When and where", "Who is there")',
+      ]);
+    });
+
+    it('needs no resume screens outside a guide, or in a chapter not written yet', () => {
+      expect(lintBook(bookWith([summary]))).toEqual([]);
+      expect(guide([{ ...summary, only: 'pdf' }])).toEqual([]);
+    });
+  });
+
   it('reports guide-made overview chapters: a guide holds only the book\'s own chapters', () => {
     const withK: Partial<Book> = { parts: [{ id: 'p', chapters: [
       { id: 'c', number: '01', title: 'One', screens: [] },
