@@ -56,7 +56,9 @@ python3 -I .claude/skills/ghostreader-book/scripts/check_guide.py text <guide> -
    **supported** (give the paragraph), **inferred** (a feeling, motive, cause or judgement the
    text does not state: give the paragraph that comes closest) or **unsupported**. Claims about
    the whole book ("the first time", "never again") are checked against the ledger.
-2. For each must-carry item, quote where the guide carries it (style, screen), or say "missing".
+2. For each must-carry item, quote where the guide carries it **in each style** (style, screen),
+   or say "missing in <style>". Recall and Layers show only the main chart: a fact in another
+   Map chart is missing there (`references/styles.md`, "Must carry in every style").
 3. Check "Where it stands" and "Still open" against the ledger: the state at the chapter's end,
    nothing from later chapters, every name with a role.
 
@@ -83,8 +85,12 @@ guide alone ("Not in the guide" when it cannot). Then score its answers against 
 or with a second subagent: correct, partly correct (half), wrong or not in the guide.
 
 - **Pass: 80% or more** of the points, and no chapter under 60%.
-- Each miss: carry that fact in the guide (where a reader coming back will see it: "Where it
-  stands", key points, the recap), or, when the key itself is wrong, fix the fact sheet.
+- Each miss: carry that fact in the guide, on a screen the style that missed it shows ("Key
+  points" first: Map, Recall and Layers show it), or, when the key itself is wrong, fix the fact
+  sheet. Then build the styles again and test that style again.
+- Expect Recall and Layers, the shortest styles, to fail first: in the first Nexus run they
+  scored 74% while Map and Recap scored 93%, because their facts sat in Map charts they do not
+  show.
 - A model may know a famous book already, so a right answer the guide does not support counts as
   wrong: ask the subagent to cite the screen for every answer.
 

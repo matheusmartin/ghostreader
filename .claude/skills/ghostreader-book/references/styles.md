@@ -39,6 +39,26 @@ Both screens show in the app and in the PDF (no `only`) and stand after the PDF-
 they are the chapter's last block in the PDF too. They come from the ledger (`SKILL.md` step 5):
 the state of each person or of the argument at the chapter's end, with anchors.
 
+## Must carry in every style
+
+Each style shows only some of the Map chapter's screens: Recall and Layers show its main chart,
+not its other charts. So every must-carry item (`SKILL.md` step 5) must be on a screen **each**
+style shows, or in each style's own texts:
+
+| Screen | Map | Recap | Recall | Layers |
+|---|---|---|---|---|
+| "In short" | yes | | yes | |
+| "Key points" | yes | | yes | yes ("In three points") |
+| "The logic" | yes | | | yes ("In detail") |
+| the main chart (`main`) | yes | yes | yes | yes |
+| "Where it stands", "Still open" | yes | yes | yes | yes |
+| own texts in styles.json | | before, recap, moments, remember | questions 1–2 and answers | line |
+
+A fact kept only in a second Map chart, an example box or a PDF-only block is missing from
+Recall and Layers. Put it in "Key points" (shown by three styles) first; then in "In short" or a
+Recall answer, and in "The logic" for Layers; then in the Recap texts. The blind recall test
+(`references/verify.md`) checks each style.
+
 ## Research basis
 
 | Style or screen | In one line | Best when | Research it rests on |

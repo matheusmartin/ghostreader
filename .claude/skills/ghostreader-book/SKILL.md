@@ -200,8 +200,11 @@ python3 -I .claude/skills/ghostreader-book/scripts/check_guide.py facts <guide>
 
 **6 · Write.** Work chapter by chapter from the fact sheets and the ledger, never from memory:
 first the app screens of the type's recipe, then the PDF-only blocks, then "Where it stands" and
-"Still open". Write each chapter into the Map file as soon as it is done, and run `npm run
-validate` after every few chapters. For more than 30 chapters, send a short progress note after
+"Still open". Every must-carry item goes on a screen all four styles show: "Key points" first,
+then "In short", "The logic", the main chart or the resume screens (`references/styles.md`, "Must
+carry in every style"); a fact only in a second chart is lost in Recall and Layers. Write each
+chapter into the Map file as soon as it is done, and run `npm run validate` after every few
+chapters. For more than 30 chapters, send a short progress note after
 each part.
 
 **6b · The other styles.** From the same fact sheets, write `work/<guide>/styles.json`: the
@@ -296,6 +299,8 @@ asked for); never `work/`. Then write:
 - "Before this chapter" or the "argument so far" that loses the book's question and its first
   parts by the late chapters → the frame first, then the chapter before.
 - A bare name ("Kramer", "Mr Collins") on a text screen → a role at its first mention.
+- A must-carry fact only in a second Map chart or an example box → Recall and Layers never show
+  it; put it in "Key points", "In short" or "The logic" too.
 - Key moments all from the end of the chapter → from the start and the middle too.
 - A concept the book defines, or a contrast it builds across chapters, only mentioned in a text
   block → give it a chart in the chapter that introduces it (`references/concepts.md`).
