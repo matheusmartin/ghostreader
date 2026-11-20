@@ -156,15 +156,22 @@ export interface TextScreen extends ScreenBase {
 }
 
 /**
- * Fiction: the scenes of a chapter and who is in each one. The app shows a chart (one row per
- * person, one column per scene) and then the scenes as a numbered list; the PDF shows both.
- * Scene text weaves in the time and the place: "{That night} Maude waits in [the kitchen]."
+ * Fiction: the scenes of a chapter and who is in each one, as a storyline chart: the scenes go
+ * down, each person is a line, and the lines meet in a band when people share a scene. The app
+ * shows the chart with a number at each band, then the scenes as a numbered list; the PDF shows
+ * the scene text next to each band. Scene text weaves in the time and the place:
+ * "{That night} Maude waits in [the kitchen]."
  */
 export interface ScenesScreen extends ScreenBase {
   type: 'scenes';
   label?: string;
-  /** Rows of the chart, top to bottom. Put people who meet next to each other. `tag`: "New". */
+  /** The lines of the chart, left to right. Put people who meet next to each other. `tag`: "New". */
   people: { name: string; tag?: string }[];
+  /**
+   * The people the chapter follows, 1–2 names from `people`: the first is drawn in ink (the main
+   * character), the second in the accent colour, the others grey. Default: the first two people.
+   */
+  focus?: string[];
   scenes: Scene[];
 }
 

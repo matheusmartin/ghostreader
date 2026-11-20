@@ -122,24 +122,22 @@ function end(body: HTMLElement, ctx: ScreenContext) {
 
 /** The scenes of a scenes block as a numbered list; the numbers match the chart's columns. */
 function sceneList(body: HTMLElement, v: SceneListScreen) {
-  add(body, label('What happens'), sceneItems(v.source, v.from, v.to, false));
+  add(body, label('What happens'), sceneItems(v.source, v.from, v.to));
 }
 
-export function sceneItems(src: ScenesScreen, from: number, to: number, withPeople: boolean): HTMLElement {
+export function sceneItems(src: ScenesScreen, from: number, to: number): HTMLElement {
   return h('ol', { class: 'scene-list', start: from + 1 },
     src.scenes.slice(from, to).map((sc, k) =>
       h('li', { class: `scene${sc.key ? ' key-scene' : ''}` },
         h('span', { class: 'scene-n', 'aria-hidden': 'true' }, String(from + k + 1)),
-        h('div', { class: 'scene-body' },
-          sceneText(sc.text, 'p', 'scene-text'),
-          withPeople
-            ? h('p', { class: 'scene-people' }, [...sc.with, ...(sc.off ?? []).map((o) => `${o} (at a distance)`)].join(', '))
-            : null,
-        ),
+        h('div', { class: 'scene-body' }, sceneText(sc.text, 'p', 'scene-text')),
       ),
     ),
   );
 }
+
+/** What the marks of the scene chart mean: on a phone (numbered bands) and in the PDF (scene text). */
+export const SCENE_CAPTION = 'Scenes from top to bottom. Lines meet when people share a scene · dotted: from a distance · faint: away';
 
 /** "Who is where": the scene chart of a scenes block. */
 export function sceneFigure(src: ScenesScreen, width = PHONE_WIDTH): HTMLElement {
@@ -232,7 +230,7 @@ export function renderBlock(body: HTMLElement, s: Screen, opts: BlockOptions = {
       add(body,
         label(s.label ?? 'Who is where'),
         sceneFigure(s, width),
-        h('p', { class: 'cap' }, 'Columns: the scenes in order. Dot: in the scene · ring: there from a distance'),
+        h('p', { class: 'cap' }, SCENE_CAPTION),
       );
       break;
 

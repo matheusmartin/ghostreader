@@ -199,4 +199,3 @@
 .scene-text .when { color: var(--acc-text); }
 .scene-text .where { color: var(--ink); }
 .key-scene .scene-text { color: var(--ink); }
-.scene-people { margin-top: .3em; font-size: .8em; color: var(--muted); }

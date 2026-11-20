@@ -259,6 +259,9 @@ export function validateBook(raw: unknown): ValidationResult {
           str(pp, 'tag', ppp, false);
         });
         const cast = names(people.map((x) => x.name).filter(isStr), p, 'person');
+        const focus = optStrList(s, 'focus', p);
+        if (focus.length > 2) err(p, '"focus" takes 1 or 2 names: the main character, then a second person');
+        known(cast, focus, p, '"people"');
         const scenes = objList(s, 'scenes', p, (sc, sp) => {
           str(sc, 'text', sp);
           bool(sc, 'key', sp);

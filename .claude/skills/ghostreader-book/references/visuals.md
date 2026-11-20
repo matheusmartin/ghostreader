@@ -48,14 +48,18 @@ Never put a chart in for decoration: if the chapter's idea has no structure to s
 
 ### Scenes (`scenes`)
 
-One block per chapter. The app shows it as a chart — one row per person, one column per scene, a
-dot when the person is in the scene, a ring when there at a distance, a line joining everyone in
-the same scene — then as a numbered list of the scenes (the numbers match the columns).
+One block per chapter. The app shows it as a storyline chart: the scenes from top to bottom, one
+line per person, and the lines meet in a band when people share a scene. A line starts when the
+person enters the chapter and ends with a dot when they leave; dotted when they are there only at
+a distance, faint when they are away for a scene. On a phone a number marks each band and the
+scenes follow as a numbered list (the numbers match the bands); in the PDF the scene text is next
+to its band.
 
 ```json
 { "type": "scenes",
   "people": [ { "name": "Mr Bennet" }, { "name": "Mrs Bennet" }, { "name": "Elizabeth" },
               { "name": "Mr Darcy", "tag": "New" }, { "name": "Mr Bingley", "tag": "New" } ],
+  "focus": ["Elizabeth", "Mr Darcy"],
   "scenes": [
     { "text": "{Before the ball} Mr Bennet will not describe Bingley at [Longbourn]; the women hear of him from Lady Lucas.",
       "with": ["Mr Bennet", "Mrs Bennet", "Elizabeth"] },
@@ -63,7 +67,10 @@ the same scene — then as a numbered list of the scenes (the numbers match the 
       "with": ["Elizabeth", "Mr Darcy", "Mr Bingley"], "key": true } ] }
 ```
 
-- Order `people` so that people who meet sit next to each other: the joining lines get short.
+- Order `people` so that people who meet sit next to each other: fewer lines cross.
+- `focus`: the 1–2 people the chapter follows. The first (the main character) is drawn in ink, the
+  second in the accent colour, the others grey. Set it on every chapter; without it, the first
+  two people are the focus.
 - Main characters first; at most 8 people on a phone (PDF-only: 12).
 - 3–8 scenes; exactly one `key`. Weave in the time `{when}` and the place `[where]` the book gives
   (one of each, at least one); never invent one to fill a mark.

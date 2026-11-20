@@ -12,7 +12,7 @@ import { h, rich } from '../lib/dom.ts';
 import { bookMap } from '../charts/bookmap.ts';
 import { PRINT_WIDTH, renderChart, DEFAULT_CAPTION } from '../charts/charts.ts';
 import { buildPlan, chapterBlocks, hasBlocks, threadList, type Plan, type PlanPart } from '../model/plan.ts';
-import { guideLabel, renderBlock, sceneFigure, sceneItems } from '../screens/render.ts';
+import { guideLabel, renderBlock, SCENE_CAPTION, sceneFigure } from '../screens/render.ts';
 import { closeMenu, HOLD_HELP, useMenu } from '../ui/menu.ts';
 import type { Book, Chapter, QuizScreen, Screen } from '../model/types.ts';
 
@@ -174,9 +174,7 @@ function block(s: Screen, quizzes: QuizScreen[]): HTMLElement {
       el.append(
         h('span', { class: 'label' }, s.label ?? 'Who is where'),
         sceneFigure(s, PRINT_WIDTH),
-        h('p', { class: 'cap' }, 'Columns: the scenes in order. Dot: in the scene · ring: there from a distance'),
-        h('span', { class: 'label' }, 'What happens'),
-        sceneItems(s, 0, s.scenes.length, true),
+        h('p', { class: 'cap' }, SCENE_CAPTION),
       );
       break;
     case 'chart':
