@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { sceneLayout, styledRuns, wrapRuns } from '../src/charts/scenes.ts';
+import { labelBox, sceneLayout, styledRuns, wrapRuns } from '../src/charts/scenes.ts';
 import { validateBook } from '../src/model/validate.ts';
 import type { ScenesScreen } from '../src/model/types.ts';
 
@@ -84,6 +84,45 @@ describe('scene chart (storyline)', () => {
         for (const pt of p.points) expect(Number.isFinite(pt.x) && Number.isFinite(pt.y)).toBe(true);
       }
     }
+  });
+});
+
+describe('names of the people', () => {
+  // Chapter 1 of the Gatsby sample: Jordan, Daisy and Tom's woman enter at the dinner (scene 3),
+  // Gatsby in the last scene.
+  const gatsby: ScenesScreen = {
+    type: 'scenes',
+    people: ['Nick', 'Daisy', 'Jordan', 'Tom', "Tom's woman", 'Gatsby'].map((name) => ({ name, tag: 'New' })),
+    focus: ['Nick', 'Daisy'],
+    scenes: [
+      { text: '{In the spring of 1922} Nick rents a small house beside a huge mansion in [West Egg].', with: ['Nick'] },
+      { text: '{One warm evening} Tom shows Nick his house at [the Buchanans’ house in East Egg].', with: ['Nick', 'Tom'] },
+      { text: '{At dinner} the telephone rings for Tom at [the Buchanans’ house].', with: ['Nick', 'Daisy', 'Jordan', 'Tom'], off: ["Tom's woman"], key: true },
+      { text: '{After dinner}, on [the porch], Daisy talks.', with: ['Nick', 'Daisy'] },
+      { text: '{That night}, back in [West Egg], Nick sees Gatsby on his lawn.', with: ['Nick', 'Gatsby'] },
+    ],
+  };
+  const touch = (a: ReturnType<typeof labelBox>, b: ReturnType<typeof labelBox>) =>
+    !(a.x1 <= b.x0 || b.x1 <= a.x0 || a.y1 <= b.y0 || b.y1 <= a.y0);
+
+  for (const w of [340, 640]) {
+    it(`keeps every name off the bands and off the other names (${w} wide)`, () => {
+      const L = sceneLayout(gatsby, w);
+      const boxes = L.people.map((p) => labelBox(p.label));
+      for (const [i, b] of boxes.entries()) {
+        for (const r of L.rows) expect(touch(b, { x0: r.x0, y0: r.band - 17, x1: r.x1, y1: r.band + 17 }), `${L.people[i].name} on scene band`).toBe(false);
+        boxes.forEach((o, j) => j !== i && expect(touch(b, o), `${L.people[i].name} on ${L.people[j].name}`).toBe(false));
+        expect(b.x0).toBeGreaterThanOrEqual(0);
+        expect(b.x1).toBeLessThanOrEqual(w);
+      }
+    });
+  }
+
+  it('starts a person who enters later between the band before and their own band', () => {
+    const L = sceneLayout(gatsby, 340);
+    const jordan = L.people.find((p) => p.name === 'Jordan')!;
+    expect(jordan.points[0].y).toBeGreaterThan(L.rows[1].band + 17);
+    expect(jordan.points[0].y).toBeLessThan(L.rows[2].band - 17);
   });
 });
 
