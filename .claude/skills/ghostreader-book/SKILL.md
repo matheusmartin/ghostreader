@@ -2,7 +2,7 @@
 name: ghostreader-book
 description: Writes or updates a book guide for the Ghostreader app in this repository, built to help a reader recall earlier chapters after a pause and continue the book - four files, one per style (Map, Recap, Recall, Layers), src/books/<guide>-<style>.json, each making the swipe screens and an A4 PDF; every chapter ends with "Where it stands" and "Still open". Only the book's own parts and chapters, in the book's order - no overview or other guide-made chapter. Three types, chosen by the user - Story guide (fiction), Reading guide (non-fiction, while reading) and Book summary (non-fiction, a finished book). Reads the book from an EPUB, PDF, text, Markdown or HTML file, or from summaries when no file is given. Diagrams first; every claim anchored to the text and checked. Use when the user asks to add, write, summarise, update or regenerate a book, story guide, reading guide, book summary, infographic or PDF for the app, even if they only name the book. Do not use for a short summary in chat, book recommendations, reviews, or changes to the app's code.
 metadata:
-  version: "1.5.0"
+  version: "1.6.0"
 compatibility: Node 22 with `npm install` done (Vitest; Playwright with Chromium for the screen check and the PDF). Python 3.9+ for the book extractor, the checks and maps; PDF books also need poppler-utils (pdftotext) or the pypdf package.
 ---
 

@@ -178,15 +178,20 @@ The reader taps a question to see its answer. There is no separate answers page.
 
 ### scenes — who is where (fiction)
 
-The scenes of a chapter and who is in each one. The app shows a chart — one row per person, one
-column per scene, a dot when the person is there, a ring when they are there only at a distance
-(letter, phone, overheard), a line joining the people of each scene, the key scene in the accent
-colour — and then the scenes as a numbered list, two to four per screen. The PDF shows both, with
-the names under each scene.
+The scenes of a chapter and who is in each one, as a storyline chart. The scenes go from top to
+bottom. Each person is one line, and the lines of the people in a scene come together in a band.
+A line starts where the person enters the chapter, with their name above it, and ends with a dot
+where they leave. The main character's line is ink, the second focus person's line is in the
+accent colour, the others are grey. Dotted: there only at a distance (letter, phone, overheard).
+Faint: away for a scene. The key scene is the darker band.
+
+On a phone, a number marks each band, and the scenes follow as a numbered list, two to four per
+screen. In the PDF, the scene text is on the left of each band.
 
 ```json
 { "type": "scenes",
   "people": [{ "name": "Mr Bennet" }, { "name": "Elizabeth" }, { "name": "Mr Darcy", "tag": "New" }],
+  "focus": ["Elizabeth", "Mr Darcy"],
   "scenes": [
     { "text": "{Before the ball} Mr Bennet will not describe Bingley at [Longbourn].", "with": ["Mr Bennet", "Elizabeth"] },
     { "text": "{During the ball}, at [the assembly], Elizabeth overhears Darcy refuse to dance with her.",
@@ -194,8 +199,10 @@ the names under each scene.
   ] }
 ```
 
-- `people`: the rows, top to bottom; put people who meet next to each other. `tag`: "New" on a
-  first appearance in the book.
+- `people`: the lines, left to right; put people who meet next to each other (fewer crossings).
+  `tag`: "New" on a first appearance in the book.
+- `focus` (optional): 1 or 2 names from `people` that the chapter follows. The first is drawn in
+  ink, the second in the accent colour. Default: the first two people.
 - `text`: one or two sentences with the time in `{…}` (drawn bold in the accent colour) and the
   place in `[…]` (bold), as far as the book gives them.
 - `with`: people in the scene; `off`: people there only at a distance. Exactly one scene is `key`.
