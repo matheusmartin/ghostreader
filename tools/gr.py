@@ -164,6 +164,10 @@ class Model:
                     continue
                 if e.code == 429 and re.search(r'limit: 0\b', text):
                     raise Stop(f'{self.provider} {self.model}: no quota on this key for this model ({first_line(text)})')
+                if e.code == 429 and re.search(r'per day', text):
+                    when = re.search(r'retry in ([\dhms.]+)', text)
+                    raise Stop(f'{self.provider} {self.model}: the daily quota is used up'
+                               + (f'; it resets in {when.group(1)}' if when else '') + ' (the run resumes where it stopped)')
                 if e.code in (429, 500, 502, 503, 504) and attempt < self.retries:
                     attempt += 1
                     wait = retry_after(e, text, attempt - 1)

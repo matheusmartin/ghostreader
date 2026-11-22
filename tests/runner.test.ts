@@ -161,6 +161,14 @@ describe.skipIf(!python)('tools/gr.py with a mock model', () => {
     expect(last.problems.join('\n')).toContain('GR-F04');
   }, 60_000);
 
+  it('stops at once when the daily quota is used up', async () => {
+    handler = () => ({ status: 429, body: [{ error: { code: 429, message: 'Quota exceeded for metric: free_tier_requests, limit: 20, model: mock-1, description: Generate content requests per day limit exceeded. Please retry in 13h12m6.8s.' } }] });
+    const s = setup(['source', 'intake.json', 'plan.json']);
+    const r = await gr(['stage', 'read', '--chapter', 'ch1'], s);
+    expect(r.code).toBe(2);
+    expect(r.err).toContain('daily quota is used up; it resets in 13h12m6.8s');
+  }, 60_000);
+
   it('stops at once when the key has no quota for the model', async () => {
     handler = () => ({ status: 429, body: [{ error: { code: 429, message: 'Quota exceeded for metric: requests, limit: 0, model: mock-1' } }] });
     const s = setup(['source', 'intake.json', 'plan.json']);
