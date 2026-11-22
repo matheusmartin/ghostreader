@@ -17,6 +17,10 @@ and records the call in work/<guide>/run.json.
   python3 -I tools/gr.py prompt <step> --guide <g> [--chapter <id>] [--style <s>]
                                                     print the filled-in prompt, for an agent or an
                                                     isolated run to answer by hand
+  python3 -I tools/gr.py save <step> --guide <g> --reply FILE --family claude --model <name> [--chapter <id>] [--style <s>]
+                                                    an agent's own reply to a prompt: checked, saved and
+                                                    gated as the runner does it, and recorded in run.json;
+                                                    run it again after a fix (exit 1 lists the problems)
   python3 -I tools/gr.py record <step> --guide <g> --family claude --model <name> [--chapter <id>]
                                                     add a step an agent ran itself to run.json
 
@@ -99,6 +103,8 @@ def write_json(path, value):
 class Model:
     """One provider and model, called through the OpenAI-compatible chat API."""
 
+    refused = set()  # (provider, model, schema name) the provider would not serve: JSON mode from then on
+
     def __init__(self, role, provider, cfg, model, settings):
         if provider not in cfg['providers']:
             raise Stop(f'no provider "{provider}" in the config (has {", ".join(cfg["providers"])})')
@@ -131,7 +137,10 @@ class Model:
     def chat(self, messages, schema=None, name='output'):
         """(text, served model, usage, mode). mode: "schema" when the provider took the schema,
         "json" when it refused it and the call fell back to JSON mode with the schema in the prompt."""
-        mode = 'schema' if schema else 'json'
+        mode = 'schema' if schema and (self.provider, self.model, name) not in Model.refused else 'json'
+        if schema and mode == 'json':
+            messages = messages[:-1] + [{'role': messages[-1]['role'], 'content': messages[-1]['content']
+                                         + '\n\n## The JSON Schema of your reply\n\n' + json.dumps(schema, ensure_ascii=False)}]
         attempt = 0  # retries after a rate limit or a server error; the JSON-mode fallback is not one
         while True:
             body = {'model': self.model, 'messages': messages}
@@ -149,6 +158,7 @@ class Model:
                     # The provider cannot serve this schema (too large or a keyword it lacks): JSON mode.
                     print(f'  {self.provider} refused the schema ({first_line(text)}); JSON mode with the schema in the prompt', file=sys.stderr)
                     mode = 'json'
+                    Model.refused.add((self.provider, self.model, name))
                     messages = messages[:-1] + [{'role': messages[-1]['role'], 'content': messages[-1]['content']
                                                  + '\n\n## The JSON Schema of your reply\n\n' + json.dumps(schema, ensure_ascii=False)}]
                     continue
@@ -179,12 +189,13 @@ def first_line(text):
 
 
 def retry_after(e, text, attempt):
+    """Seconds to wait: what the provider asks for, else 20, 40, 80… up to five minutes."""
     if e.headers.get('Retry-After', '').isdigit():
-        return min(float(e.headers['Retry-After']), 120)
+        return min(float(e.headers['Retry-After']), 300)
     m = re.search(r'retry in ([\d.]+)s', text)
-    if m and float(m.group(1)) <= 120:
+    if m and float(m.group(1)) <= 300:
         return float(m.group(1)) + 1
-    return min(15 * 2 ** attempt, 120)
+    return min(20 * 2 ** attempt, 300)
 
 
 def parse_json(text):
@@ -323,8 +334,9 @@ class Guide:
         up_to = read_json(self.work / 'intake.json', {}).get('upTo')
         if not up_to:
             return ids
+        m = re.fullmatch(r'(?i)chapter\s+(\d+)', up_to.strip())
         for i, (_, c) in enumerate(self.chapters()):
-            if up_to in (c['id'], c['title'], c['number']):
+            if up_to in (c['id'], c['title'], c['number']) or (m and c['number'].isdigit() and int(c['number']) == int(m.group(1))):
                 return ids[:i + 1]
         raise Stop(f'intake.json: the limit "{up_to}" is not a chapter of the plan')
 
@@ -395,7 +407,11 @@ def inputs(step, g, cid, style):
     """The values of a step's {{inputs}}, as its prompt header lists them."""
     v = {'guide': g.id, 'chapter': cid or '', 'style': style or ''}
     if step == 'plan':
-        v.update(intake=g.file('intake.json'), toc=g.file('source/toc.json'))
+        toc = read_json(g.work / 'source' / 'toc.json')
+        first = next((e for e in toc if e.get('kind') == 'body' and e.get('words', 0) >= 200
+                      and (g.work / 'source' / e['file']).exists()), None)
+        v.update(intake=g.file('intake.json'), toc=g.file('source/toc.json'),
+                 opening=(g.work / 'source' / first['file']).read_text() if first else '(no opening text)')
     elif step == 'read':
         earlier = []
         for x in g.before(cid):
@@ -548,8 +564,26 @@ def styles_gate(g, cid):
         return out
 
 
-def run_step(step, g, models, settings, cid=None, style=None):
-    """One step: prompt, call, checks, repairs. True when its gate passes."""
+def passed(g, step, cid=None, style=None):
+    """True when run.json already has a passing call of this step and its output is still there."""
+    run = read_json(g.work / 'run.json', {'stages': []})
+    if not any(s['stage'] == step and s.get('chapter') == cid and s.get('style') == style and s['gate'] == 'pass'
+               for s in run['stages']):
+        return False
+    if step == 'write-map':
+        ch = g.map_chapter(cid)
+        return bool(ch and (ch.get('screens') or ch.get('sections')))
+    if step == 'write-styles':
+        return cid in read_json(g.work / 'styles.json', {}).get('chapters', {})
+    return output_path(step, g, cid, style).exists()
+
+
+def run_step(step, g, models, settings, cid=None, style=None, resume=True):
+    """One step: prompt, call, checks, repairs. True when its gate passes. With `resume`, a step
+    that already passed is not run again."""
+    if resume and passed(g, step, cid, style):
+        print(f'{" ".join(x for x in (step, cid, style) if x)}: passed before', file=sys.stderr)
+        return True
     prompt_file, role, profile, store, definition = STEPS[step]
     head, text = render(step, inputs(step, g, cid, style))
     model = models[role]
@@ -582,6 +616,40 @@ def run_step(step, g, models, settings, cid=None, style=None):
                'served': served, 'mode': mode, 'attempts': attempts, 'gate': 'fail' if bad else 'pass',
                'problems': bad[:40], 'tokens': tokens, 'seconds': round(time.time() - started, 1), 'finished': now()})
     print(f'{label}: {"FAIL" if bad else "pass"} after {attempts} call(s)', file=sys.stderr)
+    return not bad
+
+
+def save_reply(step, g, cid, style, reply_path, family, model_name):
+    """Level A: an agent answered the prompt itself. The same checks, the same files, the same record."""
+    prompt_file, role, _, store, definition = STEPS[step]
+    head, _ = parse_prompt(REPO / 'prompts' / prompt_file)
+    store_schema = storage(store, definition)
+    try:
+        value = strip_nulls(parse_json(Path(reply_path).read_text()), store_schema, store_schema)
+        bad = [f'GR-F04 {e}' for e in validate(value, store_schema)]
+    except json.JSONDecodeError as e:
+        value, bad = None, [f'GR-F04 the reply is not valid JSON: {e}']
+    if not bad:
+        save(step, g, cid, style, value)
+        bad = gate(step, g, cid, style)
+    path = g.work / 'run.json'
+    run = read_json(path, {'guide': g.id, 'spec': SPEC, 'runner': RUNNER, 'stages': []})
+    last = run['stages'][-1] if run['stages'] else None
+    same = (last and last['stage'] == step and last.get('chapter') == cid and last.get('style') == style
+            and last['gate'] == 'fail' and last['model'].get('provider') == 'agent')
+    entry = {'stage': step, **({'chapter': cid} if cid else {}), **({'style': style} if style else {}),
+             'prompt': f'{prompt_file[:-3]}@{head["version"]}', 'role': role,
+             'model': {'provider': 'agent', 'family': family, 'model': model_name},
+             'attempts': (last['attempts'] + 1) if same else 1, 'gate': 'fail' if bad else 'pass',
+             'problems': bad[:40], 'finished': now()}
+    if same:
+        run['stages'][-1] = entry
+    else:
+        run['stages'].append(entry)
+    write_json(path, run)
+    for b in bad:
+        print(b)
+    print(f'{step} {cid or ""} {style or ""}: {"FAIL" if bad else "pass"} (attempt {entry["attempts"]})', file=sys.stderr)
     return not bad
 
 
@@ -646,11 +714,14 @@ def eval_fixture(args, models, settings):
     gold = read_json(fixture / 'gold.json')
     work = Path(args.work or f'work/eval-{fixture.name}-{time.strftime("%Y%m%d-%H%M%S")}')
     books = work / 'books'
-    if work.exists() and any(work.iterdir()):
+    resume = work.exists() and (work / 'intake.json').exists()
+    if work.exists() and any(work.iterdir()) and not resume:
         raise Stop(f'{work} is not empty')
-    (work / 'source').mkdir(parents=True)
-    books.mkdir()
-    if args.book:
+    (work / 'source').mkdir(parents=True, exist_ok=True)
+    books.mkdir(exist_ok=True)
+    if resume:
+        print(f'resuming the run in {work}', file=sys.stderr)
+    elif args.book:
         digest = hashlib.sha256(Path(args.book).read_bytes()).hexdigest()
         if digest != gold['book']['sha256']:
             raise Stop(f'{args.book}: SHA-256 {digest} is not the gold set\'s {gold["book"]["sha256"]}: another edition')
@@ -743,20 +814,21 @@ def planted(fixture, gold, work, models, settings):
     plants = gold.get('planted', [])
     if not plants or not (fixture / 'books').exists():
         return None  # not run: no planted claims, or no correct guide to plant them in
-    pw = work / 'planted'
-    shutil.copytree(work / 'source', pw / 'source')
-    # The run's own plan, fact sheets and ledger: for a real book, the fixture has none (they quote it).
-    for name in ('plan.json', 'facts', 'ledger'):
-        src = work / name
-        (shutil.copytree if src.is_dir() else shutil.copy)(src, pw / name)
-    pb = pw / 'books'
-    shutil.copytree(fixture / 'books', pb)
-    for x in plants:
+    pw, pb = work / 'planted', work / 'planted' / 'books'
+    if not pw.exists():  # a resumed run keeps the planted copy it made before
+        shutil.copytree(work / 'source', pw / 'source')
+        # The run's own plan, fact sheets and ledger: for a real book, the fixture has none (they quote it).
+        for name in ('plan.json', 'facts', 'ledger'):
+            src = work / name
+            (shutil.copytree if src.is_dir() else shutil.copy)(src, pw / name)
+        shutil.copytree(fixture / 'books', pb)
+    for x in (plants if not (pw / 'planted.done').exists() else []):
         path = pb / f'{gold["guide"]}-{x["style"]}.json'
         book = read_json(path)
         ch = next(c for _, c, _ in cg.chapters(book) if c['id'] == x['chapter'])
         set_path(ch['screens'][x['screen'] - 1], x['path'], x['text'])
         write_json(path, book)
+    (pw / 'planted.done').write_text('')
     pg = Guide(gold['guide'], pw, pb)
     caught = 0
     for cid in sorted({x['chapter'] for x in plants}):
@@ -790,7 +862,7 @@ def load_models(args):
 
 def main():
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
-    ap.add_argument('command', choices=['models', 'stage', 'write', 'check', 'eval', 'record', 'prompt'])
+    ap.add_argument('command', choices=['models', 'stage', 'write', 'check', 'eval', 'record', 'prompt', 'save'])
     ap.add_argument('step', nargs='?', choices=list(STEPS))
     ap.add_argument('--guide')
     ap.add_argument('--chapter')
@@ -804,6 +876,7 @@ def main():
     ap.add_argument('--family', help='record: the model family that ran the step')
     ap.add_argument('--model', help='record: the model that ran the step')
     ap.add_argument('--gate', choices=['pass', 'fail'], default='pass', help='record: the step\'s gate')
+    ap.add_argument('--reply', help='save: the file with the agent\'s JSON reply')
     for role in ROLES:
         ap.add_argument(f'--{role}', help=f'PROVIDER:MODEL for the {role} role')
     args = ap.parse_args()
@@ -830,6 +903,10 @@ def main():
                        'role': STEPS[args.step][1], 'model': {'provider': 'agent', 'family': args.family, 'model': args.model},
                        'attempts': 1, 'gate': args.gate, 'finished': now()})
             return 0
+        if args.command == 'save':
+            if not (args.step and args.reply and args.family and args.model):
+                raise Stop('save needs a step, --reply, --family and --model')
+            return 0 if save_reply(args.step, g, args.chapter, args.style, args.reply, args.family, args.model) else 1
         if args.command == 'prompt':
             if not args.step:
                 raise Stop('prompt needs a step')
@@ -844,7 +921,7 @@ def main():
         if args.command == 'stage':
             if not args.step:
                 raise Stop('stage needs a step')
-            return 0 if run_step(args.step, g, models, cfg, args.chapter, args.style) else 1
+            return 0 if run_step(args.step, g, models, cfg, args.chapter, args.style, resume=False) else 1
         if args.command == 'write':
             return 0 if write_guide(g, models, cfg) else 1
         if args.command == 'check':

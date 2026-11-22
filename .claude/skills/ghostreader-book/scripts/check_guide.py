@@ -121,7 +121,11 @@ class Source:
     def text(self, n):
         if n not in self._text:
             e = self.by_n[n]
-            raw = (self.dir / e['file']).read_text().replace('’', "'").replace('‘', "'")
+            path = self.dir / e['file']
+            if not path.exists():  # moved to after-limit/ by the spoiler gate: not part of the book here
+                self._text[n] = ''
+                return ''
+            raw = path.read_text().replace('’', "'").replace('‘', "'")
             raw = re.sub(r'(?<=\d),(?=\d{3})', '', raw)  # 13,000 -> 13000
             raw = re.sub(r'(?<![A-Za-z])((?:[A-Z]\.){2,})', lambda m: m.group(1).replace('.', ''), raw)  # U.S. -> US
             self._text[n] = raw
