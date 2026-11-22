@@ -199,13 +199,13 @@ def first_line(text):
 
 
 def retry_after(e, text, attempt):
-    """Seconds to wait: what the provider asks for, else 20, 40, 80… up to five minutes."""
+    """Seconds to wait: what the provider asks for, else 60, 120, 240, then five minutes."""
     if e.headers.get('Retry-After', '').isdigit():
         return min(float(e.headers['Retry-After']), 300)
     m = re.search(r'retry in ([\d.]+)s', text)
     if m and float(m.group(1)) <= 300:
         return float(m.group(1)) + 1
-    return min(20 * 2 ** attempt, 300)
+    return min(60 * 2 ** attempt, 300)  # long waits: on some free tiers every retry counts against a daily quota
 
 
 def parse_json(text):

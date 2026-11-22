@@ -35,6 +35,6 @@
     }
   },
   "repairs": 2,
-  "retries": 8,
+  "retries": 3,
   "timeout": 600
 }
