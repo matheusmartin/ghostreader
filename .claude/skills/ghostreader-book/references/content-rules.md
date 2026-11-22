@@ -100,8 +100,10 @@ the reader opens the last chapter they read).
 The repository and the GitHub Pages site are public. A guide is a summary in your own words, with
 diagrams; it never reproduces the book's text.
 
-- `work/` (the book file, its extracted text, the fact sheets) is in `.gitignore`. Never commit it,
-  never paste its text into a book file, a commit message or a pull request.
+- `work/` (the book file, its extracted text, the working files) is in `.gitignore`. Never commit
+  it, never paste its text into a book file, a commit message or a pull request.
+- The anchors in the working files hold 3–12-word quotes, so a script can confirm them. They stay
+  in `work/`; a guide never shows them.
 - Paraphrase; keep scene texts and synopses short and in your own words.
 - The PDF holds more detail than the app, but the same rules: no quotations, no long close
   paraphrase of a passage.

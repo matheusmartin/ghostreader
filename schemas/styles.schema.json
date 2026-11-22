@@ -1,0 +1,146 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Styles file",
+  "description": "Stage S7: the texts only Recap, Recall and Layers need. work/<guide>/styles.json; build_styles.py reads it with the Map file (references/styles.md).",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "question",
+    "chapters"
+  ],
+  "properties": {
+    "question": {
+      "type": "string",
+      "description": "The book's question (12 words at most), the same words as \"The question\" in \"Where it stands\""
+    },
+    "first_items": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Items of the first chapter's \"argument so far\" chart (7 words each at most)"
+    },
+    "parts": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "string"
+      },
+      "description": "The point of each part with two or more chapters, by part id (7 words at most)"
+    },
+    "chapters": {
+      "type": "object",
+      "additionalProperties": {
+        "$ref": "#/definitions/Chapter"
+      },
+      "description": "One entry per written chapter, by chapter id"
+    }
+  },
+  "definitions": {
+    "Chapter": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "line",
+        "point",
+        "key",
+        "recap",
+        "moments",
+        "remember",
+        "questions"
+      ],
+      "properties": {
+        "main": {
+          "type": "string",
+          "description": "Label of the chapter's main diagram in the Map file (default: its first chart or scenes)"
+        },
+        "before": {
+          "type": "string",
+          "description": "Recap's \"Before this chapter\" (50 words at most); leave out in the first chapter"
+        },
+        "line": {
+          "type": "string",
+          "description": "Layers' \"In one line\" (20 words at most)"
+        },
+        "point": {
+          "type": "string",
+          "description": "The point the chapter adds (7 words at most)"
+        },
+        "key": {
+          "type": "string",
+          "description": "The chapter's conclusion (10 words at most)"
+        },
+        "recap": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 2,
+          "items": {
+            "type": "string"
+          }
+        },
+        "moments": {
+          "type": "array",
+          "minItems": 4,
+          "maxItems": 6,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "name",
+              "text"
+            ],
+            "properties": {
+              "name": {
+                "type": "string"
+              },
+              "text": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "remember": {
+          "type": "array",
+          "minItems": 2,
+          "maxItems": 3,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "title",
+              "text"
+            ],
+            "properties": {
+              "title": {
+                "type": "string"
+              },
+              "text": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "questions": {
+          "type": "array",
+          "minItems": 3,
+          "maxItems": 3,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "q",
+              "a"
+            ],
+            "properties": {
+              "q": {
+                "type": "string"
+              },
+              "a": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

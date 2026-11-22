@@ -1,0 +1,234 @@
+{
+  "chapter": "ch2",
+  "sources": [
+    "002"
+  ],
+  "words": 312,
+  "facts": [
+    {
+      "id": "F1",
+      "type": "scene",
+      "basis": "stated",
+      "text": "Ada shows Ines the salt from the main wheel, and Tomas admits he lent the key to Mr Hale",
+      "when": "At dawn",
+      "where": "the kitchen",
+      "with": [
+        "Ada",
+        "Ines",
+        "Tomas"
+      ],
+      "anchor": {
+        "file": "002",
+        "p": [
+          1,
+          7
+        ],
+        "quote": "opened it on the kitchen table"
+      }
+    },
+    {
+      "id": "F2",
+      "type": "cause",
+      "basis": "stated",
+      "text": "Salt would not stop a clock by chance, so somebody opened the case with the key and put it there",
+      "anchor": {
+        "file": "002",
+        "p": [
+          3,
+          3
+        ],
+        "quote": "Somebody had opened the case with the key"
+      }
+    },
+    {
+      "id": "F3",
+      "type": "state",
+      "basis": "stated",
+      "text": "Only two keys exist: the keeper's and the one he left with Ines",
+      "who": "Ines",
+      "anchor": {
+        "file": "002",
+        "p": [
+          4,
+          4
+        ],
+        "quote": "only two keys existed"
+      }
+    },
+    {
+      "id": "F4",
+      "type": "relation",
+      "basis": "stated",
+      "text": "Tomas lent the key to Mr Hale for one evening, three days before, for a silver coin",
+      "who": "Tomas",
+      "to": "Mr Hale",
+      "anchor": {
+        "file": "002",
+        "p": [
+          5,
+          6
+        ],
+        "quote": "he had lent it to Mr Hale for one evening"
+      }
+    },
+    {
+      "id": "F5",
+      "type": "state",
+      "basis": "stated",
+      "text": "Tomas says he did not know what Mr Hale meant to do",
+      "who": "Tomas",
+      "anchor": {
+        "file": "002",
+        "p": [
+          7,
+          7
+        ],
+        "quote": "he had not known what Mr Hale meant to do"
+      }
+    },
+    {
+      "id": "F6",
+      "type": "scene",
+      "basis": "stated",
+      "text": "Ada mends the clock; at noon it strikes, the lamp turns and the three boats come in",
+      "when": "At noon",
+      "where": "the lighthouse",
+      "with": [
+        "Ada"
+      ],
+      "anchor": {
+        "file": "002",
+        "p": [
+          8,
+          9
+        ],
+        "quote": "At noon the clock struck the hour"
+      }
+    },
+    {
+      "id": "F7",
+      "type": "scene",
+      "basis": "stated",
+      "text": "Mr Hale thanks Ada and asks Ines for the key; Ines says her father will decide on Friday",
+      "when": "In the afternoon",
+      "with": [
+        "Mr Hale",
+        "Ada",
+        "Ines"
+      ],
+      "anchor": {
+        "file": "002",
+        "p": [
+          10,
+          11
+        ],
+        "quote": "asked Ines for the key"
+      }
+    },
+    {
+      "id": "F8",
+      "type": "scene",
+      "basis": "stated",
+      "text": "Ines hides the key in the hollow base of the kitchen lamp",
+      "when": "When he had gone",
+      "where": "the kitchen",
+      "with": [
+        "Ines"
+      ],
+      "anchor": {
+        "file": "002",
+        "p": [
+          12,
+          12
+        ],
+        "quote": "hid it inside the hollow base of the lamp"
+      }
+    },
+    {
+      "id": "F9",
+      "type": "state",
+      "basis": "stated",
+      "text": "Ada will stay in Kessel until the church clock is mended, and keeps the salt",
+      "who": "Ada",
+      "anchor": {
+        "file": "002",
+        "p": [
+          13,
+          13
+        ],
+        "quote": "she would keep the salt"
+      }
+    },
+    {
+      "id": "F10",
+      "type": "state",
+      "basis": "stated",
+      "text": "Ines wonders why the harbour master wants her father out of the tower",
+      "who": "Ines",
+      "anchor": {
+        "file": "002",
+        "p": [
+          14,
+          14
+        ],
+        "quote": "why the harbour master wanted her father out of the tower"
+      }
+    }
+  ],
+  "must_carry": [
+    {
+      "id": "M1",
+      "kind": "cause",
+      "facts": [
+        "F2"
+      ],
+      "text": "Somebody opened the case with the key and packed salt into the main wheel, so the clock did not stop by chance",
+      "question": "Why did the lighthouse clock stop?"
+    },
+    {
+      "id": "M2",
+      "kind": "state",
+      "facts": [
+        "F4"
+      ],
+      "text": "Tomas lent the key to Mr Hale for one evening, for a silver coin",
+      "question": "Who borrowed the clock-room key from Tomas, and what did Tomas get?"
+    },
+    {
+      "id": "M3",
+      "kind": "state",
+      "facts": [
+        "F6"
+      ],
+      "text": "The mended clock strikes at noon, so the lamp turns and the boats come in",
+      "question": "What happens when Ada has mended the clock?"
+    },
+    {
+      "id": "M4",
+      "kind": "state",
+      "facts": [
+        "F8"
+      ],
+      "text": "Ines will not give Mr Hale the key and hides it in the base of the kitchen lamp",
+      "question": "What does Ines do with the key after Mr Hale asks for it?"
+    },
+    {
+      "id": "M5",
+      "kind": "state",
+      "facts": [
+        "F9"
+      ],
+      "text": "Ada stays in Kessel to mend the church clock and keeps the salt",
+      "question": "What does Ada do with the salt?"
+    },
+    {
+      "id": "M6",
+      "kind": "open",
+      "facts": [
+        "F10"
+      ],
+      "text": "Ines does not know why the harbour master wants her father out of the tower",
+      "question": "What does Ines wonder about the harbour master at the end?"
+    }
+  ]
+}

@@ -1,0 +1,47 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Recall test answers",
+  "description": "Stage S10: an isolated reader's answers, from the guide alone. work/<guide>/recall-test/<style>-<chapter>-answers.json",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "answers"
+  ],
+  "properties": {
+    "answers": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "n",
+          "answer",
+          "screen"
+        ],
+        "properties": {
+          "n": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "answer": {
+            "type": "string",
+            "description": "One or two sentences, or \"Not in the guide\""
+          },
+          "screen": {
+            "anyOf": [
+              {
+                "type": "string",
+                "pattern": "^[a-z0-9][a-z0-9-]*\\.s[0-9]+$",
+                "description": "A screen of the guide text: \"ch3.s2\" = chapter ch3, screen 2 (as check_guide.py text and test print them)"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "The screen the answer comes from; null when not in the guide"
+          }
+        }
+      }
+    }
+  }
+}

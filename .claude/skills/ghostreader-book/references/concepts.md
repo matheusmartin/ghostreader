@@ -26,25 +26,29 @@ distinction in the author's own terms; never name it with a term the book does n
 
 ## Record it (step 5)
 
-Each chapter's fact sheet has a section `## Concepts and distinctions`, one line per item:
+Each concept or distinction is a fact of type `concept` in the fact sheet of the chapter that
+introduces it (`references/working-files.md`):
 
+```json
+{ "id": "F14", "type": "concept", "basis": "stated",
+  "text": "Reality comes in three kinds: objective, subjective and intersubjective",
+  "anchor": { "file": "011", "p": [22, 25], "quote": "…" },
+  "concept": { "name": "Three kinds of reality", "kind": "typology", "mode": "explicit", "members": [
+    { "name": "Objective", "definition": "Exists whatever people think", "example": "Stones" },
+    { "name": "Subjective", "definition": "Exists in one mind", "example": "Pain" },
+    { "name": "Intersubjective", "definition": "Exists between many minds", "example": "Money, nations" } ] } }
 ```
-## Concepts and distinctions
-- {Three kinds of reality} typology · explicit · objective (exists whatever people think: stones) /
-  subjective (in one mind: pain) / intersubjective (between many minds: money, nations) · 011 p22–p25
-- {Truth versus order} contrast · explicit · every network must both find truth and keep order;
-  order is often easier with fiction · 011 p59–p62
-- {Distributed versus centralised networks} contrast · indirect · democracy spreads information
-  among independent nodes; dictatorship sends it to one hub · 014 p4–p9
-```
 
-`{name}` in the book's words · kind (concept, typology, contrast, views, fiction) · explicit or
-indirect · the members with a definition and an example each, in your own words · anchor.
+`name` in the book's words · `kind` (concept, typology, contrast, views, fiction) · `mode`
+(explicit or indirect) · the members with a definition and an example each, in your own words ·
+the anchor. A contrast has two members ("Distributed networks", "Centralised networks"), indirect
+when the author builds it across a chapter without one sentence that names it.
 
-Then, in the plan (step 4, kept as a list in `work/<id>/concepts.md`), gather every item from every
-fact sheet into one **concept inventory**, in book order, with the chapter that introduces each. A
-concept that later chapters build on is marked **core**: it always gets a chart in the chapter
-that introduces it, and later chapters may name it again in their points.
+Then `check_guide.py concepts <guide>` gathers every concept of every fact sheet into one
+**concept inventory**, `work/<guide>/concepts.json`, in book order, with the chapter that
+introduces each. Mark a concept that later chapters build on `"core": true`: it always gets a
+chart in the chapter that introduces it, and later chapters may name it again in their points.
+The script keeps the marks when it runs again.
 
 ## Show it (step 6)
 
@@ -81,8 +85,9 @@ Then:
 
 ## Check it (step 7)
 
-Go through the inventory line by line and find each item on a screen of the chapter that
-introduces it: its chart (minor items excepted), a key point or its row in "Terms". Add what is
-missing. Then read the chapter's
+Run `check_guide.py concepts <guide>`: it reports each concept whose name (or the names of all
+its members) is on no screen of the chapter that introduces it (GR-V05). Then go through the
+inventory line by line and confirm the right kind of screen: its chart (minor items excepted), a
+key point or its row in "Terms". Add what is missing. Then read the chapter's
 text once more for a distinction you did not record: a pair of terms set against each other more
 than once is the most common miss.

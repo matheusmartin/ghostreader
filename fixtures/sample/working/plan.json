@@ -1,0 +1,51 @@
+{
+  "guide": "sample-story",
+  "type": "fiction",
+  "title": "The Salt Clock",
+  "author": "Ghostreader fixtures",
+  "question": "Who stopped the lighthouse clock at Kessel, and why?",
+  "parts": [
+    {
+      "id": "part-1",
+      "chapters": [
+        {
+          "id": "ch1",
+          "number": "01",
+          "title": "Chapter 1",
+          "sources": [
+            "001"
+          ],
+          "words": 508
+        },
+        {
+          "id": "ch2",
+          "number": "02",
+          "title": "Chapter 2",
+          "sources": [
+            "002"
+          ],
+          "words": 312
+        }
+      ]
+    }
+  ],
+  "cast": [
+    {
+      "name": "Ines",
+      "role": "the keeper's daughter",
+      "main": true
+    },
+    {
+      "name": "Tomas",
+      "role": "Ines's younger brother"
+    },
+    {
+      "name": "Mr Hale",
+      "role": "the harbour master"
+    },
+    {
+      "name": "Ada",
+      "role": "a clockmaker from the city"
+    }
+  ]
+}

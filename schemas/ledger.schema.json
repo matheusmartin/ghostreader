@@ -1,0 +1,123 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Ledger",
+  "description": "Stage S4: how one chapter changes the state of the story or the argument. work/<guide>/ledger/<chapter-id>.json",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "chapter",
+    "entries"
+  ],
+  "properties": {
+    "chapter": {
+      "type": "string",
+      "pattern": "^[a-z0-9][a-z0-9-]*$",
+      "description": "Chapter id, as in the Map file: \"ch3\", \"prologue\""
+    },
+    "entries": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/definitions/Entry"
+      }
+    }
+  },
+  "definitions": {
+    "Anchor": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "file",
+        "p",
+        "quote"
+      ],
+      "description": "Where a fact is in the extracted text. Working files only: a guide never shows the quote.",
+      "properties": {
+        "file": {
+          "type": "string",
+          "pattern": "^[0-9]{3}$",
+          "description": "The text file's number in toc.json, three digits: \"005\""
+        },
+        "p": {
+          "type": "array",
+          "items": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "minItems": 2,
+          "maxItems": 2,
+          "description": "First and last paragraph, the [pN] marks of the text file: [11, 11] or [11, 14]"
+        },
+        "quote": {
+          "type": "string",
+          "description": "3 to 12 words copied exactly from the anchored paragraphs, so a script can confirm the anchor"
+        }
+      }
+    },
+    "Entry": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "anchor"
+      ],
+      "description": "Fiction: dimension, entity (not for time and place), after, and before when it was known. Non-fiction: status and text.",
+      "properties": {
+        "dimension": {
+          "type": "string",
+          "enum": [
+            "time",
+            "place",
+            "present",
+            "goal",
+            "relation",
+            "knowledge",
+            "possession",
+            "view",
+            "state"
+          ],
+          "description": "Fiction: what changes. time and place of the story; present = who is there at the end; goal, relation, knowledge, possession, view, state of a person"
+        },
+        "entity": {
+          "type": "string",
+          "description": "Fiction: the person who changes"
+        },
+        "about": {
+          "type": "string",
+          "description": "Fiction: the other person or thing, for relation, view, knowledge"
+        },
+        "before": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "description": "Fiction: the state before; null when none was known"
+        },
+        "after": {
+          "type": "string",
+          "description": "Fiction: the state at the chapter's end"
+        },
+        "cause": {
+          "type": "string",
+          "description": "Fiction: why it changed, as the book shows it"
+        },
+        "status": {
+          "type": "string",
+          "enum": [
+            "established",
+            "open",
+            "answered",
+            "promised"
+          ],
+          "description": "Non-fiction"
+        },
+        "text": {
+          "type": "string",
+          "description": "Non-fiction: what is established, open, answered or promised"
+        },
+        "anchor": {
+          "$ref": "#/definitions/Anchor"
+        }
+      }
+    }
+  }
+}

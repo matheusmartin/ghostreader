@@ -1,0 +1,298 @@
+{
+  "chapter": "ch1",
+  "sources": [
+    "001"
+  ],
+  "words": 508,
+  "facts": [
+    {
+      "id": "F1",
+      "type": "scene",
+      "basis": "stated",
+      "text": "Ines finds the lighthouse clock stopped, so the lamp does not turn; Tomas follows her up",
+      "when": "The first cold morning of the year",
+      "where": "the lighthouse",
+      "with": [
+        "Ines",
+        "Tomas"
+      ],
+      "anchor": {
+        "file": "001",
+        "p": [
+          1,
+          7
+        ],
+        "quote": "the hands stood at ten minutes to six"
+      }
+    },
+    {
+      "id": "F2",
+      "type": "concept",
+      "basis": "stated",
+      "text": "The keeper's rule: the lamp turns when the clock strikes the hour, and a keeper who breaks it loses the tower",
+      "anchor": {
+        "file": "001",
+        "p": [
+          2,
+          3
+        ],
+        "quote": "People in Kessel called it the keeper's rule"
+      },
+      "concept": {
+        "name": "The keeper's rule",
+        "kind": "fiction",
+        "mode": "explicit",
+        "members": [
+          {
+            "name": "The keeper's rule",
+            "definition": "The lamp turns when the clock strikes the hour; a keeper who breaks it loses the tower"
+          }
+        ]
+      }
+    },
+    {
+      "id": "F3",
+      "type": "person",
+      "basis": "stated",
+      "text": "Ines Varga, the keeper's daughter, holds the key to the clock room while her father is away",
+      "who": "Ines",
+      "role": "the keeper's daughter",
+      "first": true,
+      "anchor": {
+        "file": "001",
+        "p": [
+          4,
+          4
+        ],
+        "quote": "He had left the key to the clock room with her"
+      }
+    },
+    {
+      "id": "F4",
+      "type": "state",
+      "basis": "stated",
+      "text": "Tomas says nothing when Ines says that somebody stopped the clock",
+      "who": "Tomas",
+      "anchor": {
+        "file": "001",
+        "p": [
+          7,
+          7
+        ],
+        "quote": "Tomas looked at the floor and said nothing"
+      }
+    },
+    {
+      "id": "F5",
+      "type": "person",
+      "basis": "stated",
+      "text": "Tomas is Ines's younger brother",
+      "who": "Tomas",
+      "role": "Ines's younger brother",
+      "first": true,
+      "anchor": {
+        "file": "001",
+        "p": [
+          6,
+          6
+        ],
+        "quote": "Her younger brother, Tomas, followed her up"
+      }
+    },
+    {
+      "id": "F6",
+      "type": "scene",
+      "basis": "stated",
+      "text": "Mr Hale warns that the keeper will lose the tower if the clock is not running by Friday, and will not help",
+      "where": "the harbour",
+      "with": [
+        "Ines",
+        "Mr Hale"
+      ],
+      "anchor": {
+        "file": "001",
+        "p": [
+          8,
+          10
+        ],
+        "quote": "her father would lose the tower and the house"
+      }
+    },
+    {
+      "id": "F7",
+      "type": "person",
+      "basis": "stated",
+      "text": "Mr Hale is the harbour master",
+      "who": "Mr Hale",
+      "role": "the harbour master",
+      "first": true,
+      "anchor": {
+        "file": "001",
+        "p": [
+          8,
+          8
+        ],
+        "quote": "Mr Hale, the harbour master, was already angry"
+      }
+    },
+    {
+      "id": "F8",
+      "type": "cause",
+      "basis": "stated",
+      "text": "Without the light, three boats cannot come into the harbour",
+      "anchor": {
+        "file": "001",
+        "p": [
+          8,
+          8
+        ],
+        "quote": "none of them would come in without the light"
+      }
+    },
+    {
+      "id": "F9",
+      "type": "scene",
+      "basis": "stated",
+      "text": "Ada, a clockmaker, arrives on the late evening boat and agrees to mend the lighthouse clock for the compass of Ines's mother",
+      "when": "The evening",
+      "where": "the quay",
+      "with": [
+        "Ines",
+        "Tomas",
+        "Ada",
+        "Mr Hale"
+      ],
+      "anchor": {
+        "file": "001",
+        "p": [
+          12,
+          18
+        ],
+        "quote": "she had come to Kessel to repair the church clock"
+      }
+    },
+    {
+      "id": "F10",
+      "type": "person",
+      "basis": "stated",
+      "text": "Ada Moreau is a clockmaker from the city, come to repair the church clock",
+      "who": "Ada",
+      "role": "a clockmaker from the city",
+      "first": true,
+      "anchor": {
+        "file": "001",
+        "p": [
+          13,
+          13
+        ],
+        "quote": "Her name was Ada Moreau"
+      }
+    },
+    {
+      "id": "F11",
+      "type": "state",
+      "basis": "stated",
+      "text": "Ines gives her mother's brass compass, the only valuable thing she owns, because she cannot pay Ada's price",
+      "who": "Ines",
+      "anchor": {
+        "file": "001",
+        "p": [
+          14,
+          15
+        ],
+        "quote": "It was the only valuable thing she owned"
+      }
+    },
+    {
+      "id": "F12",
+      "type": "state",
+      "basis": "stated",
+      "text": "Mr Hale asks Ada about the church clock and does not mention the lighthouse",
+      "who": "Mr Hale",
+      "anchor": {
+        "file": "001",
+        "p": [
+          18,
+          19
+        ],
+        "quote": "He did not mention the lighthouse"
+      }
+    },
+    {
+      "id": "F13",
+      "type": "scene",
+      "basis": "stated",
+      "text": "Ines gives Ada the key to the clock room and watches her lamp climb the tower",
+      "when": "That night",
+      "where": "the house",
+      "with": [
+        "Ines",
+        "Ada"
+      ],
+      "anchor": {
+        "file": "001",
+        "p": [
+          20,
+          21
+        ],
+        "quote": "That night Ines gave Ada the key to the clock room"
+      }
+    }
+  ],
+  "must_carry": [
+    {
+      "id": "M1",
+      "kind": "state",
+      "facts": [
+        "F1"
+      ],
+      "text": "The lighthouse clock has stopped, so the lamp does not turn",
+      "question": "Why does the lighthouse lamp not turn on the first cold morning?"
+    },
+    {
+      "id": "M2",
+      "kind": "concept",
+      "facts": [
+        "F2"
+      ],
+      "text": "The keeper's rule: the lamp turns on the clock's hour, and a keeper who breaks it loses the tower",
+      "question": "What is the keeper's rule in Kessel?"
+    },
+    {
+      "id": "M3",
+      "kind": "state",
+      "facts": [
+        "F4"
+      ],
+      "text": "Tomas says nothing when Ines says that somebody stopped the clock",
+      "question": "How does Tomas react when Ines says somebody stopped the clock?"
+    },
+    {
+      "id": "M4",
+      "kind": "cause",
+      "facts": [
+        "F6"
+      ],
+      "text": "Mr Hale warns that the keeper will lose the tower unless the clock runs by Friday",
+      "question": "What will happen to Ines's father if the clock is not running by Friday?"
+    },
+    {
+      "id": "M5",
+      "kind": "state",
+      "facts": [
+        "F11"
+      ],
+      "text": "Ines pays Ada with her mother's brass compass, because she cannot pay Ada's price",
+      "question": "How does Ines pay the clockmaker, and why?"
+    },
+    {
+      "id": "M6",
+      "kind": "state",
+      "facts": [
+        "F13"
+      ],
+      "text": "Ada holds the key to the clock room, the first person outside the family to hold it",
+      "question": "Who holds the key to the clock room at the end of the chapter?"
+    }
+  ]
+}

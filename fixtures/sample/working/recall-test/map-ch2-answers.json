@@ -1,0 +1,64 @@
+{
+  "answers": [
+    {
+      "n": 1,
+      "answer": "The clock has stopped, so the lamp does not turn.",
+      "screen": "ch1.s2"
+    },
+    {
+      "n": 2,
+      "answer": "The lamp turns on the clock's hour, or the keeper loses the tower.",
+      "screen": "ch1.s1"
+    },
+    {
+      "n": 3,
+      "answer": "He says nothing.",
+      "screen": "ch1.s2"
+    },
+    {
+      "n": 4,
+      "answer": "He will lose the tower.",
+      "screen": "ch1.s2"
+    },
+    {
+      "n": 5,
+      "answer": "With her mother's compass, because she cannot pay Ada's price.",
+      "screen": "ch1.s6"
+    },
+    {
+      "n": 6,
+      "answer": "Ada, the clockmaker.",
+      "screen": "ch1.s6"
+    },
+    {
+      "n": 7,
+      "answer": "Somebody packed salt into the main wheel, using a key.",
+      "screen": "ch2.s1"
+    },
+    {
+      "n": 8,
+      "answer": "Mr Hale, for a silver coin.",
+      "screen": "ch2.s3"
+    },
+    {
+      "n": 9,
+      "answer": "The clock strikes, the lamp turns and the boats come in.",
+      "screen": "ch2.s2"
+    },
+    {
+      "n": 10,
+      "answer": "She says her father will decide and hides it in the kitchen lamp.",
+      "screen": "ch2.s2"
+    },
+    {
+      "n": 11,
+      "answer": "She keeps it.",
+      "screen": "ch2.s3"
+    },
+    {
+      "n": 12,
+      "answer": "Something about the tower.",
+      "screen": "ch2.s6"
+    }
+  ]
+}

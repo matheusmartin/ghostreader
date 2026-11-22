@@ -1,0 +1,89 @@
+{
+  "chapter": "ch1",
+  "claims": [
+    {
+      "style": "map",
+      "screen": "ch1.s1",
+      "claim": "Ines is the keeper's daughter",
+      "verdict": "supported",
+      "anchor": "001 p2"
+    },
+    {
+      "style": "map",
+      "screen": "ch1.s1",
+      "claim": "Mr Hale warns that her father will lose the tower",
+      "verdict": "supported",
+      "anchor": "001 p9"
+    },
+    {
+      "style": "map",
+      "screen": "ch1.s2",
+      "claim": "Tomas says nothing",
+      "verdict": "supported",
+      "anchor": "001 p7"
+    },
+    {
+      "style": "recap",
+      "screen": "ch1.s2",
+      "claim": "The hands stand at ten minutes to six",
+      "verdict": "supported",
+      "anchor": "001 p5"
+    },
+    {
+      "style": "layers",
+      "screen": "ch1.s1",
+      "claim": "The keeper's rule puts her father's tower at risk",
+      "verdict": "supported",
+      "anchor": "001 p3"
+    }
+  ],
+  "must_carry": [
+    {
+      "id": "M1",
+      "map": "ch1.s2",
+      "recap": "ch1.s3",
+      "recall": "ch1.s3",
+      "layers": "ch1.s4"
+    },
+    {
+      "id": "M2",
+      "map": "ch1.s1",
+      "recap": "ch1.s4",
+      "recall": "ch1.s1",
+      "layers": "ch1.s1"
+    },
+    {
+      "id": "M3",
+      "map": "ch1.s2",
+      "recap": "ch1.s2",
+      "recall": "ch1.s3",
+      "layers": "ch1.s4"
+    },
+    {
+      "id": "M4",
+      "map": "ch1.s2",
+      "recap": "ch1.s3",
+      "recall": "ch1.s3",
+      "layers": "ch1.s4"
+    },
+    {
+      "id": "M5",
+      "map": "ch1.s1",
+      "recap": "ch1.s2",
+      "recall": "ch1.s2",
+      "layers": "ch1.s4"
+    },
+    {
+      "id": "M6",
+      "map": "ch1.s6",
+      "recap": "ch1.s7",
+      "recall": "ch1.s7",
+      "layers": "ch1.s7"
+    }
+  ],
+  "resume": {
+    "matches_ledger": true,
+    "later_facts": [],
+    "names_without_role": []
+  }
+}

@@ -1,0 +1,64 @@
+{
+  "scores": [
+    {
+      "n": 1,
+      "score": 1,
+      "reason": "Matches the key"
+    },
+    {
+      "n": 2,
+      "score": 1,
+      "reason": "Matches the key"
+    },
+    {
+      "n": 3,
+      "score": 1,
+      "reason": "Matches the key"
+    },
+    {
+      "n": 4,
+      "score": 1,
+      "reason": "Matches the key"
+    },
+    {
+      "n": 5,
+      "score": 1,
+      "reason": "Matches the key"
+    },
+    {
+      "n": 6,
+      "score": 1,
+      "reason": "Matches the key"
+    },
+    {
+      "n": 7,
+      "score": 1,
+      "reason": "Matches the key"
+    },
+    {
+      "n": 8,
+      "score": 1,
+      "reason": "Matches the key"
+    },
+    {
+      "n": 9,
+      "score": 1,
+      "reason": "Matches the key"
+    },
+    {
+      "n": 10,
+      "score": 1,
+      "reason": "Matches the key"
+    },
+    {
+      "n": 11,
+      "score": 1,
+      "reason": "Matches the key"
+    },
+    {
+      "n": 12,
+      "score": 0.5,
+      "reason": "Names the tower but not the question about the harbour master's aim"
+    }
+  ]
+}
