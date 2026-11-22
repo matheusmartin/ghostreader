@@ -1,0 +1,220 @@
+{
+  "title": "plan (LLM profile of schemas/plan.schema.json)",
+  "description": "Stage S2: the guide's frame, from toc.json. The book's own parts and chapters only, in the book's order.",
+  "type": "object",
+  "properties": {
+    "guide": {
+      "type": "string",
+      "description": "The guide id: title and type in lower case with hyphens, \"nexus-summary\""
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "fiction",
+        "reading",
+        "done"
+      ],
+      "description": "fiction = Story guide, reading = Reading guide, done = Book summary"
+    },
+    "title": {
+      "type": "string"
+    },
+    "author": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "question": {
+      "anyOf": [
+        {
+          "type": "string",
+          "description": "Non-fiction: the question the book sets out to answer, in its terms (12 words at most). Fiction: the story's main situation"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "parts": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/Part"
+      }
+    },
+    "skipped": {
+      "anyOf": [
+        {
+          "type": "array",
+          "description": "Every toc.json entry of kind body that no chapter uses, with the reason",
+          "items": {
+            "type": "object",
+            "properties": {
+              "file": {
+                "type": "string"
+              },
+              "why": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "file",
+              "why"
+            ],
+            "additionalProperties": false
+          }
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "cast": {
+      "anyOf": [
+        {
+          "type": "array",
+          "description": "Fiction: the main people, one role each in the book's words",
+          "items": {
+            "type": "object",
+            "properties": {
+              "name": {
+                "type": "string"
+              },
+              "role": {
+                "type": "string"
+              },
+              "group": {
+                "anyOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "main": {
+                "anyOf": [
+                  {
+                    "type": "boolean"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              }
+            },
+            "required": [
+              "name",
+              "role",
+              "group",
+              "main"
+            ],
+            "additionalProperties": false
+          }
+        },
+        {
+          "type": "null"
+        }
+      ]
+    }
+  },
+  "required": [
+    "guide",
+    "type",
+    "title",
+    "author",
+    "question",
+    "parts",
+    "skipped",
+    "cast"
+  ],
+  "additionalProperties": false,
+  "$defs": {
+    "Chapter": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Chapter id, as in the Map file: \"ch3\", \"prologue\""
+        },
+        "number": {
+          "type": "string"
+        },
+        "title": {
+          "type": "string"
+        },
+        "sources": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "The chapter's text files, in order"
+        },
+        "words": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "id",
+        "number",
+        "title",
+        "sources",
+        "words"
+      ],
+      "additionalProperties": false
+    },
+    "Part": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "label": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "title": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "chapters": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Chapter"
+          }
+        }
+      },
+      "required": [
+        "id",
+        "label",
+        "title",
+        "chapters"
+      ],
+      "additionalProperties": false
+    }
+  }
+}

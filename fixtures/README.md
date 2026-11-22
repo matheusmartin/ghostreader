@@ -11,6 +11,10 @@ repository. No text of a real book is ever committed (decision D2 in
 | `sample/working/` | what `work/<guide>/` holds for a real book: `source/` (as `extract_book.py` writes it), `intake.json`, `plan.json`, `facts/`, `ledger/`, `concepts.json`, `styles.json`, `verdicts/`, `recall-test/` |
 | `sample/books/` | the guide's four files, as `src/books/` holds them; Recap, Recall and Layers are built by `build_styles.py` |
 
+`sample/gold.json` is the sample book's gold set for the conformance suite (`tools/gr.py eval`):
+the questions a returning reader must answer, the concepts, and three false claims to plant in
+the guide for the judge to catch.
+
 Every file passes every check (`tests/working-files.test.ts`). To run a check by hand:
 
 ```bash

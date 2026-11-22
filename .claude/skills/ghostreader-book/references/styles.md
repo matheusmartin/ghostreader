@@ -162,7 +162,8 @@ file:
 |---|---|---|
 | `question` | Layers | `start` of every "argument so far" chart: the book's question (≤ 12 words). The same words as "The question" in "Where it stands" |
 | `first_items` | Layers | items of the first chapter's "argument so far" chart (≤ 7 words each) |
-| `parts` | Layers | the point of each part with two or more chapters (≤ 7 words), by part id; a one-chapter part (a prologue) uses its chapter's `point` |
+| `parts` | Layers | the point of each part with two or more chapters (≤ 7 words), by part id; a one-chapter part (a prologue) uses its chapter's `point`. Or `part_point` in the part's last chapter entry |
+| `first_items` in the first chapter entry | Layers | the same as the top-level `first_items`, when a model writes one chapter entry at a time (`prompts/write-styles.md`) |
 | `chapters.<id>` | all three | one entry per written chapter (the script stops when one is missing) |
 | `main` | all three | label of the chapter's main diagram in the Map file (default: its first chart or scenes) |
 | `before` | Recap | "Before this chapter", ≤ 50 words: frame, then the chapter before; leave out in the first chapter |

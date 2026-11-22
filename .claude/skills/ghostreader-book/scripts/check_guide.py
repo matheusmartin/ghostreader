@@ -133,13 +133,13 @@ class Source:
 
 # ------------------------------------------------------------------ the guide
 
-def load_guide(books, guide):
+def load_guide(books, guide, need_map=True):
     out = {}
     for style in STYLES:
         p = Path(books) / f'{guide}-{style}.json'
         if p.exists():
             out[style] = load_json(p)
-    if 'map' not in out:
+    if need_map and 'map' not in out:
         fail(f'no Map file {Path(books) / f"{guide}-map.json"}')
     return out
 
@@ -218,6 +218,7 @@ FILES = (  # working file pattern -> schema
     ('ledger/*.json', 'ledger'), ('concepts.json', 'concepts'), ('styles.json', 'styles'),
     ('verdicts/*.json', 'verdict'), ('recall-test/*-key.json', 'recall-key'),
     ('recall-test/*-answers.json', 'recall-answers'), ('recall-test/*-score.json', 'recall-score'),
+    ('run.json', 'run'),
 )
 
 
@@ -248,6 +249,26 @@ def chapter_text(book, cid):
     return ''
 
 
+def frame(guide, w):
+    """The guide's type, its chapters in order [(id, title)] and the ids of the written ones: from
+    the Map file, or from plan.json before the Map file exists."""
+    if 'map' in guide:
+        book = guide['map']
+        return (book['type'], [(ch['id'], ch['title']) for _, ch, _ in chapters(book)],
+                {ch['id'] for _, ch, _ in written(book)})
+    plan = w.read('plan.json', 'plan')
+    if not plan:
+        fail(f'no Map file and no valid {w.dir / "plan.json"}')
+    return plan['type'], [(c['id'], c['title']) for p in plan['parts'] for c in p['chapters']], set()
+
+
+def to_check(guide, w):
+    """Chapters the fact checks cover: the written ones, and any with a fact sheet."""
+    _, order, done = frame(guide, w)
+    has = lambda cid: (w.dir / 'facts' / f'{cid}.json').exists() or (w.dir / 'facts' / f'{cid}.md').exists()
+    return [cid for cid, _ in order if cid in done or has(cid)]
+
+
 # ------------------------------------------------------------------ plan
 
 def cmd_plan(args, guide, w, say):
@@ -255,7 +276,6 @@ def cmd_plan(args, guide, w, say):
     if not plan:
         return
     src = Source(w.dir)
-    book = guide['map']
     where = str(w.dir / 'plan.json')
     used = {}
     for part in plan['parts']:
@@ -271,6 +291,9 @@ def cmd_plan(args, guide, w, say):
         f = f'{e["n"]:03d}'
         if e.get('kind') == 'body' and f not in used and f not in skipped:
             say('GR-S01', where, f'text file {f} ("{e["title"]}") is in no chapter: add it, or list it in "skipped" with the reason')
+    if 'map' not in guide:
+        return
+    book = guide['map']
     # The Map file has exactly the plan's parts and chapters, in order.
     shape = lambda parts: [(p['id'], p.get('label'), p.get('title'), [(c['id'], c['number'], c['title']) for c in p['chapters']]) for p in parts]
     planned, made = shape(plan['parts']), shape(book['parts'])
@@ -315,10 +338,8 @@ def check_anchor(src, sources, a, where, say):
 
 def cmd_facts(args, guide, w, say):
     src = Source(w.dir)
-    book = guide['map']
-    fiction = book['type'] == 'fiction'
-    for _, ch, _ in written(book):
-        cid = ch['id']
+    fiction = frame(guide, w)[0] == 'fiction'
+    for cid in to_check(guide, w):
         sheet = w.facts(cid)
         if not sheet:
             continue
@@ -496,25 +517,28 @@ def cmd_names(args, guide, w, say):
 # ------------------------------------------------------------------ concepts
 
 def cmd_concepts(args, guide, w, say):
-    book = guide['map']
+    book = guide.get('map')
     old = {}
     path = w.dir / 'concepts.json'
     if path.exists() and w.check(path, 'concepts'):
         old = {(c['name'], c['chapter']): c for c in load_json(path)['concepts']}
     found = []
-    for _, ch, _ in written(book):
-        sheet = w.facts(ch['id'], report=False)
+    written_ids = frame(guide, w)[2]
+    for cid in to_check(guide, w):
+        sheet = w.facts(cid, report=False)
         for fact in (sheet or {}).get('facts', []):
             if fact['type'] == 'concept' and fact.get('concept'):
                 c = fact['concept']
-                prev = old.get((c['name'], ch['id']), {})
-                found.append({'name': c['name'], 'kind': c['kind'], 'mode': c['mode'], 'chapter': ch['id'],
+                prev = old.get((c['name'], cid), {})
+                found.append({'name': c['name'], 'kind': c['kind'], 'mode': c['mode'], 'chapter': cid,
                               'fact': fact['id'], 'core': prev.get('core', False)})
+                if not book or cid not in written_ids:
+                    continue
                 # Shown, not only named: the concept's name, or every member's, on a screen of its chapter.
-                text = norm(chapter_text(book, ch['id']))
+                text = norm(chapter_text(book, cid))
                 names = [c['name']] if norm(c['name']) in text else [m['name'] for m in c['members'] if norm(m['name']) in text]
                 if not names or (names != [c['name']] and len(names) < len(c['members'])):
-                    say('GR-V05', f'{book["id"]} {ch["id"]}', f'concept "{c["name"]}" ({fact["id"]}) is not on a screen of its chapter: give it a chart, a key point or a "Terms" row, under the same name')
+                    say('GR-V05', f'{book["id"]} {cid}', f'concept "{c["name"]}" ({fact["id"]}) is not on a screen of its chapter: give it a chart, a key point or a "Terms" row, under the same name')
     path.write_text(json.dumps({'concepts': found}, ensure_ascii=False, indent=2) + '\n')
     print(f'wrote {path}: {len(found)} concept(s); mark "core": true on the ones later chapters build on', file=sys.stderr)
 
@@ -775,7 +799,7 @@ def main():
     ap.add_argument('--pdf', action='store_true', help='text: add the PDF-only blocks')
     ap.add_argument('--json', action='store_true', help='checks: print the result as JSON')
     args = ap.parse_args()
-    guide = load_guide(args.books, args.guide)
+    guide = load_guide(args.books, args.guide, need_map=args.command not in ('schema', 'plan', 'facts', 'concepts'))
     problems = []
 
     def say(rule, where, message):

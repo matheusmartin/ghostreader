@@ -3,8 +3,8 @@
 One prompt per model stage of the guide workflow (`docs/proposal-model-neutral-guides.md`,
 section 5.2). They are model-neutral: plain instructions, the exact inputs, the output schema,
 and one right and one wrong example from `fixtures/sample/` (a short story written for the
-tests, not a real book). An agent with a shell can follow them by hand; a runner fills them in
-and calls a model (phase 3).
+tests, not a real book). An agent with a shell can follow them by hand; the runner
+`tools/gr.py` fills them in and calls any model behind an OpenAI-compatible API.
 
 | Prompt | Stage | Role | Output |
 |---|---|---|---|

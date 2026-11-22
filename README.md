@@ -138,7 +138,20 @@ Chapter 6" with the book file attached. The **ghostreader-book** skill
    `npm run build`.
 
 The model steps have model-neutral prompts in `prompts/`, and `fixtures/sample/` is a complete
-example that passes every check.
+example that passes every check. Any model behind an OpenAI-compatible API (Gemini, GPT, a local
+model through Ollama or vLLM) can run them with the runner, `tools/gr.py`:
+
+```bash
+python3 -I tools/gr.py write --guide <guide>
+```
+
+```bash
+python3 -I tools/gr.py check --guide <guide>
+```
+
+`python3 -I tools/gr.py eval --fixture fixtures/sample` runs the conformance suite: it writes the
+sample book's guide, checks it, and compares the result with the gold set
+(`fixtures/sample/gold.json`).
 
 The skill holds the content rules (book content only, no quotations, no spoilers), the writing
 style, the screen recipes of each guide type and the guidance on which chart fits which idea. Maps of

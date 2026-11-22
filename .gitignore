@@ -6,4 +6,6 @@ coverage/
 .DS_Store
 # Book files, their extracted text and fact sheets (ghostreader-book skill): never commit them.
 work/
+# The runner's local model choices (tools/gr.example.json is the template). Keys never go in it.
+gr.config.json
 __pycache__/

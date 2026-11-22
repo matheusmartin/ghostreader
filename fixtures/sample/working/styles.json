@@ -1,11 +1,11 @@
 {
   "question": "Who stopped the lighthouse clock at Kessel, and why?",
-  "first_items": [
-    "The lighthouse clock has stopped",
-    "The keeper's rule risks the tower"
-  ],
   "chapters": {
     "ch1": {
+      "first_items": [
+        "The lighthouse clock has stopped",
+        "The keeper's rule risks the tower"
+      ],
       "line": "Ines must restart the stopped clock, because the keeper's rule puts her father's tower at risk.",
       "point": "The stopped clock threatens the tower",
       "key": "Ines trusts Ada with the key",

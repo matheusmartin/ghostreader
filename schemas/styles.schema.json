@@ -57,6 +57,17 @@
           "type": "string",
           "description": "Recap's \"Before this chapter\" (50 words at most); leave out in the first chapter"
         },
+        "first_items": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "First chapter only, when the file has no top-level \"first_items\": the items of its \"argument so far\" chart (7 words each at most)"
+        },
+        "part_point": {
+          "type": "string",
+          "description": "Last written chapter of a part with two or more chapters, when \"parts\" has no point for it: the part's point (7 words at most)"
+        },
         "line": {
           "type": "string",
           "description": "Layers' \"In one line\" (20 words at most)"

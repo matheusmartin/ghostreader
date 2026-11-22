@@ -38,7 +38,7 @@ describe('working-file schemas', () => {
   const ajv = new Ajv({ allErrors: true, strict: true });
 
   it('has a schema for every working file, and each compiles in strict mode', () => {
-    expect(schemaNames.sort()).toEqual(['book', 'concepts', 'facts', 'intake', 'ledger', 'plan', 'recall-answers', 'recall-key', 'recall-score', 'styles', 'verdict']);
+    expect(schemaNames.sort()).toEqual(['book', 'concepts', 'facts', 'intake', 'ledger', 'plan', 'recall-answers', 'recall-key', 'recall-score', 'run', 'styles', 'verdict']);
     for (const n of schemaNames) if (n !== 'book') expect(() => ajv.compile(schemas[n]), n).not.toThrow();
   });
 

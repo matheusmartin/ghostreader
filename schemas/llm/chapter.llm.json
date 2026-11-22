@@ -1,0 +1,1782 @@
+{
+  "title": "chapter (LLM profile of schemas/book.schema.json#/definitions/Chapter)",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string"
+    },
+    "length": {
+      "anyOf": [
+        {
+          "description": "Real length (words or pages), only to size the chip on the book map.",
+          "type": "number"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "number": {
+      "description": "\"05\", \"P\" (prologue), \"E\" (epilogue), \"A1\" (appendix)…",
+      "type": "string"
+    },
+    "opener": {
+      "anyOf": [
+        {
+          "description": "Set to false to skip the automatic chapter opener screen.",
+          "type": "boolean"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "screens": {
+      "anyOf": [
+        {
+          "description": "Use either `screens` (no sections) or `sections`. A chapter with neither is listed but not written yet.",
+          "items": {
+            "$ref": "#/$defs/Screen"
+          },
+          "type": "array"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "sections": {
+      "anyOf": [
+        {
+          "items": {
+            "$ref": "#/$defs/Section"
+          },
+          "type": "array"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "title": {
+      "description": "The real title; an untitled chapter is \"Chapter 7\".",
+      "type": "string"
+    }
+  },
+  "required": [
+    "id",
+    "length",
+    "number",
+    "opener",
+    "screens",
+    "sections",
+    "title"
+  ],
+  "additionalProperties": false,
+  "$defs": {
+    "BarsChart": {
+      "description": "Data chart: horizontal bars with real numbers. `focus` marks the bar in the accent colour.",
+      "type": "object",
+      "properties": {
+        "caption": {
+          "anyOf": [
+            {
+              "description": "One line under the chart: what the marks mean.",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "chart": {
+          "enum": [
+            "bars"
+          ],
+          "type": "string"
+        },
+        "data": {
+          "items": {
+            "type": "object",
+            "properties": {
+              "focus": {
+                "anyOf": [
+                  {
+                    "type": "boolean"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "label": {
+                "type": "string"
+              },
+              "value": {
+                "type": "number"
+              }
+            },
+            "required": [
+              "focus",
+              "label",
+              "value"
+            ],
+            "additionalProperties": false
+          },
+          "type": "array"
+        },
+        "label": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "only": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Only"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "type": {
+          "enum": [
+            "chart"
+          ],
+          "type": "string"
+        }
+      },
+      "required": [
+        "caption",
+        "chart",
+        "data",
+        "label",
+        "only",
+        "type"
+      ],
+      "additionalProperties": false
+    },
+    "BranchesChart": {
+      "description": "One situation, 2–4 possible outcomes. `key`: the outcome the book argues for.",
+      "type": "object",
+      "properties": {
+        "caption": {
+          "anyOf": [
+            {
+              "description": "One line under the chart: what the marks mean.",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "chart": {
+          "enum": [
+            "branches"
+          ],
+          "type": "string"
+        },
+        "label": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "only": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Only"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "options": {
+          "items": {
+            "type": "object",
+            "properties": {
+              "key": {
+                "anyOf": [
+                  {
+                    "type": "boolean"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "negative": {
+                "anyOf": [
+                  {
+                    "type": "boolean"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "text": {
+                "anyOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "title": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "key",
+              "negative",
+              "text",
+              "title"
+            ],
+            "additionalProperties": false
+          },
+          "type": "array"
+        },
+        "start": {
+          "type": "string"
+        },
+        "type": {
+          "enum": [
+            "chart"
+          ],
+          "type": "string"
+        }
+      },
+      "required": [
+        "caption",
+        "chart",
+        "label",
+        "only",
+        "options",
+        "start",
+        "type"
+      ],
+      "additionalProperties": false
+    },
+    "ChartScreen": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/BarsChart"
+        },
+        {
+          "$ref": "#/$defs/CompareChart"
+        },
+        {
+          "$ref": "#/$defs/FlowChart"
+        },
+        {
+          "$ref": "#/$defs/TimelineChart"
+        },
+        {
+          "$ref": "#/$defs/NetworkChart"
+        },
+        {
+          "$ref": "#/$defs/ThreadsChart"
+        },
+        {
+          "$ref": "#/$defs/CycleChart"
+        },
+        {
+          "$ref": "#/$defs/MatrixChart"
+        },
+        {
+          "$ref": "#/$defs/BranchesChart"
+        },
+        {
+          "$ref": "#/$defs/LayersChart"
+        }
+      ]
+    },
+    "CompareChart": {
+      "description": "Two columns side by side, row by row; `key` is the conclusion under both.",
+      "type": "object",
+      "properties": {
+        "caption": {
+          "anyOf": [
+            {
+              "description": "One line under the chart: what the marks mean.",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "chart": {
+          "enum": [
+            "compare"
+          ],
+          "type": "string"
+        },
+        "columns": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "key": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "label": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "negative": {
+          "anyOf": [
+            {
+              "description": "Which column is the negative side, drawn grey: 0, 1, or omitted for none.",
+              "enum": [
+                0,
+                1
+              ],
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "only": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Only"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "rows": {
+          "items": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          },
+          "type": "array"
+        },
+        "type": {
+          "enum": [
+            "chart"
+          ],
+          "type": "string"
+        }
+      },
+      "required": [
+        "caption",
+        "chart",
+        "columns",
+        "key",
+        "label",
+        "negative",
+        "only",
+        "rows",
+        "type"
+      ],
+      "additionalProperties": false
+    },
+    "CycleChart": {
+      "description": "A loop that feeds itself: 3–6 steps, the last leads back to the first. One `key` node.",
+      "type": "object",
+      "properties": {
+        "caption": {
+          "anyOf": [
+            {
+              "description": "One line under the chart: what the marks mean.",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "centre": {
+          "anyOf": [
+            {
+              "description": "Short note in the middle of the loop.",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "chart": {
+          "enum": [
+            "cycle"
+          ],
+          "type": "string"
+        },
+        "label": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "nodes": {
+          "items": {
+            "type": "object",
+            "properties": {
+              "key": {
+                "anyOf": [
+                  {
+                    "type": "boolean"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "text": {
+                "anyOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "title": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "key",
+              "text",
+              "title"
+            ],
+            "additionalProperties": false
+          },
+          "type": "array"
+        },
+        "only": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Only"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "type": {
+          "enum": [
+            "chart"
+          ],
+          "type": "string"
+        }
+      },
+      "required": [
+        "caption",
+        "centre",
+        "chart",
+        "label",
+        "nodes",
+        "only",
+        "type"
+      ],
+      "additionalProperties": false
+    },
+    "FigureScreen": {
+      "description": "A hand-made diagram as inline SVG, in the app's diagram language (classes bx, bt, bn, bi, k, ln, la, ar, ara, t1, t2, t3, tw, ta, c, e…). Maps come from the skill's map script. Draw it for a phone: viewBox about 340 wide. Scripts and event attributes are removed.",
+      "type": "object",
+      "properties": {
+        "alt": {
+          "description": "Text alternative for screen readers.",
+          "type": "string"
+        },
+        "caption": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "label": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "only": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Only"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "svg": {
+          "type": "string"
+        },
+        "type": {
+          "enum": [
+            "figure"
+          ],
+          "type": "string"
+        }
+      },
+      "required": [
+        "alt",
+        "caption",
+        "label",
+        "only",
+        "svg",
+        "type"
+      ],
+      "additionalProperties": false
+    },
+    "FlowChart": {
+      "description": "From a start, through groups of points, to a key conclusion: flows and argument maps.",
+      "type": "object",
+      "properties": {
+        "caption": {
+          "anyOf": [
+            {
+              "description": "One line under the chart: what the marks mean.",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "chart": {
+          "enum": [
+            "flow"
+          ],
+          "type": "string"
+        },
+        "groups": {
+          "items": {
+            "type": "object",
+            "properties": {
+              "items": {
+                "items": {
+                  "type": "string"
+                },
+                "type": "array"
+              },
+              "label": {
+                "anyOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              }
+            },
+            "required": [
+              "items",
+              "label"
+            ],
+            "additionalProperties": false
+          },
+          "type": "array"
+        },
+        "key": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "label": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "only": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Only"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "start": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "type": {
+          "enum": [
+            "chart"
+          ],
+          "type": "string"
+        }
+      },
+      "required": [
+        "caption",
+        "chart",
+        "groups",
+        "key",
+        "label",
+        "only",
+        "start",
+        "type"
+      ],
+      "additionalProperties": false
+    },
+    "LayersChart": {
+      "description": "Nested levels, outer ring first; the innermost ring is the key element.",
+      "type": "object",
+      "properties": {
+        "caption": {
+          "anyOf": [
+            {
+              "description": "One line under the chart: what the marks mean.",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "chart": {
+          "enum": [
+            "layers"
+          ],
+          "type": "string"
+        },
+        "label": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "only": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Only"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "rings": {
+          "items": {
+            "type": "object",
+            "properties": {
+              "text": {
+                "anyOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "title": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "text",
+              "title"
+            ],
+            "additionalProperties": false
+          },
+          "type": "array"
+        },
+        "type": {
+          "enum": [
+            "chart"
+          ],
+          "type": "string"
+        }
+      },
+      "required": [
+        "caption",
+        "chart",
+        "label",
+        "only",
+        "rings",
+        "type"
+      ],
+      "additionalProperties": false
+    },
+    "ListScreen": {
+      "description": "Rows of name and text: cast list, places, threads, how the parts connect.",
+      "type": "object",
+      "properties": {
+        "label": {
+          "type": "string"
+        },
+        "only": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Only"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "rows": {
+          "items": {
+            "type": "object",
+            "properties": {
+              "meta": {
+                "anyOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "name": {
+                "type": "string"
+              },
+              "text": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "meta",
+              "name",
+              "text"
+            ],
+            "additionalProperties": false
+          },
+          "type": "array"
+        },
+        "type": {
+          "enum": [
+            "list"
+          ],
+          "type": "string"
+        }
+      },
+      "required": [
+        "label",
+        "only",
+        "rows",
+        "type"
+      ],
+      "additionalProperties": false
+    },
+    "MatrixChart": {
+      "description": "Items compared on features: a dot for yes, a dash for no. `focus` tints a row.",
+      "type": "object",
+      "properties": {
+        "caption": {
+          "anyOf": [
+            {
+              "description": "One line under the chart: what the marks mean.",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "chart": {
+          "enum": [
+            "matrix"
+          ],
+          "type": "string"
+        },
+        "columns": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "key": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "label": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "only": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Only"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "rows": {
+          "items": {
+            "type": "object",
+            "properties": {
+              "cells": {
+                "items": {
+                  "type": "boolean"
+                },
+                "type": "array"
+              },
+              "focus": {
+                "anyOf": [
+                  {
+                    "type": "boolean"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "label": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "cells",
+              "focus",
+              "label"
+            ],
+            "additionalProperties": false
+          },
+          "type": "array"
+        },
+        "type": {
+          "enum": [
+            "chart"
+          ],
+          "type": "string"
+        }
+      },
+      "required": [
+        "caption",
+        "chart",
+        "columns",
+        "key",
+        "label",
+        "only",
+        "rows",
+        "type"
+      ],
+      "additionalProperties": false
+    },
+    "NetworkChart": {
+      "description": "Who or what connects to whom: a cast map (fiction) or a concept map (non-fiction). `centre` (1–2 names) sits in the middle; the first one is the key element. `nodes` sit on a ring around it, in order (keep a group together). Links join any two names.",
+      "type": "object",
+      "properties": {
+        "caption": {
+          "anyOf": [
+            {
+              "description": "One line under the chart: what the marks mean.",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "centre": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "chart": {
+          "enum": [
+            "network"
+          ],
+          "type": "string"
+        },
+        "label": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "links": {
+          "items": {
+            "type": "object",
+            "properties": {
+              "arrow": {
+                "anyOf": [
+                  {
+                    "type": "boolean"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "from": {
+                "type": "string"
+              },
+              "label": {
+                "anyOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "to": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "arrow",
+              "from",
+              "label",
+              "to"
+            ],
+            "additionalProperties": false
+          },
+          "type": "array"
+        },
+        "nodes": {
+          "items": {
+            "type": "object",
+            "properties": {
+              "name": {
+                "type": "string"
+              },
+              "note": {
+                "anyOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "tag": {
+                "anyOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              }
+            },
+            "required": [
+              "name",
+              "note",
+              "tag"
+            ],
+            "additionalProperties": false
+          },
+          "type": "array"
+        },
+        "only": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Only"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "type": {
+          "enum": [
+            "chart"
+          ],
+          "type": "string"
+        }
+      },
+      "required": [
+        "caption",
+        "centre",
+        "chart",
+        "label",
+        "links",
+        "nodes",
+        "only",
+        "type"
+      ],
+      "additionalProperties": false
+    },
+    "Only": {
+      "description": "Where a screen or section shows: in the app only, or in the PDF only. Default: both.",
+      "enum": [
+        "app",
+        "pdf"
+      ],
+      "type": "string"
+    },
+    "PointsScreen": {
+      "description": "Named items: key concepts, key points, examples, who they are.",
+      "type": "object",
+      "properties": {
+        "items": {
+          "items": {
+            "type": "object",
+            "properties": {
+              "tag": {
+                "anyOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "text": {
+                "type": "string"
+              },
+              "title": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "tag",
+              "text",
+              "title"
+            ],
+            "additionalProperties": false
+          },
+          "type": "array"
+        },
+        "label": {
+          "type": "string"
+        },
+        "only": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Only"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "style": {
+          "anyOf": [
+            {
+              "description": "'bar' (default): accent bar on the left · 'box': white boxes, for examples.",
+              "enum": [
+                "bar",
+                "box"
+              ],
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "type": {
+          "enum": [
+            "points"
+          ],
+          "type": "string"
+        }
+      },
+      "required": [
+        "items",
+        "label",
+        "only",
+        "style",
+        "type"
+      ],
+      "additionalProperties": false
+    },
+    "QuizScreen": {
+      "description": "Test yourself / Recall: the reader taps a question to see its answer.",
+      "type": "object",
+      "properties": {
+        "label": {
+          "type": "string"
+        },
+        "only": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Only"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "questions": {
+          "items": {
+            "type": "object",
+            "properties": {
+              "a": {
+                "type": "string"
+              },
+              "q": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "a",
+              "q"
+            ],
+            "additionalProperties": false
+          },
+          "type": "array"
+        },
+        "type": {
+          "enum": [
+            "quiz"
+          ],
+          "type": "string"
+        }
+      },
+      "required": [
+        "label",
+        "only",
+        "questions",
+        "type"
+      ],
+      "additionalProperties": false
+    },
+    "Scene": {
+      "type": "object",
+      "properties": {
+        "key": {
+          "anyOf": [
+            {
+              "description": "The turning point of the chapter (one scene).",
+              "type": "boolean"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "off": {
+          "anyOf": [
+            {
+              "description": "People there only at a distance: by letter or phone, overheard, asleep. Never just talked about.",
+              "items": {
+                "type": "string"
+              },
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "text": {
+          "description": "One or two sentences with one {when} and one [where].",
+          "type": "string"
+        },
+        "with": {
+          "description": "People in the scene.",
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        }
+      },
+      "required": [
+        "key",
+        "off",
+        "text",
+        "with"
+      ],
+      "additionalProperties": false
+    },
+    "ScenesScreen": {
+      "description": "Fiction: the scenes of a chapter and who is in each one, as a storyline chart: the scenes go down, each person is a line, and the lines meet in a band when people share a scene. The app shows the chart with a number at each band, then the scenes as a numbered list; the PDF shows the scene text next to each band. Scene text weaves in the time and the place: \"{That night} Maude waits in [the kitchen].\"",
+      "type": "object",
+      "properties": {
+        "focus": {
+          "anyOf": [
+            {
+              "description": "The people the chapter follows, 1–2 names from `people`: the first is drawn in ink (the main character), the second in the accent colour, the others grey. Default: the first two people.",
+              "items": {
+                "type": "string"
+              },
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "label": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "only": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Only"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "people": {
+          "description": "The lines of the chart, left to right. Put people who meet next to each other. `tag`: \"New\".",
+          "items": {
+            "type": "object",
+            "properties": {
+              "name": {
+                "type": "string"
+              },
+              "tag": {
+                "anyOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              }
+            },
+            "required": [
+              "name",
+              "tag"
+            ],
+            "additionalProperties": false
+          },
+          "type": "array"
+        },
+        "scenes": {
+          "items": {
+            "$ref": "#/$defs/Scene"
+          },
+          "type": "array"
+        },
+        "type": {
+          "enum": [
+            "scenes"
+          ],
+          "type": "string"
+        }
+      },
+      "required": [
+        "focus",
+        "label",
+        "only",
+        "people",
+        "scenes",
+        "type"
+      ],
+      "additionalProperties": false
+    },
+    "Screen": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/SummaryScreen"
+        },
+        {
+          "$ref": "#/$defs/PointsScreen"
+        },
+        {
+          "$ref": "#/$defs/StepsScreen"
+        },
+        {
+          "$ref": "#/$defs/ListScreen"
+        },
+        {
+          "$ref": "#/$defs/QuizScreen"
+        },
+        {
+          "$ref": "#/$defs/TextScreen"
+        },
+        {
+          "$ref": "#/$defs/ScenesScreen"
+        },
+        {
+          "$ref": "#/$defs/ChartScreen"
+        },
+        {
+          "$ref": "#/$defs/FigureScreen"
+        }
+      ]
+    },
+    "Section": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "only": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Only"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "screens": {
+          "items": {
+            "$ref": "#/$defs/Screen"
+          },
+          "type": "array"
+        },
+        "title": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "only",
+        "screens",
+        "title"
+      ],
+      "additionalProperties": false
+    },
+    "StepsScreen": {
+      "description": "Numbered steps: the logic, main claims. The last step is the conclusion.",
+      "type": "object",
+      "properties": {
+        "label": {
+          "type": "string"
+        },
+        "only": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Only"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "steps": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "type": {
+          "enum": [
+            "steps"
+          ],
+          "type": "string"
+        }
+      },
+      "required": [
+        "label",
+        "only",
+        "steps",
+        "type"
+      ],
+      "additionalProperties": false
+    },
+    "SummaryScreen": {
+      "description": "The point first: In short, Core idea, Thesis, Story so far, with an optional takeaway.",
+      "type": "object",
+      "properties": {
+        "label": {
+          "type": "string"
+        },
+        "only": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Only"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "takeaway": {
+          "anyOf": [
+            {
+              "type": "object",
+              "properties": {
+                "label": {
+                  "type": "string"
+                },
+                "text": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "label",
+                "text"
+              ],
+              "additionalProperties": false
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "text": {
+          "type": "string"
+        },
+        "type": {
+          "enum": [
+            "summary"
+          ],
+          "type": "string"
+        }
+      },
+      "required": [
+        "label",
+        "only",
+        "takeaway",
+        "text",
+        "type"
+      ],
+      "additionalProperties": false
+    },
+    "TextScreen": {
+      "type": "object",
+      "properties": {
+        "label": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "only": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Only"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "paragraphs": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "type": {
+          "enum": [
+            "text"
+          ],
+          "type": "string"
+        }
+      },
+      "required": [
+        "label",
+        "only",
+        "paragraphs",
+        "type"
+      ],
+      "additionalProperties": false
+    },
+    "ThreadsChart": {
+      "description": "Fiction: where each story thread appears, chapter by chapter.",
+      "type": "object",
+      "properties": {
+        "caption": {
+          "anyOf": [
+            {
+              "description": "One line under the chart: what the marks mean.",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "chart": {
+          "enum": [
+            "threads"
+          ],
+          "type": "string"
+        },
+        "columns": {
+          "description": "Column labels: the chapter numbers covered (\"1\", \"2\"…, \"P\", \"E\").",
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "label": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "only": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Only"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "threads": {
+          "items": {
+            "type": "object",
+            "properties": {
+              "appears": {
+                "items": {
+                  "type": "string"
+                },
+                "type": "array"
+              },
+              "major": {
+                "anyOf": [
+                  {
+                    "items": {
+                      "type": "string"
+                    },
+                    "type": "array"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "name": {
+                "type": "string"
+              },
+              "text": {
+                "anyOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              }
+            },
+            "required": [
+              "appears",
+              "major",
+              "name",
+              "text"
+            ],
+            "additionalProperties": false
+          },
+          "type": "array"
+        },
+        "type": {
+          "enum": [
+            "chart"
+          ],
+          "type": "string"
+        }
+      },
+      "required": [
+        "caption",
+        "chart",
+        "columns",
+        "label",
+        "only",
+        "threads",
+        "type"
+      ],
+      "additionalProperties": false
+    },
+    "TimelineChart": {
+      "description": "Events or stages in order, with the time the book gives. One `key`: the turning point.",
+      "type": "object",
+      "properties": {
+        "caption": {
+          "anyOf": [
+            {
+              "description": "One line under the chart: what the marks mean.",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "chart": {
+          "enum": [
+            "timeline"
+          ],
+          "type": "string"
+        },
+        "items": {
+          "items": {
+            "type": "object",
+            "properties": {
+              "key": {
+                "anyOf": [
+                  {
+                    "type": "boolean"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "text": {
+                "type": "string"
+              },
+              "title": {
+                "anyOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "when": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "key",
+              "text",
+              "title",
+              "when"
+            ],
+            "additionalProperties": false
+          },
+          "type": "array"
+        },
+        "label": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "only": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Only"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "type": {
+          "enum": [
+            "chart"
+          ],
+          "type": "string"
+        }
+      },
+      "required": [
+        "caption",
+        "chart",
+        "items",
+        "label",
+        "only",
+        "type"
+      ],
+      "additionalProperties": false
+    }
+  }
+}

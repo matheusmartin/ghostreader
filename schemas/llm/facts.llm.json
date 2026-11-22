@@ -1,0 +1,342 @@
+{
+  "title": "facts (LLM profile of schemas/facts.schema.json)",
+  "description": "Stage S3: what one chapter's text says, every fact anchored. work/<guide>/facts/<chapter-id>.json",
+  "type": "object",
+  "properties": {
+    "chapter": {
+      "type": "string",
+      "description": "Chapter id, as in the Map file: \"ch3\", \"prologue\""
+    },
+    "sources": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "The chapter's text files: every anchor points into one of them"
+    },
+    "words": {
+      "anyOf": [
+        {
+          "type": "integer"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "facts": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/Fact"
+      }
+    },
+    "must_carry": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/Must"
+      },
+      "description": "5 to 8 facts a returning reader needs most (references/working-files.md)"
+    }
+  },
+  "required": [
+    "chapter",
+    "sources",
+    "words",
+    "facts",
+    "must_carry"
+  ],
+  "additionalProperties": false,
+  "$defs": {
+    "Anchor": {
+      "type": "object",
+      "description": "Where a fact is in the extracted text. Working files only: a guide never shows the quote.",
+      "properties": {
+        "file": {
+          "type": "string",
+          "description": "The text file's number in toc.json, three digits: \"005\""
+        },
+        "p": {
+          "type": "array",
+          "items": {
+            "type": "integer"
+          },
+          "description": "First and last paragraph, the [pN] marks of the text file: [11, 11] or [11, 14]"
+        },
+        "quote": {
+          "type": "string",
+          "description": "3 to 12 words copied exactly from the anchored paragraphs, so a script can confirm the anchor"
+        }
+      },
+      "required": [
+        "file",
+        "p",
+        "quote"
+      ],
+      "additionalProperties": false
+    },
+    "Concept": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "In the book's words"
+        },
+        "kind": {
+          "type": "string",
+          "enum": [
+            "concept",
+            "typology",
+            "contrast",
+            "views",
+            "fiction"
+          ]
+        },
+        "mode": {
+          "type": "string",
+          "enum": [
+            "explicit",
+            "indirect"
+          ]
+        },
+        "members": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "name": {
+                "type": "string"
+              },
+              "definition": {
+                "type": "string"
+              },
+              "example": {
+                "anyOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              }
+            },
+            "required": [
+              "name",
+              "definition",
+              "example"
+            ],
+            "additionalProperties": false
+          }
+        }
+      },
+      "required": [
+        "name",
+        "kind",
+        "mode",
+        "members"
+      ],
+      "additionalProperties": false
+    },
+    "Fact": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string",
+          "enum": [
+            "scene",
+            "person",
+            "relation",
+            "state",
+            "cause",
+            "claim",
+            "evidence",
+            "term",
+            "bridge",
+            "concept"
+          ],
+          "description": "Fiction: scene, person, relation, state (feels, wants, knows, has), cause. Non-fiction: claim, evidence, term, bridge (the author points to a later part). Both: concept"
+        },
+        "basis": {
+          "type": "string",
+          "enum": [
+            "stated",
+            "inferred"
+          ],
+          "description": "stated = the text says it; inferred = the text supports it but does not say it. Feelings, motives, knowledge and relations go on a screen only when stated"
+        },
+        "text": {
+          "type": "string",
+          "description": "The fact in your own words, one sentence"
+        },
+        "anchor": {
+          "$ref": "#/$defs/Anchor"
+        },
+        "when": {
+          "anyOf": [
+            {
+              "type": "string",
+              "description": "scene: the time the book gives"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "where": {
+          "anyOf": [
+            {
+              "type": "string",
+              "description": "scene: the place the book gives"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "with": {
+          "anyOf": [
+            {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "description": "scene: the people present"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "off": {
+          "anyOf": [
+            {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "description": "scene: people there at a distance (letter, phone, overheard)"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "who": {
+          "anyOf": [
+            {
+              "type": "string",
+              "description": "person, state, relation: the person the fact is about"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "to": {
+          "anyOf": [
+            {
+              "type": "string",
+              "description": "relation: the other person"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "role": {
+          "anyOf": [
+            {
+              "type": "string",
+              "description": "person: a short role in the book's words"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "first": {
+          "anyOf": [
+            {
+              "type": "boolean",
+              "description": "person: first appearance in the book"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "concept": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Concept"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "id",
+        "type",
+        "basis",
+        "text",
+        "anchor",
+        "when",
+        "where",
+        "with",
+        "off",
+        "who",
+        "to",
+        "role",
+        "first",
+        "concept"
+      ],
+      "additionalProperties": false
+    },
+    "Must": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "kind": {
+          "type": "string",
+          "enum": [
+            "state",
+            "cause",
+            "claim",
+            "concept",
+            "open"
+          ]
+        },
+        "facts": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "The facts it rests on; the first one places it in the chapter"
+        },
+        "text": {
+          "type": "string",
+          "description": "What the reader must get back, with its cause: also the answer key of the recall test"
+        },
+        "question": {
+          "type": "string",
+          "description": "A cued question with one clear answer"
+        }
+      },
+      "required": [
+        "id",
+        "kind",
+        "facts",
+        "text",
+        "question"
+      ],
+      "additionalProperties": false
+    }
+  }
+}

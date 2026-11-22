@@ -35,6 +35,8 @@ describe('book JSON Schema', () => {
       { ...base, type: 'novel', parts: [] },
       { ...base, style: 'fancy', parts: [] },
       { ...base, format: 2, parts: [] },
+      { ...base, parts: [], source: { kind: 'book-file', checks: { recall: { fancy: 0.5 } } } },
+      { ...base, parts: [], source: { kind: 'book-file', checks: { unsupported_claims: 'none' } } },
     ];
     for (const b of bad) {
       expect(validateBook(b).errors.length, JSON.stringify(b)).toBeGreaterThan(0);

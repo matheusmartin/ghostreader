@@ -69,7 +69,7 @@ with its number only (titles can spoil). Use this for guides written while readi
 | `style` | no | How the file summarises: `map` (diagrams first), `recap` (the story so far, in words), `recall` (questions first) or `layers` (one line, three points, detail). Shown on the cover, in the menu and in the PDF name. The ghostreader-book skill has the recipe of each (`references/styles.md`). |
 | `guide` | no | The guide the file belongs to. A guide has all four styles, one file each, with the id `<guide>-<style>` (`nexus-summary-recap`); the library shows them as one tile with a button per style, and the menu switches style at the same chapter. `npm test` checks that every guide has all four. An old link to `#/read/<guide>/…` opens the Map file. |
 | `sample` | no | `true` marks demo content in the library. |
-| `source` | no | Where the content comes from, not shown to readers: `{ "kind": "book-file" \| "summaries", "file": "EPUB", "written": "2026-11-14", "skill": "1.0.0" }`. |
+| `source` | no | Where the content comes from, not shown to readers: `{ "kind": "book-file" \| "summaries", "file": "EPUB", "written": "2026-11-14", "skill": "1.0.0", "spec": "1.0.0", "checks": { "recall": { "map": 0.93 }, "unsupported_claims": 0, "judge_independent": true } }`. `spec` is the version of the model-neutral standard; `checks` holds what the checks found. The models are named only in `work/<guide>/run.json`. |
 
 ## Part
 
