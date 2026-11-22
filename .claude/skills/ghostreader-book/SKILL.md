@@ -1,8 +1,8 @@
 ---
 name: ghostreader-book
-description: Writes or updates a book guide for the Ghostreader app in this repository, built to help a reader recall earlier chapters after a pause and continue the book - four files, one per style (Map, Recap, Recall, Layers), src/books/<guide>-<style>.json, each making the swipe screens and an A4 PDF; every chapter ends with "Where it stands" and "Still open". Only the book's own parts and chapters, in the book's order - no overview or other guide-made chapter. Three types, chosen by the user - Story guide (fiction), Reading guide (non-fiction, while reading) and Book summary (non-fiction, a finished book). Reads the book from an EPUB, PDF, text, Markdown or HTML file, or from summaries when no file is given. Diagrams first; every claim anchored to the text and checked. Use when the user asks to add, write, summarise, update or regenerate a book, story guide, reading guide, book summary, infographic or PDF for the app, even if they only name the book. Do not use for a short summary in chat, book recommendations, reviews, or changes to the app's code.
+description: Writes or updates a book guide for the Ghostreader app in this repository, built to help a reader recall earlier chapters after a pause and continue the book - four files, one per style (Map, Recap, Recall, Layers), src/books/<guide>-<style>.json, each making the swipe screens and an A4 PDF; every chapter ends with "Where it stands" and "Still open". Three types, chosen by the user - Story guide (fiction), Reading guide (non-fiction, while reading) and Book summary (non-fiction, a finished book). Reads the book from an EPUB, PDF, text, Markdown or HTML file, or from summaries when no file is given. Diagrams first; every claim anchored to the text and checked. Use when the user asks to add, write, summarise, update or regenerate a book, story guide, reading guide, book summary, infographic or PDF for the app, even if they only name the book. Do not use for a short summary in chat, book recommendations, reviews, or changes to the app's code.
 metadata:
-  version: "1.6.0"
+  version: "1.7.0"
 compatibility: Node 22 with `npm install` done (Vitest; Playwright with Chromium for the screen check and the PDF). Python 3.9+ for the book extractor, the checks and maps; PDF books also need poppler-utils (pdftotext) or the pypdf package.
 ---
 
@@ -53,6 +53,8 @@ Principles:
 | anchor | where a fact is in the extracted text: `005 p12` = file 005, paragraph 12 |
 | must carry | the 5–8 facts of a chapter a returning reader needs most, each with a test question |
 | ledger | the state at each chapter's end: people's places, goals, relations and knowledge (fiction); what is established, open, answered or promised (non-fiction) |
+| isolated run | a new model context that gets only the files a step lists, nothing from the writer's context: a sub-agent, a separate model call or another model (`references/verify.md`) |
+| rule ID | the ID that starts every line of `npm run validate` and `check_guide.py`, as in `spec/rules.md` (`GR-W03`) |
 
 ## Inputs
 
@@ -66,7 +68,7 @@ Title:    Pride and Prejudice                (required)
 Author:   Jane Austen                        (recommended)
 Up to:    Chapter 6                          (optional; Fiction and Non-fiction reading only)
 Edition:  Penguin Classics, 2003             (optional: shown on the cover)
-+ the book file: EPUB, PDF, TXT, MD or HTML  (strongly recommended)
++ the book file: EPUB, PDF, TXT, MD or HTML  (required; ask for it)
 ```
 
 - The limit takes a chapter or part name. For a page number or a percentage, ask which chapter.
@@ -78,7 +80,7 @@ Edition:  Penguin Classics, 2003             (optional: shown on the cover)
 
 ## Workflow
 
-Copy this checklist into the task list and tick it off:
+Copy this checklist into `work/<guide>/progress.md` (or your agent's task list) and tick it off:
 
 ```
 - [ ] 1 Inputs: type, title, author, limit, edition, book file (all four styles, always)
@@ -95,8 +97,8 @@ Copy this checklist into the task list and tick it off:
         detail, then "Where it stands" and "Still open"
 - [ ] 6b Write work/<guide>/styles.json and run scripts/build_styles.py: the Recap, Recall and
         Layers files (references/styles.md)
-- [ ] 7 Verify (references/verify.md): check_guide.py names; claims and must carry with fresh
-        subagents; fix what does not hold
+- [ ] 7 Verify (references/verify.md): check_guide.py names; claims and must carry in isolated
+        runs; fix what does not hold
 - [ ] 8 Check: npm run validate · npm run check:screens · npm run build, look at the PDF;
         the blind recall test (check_guide.py test), 80% or more
 - [ ] 9 Deliver: commit the four src/books/<guide>-*.json files only; final message
@@ -120,7 +122,9 @@ EPUB or a scanned PDF stops with a message: ask for another copy, or continue fr
 **With a limit**, the spoiler gate: move every text file after the limit into
 `work/<guide>/after-limit/` now, before anyone reads the text (`references/content-rules.md`).
 
-No book file: confirm the table of contents (names, order, parts) from a reliable source, then use
+No book file: ask for it first. A guide from summaries does not meet the model-neutral standard
+(`docs/proposal-model-neutral-guides.md`, decision D2); write one only when the user confirms.
+Then confirm the table of contents (names, order, parts) from a reliable source, and use
 chapter-by-chapter summaries for the content, under the stricter rules of
 `references/content-rules.md` (Summaries). Set `"source": {"kind": "summaries"}`. Tell the user
 in the final message, and for fiction, tell them before you start: summaries miss and misplace
@@ -220,10 +224,11 @@ The script copies diagrams, key points, logic, PDF detail and the resume screens
 file, so fix those in the Map file and run it again; never edit the generated files by hand.
 
 **7 · Verify** (`references/verify.md`). Run `check_guide.py names <guide>` and fix each line.
-Then, for each chapter, start a fresh subagent with the chapter's text, fact sheet and ledger,
+Then, for each chapter, start an isolated run with the chapter's text, fact sheet and ledger,
 and the chapter in every style (`check_guide.py text`), for a claim-by-claim check and a
-must-carry check. Fix or remove each claim that does not hold; add each missing must-carry item;
-never "improve" a claim from memory. Then go through the concept inventory: every concept and
+must-carry check. Use a judge from another model family when you can, and do not tell it which
+model wrote the guide. Fix or remove each claim that does not hold; add each missing must-carry
+item; never "improve" a claim from memory. Then go through the concept inventory: every concept and
 distinction must appear on a screen of the chapter that introduces it (a chart for each
 distinction; a chart, a key point or a row in the PDF-only "Terms" list for each concept). Last,
 compare the guide's contents with the book's contents list: remove any chapter, part or label the
@@ -243,7 +248,9 @@ npm run check:screens -- <guide>-map <guide>-recap <guide>-recall <guide>-layers
 npm run build
 ```
 
-- `validate`: the format (`src/model/validate.ts`) and the writing rules (`src/model/lint.ts`):
+- `validate`: the format (`src/model/validate.ts`) and the writing rules (`src/model/lint.ts`),
+  each line with its rule ID (`spec/rules.md`); `node scripts/validate-book.mjs <file> --json`
+  gives the same result as JSON:
   word and item limits, sentence case, British spelling, Mr without a point, no quotations, no
   spoiler words, scene marks, ring links, the resume screens, no "and then". Every line names the
   field to fix.
@@ -255,8 +262,9 @@ npm run build
 - To see the app: `npm run dev`, then `http://localhost:5173/#/read/<id>` (and `#/print/<id>`).
 
 Then the blind recall test (`references/verify.md`, step 5): the Map file at the last chapter of
-each part, every other style at the last written chapter. A fresh subagent answers the
-must-carry questions from the guide alone; 80% or more passes. Carry each missed fact and test
+each part, every other style at the last written chapter. An isolated run answers the
+must-carry questions from the guide alone, and a second isolated run scores the answers; 80% or
+more passes. Carry each missed fact and test
 again.
 
 **9 · Deliver.** Commit only the four `src/books/<guide>-*.json` files (and app changes the user

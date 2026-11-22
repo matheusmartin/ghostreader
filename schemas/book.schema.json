@@ -1,0 +1,1242 @@
+{
+  "$ref": "#/definitions/Book",
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "definitions": {
+    "BarsChart": {
+      "additionalProperties": false,
+      "description": "Data chart: horizontal bars with real numbers. `focus` marks the bar in the accent colour.",
+      "properties": {
+        "caption": {
+          "description": "One line under the chart: what the marks mean.",
+          "type": "string"
+        },
+        "chart": {
+          "const": "bars",
+          "type": "string"
+        },
+        "data": {
+          "items": {
+            "additionalProperties": false,
+            "properties": {
+              "focus": {
+                "type": "boolean"
+              },
+              "label": {
+                "type": "string"
+              },
+              "value": {
+                "type": "number"
+              }
+            },
+            "required": [
+              "label",
+              "value"
+            ],
+            "type": "object"
+          },
+          "type": "array"
+        },
+        "label": {
+          "type": "string"
+        },
+        "only": {
+          "$ref": "#/definitions/Only"
+        },
+        "type": {
+          "const": "chart",
+          "type": "string"
+        }
+      },
+      "required": [
+        "chart",
+        "data",
+        "type"
+      ],
+      "type": "object"
+    },
+    "Book": {
+      "additionalProperties": false,
+      "properties": {
+        "author": {
+          "type": "string"
+        },
+        "edition": {
+          "description": "Edition line for the cover, only when it matters (\"Portuguese translation, 2025\").",
+          "type": "string"
+        },
+        "format": {
+          "const": 1,
+          "type": "number"
+        },
+        "guide": {
+          "description": "The guide this file belongs to. A guide is written in all four styles, one file each, with the id \"<guide>-<style>\"; the library shows them as one tile, and the menu chooses the style.",
+          "type": "string"
+        },
+        "id": {
+          "type": "string"
+        },
+        "parts": {
+          "items": {
+            "$ref": "#/definitions/Part"
+          },
+          "type": "array"
+        },
+        "sample": {
+          "description": "Demo content: the library marks it as a sample.",
+          "type": "boolean"
+        },
+        "source": {
+          "$ref": "#/definitions/Source",
+          "description": "Where the content comes from. Not shown to the reader."
+        },
+        "style": {
+          "$ref": "#/definitions/Style",
+          "description": "How the guide summarises (see Style). Default: map."
+        },
+        "subtitle": {
+          "type": "string"
+        },
+        "title": {
+          "type": "string"
+        },
+        "type": {
+          "$ref": "#/definitions/BookType"
+        },
+        "upTo": {
+          "description": "Last chapter covered (\"Chapter 6\"), for guides written while reading.",
+          "type": "string"
+        },
+        "year": {
+          "description": "Year of first publication.",
+          "type": "number"
+        }
+      },
+      "required": [
+        "format",
+        "id",
+        "type",
+        "title",
+        "author",
+        "parts"
+      ],
+      "type": "object"
+    },
+    "BookType": {
+      "enum": [
+        "fiction",
+        "reading",
+        "done"
+      ],
+      "type": "string"
+    },
+    "BranchesChart": {
+      "additionalProperties": false,
+      "description": "One situation, 2–4 possible outcomes. `key`: the outcome the book argues for.",
+      "properties": {
+        "caption": {
+          "description": "One line under the chart: what the marks mean.",
+          "type": "string"
+        },
+        "chart": {
+          "const": "branches",
+          "type": "string"
+        },
+        "label": {
+          "type": "string"
+        },
+        "only": {
+          "$ref": "#/definitions/Only"
+        },
+        "options": {
+          "items": {
+            "additionalProperties": false,
+            "properties": {
+              "key": {
+                "type": "boolean"
+              },
+              "negative": {
+                "type": "boolean"
+              },
+              "text": {
+                "type": "string"
+              },
+              "title": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "title"
+            ],
+            "type": "object"
+          },
+          "type": "array"
+        },
+        "start": {
+          "type": "string"
+        },
+        "type": {
+          "const": "chart",
+          "type": "string"
+        }
+      },
+      "required": [
+        "chart",
+        "options",
+        "start",
+        "type"
+      ],
+      "type": "object"
+    },
+    "Chapter": {
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "length": {
+          "description": "Real length (words or pages), only to size the chip on the book map.",
+          "type": "number"
+        },
+        "number": {
+          "description": "\"05\", \"P\" (prologue), \"E\" (epilogue), \"A1\" (appendix)…",
+          "type": "string"
+        },
+        "opener": {
+          "description": "Set to false to skip the automatic chapter opener screen.",
+          "type": "boolean"
+        },
+        "screens": {
+          "description": "Use either `screens` (no sections) or `sections`. A chapter with neither is listed but not written yet.",
+          "items": {
+            "$ref": "#/definitions/Screen"
+          },
+          "type": "array"
+        },
+        "sections": {
+          "items": {
+            "$ref": "#/definitions/Section"
+          },
+          "type": "array"
+        },
+        "title": {
+          "description": "The real title; an untitled chapter is \"Chapter 7\".",
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "number",
+        "title"
+      ],
+      "type": "object"
+    },
+    "ChartScreen": {
+      "anyOf": [
+        {
+          "$ref": "#/definitions/BarsChart"
+        },
+        {
+          "$ref": "#/definitions/CompareChart"
+        },
+        {
+          "$ref": "#/definitions/FlowChart"
+        },
+        {
+          "$ref": "#/definitions/TimelineChart"
+        },
+        {
+          "$ref": "#/definitions/NetworkChart"
+        },
+        {
+          "$ref": "#/definitions/ThreadsChart"
+        },
+        {
+          "$ref": "#/definitions/CycleChart"
+        },
+        {
+          "$ref": "#/definitions/MatrixChart"
+        },
+        {
+          "$ref": "#/definitions/BranchesChart"
+        },
+        {
+          "$ref": "#/definitions/LayersChart"
+        }
+      ]
+    },
+    "CompareChart": {
+      "additionalProperties": false,
+      "description": "Two columns side by side, row by row; `key` is the conclusion under both.",
+      "properties": {
+        "caption": {
+          "description": "One line under the chart: what the marks mean.",
+          "type": "string"
+        },
+        "chart": {
+          "const": "compare",
+          "type": "string"
+        },
+        "columns": {
+          "items": {
+            "type": "string"
+          },
+          "maxItems": 2,
+          "minItems": 2,
+          "type": "array"
+        },
+        "key": {
+          "type": "string"
+        },
+        "label": {
+          "type": "string"
+        },
+        "negative": {
+          "description": "Which column is the negative side, drawn grey: 0, 1, or omitted for none.",
+          "enum": [
+            0,
+            1
+          ],
+          "type": "number"
+        },
+        "only": {
+          "$ref": "#/definitions/Only"
+        },
+        "rows": {
+          "items": {
+            "items": {
+              "type": "string"
+            },
+            "maxItems": 2,
+            "minItems": 2,
+            "type": "array"
+          },
+          "type": "array"
+        },
+        "type": {
+          "const": "chart",
+          "type": "string"
+        }
+      },
+      "required": [
+        "chart",
+        "columns",
+        "rows",
+        "type"
+      ],
+      "type": "object"
+    },
+    "CycleChart": {
+      "additionalProperties": false,
+      "description": "A loop that feeds itself: 3–6 steps, the last leads back to the first. One `key` node.",
+      "properties": {
+        "caption": {
+          "description": "One line under the chart: what the marks mean.",
+          "type": "string"
+        },
+        "centre": {
+          "description": "Short note in the middle of the loop.",
+          "type": "string"
+        },
+        "chart": {
+          "const": "cycle",
+          "type": "string"
+        },
+        "label": {
+          "type": "string"
+        },
+        "nodes": {
+          "items": {
+            "additionalProperties": false,
+            "properties": {
+              "key": {
+                "type": "boolean"
+              },
+              "text": {
+                "type": "string"
+              },
+              "title": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "title"
+            ],
+            "type": "object"
+          },
+          "type": "array"
+        },
+        "only": {
+          "$ref": "#/definitions/Only"
+        },
+        "type": {
+          "const": "chart",
+          "type": "string"
+        }
+      },
+      "required": [
+        "chart",
+        "nodes",
+        "type"
+      ],
+      "type": "object"
+    },
+    "FigureScreen": {
+      "additionalProperties": false,
+      "description": "A hand-made diagram as inline SVG, in the app's diagram language (classes bx, bt, bn, bi, k, ln, la, ar, ara, t1, t2, t3, tw, ta, c, e…). Maps come from the skill's map script. Draw it for a phone: viewBox about 340 wide. Scripts and event attributes are removed.",
+      "properties": {
+        "alt": {
+          "description": "Text alternative for screen readers.",
+          "type": "string"
+        },
+        "caption": {
+          "type": "string"
+        },
+        "label": {
+          "type": "string"
+        },
+        "only": {
+          "$ref": "#/definitions/Only"
+        },
+        "svg": {
+          "type": "string"
+        },
+        "type": {
+          "const": "figure",
+          "type": "string"
+        }
+      },
+      "required": [
+        "type",
+        "svg",
+        "alt"
+      ],
+      "type": "object"
+    },
+    "FlowChart": {
+      "additionalProperties": false,
+      "description": "From a start, through groups of points, to a key conclusion: flows and argument maps.",
+      "properties": {
+        "caption": {
+          "description": "One line under the chart: what the marks mean.",
+          "type": "string"
+        },
+        "chart": {
+          "const": "flow",
+          "type": "string"
+        },
+        "groups": {
+          "items": {
+            "additionalProperties": false,
+            "properties": {
+              "items": {
+                "items": {
+                  "type": "string"
+                },
+                "type": "array"
+              },
+              "label": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "items"
+            ],
+            "type": "object"
+          },
+          "type": "array"
+        },
+        "key": {
+          "type": "string"
+        },
+        "label": {
+          "type": "string"
+        },
+        "only": {
+          "$ref": "#/definitions/Only"
+        },
+        "start": {
+          "type": "string"
+        },
+        "type": {
+          "const": "chart",
+          "type": "string"
+        }
+      },
+      "required": [
+        "chart",
+        "groups",
+        "type"
+      ],
+      "type": "object"
+    },
+    "LayersChart": {
+      "additionalProperties": false,
+      "description": "Nested levels, outer ring first; the innermost ring is the key element.",
+      "properties": {
+        "caption": {
+          "description": "One line under the chart: what the marks mean.",
+          "type": "string"
+        },
+        "chart": {
+          "const": "layers",
+          "type": "string"
+        },
+        "label": {
+          "type": "string"
+        },
+        "only": {
+          "$ref": "#/definitions/Only"
+        },
+        "rings": {
+          "items": {
+            "additionalProperties": false,
+            "properties": {
+              "text": {
+                "type": "string"
+              },
+              "title": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "title"
+            ],
+            "type": "object"
+          },
+          "type": "array"
+        },
+        "type": {
+          "const": "chart",
+          "type": "string"
+        }
+      },
+      "required": [
+        "chart",
+        "rings",
+        "type"
+      ],
+      "type": "object"
+    },
+    "ListScreen": {
+      "additionalProperties": false,
+      "description": "Rows of name and text: cast list, places, threads, how the parts connect.",
+      "properties": {
+        "label": {
+          "type": "string"
+        },
+        "only": {
+          "$ref": "#/definitions/Only"
+        },
+        "rows": {
+          "items": {
+            "additionalProperties": false,
+            "properties": {
+              "meta": {
+                "type": "string"
+              },
+              "name": {
+                "type": "string"
+              },
+              "text": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "name",
+              "text"
+            ],
+            "type": "object"
+          },
+          "type": "array"
+        },
+        "type": {
+          "const": "list",
+          "type": "string"
+        }
+      },
+      "required": [
+        "type",
+        "label",
+        "rows"
+      ],
+      "type": "object"
+    },
+    "MatrixChart": {
+      "additionalProperties": false,
+      "description": "Items compared on features: a dot for yes, a dash for no. `focus` tints a row.",
+      "properties": {
+        "caption": {
+          "description": "One line under the chart: what the marks mean.",
+          "type": "string"
+        },
+        "chart": {
+          "const": "matrix",
+          "type": "string"
+        },
+        "columns": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "key": {
+          "type": "string"
+        },
+        "label": {
+          "type": "string"
+        },
+        "only": {
+          "$ref": "#/definitions/Only"
+        },
+        "rows": {
+          "items": {
+            "additionalProperties": false,
+            "properties": {
+              "cells": {
+                "items": {
+                  "type": "boolean"
+                },
+                "type": "array"
+              },
+              "focus": {
+                "type": "boolean"
+              },
+              "label": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "label",
+              "cells"
+            ],
+            "type": "object"
+          },
+          "type": "array"
+        },
+        "type": {
+          "const": "chart",
+          "type": "string"
+        }
+      },
+      "required": [
+        "chart",
+        "columns",
+        "rows",
+        "type"
+      ],
+      "type": "object"
+    },
+    "NetworkChart": {
+      "additionalProperties": false,
+      "description": "Who or what connects to whom: a cast map (fiction) or a concept map (non-fiction). `centre` (1–2 names) sits in the middle; the first one is the key element. `nodes` sit on a ring around it, in order (keep a group together). Links join any two names.",
+      "properties": {
+        "caption": {
+          "description": "One line under the chart: what the marks mean.",
+          "type": "string"
+        },
+        "centre": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "chart": {
+          "const": "network",
+          "type": "string"
+        },
+        "label": {
+          "type": "string"
+        },
+        "links": {
+          "items": {
+            "additionalProperties": false,
+            "properties": {
+              "arrow": {
+                "type": "boolean"
+              },
+              "from": {
+                "type": "string"
+              },
+              "label": {
+                "type": "string"
+              },
+              "to": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "from",
+              "to"
+            ],
+            "type": "object"
+          },
+          "type": "array"
+        },
+        "nodes": {
+          "items": {
+            "additionalProperties": false,
+            "properties": {
+              "name": {
+                "type": "string"
+              },
+              "note": {
+                "type": "string"
+              },
+              "tag": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "name"
+            ],
+            "type": "object"
+          },
+          "type": "array"
+        },
+        "only": {
+          "$ref": "#/definitions/Only"
+        },
+        "type": {
+          "const": "chart",
+          "type": "string"
+        }
+      },
+      "required": [
+        "centre",
+        "chart",
+        "links",
+        "nodes",
+        "type"
+      ],
+      "type": "object"
+    },
+    "Only": {
+      "description": "Where a screen or section shows: in the app only, or in the PDF only. Default: both.",
+      "enum": [
+        "app",
+        "pdf"
+      ],
+      "type": "string"
+    },
+    "Part": {
+      "additionalProperties": false,
+      "properties": {
+        "chapters": {
+          "items": {
+            "$ref": "#/definitions/Chapter"
+          },
+          "type": "array"
+        },
+        "id": {
+          "type": "string"
+        },
+        "label": {
+          "description": "The book's short name for the part: \"Part I\", \"Volume Two\". Leave out for a prologue or epilogue outside the parts.",
+          "type": "string"
+        },
+        "title": {
+          "description": "Name the book gives the part: \"Human Networks\".",
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "chapters"
+      ],
+      "type": "object"
+    },
+    "PointsScreen": {
+      "additionalProperties": false,
+      "description": "Named items: key concepts, key points, examples, who they are.",
+      "properties": {
+        "items": {
+          "items": {
+            "additionalProperties": false,
+            "properties": {
+              "tag": {
+                "type": "string"
+              },
+              "text": {
+                "type": "string"
+              },
+              "title": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "title",
+              "text"
+            ],
+            "type": "object"
+          },
+          "type": "array"
+        },
+        "label": {
+          "type": "string"
+        },
+        "only": {
+          "$ref": "#/definitions/Only"
+        },
+        "style": {
+          "description": "'bar' (default): accent bar on the left · 'box': white boxes, for examples.",
+          "enum": [
+            "bar",
+            "box"
+          ],
+          "type": "string"
+        },
+        "type": {
+          "const": "points",
+          "type": "string"
+        }
+      },
+      "required": [
+        "type",
+        "label",
+        "items"
+      ],
+      "type": "object"
+    },
+    "QuizScreen": {
+      "additionalProperties": false,
+      "description": "Test yourself / Recall: the reader taps a question to see its answer.",
+      "properties": {
+        "label": {
+          "type": "string"
+        },
+        "only": {
+          "$ref": "#/definitions/Only"
+        },
+        "questions": {
+          "items": {
+            "additionalProperties": false,
+            "properties": {
+              "a": {
+                "type": "string"
+              },
+              "q": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "q",
+              "a"
+            ],
+            "type": "object"
+          },
+          "type": "array"
+        },
+        "type": {
+          "const": "quiz",
+          "type": "string"
+        }
+      },
+      "required": [
+        "type",
+        "label",
+        "questions"
+      ],
+      "type": "object"
+    },
+    "Scene": {
+      "additionalProperties": false,
+      "properties": {
+        "key": {
+          "description": "The turning point of the chapter (one scene).",
+          "type": "boolean"
+        },
+        "off": {
+          "description": "People there only at a distance: by letter or phone, overheard, asleep. Never just talked about.",
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "text": {
+          "description": "One or two sentences with one {when} and one [where].",
+          "type": "string"
+        },
+        "with": {
+          "description": "People in the scene.",
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        }
+      },
+      "required": [
+        "text",
+        "with"
+      ],
+      "type": "object"
+    },
+    "ScenesScreen": {
+      "additionalProperties": false,
+      "description": "Fiction: the scenes of a chapter and who is in each one, as a storyline chart: the scenes go down, each person is a line, and the lines meet in a band when people share a scene. The app shows the chart with a number at each band, then the scenes as a numbered list; the PDF shows the scene text next to each band. Scene text weaves in the time and the place: \"{That night} Maude waits in [the kitchen].\"",
+      "properties": {
+        "focus": {
+          "description": "The people the chapter follows, 1–2 names from `people`: the first is drawn in ink (the main character), the second in the accent colour, the others grey. Default: the first two people.",
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "label": {
+          "type": "string"
+        },
+        "only": {
+          "$ref": "#/definitions/Only"
+        },
+        "people": {
+          "description": "The lines of the chart, left to right. Put people who meet next to each other. `tag`: \"New\".",
+          "items": {
+            "additionalProperties": false,
+            "properties": {
+              "name": {
+                "type": "string"
+              },
+              "tag": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "name"
+            ],
+            "type": "object"
+          },
+          "type": "array"
+        },
+        "scenes": {
+          "items": {
+            "$ref": "#/definitions/Scene"
+          },
+          "type": "array"
+        },
+        "type": {
+          "const": "scenes",
+          "type": "string"
+        }
+      },
+      "required": [
+        "type",
+        "people",
+        "scenes"
+      ],
+      "type": "object"
+    },
+    "Screen": {
+      "anyOf": [
+        {
+          "$ref": "#/definitions/SummaryScreen"
+        },
+        {
+          "$ref": "#/definitions/PointsScreen"
+        },
+        {
+          "$ref": "#/definitions/StepsScreen"
+        },
+        {
+          "$ref": "#/definitions/ListScreen"
+        },
+        {
+          "$ref": "#/definitions/QuizScreen"
+        },
+        {
+          "$ref": "#/definitions/TextScreen"
+        },
+        {
+          "$ref": "#/definitions/ScenesScreen"
+        },
+        {
+          "$ref": "#/definitions/ChartScreen"
+        },
+        {
+          "$ref": "#/definitions/FigureScreen"
+        }
+      ]
+    },
+    "Section": {
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "only": {
+          "$ref": "#/definitions/Only"
+        },
+        "screens": {
+          "items": {
+            "$ref": "#/definitions/Screen"
+          },
+          "type": "array"
+        },
+        "title": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "title",
+        "screens"
+      ],
+      "type": "object"
+    },
+    "Source": {
+      "additionalProperties": false,
+      "properties": {
+        "file": {
+          "description": "\"EPUB\", \"PDF\", \"Project Gutenberg text\"…",
+          "type": "string"
+        },
+        "kind": {
+          "description": "\"book-file\": written from the book itself (EPUB, PDF, text); \"summaries\": from summaries of the book.",
+          "enum": [
+            "book-file",
+            "summaries"
+          ],
+          "type": "string"
+        },
+        "skill": {
+          "description": "Version of the ghostreader-book skill that wrote it.",
+          "type": "string"
+        },
+        "written": {
+          "description": "Date the guide was written or last regenerated (YYYY-MM-DD).",
+          "type": "string"
+        }
+      },
+      "required": [
+        "kind"
+      ],
+      "type": "object"
+    },
+    "StepsScreen": {
+      "additionalProperties": false,
+      "description": "Numbered steps: the logic, main claims. The last step is the conclusion.",
+      "properties": {
+        "label": {
+          "type": "string"
+        },
+        "only": {
+          "$ref": "#/definitions/Only"
+        },
+        "steps": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "type": {
+          "const": "steps",
+          "type": "string"
+        }
+      },
+      "required": [
+        "type",
+        "label",
+        "steps"
+      ],
+      "type": "object"
+    },
+    "Style": {
+      "description": "How the guide summarises, for a reader who comes back to a book after a pause (skill: references/styles.md). map: diagrams first · recap: the story so far, in words · recall: questions before answers · layers: one line, then a paragraph, then the detail. Default: map.",
+      "enum": [
+        "map",
+        "recap",
+        "recall",
+        "layers"
+      ],
+      "type": "string"
+    },
+    "SummaryScreen": {
+      "additionalProperties": false,
+      "description": "The point first: In short, Core idea, Thesis, Story so far, with an optional takeaway.",
+      "properties": {
+        "label": {
+          "type": "string"
+        },
+        "only": {
+          "$ref": "#/definitions/Only"
+        },
+        "takeaway": {
+          "additionalProperties": false,
+          "properties": {
+            "label": {
+              "type": "string"
+            },
+            "text": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "label",
+            "text"
+          ],
+          "type": "object"
+        },
+        "text": {
+          "type": "string"
+        },
+        "type": {
+          "const": "summary",
+          "type": "string"
+        }
+      },
+      "required": [
+        "type",
+        "label",
+        "text"
+      ],
+      "type": "object"
+    },
+    "TextScreen": {
+      "additionalProperties": false,
+      "properties": {
+        "label": {
+          "type": "string"
+        },
+        "only": {
+          "$ref": "#/definitions/Only"
+        },
+        "paragraphs": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "type": {
+          "const": "text",
+          "type": "string"
+        }
+      },
+      "required": [
+        "type",
+        "paragraphs"
+      ],
+      "type": "object"
+    },
+    "ThreadsChart": {
+      "additionalProperties": false,
+      "description": "Fiction: where each story thread appears, chapter by chapter.",
+      "properties": {
+        "caption": {
+          "description": "One line under the chart: what the marks mean.",
+          "type": "string"
+        },
+        "chart": {
+          "const": "threads",
+          "type": "string"
+        },
+        "columns": {
+          "description": "Column labels: the chapter numbers covered (\"1\", \"2\"…, \"P\", \"E\").",
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "label": {
+          "type": "string"
+        },
+        "only": {
+          "$ref": "#/definitions/Only"
+        },
+        "threads": {
+          "items": {
+            "additionalProperties": false,
+            "properties": {
+              "appears": {
+                "items": {
+                  "type": "string"
+                },
+                "type": "array"
+              },
+              "major": {
+                "items": {
+                  "type": "string"
+                },
+                "type": "array"
+              },
+              "name": {
+                "type": "string"
+              },
+              "text": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "name",
+              "appears"
+            ],
+            "type": "object"
+          },
+          "type": "array"
+        },
+        "type": {
+          "const": "chart",
+          "type": "string"
+        }
+      },
+      "required": [
+        "chart",
+        "columns",
+        "threads",
+        "type"
+      ],
+      "type": "object"
+    },
+    "TimelineChart": {
+      "additionalProperties": false,
+      "description": "Events or stages in order, with the time the book gives. One `key`: the turning point.",
+      "properties": {
+        "caption": {
+          "description": "One line under the chart: what the marks mean.",
+          "type": "string"
+        },
+        "chart": {
+          "const": "timeline",
+          "type": "string"
+        },
+        "items": {
+          "items": {
+            "additionalProperties": false,
+            "properties": {
+              "key": {
+                "type": "boolean"
+              },
+              "text": {
+                "type": "string"
+              },
+              "title": {
+                "type": "string"
+              },
+              "when": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "when",
+              "text"
+            ],
+            "type": "object"
+          },
+          "type": "array"
+        },
+        "label": {
+          "type": "string"
+        },
+        "only": {
+          "$ref": "#/definitions/Only"
+        },
+        "type": {
+          "const": "chart",
+          "type": "string"
+        }
+      },
+      "required": [
+        "chart",
+        "items",
+        "type"
+      ],
+      "type": "object"
+    }
+  }
+}

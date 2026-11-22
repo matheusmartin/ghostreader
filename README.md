@@ -90,7 +90,9 @@ npm run dev
 | `npm run build:pdf` | Only the PDFs (after a build); `node scripts/build-pdfs.mjs <id>` for one book |
 | `npm run preview` | Serve the production build (service worker included) |
 | `npm test` | Unit tests, including the colour contrast checks and every book's content checks |
-| `npm run validate` | Check every book file in `src/books/`: format and writing rules |
+| `npm run validate` | Check every book file in `src/books/`: format and writing rules, each problem with its rule ID (`spec/rules.md`) |
+| `node scripts/validate-book.mjs <file> [--json]` | The same checks for one book file anywhere, as text or JSON |
+| `npm run schema` | Write the book format as JSON Schema (`schemas/book.schema.json`) from `src/model/types.ts` |
 | `npm run check:screens` | Render every screen of every book at 360, 390 and 820 px; report screens that do not fit |
 | `npm run build:icons` | Draw the app icon and write every icon file in `public/icons/` (tab, app, Android, iPhone, one colour) |
 
@@ -111,6 +113,10 @@ Settings → Pages → Build and deployment and set Source to **GitHub Actions**
 `https://<owner>.github.io/<repository>/`.
 
 ## Add a book
+
+Any coding agent can do it: `AGENTS.md` is the entry point for Codex, Copilot, Cursor, Gemini CLI
+and others, and Claude Code reads it through `CLAUDE.md`. The plan for a model-neutral process is
+in [docs/proposal-model-neutral-guides.md](docs/proposal-model-neutral-guides.md).
 
 Ask Claude Code in this repository, for example "Add a story guide of Pride and Prejudice up to
 Chapter 6" with the book file attached. The **ghostreader-book** skill

@@ -4,7 +4,9 @@ A book is one JSON file in `src/books/`. The file name is the book id: `src/book
 has `"id": "nexus-reading"`. Add a file, run `npm run validate`, and the book is in the library after
 the next build. The same file makes the app's screens and the book's A4 PDF.
 
-The types in `src/model/types.ts` are the exact definition. This page explains them. The
+The types in `src/model/types.ts` are the exact definition; `schemas/book.schema.json` is the same
+definition as JSON Schema, for tools that do not read TypeScript (`npm run schema` writes it). This
+page explains them. The
 ghostreader-book skill (`.claude/skills/ghostreader-book/`) writes these files: it says which
 screens each guide type uses and how to choose a chart.
 

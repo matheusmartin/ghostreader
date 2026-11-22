@@ -6,13 +6,20 @@ errors well but find omissions at close to chance, so each needs its own check. 
 the Map file and the styles file are written (`SKILL.md` steps 7 and 8), and again after big
 fixes. Every check works on the files in `work/<guide>/`; none of them is committed.
 
+**Isolated run.** Checks 3, 4 and 5 need a reviewer that did not write the guide. An isolated
+run is a new model context that gets only the files the check lists, and nothing from the
+writer's context: not its reasoning, its drafts or the answer key. Any of these meets it: a
+sub-agent, a separate model call (a new chat or an API call), or another model or person given
+the files. Use a model from another family as the judge when you can, and never tell the judge
+which model wrote the guide (judges tend to favour text like their own).
+
 | Check | Finds | How |
 |---|---|---|
 | 1 Fact sheets and ledger | invented or wrong anchors; a must-carry list missing, too short or bunched at the chapter's end | `check_guide.py facts <guide>` |
 | 2 Names and numbers | outside facts, wrong forms of names, spoilers (a name the book has not given yet) | `check_guide.py names <guide>` |
-| 3 Claims | wrong claims: feelings, motives, relations, order of events, causes | a fresh subagent per chapter, claim by claim |
-| 4 Must carry | what a returning reader needs, left out | the same subagent, item by item |
-| 5 Blind recall | whether the guide alone gets a reader back into the book | `check_guide.py test`, then a fresh subagent |
+| 3 Claims | wrong claims: feelings, motives, relations, order of events, causes | an isolated run per chapter, claim by claim |
+| 4 Must carry | what a returning reader needs, left out | the same run, item by item |
+| 5 Blind recall | whether the guide alone gets a reader back into the book | `check_guide.py test`, then an isolated reader and an isolated scorer |
 
 ## 1 · Fact sheets and ledger
 
@@ -43,7 +50,7 @@ must be in the book's text up to and including that chapter. For each line it re
 
 ## 3 and 4 · Claims and must carry (fresh eyes)
 
-For each chapter, start a subagent with only these: the chapter's text files, its fact sheet,
+For each chapter, start an isolated run with only these: the chapter's text files, its fact sheet,
 the ledger up to it, and the guide's text for the chapter in every style:
 
 ```bash
@@ -80,9 +87,10 @@ python3 -I .claude/skills/ghostreader-book/scripts/check_guide.py test <guide> -
 
 It writes `work/<guide>/recall-test/<style>-<chapter>.md` (the guide's app screens up to the
 chapter, then the must-carry questions of those chapters) and a `-key.md` with the answers. Give
-a fresh subagent the test file only, never the key or the book, and ask it to answer from the
-guide alone ("Not in the guide" when it cannot). Then score its answers against the key, yourself
-or with a second subagent: correct, partly correct (half), wrong or not in the guide.
+an isolated run the test file only, never the key or the book, and ask it to answer from the
+guide alone ("Not in the guide" when it cannot). Then score its answers against the key in a
+second isolated run, which gets the answers and the key but not the book; never score them in
+the writer's own context: correct, partly correct (half), wrong or not in the guide.
 
 - **Pass: 80% or more** of the points, and no chapter under 60%.
 - Each miss: carry that fact in the guide, on a screen the style that missed it shows ("Key
@@ -92,6 +100,6 @@ or with a second subagent: correct, partly correct (half), wrong or not in the g
   scored 74% while Map and Recap scored 93%, because their facts sat in Map charts they do not
   show.
 - A model may know a famous book already, so a right answer the guide does not support counts as
-  wrong: ask the subagent to cite the screen for every answer.
+  wrong: ask the reader to cite the screen for every answer; an answer without a screen scores zero.
 
 Report the scores in the final message.

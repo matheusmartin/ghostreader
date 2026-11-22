@@ -21,7 +21,9 @@ Commands (run from the repository root):
                        (the guide's app screens up to the chapter, then the must-carry questions of
                        those chapters, without answers) and a -key.md with the answers. Needs --upto.
 
-Options: --work DIR (default work/<guide>), --books DIR (default src/books).
+Options: --work DIR (default work/<guide>), --books DIR (default src/books), --json (facts, names:
+{"command", "guide", "clean", "problems": [{"rule", "where", "message"}]}).
+Each problem line starts with its rule ID (spec/rules.md): "GR-A02 <where>: <message>".
 Exit codes: 0 = clean, 1 = problems found (each line says what to fix), 2 = cannot run.
 """
 import argparse
@@ -147,12 +149,12 @@ class Sheet:
 
 def check_anchor(src, sheet_sources, n, p, p2, where, say):
     if n not in sheet_sources:
-        say(f'{where}: anchor {n:03d} p{p} is not one of this chapter\'s source files ({", ".join(f"{s:03d}" for s in sheet_sources)})')
+        say('GR-A02', where, f'anchor {n:03d} p{p} is not one of this chapter\'s source files ({", ".join(f"{s:03d}" for s in sheet_sources)})')
         return None
     total = src.paragraphs(n)
     for q in (p, p2):
         if q is not None and not 1 <= q <= total:
-            say(f'{where}: anchor {n:03d} p{q} does not exist (file {n:03d} has {total} paragraphs)')
+            say('GR-A02', where, f'anchor {n:03d} p{q} does not exist (file {n:03d} has {total} paragraphs)')
             return None
     return p
 
@@ -166,11 +168,11 @@ def cmd_facts(args, guide, work, say):
     for _, ch, _ in written(book):
         path = facts / f'{ch["id"]}.md'
         if not path.exists():
-            say(f'{ch["id"]}: no fact sheet {path}')
+            say('GR-A01', ch['id'], f'no fact sheet {path}')
             continue
         sheet = Sheet(path)
         if not sheet.sources:
-            say(f'{path}: the first line needs "source NNN" (or "source NNN–NNN"): the chapter\'s text files')
+            say('GR-A01', str(path), 'the first line needs "source NNN" (or "source NNN–NNN"): the chapter\'s text files')
             continue
         chapter_sources[ch['id']] = sheet.sources
         # Every anchor in the sheet points into this chapter's text.
@@ -181,7 +183,7 @@ def cmd_facts(args, guide, work, say):
         # Must carry: 5-8 items, each with a kind, an anchor and a question.
         must = sheet.must
         if not MUST_MIN <= len(must) <= MUST_MAX:
-            say(f'{path}: "## Must carry" needs {MUST_MIN}–{MUST_MAX} items (has {len(must)})')
+            say('GR-M01', str(path), f'"## Must carry" needs {MUST_MIN}–{MUST_MAX} items (has {len(must)})')
         offsets, total, pos = {}, 0, []
         for n in sheet.sources:
             offsets[n] = total
@@ -189,25 +191,25 @@ def cmd_facts(args, guide, work, say):
         for m in must:
             where = f'{path}:{m["line"]} {m["id"]}'
             if m['kind'] not in KINDS:
-                say(f'{where}: kind "{m["kind"]}" must be one of {", ".join(sorted(KINDS))}')
+                say('GR-M01', where, f'kind "{m["kind"]}" must be one of {", ".join(sorted(KINDS))}')
             if not m['q']:
-                say(f'{where}: needs a question on the next line ("  Q: …")')
+                say('GR-M01', where, 'needs a question on the next line ("  Q: …")')
             a = ANCHOR.search(m['text'])
             if not a:
-                say(f'{where}: needs an anchor ("005 p12")')
+                say('GR-M01', where, 'needs an anchor ("005 p12")')
             elif m['kind'] != 'open' and int(a.group(1)) in offsets:
                 pos.append((offsets[int(a.group(1))] + int(a.group(2))) / max(total, 1))
         # Spread over the chapter: summaries skip the middle and lean on the end.
         if total >= 20 and len(pos) >= 3:
             thirds = [sum(1 for x in pos if lo < x <= hi) for lo, hi in ((-1, 1 / 3), (1 / 3, 2 / 3), (2 / 3, 2))]
             if thirds[0] == 0 or thirds[1] == 0:
-                say(f'{path}: no must-carry item from the {"first" if thirds[0] == 0 else "middle"} third of the chapter: read it again for what a reader needs from there')
+                say('GR-M02', str(path), f'no must-carry item from the {"first" if thirds[0] == 0 else "middle"} third of the chapter: read it again for what a reader needs from there')
             if thirds[2] > len(pos) / 2:
-                say(f'{path}: {thirds[2]} of {len(pos)} must-carry items come from the last third: the end is over-weighted')
+                say('GR-M02', str(path), f'{thirds[2]} of {len(pos)} must-carry items come from the last third: the end is over-weighted')
     # The ledger: one section per written chapter, anchored lines.
     ledger = Path(work) / 'ledger.md'
     if not ledger.exists():
-        say(f'no ledger {ledger}')
+        say('GR-A03', str(ledger), 'no ledger')
         return
     current, seen = None, set()
     for i, line in enumerate(ledger.read_text().splitlines(), start=1):
@@ -220,19 +222,19 @@ def cmd_facts(args, guide, work, say):
         where = f'{ledger}:{i}'
         a = ANCHOR.search(line)
         if not a:
-            say(f'{where}: needs an anchor')
+            say('GR-A04', where, 'needs an anchor')
         elif current in chapter_sources:
             check_anchor(src, chapter_sources[current], int(a.group(1)), int(a.group(2)),
                          int(a.group(3)) if a.group(3) else None, where, say)
         kind = line[2:].split('·')[0].strip().lower()
         if fiction:
             if kind != 'time' and '→' not in line:
-                say(f'{where}: a fiction ledger line is a change, "Person · field: old → new · anchor" (or "time · … · anchor")')
+                say('GR-A04', where, 'a fiction ledger line is a change, "Person · field: old → new · anchor" (or "time · … · anchor")')
         elif kind not in LEDGER_NONFICTION:
-            say(f'{where}: starts with one of {", ".join(sorted(LEDGER_NONFICTION))}')
+            say('GR-A04', where, f'starts with one of {", ".join(sorted(LEDGER_NONFICTION))}')
     for _, ch, _ in written(book):
         if ch['id'] not in seen:
-            say(f'{ledger}: no "## {ch["id"]}" section')
+            say('GR-A03', str(ledger), f'no "## {ch["id"]}" section')
 
 
 # ------------------------------------------------------------------ names and numbers
@@ -339,7 +341,7 @@ def cmd_names(args, guide, work, say):
                         if not in_book(kind, w, first, text, whole):
                             missing[(kind, w)] = string
             for (kind, w), string in missing.items():
-                say(f'{book["id"]} {ch["id"]}: {kind} "{w}" is not in the book up to this chapter (in "{string[:60]}")')
+                say('GR-C02', f'{book["id"]} {ch["id"]}', f'{kind} "{w}" is not in the book up to this chapter (in "{string[:60]}")')
 
 
 # ------------------------------------------------------------------ the guide as text
@@ -462,15 +464,24 @@ def main():
     ap.add_argument('--style', choices=STYLES)
     ap.add_argument('--upto', help='last chapter id (text, test)')
     ap.add_argument('--pdf', action='store_true', help='text: add the PDF-only blocks')
+    ap.add_argument('--json', action='store_true', help='facts, names: print the result as JSON')
     args = ap.parse_args()
     work = args.work or f'work/{args.guide}'
     guide = load_guide(args.books, args.guide)
     problems = []
-    {'facts': cmd_facts, 'names': cmd_names, 'text': cmd_text, 'test': cmd_test}[args.command](args, guide, work, problems.append)
-    for p in problems:
-        print(p)
-    if args.command in ('facts', 'names'):
-        print(f'{len(problems)} problem(s)' if problems else 'clean', file=sys.stderr)
+
+    def say(rule, where, message):
+        problems.append({'rule': rule, 'where': where, 'message': message})
+
+    {'facts': cmd_facts, 'names': cmd_names, 'text': cmd_text, 'test': cmd_test}[args.command](args, guide, work, say)
+    if args.json and args.command in ('facts', 'names'):
+        print(json.dumps({'command': args.command, 'guide': args.guide, 'clean': not problems,
+                          'problems': problems}, ensure_ascii=False, indent=2))
+    else:
+        for p in problems:
+            print(f'{p["rule"]} {p["where"]}: {p["message"]}')
+        if args.command in ('facts', 'names'):
+            print(f'{len(problems)} problem(s)' if problems else 'clean', file=sys.stderr)
     sys.exit(1 if problems else 0)
 
 

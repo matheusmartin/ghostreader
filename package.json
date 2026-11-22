@@ -13,11 +13,14 @@
     "preview": "vite preview --host",
     "check": "tsc",
     "test": "vitest run",
-    "validate": "vitest run tests/books.test.ts"
+    "validate": "vitest run tests/books.test.ts",
+    "schema": "ts-json-schema-generator --path src/model/types.ts --type Book --out schemas/book.schema.json"
   },
   "devDependencies": {
     "@types/node": "22.20.5",
+    "ajv": "8.20.0",
     "playwright": "1.63.0",
+    "ts-json-schema-generator": "2.9.0",
     "typescript": "7.0.2",
     "vite": "8.3.5",
     "vite-plugin-pwa": "2.0.0",
