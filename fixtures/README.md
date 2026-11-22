@@ -26,3 +26,30 @@ When a schema or a check changes, change the fixture with it, and rebuild the st
 ```bash
 python3 -I .claude/skills/ghostreader-book/scripts/build_styles.py fixtures/sample/books/sample-story-map.json fixtures/sample/working/styles.json
 ```
+
+## A fixture for a real book
+
+A real book's text never goes in the repository (decision D2). Its fixture is a folder with a
+`gold.json` only; you give the book file when you run the suite, and its SHA-256 must match, so
+every run reads the same edition and gets the same paragraph numbers:
+
+```bash
+python3 -I tools/gr.py eval --fixture fixtures/<name> --book path/to/book.epub
+```
+
+`gold.json` holds no text of the book: questions and answers in your own words, concept names in
+the book's words, and claims that are false.
+
+| Field | Holds |
+|---|---|
+| `guide` | the guide id the run writes, for example `pride-and-prejudice-story` |
+| `intake` | the inputs, as `work/<guide>/intake.json` holds them (type, title, author, `upTo`, the file's name, format and SHA-256) |
+| `book.sha256` | the SHA-256 of the book file (`sha256sum book.epub`) |
+| `book.split` | optional: the `--split` pattern `extract_book.py` needs for this file |
+| `book.after_limit` | optional: the text files (three-digit numbers) to move out before anyone reads, with a limit |
+| `must_carry` | per chapter, what a returning reader must get back: `chapter`, `kind`, `question`, `answer` |
+| `concepts` | the book's concepts and distinctions: `chapter`, `name` |
+| `planted` | false claims to put in a correct guide for the judge to catch: `style`, `chapter`, `screen` (1-based, as in `ch3.s2`), `path` inside the screen (`items[1].text`), the false `text`, and the `claim` in short |
+
+`planted` needs a correct guide of the book in the fixture's `books/` folder. Without one, leave
+`planted` out, and the suite reports that part as not run.

@@ -14,6 +14,9 @@ and records the call in work/<guide>/run.json.
   python3 -I tools/gr.py check --guide <g>          each chapter: verify; the blind recall test of
                                                     every style at the last chapter; the scores
   python3 -I tools/gr.py eval --fixture <dir>       the conformance suite on a fixture (see eval_fixture)
+  python3 -I tools/gr.py prompt <step> --guide <g> [--chapter <id>] [--style <s>]
+                                                    print the filled-in prompt, for an agent or an
+                                                    isolated run to answer by hand
   python3 -I tools/gr.py record <step> --guide <g> --family claude --model <name> [--chapter <id>]
                                                     add a step an agent ran itself to run.json
 
@@ -689,7 +692,7 @@ def eval_fixture(args, models, settings):
 def conformant(r):
     """The pass marks of the proposal, section 5.7 (decision D5)."""
     marks = [r['gates']['fail'] == 0, r.get('anchors_clean') is True, (r.get('gold_recall') or 0) >= 0.8,
-             (r.get('concept_recall') or 0) >= 0.9, (r.get('planted_caught') or 0) >= 0.9,
+             (r.get('concept_recall') or 0) >= 0.9, r.get('planted_caught') is None or r['planted_caught'] >= 0.9,
              all((v or 0) >= 0.8 for v in (r.get('blind_recall') or {'none': 0}).values())]
     return all(marks)
 
@@ -738,12 +741,13 @@ def set_path(obj, path, value):
 def planted(fixture, gold, work, models, settings):
     """The fixture's own guide with known false claims put in: how many does the judge catch?"""
     plants = gold.get('planted', [])
-    if not plants:
-        return 1.0
+    if not plants or not (fixture / 'books').exists():
+        return None  # not run: no planted claims, or no correct guide to plant them in
     pw = work / 'planted'
     shutil.copytree(work / 'source', pw / 'source')
+    # The run's own plan, fact sheets and ledger: for a real book, the fixture has none (they quote it).
     for name in ('plan.json', 'facts', 'ledger'):
-        src = fixture / 'working' / name
+        src = work / name
         (shutil.copytree if src.is_dir() else shutil.copy)(src, pw / name)
     pb = pw / 'books'
     shutil.copytree(fixture / 'books', pb)
@@ -786,7 +790,7 @@ def load_models(args):
 
 def main():
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
-    ap.add_argument('command', choices=['models', 'stage', 'write', 'check', 'eval', 'record'])
+    ap.add_argument('command', choices=['models', 'stage', 'write', 'check', 'eval', 'record', 'prompt'])
     ap.add_argument('step', nargs='?', choices=list(STEPS))
     ap.add_argument('--guide')
     ap.add_argument('--chapter')
@@ -825,6 +829,17 @@ def main():
                        **({'style': args.style} if args.style else {}), 'prompt': f'{STEPS[args.step][0][:-3]}@{head["version"]}',
                        'role': STEPS[args.step][1], 'model': {'provider': 'agent', 'family': args.family, 'model': args.model},
                        'attempts': 1, 'gate': args.gate, 'finished': now()})
+            return 0
+        if args.command == 'prompt':
+            if not args.step:
+                raise Stop('prompt needs a step')
+            _, text = render(args.step, inputs(args.step, g, args.chapter, args.style))
+            print(text)
+            where = {'write-map': f'the chapter "{args.chapter}" of {g.map_path}',
+                     'write-styles': f'the entry "chapters.{args.chapter}" of {g.work / "styles.json"}'}.get(
+                         args.step, str(output_path(args.step, g, args.chapter, args.style)))
+            print(f'\n## Where the reply goes\n\n{where} (schema: schemas/{STEPS[args.step][3]}.schema.json'
+                  + (f'#/definitions/{STEPS[args.step][4]}' if STEPS[args.step][4] else '') + ').')
             return 0
         if args.command == 'stage':
             if not args.step:
