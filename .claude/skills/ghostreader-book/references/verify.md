@@ -27,11 +27,13 @@ which model wrote the guide (judges tend to favour text like their own).
 python3 -I .claude/skills/ghostreader-book/scripts/check_guide.py facts <guide>
 ```
 
-Every anchor in a fact sheet and the ledger must exist in that chapter's own text files (the
-`source` line of the sheet). Each chapter has 5–8 must-carry items, each with a kind and a
-question, at least one from the first and one from the middle third of the chapter, and at most
-half from its last third (summaries skip the middle and lean on the end). Fix the sheet, not the
-check.
+Every anchor in a fact sheet and a ledger file must point into that chapter's own text files
+(the sheet's `sources`), and its quote must be in the anchored paragraphs: a wrong paragraph
+fails. Each fact has the fields its type needs. Each chapter has 5–8 must-carry items, each with
+a kind and a question, at least one from the first and one from the middle third of the
+chapter, and at most half from its last third (summaries skip the middle and lean on the end).
+Fix the sheet, not the check. `check_guide.py schema <guide>` checks every working file against
+its schema (`references/working-files.md`).
 
 ## 2 · Names and numbers
 
@@ -68,6 +70,18 @@ python3 -I .claude/skills/ghostreader-book/scripts/check_guide.py text <guide> -
    Map chart is missing there (`references/styles.md`, "Must carry in every style").
 3. Check "Where it stands" and "Still open" against the ledger: the state at the chapter's end,
    nothing from later chapters, every name with a role.
+4. Reply with JSON only, in the form of `schemas/verdict.schema.json`, naming screens by the ids
+   the text shows ("ch3.s2"). The prompt is `prompts/verify.md`.
+
+Save the reply as `work/<guide>/verdicts/<chapter-id>.json`, then run:
+
+```bash
+python3 -I .claude/skills/ghostreader-book/scripts/check_guide.py verdicts <guide>
+```
+
+It lists every claim that is not supported, every must-carry item missing in a style, and every
+resume problem, each with its rule ID. After the fixes, a new isolated judge writes a new verdict
+until the check is clean.
 
 Fix each unsupported claim or remove it; soften or remove an inferred one unless the text states
 it; add each missing must-carry item where it belongs (a key point, a key moment, "Where it
@@ -85,12 +99,20 @@ last written chapter:
 python3 -I .claude/skills/ghostreader-book/scripts/check_guide.py test <guide> --style map --upto <chapter-id>
 ```
 
-It writes `work/<guide>/recall-test/<style>-<chapter>.md` (the guide's app screens up to the
-chapter, then the must-carry questions of those chapters) and a `-key.md` with the answers. Give
-an isolated run the test file only, never the key or the book, and ask it to answer from the
-guide alone ("Not in the guide" when it cannot). Then score its answers against the key in a
-second isolated run, which gets the answers and the key but not the book; never score them in
-the writer's own context: correct, partly correct (half), wrong or not in the guide.
+It writes `work/<guide>/recall-test/<style>-<chapter>.md` (the must-carry questions of those
+chapters, then the guide's app screens up to the chapter, each with its id) and a `-key.json` with
+the answers. Give an isolated run the test file only, never the key or the book, and ask it to
+answer from the guide alone ("Not in the guide" when it cannot), in the form of
+`schemas/recall-answers.schema.json` (prompt: `prompts/recall-reader.md`); save it as
+`<style>-<chapter>-answers.json`. Then a second isolated run scores the answers against the key,
+with the answers and the key but not the book (prompt: `prompts/recall-scorer.md`): 1 correct,
+0.5 partly correct, 0 wrong or not in the guide; save it as `<style>-<chapter>-score.json`. Never
+score them in the writer's own context. Then add them up:
+
+```bash
+python3 -I .claude/skills/ghostreader-book/scripts/check_guide.py score <guide> --style map --upto <chapter-id>
+```
+
 
 - **Pass: 80% or more** of the points, and no chapter under 60%.
 - Each miss: carry that fact in the guide, on a screen the style that missed it shows ("Key

@@ -1,0 +1,76 @@
+{
+  "chapter": "ch1",
+  "entries": [
+    {
+      "dimension": "time",
+      "after": "the night of the day the clock stopped",
+      "anchor": {
+        "file": "001",
+        "p": [
+          20,
+          20
+        ],
+        "quote": "That night Ines gave Ada the key"
+      }
+    },
+    {
+      "dimension": "place",
+      "after": "Ines at the house; Ada at the top of the tower",
+      "anchor": {
+        "file": "001",
+        "p": [
+          21,
+          21
+        ],
+        "quote": "until it reached the top"
+      }
+    },
+    {
+      "dimension": "goal",
+      "entity": "Ines",
+      "before": null,
+      "after": "get the clock running by Friday, so her father keeps the tower",
+      "cause": "Mr Hale's warning",
+      "anchor": {
+        "file": "001",
+        "p": [
+          9,
+          9
+        ],
+        "quote": "If the clock was not running by Friday"
+      }
+    },
+    {
+      "dimension": "possession",
+      "entity": "Ines",
+      "about": "her mother's compass",
+      "before": "owns it",
+      "after": "has given it to Ada",
+      "cause": "she could not pay Ada's price",
+      "anchor": {
+        "file": "001",
+        "p": [
+          15,
+          16
+        ],
+        "quote": "Ines offered her mother's brass compass instead"
+      }
+    },
+    {
+      "dimension": "possession",
+      "entity": "Ada",
+      "about": "the key to the clock room",
+      "before": null,
+      "after": "holds it",
+      "cause": "Ines gave it to her for the repair",
+      "anchor": {
+        "file": "001",
+        "p": [
+          20,
+          20
+        ],
+        "quote": "It was the first time anyone outside the family had held it"
+      }
+    }
+  ]
+}

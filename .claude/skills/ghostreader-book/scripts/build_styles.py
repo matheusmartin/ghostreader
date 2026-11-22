@@ -30,6 +30,12 @@ import json
 import os
 import re
 import sys
+from pathlib import Path
+
+sys.path.insert(0, str(Path(__file__).resolve().parent))  # schema_lite.py, next to this file
+from schema_lite import validate  # noqa: E402
+
+STYLES_SCHEMA = Path(__file__).resolve().parents[4] / 'schemas' / 'styles.schema.json'
 
 STYLES = ('recap', 'recall', 'layers')
 GUIDE_MADE = {'S', 'B', 'K', 'W', 'T', 'M'}  # overview chapters of earlier versions: not allowed
@@ -251,6 +257,9 @@ def main():
         map_book = json.load(f)
     with open(args.styles_file) as f:
         notes = json.load(f)
+    errors = validate(notes, json.loads(STYLES_SCHEMA.read_text()))
+    if errors:
+        fail('the styles file does not match schemas/styles.schema.json:\n  GR-F04 ' + '\n  GR-F04 '.join(errors))
     if map_book.get('style') != 'map':
         fail('the first file must be the Map file ("style": "map")')
     out_dir = os.path.dirname(os.path.abspath(args.map_file))

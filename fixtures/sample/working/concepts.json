@@ -1,0 +1,12 @@
+{
+  "concepts": [
+    {
+      "name": "The keeper's rule",
+      "kind": "fiction",
+      "mode": "explicit",
+      "chapter": "ch1",
+      "fact": "F2",
+      "core": true
+    }
+  ]
+}

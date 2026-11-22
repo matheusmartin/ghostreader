@@ -30,6 +30,11 @@ Follow the skill `.claude/skills/ghostreader-book/SKILL.md` (also at
 `.agents/skills/ghostreader-book/`). It is in the open Agent Skills format. Read it in full
 before you start. Its `references/` files are the rules; its `scripts/` are the checks.
 
+- Every step writes JSON working files in `work/<guide>/`, one schema each in `schemas/`
+  (`references/working-files.md`).
+- `prompts/` has one prompt per model step: inputs, output schema, check, and a right and a
+  wrong example. `fixtures/sample/` is a complete example that passes every check.
+
 - The user gives the book file (EPUB, PDF, TXT, Markdown or HTML). Ask for it if it is missing.
 - Write from the extracted text and the fact sheets, never from memory.
 - An **isolated run** is a new model context that gets only the files a step lists, and nothing

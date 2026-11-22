@@ -1,6 +1,6 @@
 # Proposal: a model-neutral standard for book guides
 
-Status: decisions taken 2026-11-22 (section 8); phase 1 done · scope: the process that
+Status: decisions taken 2026-11-22 (section 8); phases 1 and 2 done · scope: the process that
 reads a book and writes a guide (today the `ghostreader-book` skill). The app and the book format
 do not change.
 
@@ -119,7 +119,7 @@ chapter of 10,000 words is about 13,000 tokens, so most stages fit a 32,000-toke
 | S4 Ledger | model, per chapter, in order | `facts/<ch>.json`; ledger up to the chapter before | `ledger/<ch>.json` | schema; anchors |
 | S5 Concepts | script, then model review | all fact sheets | `concepts.json` | schema |
 | S6 Write Map | model, per chapter | `facts/<ch>.json`, ledger to `<ch>`, `concepts.json`, type recipe | chapter fragment `map/<ch>.json` | schema; `validate` |
-| S7 Write styles | model, per chapter | as S6, plus the Map chapter | `styles/<ch>.json` | schema; `validate` |
+| S7 Write styles | model, per chapter | as S6, plus the Map chapter | one entry of `styles.json` | schema; `build_styles.py`; `validate` |
 | S8 Build | script | plan, fragments | four `src/books/<guide>-*.json` | `validate`, `check_guide.py names` |
 | S9 Verify claims | judge, isolated, per chapter | chapter text, fact sheet, ledger, the chapter in all four styles | `verdicts/<ch>.json` | 0 unsupported claims after fixes |
 | S10 Recall test | reader, then scorer, both isolated | reader: guide text only. Scorer: answers and key, no book | `recall/<style>-<ch>.json` | ≥ 80% overall, ≥ 60% per chapter |
@@ -181,7 +181,7 @@ relations MUST be `stated` to go on a screen. This targets the error classes tha
 **6 · What to keep (must carry).** 5–8 items per chapter, chosen by tests, not by "importance": a
 change of state, a cause of later events, a concept the book builds on, the main claim, a question
 left open. At least one item from the first third and one from the middle third; at most half
-from the last third. Each item has a cued question and a short answer.
+from the last third. Each item has a cued question; its text is the answer key.
 
 **7 · State at the chapter's end (ledger).** Each entry is a change on one dimension. The
 dimensions come from the event-indexing model (time, place, people, goal, cause), plus relation,
@@ -203,8 +203,9 @@ models more than longer prose does.
 
 ### 5.5 · Intermediate outputs
 
-JSON files with schemas replace the Markdown working files. A script renders each one as Markdown
-for a person to read.
+JSON files with schemas replace the Markdown working files. `check_guide.py render` writes a
+Markdown view of them for a person to read. Built in phase 2: the full list, with examples, is in
+the skill's `references/working-files.md`.
 
 | File | Schema | Replaces |
 |---|---|---|
@@ -212,10 +213,14 @@ for a person to read.
 | `facts/<ch>.json` | `facts` | `facts/<ch>.md` |
 | `ledger/<ch>.json` | `ledger` | `ledger.md` |
 | `concepts.json` | `concepts` | `concepts.md` |
-| `styles/<ch>.json` | `styles-chapter` | one entry of `styles.json` (the script joins them) |
+| `styles.json` | `styles` | the same file, now with a schema |
 | `verdicts/<ch>.json` | `verdict` | the verifier's chat reply |
-| `recall/<style>-<ch>.json` | `recall-score` | the score in the chat |
-| `run.json` | `run` | nothing (new) |
+| `recall-test/<style>-<ch>-key.json`, `-answers.json`, `-score.json` | `recall-key`, `recall-answers`, `recall-score` | the key in Markdown; the answers and the score in the chat |
+| `run.json` | `run` | nothing (new, phase 3) |
+
+The models judge each item; the scripts add up. A recall scorer marks each answer 1, 0.5 or 0, and
+`check_guide.py score` computes the percentages and gives zero to an answer whose screen is not in
+the test.
 
 A fact sheet, shortened:
 
@@ -232,8 +237,7 @@ A fact sheet, shortened:
   "must_carry": [
     { "id": "M1", "kind": "state", "facts": ["F7"],
       "text": "Elizabeth dislikes Mr Darcy, because she overheard him slight her",
-      "question": "How does Elizabeth feel about Mr Darcy after the ball, and why?",
-      "answer": "She dislikes him, because she overheard him slight her" }
+      "question": "How does Elizabeth feel about Mr Darcy after the ball, and why?" }
   ]
 }
 ```
@@ -243,10 +247,10 @@ A claim verdict, shortened:
 ```json
 { "chapter": "ch3",
   "claims": [
-    { "style": "map", "where": "screens[0].text", "claim": "The town judges Darcy proud",
+    { "style": "map", "screen": "ch3.s1", "claim": "The town judges Darcy proud",
       "verdict": "supported", "anchor": "005 p6" } ],
   "must_carry": [
-    { "id": "M1", "map": "screens[0]", "recap": "screens[1]", "recall": "screens[1]", "layers": "missing" } ],
+    { "id": "M1", "map": "ch3.s1", "recap": "ch3.s2", "recall": "ch3.s2", "layers": "missing" } ],
   "resume": { "matches_ledger": true, "later_facts": [], "names_without_role": [] } }
 ```
 
@@ -357,19 +361,31 @@ The committed file does not name the models (D3). `run.json` names them.
 | Runner `tools/gr.py` (new) | Level B. Reads a stage's prompt, gathers its inputs, calls an OpenAI-compatible endpoint with the LLM-profile schema, validates, runs the gate, repairs up to two times, writes the file and `run.json`. Configured by `base_url`, `model` and the name of the key's environment variable |
 | MCP server (optional, later) | Exposes extract, checks, build and recall test as tools, for clients with no shell |
 
-A prompt template, header only:
+A prompt template, header only (`prompts/read-chapter.md`; the format is in `prompts/README.md`):
 
 ```markdown
 ---
 stage: read
 version: 1.0.0
-output_schema: schemas/facts.schema.json
-inputs: [chapter_text, plan, cast_so_far, concepts_so_far]
-rules: [GR-C01, GR-C05, GR-A02, GR-M01, GR-M02]
-examples: fixtures/pride-and-prejudice/examples/read-ch3.json   # no book text: facts and anchors only
-isolation: required
+role: writer
+isolation: none
+inputs:
+  chapter_text: work/{{guide}}/source/<the chapter's sources in plan.json>
+  plan: work/{{guide}}/plan.json
+  earlier_concepts: work/{{guide}}/concepts.json (the concepts of earlier chapters; empty for the first)
+include:
+  - references/content-rules.md
+  - references/concepts.md
+  - references/working-files.md
+output:
+  file: work/{{guide}}/facts/{{chapter}}.json
+  schema: schemas/facts.schema.json
+check: python3 -I .claude/skills/ghostreader-book/scripts/check_guide.py facts {{guide}}
 ---
 ```
+
+Each prompt ends with a right and a wrong example. The right one is taken from
+`fixtures/sample/`, and a test checks that it is exactly what the fixture holds.
 
 ## 6 · Proposed layout
 
@@ -377,14 +393,15 @@ isolation: required
 AGENTS.md                         new: cross-agent entry point
 CLAUDE.md                         new: @AGENTS.md
 spec/
-  README.md                       the standard: stages, isolation, interpretation, versioning
+  README.md                       phase 3: the standard, moved out of this proposal
   rules.md                        rule catalogue with IDs
 schemas/                          JSON Schema; *.llm.json = strict LLM profile
-  book.schema.json  plan  facts  ledger  concepts  styles-chapter  verdict  recall-score  run
+  book  intake  plan  facts  ledger  concepts  styles  verdict  recall-key  recall-answers  recall-score  (run: phase 3)
 prompts/                          one model-neutral template per model stage
   plan.md  read-chapter.md  ledger.md  write-map.md  write-styles.md  verify.md  recall-reader.md  recall-scorer.md
-fixtures/                         gold sets and worked examples, no book text; each names its file's SHA-256
-  pride-and-prejudice/  on-liberty/
+fixtures/
+  sample/                         done: an original two-chapter story, its working files and guide
+  pride-and-prejudice/  on-liberty/   phase 3: gold sets, no book text; each names its file's SHA-256
 tools/                            gr.py (the runner)
 .claude/skills/ghostreader-book/  SKILL.md, references, scripts (canonical)
 .agents/skills/ghostreader-book   link to the folder above
@@ -395,8 +412,8 @@ tools/                            gr.py (the runner)
 | Phase | Work | Size | Result |
 |---|---|---|---|
 | 1 · Open the door (done) | `AGENTS.md`, `CLAUDE.md`; a `.agents/skills/` link to the skill; neutral wording (isolation rule, `progress.md`); `book.schema.json` with a test; rule IDs (`spec/rules.md`) in `lint.ts`, the book tests and `check_guide.py`; `--json` output for the checks (`scripts/validate-book.mjs`, `check_guide.py --json`); a test of the skill against the Agent Skills format | S | Level A works in other agents for the current process |
-| 2 · Pin the contracts | JSON working files with schemas and Markdown renderers; anchor quotes; verdict and score files; stage prompts with pinned examples; `writing-style.md` normative | M | Same files, same checks, whatever the model |
-| 3 · Measure | Fixtures and gold sets (from the book files you give); runner `gr.py` (Level B); `gr eval`; cross-family judges; `run.json`; `source.spec` and `source.checks` | L | Conformance scores per model |
+| 2 · Pin the contracts (done) | JSON working files with schemas (`schemas/`) and Markdown views; anchors with quotes the script finds; verdict and score files; `check_guide.py` commands `schema`, `plan`, `concepts`, `verdicts`, `score`, `render`; a stdlib schema validator for the Python scripts; eight stage prompts with pinned examples (`prompts/`); an original sample book with complete working files (`fixtures/sample/`); `writing-style.md` normative | M | Same files, same checks, whatever the model |
+| 3 · Measure | The LLM profile of each schema (5.6); fixtures and gold sets (from the book files you give); runner `gr.py` (Level B); `gr eval`; cross-family judges; `run.json`; `source.spec` and `source.checks` | L | Conformance scores per model |
 | 4 · Optional | MCP server; Inspect tasks; a spec version policy (semver: a new required field = major) | S | Clients with no shell |
 
 Each phase ships on its own. Claude Code keeps working at every phase: a sub-agent is one way to

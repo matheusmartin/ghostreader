@@ -13,7 +13,7 @@ GR-W03 parts[1].chapters[2].screens[3].steps[0]: "then" orders events without a 
 |---|---|
 | `validate` | `npm run validate`: `src/model/validate.ts` (format) and `src/model/lint.ts` (writing rules); for one file, as text or JSON: `node scripts/validate-book.mjs <file> [--json]` |
 | `test` | `npm test` (`tests/books.test.ts`) |
-| `facts`, `names` | `python3 -I .claude/skills/ghostreader-book/scripts/check_guide.py facts|names <guide>` |
+| `schema`, `plan`, `facts`, `names`, `concepts`, `verdicts`, `score` | `python3 -I .claude/skills/ghostreader-book/scripts/check_guide.py <command> <guide>`: the working files in `work/<guide>/` (`references/working-files.md`) |
 | `screens` | `npm run check:screens` |
 | `judge` | an isolated run that checks claims, must carry and the resume screens (`references/verify.md`, checks 3 and 4) |
 | `recall` | the blind recall test (`references/verify.md`, check 5) |
@@ -31,12 +31,13 @@ an ID that is not on this page.
 | GR-F01 | The file matches the book format: `src/model/types.ts`, also as `schemas/book.schema.json` | `validate`, `test` | `docs/content-format.md` |
 | GR-F02 | The file name is the book id: `src/books/<id>.json` | `test` | `docs/content-format.md` |
 | GR-F03 | A guide has all four styles, one file each, with the same title, author, type, limit, parts and chapters | `test` | `references/styles.md` |
+| GR-F04 | Every working file is JSON and matches its schema in `schemas/` | `schema` and every check that reads the file | `references/working-files.md` |
 
 ## S · Structure
 
 | ID | Rule | Checked by | Reference |
 |---|---|---|---|
-| GR-S01 | Only the book's own parts and chapters, in the book's order, under the book's names; no guide-made chapter, part or label | `validate` (old overview numbers), `judge` | `references/guides.md` |
+| GR-S01 | Only the book's own parts and chapters, in the book's order, under the book's names; no guide-made chapter, part or label | `validate` (old overview numbers), `plan` (the plan against `toc.json` and the Map file), `judge` | `references/guides.md` |
 | GR-S02 | Every chapter has at least one chart, and at least half of its app screens are charts, scenes or figures | `review` | `references/visuals.md` |
 | GR-S03 | One idea per app screen; more detail goes in PDF-only blocks | `screens`, `review` | `references/guides.md` |
 
@@ -47,7 +48,7 @@ an ID that is not on this page.
 | GR-R01 | Every written chapter of a guide ends with "Where it stands", then optionally "Still open"; neither comes earlier in the chapter | `validate` | `references/styles.md` |
 | GR-R02 | "Where it stands" is a points screen in the app and the PDF, with the four titles of the type, in order | `validate` | `references/styles.md` |
 | GR-R03 | "Still open" is a list screen in the app and the PDF, with 1–3 rows | `validate` | `references/styles.md` |
-| GR-R04 | The resume screens agree with the ledger, hold nothing from later chapters, and give no hint of an answer | `judge` | `references/styles.md` |
+| GR-R04 | The resume screens agree with the ledger, hold nothing from later chapters, and give no hint of an answer | `judge`, then `verdicts` | `references/styles.md` |
 
 ## L · Limits
 
@@ -66,14 +67,14 @@ an ID that is not on this page.
 | GR-W03 | Causes, not sequences: no "and then", and no sentence or item that starts with "Then" | `validate` | `references/writing-style.md` |
 | GR-W04 | Mr, Mrs, Ms, Dr and St have no full stop | `validate` | `references/writing-style.md` |
 | GR-W05 | British spelling, with -ise forms | `validate` | `references/writing-style.md` |
-| GR-W06 | A name on a text screen has a short role at its first mention | `judge` | `references/guides.md` |
-| GR-W07 | The same name for the same thing in every chapter and style | `judge` | `references/concepts.md` |
+| GR-W06 | A name on a text screen has a short role at its first mention | `judge`, then `verdicts` | `references/guides.md` |
+| GR-W07 | The same name for the same thing in every chapter and style | `plan` ("The question"), `judge` | `references/concepts.md` |
 
 ## C · Content
 
 | ID | Rule | Checked by | Reference |
 |---|---|---|---|
-| GR-C01 | Every claim is in the book; a feeling, motive, relation or cause the text does not state is softened or removed | `judge` | `references/content-rules.md` |
+| GR-C01 | Every claim is in the book; a feeling, motive, relation or cause the text does not state is softened or removed | `judge`, then `verdicts` | `references/content-rules.md` |
 | GR-C02 | Every name and every number from 11 up is in the book, up to and including that chapter | `names` | `references/verify.md` |
 | GR-C03 | With a limit, no word that looks past it ("eventually", "in the end") | `validate` | `references/content-rules.md` |
 | GR-C04 | No quotation from the book: no quoted passage of six words or more | `validate` | `references/content-rules.md` |
@@ -87,22 +88,24 @@ an ID that is not on this page.
 | GR-V02 | A scene chart has at least two scenes | `validate` | `references/visuals.md` |
 | GR-V03 | Linked nodes on a network ring are next to each other | `validate` | `references/visuals.md` |
 | GR-V04 | Every app screen fits a phone at 360, 390 and 820 px; no chart overlap | `screens` | `references/visuals.md` |
-| GR-V05 | Every concept and distinction the book introduces has a chart, a key point or a "Terms" row in the chapter that introduces it | `review` | `references/concepts.md` |
+| GR-V05 | Every concept and distinction the book introduces has a chart, a key point or a "Terms" row in the chapter that introduces it, under its inventory name | `concepts` (the name is on a screen), `review` (the right chart) | `references/concepts.md` |
 
 ## A · Anchors and working files
 
 | ID | Rule | Checked by | Reference |
 |---|---|---|---|
-| GR-A01 | Every written chapter has a fact sheet, and its first line names the chapter's text files ("source 005") | `facts` | `SKILL.md` step 5 |
-| GR-A02 | Every anchor points to a paragraph that exists in the chapter's own text files | `facts` | `SKILL.md` step 5 |
-| GR-A03 | The ledger exists and has a section for every written chapter | `facts` | `SKILL.md` step 5 |
-| GR-A04 | Every ledger line has an anchor and its form: fiction, a change ("old → new"); non-fiction, established, open, answered or promised | `facts` | `SKILL.md` step 5 |
+| GR-A01 | Every written chapter has a fact sheet `facts/<chapter-id>.json` for that chapter, whose `sources` are in `toc.json` | `facts` | `references/working-files.md` |
+| GR-A02 | Every anchor points to paragraphs that exist in the chapter's own text files | `facts` | `references/working-files.md` |
+| GR-A03 | Every written chapter has a ledger file `ledger/<chapter-id>.json` for that chapter | `facts` | `references/working-files.md` |
+| GR-A04 | Every ledger entry has its form: fiction, a change (`dimension`, `after`, and the `entity` except for time and place); non-fiction, a `status` and a `text` | `facts` | `references/working-files.md` |
+| GR-A05 | Every anchor's quote has 3–12 words, copied exactly from the anchored paragraphs | `facts` | `references/working-files.md` |
+| GR-A06 | Fact ids are unique, and each fact has the fields its type needs (a scene: `with`, and `when` or `where`) | `facts` | `references/working-files.md` |
 
 ## M · Must carry
 
 | ID | Rule | Checked by | Reference |
 |---|---|---|---|
-| GR-M01 | Each chapter has 5–8 must-carry items, each with a kind, an anchor and a question | `facts` | `SKILL.md` step 5 |
+| GR-M01 | Each chapter has 5–8 must-carry items, each with a kind, a question and the facts it rests on | `facts` | `references/working-files.md` |
 | GR-M02 | Must-carry items are spread over the chapter: one from the first third, one from the middle third, at most half from the last third | `facts` | `references/verify.md` |
-| GR-M03 | Every must-carry item is on a screen that each style shows | `judge`, `recall` | `references/styles.md` |
-| GR-M04 | Blind recall: 80% or more of the points in every style tested, and no chapter under 60% | `recall` | `references/verify.md` |
+| GR-M03 | Every must-carry item is on a screen that each style shows | `judge`, then `verdicts`; `recall` | `references/styles.md` |
+| GR-M04 | Blind recall: 80% or more of the points in every style tested, and no chapter under 60%; an answer without a screen of the test scores zero | `recall`, then `score` | `references/verify.md` |

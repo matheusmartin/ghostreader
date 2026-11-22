@@ -1,0 +1,65 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Intake",
+  "description": "Stage S0: what the user asked for. Written by the agent from the user's message.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "type",
+    "title",
+    "file"
+  ],
+  "properties": {
+    "type": {
+      "type": "string",
+      "enum": [
+        "fiction",
+        "reading",
+        "done"
+      ],
+      "description": "fiction = Story guide, reading = Reading guide, done = Book summary"
+    },
+    "title": {
+      "type": "string"
+    },
+    "author": {
+      "type": "string"
+    },
+    "upTo": {
+      "type": "string",
+      "description": "The last chapter to cover (Story and Reading guides only): a chapter or part name"
+    },
+    "edition": {
+      "type": "string"
+    },
+    "file": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "name",
+        "format",
+        "sha256"
+      ],
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "format": {
+          "type": "string",
+          "enum": [
+            "EPUB",
+            "PDF",
+            "TXT",
+            "MD",
+            "HTML"
+          ]
+        },
+        "sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$",
+          "description": "SHA-256 of the book file: the same file gives the same paragraph numbers"
+        }
+      }
+    }
+  }
+}

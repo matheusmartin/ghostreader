@@ -124,16 +124,21 @@ Chapter 6" with the book file attached. The **ghostreader-book** skill
 
 1. Extracts the book's text from an EPUB, PDF, TXT, Markdown or HTML file into `work/<id>/`
    (`scripts/extract_book.py`). `work/` is in `.gitignore`: book text is never committed.
-2. Writes a fact sheet per chapter, every fact with its place in the text, the facts a returning
+2. Writes a plan, then a fact sheet per chapter (JSON, one schema each in `schemas/`): every fact
+   with its place in the text and a short quote a script finds there, the facts a returning
    reader must get back ("must carry"), and a ledger of the state at each chapter's end. It lists
    the book's own concepts and distinctions (for example Nexus's objective, subjective and
    intersubjective reality); each gets a chart in the chapter that introduces it.
 3. Writes the Map file `src/books/<guide>-map.json` from the fact sheets, diagrams first, with
    PDF-only detail and the resume screens; then the texts of the other styles, from which
    `scripts/build_styles.py` builds the Recap, Recall and Layers files.
-4. Checks every chapter against the text (`scripts/check_guide.py`: anchors, names and numbers in
-   the book; fresh reviewers claim by claim; a blind recall test), then runs `npm run validate`,
-   `npm run check:screens` and `npm run build`.
+4. Checks every chapter against the text (`scripts/check_guide.py`: plan, anchors and quotes,
+   names and numbers in the book; isolated judges claim by claim, saved as JSON; a blind recall
+   test, scored by a script), then runs `npm run validate`, `npm run check:screens` and
+   `npm run build`.
+
+The model steps have model-neutral prompts in `prompts/`, and `fixtures/sample/` is a complete
+example that passes every check.
 
 The skill holds the content rules (book content only, no quotations, no spoilers), the writing
 style, the screen recipes of each guide type and the guidance on which chart fits which idea. Maps of

@@ -1,0 +1,79 @@
+{
+  "chapter": "ch2",
+  "entries": [
+    {
+      "dimension": "time",
+      "after": "the evening of the day the clock runs again",
+      "anchor": {
+        "file": "002",
+        "p": [
+          14,
+          14
+        ],
+        "quote": "Ines sat by the window until dark"
+      }
+    },
+    {
+      "dimension": "state",
+      "entity": "the clock",
+      "before": "stopped",
+      "after": "running",
+      "cause": "Ada cleaned the salt from the wheel",
+      "anchor": {
+        "file": "002",
+        "p": [
+          8,
+          8
+        ],
+        "quote": "Ada cleaned the wheel, oiled it and set the hands"
+      }
+    },
+    {
+      "dimension": "knowledge",
+      "entity": "Ines",
+      "about": "Mr Hale",
+      "before": null,
+      "after": "knows he borrowed the key for one evening",
+      "cause": "Tomas admitted it",
+      "anchor": {
+        "file": "002",
+        "p": [
+          5,
+          5
+        ],
+        "quote": "he admitted that he had lent it to Mr Hale"
+      }
+    },
+    {
+      "dimension": "possession",
+      "entity": "Ines",
+      "about": "the key to the clock room",
+      "before": "Ada held it",
+      "after": "has hidden it in the base of the kitchen lamp",
+      "cause": "Mr Hale asked for it",
+      "anchor": {
+        "file": "002",
+        "p": [
+          12,
+          12
+        ],
+        "quote": "hid it inside the hollow base of the lamp"
+      }
+    },
+    {
+      "dimension": "view",
+      "entity": "Ines",
+      "about": "Mr Hale",
+      "before": null,
+      "after": "wonders why he wants her father out of the tower",
+      "anchor": {
+        "file": "002",
+        "p": [
+          14,
+          14
+        ],
+        "quote": "wondering why the harbour master wanted her father out of the tower"
+      }
+    }
+  ]
+}

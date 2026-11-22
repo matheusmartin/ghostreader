@@ -1,8 +1,10 @@
 # Writing style
 
-All text in a guide follows The Economist Style Guide. This page sums up the rules that matter for
-screens and diagrams. For anything else, follow the guide's own entry (its website has the
-current edition). `npm run validate` checks the rules marked [checked].
+These are the writing rules of a guide, complete: every model follows this page, not its own
+memory of a style guide. They come from The Economist Style Guide, which is their origin, not a
+second source of rules. For a case this page does not cover, choose the plainer, shorter form,
+and use the same form everywhere in the guide. `npm run validate` checks the rules marked
+[checked].
 
 ## Capitals
 
