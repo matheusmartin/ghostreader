@@ -1,7 +1,8 @@
 # Proposal: a model-neutral standard for book guides
 
-Status: proposal for decision · 2026-11-20 · scope: the process that reads a book and writes a
-guide (today the `ghostreader-book` skill). The app and the book format do not change.
+Status: decisions taken 2026-11-22 (section 8); phase 1 done · scope: the process that
+reads a book and writes a guide (today the `ghostreader-book` skill). The app and the book format
+do not change.
 
 ## 1 · Summary
 
@@ -30,7 +31,7 @@ The proposal: a standard in four layers, then a runner for models without tools.
 | Prompts | One versioned, model-neutral template per model stage | `prompts/read-chapter.md` |
 | Gates | Scripts and isolated judges that accept or reject each output | `check_guide.py facts --json`, the blind recall test |
 
-Plus packaging: `AGENTS.md` at the root, the skill under the cross-client path
+Plus packaging: `AGENTS.md` at the root, the skill also under the cross-client path
 `.agents/skills/`, and a small runner (`tools/gr.py`) that drives any model through an
 OpenAI-compatible API.
 
@@ -84,7 +85,7 @@ at Level A and one at Level B. Same input, same gates, comparable scores.
 
 | Finding | Source | Design decision |
 |---|---|---|
-| Agent Skills is an open format: `name` and `description` required; `.agents/skills/` is the cross-client project path; keep SKILL.md under 500 lines and its body under about 5,000 tokens; load references only when needed | agentskills.io specification and client guide | Keep the skill format. Move it to `.agents/skills/`. Each stage loads only its own rules |
+| Agent Skills is an open format: `name` and `description` required; `.agents/skills/` is the cross-client project path; keep SKILL.md under 500 lines and its body under about 5,000 tokens; load references only when needed | agentskills.io specification and client guide | Keep the skill format. Make it visible under `.agents/skills/`. Each stage loads only its own rules |
 | `AGENTS.md` is plain Markdown, now under the Agentic AI Foundation (Linux Foundation). It is guidance, not enforcement. Claude Code reads `CLAUDE.md`, not `AGENTS.md` | AAIF blog; OpenAI announcement | Add `AGENTS.md`; add `CLAUDE.md` that imports it. Keep enforcement in scripts and CI |
 | OpenAI, Gemini and Anthropic all accept JSON Schema for output, with different subsets. Common ground: basic types, `items`, `$defs`/`$ref`. OpenAI strict mode needs `additionalProperties: false` and every field in `required`. Reports say Anthropic does not apply string-length or number limits, and Anthropic and Gemini do not take recursive schemas. Strict mode can still fail in practice | Provider docs; comparison articles | A strict "LLM profile" of each schema (5.6). Word and item limits stay in the lint step after generation. Always validate output |
 | In AI summaries of novels, most false claims are about what characters feel, want or know, about relations, and about the order of events. Summaries leave out key events and lean on the end | FABLES (Kim et al., 2024) | Keep claim-level checks. Add a `basis` label (stated or inferred) to every fact. Keep the position-spread rule |
@@ -111,7 +112,7 @@ chapter of 10,000 words is about 13,000 tokens, so most stages fit a 32,000-toke
 
 | Stage | Kind | Inputs | Output (in `work/<guide>/`) | Gate |
 |---|---|---|---|---|
-| S0 Intake | person | type, title, author, limit, edition, book file | `intake.json` | schema |
+| S0 Intake | person | type, title, author, limit, edition, book file (required, D2) | `intake.json` | schema; the file exists |
 | S1 Extract | script | book file | `source/` (text files, `toc.json`, `meta.json`) | script exit code |
 | S2 Plan | model | `toc.json`, intake | `plan.json`: id, parts, chapters, lengths, the book's question | schema; chapters = toc chapters |
 | S3 Read | model, per chapter | that chapter's text; plan; cast and concepts so far | `facts/<ch>.json` | schema; `check_guide.py facts` |
@@ -197,7 +198,7 @@ knowledge, possession and view. Non-fiction entries have a status: `established`
 any model reads the text.
 
 **9 · Pinned examples.** Each judgement rule has two worked examples, one right and one wrong,
-taken from the public-domain fixtures (5.7). Prompts include them. This reduces drift between
+taken from the fixtures (5.7). Prompts include them. This reduces drift between
 models more than longer prose does.
 
 ### 5.5 · Intermediate outputs
@@ -255,7 +256,8 @@ The four book files do not change. Three additions make them a contract any tool
 
 **1 · `schemas/book.schema.json`.** Generated from `src/model/types.ts`, so TypeScript stays the
 one source. A test fails when the schema is out of date or when a book file in `src/books/` does
-not validate. (Generator to confirm in phase 1, for example `ts-json-schema-generator`.)
+not validate. `npm run schema` writes it with `ts-json-schema-generator` (JSON Schema draft-07,
+`additionalProperties: false` on every object).
 
 **2 · The LLM profile.** Each model stage writes one chapter, so its schema is small. A script
 derives a strict copy of every schema for model calls:
@@ -269,7 +271,8 @@ derives a strict copy of every schema for model calls:
 
 **3 · A rule catalogue with IDs.** `spec/rules.md` lists every rule once: ID, rule, how it is
 checked, severity. `lint.ts`, `check_guide.py` and the judges print the ID. Areas: S structure,
-C content, I interpretation (5.4), W writing, V visuals, R resume screens, M must carry.
+C content, A anchors and working files, W writing, V visuals, R resume screens, L limits,
+M must carry, F format. Interpretation rules (5.4) get the area I in phase 2.
 
 | ID | Rule | Check |
 |---|---|---|
@@ -278,12 +281,12 @@ C content, I interpretation (5.4), W writing, V visuals, R resume screens, M mus
 | GR-C04 | No quotation of six words or more | `validate` |
 | GR-W03 | No "and then"; no sentence that starts with "Then" | `validate` |
 | GR-R01 | Every written chapter ends with "Where it stands" (four fixed titles), then "Still open" | `validate` |
-| GR-M02 | Every must-carry item is on a screen that each style shows | judge S9, recall test |
+| GR-M03 | Every must-carry item is on a screen that each style shows | judge S9, recall test |
 
 A gate line then reads the same for every model:
 
 ```
-GR-W03 nexus-summary-map ch3 screens[2].text: "and then" → write the cause ("so", "because")
+GR-W03 src/books/nexus-summary-map.json parts[0].chapters[2].screens[2].text: "then" orders events without a cause: say why ("because", "so"), or cut it
 ```
 
 `writing-style.md` becomes normative on its own. The Economist Style Guide is named as its
@@ -300,16 +303,19 @@ origin, not as a second source of rules (G10).
   an answer with no citation scores zero (a model may know a famous book already).
 - The scorer gets the answers and the key, not the book.
 
-**Conformance suite.** Two public-domain books, so their text can live in the repository:
+**Conformance suite.** Two fixture books. No book text goes in the repository (D2): you give the
+book file, and the gold set records its SHA-256, so every run reads the same edition and gets the
+same paragraph numbers. Suggested books:
 
 | Fixture | Type | Why |
 |---|---|---|
 | Pride and Prejudice, chapters 1–6 (with limit) | fiction | Already the running example; tests scenes, states, relations, the spoiler gate |
 | John Stuart Mill, *On Liberty* (five chapters) | non-fiction | Short; defined concepts and contrasts; tests the concept inventory |
 
-For each fixture, a reviewed gold set: must-carry items with questions and answers, the concept
-inventory, the ledger at each chapter's end, and a list of known false claims for the judge to
-catch.
+For each fixture, a reviewed gold set, committed under `fixtures/<book>/`: the file's SHA-256,
+must-carry items with questions and answers, the concept inventory, the ledger at each chapter's
+end, and a list of known false claims for the judge to catch. Gold sets follow the content rules:
+anchors without quotes, no text from the book.
 
 | Metric | Pass |
 |---|---|
@@ -337,16 +343,16 @@ file's `source` gains optional fields:
                         "unsupported_claims": 0, "judge_independent": true } }
 ```
 
-Whether the committed file also names the models is decision D3 (section 8).
+The committed file does not name the models (D3). `run.json` names them.
 
 ### 5.9 · Packaging
 
 | Item | Change |
 |---|---|
-| `AGENTS.md` (new, root) | What the repository is, the commands, the rule that `work/` is never committed, and "to add a book, follow `.agents/skills/ghostreader-book/SKILL.md`" |
+| `AGENTS.md` (new, root) | What the repository is, the commands, the rule that `work/` is never committed, and "to add a book, follow `.claude/skills/ghostreader-book/SKILL.md`" |
 | `CLAUDE.md` (new, root) | One line: `@AGENTS.md`, so Claude Code reads the same file. Other agents that use their own file name by default get the same one-line pointer, or a setting |
-| Skill folder | Canonical at `.agents/skills/ghostreader-book/`. `.claude/skills/ghostreader-book` becomes a link to it. Test that Claude Code still finds it; if not, a sync script and a CI check |
-| Scripts | Move to `tools/` at the root (CI and the runner use them too). Commands use `tools/…` paths (G15) |
+| Skill folder | Stays at `.claude/skills/ghostreader-book/`, so Claude Code is not affected. `.agents/skills/ghostreader-book` is a link to it, for clients that scan the cross-client path. A test checks the link |
+| Scripts | Stay in the skill's `scripts/`. The skill does not move, so every command path stays valid (G15) |
 | SKILL.md | Shorter: overview, inputs, the stage table, the isolation rule, links. The detail moves to the stage prompts and the spec (G12) |
 | Runner `tools/gr.py` (new) | Level B. Reads a stage's prompt, gathers its inputs, calls an OpenAI-compatible endpoint with the LLM-profile schema, validates, runs the gate, repairs up to two times, writes the file and `run.json`. Configured by `base_url`, `model` and the name of the key's environment variable |
 | MCP server (optional, later) | Exposes extract, checks, build and recall test as tools, for clients with no shell |
@@ -359,8 +365,8 @@ stage: read
 version: 1.0.0
 output_schema: schemas/facts.schema.json
 inputs: [chapter_text, plan, cast_so_far, concepts_so_far]
-rules: [GR-C01, GR-C02, GR-I01, GR-I05, GR-M01]
-examples: fixtures/pride-and-prejudice/examples/read-ch3.json
+rules: [GR-C01, GR-C05, GR-A02, GR-M01, GR-M02]
+examples: fixtures/pride-and-prejudice/examples/read-ch3.json   # no book text: facts and anchors only
 isolation: required
 ---
 ```
@@ -373,24 +379,24 @@ CLAUDE.md                         new: @AGENTS.md
 spec/
   README.md                       the standard: stages, isolation, interpretation, versioning
   rules.md                        rule catalogue with IDs
-schemas/                          JSON Schema 2020-12; *.llm.json = strict LLM profile
+schemas/                          JSON Schema; *.llm.json = strict LLM profile
   book.schema.json  plan  facts  ledger  concepts  styles-chapter  verdict  recall-score  run
 prompts/                          one model-neutral template per model stage
   plan.md  read-chapter.md  ledger.md  write-map.md  write-styles.md  verify.md  recall-reader.md  recall-scorer.md
-fixtures/                         public-domain texts, gold sets, worked examples
+fixtures/                         gold sets and worked examples, no book text; each names its file's SHA-256
   pride-and-prejudice/  on-liberty/
-tools/                            extract_book.py  check_guide.py  build_styles.py  map.py  gr.py
-.agents/skills/ghostreader-book/  SKILL.md + references (shorter)
-.claude/skills/ghostreader-book   link to the folder above
+tools/                            gr.py (the runner)
+.claude/skills/ghostreader-book/  SKILL.md, references, scripts (canonical)
+.agents/skills/ghostreader-book   link to the folder above
 ```
 
 ## 7 · Migration plan
 
 | Phase | Work | Size | Result |
 |---|---|---|---|
-| 1 · Open the door | `AGENTS.md`, `CLAUDE.md`; skill to `.agents/skills/` with a link; scripts to `tools/`; neutral wording (isolation rule, `progress.md`); `book.schema.json` with a test; rule IDs in `lint.ts` and `check_guide.py`; `--json` output for the checks | S | Level A works in other agents for the current process |
+| 1 · Open the door (done) | `AGENTS.md`, `CLAUDE.md`; a `.agents/skills/` link to the skill; neutral wording (isolation rule, `progress.md`); `book.schema.json` with a test; rule IDs (`spec/rules.md`) in `lint.ts`, the book tests and `check_guide.py`; `--json` output for the checks (`scripts/validate-book.mjs`, `check_guide.py --json`); a test of the skill against the Agent Skills format | S | Level A works in other agents for the current process |
 | 2 · Pin the contracts | JSON working files with schemas and Markdown renderers; anchor quotes; verdict and score files; stage prompts with pinned examples; `writing-style.md` normative | M | Same files, same checks, whatever the model |
-| 3 · Measure | Fixtures and gold sets; runner `gr.py` (Level B); `gr eval`; cross-family judges; `run.json`; `source.spec` and `source.checks` | L | Conformance scores per model |
+| 3 · Measure | Fixtures and gold sets (from the book files you give); runner `gr.py` (Level B); `gr eval`; cross-family judges; `run.json`; `source.spec` and `source.checks` | L | Conformance scores per model |
 | 4 · Optional | MCP server; Inspect tasks; a spec version policy (semver: a new required field = major) | S | Clients with no shell |
 
 Each phase ships on its own. Claude Code keeps working at every phase: a sub-agent is one way to
@@ -398,15 +404,17 @@ meet the isolation rule. The Nexus guide needs no rewrite; its files will valida
 generated schema. Its old working files are gone, so the JSON working files apply from the next
 run.
 
-## 8 · Decisions for you
+## 8 · Decisions
 
-| # | Decision | Recommendation |
-|---|---|---|
-| D1 | Working files in JSON (with Markdown views) or keep Markdown with a strict grammar | JSON. Every provider can constrain JSON output; nothing constrains a Markdown grammar |
-| D2 | Allow public-domain book text in the repository as fixtures (an exception to "book text is never committed") | Yes, public domain only, under `fixtures/`, with its source noted |
-| D3 | Name the models in committed book files, or only in `work/<guide>/run.json` | Only in `run.json`; commit the spec version and the scores |
-| D4 | Runner interface: OpenAI-compatible endpoint only, or native adapters too | OpenAI-compatible first (hosted and local servers expose it); add a native adapter only where schema output fails |
-| D5 | Thresholds for conformance | Start with section 5.7; adjust after the first runs on two model families |
+Taken on 2026-11-22.
+
+| # | Decision | Taken | Effect |
+|---|---|---|---|
+| D1 | Working files in JSON or in Markdown with a strict grammar | JSON | Every working file has a schema; a script renders a Markdown view for people |
+| D2 | Public-domain book text in the repository as fixtures | No: you always give the book file | No book text in the repository. Fixtures are gold sets keyed by the file's SHA-256. The book file is a required input of spec 1.0; the skill keeps summaries mode as a fallback, but a guide from summaries is not conformant |
+| D3 | Name the models in committed book files | No | Models are named in `work/<guide>/run.json` only; book files carry the spec version and the scores |
+| D4 | Runner interface | OpenAI-compatible endpoint first | A native adapter only where schema output fails |
+| D5 | Conformance thresholds | As in section 5.7 | Review after the first runs on two model families |
 
 ## 9 · Risks and limits
 
@@ -418,7 +426,8 @@ run.
   measure what judges miss.
 - **Rules in two places.** Rules live in prose and in `lint.ts`. The rule catalogue with IDs, and
   a test that every ID in the code is in the catalogue, keep them together.
-- **Links to skills.** Some clients may not follow a linked skill folder. Phase 1 tests it.
+- **Links to skills.** Some clients may not follow a linked skill folder (and Windows checkouts
+  without symlink support get a plain file). Claude Code reads the real folder, so it is safe.
 - **No study tests book recaps after long pauses** (styles.md already says so). The recall test
   is the project's own proxy.
 
