@@ -457,6 +457,8 @@ def forms(w):
     """The word, its American spelling, and stems without common endings (4 letters at least)."""
     out = {w}
     out.add(re.sub(r'i(er|est|es|ed)$', 'y', w))  # mightier -> mighty, studies -> study
+    if len(w) >= 5 and w.endswith('y'):
+        out.add(w[:-1] + 'i')  # symphony -> symphoni(es)
     for a, b in BRITISH:
         out.add(re.sub(a, b, w))
     for f in list(out):
@@ -484,6 +486,11 @@ def in_book(kind, w, first, text, whole):
     return False
 
 
+def lower_in_book(w, whole):
+    """True when the book writes this capitalised word in lower case: then it is a common word."""
+    return any(len(f) >= 2 and re.search(rf'\b{re.escape(f.lower())}', whole) for f in forms(w))
+
+
 def cmd_names(args, guide, w, say):
     src = Source(w.dir)
     ok_file = w.dir / 'names-ok.txt'
@@ -507,15 +514,27 @@ def cmd_names(args, guide, w, say):
                 cache[n] = src.text_upto(n)
             text = cache[n]
             missing = {}
+            # Words the guide itself writes in lower case are common words, not names, when they
+            # start an item ("Bots that compose…" in a guide that also says "bots").
+            lower = {x for s in screens for _, t in strings(s) for x in re.findall(r"(?<![\w'-])[a-z][\w'-]*", t)}
             for s in screens:
                 for key, string in strings(s):
                     for kind, word, first in candidates(string, label=key == 'label'):
                         if word in ok or (kind, word) in missing:
                             continue
+                        if first and kind == 'name' and word.lower() in lower:
+                            continue
                         if not in_book(kind, word, first, text, whole):
                             missing[(kind, word)] = string
             for (kind, word), string in missing.items():
-                say('GR-C02', f'{book["id"]} {ch["id"]}', f'{kind} "{word}" is not in the book up to this chapter (in "{string[:60]}")')
+                where = f'{book["id"]} {ch["id"]}'
+                if kind == 'name' and lower_in_book(word, whole):
+                    say('GR-C02', where, f'"{word}" is written in lower case in the book: write it so, or use the book\'s name (in "{string[:60]}")')
+                elif kind == 'name' and first:
+                    say('GR-C02', where, f'"{word}" is not in the book up to this chapter: a name the book does not give, '
+                        f'or a word it does not use; remove the name, or use the book\'s own word (in "{string[:60]}")')
+                else:
+                    say('GR-C02', where, f'{kind} "{word}" is not in the book up to this chapter (in "{string[:60]}")')
 
 
 # ------------------------------------------------------------------ concepts
