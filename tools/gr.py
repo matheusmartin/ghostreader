@@ -23,6 +23,12 @@ and records the call in work/<guide>/run.json.
                                                     run it again after a fix (exit 1 lists the problems)
   python3 -I tools/gr.py record <step> --guide <g> --family claude --model <name> [--chapter <id>]
                                                     add a step an agent ran itself to run.json
+  python3 -I tools/gr.py goldtest --guide <g> --fixture <dir>
+                                                    write the recall test with the gold set's questions
+                                                    (style "gold"), for a reader and a scorer
+  python3 -I tools/gr.py measure --guide <g> --fixture <dir>
+                                                    the guide's scores from its files: steps, anchors,
+                                                    claims, must carry, concept, gold and blind recall
 
 Steps: plan, read, ledger, write-map, write-styles, verify, recall-reader, recall-scorer.
 Before `write`: put the book's text in work/<guide>/source/ with extract_book.py, and write
@@ -773,7 +779,7 @@ def conformant(r):
 
 
 def concept_recall(g, gold):
-    want = gold.get('concepts', [])
+    want = [c for c in gold.get('concepts', []) if c.get('core', True)]  # only the core concepts count
     if not want:
         return 1.0
     got = [cg.norm(c['name']) for c in read_json(g.work / 'concepts.json', {'concepts': []})['concepts']]
@@ -781,28 +787,68 @@ def concept_recall(g, gold):
     return round(hit / len(want), 3)
 
 
-def gold_recall(g, gold, models, settings):
-    """The blind recall test with the gold set's questions: does the guide carry what matters?"""
+def gold_test(g, gold):
+    """Write the blind recall test with the gold set's questions (style "gold") for the Map file at
+    the last written chapter: the same guide text as the Map test, the gold questions in place."""
     last = g.to_write()[-1]
     key = [{'n': i, 'chapter': q['chapter'], 'must': f'M{i}', 'kind': q.get('kind', 'state'), 'question': q['question'],
             'answer': q['answer']} for i, q in enumerate(gold['must_carry'], 1)]
-    check_guide('test', g, '--style', 'map', '--upto', last)  # the test text, then the gold questions in place
-    test = g.work / 'recall-test' / f'map-{last}.md'
-    body = test.read_text().split('\n---\n', 1)[1]
+    check_guide('test', g, '--style', 'map', '--upto', last)
+    test = (g.work / 'recall-test' / f'map-{last}.md').read_text()
+    head, body = test.split('# Questions', 1)[0], test.split('\n---\n', 1)[1]
     titles = {c['id']: c['title'] for _, c in g.chapters()}
-    head = test.read_text().split('# Questions', 1)[0]
-    gold_style = 'gold'
-    (g.work / 'recall-test' / f'{gold_style}-{last}.md').write_text(
+    (g.work / 'recall-test' / f'gold-{last}.md').write_text(
         head + '# Questions\n\n' + '\n'.join(f'{q["n"]}. ({titles[q["chapter"]]}) {q["question"]}' for q in key) + '\n\n---\n' + body)
-    write_json(g.work / 'recall-test' / f'{gold_style}-{last}-key.json', {'guide': g.id, 'style': 'map', 'upto': last, 'questions': key})
-    ok = run_step('recall-reader', g, models, settings, last, gold_style) and run_step('recall-scorer', g, models, settings, last, gold_style)
-    if not ok:
+    write_json(g.work / 'recall-test' / f'gold-{last}-key.json', {'guide': g.id, 'style': 'map', 'upto': last, 'questions': key})
+    return last
+
+
+def gold_score(g):
+    """The gold recall score from the reader's answers and the scorer's marks; None when not run."""
+    last = g.to_write()[-1]
+    a, s = g.work / 'recall-test' / f'gold-{last}-answers.json', g.work / 'recall-test' / f'gold-{last}-score.json'
+    if not (a.exists() and s.exists()):
         return None
+    key = read_json(g.work / 'recall-test' / f'gold-{last}-key.json')['questions']
     shown = cg.app_refs(read_json(g.map_path), last)
-    answers = {a['n']: a for a in read_json(g.work / 'recall-test' / f'{gold_style}-{last}-answers.json')['answers']}
-    scores = {s['n']: s['score'] for s in read_json(g.work / 'recall-test' / f'{gold_style}-{last}-score.json')['scores']}
+    answers = {x['n']: x for x in read_json(a)['answers']}
+    scores = {x['n']: x['score'] for x in read_json(s)['scores']}
     pts = [scores.get(q['n'], 0) if answers.get(q['n'], {}).get('screen') in shown else 0 for q in key]
     return round(sum(pts) / len(pts), 3)
+
+
+def gold_recall(g, gold, models, settings):
+    """The blind recall test with the gold set's questions: does the guide carry what matters?"""
+    last = gold_test(g, gold)
+    ok = run_step('recall-reader', g, models, settings, last, 'gold') and run_step('recall-scorer', g, models, settings, last, 'gold')
+    return gold_score(g) if ok else None
+
+
+def measure(g, gold):
+    """The scores of one written guide, from its files only: no model call."""
+    run = read_json(g.work / 'run.json', {'stages': []})
+    writer = [s for s in run['stages'] if s['role'] == 'writer']
+    judges = sorted({f"{s['model']['family']} {s['model']['model']}" for s in run['stages'] if s['role'] != 'writer'})
+    last = g.to_write()[-1]
+    facts = json.loads(check_guide('facts', g, '--json').stdout)['problems']
+    blind = {}
+    for style in cg.STYLES:
+        if (g.work / 'recall-test' / f'{style}-{last}-score.json').exists():
+            r = json.loads(check_guide('score', g, '--style', style, '--upto', last, '--json').stdout)
+            blind[style] = (r.get('scores') or {}).get('score')
+    claims = {'supported': 0, 'inferred': 0, 'unsupported': 0}
+    for cid in g.to_write():
+        v = g.work / 'verdicts' / f'{cid}.json'
+        if v.exists():
+            for c in read_json(v)['claims']:
+                claims[c['verdict']] += 1
+    missing = sum(1 for p in json.loads(check_guide('verdicts', g, '--json').stdout)['problems'] if p['rule'] == 'GR-M03')
+    return {'guide': g.id, 'writer': sorted({f"{s['model']['family']} {s['model']['model']}" for s in writer}), 'judges': judges,
+            'writer_steps': {'pass': sum(s['gate'] == 'pass' for s in writer), 'fail': sum(s['gate'] == 'fail' for s in writer),
+                             'first_try': sum(s['gate'] == 'pass' and s['attempts'] == 1 for s in writer)},
+            'anchors_clean': not any(p['rule'] in ('GR-A02', 'GR-A05') for p in facts),
+            'fact_problems': len(facts), 'claims': claims, 'must_carry_missing': missing,
+            'concept_recall': concept_recall(g, gold), 'gold_recall': gold_score(g), 'blind_recall': blind}
 
 
 def set_path(obj, path, value):
@@ -866,7 +912,7 @@ def load_models(args):
 
 def main():
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
-    ap.add_argument('command', choices=['models', 'stage', 'write', 'check', 'eval', 'record', 'prompt', 'save'])
+    ap.add_argument('command', choices=['models', 'stage', 'write', 'check', 'eval', 'record', 'prompt', 'save', 'goldtest', 'measure'])
     ap.add_argument('step', nargs='?', choices=list(STEPS))
     ap.add_argument('--guide')
     ap.add_argument('--chapter')
@@ -906,6 +952,16 @@ def main():
                        **({'style': args.style} if args.style else {}), 'prompt': f'{STEPS[args.step][0][:-3]}@{head["version"]}',
                        'role': STEPS[args.step][1], 'model': {'provider': 'agent', 'family': args.family, 'model': args.model},
                        'attempts': 1, 'gate': args.gate, 'finished': now()})
+            return 0
+        if args.command in ('goldtest', 'measure'):
+            if not args.fixture:
+                raise Stop(f'{args.command} needs --fixture')
+            gold = read_json(Path(args.fixture) / 'gold.json')
+            if args.command == 'goldtest':
+                last = gold_test(g, gold)
+                print(f'wrote {g.work / "recall-test" / f"gold-{last}.md"} and its key', file=sys.stderr)
+            else:
+                print(json.dumps(measure(g, gold), ensure_ascii=False, indent=1))
             return 0
         if args.command == 'save':
             if not (args.step and args.reply and args.family and args.model):
