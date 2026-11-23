@@ -548,7 +548,7 @@ def gate(step, g, cid, style):
     if step == 'write-styles':
         return styles_gate(g, cid)
     if step == 'verify':
-        return problems('verdicts', g, lambda p: p['rule'] == 'GR-F04' and f'verdicts/{cid}.json' in p['where'], '--upto', cid)
+        return problems('verdicts', g, lambda p: p['rule'] in ('GR-F04', 'GR-C06') and f'verdicts/{cid}.json' in p['where'], '--upto', cid)
     if step in ('recall-reader', 'recall-scorer'):
         key = read_json(g.work / 'recall-test' / f'{style}-{cid}-key.json')
         out = read_json(output_path(step, g, cid, style))
@@ -916,15 +916,16 @@ def plant(fixture, gold, work, dest):
 def caught(gold, pg):
     """The share of planted claims a judge's verdicts mark as not supported, on the planted screen."""
     plants, hit = gold['planted'], 0
+    stems = lambda t: {w[:5] for w in re.findall(r'[a-z]+', t.lower()) if len(w) > 3}
     for x in plants:
         v = pg.work / 'verdicts' / f'{x["chapter"]}.json'
         if not v.exists():
             continue
         ref = f'{x["chapter"]}.s{x["screen"]}'
-        words = {w for w in re.findall(r'[a-z]+', x['claim'].lower()) if len(w) > 3}
+        # Caught: a claim on the planted screen, marked not supported, that shares two or more words
+        # with the planted text (a judge splits it into several short claims).
         if any(c['screen'] == ref and c['style'] == x['style'] and c['verdict'] != 'supported'
-               and len(words & set(re.findall(r'[a-z]+', c['claim'].lower()))) >= max(1, len(words) // 2)
-               for c in read_json(v)['claims']):
+               and len(stems(x['text']) & stems(c['claim'])) >= 2 for c in read_json(v)['claims']):
             hit += 1
     return round(hit / len(plants), 3)
 

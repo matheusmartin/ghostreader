@@ -35,6 +35,168 @@
       "claim": "The keeper's rule puts her father's tower at risk",
       "verdict": "supported",
       "anchor": "001 p3"
+    },
+    {
+      "style": "map",
+      "screen": "ch1.s3",
+      "claim": "Who they are",
+      "verdict": "supported"
+    },
+    {
+      "style": "map",
+      "screen": "ch1.s4",
+      "claim": "What happens in full",
+      "verdict": "supported"
+    },
+    {
+      "style": "map",
+      "screen": "ch1.s5",
+      "claim": "The keeper's rule",
+      "verdict": "supported"
+    },
+    {
+      "style": "map",
+      "screen": "ch1.s6",
+      "claim": "Where it stands",
+      "verdict": "supported"
+    },
+    {
+      "style": "map",
+      "screen": "ch1.s7",
+      "claim": "The stopped clock",
+      "verdict": "supported"
+    },
+    {
+      "style": "recap",
+      "screen": "ch1.s1",
+      "claim": "Ines, the keeper's daughter, finds the lighthouse clock stopped, so the lamp does not turn and boats wait outside the bar",
+      "verdict": "supported"
+    },
+    {
+      "style": "recap",
+      "screen": "ch1.s3",
+      "claim": "On the first cold morning Ines finds the clock in the lighthouse stopped, so the lamp does not turn; Tomas, her brother, says nothing",
+      "verdict": "supported"
+    },
+    {
+      "style": "recap",
+      "screen": "ch1.s4",
+      "claim": "The keeper's rule",
+      "verdict": "supported"
+    },
+    {
+      "style": "recap",
+      "screen": "ch1.s5",
+      "claim": "What happens in full",
+      "verdict": "supported"
+    },
+    {
+      "style": "recap",
+      "screen": "ch1.s6",
+      "claim": "The keeper's rule",
+      "verdict": "supported"
+    },
+    {
+      "style": "recap",
+      "screen": "ch1.s7",
+      "claim": "Where it stands",
+      "verdict": "supported"
+    },
+    {
+      "style": "recap",
+      "screen": "ch1.s8",
+      "claim": "The stopped clock",
+      "verdict": "supported"
+    },
+    {
+      "style": "recall",
+      "screen": "ch1.s1",
+      "claim": "Try to remember",
+      "verdict": "supported"
+    },
+    {
+      "style": "recall",
+      "screen": "ch1.s2",
+      "claim": "Ines, the keeper's daughter, finds the lighthouse clock stopped",
+      "verdict": "supported"
+    },
+    {
+      "style": "recall",
+      "screen": "ch1.s3",
+      "claim": "On the first cold morning Ines finds the clock in the lighthouse stopped, so the lamp does not turn; Tomas, her brother, says nothing",
+      "verdict": "supported"
+    },
+    {
+      "style": "recall",
+      "screen": "ch1.s4",
+      "claim": "Who they are",
+      "verdict": "supported"
+    },
+    {
+      "style": "recall",
+      "screen": "ch1.s5",
+      "claim": "What happens in full",
+      "verdict": "supported"
+    },
+    {
+      "style": "recall",
+      "screen": "ch1.s6",
+      "claim": "The keeper's rule",
+      "verdict": "supported"
+    },
+    {
+      "style": "recall",
+      "screen": "ch1.s7",
+      "claim": "Where it stands",
+      "verdict": "supported"
+    },
+    {
+      "style": "recall",
+      "screen": "ch1.s8",
+      "claim": "The stopped clock",
+      "verdict": "supported"
+    },
+    {
+      "style": "layers",
+      "screen": "ch1.s2",
+      "claim": "In three points",
+      "verdict": "supported"
+    },
+    {
+      "style": "layers",
+      "screen": "ch1.s3",
+      "claim": "The argument so far",
+      "verdict": "supported"
+    },
+    {
+      "style": "layers",
+      "screen": "ch1.s4",
+      "claim": "On the first cold morning Ines finds the clock in the lighthouse stopped, so the lamp does not turn; Tomas, her brother, says nothing",
+      "verdict": "supported"
+    },
+    {
+      "style": "layers",
+      "screen": "ch1.s5",
+      "claim": "What happens in full",
+      "verdict": "supported"
+    },
+    {
+      "style": "layers",
+      "screen": "ch1.s6",
+      "claim": "The keeper's rule",
+      "verdict": "supported"
+    },
+    {
+      "style": "layers",
+      "screen": "ch1.s7",
+      "claim": "Where it stands",
+      "verdict": "supported"
+    },
+    {
+      "style": "layers",
+      "screen": "ch1.s8",
+      "claim": "The stopped clock",
+      "verdict": "supported"
     }
   ],
   "must_carry": [

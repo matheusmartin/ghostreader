@@ -719,6 +719,12 @@ def cmd_verdicts(args, guide, w, say):
                 if c['verdict'] != 'supported':
                     act = 'fix it or remove it' if c['verdict'] == 'unsupported' else 'soften it or remove it, unless the text states it'
                     say('GR-C01', where, f'{c["verdict"]}: "{c["claim"]}"' + (f' ({c["note"]})' if c.get('note') else '') + f': {act}')
+            # Every screen with text, in every style, has at least one claim checked (GR-C06).
+            have = {(c['style'], c['screen']) for c in v['claims']}
+            for style, by_ch in refs.items():
+                for ref, scr in by_ch.get(cid, {}).items():
+                    if (style, ref) not in have and any(t.strip() for _, t in strings(scr)):
+                        say('GR-C06', f'{path} {style} {ref}', f'no claim of "{scr.get("label") or scr["type"]}" was checked: check every screen with text, in every style')
             checked = {m['id']: m for m in v['must_carry']}
             for m in (sheet or {}).get('must_carry', []):
                 if m['id'] not in checked:
