@@ -812,12 +812,22 @@ def conformant(r):
 
 
 def concept_recall(g, gold):
-    want = [c for c in gold.get('concepts', []) if c.get('core', True)]  # only the core concepts count
+    """The share of the gold set's core concepts the guide carries: the concept's name, or for a
+    contrast or typology each of its sides, in the text of the Map file's chapters up to the last
+    written one (every screen). Names are compared without parentheses and case."""
+    want = [c for c in gold.get('concepts', []) if c.get('core', True)]
     if not want:
         return 1.0
-    got = [cg.norm(c['name']) for c in read_json(g.work / 'concepts.json', {'concepts': []})['concepts']]
-    hit = sum(1 for c in want if any(cg.norm(c['name']) in x or x in cg.norm(c['name']) for x in got))
-    return round(hit / len(want), 3)
+    if not g.map_path.exists():
+        return None
+    text = cg.norm(cg.guide_text(read_json(g.map_path), upto=g.to_write()[-1], every=True))
+    def carried(name):
+        name = cg.norm(re.sub(r'\(.*?\)', '', name))
+        if name in text:
+            return True
+        parts = [p.strip() for p in re.split(r'\bversus\b|\bvs\b|,|\band\b|\bor\b', name) if len(p.strip()) > 3]
+        return len(parts) > 1 and all(p in text for p in parts)
+    return round(sum(carried(c['name']) for c in want) / len(want), 3)
 
 
 def gold_test(g, gold):
