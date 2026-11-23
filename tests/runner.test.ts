@@ -151,6 +151,21 @@ describe.skipIf(!python)('tools/gr.py with a mock model', () => {
     expect(json(join(s.work, 'facts/ch1.json'))).toEqual(json(join(FIX, 'working/facts/ch1.json')));
   }, 60_000);
 
+  it('repairs a saved output that a new check rejects', async () => {
+    handler = () => ({});  // the mock answers with the sample's plan, whose question is short
+    const s = setup(['source', 'intake.json', 'plan.json']);
+    const plan = json(join(s.work, 'plan.json'));
+    plan.question = 'Who stopped the lighthouse clock at Kessel, and why did they do it in the night?';
+    writeFileSync(join(s.work, 'plan.json'), JSON.stringify(plan));
+    const r = await gr(['repair', 'plan'], s);
+    expect(r.code, r.err).toBe(0);
+    expect(json(join(s.work, 'plan.json')).question).toBe(json(join(FIX, 'working/plan.json')).question);
+    const last = json(join(s.work, 'run.json')).stages.at(-1);
+    expect([last.stage, last.attempts, last.gate]).toEqual(['plan', 1, 'pass']);
+    const again = await gr(['repair', 'plan'], s);
+    expect(again.err).toContain('nothing to repair');
+  }, 60_000);
+
   it('fails the step when the repairs do not help', async () => {
     handler = (step) => (step === 'facts' ? { content: { chapter: 'ch1' } } : {});
     const s = setup(['source', 'intake.json', 'plan.json']);

@@ -9,6 +9,9 @@ and records the call in work/<guide>/run.json.
 
   python3 -I tools/gr.py models [--provider gemini]
   python3 -I tools/gr.py stage <step> --guide <g> [--chapter <id>] [--style <s>]
+  python3 -I tools/gr.py repair <step> --guide <g> [--chapter <id>] [--style <s>]
+                                                    check a saved output again; send its problems back
+                                                    to the model as one more repair round
   python3 -I tools/gr.py write --guide <g>          plan, then each chapter: read, ledger; concepts;
                                                     each chapter: write-map, write-styles; build styles
   python3 -I tools/gr.py check --guide <g>          each chapter: verify; the blind recall test of
@@ -484,7 +487,7 @@ def save(step, g, cid, style, value):
         write_json(g.map_path, book)
     elif step == 'write-styles':
         notes = read_json(g.work / 'styles.json', {})
-        notes.setdefault('question', g.plan().get('question', ''))
+        notes['question'] = g.plan().get('question', '')  # the plan is the source: a fixed plan reaches the styles
         notes.setdefault('chapters', {})[cid] = value
         write_json(g.work / 'styles.json', notes)
     else:
@@ -588,10 +591,23 @@ def passed(g, step, cid=None, style=None):
     return output_path(step, g, cid, style).exists()
 
 
-def run_step(step, g, models, settings, cid=None, style=None, resume=True):
+def saved_output(step, g, cid, style):
+    """The output a step saved before, as JSON text, or None."""
+    if step == 'write-map':
+        ch = g.map_chapter(cid)
+        return json.dumps(ch, ensure_ascii=False) if ch and ch.get('screens') else None
+    if step == 'write-styles':
+        entry = read_json(g.work / 'styles.json', {}).get('chapters', {}).get(cid)
+        return json.dumps(entry, ensure_ascii=False) if entry else None
+    path = output_path(step, g, cid, style)
+    return path.read_text() if path.exists() else None
+
+
+def run_step(step, g, models, settings, cid=None, style=None, resume=True, repair=False):
     """One step: prompt, call, checks, repairs. True when its gate passes. With `resume`, a step
-    that already passed is not run again."""
-    if resume and passed(g, step, cid, style):
+    that already passed is not run again. With `repair`, the step's saved output is checked again
+    and, when the checks find problems, sent back to the model with them, as one more repair round."""
+    if resume and not repair and passed(g, step, cid, style):
         print(f'{" ".join(x for x in (step, cid, style) if x)}: passed before', file=sys.stderr)
         return True
     prompt_file, role, profile, store, definition = STEPS[step]
@@ -601,6 +617,18 @@ def run_step(step, g, models, settings, cid=None, style=None, resume=True):
     store_schema = storage(store, definition)
     started, tokens, attempts, bad, served, mode = time.time(), {'prompt': 0, 'completion': 0}, 0, [], model.model, 'schema'
     label = ' '.join(x for x in (step, cid, style) if x)
+    if repair:
+        before = saved_output(step, g, cid, style)
+        if before is None:
+            raise Stop(f'{label}: nothing saved to repair')
+        bad = gate(step, g, cid, style)
+        if not bad:
+            print(f'{label}: the saved output passes the checks; nothing to repair', file=sys.stderr)
+            return True
+        print(f'{label}: repairing {len(bad)} problem(s): ' + '; '.join(bad[:3]), file=sys.stderr)
+        messages += [{'role': 'assistant', 'content': before},
+                     {'role': 'user', 'content': 'The checks found these problems in your JSON. Fix each one, keep '
+                      'everything else, and reply with the whole corrected JSON only.\n\n' + '\n'.join(bad[:40])}]
     for attempt in range(settings.get('repairs', 2) + 1):
         attempts += 1
         print(f'{label}: {model.provider} {model.model}, call {attempts}', file=sys.stderr)
@@ -912,7 +940,7 @@ def load_models(args):
 
 def main():
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
-    ap.add_argument('command', choices=['models', 'stage', 'write', 'check', 'eval', 'record', 'prompt', 'save', 'goldtest', 'measure'])
+    ap.add_argument('command', choices=['models', 'stage', 'repair', 'write', 'check', 'eval', 'record', 'prompt', 'save', 'goldtest', 'measure'])
     ap.add_argument('step', nargs='?', choices=list(STEPS))
     ap.add_argument('--guide')
     ap.add_argument('--chapter')
@@ -982,6 +1010,10 @@ def main():
             if not args.step:
                 raise Stop('stage needs a step')
             return 0 if run_step(args.step, g, models, cfg, args.chapter, args.style, resume=False) else 1
+        if args.command == 'repair':
+            if not args.step:
+                raise Stop('repair needs a step')
+            return 0 if run_step(args.step, g, models, cfg, args.chapter, args.style, repair=True) else 1
         if args.command == 'write':
             return 0 if write_guide(g, models, cfg) else 1
         if args.command == 'check':

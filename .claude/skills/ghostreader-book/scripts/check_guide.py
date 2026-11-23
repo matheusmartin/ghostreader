@@ -290,6 +290,10 @@ def cmd_plan(args, guide, w, say):
                 if f in used:
                     say('GR-S01', f'{where} {ch["id"]}', f'text file {f} is also in {used[f]}')
                 used[f] = ch['id']
+    # The question opens every "argument so far" chart: 12 words at most (as the styles' flow start).
+    q = plan.get('question', '')
+    if len(q.split()) > 12:
+        say('GR-L01', where, f'"question" has {len(q.split())} words; at most 12 (it starts every "argument so far" chart)')
     skipped = {s['file'] for s in plan.get('skipped', [])}
     for e in src.toc:
         f = f'{e["n"]:03d}'
