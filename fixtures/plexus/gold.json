@@ -195,5 +195,32 @@
       "name": "dream it off",
       "core": false
     }
-  ]
+  ],
+  "planted": [
+    {
+      "style": "map",
+      "chapter": "ch2",
+      "screen": 1,
+      "path": "text",
+      "text": "Henry keeps his job as employment manager and writes at night, so he pays for them both. His articles are all accepted, and from Van Gogh he learns that creation is hard labour.",
+      "claim": "Henry keeps his job and pays for them both; his articles are accepted"
+    },
+    {
+      "style": "map",
+      "chapter": "ch3",
+      "screen": 1,
+      "path": "text",
+      "text": "Mona, Henry's wife, sells his prose poems under his own name, and O'Mara, his old friend, moves in. Offered a serial, Henry, who quit his job to write, says yes at once, eager for success.",
+      "claim": "Mona sells the poems under Henry's name; Henry accepts the serial at once"
+    },
+    {
+      "style": "map",
+      "chapter": "ch2",
+      "screen": 3,
+      "path": "items[0].text",
+      "text": "The woman Henry brings the alimony to each month; she saves every cent of it for the child's schooling.",
+      "claim": "Maude saves the alimony for the child's schooling"
+    }
+  ],
+  "planted_note": "Planted in Claude's guide of these chapters (fixtures/plexus/books/); each contradicts a fact the fact sheets anchor in the text."
 }

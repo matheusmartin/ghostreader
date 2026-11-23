@@ -1,0 +1,1020 @@
+{
+  "format": 1,
+  "id": "plexus-story-recap",
+  "guide": "plexus-story",
+  "style": "recap",
+  "type": "fiction",
+  "title": "Plexus",
+  "author": "Henry Miller",
+  "source": {
+    "kind": "book-file",
+    "file": "EPUB",
+    "written": "2026-11-22",
+    "skill": "1.8.0",
+    "spec": "1.0.0"
+  },
+  "parts": [
+    {
+      "id": "part-1",
+      "chapters": [
+        {
+          "id": "ch1",
+          "number": "01",
+          "title": "Chapter 1",
+          "length": 13397,
+          "screens": [
+            {
+              "type": "text",
+              "label": "Recap",
+              "paragraphs": [
+                "Henry, an employment manager who hopes to write, and Mona, his wife, move to Brooklyn Heights to get away from everyone they know; only Ulric, a painter, gets the address. The flat costs twice their budget, so an admirer of Mona's, a room clerk, pays.",
+                "Henry loses interest in his job and wants only to write; Mona urges him on, so his work slides. He loves the love nest perhaps because it cannot last. Crazy George, the wagon preacher of his childhood, forgets his Bible at the flat. When a synagogue song moves Mona to tears, Henry offers to become a Jew; she refuses. Alone, he sees that an artist must cut his ties to the outside world."
+              ]
+            },
+            {
+              "type": "list",
+              "label": "Key moments",
+              "rows": [
+                {
+                  "name": "The flat",
+                  "text": "Mona is set on a flat at twice their budget, and an admirer pays the rent"
+                },
+                {
+                  "name": "The furniture",
+                  "text": "Henry buys all the furniture on instalments through Dolores, a store buyer who doubts he can pay"
+                },
+                {
+                  "name": "Stolen holidays",
+                  "text": "Bored with his job, Henry takes stolen holidays while Mona tells his boss his cold is worse"
+                },
+                {
+                  "name": "The Hester Street cellar",
+                  "text": "Dave Olinski, Henry's ex-messenger, shouts when his insurance papers are scrawled on, so he is thrown out"
+                },
+                {
+                  "name": "Crazy George's Bible",
+                  "text": "The wagon preacher of Henry's childhood rushes after his wagon and forgets his Bible at the flat"
+                },
+                {
+                  "name": "The synagogue song",
+                  "text": "Henry says he has long known Mona is a Jew; she refuses his offer to become one"
+                }
+              ]
+            },
+            {
+              "type": "scenes",
+              "people": [
+                {
+                  "name": "Henry"
+                },
+                {
+                  "name": "Dolores"
+                },
+                {
+                  "name": "Mona"
+                },
+                {
+                  "name": "Ulric"
+                },
+                {
+                  "name": "Nahoum Yood"
+                },
+                {
+                  "name": "Dave Olinski"
+                },
+                {
+                  "name": "Mannie Hirsch"
+                },
+                {
+                  "name": "Crazy George"
+                }
+              ],
+              "focus": [
+                "Henry",
+                "Mona"
+              ],
+              "scenes": [
+                {
+                  "text": "{In spring} Henry and Mona seek a home in [Brooklyn Heights], far from Kronski and Arthur Raymond; Mona is set on a flat at twice their budget, so an admirer pays.",
+                  "with": [
+                    "Henry",
+                    "Mona"
+                  ]
+                },
+                {
+                  "text": "{That afternoon}, while Mona rehearses, Henry picks all the furniture, a writing desk too, on instalments through Dolores at [a Fulton Street store]; she doubts he can pay.",
+                  "with": [
+                    "Henry",
+                    "Dolores"
+                  ]
+                },
+                {
+                  "text": "{In the first months} they live only for each other in [the love nest]; Ulric, a painter and the only friend with their address, visits at weekends.",
+                  "with": [
+                    "Henry",
+                    "Mona",
+                    "Ulric"
+                  ]
+                },
+                {
+                  "text": "{One evening}, on a stolen holiday, Nahoum Yood, a friend of Arthur Raymond who writes in Yiddish, hails them on [Second Avenue] and presses Hamsun's Mysteries on Henry.",
+                  "with": [
+                    "Henry",
+                    "Mona",
+                    "Nahoum Yood"
+                  ]
+                },
+                {
+                  "text": "{That evening}, in [a Hester Street cellar], Nahoum Yood and Mannie Hirsch, a lawyer, scrawl on the papers of Dave Olinski, Henry's ex-messenger now in insurance, so he shouts and is thrown out.",
+                  "with": [
+                    "Henry",
+                    "Mona",
+                    "Nahoum Yood",
+                    "Dave Olinski",
+                    "Mannie Hirsch"
+                  ]
+                },
+                {
+                  "text": "{One Saturday afternoon} Crazy George, the wagon preacher of Henry's childhood, visits [the flat]; street children drive off his wagon, so he rushes out and forgets his Bible, the gift Henry wanted.",
+                  "with": [
+                    "Henry",
+                    "Mona",
+                    "Crazy George"
+                  ]
+                },
+                {
+                  "text": "{At dusk, at summer's end} a synagogue song outside [the Scotch bakery] moves Mona to tears; Henry says he has long known she is a Jew and offers to become one, but she refuses.",
+                  "with": [
+                    "Henry",
+                    "Mona"
+                  ],
+                  "key": true
+                },
+                {
+                  "text": "{That evening}, in [the love nest], the Book of Ruth makes Henry think of Mona as Mara, the name she disowned; alone, he sees how to pass from employee to artist.",
+                  "with": [
+                    "Henry"
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "points",
+              "label": "Remember",
+              "items": [
+                {
+                  "title": "Perfectly harmless",
+                  "text": "Mona's word for her admirers, who give her money and never ask her to spend a night with them."
+                },
+                {
+                  "title": "Paid employee and artist",
+                  "text": "A paid employee is a slave to a job; an artist makes himself a fine instrument and cuts his outside ties."
+                },
+                {
+                  "title": "Ulric",
+                  "text": "A painter, the only friend given their new address; he lives on commercial work and calls himself only an illustrator."
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "label": "What happens in full",
+              "only": "pdf",
+              "paragraphs": [
+                "In spring Henry and Mona look for a flat in Brooklyn Heights, wanting a new life far from everyone they know, above all Kronski and Arthur Raymond; only Ulric, a painter, is to have the address. They find one at twice the rent they meant to pay. Henry is sure it will sink them, but Mona is set on it, and an admirer of hers, a room clerk at the Broztell, gives her the rent and three hundred dollars more. She calls such admirers perfectly harmless, and Henry does not pry. He furnishes the flat on the instalment plan through Dolores, a store buyer who doubts he can pay.",
+                "For a few months they live only for each other, and a librarian's talk of Europe leaves Henry drunk on Europe. Henry has lost interest in his job and wants only to write; Mona says she will borrow to keep them, so he shirks his work and takes stolen holidays. On one, Nahoum Yood, a Yiddish writer, hails them on Second Avenue. In a Hester Street cellar that evening, Dave Olinski, Henry's ex-messenger, shouts when his insurance papers are scrawled on, so a bouncer throws him out. Walking to the subway, Henry foresees that as a writer he will beg in the streets.",
+                "Crazy George, the wagon preacher of Henry's childhood, visits and forgets his Bible, the gift Mona could not beg. With about 72 cents left, they eat at a dour Scotch bakery; outside, a synagogue song makes Mona cry, and Henry says he has long known she is a Jew. She refuses his offer to become one and marry her again before a rabbi. At home, reading Ruth, he thinks of her as Mara, her disowned name, and alone sees how an employee can become an artist."
+              ]
+            },
+            {
+              "type": "list",
+              "label": "Everyone in this chapter",
+              "only": "pdf",
+              "rows": [
+                {
+                  "name": "Henry",
+                  "text": "The narrator, an employment manager who hopes to write; loses interest in his job"
+                },
+                {
+                  "name": "Mona",
+                  "text": "Henry's wife, who works at the theatre; pays for the flat through an admirer"
+                },
+                {
+                  "name": "Ulric",
+                  "text": "A painter, the only friend with their address; walks the old streets with Henry"
+                },
+                {
+                  "name": "Kronski",
+                  "text": "A friend the couple want to get away from; once painted for a few months"
+                },
+                {
+                  "name": "Arthur Raymond",
+                  "text": "A friend the couple want to get away from"
+                },
+                {
+                  "name": "Dolores",
+                  "text": "A buyer for a department store on Fulton Street; sells Henry furniture on instalments"
+                },
+                {
+                  "name": "Al Burger",
+                  "text": "Henry's boyhood friend on Sackett Street, son of a tug-boat captain"
+                },
+                {
+                  "name": "Frank Schofield",
+                  "text": "One of the waterfront boys of Sackett Street in Henry's boyhood"
+                },
+                {
+                  "name": "O'Rourke",
+                  "text": "A detective; searched the ghetto at night with Henry for vagrant messenger boys"
+                },
+                {
+                  "name": "Nahoum Yood",
+                  "text": "An old friend of Arthur Raymond who writes in Yiddish; urges Hamsun on Henry"
+                },
+                {
+                  "name": "Dave Olinski",
+                  "text": "Henry's ex-messenger, now an insurance salesman; thrown out of the Hester Street cellar"
+                },
+                {
+                  "name": "Mannie Hirsch",
+                  "text": "A lawyer, another friend of Arthur Raymond; talks of Scriabin"
+                },
+                {
+                  "name": "Crazy George",
+                  "text": "The wagon preacher of Henry's childhood, George Denton; leaves his Bible behind"
+                },
+                {
+                  "name": "Dr Dawson",
+                  "text": "The old minister who read the Bible in the church of Henry's boyhood"
+                }
+              ]
+            },
+            {
+              "type": "list",
+              "label": "Terms",
+              "only": "pdf",
+              "rows": [
+                {
+                  "name": "Perfectly harmless",
+                  "text": "Mona's word for admirers who give her money and never ask her to spend a night with them"
+                },
+                {
+                  "name": "Paid employee and artist",
+                  "text": "A hack bound to a job and the world, against one who cuts loose to make music"
+                }
+              ]
+            },
+            {
+              "type": "points",
+              "label": "Where it stands",
+              "items": [
+                {
+                  "title": "When and where",
+                  "text": "An evening at the end of summer, after a cheap supper; the love nest in Brooklyn Heights and the empty stained-glass room behind it."
+                },
+                {
+                  "title": "Who is there",
+                  "text": "Henry, an employment manager who hopes to write, alone by candlelight; Mona, his wife, has gone out, and he expects her back soon."
+                },
+                {
+                  "title": "What they want",
+                  "text": "Henry wants only to write, though he keeps his job for now; Mona wants him to write and says she will borrow to keep them."
+                },
+                {
+                  "title": "What just happened",
+                  "text": "Mona refused his offer to become a Jew and went out; alone by candlelight, Henry sees how to pass from paid employee to artist."
+                }
+              ]
+            },
+            {
+              "type": "list",
+              "label": "Still open",
+              "rows": [
+                {
+                  "name": "The costly flat",
+                  "text": "Can Henry and Mona keep paying for a flat at twice their budget?"
+                },
+                {
+                  "name": "Henry's job",
+                  "text": "Will Henry give up his job to write, and how would they live?"
+                },
+                {
+                  "name": "Mona's past",
+                  "text": "Why has Mona disowned her people and her old name, Mara?"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "ch2",
+          "number": "02",
+          "title": "Chapter 2",
+          "length": 16521,
+          "screens": [
+            {
+              "type": "summary",
+              "label": "Before this chapter",
+              "text": "Can Henry quit work to write and keep their costly love nest? Chapter 1: Henry, an employment manager, and Mona, his wife, took a Brooklyn Heights flat that her admirer paid for. Henry lost interest in his job and longed to write, and Mona urged him on."
+            },
+            {
+              "type": "text",
+              "label": "Recap",
+              "paragraphs": [
+                "After three days away from the office Henry cannot go back, so he quits as employment manager without his pay and vows to write or starve. Mona, his wife, says she will keep them both and forbids him to think of money. His articles all come back rejected, and friends say he is himself when he talks, not when he writes.",
+                "Mona's theatre pay falls short, so she gold-digs; as the alimony for Maude and his child grows harder to raise, Henry feels guiltier towards Mona. The old minister of his boyhood church, pained by the crude realism of his writing, returns it, so Henry sends abuse, then repents. From Van Gogh's life he learns that creation is play."
+              ]
+            },
+            {
+              "type": "list",
+              "label": "Key moments",
+              "rows": [
+                {
+                  "name": "Quitting",
+                  "text": "Three days away make going back impossible, so Henry empties his desk and leaves without his pay"
+                },
+                {
+                  "name": "Coney Island",
+                  "text": "Coney Island gives Henry nothing to note, but after sleeping on it he writes the article easily"
+                },
+                {
+                  "name": "Write like you talk",
+                  "text": "While editors reject every article, friends tell Henry he is himself only when he talks"
+                },
+                {
+                  "name": "The drunken night",
+                  "text": "After an evening of talk about Italy, Henry comes home drunk; Mona cleans up without complaint"
+                },
+                {
+                  "name": "In the park",
+                  "text": "On a weekend visit Henry's child calls him daddy, and he breaks into sobs"
+                },
+                {
+                  "name": "The old minister",
+                  "text": "Pained by the crude realism of Henry's writing, the minister returns it, so Henry sends abuse"
+                }
+              ]
+            },
+            {
+              "type": "scenes",
+              "people": [
+                {
+                  "name": "Henry"
+                },
+                {
+                  "name": "Mona"
+                },
+                {
+                  "name": "Maude",
+                  "tag": "New"
+                },
+                {
+                  "name": "The child",
+                  "tag": "New"
+                },
+                {
+                  "name": "Hymie",
+                  "tag": "New"
+                },
+                {
+                  "name": "Ulric"
+                },
+                {
+                  "name": "Steve Romero",
+                  "tag": "New"
+                },
+                {
+                  "name": "The old minister"
+                }
+              ],
+              "focus": [
+                "Henry",
+                "Mona"
+              ],
+              "scenes": [
+                {
+                  "text": "{On the fourth day} three days away have made going back impossible, so Henry empties his desk at [his office], tells Hymie, at the switchboard, and leaves without his pay.",
+                  "with": [
+                    "Henry",
+                    "Hymie"
+                  ],
+                  "key": true
+                },
+                {
+                  "text": "{Before lunch} Henry, who has vowed on Broadway to write or starve, tells Mona at [the flat] he has quit; she will keep them both, as she keeps her family.",
+                  "with": [
+                    "Henry",
+                    "Mona"
+                  ]
+                },
+                {
+                  "text": "{On a wintry day} Henry finds nothing to note at a boarded-up [Coney Island]; he sleeps on it instead of forcing it, so by noon next day the article is written.",
+                  "with": [
+                    "Henry"
+                  ]
+                },
+                {
+                  "text": "{One evening} at [the French-Italian grocery] Henry and Ulric, a painter, joined by Hymie and Steve Romero, rhapsodise about Italy until two Italians applaud, and Joe and Fat Louis treat them.",
+                  "with": [
+                    "Henry",
+                    "Ulric",
+                    "Hymie",
+                    "Steve Romero"
+                  ]
+                },
+                {
+                  "text": "{That night} Henry comes home drunk to [the flat] and wakes in vomit; Mona cleans up without complaint, and he vows to go to Italy one day.",
+                  "with": [
+                    "Henry",
+                    "Mona"
+                  ]
+                },
+                {
+                  "text": "{On weekend visits} Henry brings the alimony to Maude and his child; once, on a knoll in [the park], the child calls him daddy and he breaks into sobs.",
+                  "with": [
+                    "Henry",
+                    "Maude",
+                    "The child"
+                  ]
+                },
+                {
+                  "text": "{Sometimes, after a dream} Henry revisits [Glendale] and the old neighbourhood, recalling Mr Imhof, the first artist he met, and the police station that taught him contempt for authority.",
+                  "with": [
+                    "Henry"
+                  ]
+                },
+                {
+                  "text": "{That evening}, telling Mona [at home] about his boyhood, Henry sends the old minister of his church some writing; pained by its crude realism, the minister returns it, so Henry writes back abuse.",
+                  "with": [
+                    "Henry",
+                    "Mona"
+                  ],
+                  "off": [
+                    "The old minister"
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "points",
+              "label": "Remember",
+              "items": [
+                {
+                  "title": "Write like you talk",
+                  "text": "His candid friends' advice: Henry is himself when he talks but the self-conscious literary man when he writes."
+                },
+                {
+                  "title": "Creation is play",
+                  "text": "Henry's lesson from Van Gogh's life: there is no need to repeat the forerunners' sacrifices; stop labouring and create, since play is divine."
+                },
+                {
+                  "title": "Maude and the child",
+                  "text": "Henry brings Maude the alimony each week; his own child, a little girl, clings to him and grows silently reproachful."
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "label": "What happens in full",
+              "only": "pdf",
+              "paragraphs": [
+                "After three days away from the office Henry cannot go back. Feeling he has wronged Clancy, his boss, and sure that Spivak will catch him out, he tells Mona he will quit; she begs him to do it at once. That morning he empties his desk, tells Hymie at the switchboard and leaves without his pay after almost five years. On Broadway he vows to become a writer or starve. Mona says she will keep them both, as she keeps her family; all she wants is for him to become a great writer, and he must never think about money.",
+                "Henry writes without order, sends editors lists of themes and works at the 42nd Street Library. A wintry trip to Coney Island yields nothing until he sleeps on it, so the article comes easily next day. Nothing is accepted. His true voice goes into letters, and his friends ask why he does not write like he talks. After an evening of talk about Italy at the French-Italian grocery with Ulric, Hymie and Steve Romero, he comes home drunk, and Mona cleans up without complaint.",
+                "Mona's theatre pay is not enough, so she is always gold-digging. The alimony for Maude and his child grows harder to raise, so Henry feels guilty towards Mona, weeps in his sleep and puts off his visits. He revisits Glendale and his old neighbourhood, recalling Mr Imhof, his grandfather Valentin Nieting and the police station of his boyhood. He sends the old minister of his church some writing; the minister returns it, pained by its crude realism, so Henry writes back abuse and later repents. From Van Gogh's letters he takes the message to stop labouring and create, since creation is play."
+              ]
+            },
+            {
+              "type": "list",
+              "label": "Everyone in this chapter",
+              "only": "pdf",
+              "rows": [
+                {
+                  "name": "Henry",
+                  "text": "The narrator; quits his job as employment manager to become a writer"
+                },
+                {
+                  "name": "Mona",
+                  "text": "Henry's wife, who works at the theatre; keeps them both and gold-digs"
+                },
+                {
+                  "name": "Clancy",
+                  "text": "Henry's boss, who kept defending him to his own boss, Mr Twilliger"
+                },
+                {
+                  "name": "Spivak",
+                  "text": "Always on Henry's trail at work; Henry expects him to catch him out"
+                },
+                {
+                  "name": "Hymie",
+                  "text": "At the switchboard of Henry's office; hears that Henry is quitting"
+                },
+                {
+                  "name": "Ulric",
+                  "text": "A painter, the one friend Henry must convince of his writing"
+                },
+                {
+                  "name": "MacGregor",
+                  "text": "A friend Henry imagines laughing at him on the beach at Coney Island"
+                },
+                {
+                  "name": "Steve Romero",
+                  "text": "Joins Henry, Ulric and Hymie at the French-Italian grocery"
+                },
+                {
+                  "name": "Joe",
+                  "text": "Of the French-Italian grocery; asks Henry when he is going to Europe"
+                },
+                {
+                  "name": "Fat Louis",
+                  "text": "Of the French-Italian grocery; weeps for joy and cooks them a rum omelette"
+                },
+                {
+                  "name": "Battling Siki",
+                  "text": "A Senegalese, another client of the grocery, playful in a dangerous way"
+                },
+                {
+                  "name": "Maude",
+                  "text": "The woman Henry brings the alimony to each week, with his child"
+                },
+                {
+                  "name": "The child",
+                  "text": "Henry's own child, a little girl who clings to him and calls him daddy"
+                },
+                {
+                  "name": "Uncle Charlie",
+                  "text": "Joey and Tony's uncle, recalled for his stories of the Philippines"
+                },
+                {
+                  "name": "Mr Imhof",
+                  "text": "The father of Tony and Joey, recalled as the first artist Henry met"
+                },
+                {
+                  "name": "Tante Grussy",
+                  "text": "A distant relative of Henry's, recalled; she cannot be found"
+                },
+                {
+                  "name": "Valentin Nieting",
+                  "text": "Henry's grandfather, a master tailor, recalled from Henry's childhood"
+                },
+                {
+                  "name": "Mr Crow",
+                  "text": "The grandfather's crony, a Socialist from Birmingham, recalled"
+                },
+                {
+                  "name": "The old minister",
+                  "text": "The minister of Henry's boyhood church; returns Henry's writing, pained by it"
+                }
+              ]
+            },
+            {
+              "type": "list",
+              "label": "Terms",
+              "only": "pdf",
+              "rows": [
+                {
+                  "name": "Write like you talk",
+                  "text": "His friends' advice: Henry is himself when he talks, but self-conscious when he writes"
+                },
+                {
+                  "name": "Creation is play",
+                  "text": "Henry's lesson from Van Gogh: stop labouring and sacrificing, and create, since play is divine"
+                }
+              ]
+            },
+            {
+              "type": "points",
+              "label": "Where it stands",
+              "items": [
+                {
+                  "title": "When and where",
+                  "text": "The autumn and winter after Henry quit his job one September morning; the love nest in Brooklyn Heights, where he now stays home to write."
+                },
+                {
+                  "title": "Who is there",
+                  "text": "Henry, who quit his job to write, tells Mona, his wife, who keeps them both, about his boyhood one evening at home."
+                },
+                {
+                  "title": "What they want",
+                  "text": "Henry has vowed to become a writer or starve, never working for anyone again; Mona wants only for him to become a great writer."
+                },
+                {
+                  "title": "What just happened",
+                  "text": "The old minister of his boyhood church returned Henry's writing, pained by its crude realism, so Henry sent abuse and repented."
+                }
+              ]
+            },
+            {
+              "type": "list",
+              "label": "Still open",
+              "rows": [
+                {
+                  "name": "Paying their way",
+                  "text": "Can Mona's theatre pay and gold-digging cover their needs and the weekly alimony?"
+                },
+                {
+                  "name": "Henry's articles",
+                  "text": "Will any magazine accept Henry's articles?"
+                },
+                {
+                  "name": "Maude and the child",
+                  "text": "Will Henry keep up his visits to Maude and his child?"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "ch3",
+          "number": "03",
+          "title": "Chapter 3",
+          "length": 21075,
+          "screens": [
+            {
+              "type": "summary",
+              "label": "Before this chapter",
+              "text": "Can Henry quit work to write and keep their costly love nest? Chapter 2: Henry quit his job and vowed to write or starve; Mona, his wife, said she would keep them both. Editors rejected all his articles, and her theatre pay fell short, so she took to gold-digging."
+            },
+            {
+              "type": "text",
+              "label": "Recap",
+              "paragraphs": [
+                "Money runs short until O'Mara, Henry's old friend, brings a kitty from a fishing cruise and moves in secretly; Mona, Henry's wife, does not take to him. Because O'Mara thinks no editor will take Henry's prose poems, Henry prints them as Mezzotints; Mona signs them as her own, and her admirers pay so well that subscriptions are dropped.",
+                "O'Mara blames the stepfather who put him in an orphan asylum, where he learned to dream things off. Taken with Henry's tales of youth, McFarland, an old magazine man, asks for them as a serial. At dinner Henry turns down jobs from MacGregor, an old friend, and O'Mara, saying he cannot yet write; Mona is overjoyed."
+              ]
+            },
+            {
+              "type": "list",
+              "label": "Key moments",
+              "rows": [
+                {
+                  "name": "O'Mara's kitty",
+                  "text": "O'Mara, Henry's old friend, heaps money from a fishing cruise on the table for all three"
+                },
+                {
+                  "name": "Mezzotints",
+                  "text": "Mona signs Henry's prose poems with her own name and sells them in the Village night spots"
+                },
+                {
+                  "name": "Osiecki's lice",
+                  "text": "Osiecki, an architect neighbour, finds lice in his desk every morning and suspects his boss"
+                },
+                {
+                  "name": "O'Mara's brother",
+                  "text": "O'Mara admits his story of the madman Eakins was really about his brother, sent up for life"
+                },
+                {
+                  "name": "McFarland's offer",
+                  "text": "McFarland, an old magazine man, asks Henry to write his spoken tales of his youth as a serial"
+                },
+                {
+                  "name": "The Flatbush dinner",
+                  "text": "Henry turns down jobs from MacGregor, an old friend, and O'Mara, saying he cannot yet write"
+                }
+              ]
+            },
+            {
+              "type": "scenes",
+              "people": [
+                {
+                  "name": "Ned"
+                },
+                {
+                  "name": "McFarland",
+                  "tag": "New"
+                },
+                {
+                  "name": "Henry"
+                },
+                {
+                  "name": "Mona"
+                },
+                {
+                  "name": "O'Mara",
+                  "tag": "New"
+                },
+                {
+                  "name": "Osiecki",
+                  "tag": "New"
+                },
+                {
+                  "name": "MacGregor"
+                }
+              ],
+              "focus": [
+                "Henry",
+                "Mona"
+              ],
+              "scenes": [
+                {
+                  "text": "{One morning} O'Mara, Henry's old friend, brings a kitty from a Caribbean fishing cruise to [their rooms] and moves in on a cot hidden from the landlord; Mona does not take to him.",
+                  "with": [
+                    "Henry",
+                    "Mona",
+                    "O'Mara"
+                  ]
+                },
+                {
+                  "text": "Mona signs Henry's prose poems, the Mezzotints, with her own name and sells them in [the Village night spots]; her admirers pay so much that Henry and O'Mara give up subscriptions.",
+                  "with": [
+                    "Mona"
+                  ]
+                },
+                {
+                  "text": "{One night} Henry and O'Mara talk at [their rooms] until Mona comes in at ten past one, as Henry said she would; Osiecki, an architect neighbour, taps in, tipsy.",
+                  "with": [
+                    "Henry",
+                    "O'Mara",
+                    "Mona",
+                    "Osiecki"
+                  ]
+                },
+                {
+                  "text": "{Later that night}, after Mona calls his Eakins story untrue, O'Mara admits it was about his brother, sent up for life; he blames the stepfather who put him in the orphan asylum.",
+                  "with": [
+                    "Henry",
+                    "O'Mara",
+                    "Mona"
+                  ]
+                },
+                {
+                  "text": "{That night, in a dream}, Henry rides his old bicycle with Pop Brown on [the cycle path to Coney Island] and races Joe Folger to a dead heat.",
+                  "with": [
+                    "Henry"
+                  ]
+                },
+                {
+                  "text": "{The next afternoon}, at [Ned's office], Henry writes copy for Ned, a friend in advertising; taken with Henry's tales of his youth, McFarland, an old magazine man, asks for them as a serial.",
+                  "with": [
+                    "Henry",
+                    "Ned",
+                    "McFarland"
+                  ],
+                  "key": true
+                },
+                {
+                  "text": "{That evening} Mona comes home to [their rooms] in tears: her family must pay a mortgage of three thousand dollars at once, and her mother, who doubts she is married, called her a whore.",
+                  "with": [
+                    "Henry",
+                    "Mona"
+                  ]
+                },
+                {
+                  "text": "{That evening} at [a Flatbush restaurant] MacGregor, an old friend, and O'Mara offer Henry jobs; he turns them down, not ready for McFarland's kind of success since he cannot yet write, and Mona is overjoyed.",
+                  "with": [
+                    "Henry",
+                    "Mona",
+                    "O'Mara",
+                    "MacGregor"
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "points",
+              "label": "Remember",
+              "items": [
+                {
+                  "title": "O'Mara",
+                  "text": "Henry's old friend, whom he can refuse nothing; put in an orphan asylum at three, he now boards with Henry and Mona."
+                },
+                {
+                  "title": "Mezzotints",
+                  "text": "Henry's prose poems, printed weekly on stiff coloured paper and sold direct; Mona signs them with her own name."
+                },
+                {
+                  "title": "Dream it off",
+                  "text": "O'Mara's trick from the orphan asylum: fix things as you want them and dream them true. After his bicycle dream, Henry needs no bike."
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "label": "What happens in full",
+              "only": "pdf",
+              "paragraphs": [
+                "Money runs short: Mona's theatre job has ended, the rent is long overdue and the alimony is paid only when they make a haul. O'Mara, Henry's old friend, arrives with a few hundred dollars from a Caribbean fishing cruise, puts it on the table for all three and moves in on a cot hidden from the landlord. Mona does not take to his bluntness. Because O'Mara thinks no editor will take Henry's prose poems, Henry prints them himself as weekly Mezzotints. Mona signs them with her own name and sells them in the Village night spots, where lonely men pay her far more than the price, so Henry and O'Mara give up on subscriptions.",
+                "Osiecki, an architect neighbour, finds lice in his desk and suspects his boss. One night O'Mara talks with Henry about Alec Walker and Woodruff until Mona comes home at ten past one, as Henry said she would. Later, after Mona calls his story of the madman Eakins untrue, O'Mara admits it was about his brother, sent up for life, and blames the stepfather who put him in the orphan asylum at three. He goes to bed to dream it off, and Henry dreams of riding his old bicycle with Pop Brown.",
+                "The next afternoon, at Ned's office, McFarland, an old magazine man, is taken with Henry's tales of his youth and asks for them as a serial. That evening Mona weeps: her family must pay a mortgage of three thousand dollars or lose the house, and her mother called her a whore. Over dinner in Flatbush, MacGregor and O'Mara offer Henry jobs; he turns them down, saying he is not ready for success, and Mona is overjoyed. Henry will think the serial over."
+              ]
+            },
+            {
+              "type": "list",
+              "label": "Everyone in this chapter",
+              "only": "pdf",
+              "rows": [
+                {
+                  "name": "Henry",
+                  "text": "The narrator, who quit his job to write; prints his prose poems as Mezzotints"
+                },
+                {
+                  "name": "Mona",
+                  "text": "Henry's wife; signs and sells the Mezzotints in the Village night spots"
+                },
+                {
+                  "name": "O'Mara",
+                  "text": "Henry's old friend from the Cosmodemonic Telegraph Company; boards with them and canvasses"
+                },
+                {
+                  "name": "Alec Walker",
+                  "text": "The man who brought O'Mara North to work for him, in O'Mara's stories"
+                },
+                {
+                  "name": "Bill Woodruff",
+                  "text": "Henry's companion on the lake holiday years ago; gambled away Alec's money"
+                },
+                {
+                  "name": "Ned",
+                  "text": "Henry's friend, back in advertising; takes Henry's copy and introduces him to McFarland"
+                },
+                {
+                  "name": "Alan Cromwell",
+                  "text": "Claims to be a banker from Washington; buys all of Mona's Mezzotints"
+                },
+                {
+                  "name": "Osiecki",
+                  "text": "An architect neighbour who finds lice in his desk; offers to lend them money"
+                },
+                {
+                  "name": "Andrews",
+                  "text": "A Canadian architect, Osiecki's friend since boyhood; finds Osiecki's girl fishy"
+                },
+                {
+                  "name": "O'Shaughnessy",
+                  "text": "An architect, Osiecki's bosom friend; calls the girl a blood-sucker"
+                },
+                {
+                  "name": "Eakins",
+                  "text": "The madman in O'Mara's story, who turns out to be O'Mara's brother"
+                },
+                {
+                  "name": "Pop Brown",
+                  "text": "A machinist, Henry's racing father among the cyclists; rides with Henry in his dream"
+                },
+                {
+                  "name": "Joe Folger",
+                  "text": "A cyclist Henry races to a dead heat in his dream"
+                },
+                {
+                  "name": "McFarland",
+                  "text": "An old magazine man behind a new magazine; asks Henry for a serial"
+                },
+                {
+                  "name": "MacGregor",
+                  "text": "Henry's old bosom friend in the law; offers him a job and pays for dinner"
+                }
+              ]
+            },
+            {
+              "type": "list",
+              "label": "Terms",
+              "only": "pdf",
+              "rows": [
+                {
+                  "name": "Mezzotints",
+                  "text": "Henry's short prose poems, printed weekly on stiff coloured paper and sold direct, signed by Mona"
+                },
+                {
+                  "name": "Her smile and her laugh",
+                  "text": "Mona's warm, genuine smile, set against her harsh laugh, hardly different from her weeping"
+                },
+                {
+                  "name": "Dream it off",
+                  "text": "O'Mara's asylum trick: set things as you want them and dream them true in sleep"
+                },
+                {
+                  "name": "Your real father",
+                  "text": "Henry's advice to O'Mara: better fathers are all around; first be a good son"
+                }
+              ]
+            },
+            {
+              "type": "points",
+              "label": "Where it stands",
+              "items": [
+                {
+                  "title": "When and where",
+                  "text": "The day McFarland, an old magazine man, offered Henry a serial; pulling up at their flat after a dinner in Flatbush."
+                },
+                {
+                  "title": "Who is there",
+                  "text": "Henry, who quit his job to write, is driven home by MacGregor, an old friend, after dinner with Mona, his wife, and O'Mara, their boarder."
+                },
+                {
+                  "title": "What they want",
+                  "text": "Henry wants no job, only to go his own way; Mona wants him only to write, even if he never succeeds."
+                },
+                {
+                  "title": "What just happened",
+                  "text": "At dinner Henry turned down the jobs MacGregor and O'Mara found him, unsure he can write McFarland's serial; he will think it over."
+                }
+              ]
+            },
+            {
+              "type": "list",
+              "label": "Still open",
+              "rows": [
+                {
+                  "name": "McFarland's serial",
+                  "text": "Will Henry take up McFarland's offer and write the serial?"
+                },
+                {
+                  "name": "The mortgage",
+                  "text": "Can Mona's family find three thousand dollars before they lose the house?"
+                },
+                {
+                  "name": "Osiecki's lice",
+                  "text": "Who is behind the lice that plague Osiecki?"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "ch4",
+          "number": "04",
+          "title": "Chapter 4",
+          "length": 10898
+        },
+        {
+          "id": "ch5",
+          "number": "05",
+          "title": "Chapter 5",
+          "length": 15406
+        },
+        {
+          "id": "ch6",
+          "number": "06",
+          "title": "Chapter 6",
+          "length": 18791
+        },
+        {
+          "id": "ch7",
+          "number": "07",
+          "title": "Chapter 7",
+          "length": 15570
+        },
+        {
+          "id": "ch8",
+          "number": "08",
+          "title": "Chapter 8",
+          "length": 14163
+        },
+        {
+          "id": "ch9",
+          "number": "09",
+          "title": "Chapter 9",
+          "length": 10759
+        },
+        {
+          "id": "ch10",
+          "number": "10",
+          "title": "Chapter 10",
+          "length": 10871
+        },
+        {
+          "id": "ch11",
+          "number": "11",
+          "title": "Chapter 11",
+          "length": 19333
+        },
+        {
+          "id": "ch12",
+          "number": "12",
+          "title": "Chapter 12",
+          "length": 8455
+        },
+        {
+          "id": "ch13",
+          "number": "13",
+          "title": "Chapter 13",
+          "length": 9818
+        },
+        {
+          "id": "ch14",
+          "number": "14",
+          "title": "Chapter 14",
+          "length": 5779
+        },
+        {
+          "id": "ch15",
+          "number": "15",
+          "title": "Chapter 15",
+          "length": 13234
+        },
+        {
+          "id": "ch16",
+          "number": "16",
+          "title": "Chapter 16",
+          "length": 10612
+        },
+        {
+          "id": "ch17",
+          "number": "17",
+          "title": "Chapter 17",
+          "length": 8220
+        }
+      ]
+    }
+  ],
+  "upTo": "Chapter 3"
+}
