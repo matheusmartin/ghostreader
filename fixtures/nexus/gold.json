@@ -486,5 +486,32 @@
       "kind": "contrast",
       "core": false
     }
-  ]
+  ],
+  "planted": [
+    {
+      "style": "map",
+      "chapter": "ch1",
+      "screen": 1,
+      "path": "text",
+      "text": "Any object can be information, but information is defined by representation: it is a true picture of reality, so errors and fictions such as astrology carry no information and leave no mark on history.",
+      "claim": "Information is defined by representing reality, so astrology carries no information"
+    },
+    {
+      "style": "map",
+      "chapter": "ch2",
+      "screen": 1,
+      "path": "text",
+      "text": "Stories let Sapiens cooperate in unlimited numbers, since strangers need only share a story. Power needs both truth and order, and truth keeps order more easily than fiction, so the most powerful networks are also the wisest.",
+      "claim": "Truth keeps order more easily than fiction, so powerful networks are wise"
+    },
+    {
+      "style": "map",
+      "chapter": "ch2",
+      "screen": 9,
+      "path": "items[0].text",
+      "text": "Personal bonds reach millions of people, so Sapiens needed no stories to cooperate in large numbers.",
+      "claim": "Personal bonds reach millions, so Sapiens needed no stories"
+    }
+  ],
+  "planted_note": "Planted in Claude's guide of these chapters (fixtures/nexus/books/, the guide the gold set was checked against); each contradicts a fact the fact sheets anchor in the text."
 }

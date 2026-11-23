@@ -1,0 +1,883 @@
+{
+  "format": 1,
+  "id": "nexus-reading-layers",
+  "guide": "nexus-reading",
+  "style": "layers",
+  "type": "reading",
+  "title": "Nexus",
+  "author": "Yuval Noah Harari",
+  "source": {
+    "kind": "book-file",
+    "file": "EPUB",
+    "written": "2026-11-22",
+    "skill": "1.8.0",
+    "spec": "1.0.0"
+  },
+  "parts": [
+    {
+      "id": "part-prologue",
+      "chapters": [
+        {
+          "id": "prologue",
+          "number": "P",
+          "title": "Prologue",
+          "length": 6887,
+          "screens": [
+            {
+              "type": "summary",
+              "label": "In one line",
+              "text": "Humans gain power through large networks bound by fictions, so more information alone brings neither truth nor wisdom."
+            },
+            {
+              "type": "points",
+              "label": "In three points",
+              "only": "app",
+              "items": [
+                {
+                  "title": "The naive view",
+                  "text": "Holds that more information brings truth, and truth brings power and wisdom. Medical data did cut child deaths, yet humanity is closer than ever to self-destruction."
+                },
+                {
+                  "title": "The populist view",
+                  "text": "Treats information as a weapon: only power is real, so institutions that claim to seek truth, from judges to doctors, are seen as lying."
+                },
+                {
+                  "title": "The Silicon Curtain",
+                  "text": "AI is the first technology that decides and creates by itself; experts fear a curtain of chips and code dividing rival powers, or all humans from AI overlords."
+                },
+                {
+                  "title": "The network problem",
+                  "text": "Human power comes from cooperation in large networks, not from one person's hubris, and the way such networks are built makes them misuse that power."
+                }
+              ]
+            },
+            {
+              "type": "chart",
+              "chart": "flow",
+              "label": "The argument so far",
+              "start": "Why do we Sapiens gain information and power but not wisdom?",
+              "groups": [
+                {
+                  "items": [
+                    "Power comes from large cooperative networks",
+                    "Information binds networks, often through fictions",
+                    "Naive and populist views both fall short"
+                  ]
+                }
+              ],
+              "key": "The middle ground: information is neither truth nor weapon"
+            },
+            {
+              "type": "chart",
+              "chart": "branches",
+              "label": "Naive and populist views",
+              "start": "Information, truth and power",
+              "options": [
+                {
+                  "title": "The naive view",
+                  "text": "More information brings truth, power and wisdom",
+                  "negative": true
+                },
+                {
+                  "title": "The populist view",
+                  "text": "Information is a weapon; only power is real",
+                  "negative": true
+                },
+                {
+                  "title": "The middle ground",
+                  "text": "Neither sure truth nor a mere weapon",
+                  "key": true
+                }
+              ]
+            },
+            {
+              "type": "steps",
+              "label": "In detail",
+              "steps": [
+                "Human power comes from cooperation in large networks, not one person's greed",
+                "Information holds such networks together, often through fictions that create order",
+                "So deluded networks, such as Nazism and Stalinism, can be very strong",
+                "The naive view trusts more information; the populist view sees only power",
+                "So the book seeks a middle ground: information is neither truth nor weapon"
+              ]
+            },
+            {
+              "type": "text",
+              "label": "The chapter in full",
+              "only": "pdf",
+              "paragraphs": [
+                "Over 100,000 years humans have gained great power, but power is not wisdom: humanity now faces ecological collapse, AI that may escape its control and the risk of a new world war. Harari asks why a species so good at gathering information and power is so poor at gaining wisdom. The Greek myth of Phaethon, son of the sun god, and the poem by Goethe, author of the cautionary tale The Sorcerer's Apprentice, warn against unleashing powers one cannot control. Yet both blame one person's hubris, while human power always comes from cooperation among many people.",
+                "So the problem is a network problem, and more precisely an information problem. Information holds networks together; single humans usually want the truth, but large networks create order by relying on fictions and mass delusions. This is why Nazism and Stalinism were among the strongest networks ever built, and why deluded networks are not doomed to fail.",
+                "The naive view of information holds that enough information brings truth, and truth brings power and wisdom. It has been the creed of the computer age, and it is sometimes right: shared medical data raised the share of children who reach 15 from about half around 1797 to 95.6% worldwide by 2020. Yet humanity has more information than ever and is nearer than ever to destroying itself. AI is the first technology that can decide and create by itself, so trusting it is a far bigger gamble than trusting an enchanted broom. Marc Andreessen, an American investor, expects AI to save the world, while leading AI experts fear a Silicon Curtain dividing rival powers, or dividing all humans from AI overlords.",
+                "The populist view, voiced by populist leaders such as Donald Trump and Jair Bolsonaro, treats information as a weapon: only power is real, so institutions that seek truth must be lying. Harari traces this line of thought to Karl Marx, who saw history as a struggle of oppressors and oppressed. The view is incoherent, and its two escapes, radical empiricism and divine revelation, erode trust in institutions or hand all power to one leader. The book takes the middle ground: information is neither a sure path to truth nor just a weapon. So it starts by asking what information is."
+              ]
+            },
+            {
+              "type": "points",
+              "label": "All key concepts",
+              "only": "pdf",
+              "items": [
+                {
+                  "title": "The network problem",
+                  "text": "Human power comes from cooperation in large networks, not from one person's hubris or greed. The way such networks are built makes them likely to use their power unwisely."
+                },
+                {
+                  "title": "An information problem",
+                  "text": "Information holds networks together. Single humans usually want the truth, but large networks bind members and create order with fictions and delusions, so deluded networks such as Nazism and Stalinism can be very strong."
+                },
+                {
+                  "title": "The naive view",
+                  "text": "Enough information brings truth, and truth brings power and wisdom, so the cure for error is more information. It has been the creed of the computer age; it was right about child deaths but misses humanity's drift toward self-destruction."
+                },
+                {
+                  "title": "Wisdom",
+                  "text": "Making right decisions; but what is right depends on values that differ between people, cultures and ideologies, so the same knowledge can make a vaccine or a weapon."
+                },
+                {
+                  "title": "The Silicon Curtain",
+                  "text": "A divide of chips and code rather than barbed wire. It may split rival powers in a new global conflict, or split all humans from new AI overlords, a totalitarian threat to everyone."
+                },
+                {
+                  "title": "Dumb tools and AI",
+                  "text": "Knives, bombs and gramophones cannot process information, so humans decide how they are used. AI is the first technology that decides and creates by itself, and it already decides on mortgages, jobs and prison sentences."
+                },
+                {
+                  "title": "The populist view",
+                  "text": "Treats information as a weapon: only power is real, so institutions that claim to seek truth, from judges to journalists, must be lying. Harari traces it to Karl Marx and finds it surprisingly Marxist even on the right."
+                },
+                {
+                  "title": "Two populist solutions",
+                  "text": "Populism is incoherent, since its own leaders would also be lying for power. It escapes through radical empiricism, which trusts no institution and checks everything alone, or divine revelation, which trusts scriptures or a charismatic leader."
+                },
+                {
+                  "title": "The middle ground",
+                  "text": "The book's stance: populists rightly distrust the naive view but wrongly think only power is real. Information is neither a sure path to truth nor just a weapon."
+                }
+              ]
+            },
+            {
+              "type": "points",
+              "label": "More examples",
+              "style": "box",
+              "only": "pdf",
+              "items": [
+                {
+                  "title": "Goethe's family",
+                  "text": "In the family of Goethe, author of The Sorcerer's Apprentice, only three of 12 children reached adulthood; shared medical data now saves most children."
+                },
+                {
+                  "title": "A smartphone and Alexandria",
+                  "text": "Every smartphone holds more information than the ancient Library of Alexandria and links its owner to billions of people."
+                },
+                {
+                  "title": "Google's mission",
+                  "text": "Its aim of organising the world's information and making it accessible sums up the naive view."
+                },
+                {
+                  "title": "The Bletchley Declaration",
+                  "text": "In 2023 close to 30 governments, among them China, the United States and the UK, admitted that AI risks catastrophic harm."
+                },
+                {
+                  "title": "Populists and religion",
+                  "text": "In the 2010s and early 2020s populist parties from Brazil to India allied with traditional religions while distrusting modern institutions."
+                }
+              ]
+            },
+            {
+              "type": "list",
+              "label": "Terms",
+              "only": "pdf",
+              "rows": [
+                {
+                  "name": "The naive view",
+                  "text": "More information brings truth, and truth brings power and wisdom"
+                },
+                {
+                  "name": "The populist view",
+                  "text": "Information is a weapon, and only power is real"
+                },
+                {
+                  "name": "The middle ground",
+                  "text": "The book's stance: information is neither a sure path to truth nor just a weapon"
+                },
+                {
+                  "name": "Wisdom",
+                  "text": "Making right decisions, which depends on values that differ between people and cultures"
+                },
+                {
+                  "name": "The Silicon Curtain",
+                  "text": "A divide of chips and code, between rival powers or between humans and AI overlords"
+                },
+                {
+                  "name": "Dumb tools",
+                  "text": "Tools that cannot process information, so humans decide how they are used"
+                },
+                {
+                  "name": "Radical empiricism",
+                  "text": "Trust no institution and check everything yourself"
+                },
+                {
+                  "name": "Divine revelation",
+                  "text": "Trust ancient scriptures or a charismatic leader as the source of absolute truth"
+                }
+              ]
+            },
+            {
+              "type": "points",
+              "label": "Where it stands",
+              "items": [
+                {
+                  "title": "The question",
+                  "text": "Why do we Sapiens gain information and power but not wisdom?"
+                },
+                {
+                  "title": "Established so far",
+                  "text": "Over 100,000 years humans gained great power but not wisdom, and now face ecological collapse, AI that may escape control and possible world war."
+                },
+                {
+                  "title": "This chapter adds",
+                  "text": "Power comes from large networks, and because information binds them with fictions rather than truth, they can be strong yet unwise."
+                },
+                {
+                  "title": "Where it stops",
+                  "text": "Taking the middle ground between the naive and populist views, the book first asks what information is."
+                }
+              ]
+            },
+            {
+              "type": "list",
+              "label": "Still open",
+              "rows": [
+                {
+                  "name": "What information is",
+                  "text": "What is information, and how does it relate to truth and power?"
+                },
+                {
+                  "name": "The AI race",
+                  "text": "Will even more information, from AI, leave humanity better or worse off?"
+                },
+                {
+                  "name": "Wise algorithms",
+                  "text": "Can algorithms be relied on to decide wisely?"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "part-1",
+      "label": "Part I",
+      "title": "Human Networks",
+      "chapters": [
+        {
+          "id": "ch1",
+          "number": "01",
+          "title": "What Is Information?",
+          "length": 4881,
+          "screens": [
+            {
+              "type": "summary",
+              "label": "In one line",
+              "text": "Any object can be information, because what defines information is connection, not representation, so errors and fictions shape history too."
+            },
+            {
+              "type": "points",
+              "label": "In three points",
+              "only": "app",
+              "items": [
+                {
+                  "title": "Representation and connection",
+                  "text": "The naive view says information represents reality, and truth is a successful representation. The book: information creates new realities by connecting points into networks, true or not."
+                },
+                {
+                  "title": "Truth",
+                  "text": "An accurate account of some aspects of one universal reality. No account covers everything, since a full one would be reality itself, but some are more truthful."
+                },
+                {
+                  "title": "Objective and subjective levels",
+                  "text": "Reality has an objective level (Aaronsohn died on October 9th 1917) and a subjective level (Israelis see a hero, Palestinians an imperialist agent); both hold truths and errors."
+                },
+                {
+                  "title": "Information depends on context",
+                  "text": "Sarah Aaronsohn, a NILI commander, signalled ships with a shutter, and a captured pigeon gave NILI away, so any object can be information in the right context."
+                }
+              ]
+            },
+            {
+              "type": "chart",
+              "chart": "flow",
+              "label": "The argument so far",
+              "start": "Why do we Sapiens gain information and power but not wisdom?",
+              "groups": [
+                {
+                  "items": [
+                    "Power comes from networks bound by fictions"
+                  ]
+                }
+              ],
+              "key": "More information does not mean more truth"
+            },
+            {
+              "type": "chart",
+              "chart": "compare",
+              "label": "Representation and connection",
+              "columns": [
+                "Representation",
+                "Connection"
+              ],
+              "negative": 0,
+              "rows": [
+                [
+                  "The naive view: information represents reality",
+                  "The book: information links points into networks"
+                ],
+                [
+                  "Success is truth; failure is error or lie",
+                  "Creates new realities, true or not"
+                ],
+                [
+                  "Example: a NILI report on Ottoman troops",
+                  "Example: horoscopes, propaganda, marching songs"
+                ],
+                [
+                  "Cannot explain astrology or the Bible",
+                  "Explains why astrology and the Bible shaped history"
+                ],
+                [
+                  "Judged by truth",
+                  "Judged by how well it connects"
+                ]
+              ],
+              "key": "Connection, not representation, defines information"
+            },
+            {
+              "type": "steps",
+              "label": "In detail",
+              "steps": [
+                "Any object, a shutter or a pigeon, can be information in context",
+                "The naive view: information represents reality, and success is truth",
+                "Yet truth covers only some aspects, and most information represents nothing",
+                "DNA represents nothing and the Bible errs, yet both build vast networks",
+                "So connection defines information, and more information need not mean more truth"
+              ]
+            },
+            {
+              "type": "text",
+              "label": "The chapter in full",
+              "only": "pdf",
+              "paragraphs": [
+                "Many thinkers now see information as the most elementary part of reality, but the book, a work of history, looks only at the role of information in history. Information is not only symbols made by humans. Cher Ami, an army carrier pigeon, carried the message of Major Charles Whittlesey, the battalion's commander, and helped save his trapped men. Sarah Aaronsohn, a NILI commander, signalled British ships with a shutter, and a NILI pigeon that landed at an Ottoman officer's house gave the spy ring away. So any object can be information in the right context.",
+                "The naive view says objects become information when people use them to seek truth: information represents reality, and a successful representation is truth. The book accepts that truth is an accurate representation of some aspects of one universal reality, but truth and reality differ. Every account leaves aspects out, and a complete one would be reality itself, like the full-size map in a story by Jorge Luis Borges, author of the story On Exactitude in Science. Reality has an objective level, such as the date Aaronsohn died, and a subjective level, such as how Israelis and Palestinians see her; on both, truth can be told from error.",
+                "The naive view calls failed representations misinformation or disinformation and cures them with more information, as in the counterspeech doctrine linked with Louis D. Brandeis, a U.S. Supreme Court justice. Harari disagrees: astrology and the Bible erred, yet shaped history, so errors and fictions are information too. What defines information is connection: it creates new realities by tying points into networks. Music and DNA represent nothing, yet they make people move together or link trillions of cells into a body, and a failing network disintegrates rather than being misinformed.",
+                "So information sometimes represents reality and always connects. Rejecting the naive view does not mean rejecting truth or treating information as a weapon, but truthful accounts take a special, costly effort, so more and faster information tends to swamp them. Across history connectivity has grown without a matching rise in truth or wisdom, which is why Nazi Germany and the Soviet Union were not weakened by their delusions. The book turns next to the first information technology: the story."
+              ]
+            },
+            {
+              "type": "points",
+              "label": "All key concepts",
+              "only": "pdf",
+              "items": [
+                {
+                  "title": "Information",
+                  "text": "Something that creates new realities by connecting different points into a network. The definition still includes representation, but representation is not what defines it."
+                },
+                {
+                  "title": "Representation and connection",
+                  "text": "The naive view says information's main role is to represent reality, and a successful representation is truth. The book holds that most information represents nothing and that connection is its defining feature."
+                },
+                {
+                  "title": "Truth",
+                  "text": "An accurate representation of some aspects of one universal reality. Cultures may hold competing beliefs but not contradictory truths, so rejecting universalism means rejecting truth."
+                },
+                {
+                  "title": "Truth and reality differ",
+                  "text": "Every account picks some aspects and ignores others; counting ten thousand soldiers ignores whether they were sick or brave. A complete account would be reality itself, yet some accounts are more truthful than others."
+                },
+                {
+                  "title": "Objective and subjective levels",
+                  "text": "Reality has an objective level of facts that do not depend on beliefs, and a subjective level of people's beliefs and feelings. On both levels, truth can be told from error."
+                },
+                {
+                  "title": "Misinformation and disinformation",
+                  "text": "The naive view's names for failed representations: an honest mistake or a deliberate lie. Its remedy for both is more information, as in the counterspeech doctrine."
+                },
+                {
+                  "title": "Three ways information connects",
+                  "text": "Through a truthful representation, such as the moon landing on television; through an erroneous one, such as a video denying it; or with no representation at all, such as genetic code or music."
+                },
+                {
+                  "title": "Putting things in formation",
+                  "text": "Information need not inform; it puts things in formation, as horoscopes do with lovers, propaganda with voters and marching songs with soldiers."
+                }
+              ]
+            },
+            {
+              "type": "points",
+              "label": "More examples",
+              "style": "box",
+              "only": "pdf",
+              "items": [
+                {
+                  "title": "Orders or dinner",
+                  "text": "A piece of inked paper can be vital information for an army unit or dinner for termites."
+                },
+                {
+                  "title": "Music",
+                  "text": "Most music represents nothing, so it is neither true nor false, yet it makes large numbers of people feel and move together."
+                },
+                {
+                  "title": "DNA and adrenaline",
+                  "text": "DNA represents no lion and no fear, but it starts processes such as making adrenaline that let a body run from a lion."
+                },
+                {
+                  "title": "The Bible's errors",
+                  "text": "Genesis traces all humans to one Middle Eastern family, though Aborigines settled Australia far earlier, and it blames epidemics on sin, not pathogens."
+                },
+                {
+                  "title": "The Metaverse",
+                  "text": "A virtual universe built only of information that tries not to represent the world but to add to or replace it."
+                }
+              ]
+            },
+            {
+              "type": "list",
+              "label": "Terms",
+              "only": "pdf",
+              "rows": [
+                {
+                  "name": "Information",
+                  "text": "Whatever creates new realities by connecting different points into a network"
+                },
+                {
+                  "name": "Truth",
+                  "text": "An accurate representation of some aspects of one universal reality"
+                },
+                {
+                  "name": "Representation",
+                  "text": "The naive view: information's main role is to picture reality"
+                },
+                {
+                  "name": "Connection",
+                  "text": "The book's view: information's defining feature is linking points into networks"
+                },
+                {
+                  "name": "Objective level",
+                  "text": "Facts that do not depend on what people believe"
+                },
+                {
+                  "name": "Subjective level",
+                  "text": "Facts about people's beliefs and feelings, which can still be true or false"
+                },
+                {
+                  "name": "Misinformation",
+                  "text": "An honest mistake in trying to represent reality"
+                },
+                {
+                  "name": "Disinformation",
+                  "text": "A deliberate lie meant to distort other people's view of reality"
+                },
+                {
+                  "name": "Counterspeech doctrine",
+                  "text": "The idea that the remedy for false speech is more speech"
+                }
+              ]
+            },
+            {
+              "type": "points",
+              "label": "Where it stands",
+              "items": [
+                {
+                  "title": "The question",
+                  "text": "Why do we Sapiens gain information and power but not wisdom?"
+                },
+                {
+                  "title": "Established so far",
+                  "text": "The prologue argued that power comes from large networks, held together by fictions, so they can be strong yet unwise."
+                },
+                {
+                  "title": "This chapter adds",
+                  "text": "Information is defined by connection, not representation: it creates networks whether true or not, so more of it need not bring truth."
+                },
+                {
+                  "title": "Where it stops",
+                  "text": "Connectivity has grown through history without more truth or wisdom; the book turns to the first information technology, the story."
+                }
+              ]
+            },
+            {
+              "type": "list",
+              "label": "Still open",
+              "rows": [
+                {
+                  "name": "Helping truth win",
+                  "text": "What extra steps could help costly truthful accounts hold their own?"
+                },
+                {
+                  "name": "The first technology",
+                  "text": "What does the story, the first information technology, do for human networks?"
+                },
+                {
+                  "name": "Wise algorithms",
+                  "text": "Can algorithms be relied on to decide wisely?"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "ch2",
+          "number": "02",
+          "title": "Stories: Unlimited Connections",
+          "length": 7122,
+          "screens": [
+            {
+              "type": "summary",
+              "label": "In one line",
+              "text": "Stories let strangers cooperate without limit, but fiction keeps order more easily than truth, so networks grow powerful, not wise."
+            },
+            {
+              "type": "points",
+              "label": "In three points",
+              "only": "app",
+              "items": [
+                {
+                  "title": "Human-to-story chains",
+                  "text": "Personal bonds reach only a few hundred people, but strangers who know the same story can cooperate, so Sapiens networks have no upper limit."
+                },
+                {
+                  "title": "Intersubjective reality",
+                  "text": "Stories add a third level to the objective (an asteroid) and the subjective (pain): laws, gods, nations and money exist between minds, as bitcoin's value shows."
+                },
+                {
+                  "title": "The third option",
+                  "text": "A fiction is a lie only if it claims to represent reality. The U.S. Constitution admitted its human origin, so it could be amended; the Ten Commandments cannot."
+                },
+                {
+                  "title": "Stories, not just interests",
+                  "text": "Harari argues, against the Marxist view, that stories define large groups' identities and interests, so the Germans who chose the Nazi story in 1933 made a tragic mistake."
+                }
+              ]
+            },
+            {
+              "type": "chart",
+              "chart": "flow",
+              "label": "The argument so far",
+              "start": "Why do we Sapiens gain information and power but not wisdom?",
+              "groups": [
+                {
+                  "items": [
+                    "Power comes from networks bound by fictions",
+                    "Information connects rather than represents"
+                  ]
+                }
+              ],
+              "key": "Networks that put order before truth grow powerful, not wise"
+            },
+            {
+              "type": "chart",
+              "chart": "compare",
+              "label": "Truth and order",
+              "columns": [
+                "Truth",
+                "Order"
+              ],
+              "rows": [
+                [
+                  "Understanding things more accurately",
+                  "Keeping social order among many people"
+                ],
+                [
+                  "Physics for the atom bomb",
+                  "About 130,000 people on the Manhattan Project"
+                ],
+                [
+                  "Complicated and often painful",
+                  "Easier with simple, comforting fictions"
+                ],
+                [
+                  "Essential for science",
+                  "Key to political power"
+                ],
+                [
+                  "Its experts usually take orders",
+                  "Its keepers usually give the orders"
+                ]
+              ],
+              "key": "Put order before truth, and a network grows powerful but unwise"
+            },
+            {
+              "type": "steps",
+              "label": "In detail",
+              "steps": [
+                "Personal bonds reach a few hundred people; shared stories connect unlimited strangers",
+                "Followers bond with the story of a leader or brand, not the person",
+                "Stories create fake memories like Passover's, fictional kin and intersubjective things",
+                "Power needs both truth and order, but fiction keeps order more easily",
+                "So networks that put order before truth grow powerful but not wise"
+              ]
+            },
+            {
+              "type": "text",
+              "label": "The chapter in full",
+              "only": "pdf",
+              "paragraphs": [
+                "Sapiens rule the world not because they are wise but because they alone cooperate flexibly in large numbers. Personal bonds reach only a few hundred people, which keeps chimpanzee and Neanderthal groups small. Changes in brain and language apparently let Sapiens tell and believe fictional stories, which added human-to-story chains: strangers need only know the same story, so a network such as the Catholic Church can link about 1.4 billion people.",
+                "Followers bond with a story about a leader rather than with the person: Joseph Stalin, at the centre of one of history's biggest personality cults, knew that Stalin meant his public image. A brand is such a story, and the tale of Cher Ami, the army carrier pigeon of Chapter 1, was partly one: Frank Blazich, a historian, found that headquarters knew the battalion's location before the pigeon arrived. The story of Jesus, a typical Jewish preacher, spread far beyond the man. Stories also turn strangers into family, as the Passover meal makes Jews remember the exodus as their own past.",
+                "Stories even add a third level of reality. Objective things such as an asteroid exist whatever anyone thinks, subjective things such as pain exist in one mind, and intersubjective things such as laws, gods, nations and money exist in the stories people tell one another. So stories build networks through fake memories, fictional relationships and intersubjective realities, which made Sapiens the most powerful animal. Harari argues that the Marxist view of stories as a smoke screen for material interests is wrong, because stories define the identities and interests of large groups; Germans who chose the Nazi story in 1933 made a tragic mistake.",
+                "Power needs both truth and order, and those who keep order usually command those who know the truth. Fiction has two advantages: it can be simple and it can comfort. Plato, author of the Republic, imagined a noble lie about the origin of the social order, but there is a third option: a fiction that admits it is fiction, like the U.S. Constitution, which could be amended to abolish slavery, unlike the Ten Commandments. Truth and order often conflict, so Nazi Germany could lead in rocket science while banning doubt about its racist myths. History is a tightrope walk between truth and order, and the book turns next to the written document."
+              ]
+            },
+            {
+              "type": "points",
+              "label": "All key concepts",
+              "only": "pdf",
+              "items": [
+                {
+                  "title": "Human-to-human and human-to-story chains",
+                  "text": "Networks of personal bonds stay small, because humans can bond closely with only a few hundred people. Stories add a new chain: people need not know each other, only the same story."
+                },
+                {
+                  "title": "Brand",
+                  "text": "A story told about a product or a person that may have little to do with the real thing, as with Coca-Cola, influencers and Stalin."
+                },
+                {
+                  "title": "Three levels of reality",
+                  "text": "Objective reality exists whether or not anyone knows it; subjective reality exists in one mind; intersubjective reality exists between many minds, in the stories they exchange, and disappears when they stop."
+                },
+                {
+                  "title": "Three ways stories build networks",
+                  "text": "By implanting fake memories, as at Passover; by forming fictional relationships, as among Christian brothers and sisters; and by creating intersubjective realities, such as gods, nations, law codes and currencies."
+                },
+                {
+                  "title": "Stories, not just interests",
+                  "text": "Harari argues that the Marxist view of stories as a smoke screen for material interests is wrong: stories define the identities of large groups, so large-scale identities and interests are always intersubjective."
+                },
+                {
+                  "title": "Truth and order",
+                  "text": "Every information network must at once discover truth and create order. Power needs both, but those who keep order usually command those who know the truth."
+                },
+                {
+                  "title": "Two advantages of fiction over truth",
+                  "text": "Fiction can be as simple as we like, while truth is as complicated as reality; and fiction can be shaped to comfort and flatter, while truth is often painful."
+                },
+                {
+                  "title": "The noble lie",
+                  "text": "Plato's fictional story about the origin of the social order, told to make citizens loyal and stop them questioning the constitution; many states have told versions of it."
+                },
+                {
+                  "title": "Truth, lie and the third option",
+                  "text": "A fictional story is a lie only when it pretends to represent reality truly; when it admits that it creates a new intersubjective reality, it is not a lie."
+                },
+                {
+                  "title": "Human origin and divine origin",
+                  "text": "A fiction that admits humans made it can be amended, as the U.S. Constitution was to abolish slavery; one that claims divine origin, like the Ten Commandments, cannot be changed."
+                }
+              ]
+            },
+            {
+              "type": "points",
+              "label": "More examples",
+              "style": "box",
+              "only": "pdf",
+              "items": [
+                {
+                  "title": "Coca-Cola",
+                  "text": "Tens of billions of dollars of advertising taught people to link a flavoured drink with fun, happiness and youth."
+                },
+                {
+                  "title": "The Loch Ness Monster",
+                  "text": "Whether it exists is an objective question for sonar and DNA: a 2019 DNA survey found many species but no monster."
+                },
+                {
+                  "title": "Disputed states",
+                  "text": "Kosovo, Abkhazia and the United States between 1776 and 1783 show that a state exists when enough people agree it does."
+                },
+                {
+                  "title": "A billionaire on an island",
+                  "text": "A billionaire alone on a desert island finds his banknotes and bonds worthless, since their value lives inside a network."
+                },
+                {
+                  "title": "Tribes and Neanderthals",
+                  "text": "Bands linked by shared stories formed tribes of hundreds or thousands, which beat isolated Neanderthal bands and spread new knowledge."
+                },
+                {
+                  "title": "The mammoth hunters' spell",
+                  "text": "A powerless spell promising dead hunters a good afterlife gave the living courage and solidarity, so it helped the hunt."
+                },
+                {
+                  "title": "Darwin's theory",
+                  "text": "It explains the origin of species but undermines central myths, so governments and churches have limited its teaching, giving up truth for order."
+                }
+              ]
+            },
+            {
+              "type": "list",
+              "label": "Terms",
+              "only": "pdf",
+              "rows": [
+                {
+                  "name": "Human-to-human chains",
+                  "text": "Networks built from personal bonds only, so they stay small"
+                },
+                {
+                  "name": "Human-to-story chains",
+                  "text": "People linked through a story they all know, with no upper limit"
+                },
+                {
+                  "name": "Brand",
+                  "text": "A story told about a product or person, often far from the truth"
+                },
+                {
+                  "name": "Objective reality",
+                  "text": "Things that exist whether or not anyone is aware of them"
+                },
+                {
+                  "name": "Subjective reality",
+                  "text": "Things that exist in one mind's awareness of them"
+                },
+                {
+                  "name": "Intersubjective reality",
+                  "text": "Things that exist between many minds, created by exchanging stories"
+                },
+                {
+                  "name": "The noble lie",
+                  "text": "A fictional story about the origin of the social order, told to keep citizens loyal"
+                },
+                {
+                  "name": "The third option",
+                  "text": "A fiction that admits it creates a new intersubjective reality, so it is no lie"
+                },
+                {
+                  "name": "Truth and order",
+                  "text": "The two tasks of every information network: discover truth and create order"
+                }
+              ]
+            },
+            {
+              "type": "points",
+              "label": "Where it stands",
+              "items": [
+                {
+                  "title": "The question",
+                  "text": "Why do we Sapiens gain information and power but not wisdom?"
+                },
+                {
+                  "title": "Established so far",
+                  "text": "The prologue argued that power comes from large networks bound by fictions; Chapter 1, that information is defined by connection, not truth."
+                },
+                {
+                  "title": "This chapter adds",
+                  "text": "Stories let strangers cooperate without limit, and because order is easier with fiction than truth, networks can grow powerful without growing wise."
+                },
+                {
+                  "title": "Where it stops",
+                  "text": "History is a tightrope walk between truth and order; the book turns to its next information technology, the written document."
+                }
+              ]
+            },
+            {
+              "type": "list",
+              "label": "Still open",
+              "rows": [
+                {
+                  "name": "Balancing truth and order",
+                  "text": "How can a network balance truth with order as information speeds up?"
+                },
+                {
+                  "name": "The written document",
+                  "text": "How will written documents, the next technology, test the balance of truth and order?"
+                },
+                {
+                  "name": "Correcting the Constitution",
+                  "text": "How did the U.S. Constitution correct its own injustices, as Chapter 5 will show?"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "ch3",
+          "number": "03",
+          "title": "Documents: The Bite of the Paper Tigers",
+          "length": 9635
+        },
+        {
+          "id": "ch4",
+          "number": "04",
+          "title": "Errors: The Fantasy of Infallibility",
+          "length": 15858
+        },
+        {
+          "id": "ch5",
+          "number": "05",
+          "title": "Decisions: A Brief History of Democracy and Totalitarianism",
+          "length": 23629
+        }
+      ]
+    },
+    {
+      "id": "part-2",
+      "label": "Part II",
+      "title": "The Inorganic Network",
+      "chapters": [
+        {
+          "id": "ch6",
+          "number": "06",
+          "title": "The New Members: How Computers Are Different from Printing Presses",
+          "length": 12160
+        },
+        {
+          "id": "ch7",
+          "number": "07",
+          "title": "Relentless: The Network Is Always On",
+          "length": 8409
+        },
+        {
+          "id": "ch8",
+          "number": "08",
+          "title": "Fallible: The Network Is Often Wrong",
+          "length": 15213
+        }
+      ]
+    },
+    {
+      "id": "part-3",
+      "label": "Part III",
+      "title": "Computer Politics",
+      "chapters": [
+        {
+          "id": "ch9",
+          "number": "09",
+          "title": "Democracies: Can We Still Hold a Conversation?",
+          "length": 14148
+        },
+        {
+          "id": "ch10",
+          "number": "10",
+          "title": "Totalitarianism: All Power to the Algorithms?",
+          "length": 3856
+        },
+        {
+          "id": "ch11",
+          "number": "11",
+          "title": "The Silicon Curtain: Global Empire or Global Split?",
+          "length": 11109
+        }
+      ]
+    },
+    {
+      "id": "part-epilogue",
+      "chapters": [
+        {
+          "id": "epilogue",
+          "number": "E",
+          "title": "Epilogue",
+          "length": 3130
+        }
+      ]
+    }
+  ],
+  "upTo": "Chapter 2"
+}

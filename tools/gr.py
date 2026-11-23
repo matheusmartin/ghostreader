@@ -29,6 +29,11 @@ and records the call in work/<guide>/run.json.
   python3 -I tools/gr.py goldtest --guide <g> --fixture <dir>
                                                     write the recall test with the gold set's questions
                                                     (style "gold"), for a reader and a scorer
+  python3 -I tools/gr.py plant --guide <g> --fixture <dir> [--dest DIR]
+                                                    a copy of the fixture's guide with the gold set's
+                                                    false claims in it, for a judge (verify)
+  python3 -I tools/gr.py caught --guide <g> --fixture <dir> [--dest DIR]
+                                                    the share of planted claims the judge caught
   python3 -I tools/gr.py measure --guide <g> --fixture <dir>
                                                     the guide's scores from its files: steps, anchors,
                                                     claims, must carry, concept, gold and blind recall
@@ -887,39 +892,51 @@ def set_path(obj, path, value):
     obj[int(last) if last.isdigit() else last] = value
 
 
+def plant(fixture, gold, work, dest):
+    """A copy of the fixture's correct guide (fixtures/<name>/books/) with the gold set's false
+    claims put in, and the run's own text, plan, fact sheets and ledger for the judge: for a real
+    book, the fixture has none (they quote it). Returns the copy's Guide."""
+    dest, books = Path(dest), Path(dest) / 'books'
+    if not dest.exists():
+        shutil.copytree(work / 'source', dest / 'source')
+        for name in ('intake.json', 'plan.json', 'facts', 'ledger'):
+            src = work / name
+            if src.exists():
+                (shutil.copytree if src.is_dir() else shutil.copy)(src, dest / name)
+        shutil.copytree(fixture / 'books', books)
+        for x in gold['planted']:
+            path = books / f'{gold["guide"]}-{x["style"]}.json'
+            book = read_json(path)
+            ch = next(c for _, c, _ in cg.chapters(book) if c['id'] == x['chapter'])
+            set_path(ch['screens'][x['screen'] - 1], x['path'], x['text'])
+            write_json(path, book)
+    return Guide(gold['guide'], dest, books)
+
+
+def caught(gold, pg):
+    """The share of planted claims a judge's verdicts mark as not supported, on the planted screen."""
+    plants, hit = gold['planted'], 0
+    for x in plants:
+        v = pg.work / 'verdicts' / f'{x["chapter"]}.json'
+        if not v.exists():
+            continue
+        ref = f'{x["chapter"]}.s{x["screen"]}'
+        words = {w for w in re.findall(r'[a-z]+', x['claim'].lower()) if len(w) > 3}
+        if any(c['screen'] == ref and c['style'] == x['style'] and c['verdict'] != 'supported'
+               and len(words & set(re.findall(r'[a-z]+', c['claim'].lower()))) >= max(1, len(words) // 2)
+               for c in read_json(v)['claims']):
+            hit += 1
+    return round(hit / len(plants), 3)
+
+
 def planted(fixture, gold, work, models, settings):
     """The fixture's own guide with known false claims put in: how many does the judge catch?"""
-    plants = gold.get('planted', [])
-    if not plants or not (fixture / 'books').exists():
+    if not gold.get('planted') or not (fixture / 'books').exists():
         return None  # not run: no planted claims, or no correct guide to plant them in
-    pw, pb = work / 'planted', work / 'planted' / 'books'
-    if not pw.exists():  # a resumed run keeps the planted copy it made before
-        shutil.copytree(work / 'source', pw / 'source')
-        # The run's own plan, fact sheets and ledger: for a real book, the fixture has none (they quote it).
-        for name in ('plan.json', 'facts', 'ledger'):
-            src = work / name
-            (shutil.copytree if src.is_dir() else shutil.copy)(src, pw / name)
-        shutil.copytree(fixture / 'books', pb)
-    for x in (plants if not (pw / 'planted.done').exists() else []):
-        path = pb / f'{gold["guide"]}-{x["style"]}.json'
-        book = read_json(path)
-        ch = next(c for _, c, _ in cg.chapters(book) if c['id'] == x['chapter'])
-        set_path(ch['screens'][x['screen'] - 1], x['path'], x['text'])
-        write_json(path, book)
-    (pw / 'planted.done').write_text('')
-    pg = Guide(gold['guide'], pw, pb)
-    caught = 0
-    for cid in sorted({x['chapter'] for x in plants}):
-        if not run_step('verify', pg, models, settings, cid):
-            continue
-        claims = read_json(pw / 'verdicts' / f'{cid}.json')['claims']
-        for x in (p for p in plants if p['chapter'] == cid):
-            ref = f'{cid}.s{x["screen"]}'
-            words = {w for w in re.findall(r'[a-z]+', x['claim'].lower()) if len(w) > 3}
-            if any(c['screen'] == ref and c['style'] == x['style'] and c['verdict'] != 'supported'
-                   and len(words & set(re.findall(r'[a-z]+', c['claim'].lower()))) >= max(1, len(words) // 2) for c in claims):
-                caught += 1
-    return round(caught / len(plants), 3)
+    pg = plant(fixture, gold, work, work / 'planted')
+    for cid in sorted({x['chapter'] for x in gold['planted']}):
+        run_step('verify', pg, models, settings, cid)
+    return caught(gold, pg)
 
 
 # ------------------------------------------------------------------ main
@@ -940,7 +957,7 @@ def load_models(args):
 
 def main():
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
-    ap.add_argument('command', choices=['models', 'stage', 'repair', 'write', 'check', 'eval', 'record', 'prompt', 'save', 'goldtest', 'measure'])
+    ap.add_argument('command', choices=['models', 'stage', 'repair', 'write', 'check', 'eval', 'record', 'prompt', 'save', 'goldtest', 'measure', 'plant', 'caught'])
     ap.add_argument('step', nargs='?', choices=list(STEPS))
     ap.add_argument('--guide')
     ap.add_argument('--chapter')
@@ -955,6 +972,7 @@ def main():
     ap.add_argument('--model', help='record: the model that ran the step')
     ap.add_argument('--gate', choices=['pass', 'fail'], default='pass', help='record: the step\'s gate')
     ap.add_argument('--reply', help='save: the file with the agent\'s JSON reply')
+    ap.add_argument('--dest', help='plant, caught: the planted copy\'s folder (default <work>-planted)')
     for role in ROLES:
         ap.add_argument(f'--{role}', help=f'PROVIDER:MODEL for the {role} role')
     args = ap.parse_args()
@@ -980,6 +998,19 @@ def main():
                        **({'style': args.style} if args.style else {}), 'prompt': f'{STEPS[args.step][0][:-3]}@{head["version"]}',
                        'role': STEPS[args.step][1], 'model': {'provider': 'agent', 'family': args.family, 'model': args.model},
                        'attempts': 1, 'gate': args.gate, 'finished': now()})
+            return 0
+        if args.command in ('plant', 'caught'):
+            if not args.fixture:
+                raise Stop(f'{args.command} needs --fixture')
+            fixture = Path(args.fixture)
+            gold = read_json(fixture / 'gold.json')
+            dest = Path(args.dest or (g.work.parent / f'{g.work.name}-planted'))
+            if args.command == 'plant':
+                pg = plant(fixture, gold, g.work, dest)
+                print(f'wrote the planted guide in {pg.books}; judge chapters '
+                      f'{", ".join(sorted({x["chapter"] for x in gold["planted"]}))} there (verify)', file=sys.stderr)
+            else:
+                print(json.dumps({'planted_caught': caught(gold, Guide(gold['guide'], dest, dest / 'books'))}))
             return 0
         if args.command in ('goldtest', 'measure'):
             if not args.fixture:
