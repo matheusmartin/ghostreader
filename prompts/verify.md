@@ -1,16 +1,16 @@
 ---
 stage: verify
-version: 1.0.0
+version: 1.1.0
 role: judge
 isolation: required
 inputs:
   chapter_text: work/{{guide}}/source/<the chapter's sources in plan.json>
   facts: work/{{guide}}/facts/{{chapter}}.json
   ledger: work/{{guide}}/ledger/<every chapter up to and including {{chapter}}>.json
-  guide_map: check_guide.py text {{guide}} --style map --upto {{chapter}} --pdf (this chapter only)
-  guide_recap: check_guide.py text {{guide}} --style recap --upto {{chapter}} --pdf (this chapter only)
-  guide_recall: check_guide.py text {{guide}} --style recall --upto {{chapter}} --pdf (this chapter only)
-  guide_layers: check_guide.py text {{guide}} --style layers --upto {{chapter}} --pdf (this chapter only)
+  guide_map: check_guide.py text {{guide}} --style map --upto {{chapter}} --all (this chapter only)
+  guide_recap: check_guide.py text {{guide}} --style recap --upto {{chapter}} --all (this chapter only)
+  guide_recall: check_guide.py text {{guide}} --style recall --upto {{chapter}} --all (this chapter only)
+  guide_layers: check_guide.py text {{guide}} --style layers --upto {{chapter}} --all (this chapter only)
 include:
   - references/working-files.md
 output:

@@ -21,9 +21,9 @@ Commands (run from the repository root):
                        given yet). Confirmed exceptions go one per line in work/<guide>/names-ok.txt.
   concepts <guide>     Writes concepts.json from the fact sheets (keeps each "core" mark), then
                        checks that each concept is named on a screen of the chapter that introduces it.
-  text <guide>         The guide as plain text, for a judge: --style (default map), --upto
-                       <chapter-id> (inclusive), --pdf to add the PDF-only blocks. Every screen has
-                       an id, "ch3.s2" (chapter ch3, screen 2 of the chapter in the book file).
+  text <guide>         The guide as plain text: --style (default map), --upto <chapter-id>
+                       (inclusive), --pdf for the PDF's blocks, --all for every screen (a judge's
+                       view). Every screen has an id, "ch3.s2" (screen 2 of chapter ch3 in the file).
   test <guide>         The blind recall test, for --style and --upto: writes
                        recall-test/<style>-<chapter>.md (the questions, then the guide's app screens)
                        and -key.json with the answers.
@@ -631,14 +631,16 @@ def screen_text(s, ref=''):
     return '\n'.join(lines)
 
 
-def guide_text(book, upto=None, pdf=False):
+def guide_text(book, upto=None, pdf=False, every=False):
+    """The guide as text. pdf: the PDF's blocks (PDF-only in, app-only out); every: all screens,
+    app-only and PDF-only, as a judge must see them."""
     out = [f'# {book["title"]} · {book.get("style", "map")}']
     ids = [c['id'] for _, c, _ in chapters(book)]
     if upto and upto not in ids:
         fail(f'no chapter "{upto}" (chapters: {", ".join(ids)})')
     for part, ch, screens in chapters(book):
         shown = [(f'{ch["id"]}.s{i}', s) for i, s in enumerate(screens, 1)
-                 if (s.get('only') != 'pdf' or pdf) and not (pdf and s.get('only') == 'app')]
+                 if every or ((s.get('only') != 'pdf' or pdf) and not (pdf and s.get('only') == 'app'))]
         if shown:
             kicker = ' · '.join(x for x in (part.get('label'), part.get('title')) if x)
             out.append(f'\n## {ch["title"]}' + (f' ({kicker})' if kicker else '') + f' [{ch["id"]}]')
@@ -662,7 +664,7 @@ def cmd_text(args, guide, w, say):
     style = args.style or 'map'
     if style not in guide:
         fail(f'no {style} file')
-    print(guide_text(guide[style], args.upto, args.pdf))
+    print(guide_text(guide[style], args.upto, args.pdf, args.all))
 
 
 def cmd_test(args, guide, w, say):
@@ -829,7 +831,8 @@ def main():
     ap.add_argument('--schemas', help='schema folder (default: the repository\'s schemas/)')
     ap.add_argument('--style', choices=STYLES)
     ap.add_argument('--upto', help='last chapter id (text, test, verdicts, score)')
-    ap.add_argument('--pdf', action='store_true', help='text: add the PDF-only blocks')
+    ap.add_argument('--pdf', action='store_true', help='text: the PDF\'s blocks (PDF-only blocks in, app-only screens out)')
+    ap.add_argument('--all', action='store_true', help='text: every screen, app-only and PDF-only, for a judge')
     ap.add_argument('--json', action='store_true', help='checks: print the result as JSON')
     args = ap.parse_args()
     guide = load_guide(args.books, args.guide, need_map=args.command not in ('schema', 'plan', 'facts', 'concepts'))

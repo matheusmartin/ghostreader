@@ -413,7 +413,7 @@ class Guide:
         path = self.books / f'{self.id}-{style}.json'
         if not path.exists():
             return f'(no {style} file)'
-        text = cg.guide_text(read_json(path), upto=cid, pdf=True)
+        text = cg.guide_text(read_json(path), upto=cid, every=True)  # every screen, app-only ones too
         i = text.find(f'[{cid}]\n')
         start = text.rfind('\n## ', 0, i) if i >= 0 else -1
         return f'# Style: {style}\n' + (text[start:] if start >= 0 else text)
