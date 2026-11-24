@@ -1,6 +1,6 @@
 # Proposal: a model-neutral standard for book guides
 
-Status: decisions taken 2026-11-22 (section 8); phases 1 and 2 done; phase 3 in progress (section 10) · scope: the process that
+Status: decisions taken 2026-11-22 (section 8); phases 1 and 2 done; phase 3 pilot done (section 10) · scope: the process that
 reads a book and writes a guide (today the `ghostreader-book` skill). The app and the book format
 do not change.
 
@@ -413,7 +413,7 @@ tools/                            gr.py (the runner)
 |---|---|---|---|
 | 1 · Open the door (done) | `AGENTS.md`, `CLAUDE.md`; a `.agents/skills/` link to the skill; neutral wording (isolation rule, `progress.md`); `book.schema.json` with a test; rule IDs (`spec/rules.md`) in `lint.ts`, the book tests and `check_guide.py`; `--json` output for the checks (`scripts/validate-book.mjs`, `check_guide.py --json`); a test of the skill against the Agent Skills format | S | Level A works in other agents for the current process |
 | 2 · Pin the contracts (done) | JSON working files with schemas (`schemas/`) and Markdown views; anchors with quotes the script finds; verdict and score files; `check_guide.py` commands `schema`, `plan`, `concepts`, `verdicts`, `score`, `render`; a stdlib schema validator for the Python scripts; eight stage prompts with pinned examples (`prompts/`); an original sample book with complete working files (`fixtures/sample/`); `writing-style.md` normative | M | Same files, same checks, whatever the model |
-| 3 · Measure (in progress) | Done: the LLM profile of each schema (5.6); the runner `gr.py` (Level B: `write`, `check`, `eval`; Level A: `prompt`, `save`; `repair`, `goldtest`, `measure`, `plant`, `caught`); `run.json`; `source.spec` and `source.checks`; gold sets for Plexus and Nexus. Running: the cross-family pilot (section 10) | L | Conformance scores per model |
+| 3 · Measure (in progress) | Done: the LLM profile of each schema (5.6); the runner `gr.py` (Level B: `write`, `check`, `eval`; Level A: `prompt`, `save`; `repair`, `goldtest`, `measure`, `plant`, `caught`); `run.json`; `source.spec` and `source.checks`; gold sets for Plexus and Nexus; the cross-family pilot (section 10). Next: the prompt fixes and the steps in 10.5 | L | Conformance scores per model |
 | 4 · Optional | MCP server; Inspect tasks; a spec version policy (semver: a new required field = major) | S | Clients with no shell |
 
 Each phase ships on its own. Claude Code keeps working at every phase: a sub-agent is one way to
@@ -448,11 +448,12 @@ Taken on 2026-11-22.
 - **No study tests book recaps after long pauses** (styles.md already says so). The recall test
   is the project's own proxy.
 
-## 10 · Phase 3 pilot: first results (interim, 2026-11-23)
+## 10 · Phase 3 pilot: results (2026-11-24)
 
-The first cross-family run on real books. It is not finished: the Gemini half waits for the free
-tier's daily quotas (section 10.5). The numbers come from one book pair and from Gemini's Flash
-models on the free tier, so read them as a pilot, not as a verdict on either family.
+The first cross-family run on real books, finished. The numbers come from one book pair, and
+from Gemini's Flash models on the free tier against Claude's own model: they compare a free
+Flash tier with a frontier model as much as two families. Read them as a pilot, not as a
+verdict on either family.
 
 ### 10.1 · Setup
 
@@ -461,85 +462,87 @@ models on the free tier, so read them as a pilot, not as a verdict on either fam
 | Type and scope | Story guide, chapters 1–3 (limit) | Reading guide, prologue to chapter 2 (limit) |
 | Text a model may read | 52,210 words: the spoiler gate moved chapters 4–17 out first | 19,424 words: chapters 3–11 and the notes moved out |
 | Claude writes | isolated Claude runs, through `gr.py prompt` and `gr.py save` | the same |
-| Gemini writes | plan `gemini-3.7-flash`; fact sheets `gemini-3.5-flash`; Map and styles `gemini-3-flash-preview` | `gemini-3-flash-preview` |
-| Judges | each family judges the other's guide; both judge the same planted copy of Claude's guide | the same |
+| Gemini writes | plan `gemini-3.7-flash` (repaired by 3.5); fact sheets `gemini-3.5-flash`; Map and styles `gemini-3-flash-preview` | `gemini-3-flash-preview` |
+| Judge, reader, scorer | the other family: `gemini-3.6-flash` for Claude's guides, isolated Claude runs for Gemini's | the same |
 | Gold set | 18 questions, 1 core concept, 3 planted false claims (`fixtures/plexus/gold.json`) | 18 questions, 13 core concepts, 3 planted claims (`fixtures/nexus/gold.json`) |
 
-Both families get the same prompts, the same inputs and the same checks. The Gemini API's free
-tier lets Google use the text sent to improve its products (the user chose it, knowing this),
-and it allows few calls a day per model, so the Gemini writer for Plexus spans three Flash models.
+Both families get the same prompts, the same inputs and the same checks. Both judges also check
+the same planted copy of Claude's guide. The free tier lets Google use the text sent to improve
+its products (the user chose it, knowing this).
 
-### 10.2 · Results so far
+### 10.2 · Results
 
-| Measure | Plexus, Claude wrote | Plexus, Gemini wrote | Nexus, Claude wrote | Nexus, Gemini wrote |
-|---|---|---|---|---|
-| Writer steps passed (on the first call) | 14 of 15 (9); the failure: the plan's long question | 12 of 12 so far (4); 2 left | 13 of 13 (7) | 13 of 14 (7) |
-| Anchors and quotes clean | yes | yes | yes | yes |
-| Planted claims caught, Claude judge | 3 of 3 | | 3 of 3 | |
-| Planted claims caught, Gemini judge | 2 of 2 reached | | 3 of 3 | |
-| Other faults found by the other family's judge | not yet | not yet | none (Gemini) | 14 unsupported, 67 inferred (Claude) |
-| Core concepts in the guide's text | 0 of 1 | 0 of 1 | 10 of 13 | 8 of 13 |
-| Gold-set recall | not yet | not yet | not yet | 64% |
-| Blind recall, its own questions (Map) | not yet | not yet | not yet | 100% |
+| Measure | Plexus, Claude wrote | Plexus, Gemini wrote | Nexus, Claude wrote | Nexus, Gemini wrote | Pass mark |
+|---|---|---|---|---|---|
+| Writer steps passed (on the first call) | 14 of 15 (9) | 14 of 14 (6) | 13 of 13 (9) | 13 of 14 (7) | all, after ≤ 2 repairs |
+| Anchors and quotes clean | yes | yes | yes | yes | yes |
+| Planted claims caught, Claude judge | 3 of 3 | | 3 of 3 | | 90% |
+| Planted claims caught, Gemini judge | 3 of 3 | | 3 of 3 | | 90% |
+| Claims the other family's judge checked | 153 | 1,196 | 191 | 626 | |
+| … unsupported, inferred | 0, 0 | 66, 149 | 0, 0 | 14, 67 | 0 after fixes |
+| The Claude judge on Claude's guide (planted copy, plants left out) | 3, 2 of 1,196 | | 0, 1 of 1,138 | | |
+| Must-carry items missing in a style | 0 | 4 | 0 | 0 | 0 |
+| Core concepts in the guide's text | 0 of 1 | 0 of 1 | 10 of 13 | 8 of 13 | 90% |
+| Gold-set recall (the other family reads and scores) | 83% | 42% | 75% | 64% | 80% |
+| Blind recall, own questions, Map | running | 76% | 98% | 100% | 80% |
 
-What the numbers say so far:
+### 10.3 · What the pilot shows
 
-- **Both families can follow the process.** Every step of both families passed its checks, most
-  of them within the two repairs. The repairs fixed the same kinds of problems for both: quotes
-  not found in their paragraph, word limits, title case, British spelling.
-- **The checks catch outside knowledge, in both families.** The names check stopped Gemini's
-  drafts writing "Josef", "70,000 years ago" and "Greenwich", none of which these chapters give.
-  The Claude judges found that Claude's Plexus guide calls a man a detective, a job the text never
-  gives him. A model that knows a famous book fills gaps from memory; only the anchored checks
-  stop it.
-- **Both judges catch plain false claims.** Each caught every planted claim it reached.
-- **The judges differ in depth.** On the same chapters the Claude judge checked 539–686 claims per
-  chapter, the Gemini judge 45–76. The Claude judge also found real faults in Claude's own Plexus
-  guide that the Gemini judge did not: a wrong cause (why Mona weeps), an inference the text does
-  not support ("gold-digging", in three styles), two names without a role.
-- **One judge on both Nexus guides** (Claude): Gemini's guide, chapters 1–2, has 13 unsupported and
-  28 inferred claims; Claude's has 0 and 1. A judge may favour its own family's text, so part of
-  this gap may be leniency; the Gemini judge's verdicts on Claude's guide found no faults beyond
-  the planted ones, but it checked ten times fewer claims.
-- **Gold recall is lower than own-question recall** (Gemini's Nexus guide: 64% against 100%): a
-  guide passes its own questions more easily than questions someone else chose. The gold set was
-  drafted by a Claude run from the text alone, so it may favour Claude's choices; the user's review
-  of `fixtures/*/gold.json` is still open.
+1. **The standard runs on two model families.** Claude, as an agent (Level A), and Gemini, through
+   the runner with no tools (Level B), wrote complete four-style guides of both books under the
+   same prompts and checks, and every guide passes `validate`. Most steps passed within the two
+   repairs, and the repairs fixed the same kinds of problem for both.
+2. **The anchored checks stop outside knowledge, in both families.** The names check stopped
+   Gemini writing "Josef", "70,000 years ago" and "Greenwich", which these chapters never give.
+   It cannot stop common words: "Battling Siki, a boxer" (Gemini) and "O'Rourke, a detective"
+   (Claude) came from what the models know, and only the judges caught them.
+3. **Every judge caught every planted claim** — but the planted claims were gross (a reversed
+   fact). They do not measure how deep a judge reads.
+4. **The judges differ in depth, and depth decides what a check finds.** The Gemini Flash judge
+   checked 153–191 claims per guide and marked every claim of Claude's guides supported apart
+   from the plants, including faults the Claude judge found there (the detective, a wrong cause, an
+   unsupported "gold-digging"). The Claude judge checked 3–8 times more claims and found faults on
+   both sides.
+5. **With the stricter judge, the Gemini Flash guides have far more unsupported claims** (80
+   against 3) and lower gold recall (42% and 64% against 83% and 75%). A judge may favour its own
+   family's text, and the readers and scorers of the gold test differ by family, so these gaps
+   are upper bounds of the quality difference, not measures of it.
+6. **No guide meets every pass mark.** The concept mark (90%) failed everywhere: the Plexus gold
+   set has a single core concept, and the Nexus guides name 8–10 of 13.
 
-### 10.3 · Defects the pilot found in the standard, and their fixes
+### 10.4 · Defects the pilot found in the standard, and their fixes
 
 | Defect | Fix |
 |---|---|
 | The plan prompt asked for the book's question and cast from the contents list only, so a model could fill them in only from memory | The plan reads the opening text, and forbids outside knowledge (plan prompt 1.1.0) |
-| The plan check did not count the question's words; a long one failed only at write-styles, where it cannot be fixed | The plan check counts them (GR-L01); `gr.py repair` sends a saved output back for one more repair round |
-| No judge ever saw the app-only screens (the Reading guide's "Key concepts"): `check_guide.py text --pdf` mirrors the PDF | Judges get every screen (`--all`, verify prompt 1.1.0), and a coverage rule: every screen with text has a checked claim (GR-C06) |
-| The planted-claim count missed claims a judge split into parts | It compares with the planted text |
-| The concept measure compared names word for word (Claude 15%, Gemini 38% on Nexus) | It looks for the concept in the guide's text (77% and 62%) |
+| The plan check did not count the question's words; a long one failed only at write-styles | The plan check counts them (GR-L01); `gr.py repair` sends a saved output back for one more repair round |
+| No judge ever saw the app-only screens: `check_guide.py text --pdf` mirrors the PDF | Judges get every screen (`--all`, verify prompt 1.1.0), and a coverage rule (GR-C06) |
+| A recall scorer ran without the reader's answers and marked every question 0 | The runner stops a scorer without answers |
+| The planted-claim count and the concept measure compared words too strictly | Both compare with the text itself |
 | The names check flagged common words at the start of an item as names | Fewer false alarms, clearer messages |
-| The runner's JSON-mode fallback used up a retry; its retries used up the free tier's daily quota | Fixed; at most three retries, with long waits; a used-up daily quota stops the run at once, and the next run resumes |
+| The runner's retries used up the free tier's daily quota | At most three retries, long waits; a used-up quota stops the run, and the next run resumes |
 
-Still open, to fix after the pilot so that both families keep the same prompts during it:
+### 10.5 · Next steps
 
-- The reference files use examples from the old Nexus guide, some from later chapters: every
-  writer of Nexus sees them. They will use examples from the sample story.
-- 20 points the writers found unclear in the prompts: for example the ledger's `before`, how to
-  record who is present, whether a must-carry third counts paragraphs or words, the Reading
-  guide's "Key concepts" against Layers' three points, limits the prompts do not state.
-- An agent's printed prompt does not include the reply schema, which an API model gets with the
-  request.
+1. **Fix the prompts** (after the pilot, so that both families had the same ones during it):
+   replace the old Nexus examples in the reference files (every Nexus writer saw content from
+   later chapters); the 21 points the writers and judges found unclear (for example the ledger's
+   `before`, who is present, whether thirds count paragraphs or words, "Key concepts" against
+   Layers' three points, limits the prompts do not state, an app screen for each must-carry item);
+   put the reply schema in an agent's printed prompt.
+2. **Measure judge depth**: plant subtle false claims too (a wrong cause, a job the text never
+   gives, a feeling it does not state), and require a judge that catches them.
+3. **Use a strong judge.** A Flash-class judge is not enough as the only check of a guide.
+4. **Run the same pilot with Gemini Pro** (billing on), to compare model families at the same tier.
+5. **Have a person review the gold sets**: a Claude run drafted them, and they may favour Claude's
+   choices.
 
-### 10.4 · What a free-tier Gemini key allows
+### 10.6 · What a free-tier Gemini key allows
 
 Each Flash model allows 20 requests a day, and with large prompts (a whole chapter and four style
-files) a model's daily quota ran out after 5–9 calls. The models that answered often returned
-"high demand" (HTTP 503). A full run of this pilot needs about 100 Gemini calls: on the free
-tier that takes several days and several models; with billing, it takes about an hour.
-
-### 10.5 · Still to run
-
-Gemini writes the last two Plexus style steps; Gemini judges the rest of Claude's guides (one
-planted chapter, two chapters, the gold and Map recall tests); Claude judges Gemini's Plexus
-guide. Then the table above is complete, and the prompt fixes in 10.3 follow.
+files) a model's daily quota ran out after 5–9 calls. The models often returned "high demand"
+(HTTP 503). This pilot needed about 70 Gemini calls over three days and five Flash models; with
+billing it takes about an hour.
 
 ## Sources
 
