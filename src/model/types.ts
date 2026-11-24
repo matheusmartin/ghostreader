@@ -61,6 +61,20 @@ export interface Source {
   written?: string;
   /** Version of the ghostreader-book skill that wrote it. */
   skill?: string;
+  /** Version of the model-neutral standard it was checked against (docs/proposal-model-neutral-guides.md). */
+  spec?: string;
+  /** What the checks found when it was written. The models that wrote and judged it are named in work/<guide>/run.json only. */
+  checks?: SourceChecks;
+}
+
+/** Results of a guide's checks, kept with the guide (skill: references/verify.md). */
+export interface SourceChecks {
+  /** Blind recall test: the share of points each style scored, 0 to 1. */
+  recall?: { map?: number; recap?: number; recall?: number; layers?: number };
+  /** Claims the last judge found unsupported or inferred and the writer did not fix: 0 when it ships. */
+  unsupported_claims?: number;
+  /** True when the judge came from another model family than the writer. */
+  judge_independent?: boolean;
 }
 
 export interface Part {

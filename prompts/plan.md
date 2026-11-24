@@ -1,11 +1,12 @@
 ---
 stage: plan
-version: 1.0.0
+version: 1.2.0
 role: writer
 isolation: none
 inputs:
   intake: work/{{guide}}/intake.json
   toc: work/{{guide}}/source/toc.json
+  opening: work/{{guide}}/source/<the first body text file of 200 words or more>
 include:
   - references/guides.md
   - references/working-files.md
@@ -30,6 +31,10 @@ The book's table of contents, as extracted (one entry per text file, with its ki
 
 {{toc}}
 
+The book's opening text (its first body text file). Use it only for step 5:
+
+{{opening}}
+
 ## Task
 
 1. Choose the guide id: the title and the type in lower case with hyphens (`nexus-summary`,
@@ -37,21 +42,25 @@ The book's table of contents, as extracted (one entry per text file, with its ki
 2. Make one chapter for each chapter of the book, in order, with its real title ("Chapter 7"
    when it has none) and the number the book gives it ("01"; `P` prologue, `I` introduction, `E`
    epilogue, `C` conclusion, `A1` appendix, only when the book has them). List its text files in
-   `sources` and its word count in `words`.
+   `sources` by their three-digit numbers ("004"), not their file names, and its word count in
+   `words`. `skipped` uses the same numbers.
 3. Group the chapters in the book's own parts, with the book's labels and titles. A prologue or
    epilogue outside the parts goes in a part with no `label` and no `title`. A book without
    parts has one part with no label.
 4. Put every text file of kind `body` that no chapter uses in `skipped`, with the reason (an
    editor's preface, a licence, a list of illustrations).
-5. Non-fiction: write the book's question, in the book's terms, 12 words at most. Fiction: the
-   story's main situation, as a question. Fiction: list the main cast, one role each in the
-   book's words.
+5. From the opening text only: non-fiction, the book's question, in the book's terms, 12 words
+   at most; fiction, the story's main situation as the opening shows it, as a question, and the
+   people the opening introduces, one role each in the book's words.
 
 ## Rules
 
 - Only the book's own parts and chapters (GR-S01). Never add an overview, key concepts, who's
   who or "the book in one page" chapter, and never invent a part label.
 - Never invent a title, a number or a length.
+- Book content only (GR-C05): the question and the cast come from the opening text, never from
+  what you know about the book or its author. A person who first appears later is not in the
+  cast yet.
 
 ## Output
 

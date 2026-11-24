@@ -79,6 +79,7 @@ an ID that is not on this page.
 | GR-C03 | With a limit, no word that looks past it ("eventually", "in the end") | `validate` | `references/content-rules.md` |
 | GR-C04 | No quotation from the book: no quoted passage of six words or more | `validate` | `references/content-rules.md` |
 | GR-C05 | Nothing from outside the book, except the year of first publication and map outlines | `names`, `judge` | `references/content-rules.md` |
+| GR-C06 | A claim check covers every screen with text, in every style: a judge that skips a screen can miss its errors | `verdicts` | `references/verify.md` |
 
 ## V · Visuals
 

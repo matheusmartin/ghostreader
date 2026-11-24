@@ -1,16 +1,16 @@
 ---
 stage: verify
-version: 1.0.0
+version: 1.2.0
 role: judge
 isolation: required
 inputs:
   chapter_text: work/{{guide}}/source/<the chapter's sources in plan.json>
   facts: work/{{guide}}/facts/{{chapter}}.json
   ledger: work/{{guide}}/ledger/<every chapter up to and including {{chapter}}>.json
-  guide_map: check_guide.py text {{guide}} --style map --upto {{chapter}} --pdf (this chapter only)
-  guide_recap: check_guide.py text {{guide}} --style recap --upto {{chapter}} --pdf (this chapter only)
-  guide_recall: check_guide.py text {{guide}} --style recall --upto {{chapter}} --pdf (this chapter only)
-  guide_layers: check_guide.py text {{guide}} --style layers --upto {{chapter}} --pdf (this chapter only)
+  guide_map: check_guide.py text {{guide}} --style map --upto {{chapter}} --all (this chapter only)
+  guide_recap: check_guide.py text {{guide}} --style recap --upto {{chapter}} --all (this chapter only)
+  guide_recall: check_guide.py text {{guide}} --style recall --upto {{chapter}} --all (this chapter only)
+  guide_layers: check_guide.py text {{guide}} --style layers --upto {{chapter}} --all (this chapter only)
 include:
   - references/working-files.md
 output:
@@ -57,7 +57,8 @@ The chapter in the four styles. Each screen starts with its id, `[ch3.s2 · labe
    text says) or `unsupported`. Check claims about the whole book ("the first time") against the
    ledger. Look hardest at what people feel, want or know, at relations, and at the order of
    events: AI summaries get these wrong most often.
-2. For each must-carry item, give the screen that carries it in each style, or `missing`.
+2. For each must-carry item, give the app screen that carries it in each style, or `missing`. A
+   PDF-only block (marked "(PDF only)") does not count: a reader in the app never sees it.
 3. Check "Where it stands" and "Still open" against the ledger: the state at the chapter's end,
    nothing from a later chapter, no hint of an answer, every name with a role.
 

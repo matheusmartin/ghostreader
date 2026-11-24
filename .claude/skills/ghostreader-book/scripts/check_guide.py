@@ -21,9 +21,9 @@ Commands (run from the repository root):
                        given yet). Confirmed exceptions go one per line in work/<guide>/names-ok.txt.
   concepts <guide>     Writes concepts.json from the fact sheets (keeps each "core" mark), then
                        checks that each concept is named on a screen of the chapter that introduces it.
-  text <guide>         The guide as plain text, for a judge: --style (default map), --upto
-                       <chapter-id> (inclusive), --pdf to add the PDF-only blocks. Every screen has
-                       an id, "ch3.s2" (chapter ch3, screen 2 of the chapter in the book file).
+  text <guide>         The guide as plain text: --style (default map), --upto <chapter-id>
+                       (inclusive), --pdf for the PDF's blocks, --all for every screen (a judge's
+                       view). Every screen has an id, "ch3.s2" (screen 2 of chapter ch3 in the file).
   test <guide>         The blind recall test, for --style and --upto: writes
                        recall-test/<style>-<chapter>.md (the questions, then the guide's app screens)
                        and -key.json with the answers.
@@ -121,7 +121,11 @@ class Source:
     def text(self, n):
         if n not in self._text:
             e = self.by_n[n]
-            raw = (self.dir / e['file']).read_text().replace('’', "'").replace('‘', "'")
+            path = self.dir / e['file']
+            if not path.exists():  # moved to after-limit/ by the spoiler gate: not part of the book here
+                self._text[n] = ''
+                return ''
+            raw = path.read_text().replace('’', "'").replace('‘', "'")
             raw = re.sub(r'(?<=\d),(?=\d{3})', '', raw)  # 13,000 -> 13000
             raw = re.sub(r'(?<![A-Za-z])((?:[A-Z]\.){2,})', lambda m: m.group(1).replace('.', ''), raw)  # U.S. -> US
             self._text[n] = raw
@@ -133,13 +137,13 @@ class Source:
 
 # ------------------------------------------------------------------ the guide
 
-def load_guide(books, guide):
+def load_guide(books, guide, need_map=True):
     out = {}
     for style in STYLES:
         p = Path(books) / f'{guide}-{style}.json'
         if p.exists():
             out[style] = load_json(p)
-    if 'map' not in out:
+    if need_map and 'map' not in out:
         fail(f'no Map file {Path(books) / f"{guide}-map.json"}')
     return out
 
@@ -218,6 +222,7 @@ FILES = (  # working file pattern -> schema
     ('ledger/*.json', 'ledger'), ('concepts.json', 'concepts'), ('styles.json', 'styles'),
     ('verdicts/*.json', 'verdict'), ('recall-test/*-key.json', 'recall-key'),
     ('recall-test/*-answers.json', 'recall-answers'), ('recall-test/*-score.json', 'recall-score'),
+    ('run.json', 'run'),
 )
 
 
@@ -248,6 +253,26 @@ def chapter_text(book, cid):
     return ''
 
 
+def frame(guide, w):
+    """The guide's type, its chapters in order [(id, title)] and the ids of the written ones: from
+    the Map file, or from plan.json before the Map file exists."""
+    if 'map' in guide:
+        book = guide['map']
+        return (book['type'], [(ch['id'], ch['title']) for _, ch, _ in chapters(book)],
+                {ch['id'] for _, ch, _ in written(book)})
+    plan = w.read('plan.json', 'plan')
+    if not plan:
+        fail(f'no Map file and no valid {w.dir / "plan.json"}')
+    return plan['type'], [(c['id'], c['title']) for p in plan['parts'] for c in p['chapters']], set()
+
+
+def to_check(guide, w):
+    """Chapters the fact checks cover: the written ones, and any with a fact sheet."""
+    _, order, done = frame(guide, w)
+    has = lambda cid: (w.dir / 'facts' / f'{cid}.json').exists() or (w.dir / 'facts' / f'{cid}.md').exists()
+    return [cid for cid, _ in order if cid in done or has(cid)]
+
+
 # ------------------------------------------------------------------ plan
 
 def cmd_plan(args, guide, w, say):
@@ -255,7 +280,6 @@ def cmd_plan(args, guide, w, say):
     if not plan:
         return
     src = Source(w.dir)
-    book = guide['map']
     where = str(w.dir / 'plan.json')
     used = {}
     for part in plan['parts']:
@@ -266,11 +290,18 @@ def cmd_plan(args, guide, w, say):
                 if f in used:
                     say('GR-S01', f'{where} {ch["id"]}', f'text file {f} is also in {used[f]}')
                 used[f] = ch['id']
+    # The question opens every "argument so far" chart: 12 words at most (as the styles' flow start).
+    q = plan.get('question', '')
+    if len(q.split()) > 12:
+        say('GR-L01', where, f'"question" has {len(q.split())} words; at most 12 (it starts every "argument so far" chart)')
     skipped = {s['file'] for s in plan.get('skipped', [])}
     for e in src.toc:
         f = f'{e["n"]:03d}'
         if e.get('kind') == 'body' and f not in used and f not in skipped:
             say('GR-S01', where, f'text file {f} ("{e["title"]}") is in no chapter: add it, or list it in "skipped" with the reason')
+    if 'map' not in guide:
+        return
+    book = guide['map']
     # The Map file has exactly the plan's parts and chapters, in order.
     shape = lambda parts: [(p['id'], p.get('label'), p.get('title'), [(c['id'], c['number'], c['title']) for c in p['chapters']]) for p in parts]
     planned, made = shape(plan['parts']), shape(book['parts'])
@@ -315,10 +346,8 @@ def check_anchor(src, sources, a, where, say):
 
 def cmd_facts(args, guide, w, say):
     src = Source(w.dir)
-    book = guide['map']
-    fiction = book['type'] == 'fiction'
-    for _, ch, _ in written(book):
-        cid = ch['id']
+    fiction = frame(guide, w)[0] == 'fiction'
+    for cid in to_check(guide, w):
         sheet = w.facts(cid)
         if not sheet:
             continue
@@ -432,6 +461,8 @@ def forms(w):
     """The word, its American spelling, and stems without common endings (4 letters at least)."""
     out = {w}
     out.add(re.sub(r'i(er|est|es|ed)$', 'y', w))  # mightier -> mighty, studies -> study
+    if len(w) >= 5 and w.endswith('y'):
+        out.add(w[:-1] + 'i')  # symphony -> symphoni(es)
     for a, b in BRITISH:
         out.add(re.sub(a, b, w))
     for f in list(out):
@@ -459,6 +490,11 @@ def in_book(kind, w, first, text, whole):
     return False
 
 
+def lower_in_book(w, whole):
+    """True when the book writes this capitalised word in lower case: then it is a common word."""
+    return any(len(f) >= 2 and re.search(rf'\b{re.escape(f.lower())}', whole) for f in forms(w))
+
+
 def cmd_names(args, guide, w, say):
     src = Source(w.dir)
     ok_file = w.dir / 'names-ok.txt'
@@ -482,39 +518,54 @@ def cmd_names(args, guide, w, say):
                 cache[n] = src.text_upto(n)
             text = cache[n]
             missing = {}
+            # Words the guide itself writes in lower case are common words, not names, when they
+            # start an item ("Bots that compose…" in a guide that also says "bots").
+            lower = {x for s in screens for _, t in strings(s) for x in re.findall(r"(?<![\w'-])[a-z][\w'-]*", t)}
             for s in screens:
                 for key, string in strings(s):
                     for kind, word, first in candidates(string, label=key == 'label'):
                         if word in ok or (kind, word) in missing:
                             continue
+                        if first and kind == 'name' and word.lower() in lower:
+                            continue
                         if not in_book(kind, word, first, text, whole):
                             missing[(kind, word)] = string
             for (kind, word), string in missing.items():
-                say('GR-C02', f'{book["id"]} {ch["id"]}', f'{kind} "{word}" is not in the book up to this chapter (in "{string[:60]}")')
+                where = f'{book["id"]} {ch["id"]}'
+                if kind == 'name' and lower_in_book(word, whole):
+                    say('GR-C02', where, f'"{word}" is written in lower case in the book: write it so, or use the book\'s name (in "{string[:60]}")')
+                elif kind == 'name' and first:
+                    say('GR-C02', where, f'"{word}" is not in the book up to this chapter: a name the book does not give, '
+                        f'or a word it does not use; remove the name, or use the book\'s own word (in "{string[:60]}")')
+                else:
+                    say('GR-C02', where, f'{kind} "{word}" is not in the book up to this chapter (in "{string[:60]}")')
 
 
 # ------------------------------------------------------------------ concepts
 
 def cmd_concepts(args, guide, w, say):
-    book = guide['map']
+    book = guide.get('map')
     old = {}
     path = w.dir / 'concepts.json'
     if path.exists() and w.check(path, 'concepts'):
         old = {(c['name'], c['chapter']): c for c in load_json(path)['concepts']}
     found = []
-    for _, ch, _ in written(book):
-        sheet = w.facts(ch['id'], report=False)
+    written_ids = frame(guide, w)[2]
+    for cid in to_check(guide, w):
+        sheet = w.facts(cid, report=False)
         for fact in (sheet or {}).get('facts', []):
             if fact['type'] == 'concept' and fact.get('concept'):
                 c = fact['concept']
-                prev = old.get((c['name'], ch['id']), {})
-                found.append({'name': c['name'], 'kind': c['kind'], 'mode': c['mode'], 'chapter': ch['id'],
+                prev = old.get((c['name'], cid), {})
+                found.append({'name': c['name'], 'kind': c['kind'], 'mode': c['mode'], 'chapter': cid,
                               'fact': fact['id'], 'core': prev.get('core', False)})
+                if not book or cid not in written_ids:
+                    continue
                 # Shown, not only named: the concept's name, or every member's, on a screen of its chapter.
-                text = norm(chapter_text(book, ch['id']))
+                text = norm(chapter_text(book, cid))
                 names = [c['name']] if norm(c['name']) in text else [m['name'] for m in c['members'] if norm(m['name']) in text]
                 if not names or (names != [c['name']] and len(names) < len(c['members'])):
-                    say('GR-V05', f'{book["id"]} {ch["id"]}', f'concept "{c["name"]}" ({fact["id"]}) is not on a screen of its chapter: give it a chart, a key point or a "Terms" row, under the same name')
+                    say('GR-V05', f'{book["id"]} {cid}', f'concept "{c["name"]}" ({fact["id"]}) is not on a screen of its chapter: give it a chart, a key point or a "Terms" row, under the same name')
     path.write_text(json.dumps({'concepts': found}, ensure_ascii=False, indent=2) + '\n')
     print(f'wrote {path}: {len(found)} concept(s); mark "core": true on the ones later chapters build on', file=sys.stderr)
 
@@ -580,14 +631,16 @@ def screen_text(s, ref=''):
     return '\n'.join(lines)
 
 
-def guide_text(book, upto=None, pdf=False):
+def guide_text(book, upto=None, pdf=False, every=False):
+    """The guide as text. pdf: the PDF's blocks (PDF-only in, app-only out); every: all screens,
+    app-only and PDF-only, as a judge must see them."""
     out = [f'# {book["title"]} · {book.get("style", "map")}']
     ids = [c['id'] for _, c, _ in chapters(book)]
     if upto and upto not in ids:
         fail(f'no chapter "{upto}" (chapters: {", ".join(ids)})')
     for part, ch, screens in chapters(book):
         shown = [(f'{ch["id"]}.s{i}', s) for i, s in enumerate(screens, 1)
-                 if (s.get('only') != 'pdf' or pdf) and not (pdf and s.get('only') == 'app')]
+                 if every or ((s.get('only') != 'pdf' or pdf) and not (pdf and s.get('only') == 'app'))]
         if shown:
             kicker = ' · '.join(x for x in (part.get('label'), part.get('title')) if x)
             out.append(f'\n## {ch["title"]}' + (f' ({kicker})' if kicker else '') + f' [{ch["id"]}]')
@@ -611,7 +664,7 @@ def cmd_text(args, guide, w, say):
     style = args.style or 'map'
     if style not in guide:
         fail(f'no {style} file')
-    print(guide_text(guide[style], args.upto, args.pdf))
+    print(guide_text(guide[style], args.upto, args.pdf, args.all))
 
 
 def cmd_test(args, guide, w, say):
@@ -668,6 +721,12 @@ def cmd_verdicts(args, guide, w, say):
                 if c['verdict'] != 'supported':
                     act = 'fix it or remove it' if c['verdict'] == 'unsupported' else 'soften it or remove it, unless the text states it'
                     say('GR-C01', where, f'{c["verdict"]}: "{c["claim"]}"' + (f' ({c["note"]})' if c.get('note') else '') + f': {act}')
+            # Every screen with text, in every style, has at least one claim checked (GR-C06).
+            have = {(c['style'], c['screen']) for c in v['claims']}
+            for style, by_ch in refs.items():
+                for ref, scr in by_ch.get(cid, {}).items():
+                    if (style, ref) not in have and any(t.strip() for _, t in strings(scr)):
+                        say('GR-C06', f'{path} {style} {ref}', f'no claim of "{scr.get("label") or scr["type"]}" was checked: check every screen with text, in every style')
             checked = {m['id']: m for m in v['must_carry']}
             for m in (sheet or {}).get('must_carry', []):
                 if m['id'] not in checked:
@@ -679,6 +738,9 @@ def cmd_verdicts(args, guide, w, say):
                         say('GR-M03', f'{path} {m["id"]}', f'missing in {style}: put "{m["text"][:60]}" on a screen that style shows ("Key points" first)')
                     elif style in refs and at not in refs[style].get(cid, {}):
                         say('GR-F04', f'{path} {m["id"]}', f'no screen {at} in chapter {cid} of the {style} file')
+                    elif style in refs and refs[style][cid][at].get('only') == 'pdf':
+                        # A reader in the app never sees a PDF-only block: it does not carry the item.
+                        say('GR-M03', f'{path} {m["id"]}', f'only on a PDF-only block in {style} ({at}): put "{m["text"][:60]}" on an app screen too')
             r = v['resume']
             if not r['matches_ledger']:
                 say('GR-R04', path, '"Where it stands" or "Still open" does not match the ledger at the chapter\'s end')
@@ -772,10 +834,11 @@ def main():
     ap.add_argument('--schemas', help='schema folder (default: the repository\'s schemas/)')
     ap.add_argument('--style', choices=STYLES)
     ap.add_argument('--upto', help='last chapter id (text, test, verdicts, score)')
-    ap.add_argument('--pdf', action='store_true', help='text: add the PDF-only blocks')
+    ap.add_argument('--pdf', action='store_true', help='text: the PDF\'s blocks (PDF-only blocks in, app-only screens out)')
+    ap.add_argument('--all', action='store_true', help='text: every screen, app-only and PDF-only, for a judge')
     ap.add_argument('--json', action='store_true', help='checks: print the result as JSON')
     args = ap.parse_args()
-    guide = load_guide(args.books, args.guide)
+    guide = load_guide(args.books, args.guide, need_map=args.command not in ('schema', 'plan', 'facts', 'concepts'))
     problems = []
 
     def say(rule, where, message):

@@ -46,10 +46,10 @@ order**; summaries also leave out key events and give too much weight to the end
 ## Restrictions
 
 - **No quotations from the book**, not even short ones: paraphrase. A term the author coined may
-  name a concept ("the Silicon Curtain"). The validator reports quoted passages of six words or more.
+  name a concept ("the commons trap"). The validator reports quoted passages of six words or more.
 - No numbers the book does not give. A bar chart shows only numbers from the book.
 - No opinions: no ratings, praise, criticism or critics' views, unless the chapter itself
-  discusses them. When the author judges real people or groups, attribute it ("Harari argues").
+  discusses them. When the author judges real people or groups, attribute it ("the author argues").
 - No icons, emoji, photos, clip art, book covers or logos: only the app's shapes, lines and text.
 - No personal data: no highlights, notes, ratings or reading progress. The book only.
 

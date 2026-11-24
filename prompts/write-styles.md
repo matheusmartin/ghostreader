@@ -1,6 +1,6 @@
 ---
 stage: write-styles
-version: 1.0.0
+version: 1.2.0
 role: writer
 isolation: none
 inputs:
@@ -55,6 +55,11 @@ Write one entry with these fields (`references/styles.md`, "The styles file"):
 - `remember`: 2–3 concepts or people the chapter introduces.
 - `questions`: exactly three cued questions with short answers; the third is asked again two
   chapters later, so make it the chapter's core point.
+- `first_items`, in the first chapter only: 2–4 items for its "argument so far" chart, 7 words
+  each at most: what the chapter sets up (the chart already starts with the book's question).
+- `part_point`, only in a part's last chapter, when that chapter is written and the part has two
+  or more chapters: the part's point, 7 words at most. Not when the guide's limit ends inside the
+  part.
 
 ## Rules
 

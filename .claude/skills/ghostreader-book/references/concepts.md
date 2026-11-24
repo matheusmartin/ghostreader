@@ -6,14 +6,14 @@ one of them, record it with its anchor, and show it as a picture, not only name 
 
 ## What counts
 
-| Kind | What it looks like in the text | Nexus |
+| Kind | What it looks like in the text | Example (an invented book on cities) |
 |---|---|---|
-| **Defined concept** | A term the author names and explains: "I call this…", "by X I mean…", a word in italics followed by a definition | Self-correcting mechanism; the alignment problem |
-| **Typology** | A set of kinds: "three levels", "two types", "first… second… third…" | Objective, subjective and intersubjective reality |
-| **Contrast** | Two things set against each other: "X, not Y", "unlike", "whereas", "on the one hand" | Information as representation versus information as connection |
-| **Views or uses** | Rival ways to see or use the same thing, often each with a name | The naive and the populist views of information; information to find truth or to make order |
-| **Indirect distinction** | A contrast the author builds across a chapter or the whole book without one sentence that names it: paired examples, the same two terms set against each other again and again | Distributed versus centralised networks, shown through democracy and dictatorship in many chapters |
-| **Fiction: the story's own concepts** | Invented words, ranks, rules of a world, factions, a magic system, social codes the plot depends on | (Pride and Prejudice: the entail that passes Longbourn to Mr Collins) |
+| **Defined concept** | A term the author names and explains: "I call this…", "by X I mean…", a word in italics followed by a definition | The commons trap: a shared resource that each user overuses because no one owns it |
+| **Typology** | A set of kinds: "three levels", "two types", "first… second… third…" | Three kinds of trust: personal, institutional and algorithmic |
+| **Contrast** | Two things set against each other: "X, not Y", "unlike", "whereas", "on the one hand" | Planned cities versus grown cities |
+| **Views or uses** | Rival ways to see or use the same thing, often each with a name | Two views of traffic: build more roads, or make fewer car trips |
+| **Indirect distinction** | A contrast the author builds across a chapter or the whole book without one sentence that names it: paired examples, the same two terms set against each other again and again | Old town centres and new suburbs, set against each other in many chapters and never named as a pair |
+| **Fiction: the story's own concepts** | Invented words, ranks, rules of a world, factions, a magic system, social codes the plot depends on | (The sample story, `fixtures/sample/`: the keeper's rule, by which a keeper who breaks the clock's hour loses the tower) |
 
 Leave out ordinary words used in their ordinary sense, and concepts the author only mentions in
 passing. When unsure whether the author defines something or only uses it, check whether the
@@ -31,12 +31,12 @@ introduces it (`references/working-files.md`):
 
 ```json
 { "id": "F14", "type": "concept", "basis": "stated",
-  "text": "Reality comes in three kinds: objective, subjective and intersubjective",
+  "text": "Trust comes in three kinds: personal, institutional and algorithmic",
   "anchor": { "file": "011", "p": [22, 25], "quote": "…" },
-  "concept": { "name": "Three kinds of reality", "kind": "typology", "mode": "explicit", "members": [
-    { "name": "Objective", "definition": "Exists whatever people think", "example": "Stones" },
-    { "name": "Subjective", "definition": "Exists in one mind", "example": "Pain" },
-    { "name": "Intersubjective", "definition": "Exists between many minds", "example": "Money, nations" } ] } }
+  "concept": { "name": "Three kinds of trust", "kind": "typology", "mode": "explicit", "members": [
+    { "name": "Personal", "definition": "Trust in someone you know", "example": "A neighbour" },
+    { "name": "Institutional", "definition": "Trust in a body and its rules", "example": "A bank" },
+    { "name": "Algorithmic", "definition": "Trust in a system's scores", "example": "A ride-hailing rating" } ] } }
 ```
 
 `name` in the book's words · `kind` (concept, typology, contrast, views, fiction) · `mode`
@@ -79,8 +79,8 @@ Then:
   been shown: it still needs its chart.
 - **Stable cues.** A core concept keeps its inventory name, in the book's words, on every screen
   of every chapter and style; a later chart that shows it again uses the same chart kind and the
-  same labels for its members (the three kinds of reality are always "Objective", "Subjective" and
-  "Intersubjective", in the same order). A cue the reader learned must work again.
+  same labels for its members (the three kinds of trust are always "Personal", "Institutional" and
+  "Algorithmic", in the same order). A cue the reader learned must work again.
 - With a limit (`upTo`): only concepts introduced up to the limit.
 
 ## Check it (step 7)

@@ -56,7 +56,7 @@ For each chapter, start an isolated run with only these: the chapter's text file
 the ledger up to it, and the guide's text for the chapter in every style:
 
 ```bash
-python3 -I .claude/skills/ghostreader-book/scripts/check_guide.py text <guide> --style map --upto <chapter-id> --pdf
+python3 -I .claude/skills/ghostreader-book/scripts/check_guide.py text <guide> --style map --upto <chapter-id> --all
 ```
 
 (Give it the last chapter of that output; do the same for recap, recall and layers.) Ask it to:

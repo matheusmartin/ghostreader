@@ -18,7 +18,7 @@ describe('rule catalogue (spec/rules.md)', () => {
     expect(listed.size).toBeGreaterThan(20);
   });
 
-  for (const file of ['src/model/lint.ts', 'tests/books.test.ts', 'scripts/validate-book.mjs', `${SKILL}/scripts/check_guide.py`]) {
+  for (const file of ['src/model/lint.ts', 'tests/books.test.ts', 'scripts/validate-book.mjs', `${SKILL}/scripts/check_guide.py`, 'tools/gr.py']) {
     it(`has every rule ID that ${file} prints`, () => {
       const used = new Set([...read(file).matchAll(/GR-[A-Z]\d{2}/g)].map((m) => m[0]));
       expect(used.size).toBeGreaterThan(0);
@@ -57,8 +57,9 @@ describe('Agent Skills format (agentskills.io)', () => {
 });
 
 describe('agent entry points', () => {
-  it('has AGENTS.md, and CLAUDE.md imports it', () => {
+  it('has AGENTS.md, and CLAUDE.md and GEMINI.md import it', () => {
     expect(read('AGENTS.md')).toContain(`${SKILL}/SKILL.md`);
     expect(read('CLAUDE.md').trim()).toBe('@AGENTS.md');
+    expect(read('GEMINI.md').trim()).toBe('@AGENTS.md');
   });
 });

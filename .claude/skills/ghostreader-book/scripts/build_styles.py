@@ -130,18 +130,20 @@ class Guide:
                     self.info[ch['id']] = ch
 
     def part_point(self, pid, written):
-        given = self.notes.get('parts', {}).get(pid)
+        # The part's point: in "parts", or in the "part_point" of its last written chapter.
+        given = self.notes.get('parts', {}).get(pid) or self.chapters.get(written[-1], {}).get('part_point')
         if given:
             return given
         if len(written) == 1:
             return self.chapters[written[0]]['point']
-        fail(f'styles file: "parts" needs a point for part "{pid}" (it has {len(written)} chapters)')
+        fail(f'styles file: "parts" needs a point for part "{pid}" (it has {len(written)} chapters), '
+             f'or its last chapter "{written[-1]}" a "part_point"')
 
     def argument_so_far(self, cid):
         """Items of Layers' "argument so far": the finished parts, then the current part's earlier chapters."""
         i = self.order.index(cid)
         if i == 0:
-            return self.notes.get('first_items', [])
+            return self.notes.get('first_items') or self.chapters[cid].get('first_items', [])
         pid = self.part_of[cid]
         frame = []
         for part_id, written in self.parts:
@@ -233,6 +235,7 @@ def layers(cid, screens, n, g):
     points = first(screens, 'points', 'Key points') or first(screens, 'points', style_not='box')
     if points:
         points['label'] = 'In three points'
+        points['items'] = points['items'][:3]  # a Reading guide's "Key concepts" can have four
         out.append(points)
     if items:
         out.append({'type': 'chart', 'chart': 'flow', 'label': 'The argument so far', 'start': g.question,

@@ -1,8 +1,16 @@
 # Proposal: a model-neutral standard for book guides
 
-Status: decisions taken 2026-11-22 (section 8); phases 1 and 2 done · scope: the process that
+Status: decisions taken 2026-11-22 (section 8); phases 1 and 2 done; phase 3 cut down after a pilot (section 10) · scope: the process that
 reads a book and writes a guide (today the `ghostreader-book` skill). The app and the book format
 do not change.
+
+> **After the pilot (2026-11-24): the simpler course.** Another company's coding agent (Gemini
+> CLI, Codex CLI) follows the skill as Claude Code does, on the user's computer, with the same
+> scripts and checks: no API runner is needed. `tools/gr.py` keeps only `prompt` and `save`, for
+> an AI chat with no tools or an isolated run. The API runner (Level B below), the LLM profiles
+> (5.6, item 2) and the conformance suite (5.7) were built, tried in the pilot, and removed as more
+> than the goal needs. The sections below are the original plan; section 10 has what the pilot
+> found. How to use other models: the README, "With another AI model".
 
 ## 1 · Summary
 
@@ -138,7 +146,7 @@ then the run stops and reports the gate output.
 Three equal ways to meet it:
 
 1. A sub-agent, in agents that have them (Claude Code, Codex and others).
-2. A separate call through the runner: `python3 tools/gr.py stage verify --guide <g> --chapter ch3`.
+2. A separate model call: `python3 -I tools/gr.py prompt verify --guide <g> --chapter ch3` prints the prompt for it.
 3. A different model, app or person, given the bundle that `check_guide.py text` writes.
 
 The checklist lives in a file, not in a tool: `work/<guide>/progress.md`. Every agent can tick it.
@@ -263,7 +271,7 @@ one source. A test fails when the schema is out of date or when a book file in `
 not validate. `npm run schema` writes it with `ts-json-schema-generator` (JSON Schema draft-07,
 `additionalProperties: false` on every object).
 
-**2 · The LLM profile.** Each model stage writes one chapter, so its schema is small. A script
+**2 · The LLM profile** (built, then removed after the pilot: agent CLIs do not need it). Each model stage writes one chapter, so its schema is small. A script
 derives a strict copy of every schema for model calls:
 
 - `additionalProperties: false` on every object;
@@ -297,6 +305,8 @@ GR-W03 src/books/nexus-summary-map.json parts[0].chapters[2].screens[2].text: "t
 origin, not as a second source of rules (G10).
 
 ### 5.7 · Verification and conformance
+
+(The judges' rules stay; the conformance suite was tried in the pilot and removed.)
 
 **Judges.** S9 and S10 use fixed rubrics and write JSON (5.5). Rules:
 
@@ -413,7 +423,7 @@ tools/                            gr.py (the runner)
 |---|---|---|---|
 | 1 · Open the door (done) | `AGENTS.md`, `CLAUDE.md`; a `.agents/skills/` link to the skill; neutral wording (isolation rule, `progress.md`); `book.schema.json` with a test; rule IDs (`spec/rules.md`) in `lint.ts`, the book tests and `check_guide.py`; `--json` output for the checks (`scripts/validate-book.mjs`, `check_guide.py --json`); a test of the skill against the Agent Skills format | S | Level A works in other agents for the current process |
 | 2 · Pin the contracts (done) | JSON working files with schemas (`schemas/`) and Markdown views; anchors with quotes the script finds; verdict and score files; `check_guide.py` commands `schema`, `plan`, `concepts`, `verdicts`, `score`, `render`; a stdlib schema validator for the Python scripts; eight stage prompts with pinned examples (`prompts/`); an original sample book with complete working files (`fixtures/sample/`); `writing-style.md` normative | M | Same files, same checks, whatever the model |
-| 3 · Measure | The LLM profile of each schema (5.6); fixtures and gold sets (from the book files you give); runner `gr.py` (Level B); `gr eval`; cross-family judges; `run.json`; `source.spec` and `source.checks` | L | Conformance scores per model |
+| 3 · Measure (cut down) | Done: the LLM profile of each schema (5.6); the runner `gr.py` (Level B: `write`, `check`, `eval`; Level A: `prompt`, `save`; `repair`, `goldtest`, `measure`, `plant`, `caught`); `run.json`; `source.spec` and `source.checks`; gold sets for Plexus and Nexus; the cross-family pilot (section 10). Next: the prompt fixes and the steps in 10.5 | L | Conformance scores per model |
 | 4 · Optional | MCP server; Inspect tasks; a spec version policy (semver: a new required field = major) | S | Clients with no shell |
 
 Each phase ships on its own. Claude Code keeps working at every phase: a sub-agent is one way to
@@ -430,7 +440,7 @@ Taken on 2026-11-22.
 | D1 | Working files in JSON or in Markdown with a strict grammar | JSON | Every working file has a schema; a script renders a Markdown view for people |
 | D2 | Public-domain book text in the repository as fixtures | No: you always give the book file | No book text in the repository. Fixtures are gold sets keyed by the file's SHA-256. The book file is a required input of spec 1.0; the skill keeps summaries mode as a fallback, but a guide from summaries is not conformant |
 | D3 | Name the models in committed book files | No | Models are named in `work/<guide>/run.json` only; book files carry the spec version and the scores |
-| D4 | Runner interface | OpenAI-compatible endpoint first | A native adapter only where schema output fails |
+| D4 | Runner interface | OpenAI-compatible endpoint first (dropped after the pilot: other agents' CLIs instead) | A native adapter only where schema output fails |
 | D5 | Conformance thresholds | As in section 5.7 | Review after the first runs on two model families |
 
 ## 9 · Risks and limits
@@ -447,6 +457,32 @@ Taken on 2026-11-22.
   without symlink support get a plain file). Claude Code reads the real folder, so it is safe.
 - **No study tests book recaps after long pauses** (styles.md already says so). The recall test
   is the project's own proxy.
+
+## 10 · Phase 3 pilot: what it found (2026-11-24)
+
+A cross-family pilot on two purchased books, Plexus (chapters 1–3, a Story guide) and Nexus
+(prologue to chapter 2, a Reading guide): Claude and Gemini (free-tier Flash models) each wrote
+both guides with the same prompts and checks, and each judged the other's.
+
+- **The process runs on another model family.** Gemini wrote complete four-style guides of both
+  books; every guide passes `validate`, and both families needed the same kinds of repair.
+- **The anchored checks stop invented names and numbers** ("Josef", "70,000 years ago",
+  "Greenwich" in Gemini's drafts), not invented descriptions ("a boxer", "a detective"): those
+  need a judge or a person.
+- **A small judge is not enough.** Both judges caught every planted false claim, but the Gemini
+  Flash judge checked 3–8 times fewer claims than the Claude judge and missed real faults it found.
+  Use the strongest model available for the checking steps.
+- **With the stricter judge, the Flash guides had far more unsupported claims** (80 against 3)
+  and lower recall of a gold set's questions (42–64% against 75–83%). That compares a free Flash
+  tier with a frontier model as much as two families.
+- **The free API tier is too small for this work**: 20 requests a day per model, and large prompts
+  used a day's quota in 5–9 calls. Gemini CLI with a personal account allows about 1,000.
+- **Defects found and fixed:** the plan prompt invited outside knowledge; the plan check did not
+  count the question's words; no judge saw the app-only screens; a scorer could run without
+  answers; the reference files leaked later Nexus chapters through their examples; 21 points the
+  models found unclear in the prompts.
+- **Too costly for its purpose:** the pilot took three days, about 25 Claude sub-agents and about
+  70 Gemini calls. Showing that another model can follow the skill needed one run of one chapter.
 
 ## Sources
 

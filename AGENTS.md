@@ -21,6 +21,7 @@ Node 22.18 or later. Python 3.9 or later for the book scripts.
 | `npm run validate` | Check every book file: format and writing rules. Each line starts with a rule ID (`spec/rules.md`) |
 | `node scripts/validate-book.mjs <file>... [--json]` | The same checks for any book file, as text or JSON |
 | `npm run schema` | Write `schemas/book.schema.json` again after a change to `src/model/types.ts` |
+| `python3 -I tools/gr.py prompt\|save <step> …` | One step by hand: print its prompt and reply schema; check and file a reply (`--help`) |
 | `npm run check:screens` | Render every screen at three widths; report screens that do not fit (needs Chromium) |
 | `npm run build` | Type check, build the app and one PDF per book (needs Chromium) |
 
@@ -34,6 +35,9 @@ before you start. Its `references/` files are the rules; its `scripts/` are the 
   (`references/working-files.md`).
 - `prompts/` has one prompt per model step: inputs, output schema, check, and a right and a
   wrong example. `fixtures/sample/` is a complete example that passes every check.
+- For an isolated run, or a model with no tools: `python3 -I tools/gr.py prompt <step>` prints
+  the step's prompt and its reply schema; `python3 -I tools/gr.py save <step>` checks a reply,
+  files it and records it in `work/<guide>/run.json`.
 - The user gives the book file (EPUB, PDF, TXT, Markdown or HTML). Ask for it if it is missing.
 - Write from the extracted text and the fact sheets, never from memory.
 - An **isolated run** is a new model context that gets only the files a step lists, and nothing

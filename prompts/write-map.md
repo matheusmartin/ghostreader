@@ -1,6 +1,6 @@
 ---
 stage: write-map
-version: 1.0.0
+version: 1.1.0
 role: writer
 isolation: none
 inputs:
@@ -57,8 +57,10 @@ The chapters before this one, as written:
    order, then the PDF-only blocks, then the two resume screens.
 2. Choose each chart by the shape of the idea (`references/visuals.md`). Give each concept this
    chapter introduces its chart, a key point or a "Terms" row, under its inventory name (GR-V05).
-3. Put every must-carry item on a screen each style shows: "Key points" first, then "In short",
-   "The logic", the main chart or the resume screens (GR-M03).
+3. Put every must-carry item on an app screen each style shows (GR-M03): non-fiction, "Key
+   points" or "Key concepts" first, then "In short" or "Core idea", "The logic", the main chart or
+   the resume screens; fiction, "Who they are", the scenes chart, "In short" or "Where it stands".
+   A PDF-only block does not count: a reader in the app never sees it.
 4. Write "Where it stands" and "Still open" from the ledger at this chapter's end (GR-R01–GR-R04).
 5. Use the id, number, title and length of the chapter in the plan.
 
@@ -69,7 +71,10 @@ The chapters before this one, as written:
   same thing as in the earlier chapters (GR-W07).
 - Nothing from a later chapter, and no hint of an answer in "Still open" (GR-R04).
 - Only feelings, motives and relations the fact sheet marks `stated` (GR-C01).
-- No quotation from the book (GR-C04). Within the limits of each screen (GR-L01, GR-L02).
+- No quotation from the book (GR-C04). Within the limits of each field and block: the last table
+  of references/guides.md has all of them (GR-L01, GR-L02).
+- A label is in sentence case, even when it names a term the book coins in capitals: put the term
+  in the screen's text, and give the label plain words (GR-W01).
 
 ## Output
 

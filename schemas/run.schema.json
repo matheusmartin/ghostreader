@@ -1,0 +1,156 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Run record",
+  "description": "What made a guide: every stage, the prompt and model it used, its attempts and its gate. work/<guide>/run.json, written by tools/gr.py; an agent that runs a stage itself adds its entry with `gr.py record`. Never committed.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "guide",
+    "spec",
+    "runner",
+    "stages"
+  ],
+  "properties": {
+    "guide": {
+      "type": "string"
+    },
+    "spec": {
+      "type": "string",
+      "description": "Version of the model-neutral standard"
+    },
+    "runner": {
+      "type": "string",
+      "description": "\"gr 1.0.0\""
+    },
+    "stages": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/Stage"
+      }
+    }
+  },
+  "definitions": {
+    "Model": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "provider",
+        "family",
+        "model"
+      ],
+      "properties": {
+        "provider": {
+          "type": "string",
+          "description": "The provider's name in the runner's config (\"gemini\"), or \"agent\" for a step an agent ran itself"
+        },
+        "family": {
+          "type": "string",
+          "description": "The model family: \"gemini\", \"claude\", \"gpt\", \"llama\"…"
+        },
+        "model": {
+          "type": "string",
+          "description": "The model asked for"
+        }
+      }
+    },
+    "Stage": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "stage",
+        "prompt",
+        "role",
+        "model",
+        "attempts",
+        "gate",
+        "finished"
+      ],
+      "properties": {
+        "stage": {
+          "type": "string"
+        },
+        "chapter": {
+          "type": "string"
+        },
+        "style": {
+          "type": "string",
+          "enum": [
+            "map",
+            "recap",
+            "recall",
+            "layers"
+          ]
+        },
+        "prompt": {
+          "type": "string",
+          "description": "The prompt file and version: \"read-chapter@1.0.0\""
+        },
+        "role": {
+          "type": "string",
+          "enum": [
+            "writer",
+            "judge",
+            "reader",
+            "scorer"
+          ]
+        },
+        "model": {
+          "$ref": "#/definitions/Model"
+        },
+        "served": {
+          "type": "string",
+          "description": "The model name the provider says served the call"
+        },
+        "mode": {
+          "type": "string",
+          "enum": [
+            "schema",
+            "json"
+          ],
+          "description": "schema: the provider constrained the reply to the step's LLM profile; json: it refused the schema, so the call used JSON mode with the schema in the prompt"
+        },
+        "attempts": {
+          "type": "integer",
+          "minimum": 1,
+          "description": "Model calls: 1, plus one per repair"
+        },
+        "gate": {
+          "type": "string",
+          "enum": [
+            "pass",
+            "fail"
+          ]
+        },
+        "problems": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "The gate's problem lines after the last attempt"
+        },
+        "tokens": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "prompt": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "completion": {
+              "type": "integer",
+              "minimum": 0
+            }
+          }
+        },
+        "seconds": {
+          "type": "number",
+          "minimum": 0
+        },
+        "finished": {
+          "type": "string",
+          "description": "UTC time, ISO 8601"
+        }
+      }
+    }
+  }
+}

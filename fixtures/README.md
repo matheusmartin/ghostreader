@@ -3,8 +3,7 @@
 `sample/` is a complete example of the working files and the guide of one book, for the tests
 and for the examples in `prompts/` and `references/working-files.md`. Its book, "The Salt Clock",
 is a two-chapter story written for these tests: it is not a real book, so its text can be in the
-repository. No text of a real book is ever committed (decision D2 in
-`docs/proposal-model-neutral-guides.md`).
+repository. No text of a real book is ever committed.
 
 | Folder | Holds |
 |---|---|

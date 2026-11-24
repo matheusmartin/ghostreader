@@ -1,6 +1,6 @@
 ---
 stage: ledger
-version: 1.0.0
+version: 1.1.0
 role: writer
 isolation: none
 inputs:
@@ -38,13 +38,17 @@ The chapter's text, for the anchors:
 ## Task
 
 Fiction: write one entry for each change on these dimensions, as the chapter ends: `time` and
-`place` of the story; `present` (who is there at the end); and for each person who changes,
-`goal`, `relation`, `knowledge`, `possession`, `view` or `state`. Give `before` (from the earlier
-ledger; `null` when nothing was known), `after`, and the `cause` as the book shows it.
+`place` of the story; `present`, one entry per person there at the end, with that person as
+`entity`; and for each person who changes, `goal`, `relation`, `knowledge`, `possession`, `view`
+or `state`. Give `before`: the state before this chapter's change (from the earlier ledger, or
+from earlier in this chapter when the state changes twice in it; `null` when nothing was known);
+`after`, the state at the chapter's end; and the `cause` as the book shows it.
 
 Non-fiction: write one entry for each step of the argument: `established` (what the chapter
 shows), `open` (a question raised and not answered), `answered` (an earlier open question this
-chapter settles), `promised` (what the author says a later chapter will show).
+chapter settles, or a promise it keeps), `promised` (what the author says a later chapter will
+show). A question answered in part: an `answered` entry for that part, and an `open` one for the
+rest.
 
 Every entry has an anchor with a 3–12-word quote copied from the text.
 
