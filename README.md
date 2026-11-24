@@ -127,8 +127,7 @@ Chapter 6" with the book file attached. The **ghostreader-book** skill
 2. Writes a plan, then a fact sheet per chapter (JSON, one schema each in `schemas/`): every fact
    with its place in the text and a short quote a script finds there, the facts a returning
    reader must get back ("must carry"), and a ledger of the state at each chapter's end. It lists
-   the book's own concepts and distinctions (for example Nexus's objective, subjective and
-   intersubjective reality); each gets a chart in the chapter that introduces it.
+   the book's own concepts and distinctions; each gets a chart in the chapter that introduces it.
 3. Writes the Map file `src/books/<guide>-map.json` from the fact sheets, diagrams first, with
    PDF-only detail and the resume screens; then the texts of the other styles, from which
    `scripts/build_styles.py` builds the Recap, Recall and Layers files.
@@ -138,20 +137,68 @@ Chapter 6" with the book file attached. The **ghostreader-book** skill
    `npm run build`.
 
 The model steps have model-neutral prompts in `prompts/`, and `fixtures/sample/` is a complete
-example that passes every check. Any model behind an OpenAI-compatible API (Gemini, GPT, a local
-model through Ollama or vLLM) can run them with the runner, `tools/gr.py`:
+example that passes every check.
+
+### With another AI model
+
+The skill is in the open Agent Skills format, so other coding agents can follow it as Claude
+Code does. They run the same scripts and checks, and use none of your Claude usage. Do this on
+your own computer, in a clone of this repository, after `npm install`.
+
+1. Put the book file in a folder of its own under `work/`, for example
+   `work/plexus-story/book.epub`. `work/` is never committed.
+2. Start an agent in the repository folder:
+
+   | Agent | Start | It reads |
+   |---|---|---|
+   | [Gemini CLI](https://geminicli.com) (free with a personal Google account, about 1,000 requests a day) | `gemini` | `GEMINI.md` → `AGENTS.md`, and the skill in `.agents/skills/` |
+   | [Codex CLI](https://developers.openai.com/codex) (with a ChatGPT plan) | `codex` | `AGENTS.md`, and the skill in `.agents/skills/` |
+   | Any other agent that reads `AGENTS.md` | | `AGENTS.md`, which points to the skill |
+
+3. Ask for the guide as you would ask Claude, for example: "Add a story guide of Plexus up to
+   Chapter 3. The book file is work/plexus-story/book.epub." The agent extracts the text, writes
+   the working files and the guide, and runs the checks.
+4. Before you commit, run the checks yourself; they need no AI model:
+
+   ```bash
+   npm run validate
+   ```
+
+   ```bash
+   python3 -I .claude/skills/ghostreader-book/scripts/check_guide.py facts <guide>
+   ```
+
+   ```bash
+   python3 -I .claude/skills/ghostreader-book/scripts/check_guide.py names <guide>
+   ```
+
+   Then commit only the four `src/books/<guide>-*.json` files.
+
+**With an AI chat that has no tools** (a web chat, any model): do one step at a time by hand.
+`tools/gr.py` prints the step's prompt with its inputs and the reply's schema; you paste it into
+the chat, save the reply in a file, and let `gr.py` check and file it:
 
 ```bash
-python3 -I tools/gr.py write --guide <guide>
+python3 -I tools/gr.py prompt read --guide plexus-story --chapter ch1 > prompt.txt
 ```
 
 ```bash
-python3 -I tools/gr.py check --guide <guide>
+python3 -I tools/gr.py save read --guide plexus-story --chapter ch1 --reply reply.json --family gemini --model gemini-3-flash
 ```
 
-`python3 -I tools/gr.py eval --fixture fixtures/sample` runs the conformance suite: it writes the
-sample book's guide, checks it, and compares the result with the gold set
-(`fixtures/sample/gold.json`).
+`save` exits with a list of problems, each with its rule ID, when the reply fails a check: paste
+the list back into the chat and save the fixed reply. The steps, in order, are in the skill's
+`SKILL.md` (plan, then read and ledger per chapter, then write-map and write-styles per chapter);
+`python3 -I tools/gr.py --help` lists them.
+
+**Notes**
+
+- A free model tier may let its company use what you send, the book's text included, to improve
+  its products: read its terms first.
+- Use the strongest model you can for the checking steps (`verify`, and the readers and scorers
+  of the recall test): in a test, a small model marked almost every claim correct.
+- Models know famous books. The checks catch names and numbers the chapter does not give; read
+  the "Where it stands" screens yourself for anything else.
 
 The skill holds the content rules (book content only, no quotations, no spoilers), the writing
 style, the screen recipes of each guide type and the guidance on which chart fits which idea. Maps of
