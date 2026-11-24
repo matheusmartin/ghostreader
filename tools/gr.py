@@ -459,10 +459,16 @@ def inputs(step, g, cid, style):
                  **{f'guide_{s}': g.style_text(s, cid) for s in cg.STYLES})
     elif step == 'recall-reader':
         test = g.work / 'recall-test' / f'{style}-{cid}.md'
-        if not test.exists():
+        if not test.exists() and style in cg.STYLES:
             check_guide('test', g, '--style', style, '--upto', cid)
+        if not test.exists():
+            raise Stop(f'no test {test}: write it first ({"gr.py goldtest" if style == "gold" else "check_guide.py test"})')
         v.update(test=test.read_text())
     elif step == 'recall-scorer':
+        # A scorer without the reader's answers would mark every question 0: never call it.
+        for name in (f'{style}-{cid}-key.json', f'{style}-{cid}-answers.json'):
+            if not (g.work / 'recall-test' / name).exists():
+                raise Stop(f'no {g.work / "recall-test" / name}: the scorer needs the key and the reader\'s answers')
         v.update(key=g.file(f'recall-test/{style}-{cid}-key.json'), answers=g.file(f'recall-test/{style}-{cid}-answers.json'))
     return v
 

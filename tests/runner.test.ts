@@ -166,6 +166,17 @@ describe.skipIf(!python)('tools/gr.py with a mock model', () => {
     expect(again.err).toContain('nothing to repair');
   }, 60_000);
 
+  it('never runs a scorer without the reader\'s answers', async () => {
+    handler = () => ({});
+    const s = setup(['source', 'intake.json', 'plan.json', 'facts', 'ledger', 'concepts.json']);
+    cpSync(join(FIX, 'books'), s.books, { recursive: true });
+    spawnSync('python3', ['-I', join(root, '.claude/skills/ghostreader-book/scripts/check_guide.py'), 'test', 'sample-story', '--style', 'map', '--upto', 'ch2', '--work', s.work, '--books', s.books]);
+    const r = await gr(['stage', 'recall-scorer', '--chapter', 'ch2', '--style', 'map'], s);
+    expect(r.code).toBe(2);
+    expect(r.err).toContain("the scorer needs the key and the reader's answers");
+    expect(calls.length).toBe(0);
+  }, 60_000);
+
   it('fails the step when the repairs do not help', async () => {
     handler = (step) => (step === 'facts' ? { content: { chapter: 'ch1' } } : {});
     const s = setup(['source', 'intake.json', 'plan.json']);
