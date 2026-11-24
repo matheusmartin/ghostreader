@@ -28,7 +28,7 @@ When the app and the PDF need two sizes of the same block, write both: the short
   readers keep; leave out what leads nowhere. `npm run validate` reports "and then".
 - **A role with every name.** Names fade first, roles last. On every text screen (summary, recap,
   "Where it stands"), a person's or a work's first mention carries a short role: "Charlotte, Elizabeth's
-  closest friend"; "Ada, a clockmaker from the city". Use the same role words
+  closest friend"; "Heinrich Kramer, author of a witch-hunting manual". Use the same role words
   each time, from the book.
 - **The same name for the same thing.** A concept, person or group has one name in every chapter
   and every style, the book's own (`references/concepts.md`): the reader's cue must not change.
@@ -171,16 +171,15 @@ They come from `src/model/lint.ts`; a recipe above may be stricter.
 | quiz | 3 · 6 questions; question 24 · 30; answer 30 · 40 |
 | text | 120 · 450 words in all |
 | scenes | 8 · 12 people; 8 · 12 scenes; text 35 words, one {when} and one [where] at most, at least one |
-| network | 10 · 16 ring nodes; 10 · 18 links; names 4 words and 22 characters; notes 3 words; link labels 4 words |
+| network | 10 · 16 ring nodes; 10 · 18 links; names 4 words and 22 characters; link labels 4 words |
 | threads | 8 · 10 threads; names 3 words; text 15 words |
-| timeline | 6 · 12 items; times 4 words; titles 6 words; text 22 · 35 words |
-| flow | 3 groups; 4 · 6 items of 7 words; group labels 6 words; start 12 · 14; key 10 · 12 |
-| compare | 5 · 8 rows; cells 10 words; key 12 words |
-| matrix | 4 · 6 columns of 2 words; 6 · 10 rows, labels 4 words; key 12 words |
-| cycle | 3–6 nodes; titles 4 words; notes 6 words; centre 6 words |
-| branches | 2–4 options; titles 5 words; notes 8 words; start 6 words |
+| timeline | 6 · 12 items; text 22 · 35 words |
+| flow | 3 groups; 4 · 6 items of 7 words |
+| compare | 5 · 8 rows; cells 10 words |
+| matrix | 4 · 6 columns; 6 · 10 rows |
+| cycle | 3–6 nodes; titles 4 words; notes 6 words |
+| branches | 2–4 options; titles 5 words; notes 8 words |
 | layers | 2–5 rings; titles 3 words; notes 5 words |
-| captions | 16 words |
 | bars | 8 · 16 bars; real numbers only |
 | Where it stands | `points`, exactly the four titles of the type, in order; the chapter's last screen or the one before "Still open" |
 | Still open | `list`, 1–3 rows; the chapter's last screen |

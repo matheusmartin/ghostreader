@@ -1,8 +1,8 @@
 ---
 name: ghostreader-book
-description: Writes or updates a book guide for the Ghostreader app in this repository, built to help a reader recall earlier chapters after a pause and continue the book - four files, one per style (Map, Recap, Recall, Layers), src/books/<guide>-<style>.json, each making the swipe screens and an A4 PDF; every chapter ends with "Where it stands" and "Still open". Three types, chosen by the user - Story guide (fiction), Reading guide (non-fiction, while reading) and Book summary (non-fiction, a finished book). Reads the book from an EPUB, PDF, text, Markdown or HTML file, or from summaries when no file is given. Diagrams first; every claim anchored to the text and checked. Use when the user asks to add, write, summarise, update or regenerate a book, story guide, reading guide, book summary, infographic or PDF for the app, even if they only name the book. Do not use for a short summary in chat, book recommendations, reviews, or changes to the app's code.
+description: Writes or updates a book guide for the Ghostreader app in this repository, built to help a reader recall earlier chapters after a pause and continue the book - four files, one per style (Map, Recap, Recall, Layers), src/books/<guide>-<style>.json, each making the swipe screens and an A4 PDF; every chapter ends with "Where it stands" and "Still open". Only the book's own parts and chapters, in the book's order - no overview or other guide-made chapter. Three types, chosen by the user - Story guide (fiction), Reading guide (non-fiction, while reading) and Book summary (non-fiction, a finished book). Reads the book from an EPUB, PDF, text, Markdown or HTML file, or from summaries when no file is given. Diagrams first; every claim anchored to the text and checked. Use when the user asks to add, write, summarise, update or regenerate a book, story guide, reading guide, book summary, infographic or PDF for the app, even if they only name the book. Do not use for a short summary in chat, book recommendations, reviews, or changes to the app's code.
 metadata:
-  version: "1.8.0"
+  version: "1.6.0"
 compatibility: Node 22 with `npm install` done (Vitest; Playwright with Chromium for the screen check and the PDF). Python 3.9+ for the book extractor, the checks and maps; PDF books also need poppler-utils (pdftotext) or the pypdf package.
 ---
 
@@ -33,12 +33,9 @@ Principles:
   (`references/styles.md`, "The resume rule").
 - **Show, then tell.** Each idea gets the diagram that shows its links: who is with whom, what
   causes what, what feeds back. Text carries what a picture cannot (`references/visuals.md`).
-- **Every claim is traceable.** Facts come from the extracted text with an anchor (text file,
-  paragraphs and a short quote the script finds there), and every chapter is checked against its
-  anchors before it ships
+- **Every claim is traceable.** Facts come from the extracted text with an anchor (section and
+  paragraph), and every chapter is checked against its anchors before it ships
   (`references/verify.md`).
-- **JSON working files.** Every step writes JSON with a schema in `schemas/`, so any model can
-  produce it and a script can check it (`references/working-files.md`).
 - **Checked by scripts.** `check_guide.py` (anchors, must-carry coverage, names and numbers in the
   book, the blind recall test), `npm run validate` (format and writing rules), `npm run
   check:screens` (every screen fits a phone), `npm run build` (the PDF).
@@ -53,12 +50,9 @@ Principles:
 | PDF-only block | `only: "pdf"`: detail for the PDF, with looser limits |
 | resume screens | "Where it stands" and "Still open", the last two screens of every chapter |
 | limit | the "Up to" input: the last chapter covered (`upTo`) |
-| anchor | where a fact is in the extracted text: file, first and last paragraph, and a 3–12-word quote from them: `{"file": "005", "p": [12, 12], "quote": "…"}`; written `005 p12` in verdicts |
+| anchor | where a fact is in the extracted text: `005 p12` = file 005, paragraph 12 |
 | must carry | the 5–8 facts of a chapter a returning reader needs most, each with a test question |
-| ledger | the state at each chapter's end, one file per chapter: people's places, goals, relations and knowledge (fiction); what is established, open, answered or promised (non-fiction) |
-| working files | the JSON files in `work/<guide>/`, one schema each (`references/working-files.md`) |
-| isolated run | a new model context that gets only the files a step lists, nothing from the writer's context: a sub-agent, a separate model call or another model (`references/verify.md`) |
-| rule ID | the ID that starts every line of `npm run validate` and `check_guide.py`, as in `spec/rules.md` (`GR-W03`) |
+| ledger | the state at each chapter's end: people's places, goals, relations and knowledge (fiction); what is established, open, answered or promised (non-fiction) |
 
 ## Inputs
 
@@ -72,7 +66,7 @@ Title:    Pride and Prejudice                (required)
 Author:   Jane Austen                        (recommended)
 Up to:    Chapter 6                          (optional; Fiction and Non-fiction reading only)
 Edition:  Penguin Classics, 2003             (optional: shown on the cover)
-+ the book file: EPUB, PDF, TXT, MD or HTML  (required; ask for it)
++ the book file: EPUB, PDF, TXT, MD or HTML  (strongly recommended)
 ```
 
 - The limit takes a chapter or part name. For a page number or a percentage, ask which chapter.
@@ -84,29 +78,27 @@ Edition:  Penguin Classics, 2003             (optional: shown on the cover)
 
 ## Workflow
 
-Copy this checklist into `work/<guide>/progress.md` (or your agent's task list) and tick it off:
+Copy this checklist into the task list and tick it off:
 
 ```
-- [ ] 1 Inputs: type, title, author, limit, edition, book file (all four styles, always);
-        work/<guide>/intake.json
+- [ ] 1 Inputs: type, title, author, limit, edition, book file (all four styles, always)
 - [ ] 2 Read docs/content-format.md, references/guides.md (the type), references/styles.md,
         references/visuals.md, references/concepts.md, references/content-rules.md,
-        references/writing-style.md, references/working-files.md, references/verify.md
+        references/writing-style.md, references/verify.md
 - [ ] 3 Text: extract the book file into work/<guide>/source (or gather summaries); with a
         limit, move the files after it to work/<guide>/after-limit/
-- [ ] 4 Plan: work/<guide>/plan.json: id, the book's own parts and chapters (real titles and
-        word counts), the book's question; fiction: the cast
-- [ ] 5 Fact sheets work/<guide>/facts/<chapter-id>.json (every fact anchored, concepts, must
-        carry) and work/<guide>/ledger/<chapter-id>.json; check_guide.py facts; then
-        check_guide.py concepts and mark the core concepts
+- [ ] 4 Plan: id, the book's own parts and chapters (real titles and word counts), concept
+        inventory; fiction: the cast
+- [ ] 5 Fact sheets work/<guide>/facts/<chapter-id>.md (every fact anchored, concepts, must
+        carry) and the ledger work/<guide>/ledger.md; check_guide.py facts
 - [ ] 6 Write the Map file src/books/<guide>-map.json chapter by chapter: app screens, PDF-only
         detail, then "Where it stands" and "Still open"
 - [ ] 6b Write work/<guide>/styles.json and run scripts/build_styles.py: the Recap, Recall and
         Layers files (references/styles.md)
-- [ ] 7 Verify (references/verify.md): check_guide.py plan and names; claims and must carry in
-        isolated runs, into work/<guide>/verdicts/; check_guide.py verdicts; fix what does not hold
+- [ ] 7 Verify (references/verify.md): check_guide.py names; claims and must carry with fresh
+        subagents; fix what does not hold
 - [ ] 8 Check: npm run validate · npm run check:screens · npm run build, look at the PDF;
-        the blind recall test (check_guide.py test, then score), 80% or more
+        the blind recall test (check_guide.py test), 80% or more
 - [ ] 9 Deliver: commit the four src/books/<guide>-*.json files only; final message
 ```
 
@@ -128,21 +120,13 @@ EPUB or a scanned PDF stops with a message: ask for another copy, or continue fr
 **With a limit**, the spoiler gate: move every text file after the limit into
 `work/<guide>/after-limit/` now, before anyone reads the text (`references/content-rules.md`).
 
-No book file: ask for it first. A guide from summaries does not meet the model-neutral standard
-(`docs/proposal-model-neutral-guides.md`, decision D2); write one only when the user confirms.
-Then confirm the table of contents (names, order, parts) from a reliable source, and use
+No book file: confirm the table of contents (names, order, parts) from a reliable source, then use
 chapter-by-chapter summaries for the content, under the stricter rules of
 `references/content-rules.md` (Summaries). Set `"source": {"kind": "summaries"}`. Tell the user
 in the final message, and for fiction, tell them before you start: summaries miss and misplace
 scenes. The fact-sheet, names and recall checks need the book's text, so they do not run.
 
-**1 · Inputs.** Write the inputs to `work/<guide>/intake.json` (`references/working-files.md`),
-with the book file's SHA-256 (`sha256sum work/<guide>/book.epub`): the same file always gives the
-same paragraph numbers.
-
-**4 · Plan.** Decide before writing, and write it to `work/<guide>/plan.json`
-(`references/working-files.md`; `check_guide.py plan` checks it against `toc.json` and, later,
-the Map file):
+**4 · Plan.** Decide before writing:
 - **guide id**: title and type in lower case with hyphens: `pride-and-prejudice-story`,
   `nexus-reading`, `nexus-summary`. The four files are `<guide>-map.json`, `<guide>-recap.json`,
   `<guide>-recall.json` and `<guide>-layers.json`, each with `"guide"` and `"style"`.
@@ -159,8 +143,8 @@ the Map file):
   no `title` (the app shows the book's title as its kicker). Never invent a label such as
   "Overview", "Opening" or "Closing". There is no colour field: the whole book uses one colour
   scheme.
-- **Concepts** (`references/concepts.md`): note the book's own terms as you read; step 5 records
-  each concept in the fact sheet of the chapter that introduces it.
+- **Concept inventory** (`references/concepts.md`): every concept the book defines and every
+  distinction it draws, directly or indirectly, with the chapter that introduces it.
 - **The book's question** (non-fiction): the question the book sets out to answer, in the book's
   terms (≤ 12 words). It opens every "Where it stands" and every "argument so far" chart.
 - Fiction: the cast (who is main, groups, one role each in the book's words), and whether real
@@ -168,33 +152,50 @@ the Map file):
   book's own terms, and which diagram fits each chapter.
 
 **5 · Fact sheets and ledger.** Read each chapter's text file in full and write
-`work/<guide>/facts/<chapter-id>.json`: only what the text says, each fact with its type, whether
-the text states it or only supports it (`basis`), and its anchor with a quote copied from the
-paragraph. Scenes (fiction: a new scene at a new place or time), people, relations, states,
-causes; claims, evidence, terms (non-fiction); concepts and distinctions (`references/concepts.md`).
-The format, with examples, is in `references/working-files.md`; the sample in
-`fixtures/sample/working/` passes every check.
+`work/<guide>/facts/<chapter-id>.md`: only what the text says, each line with its anchor. The
+first line names the chapter's text files (`source 005`, or `source 005–006`).
+
+```
+# 03 · Chapter 3 · source 005 · 1,722 words
+## Scenes (in order; new scene = new place or time)
+- S1 {Before the ball} [Longbourn] Mr Bennet will not describe Bingley; the women hear of him from Lady Lucas. With: Mr Bennet, Mrs Bennet, daughters. 005 p2
+## People
+- Mr Darcy · first appearance · Bingley's friend · admired, then judged proud. 005 p5–p6
+## Relations
+- Darcy → Elizabeth: will not dance with her; she overhears. 005 p11
+## Claims, terms, examples (non-fiction)
+## Concepts and distinctions (references/concepts.md)
+- {Three kinds of reality} typology · explicit · objective (exists whatever people think: stones) /
+  subjective (in one mind: pain) / intersubjective (between many minds: money, nations) · 011 p22–p25
+## Must carry (5–8, ranked; from the whole chapter)
+- M1 · state · Elizabeth dislikes Mr Darcy, because she overheard him slight her at the ball · 005 p11
+  Q: How does Elizabeth feel about Mr Darcy after the ball, and why?
+- M2 · cause · Bingley dances twice with Jane, so Mrs Bennet's hopes rise · 005 p8
+  Q: Why are Mrs Bennet's hopes high after the assembly?
+```
 
 **Must carry**: what a reader coming back needs most from this chapter, chosen by these tests,
 not by "importance": a change of state (who feels, wants, knows or has what), a cause of later
 events, a concept or distinction the book builds on, the chapter's main claim, a question it
 leaves open. Kinds: `state`, `cause`, `claim`, `concept`, `open`. At least one from the first and
-one from the middle third of the chapter. Each has a cued test question, used by the blind
-recall test, and names the facts it rests on.
+one from the middle third of the chapter. Each has a cued test question (`Q:`), used by the blind
+recall test.
 
-Then write `work/<guide>/ledger/<chapter-id>.json`, in chapter order, as changes with anchors. It
-is the source of "Where it stands" and "Still open", and the judge checks those screens against
-it. Run:
+Then write `work/<guide>/ledger.md`, one section per chapter, as changes with anchors. It is the
+source of "Where it stands" and "Still open", and the verifier checks state claims against it:
+
+```
+## ch3
+- Elizabeth · view of Mr Darcy: none → dislikes him (he slighted her at the ball) · 005 p11
+- Mrs Bennet · goal: a daughter married to Bingley → hopes rise for Jane · 005 p8
+- time · the night of the Meryton assembly · 005 p2
+```
+
+Non-fiction ledger lines start with `established`, `open`, `answered` or `promised`
+("promised · the next part turns to computers · 014 p230"). Run:
 
 ```bash
 python3 -I .claude/skills/ghostreader-book/scripts/check_guide.py facts <guide>
-```
-
-Then build the concept inventory, and mark `"core": true` in `concepts.json` on each concept
-later chapters build on:
-
-```bash
-python3 -I .claude/skills/ghostreader-book/scripts/check_guide.py concepts <guide>
 ```
 
 **6 · Write.** Work chapter by chapter from the fact sheets and the ledger, never from memory:
@@ -218,14 +219,11 @@ python3 -I .claude/skills/ghostreader-book/scripts/build_styles.py src/books/<gu
 The script copies diagrams, key points, logic, PDF detail and the resume screens from the Map
 file, so fix those in the Map file and run it again; never edit the generated files by hand.
 
-**7 · Verify** (`references/verify.md`). Run `check_guide.py plan <guide>` and
-`check_guide.py names <guide>` and fix each line. Then, for each chapter, start an isolated run
-with the chapter's text, fact sheet and ledger, and the chapter in every style
-(`check_guide.py text`), for a claim-by-claim check and a must-carry check; it writes
-`work/<guide>/verdicts/<chapter-id>.json`, and `check_guide.py verdicts <guide>` lists what to
-fix. Use a judge from another model family when you can, and do not tell it which
-model wrote the guide. Fix or remove each claim that does not hold; add each missing must-carry
-item; never "improve" a claim from memory. Then go through the concept inventory: every concept and
+**7 · Verify** (`references/verify.md`). Run `check_guide.py names <guide>` and fix each line.
+Then, for each chapter, start a fresh subagent with the chapter's text, fact sheet and ledger,
+and the chapter in every style (`check_guide.py text`), for a claim-by-claim check and a
+must-carry check. Fix or remove each claim that does not hold; add each missing must-carry item;
+never "improve" a claim from memory. Then go through the concept inventory: every concept and
 distinction must appear on a screen of the chapter that introduces it (a chart for each
 distinction; a chart, a key point or a row in the PDF-only "Terms" list for each concept). Last,
 compare the guide's contents with the book's contents list: remove any chapter, part or label the
@@ -245,9 +243,7 @@ npm run check:screens -- <guide>-map <guide>-recap <guide>-recall <guide>-layers
 npm run build
 ```
 
-- `validate`: the format (`src/model/validate.ts`) and the writing rules (`src/model/lint.ts`),
-  each line with its rule ID (`spec/rules.md`); `node scripts/validate-book.mjs <file> --json`
-  gives the same result as JSON:
+- `validate`: the format (`src/model/validate.ts`) and the writing rules (`src/model/lint.ts`):
   word and item limits, sentence case, British spelling, Mr without a point, no quotations, no
   spoiler words, scene marks, ring links, the resume screens, no "and then". Every line names the
   field to fix.
@@ -259,9 +255,9 @@ npm run build
 - To see the app: `npm run dev`, then `http://localhost:5173/#/read/<id>` (and `#/print/<id>`).
 
 Then the blind recall test (`references/verify.md`, step 5): the Map file at the last chapter of
-each part, every other style at the last written chapter. An isolated run answers the
-must-carry questions from the guide alone, a second isolated run scores the answers, and
-`check_guide.py score` adds them up; 80% or more passes. Carry each missed fact and test again.
+each part, every other style at the last written chapter. A fresh subagent answers the
+must-carry questions from the guide alone; 80% or more passes. Carry each missed fact and test
+again.
 
 **9 · Deliver.** Commit only the four `src/books/<guide>-*.json` files (and app changes the user
 asked for); never `work/`. Then write:
@@ -302,7 +298,7 @@ asked for); never `work/`. Then write:
   book raises them ("Is Wickham's account of Darcy true?").
 - "Before this chapter" or the "argument so far" that loses the book's question and its first
   parts by the late chapters → the frame first, then the chapter before.
-- A bare name ("Tomas", "Mr Collins") on a text screen → a role at its first mention.
+- A bare name ("Kramer", "Mr Collins") on a text screen → a role at its first mention.
 - A must-carry fact only in a second Map chart or an example box → Recall and Layers never show
   it; put it in "Key points", "In short" or "The logic" too.
 - Key moments all from the end of the chapter → from the start and the middle too.
@@ -340,10 +336,7 @@ asked for); never `work/`. Then write:
 | `references/styles.md` | steps 6 and 6b: the resume rule, the four styles, their research basis, recipes and the styles.json format |
 | `references/verify.md` | steps 5, 7 and 8: the checks, the fresh-eyes review and the blind recall test |
 | `scripts/build_styles.py` | step 6b: builds the Recap, Recall and Layers files from the Map file and styles.json |
-| `references/working-files.md` | steps 1, 4, 5, 7 and 8: every working file, its schema, an example, and its check |
-| `prompts/` (repository root) | one model-neutral prompt per model step, with its inputs, output schema, check and a right and a wrong example: give these to an isolated run, or follow them yourself |
-| `fixtures/sample/` (repository root) | a complete sample guide and working files that pass every check |
-| `scripts/check_guide.py` | steps 4–8 (`--help`): schema, plan, facts, names, concepts, text, test, verdicts, score, render |
+| `scripts/check_guide.py` | steps 5, 7 and 8 (`--help`): facts, names, text, test |
 | `references/content-rules.md` | step 2: book content only, accuracy, spoilers, summaries mode, copyright |
 | `references/writing-style.md` | step 6: The Economist style, short form |
 | `scripts/extract_book.py` | step 3 (`--help`) |
