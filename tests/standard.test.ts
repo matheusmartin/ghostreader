@@ -57,8 +57,9 @@ describe('Agent Skills format (agentskills.io)', () => {
 });
 
 describe('agent entry points', () => {
-  it('has AGENTS.md, and CLAUDE.md imports it', () => {
+  it('has AGENTS.md, and CLAUDE.md and GEMINI.md import it', () => {
     expect(read('AGENTS.md')).toContain(`${SKILL}/SKILL.md`);
     expect(read('CLAUDE.md').trim()).toBe('@AGENTS.md');
+    expect(read('GEMINI.md').trim()).toBe('@AGENTS.md');
   });
 });

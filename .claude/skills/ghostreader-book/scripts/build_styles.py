@@ -235,6 +235,7 @@ def layers(cid, screens, n, g):
     points = first(screens, 'points', 'Key points') or first(screens, 'points', style_not='box')
     if points:
         points['label'] = 'In three points'
+        points['items'] = points['items'][:3]  # a Reading guide's "Key concepts" can have four
         out.append(points)
     if items:
         out.append({'type': 'chart', 'chart': 'flow', 'label': 'The argument so far', 'start': g.question,

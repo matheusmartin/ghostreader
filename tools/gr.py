@@ -1,66 +1,26 @@
 #!/usr/bin/env python3
-"""gr: runs the model steps of a Ghostreader guide with any model that speaks the OpenAI-compatible
-chat API (docs/proposal-model-neutral-guides.md, phase 3, "Level B"). Standard library only.
+"""gr: lets any AI model, or a person, do one step of a Ghostreader guide by hand.
 
-For each step it fills in the step's prompt (prompts/<step>.md) with the step's inputs, asks the
-model for JSON in the form of the step's schema (schemas/llm/), checks the reply with the same
-scripts an agent uses, sends the problems back for at most two repairs, writes the working file,
-and records the call in work/<guide>/run.json.
-
-  python3 -I tools/gr.py models [--provider gemini]
-  python3 -I tools/gr.py stage <step> --guide <g> [--chapter <id>] [--style <s>]
-  python3 -I tools/gr.py repair <step> --guide <g> [--chapter <id>] [--style <s>]
-                                                    check a saved output again; send its problems back
-                                                    to the model as one more repair round
-  python3 -I tools/gr.py write --guide <g>          plan, then each chapter: read, ledger; concepts;
-                                                    each chapter: write-map, write-styles; build styles
-  python3 -I tools/gr.py check --guide <g>          each chapter: verify; the blind recall test of
-                                                    every style at the last chapter; the scores
-  python3 -I tools/gr.py eval --fixture <dir>       the conformance suite on a fixture (see eval_fixture)
   python3 -I tools/gr.py prompt <step> --guide <g> [--chapter <id>] [--style <s>]
-                                                    print the filled-in prompt, for an agent or an
-                                                    isolated run to answer by hand
-  python3 -I tools/gr.py save <step> --guide <g> --reply FILE --family claude --model <name> [--chapter <id>] [--style <s>]
-                                                    an agent's own reply to a prompt: checked, saved and
-                                                    gated as the runner does it, and recorded in run.json;
-                                                    run it again after a fix (exit 1 lists the problems)
-  python3 -I tools/gr.py record <step> --guide <g> --family claude --model <name> [--chapter <id>]
-                                                    add a step an agent ran itself to run.json
-  python3 -I tools/gr.py goldtest --guide <g> --fixture <dir>
-                                                    write the recall test with the gold set's questions
-                                                    (style "gold"), for a reader and a scorer
-  python3 -I tools/gr.py plant --guide <g> --fixture <dir> [--dest DIR]
-                                                    a copy of the fixture's guide with the gold set's
-                                                    false claims in it, for a judge (verify)
-  python3 -I tools/gr.py caught --guide <g> --fixture <dir> [--dest DIR]
-                                                    the share of planted claims the judge caught
-  python3 -I tools/gr.py measure --guide <g> --fixture <dir>
-                                                    the guide's scores from its files: steps, anchors,
-                                                    claims, must carry, concept, gold and blind recall
+        Prints the step's prompt (prompts/<step>.md) with its inputs filled in, the reference
+        files it needs, and the JSON Schema of the reply. Paste it into any AI chat, or give it to
+        an agent's isolated run.
+  python3 -I tools/gr.py save <step> --guide <g> --reply FILE --family <family> --model <name> [--chapter <id>] [--style <s>]
+        Checks the reply (its schema, then the step's checks), saves it where the workflow keeps
+        it, and records the attempt in work/<guide>/run.json. Exit 1 lists the problems, each
+        with its rule ID (spec/rules.md): send them back to the model, and save its fixed reply.
 
 Steps: plan, read, ledger, write-map, write-styles, verify, recall-reader, recall-scorer.
-Before `write`: put the book's text in work/<guide>/source/ with extract_book.py, and write
-work/<guide>/intake.json (references/working-files.md). With a limit, move the files after it
-to work/<guide>/after-limit/ first.
-
-Options: --config FILE (default gr.config.json at the repository root, else tools/gr.example.json),
---writer/--judge/--reader/--scorer PROVIDER:MODEL, --work DIR (default work/<guide>), --books DIR
-(default src/books). The API key is read from the environment variable the provider names
-(key_env); a provider without key_env sends none.
-Exit codes: 0 = every gate passed, 1 = a gate failed after the repairs, 2 = cannot run.
+Options: --work DIR (default work/<guide>), --books DIR (default src/books).
+Exit codes: 0 = saved and every check passed, 1 = problems found, 2 = cannot run.
+Standard library only.
 """
 import argparse
 import datetime
-import hashlib
 import json
-import os
 import re
-import shutil
 import subprocess
 import sys
-import time
-import urllib.error
-import urllib.request
 from pathlib import Path
 
 REPO = Path(__file__).resolve().parents[1]
@@ -71,19 +31,17 @@ import check_guide as cg  # noqa: E402  (the guide text, the screen ids)
 from schema_lite import validate  # noqa: E402
 
 SPEC = '1.0.0'
-RUNNER = 'gr 1.0.0'
-STEPS = {  # step: (prompt file, role, LLM profile, storage schema, its definition)
-    'plan': ('plan.md', 'writer', 'plan', 'plan', None),
-    'read': ('read-chapter.md', 'writer', 'facts', 'facts', None),
-    'ledger': ('ledger.md', 'writer', 'ledger', 'ledger', None),
-    'write-map': ('write-map.md', 'writer', 'chapter', 'book', 'Chapter'),
-    'write-styles': ('write-styles.md', 'writer', 'styles-chapter', 'styles', 'Chapter'),
-    'verify': ('verify.md', 'judge', 'verdict', 'verdict', None),
-    'recall-reader': ('recall-reader.md', 'reader', 'recall-answers', 'recall-answers', None),
-    'recall-scorer': ('recall-scorer.md', 'scorer', 'recall-score', 'recall-score', None),
+RUNNER = 'gr 2.0.0'
+STEPS = {  # step: (prompt file, role, storage schema, its definition)
+    'plan': ('plan.md', 'writer', 'plan', None),
+    'read': ('read-chapter.md', 'writer', 'facts', None),
+    'ledger': ('ledger.md', 'writer', 'ledger', None),
+    'write-map': ('write-map.md', 'writer', 'book', 'Chapter'),
+    'write-styles': ('write-styles.md', 'writer', 'styles', 'Chapter'),
+    'verify': ('verify.md', 'judge', 'verdict', None),
+    'recall-reader': ('recall-reader.md', 'reader', 'recall-answers', None),
+    'recall-scorer': ('recall-scorer.md', 'scorer', 'recall-score', None),
 }
-ROLES = ('writer', 'judge', 'reader', 'scorer')
-SYSTEM = 'You follow the instructions exactly. You reply with one JSON value only: no comments, no Markdown.'
 
 
 class Stop(Exception):
@@ -112,126 +70,14 @@ def write_json(path, value):
     path.write_text(json.dumps(value, ensure_ascii=False, indent=2) + '\n')
 
 
-# ------------------------------------------------------------------ the model
-
-class Model:
-    """One provider and model, called through the OpenAI-compatible chat API."""
-
-    refused = set()  # (provider, model, schema name) the provider would not serve: JSON mode from then on
-
-    def __init__(self, role, provider, cfg, model, settings):
-        if provider not in cfg['providers']:
-            raise Stop(f'no provider "{provider}" in the config (has {", ".join(cfg["providers"])})')
-        p = cfg['providers'][provider]
-        self.role, self.provider, self.model = role, provider, model
-        self.family = p.get('family', provider)
-        self.base = p['base_url'].rstrip('/')
-        self.key_env = p.get('key_env')
-        self.timeout = settings.get('timeout', 600)
-        self.retries = settings.get('retries', 5)
-
-    def describe(self):
-        return {'provider': self.provider, 'family': self.family, 'model': self.model}
-
-    def _post(self, path, body):
-        headers = {'Content-Type': 'application/json'}
-        if self.key_env:
-            key = os.environ.get(self.key_env)
-            if not key:
-                raise Stop(f'set the environment variable {self.key_env} to the {self.provider} API key')
-            headers['Authorization'] = f'Bearer {key}'
-        data = json.dumps(body).encode() if body is not None else None
-        req = urllib.request.Request(self.base + path, data=data, headers=headers, method='POST' if data else 'GET')
-        with urllib.request.urlopen(req, timeout=self.timeout) as r:
-            return json.loads(r.read().decode())
-
-    def list(self):
-        return self._post('/models', None)
-
-    def chat(self, messages, schema=None, name='output'):
-        """(text, served model, usage, mode). mode: "schema" when the provider took the schema,
-        "json" when it refused it and the call fell back to JSON mode with the schema in the prompt."""
-        mode = 'schema' if schema and (self.provider, self.model, name) not in Model.refused else 'json'
-        if schema and mode == 'json':
-            messages = messages[:-1] + [{'role': messages[-1]['role'], 'content': messages[-1]['content']
-                                         + '\n\n## The JSON Schema of your reply\n\n' + json.dumps(schema, ensure_ascii=False)}]
-        attempt = 0  # retries after a rate limit or a server error; the JSON-mode fallback is not one
-        while True:
-            body = {'model': self.model, 'messages': messages}
-            if mode == 'schema':
-                body['response_format'] = {'type': 'json_schema', 'json_schema': {'name': name, 'strict': True, 'schema': schema}}
-            else:
-                body['response_format'] = {'type': 'json_object'}
-            try:
-                d = self._post('/chat/completions', body)
-                msg = d['choices'][0]['message']
-                return msg.get('content') or '', d.get('model', self.model), d.get('usage') or {}, mode
-            except urllib.error.HTTPError as e:
-                text = e.read().decode(errors='replace')
-                if e.code == 400 and mode == 'schema':
-                    # The provider cannot serve this schema (too large or a keyword it lacks): JSON mode.
-                    print(f'  {self.provider} refused the schema ({first_line(text)}); JSON mode with the schema in the prompt', file=sys.stderr)
-                    mode = 'json'
-                    Model.refused.add((self.provider, self.model, name))
-                    messages = messages[:-1] + [{'role': messages[-1]['role'], 'content': messages[-1]['content']
-                                                 + '\n\n## The JSON Schema of your reply\n\n' + json.dumps(schema, ensure_ascii=False)}]
-                    continue
-                if e.code == 429 and re.search(r'limit: 0\b', text):
-                    raise Stop(f'{self.provider} {self.model}: no quota on this key for this model ({first_line(text)})')
-                if e.code == 429 and re.search(r'per day', text):
-                    when = re.search(r'retry in ([\dhms.]+)', text)
-                    raise Stop(f'{self.provider} {self.model}: the daily quota is used up'
-                               + (f'; it resets in {when.group(1)}' if when else '') + ' (the run resumes where it stopped)')
-                if e.code in (429, 500, 502, 503, 504) and attempt < self.retries:
-                    attempt += 1
-                    wait = retry_after(e, text, attempt - 1)
-                    print(f'  {self.provider} {e.code}: waiting {wait:.0f} s, then retry {attempt} of {self.retries}', file=sys.stderr)
-                    time.sleep(wait)
-                    continue
-                raise Stop(f'{self.provider} {self.model}: HTTP {e.code}: {first_line(text)}')
-            except (urllib.error.URLError, TimeoutError) as e:
-                if attempt < self.retries:
-                    attempt += 1
-                    time.sleep(10 * attempt)
-                    continue
-                raise Stop(f'{self.provider}: {e}')
-
-
-def first_line(text):
-    try:
-        d = json.loads(text)
-        d = d[0] if isinstance(d, list) else d
-        return str(d.get('error', {}).get('message', text)).splitlines()[0][:200]
-    except (ValueError, AttributeError, IndexError):
-        return text.strip().splitlines()[0][:200] if text.strip() else '(no message)'
-
-
-def retry_after(e, text, attempt):
-    """Seconds to wait: what the provider asks for, else 60, 120, 240, then five minutes."""
-    if e.headers.get('Retry-After', '').isdigit():
-        return min(float(e.headers['Retry-After']), 300)
-    m = re.search(r'retry in ([\d.]+)s', text)
-    if m and float(m.group(1)) <= 300:
-        return float(m.group(1)) + 1
-    return min(60 * 2 ** attempt, 300)  # long waits: on some free tiers every retry counts against a daily quota
-
-
 def parse_json(text):
     t = text.strip()
     m = re.match(r'^```(?:json)?\s*\n(.*)\n```$', t, re.S)
     return json.loads(m.group(1) if m else t)
 
 
-# ------------------------------------------------------------------ schemas
-
 def schema(name):
     return read_json(REPO / 'schemas' / f'{name}.schema.json')
-
-
-def llm_profile(name):
-    s = read_json(REPO / 'schemas' / 'llm' / f'{name}.llm.json')
-    s.pop('title', None)
-    return s
 
 
 def storage(name, definition):
@@ -290,8 +136,6 @@ def strip_nulls(v, s, root):
     return v
 
 
-# ------------------------------------------------------------------ prompts
-
 def parse_prompt(path):
     text = Path(path).read_text()
     m = re.match(r'^---\n(.*?)\n---\n', text, re.S)
@@ -328,8 +172,6 @@ def render(step, values):
         body += f'\n\n---\n\n# Reference: {ref}\n\n' + (SKILL / ref).resolve().read_text()
     return head, body
 
-
-# ------------------------------------------------------------------ the guide's files
 
 class Guide:
     def __init__(self, guide, work, books):
@@ -419,8 +261,6 @@ class Guide:
         return f'# Style: {style}\n' + (text[start:] if start >= 0 else text)
 
 
-# ------------------------------------------------------------------ the steps
-
 def inputs(step, g, cid, style):
     """The values of a step's {{inputs}}, as its prompt header lists them."""
     v = {'guide': g.id, 'chapter': cid or '', 'style': style or ''}
@@ -436,8 +276,16 @@ def inputs(step, g, cid, style):
             p = g.work / 'facts' / f'{x}.json'
             if p.exists():
                 earlier += [dict(f['concept'], chapter=x) for f in read_json(p)['facts'] if f.get('concept')]
+        people = {}
+        for x in g.before(cid):
+            p = g.work / 'facts' / f'{x}.json'
+            if p.exists():
+                for f in read_json(p)['facts']:
+                    if f['type'] == 'person' and f.get('who'):
+                        people.setdefault(f['who'], f.get('role', ''))
         v.update(chapter_text=g.text(cid), plan=g.file('plan.json'),
-                 earlier_concepts=json.dumps(earlier, ensure_ascii=False, indent=1) if earlier else '(none yet)')
+                 earlier_concepts=json.dumps(earlier, ensure_ascii=False, indent=1) if earlier else '(none yet)',
+                 earlier_people='\n'.join(f'- {n}: {r}' for n, r in people.items()) or '(none yet)')
     elif step == 'ledger':
         v.update(facts=g.file(f'facts/{cid}.json'), earlier_ledger=g.files('ledger/{}.json', g.before(cid)),
                  chapter_text=g.text(cid))
@@ -588,89 +436,9 @@ def styles_gate(g, cid):
         return out
 
 
-def passed(g, step, cid=None, style=None):
-    """True when run.json already has a passing call of this step and its output is still there."""
-    run = read_json(g.work / 'run.json', {'stages': []})
-    if not any(s['stage'] == step and s.get('chapter') == cid and s.get('style') == style and s['gate'] == 'pass'
-               for s in run['stages']):
-        return False
-    if step == 'write-map':
-        ch = g.map_chapter(cid)
-        return bool(ch and (ch.get('screens') or ch.get('sections')))
-    if step == 'write-styles':
-        return cid in read_json(g.work / 'styles.json', {}).get('chapters', {})
-    return output_path(step, g, cid, style).exists()
-
-
-def saved_output(step, g, cid, style):
-    """The output a step saved before, as JSON text, or None."""
-    if step == 'write-map':
-        ch = g.map_chapter(cid)
-        return json.dumps(ch, ensure_ascii=False) if ch and ch.get('screens') else None
-    if step == 'write-styles':
-        entry = read_json(g.work / 'styles.json', {}).get('chapters', {}).get(cid)
-        return json.dumps(entry, ensure_ascii=False) if entry else None
-    path = output_path(step, g, cid, style)
-    return path.read_text() if path.exists() else None
-
-
-def run_step(step, g, models, settings, cid=None, style=None, resume=True, repair=False):
-    """One step: prompt, call, checks, repairs. True when its gate passes. With `resume`, a step
-    that already passed is not run again. With `repair`, the step's saved output is checked again
-    and, when the checks find problems, sent back to the model with them, as one more repair round."""
-    if resume and not repair and passed(g, step, cid, style):
-        print(f'{" ".join(x for x in (step, cid, style) if x)}: passed before', file=sys.stderr)
-        return True
-    prompt_file, role, profile, store, definition = STEPS[step]
-    head, text = render(step, inputs(step, g, cid, style))
-    model = models[role]
-    messages = [{'role': 'system', 'content': SYSTEM}, {'role': 'user', 'content': text}]
-    store_schema = storage(store, definition)
-    started, tokens, attempts, bad, served, mode = time.time(), {'prompt': 0, 'completion': 0}, 0, [], model.model, 'schema'
-    label = ' '.join(x for x in (step, cid, style) if x)
-    if repair:
-        before = saved_output(step, g, cid, style)
-        if before is None:
-            raise Stop(f'{label}: nothing saved to repair')
-        bad = gate(step, g, cid, style)
-        if not bad:
-            print(f'{label}: the saved output passes the checks; nothing to repair', file=sys.stderr)
-            return True
-        print(f'{label}: repairing {len(bad)} problem(s): ' + '; '.join(bad[:3]), file=sys.stderr)
-        messages += [{'role': 'assistant', 'content': before},
-                     {'role': 'user', 'content': 'The checks found these problems in your JSON. Fix each one, keep '
-                      'everything else, and reply with the whole corrected JSON only.\n\n' + '\n'.join(bad[:40])}]
-    for attempt in range(settings.get('repairs', 2) + 1):
-        attempts += 1
-        print(f'{label}: {model.provider} {model.model}, call {attempts}', file=sys.stderr)
-        raw, served, usage, mode = model.chat(messages, llm_profile(profile), name=profile.replace('-', '_'))
-        tokens['prompt'] += usage.get('prompt_tokens', 0) or 0
-        tokens['completion'] += usage.get('completion_tokens', 0) or 0
-        try:
-            value = strip_nulls(parse_json(raw), store_schema, store_schema)
-            bad = [f'GR-F04 {e}' for e in validate(value, store_schema)]
-        except json.JSONDecodeError as e:
-            value, bad = None, [f'GR-F04 the reply is not valid JSON: {e}']
-        if not bad:
-            save(step, g, cid, style, value)
-            bad = gate(step, g, cid, style)
-        if not bad:
-            break
-        print(f'  {len(bad)} problem(s): ' + '; '.join(bad[:3]), file=sys.stderr)
-        messages += [{'role': 'assistant', 'content': raw},
-                     {'role': 'user', 'content': 'The checks found these problems in your JSON. Fix each one, keep '
-                      'everything else, and reply with the whole corrected JSON only.\n\n' + '\n'.join(bad[:40])}]
-    record(g, {'stage': step, **({'chapter': cid} if cid else {}), **({'style': style} if style else {}),
-               'prompt': f'{prompt_file[:-3]}@{head["version"]}', 'role': role, 'model': model.describe(),
-               'served': served, 'mode': mode, 'attempts': attempts, 'gate': 'fail' if bad else 'pass',
-               'problems': bad[:40], 'tokens': tokens, 'seconds': round(time.time() - started, 1), 'finished': now()})
-    print(f'{label}: {"FAIL" if bad else "pass"} after {attempts} call(s)', file=sys.stderr)
-    return not bad
-
-
 def save_reply(step, g, cid, style, reply_path, family, model_name):
     """Level A: an agent answered the prompt itself. The same checks, the same files, the same record."""
-    prompt_file, role, _, store, definition = STEPS[step]
+    prompt_file, role, store, definition = STEPS[step]
     head, _ = parse_prompt(REPO / 'prompts' / prompt_file)
     store_schema = storage(store, definition)
     try:
@@ -702,374 +470,38 @@ def save_reply(step, g, cid, style, reply_path, family, model_name):
     return not bad
 
 
-def record(g, entry):
-    path = g.work / 'run.json'
-    run = read_json(path, {'guide': g.id, 'spec': SPEC, 'runner': RUNNER, 'stages': []})
-    run['stages'].append(entry)
-    write_json(path, run)
-
-
-# ------------------------------------------------------------------ whole runs
-
-def write_guide(g, models, settings):
-    ok = True
-    if not (g.work / 'plan.json').exists():
-        ok &= run_step('plan', g, models, settings)
-        if not ok:
-            return False
-    chapters = g.to_write()
-    for cid in chapters:
-        ok &= run_step('read', g, models, settings, cid) and run_step('ledger', g, models, settings, cid)
-    check_guide('concepts', g)
-    for cid in chapters:
-        ok &= run_step('write-map', g, models, settings, cid)
-    for cid in chapters:
-        ok &= run_step('write-styles', g, models, settings, cid)
-    r = subprocess.run([sys.executable, '-I', str(SCRIPTS / 'build_styles.py'), str(g.map_path), str(g.work / 'styles.json')],
-                       capture_output=True, text=True)
-    if r.returncode:
-        print(r.stderr, file=sys.stderr)
-        ok = False
-    return ok
-
-
-def check_written(g, models, settings):
-    """Each chapter checked by an isolated judge; the blind recall test of every style at the last chapter."""
-    chapters = g.to_write()
-    ok = all([run_step('verify', g, models, settings, cid) for cid in chapters])
-    last = chapters[-1]
-    scores = {}
-    for style in cg.STYLES:
-        check_guide('test', g, '--style', style, '--upto', last)
-        ok &= run_step('recall-reader', g, models, settings, last, style) and run_step('recall-scorer', g, models, settings, last, style)
-        r = check_guide('score', g, '--style', style, '--upto', last, '--json')
-        scores[style] = json.loads(r.stdout).get('scores')
-    verdicts = check_guide('verdicts', g, '--json')
-    unsupported = sum(1 for p in json.loads(verdicts.stdout)['problems'] if p['rule'] == 'GR-C01')
-    summary = {'recall': {s: (v or {}).get('score') for s, v in scores.items()}, 'unsupported_claims': unsupported,
-               'judge_independent': models['judge'].family != models['writer'].family}
-    write_json(g.work / 'checks.json', summary)
-    print(json.dumps(summary, indent=1))
-    return ok
-
-
-# ------------------------------------------------------------------ the conformance suite
-
-def eval_fixture(args, models, settings):
-    """The conformance suite on one fixture (fixtures/<name>/gold.json): the writer writes the
-    guide from the book's text; the judge, reader and scorer check it; the result is compared with
-    the gold set. With a real book, --book gives the file; its SHA-256 must match the gold set."""
-    fixture = Path(args.fixture)
-    gold = read_json(fixture / 'gold.json')
-    work = Path(args.work or f'work/eval-{fixture.name}-{time.strftime("%Y%m%d-%H%M%S")}')
-    books = work / 'books'
-    resume = work.exists() and (work / 'intake.json').exists()
-    if work.exists() and any(work.iterdir()) and not resume:
-        raise Stop(f'{work} is not empty')
-    (work / 'source').mkdir(parents=True, exist_ok=True)
-    books.mkdir(exist_ok=True)
-    if resume:
-        print(f'resuming the run in {work}', file=sys.stderr)
-    elif args.book:
-        digest = hashlib.sha256(Path(args.book).read_bytes()).hexdigest()
-        if digest != gold['book']['sha256']:
-            raise Stop(f'{args.book}: SHA-256 {digest} is not the gold set\'s {gold["book"]["sha256"]}: another edition')
-        cmd = [sys.executable, '-I', str(SCRIPTS / 'extract_book.py'), args.book, '--out', str(work / 'source')]
-        if gold['book'].get('split'):
-            cmd += ['--split', gold['book']['split']]
-        subprocess.run(cmd, check=True)
-        for f in gold['book'].get('after_limit', []):
-            (work / 'after-limit').mkdir(exist_ok=True)
-            for p in (work / 'source').glob(f'{f}-*'):
-                shutil.move(str(p), work / 'after-limit' / p.name)
-    else:
-        shutil.copytree(fixture / 'working' / 'source', work / 'source', dirs_exist_ok=True)
-    write_json(work / 'intake.json', gold['intake'])
-    g = Guide(gold['guide'], work, books)
-    print(f'eval {fixture.name} in {work}', file=sys.stderr)
-    wrote = write_guide(g, models, settings)
-    checked = check_written(g, models, settings) if wrote else False
-    run = read_json(work / 'run.json')
-    report = {'fixture': fixture.name, 'spec': SPEC, 'models': {r: m.describe() for r, m in models.items()},
-              'judge_independent': models['judge'].family != models['writer'].family,
-              'gates': {'pass': sum(s['gate'] == 'pass' for s in run['stages']), 'fail': sum(s['gate'] == 'fail' for s in run['stages']),
-                        'first_try': sum(s['attempts'] == 1 and s['gate'] == 'pass' for s in run['stages'])},
-              'tokens': {k: sum(s.get('tokens', {}).get(k, 0) for s in run['stages']) for k in ('prompt', 'completion')}}
-    if wrote:
-        facts = json.loads(check_guide('facts', g, '--json').stdout)['problems']
-        report['anchors_clean'] = not any(p['rule'] in ('GR-A02', 'GR-A05') for p in facts)
-        report['concept_recall'] = concept_recall(g, gold)
-        report['gold_recall'] = gold_recall(g, gold, models, settings)
-        report['planted_caught'] = planted(fixture, gold, work, models, settings)
-    if checked:
-        report['blind_recall'] = read_json(work / 'checks.json')['recall']
-    report['pass'] = conformant(report)
-    write_json(work / 'eval.json', report)
-    print(json.dumps(report, indent=1))
-    return report['pass']
-
-
-def conformant(r):
-    """The pass marks of the proposal, section 5.7 (decision D5)."""
-    marks = [r['gates']['fail'] == 0, r.get('anchors_clean') is True, (r.get('gold_recall') or 0) >= 0.8,
-             (r.get('concept_recall') or 0) >= 0.9, r.get('planted_caught') is None or r['planted_caught'] >= 0.9,
-             all((v or 0) >= 0.8 for v in (r.get('blind_recall') or {'none': 0}).values())]
-    return all(marks)
-
-
-def concept_recall(g, gold):
-    """The share of the gold set's core concepts the guide carries: the concept's name, or for a
-    contrast or typology each of its sides, in the text of the Map file's chapters up to the last
-    written one (every screen). Names are compared without parentheses and case."""
-    want = [c for c in gold.get('concepts', []) if c.get('core', True)]
-    if not want:
-        return 1.0
-    if not g.map_path.exists():
-        return None
-    text = cg.norm(cg.guide_text(read_json(g.map_path), upto=g.to_write()[-1], every=True))
-    def carried(name):
-        name = cg.norm(re.sub(r'\(.*?\)', '', name))
-        if name in text:
-            return True
-        parts = [p.strip() for p in re.split(r'\bversus\b|\bvs\b|,|\band\b|\bor\b', name) if len(p.strip()) > 3]
-        return len(parts) > 1 and all(p in text for p in parts)
-    return round(sum(carried(c['name']) for c in want) / len(want), 3)
-
-
-def gold_test(g, gold):
-    """Write the blind recall test with the gold set's questions (style "gold") for the Map file at
-    the last written chapter: the same guide text as the Map test, the gold questions in place."""
-    last = g.to_write()[-1]
-    key = [{'n': i, 'chapter': q['chapter'], 'must': f'M{i}', 'kind': q.get('kind', 'state'), 'question': q['question'],
-            'answer': q['answer']} for i, q in enumerate(gold['must_carry'], 1)]
-    check_guide('test', g, '--style', 'map', '--upto', last)
-    test = (g.work / 'recall-test' / f'map-{last}.md').read_text()
-    head, body = test.split('# Questions', 1)[0], test.split('\n---\n', 1)[1]
-    titles = {c['id']: c['title'] for _, c in g.chapters()}
-    (g.work / 'recall-test' / f'gold-{last}.md').write_text(
-        head + '# Questions\n\n' + '\n'.join(f'{q["n"]}. ({titles[q["chapter"]]}) {q["question"]}' for q in key) + '\n\n---\n' + body)
-    write_json(g.work / 'recall-test' / f'gold-{last}-key.json', {'guide': g.id, 'style': 'map', 'upto': last, 'questions': key})
-    return last
-
-
-def gold_score(g):
-    """The gold recall score from the reader's answers and the scorer's marks; None when not run."""
-    last = g.to_write()[-1]
-    a, s = g.work / 'recall-test' / f'gold-{last}-answers.json', g.work / 'recall-test' / f'gold-{last}-score.json'
-    if not (a.exists() and s.exists()):
-        return None
-    key = read_json(g.work / 'recall-test' / f'gold-{last}-key.json')['questions']
-    shown = cg.app_refs(read_json(g.map_path), last)
-    answers = {x['n']: x for x in read_json(a)['answers']}
-    scores = {x['n']: x['score'] for x in read_json(s)['scores']}
-    pts = [scores.get(q['n'], 0) if answers.get(q['n'], {}).get('screen') in shown else 0 for q in key]
-    return round(sum(pts) / len(pts), 3)
-
-
-def gold_recall(g, gold, models, settings):
-    """The blind recall test with the gold set's questions: does the guide carry what matters?"""
-    last = gold_test(g, gold)
-    ok = run_step('recall-reader', g, models, settings, last, 'gold') and run_step('recall-scorer', g, models, settings, last, 'gold')
-    return gold_score(g) if ok else None
-
-
-def measure(g, gold):
-    """The scores of one written guide, from its files only: no model call."""
-    run = read_json(g.work / 'run.json', {'stages': []})
-    writer = [s for s in run['stages'] if s['role'] == 'writer']
-    judges = sorted({f"{s['model']['family']} {s['model']['model']}" for s in run['stages'] if s['role'] != 'writer'})
-    last = g.to_write()[-1]
-    facts = json.loads(check_guide('facts', g, '--json').stdout)['problems']
-    blind = {}
-    for style in cg.STYLES:
-        if (g.work / 'recall-test' / f'{style}-{last}-score.json').exists():
-            r = json.loads(check_guide('score', g, '--style', style, '--upto', last, '--json').stdout)
-            blind[style] = (r.get('scores') or {}).get('score')
-    claims = {'supported': 0, 'inferred': 0, 'unsupported': 0}
-    for cid in g.to_write():
-        v = g.work / 'verdicts' / f'{cid}.json'
-        if v.exists():
-            for c in read_json(v)['claims']:
-                claims[c['verdict']] += 1
-    missing = sum(1 for p in json.loads(check_guide('verdicts', g, '--json').stdout)['problems'] if p['rule'] == 'GR-M03')
-    return {'guide': g.id, 'writer': sorted({f"{s['model']['family']} {s['model']['model']}" for s in writer}), 'judges': judges,
-            'writer_steps': {'pass': sum(s['gate'] == 'pass' for s in writer), 'fail': sum(s['gate'] == 'fail' for s in writer),
-                             'first_try': sum(s['gate'] == 'pass' and s['attempts'] == 1 for s in writer)},
-            'anchors_clean': not any(p['rule'] in ('GR-A02', 'GR-A05') for p in facts),
-            'fact_problems': len(facts), 'claims': claims, 'must_carry_missing': missing,
-            'concept_recall': concept_recall(g, gold), 'gold_recall': gold_score(g), 'blind_recall': blind}
-
-
-def set_path(obj, path, value):
-    parts = re.findall(r'[^.\[\]]+', path)
-    for p in parts[:-1]:
-        obj = obj[int(p)] if p.isdigit() else obj[p]
-    last = parts[-1]
-    obj[int(last) if last.isdigit() else last] = value
-
-
-def plant(fixture, gold, work, dest):
-    """A copy of the fixture's correct guide (fixtures/<name>/books/) with the gold set's false
-    claims put in, and the run's own text, plan, fact sheets and ledger for the judge: for a real
-    book, the fixture has none (they quote it). Returns the copy's Guide."""
-    dest, books = Path(dest), Path(dest) / 'books'
-    if not dest.exists():
-        shutil.copytree(work / 'source', dest / 'source')
-        for name in ('intake.json', 'plan.json', 'facts', 'ledger'):
-            src = work / name
-            if src.exists():
-                (shutil.copytree if src.is_dir() else shutil.copy)(src, dest / name)
-        shutil.copytree(fixture / 'books', books)
-        for x in gold['planted']:
-            path = books / f'{gold["guide"]}-{x["style"]}.json'
-            book = read_json(path)
-            ch = next(c for _, c, _ in cg.chapters(book) if c['id'] == x['chapter'])
-            set_path(ch['screens'][x['screen'] - 1], x['path'], x['text'])
-            write_json(path, book)
-    return Guide(gold['guide'], dest, books)
-
-
-def caught(gold, pg):
-    """The share of planted claims a judge's verdicts mark as not supported, on the planted screen."""
-    plants, hit = gold['planted'], 0
-    stems = lambda t: {w[:5] for w in re.findall(r'[a-z]+', t.lower()) if len(w) > 3}
-    for x in plants:
-        v = pg.work / 'verdicts' / f'{x["chapter"]}.json'
-        if not v.exists():
-            continue
-        ref = f'{x["chapter"]}.s{x["screen"]}'
-        # Caught: a claim on the planted screen, marked not supported, that shares two or more words
-        # with the planted text (a judge splits it into several short claims).
-        if any(c['screen'] == ref and c['style'] == x['style'] and c['verdict'] != 'supported'
-               and len(stems(x['text']) & stems(c['claim'])) >= 2 for c in read_json(v)['claims']):
-            hit += 1
-    return round(hit / len(plants), 3)
-
-
-def planted(fixture, gold, work, models, settings):
-    """The fixture's own guide with known false claims put in: how many does the judge catch?"""
-    if not gold.get('planted') or not (fixture / 'books').exists():
-        return None  # not run: no planted claims, or no correct guide to plant them in
-    pg = plant(fixture, gold, work, work / 'planted')
-    for cid in sorted({x['chapter'] for x in gold['planted']}):
-        run_step('verify', pg, models, settings, cid)
-    return caught(gold, pg)
-
-
-# ------------------------------------------------------------------ main
-
-def load_models(args):
-    cfg_path = Path(args.config) if args.config else (REPO / 'gr.config.json' if (REPO / 'gr.config.json').exists() else REPO / 'tools' / 'gr.example.json')
-    cfg = read_json(cfg_path)
-    models = {}
-    for role in ROLES:
-        given = getattr(args, role, None)
-        if given:
-            provider, _, model = given.partition(':')
-        else:
-            provider, model = cfg['roles'][role]['provider'], cfg['roles'][role]['model']
-        models[role] = Model(role, provider, cfg, model, cfg)
-    return models, cfg
-
-
 def main():
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
-    ap.add_argument('command', choices=['models', 'stage', 'repair', 'write', 'check', 'eval', 'record', 'prompt', 'save', 'goldtest', 'measure', 'plant', 'caught'])
-    ap.add_argument('step', nargs='?', choices=list(STEPS))
-    ap.add_argument('--guide')
+    ap.add_argument('command', choices=['prompt', 'save'])
+    ap.add_argument('step', choices=list(STEPS))
+    ap.add_argument('--guide', required=True)
     ap.add_argument('--chapter')
     ap.add_argument('--style', choices=list(cg.STYLES) + ['gold'])
     ap.add_argument('--work')
     ap.add_argument('--books', default='src/books')
-    ap.add_argument('--config')
-    ap.add_argument('--provider', help='models: the provider to list')
-    ap.add_argument('--fixture', help='eval: fixtures/<name>')
-    ap.add_argument('--book', help='eval: the book file of a real-book fixture')
-    ap.add_argument('--family', help='record: the model family that ran the step')
-    ap.add_argument('--model', help='record: the model that ran the step')
-    ap.add_argument('--gate', choices=['pass', 'fail'], default='pass', help='record: the step\'s gate')
-    ap.add_argument('--reply', help='save: the file with the agent\'s JSON reply')
-    ap.add_argument('--dest', help='plant, caught: the planted copy\'s folder (default <work>-planted)')
-    for role in ROLES:
-        ap.add_argument(f'--{role}', help=f'PROVIDER:MODEL for the {role} role')
+    ap.add_argument('--reply', help='save: the file with the JSON reply')
+    ap.add_argument('--family', help='save: the model family that wrote the reply ("gemini", "gpt", "claude", "person")')
+    ap.add_argument('--model', help='save: the model that wrote the reply')
     args = ap.parse_args()
+    g = Guide(args.guide, args.work or f'work/{args.guide}', args.books)
     try:
-        models, cfg = load_models(args)
-        if args.command == 'models':
-            m = models['writer'] if not args.provider else Model('writer', args.provider, cfg, '', cfg)
-            for x in m.list().get('data', []):
-                print(x['id'])
-            return 0
-        if args.command == 'eval':
-            if not args.fixture:
-                raise Stop('eval needs --fixture')
-            return 0 if eval_fixture(args, models, cfg) else 1
-        if not args.guide:
-            raise Stop(f'{args.command} needs --guide')
-        g = Guide(args.guide, args.work or f'work/{args.guide}', args.books)
-        if args.command == 'record':
-            if not (args.step and args.family and args.model):
-                raise Stop('record needs a step, --family and --model')
-            head, _ = parse_prompt(REPO / 'prompts' / STEPS[args.step][0])
-            record(g, {'stage': args.step, **({'chapter': args.chapter} if args.chapter else {}),
-                       **({'style': args.style} if args.style else {}), 'prompt': f'{STEPS[args.step][0][:-3]}@{head["version"]}',
-                       'role': STEPS[args.step][1], 'model': {'provider': 'agent', 'family': args.family, 'model': args.model},
-                       'attempts': 1, 'gate': args.gate, 'finished': now()})
-            return 0
-        if args.command in ('plant', 'caught'):
-            if not args.fixture:
-                raise Stop(f'{args.command} needs --fixture')
-            fixture = Path(args.fixture)
-            gold = read_json(fixture / 'gold.json')
-            dest = Path(args.dest or (g.work.parent / f'{g.work.name}-planted'))
-            if args.command == 'plant':
-                pg = plant(fixture, gold, g.work, dest)
-                print(f'wrote the planted guide in {pg.books}; judge chapters '
-                      f'{", ".join(sorted({x["chapter"] for x in gold["planted"]}))} there (verify)', file=sys.stderr)
-            else:
-                print(json.dumps({'planted_caught': caught(gold, Guide(gold['guide'], dest, dest / 'books'))}))
-            return 0
-        if args.command in ('goldtest', 'measure'):
-            if not args.fixture:
-                raise Stop(f'{args.command} needs --fixture')
-            gold = read_json(Path(args.fixture) / 'gold.json')
-            if args.command == 'goldtest':
-                last = gold_test(g, gold)
-                print(f'wrote {g.work / "recall-test" / f"gold-{last}.md"} and its key', file=sys.stderr)
-            else:
-                print(json.dumps(measure(g, gold), ensure_ascii=False, indent=1))
-            return 0
-        if args.command == 'save':
-            if not (args.step and args.reply and args.family and args.model):
-                raise Stop('save needs a step, --reply, --family and --model')
-            return 0 if save_reply(args.step, g, args.chapter, args.style, args.reply, args.family, args.model) else 1
         if args.command == 'prompt':
-            if not args.step:
-                raise Stop('prompt needs a step')
             _, text = render(args.step, inputs(args.step, g, args.chapter, args.style))
-            print(text)
+            _, _, store, definition = STEPS[args.step]
             where = {'write-map': f'the chapter "{args.chapter}" of {g.map_path}',
                      'write-styles': f'the entry "chapters.{args.chapter}" of {g.work / "styles.json"}'}.get(
                          args.step, str(output_path(args.step, g, args.chapter, args.style)))
-            print(f'\n## Where the reply goes\n\n{where} (schema: schemas/{STEPS[args.step][3]}.schema.json'
-                  + (f'#/definitions/{STEPS[args.step][4]}' if STEPS[args.step][4] else '') + ').')
+            print(text)
+            print(f'\n---\n\n# The JSON Schema of your reply\n\nReply with one JSON value that matches this schema '
+                  f'(schemas/{store}.schema.json' + (f'#/definitions/{definition}' if definition else '') + f'). It goes to {where}.\n')
+            print(json.dumps(storage(store, definition), ensure_ascii=False, indent=1))
             return 0
-        if args.command == 'stage':
-            if not args.step:
-                raise Stop('stage needs a step')
-            return 0 if run_step(args.step, g, models, cfg, args.chapter, args.style, resume=False) else 1
-        if args.command == 'repair':
-            if not args.step:
-                raise Stop('repair needs a step')
-            return 0 if run_step(args.step, g, models, cfg, args.chapter, args.style, repair=True) else 1
-        if args.command == 'write':
-            return 0 if write_guide(g, models, cfg) else 1
-        if args.command == 'check':
-            return 0 if check_written(g, models, cfg) else 1
+        if not (args.reply and args.family and args.model):
+            raise Stop('save needs --reply, --family and --model')
+        return 0 if save_reply(args.step, g, args.chapter, args.style, args.reply, args.family, args.model) else 1
     except Stop as e:
         print(f'gr: {e}', file=sys.stderr)
         return 2
-    return 0
 
 
 if __name__ == '__main__':

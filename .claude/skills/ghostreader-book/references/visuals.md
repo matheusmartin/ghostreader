@@ -38,7 +38,8 @@ Never put a chart in for decoration: if the chapter's idea has no structure to s
 ## Rules for every chart
 
 - **One key element** in the accent colour: the conclusion, the centre, the turning point. Data
-  charts (bars, threads) have none. Colour shows focus, never decoration.
+  charts (bars, threads) have no key element; a bar chart may tint one bar with `focus`. Colour
+  shows focus, never decoration.
 - **Labels inside or on their shape**, short and in sentence case. No legends: a data chart gets a
   one-line `caption` saying what the marks mean (the app adds one to `threads` and `scenes`).
 - **No numbers the book does not give**, no invented axes.

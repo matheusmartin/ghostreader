@@ -302,7 +302,7 @@ asked for); never `work/`. Then write:
   book raises them ("Is Wickham's account of Darcy true?").
 - "Before this chapter" or the "argument so far" that loses the book's question and its first
   parts by the late chapters → the frame first, then the chapter before.
-- A bare name ("Kramer", "Mr Collins") on a text screen → a role at its first mention.
+- A bare name ("Tomas", "Mr Collins") on a text screen → a role at its first mention.
 - A must-carry fact only in a second Map chart or an example box → Recall and Layers never show
   it; put it in "Key points", "In short" or "The logic" too.
 - Key moments all from the end of the chapter → from the start and the middle too.

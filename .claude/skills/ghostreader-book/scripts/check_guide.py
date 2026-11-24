@@ -738,6 +738,9 @@ def cmd_verdicts(args, guide, w, say):
                         say('GR-M03', f'{path} {m["id"]}', f'missing in {style}: put "{m["text"][:60]}" on a screen that style shows ("Key points" first)')
                     elif style in refs and at not in refs[style].get(cid, {}):
                         say('GR-F04', f'{path} {m["id"]}', f'no screen {at} in chapter {cid} of the {style} file')
+                    elif style in refs and refs[style][cid][at].get('only') == 'pdf':
+                        # A reader in the app never sees a PDF-only block: it does not carry the item.
+                        say('GR-M03', f'{path} {m["id"]}', f'only on a PDF-only block in {style} ({at}): put "{m["text"][:60]}" on an app screen too')
             r = v['resume']
             if not r['matches_ledger']:
                 say('GR-R04', path, '"Where it stands" or "Still open" does not match the ledger at the chapter\'s end')

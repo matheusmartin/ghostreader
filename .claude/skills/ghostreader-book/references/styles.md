@@ -54,7 +54,9 @@ style shows, or in each style's own texts:
 | "Where it stands", "Still open" | yes | yes | yes | yes |
 | own texts in styles.json | | before, recap, moments, remember | questions 1–2 and answers | line |
 
-A fact kept only in a second Map chart, an example box or a PDF-only block is missing from
+In a Story guide, which has no "Key points" or "The logic", the screens every style shows are
+the scenes chart (the main chart) and the resume screens; Recall also shows "In short" and "Who
+they are". A fact kept only in a second Map chart, an example box or a PDF-only block is missing from
 Recall and Layers. Put it in "Key points" (shown by three styles) first; then in "In short" or a
 Recall answer, and in "The logic" for Layers; then in the Recap texts. The blind recall test
 (`references/verify.md`) checks each style.
@@ -110,8 +112,8 @@ examples, then the PDF-only blocks, then the resume screens.
 | "Where it stands", "Still open" | copied from the Map chapter |
 
 **Questions.** Cued and specific: one fact, cause or distinction the reader can retrieve, with a
-cue from the chapter (a name, an example, a term): "Why did Cher Ami's message save the
-battalion?", not "What is the chapter about?". Ask about causes and states more than lists. Each
+cue from the chapter (a name, an example, a term): "Why does the lighthouse lamp not turn on the
+first cold morning?", not "What is the chapter about?". Ask about causes and states more than lists. Each
 answer comes from the chapter and its anchor. Question 3 is asked again two chapters later with
 the prefix "From Chapter N:", so keep it ≤ 20 words and make it the chapter's core point.
 
@@ -135,23 +137,20 @@ file:
 
 ```json
 {
-  "question": "Why is a wise species so self-destructive?",
-  "first_items": ["Sapiens gained power through networks", "Networks bind members with fictions"],
-  "parts": { "part-1": "Networks need stories and lists" },
+  "question": "Who stopped the lighthouse clock at Kessel, and why?",
   "chapters": {
     "ch2": {
-      "main": "Three kinds of reality",
-      "before": "Harari asks why a wise species is so self-destructive. Chapter 1: information …",
-      "line": "Shared stories let strangers cooperate and create realities between minds.",
-      "point": "Stories create shared realities",
-      "key": "Order built on fiction often clashes with truth",
+      "before": "The lighthouse clock at Kessel stopped, and under the keeper's rule Ines's father may lose the tower. Chapter 1: …",
+      "line": "Salt in the wheel shows somebody used a key, and Mr Hale borrowed one.",
+      "point": "Mr Hale borrowed the key",
+      "key": "Ines keeps the key from Mr Hale",
       "recap": ["First paragraph …", "Second paragraph …"],
-      "moments": [{ "name": "Bitcoin pizza", "text": "Two pizzas for 10,000 bitcoins in 2010 …" }],
-      "remember": [{ "title": "Intersubjective reality", "text": "Laws, gods, nations and money …" }],
+      "moments": [{ "name": "The salt", "text": "Ada finds salt in the main wheel: it did not get there by chance." }],
+      "remember": [{ "title": "Mr Hale", "text": "The harbour master; he borrowed the key and now wants it kept at his office." }],
       "questions": [
-        { "q": "Is a pizza's price objective, subjective or intersubjective?", "a": "Intersubjective …" },
+        { "q": "Why did the lighthouse clock stop?", "a": "Somebody packed salt into its main wheel …" },
         { "q": "…", "a": "…" },
-        { "q": "Why can shared stories make strangers cooperate?", "a": "…" }
+        { "q": "Where does Ines hide the key?", "a": "In the hollow base of the kitchen lamp." }
       ]
     }
   }

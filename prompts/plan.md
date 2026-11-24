@@ -1,6 +1,6 @@
 ---
 stage: plan
-version: 1.1.0
+version: 1.2.0
 role: writer
 isolation: none
 inputs:
@@ -42,7 +42,8 @@ The book's opening text (its first body text file). Use it only for step 5:
 2. Make one chapter for each chapter of the book, in order, with its real title ("Chapter 7"
    when it has none) and the number the book gives it ("01"; `P` prologue, `I` introduction, `E`
    epilogue, `C` conclusion, `A1` appendix, only when the book has them). List its text files in
-   `sources` and its word count in `words`.
+   `sources` by their three-digit numbers ("004"), not their file names, and its word count in
+   `words`. `skipped` uses the same numbers.
 3. Group the chapters in the book's own parts, with the book's labels and titles. A prologue or
    epilogue outside the parts goes in a part with no `label` and no `title`. A book without
    parts has one part with no label.

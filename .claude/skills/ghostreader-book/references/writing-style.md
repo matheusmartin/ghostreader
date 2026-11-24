@@ -32,7 +32,9 @@ and use the same form everywhere in the guide. `npm run validate` checks the rul
 
 ## Numbers
 
-- Words for one to ten, figures from 11: "three brothers", "23 chapters".
+- Words for one to ten, figures from 11: "three brothers", "23 chapters". When the book itself
+  writes a number from 11 up in words ("fifty thousand"), write it as the book does: the names
+  check looks for the book's form.
 - Figures with units, money and percentages: $20, 4%, 15km.
 - Never start a sentence or a label with a figure: "Seven days alone", not "7 days alone".
 - Dates: month, day, year, no commas: October 18th 2004. Decades: the 1920s.
@@ -64,7 +66,7 @@ and use the same form everywhere in the guide. `npm run validate` checks the rul
 - [checked] **Causes, not sequences**: "because", "so", "which leads to". Not "and then", and no
   sentence or item that starts with "Then" (time marks in scenes and timeline times excepted).
 - **A role with a name** at its first mention on a screen: "Jaggers, the lawyer who holds the
-  money"; "Kramer, a witch-hunting inquisitor". Names fade first; roles last.
+  money"; "Ada, the clockmaker from the city". Names fade first; roles last.
 - **One name per thing**: the same words for a concept, person or group in every chapter and
   style, the book's own. A reader's cue must not change from screen to screen.
 - **Plain tense**: present tense for the state of play ("Elizabeth distrusts Wickham"); past
