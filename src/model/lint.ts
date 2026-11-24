@@ -1,5 +1,4 @@
-// Content checks for a valid book (run validate.ts first). Each problem is "<rule> <path>: <message>",
-// where <rule> is an ID from spec/rules.md ("GR-W03").
+// Content checks for a valid book (run validate.ts first). Each problem is "<path>: <message>".
 // They enforce the writing rules of the ghostreader-book skill that a program can check:
 //
 //   limits      words per field and items per block, strict for phone screens (one screen must
@@ -84,40 +83,28 @@ const NOT_PROSE = new Set(['type', 'chart', 'only', 'style', 'tag', 'svg', 'from
 
 const words = (s: string) => s.replace(/[{}[\]*]/g, '').split(/\s+/).filter((w) => /[\p{L}\p{N}]/u.test(w)).length;
 
-/** One problem: the ID of the rule it breaks (spec/rules.md), where it is, and what to fix. */
-export interface Problem {
-  rule: string;
-  path: string;
-  message: string;
-}
-
-/** The problems as lines: "GR-W03 <path>: <message>". */
 export function lintBook(book: Book): string[] {
-  return lintProblems(book).map((p) => (p.path ? `${p.rule} ${p.path}: ${p.message}` : `${p.rule} ${p.message}`));
-}
-
-export function lintProblems(book: Book): Problem[] {
-  const out: Problem[] = [];
-  const say = (rule: string, path: string, message: string) => out.push({ rule, path, message });
+  const out: string[] = [];
+  const say = (path: string, msg: string) => out.push(path ? `${path}: ${msg}` : msg);
   const limit = (path: string, field: string, text: string | undefined, max: number) => {
-    if (text !== undefined && words(text) > max) say('GR-L01', path, `"${field}" has ${words(text)} words; at most ${max}`);
+    if (text !== undefined && words(text) > max) say(path, `"${field}" has ${words(text)} words; at most ${max}`);
   };
   const count = (path: string, what: string, n: number, max: number) => {
-    if (n > max) say('GR-L02', path, `${n} ${what}; at most ${max} (split it into two screens, or mark the fuller one only: "pdf")`);
+    if (n > max) say(path, `${n} ${what}; at most ${max} (split it into two screens, or mark the fuller one only: "pdf")`);
   };
   const lab = (path: string, field: string, text: string | undefined) => {
     if (text === undefined) return;
     limit(path, field, text, L.label);
-    if (/\.\s*$/.test(text)) say('GR-W02', path, `"${field}" ends with a full stop: labels have none`);
-    if (!/^[\p{Lu}\p{N}"'‘“(]/u.test(text)) say('GR-W01', path, `"${field}" must start with a capital letter`);
+    if (/\.\s*$/.test(text)) say(path, `"${field}" ends with a full stop: labels have none`);
+    if (!/^[\p{Lu}\p{N}"'‘“(]/u.test(text)) say(path, `"${field}" must start with a capital letter`);
     const ws = text.split(/\s+/).filter((w) => /\p{L}/u.test(w) && !/^(I|II|III|IV|V|VI|Mr|Mrs|Ms|Dr|St|·)$/.test(w));
-    if (ws.length >= 2 && ws.every((w) => /^[\p{Lu}]/u.test(w))) say('GR-W01', path, `"${field}" is in title case: use sentence case ("${sentenceCase(text)}")`);
+    if (ws.length >= 2 && ws.every((w) => /^[\p{Lu}]/u.test(w))) say(path, `"${field}" is in title case: use sentence case ("${sentenceCase(text)}")`);
   };
 
   book.parts.forEach((part, pi) => part.chapters.forEach((ch, ci) => {
     const cp = `parts[${pi}].chapters[${ci}]`;
     if (GUIDE_MADE.has(ch.number)) {
-      say('GR-S01', cp, `number "${ch.number}" marks a guide-made overview chapter ("${ch.title}"): a guide holds only the book's own chapters, so remove it`);
+      say(cp, `number "${ch.number}" marks a guide-made overview chapter ("${ch.title}"): a guide holds only the book's own chapters, so remove it`);
     }
     const visit = (s: Screen, path: string, target: Target) => {
       screen(s, path, s.only ?? target);
@@ -142,42 +129,42 @@ export function lintProblems(book: Book): Problem[] {
     const open = 'label' in last && last.label === STILL_OPEN ? last : undefined;
     const stands = screens[open ? n - 2 : n - 1];
     if (!stands || !('label' in stands) || stands.label !== WHERE_IT_STANDS) {
-      say('GR-R01', cp, `the last screens must be "${WHERE_IT_STANDS}" (points: ${titles.map((t) => `"${t}"`).join(', ')}), then optionally "${STILL_OPEN}"`);
+      say(cp, `the last screens must be "${WHERE_IT_STANDS}" (points: ${titles.map((t) => `"${t}"`).join(', ')}), then optionally "${STILL_OPEN}"`);
     } else if (stands.type !== 'points' || stands.only) {
-      say('GR-R02', cp, `"${WHERE_IT_STANDS}" must be a points screen in both the app and the PDF (no "only")`);
+      say(cp, `"${WHERE_IT_STANDS}" must be a points screen in both the app and the PDF (no "only")`);
     } else {
       const got = stands.items.map((it) => it.title);
-      if (got.join('|') !== titles.join('|')) say('GR-R02', cp, `"${WHERE_IT_STANDS}" needs the items ${titles.map((t) => `"${t}"`).join(', ')}, in this order (has ${got.map((t) => `"${t}"`).join(', ')})`);
+      if (got.join('|') !== titles.join('|')) say(cp, `"${WHERE_IT_STANDS}" needs the items ${titles.map((t) => `"${t}"`).join(', ')}, in this order (has ${got.map((t) => `"${t}"`).join(', ')})`);
     }
     if (open) {
-      if (open.type !== 'list' || open.only) say('GR-R03', cp, `"${STILL_OPEN}" must be a list screen in both the app and the PDF (no "only")`);
-      else if (open.rows.length < 1 || open.rows.length > STILL_OPEN_ROWS) say('GR-R03', cp, `"${STILL_OPEN}" needs 1–${STILL_OPEN_ROWS} rows (has ${open.rows.length})`);
+      if (open.type !== 'list' || open.only) say(cp, `"${STILL_OPEN}" must be a list screen in both the app and the PDF (no "only")`);
+      else if (open.rows.length < 1 || open.rows.length > STILL_OPEN_ROWS) say(cp, `"${STILL_OPEN}" needs 1–${STILL_OPEN_ROWS} rows (has ${open.rows.length})`);
     }
     screens.forEach((s, i) => {
-      if (i < n - 2 && 'label' in s && (s.label === WHERE_IT_STANDS || s.label === STILL_OPEN)) say('GR-R01', cp, `"${s.label}" must be at the end of the chapter`);
+      if (i < n - 2 && 'label' in s && (s.label === WHERE_IT_STANDS || s.label === STILL_OPEN)) say(cp, `"${s.label}" must be at the end of the chapter`);
     });
   }
 
   function style(path: string, text: string) {
     const abbr = text.match(/\b(Mr|Mrs|Ms|Dr|St)\./);
-    if (abbr) say('GR-W04', path, `write "${abbr[1]}" without a full stop`);
+    if (abbr) say(path, `write "${abbr[1]}" without a full stop`);
     for (const w of text.match(/\b[a-z]+\b/gi) ?? []) {
       const br = SPELLING[w.toLowerCase()];
-      if (br) say('GR-W05', path, `British spelling: "${w}" → ${br}`);
+      if (br) say(path, `British spelling: "${w}" → ${br}`);
     }
     for (const m of text.matchAll(IZE)) {
-      if (!IZE_OK.has(m[0].toLowerCase())) say('GR-W05', path, `British spelling: "${m[0]}" → -ise ("${m[0].replace(/iz/i, 'is')}")`);
+      if (!IZE_OK.has(m[0].toLowerCase())) say(path, `British spelling: "${m[0]}" → -ise ("${m[0].replace(/iz/i, 'is')}")`);
     }
     for (const m of text.matchAll(/["“]([^"”]+)["”]/g)) {
-      if (words(m[1]) >= 6) say('GR-C04', path, `possible quotation ("${m[1].slice(0, 30)}…"): paraphrase the book instead`);
+      if (words(m[1]) >= 6) say(path, `possible quotation ("${m[1].slice(0, 30)}…"): paraphrase the book instead`);
     }
     if (book.upTo) {
       const sp = text.replace(/\{[^{}]*\}/g, '').match(SPOILER);
-      if (sp) say('GR-C03', path, `"${sp[0]}" looks past the limit (upTo ${book.upTo}): leave it out`);
+      if (sp) say(path, `"${sp[0]}" looks past the limit (upTo ${book.upTo}): leave it out`);
     }
     // Time marks ({Then}) and timeline "when" fields may order events; prose must say why.
     if (!/\.when$/.test(path) && THEN.test(text.replace(/\{[^{}]*\}/g, '').trim())) {
-      say('GR-W03', path, `"then" orders events without a cause: say why ("because", "so"), or cut it`);
+      say(path, `"then" orders events without a cause: say why ("because", "so"), or cut it`);
     }
   }
 
@@ -221,7 +208,7 @@ export function lintProblems(book: Book): Problem[] {
         break;
       case 'text': {
         const total = s.paragraphs.reduce((n, para) => n + words(para), 0);
-        if (total > max(L.textTotal)) say('GR-L01', p, `${total} words; at most ${max(L.textTotal)}${t === 0 ? ' on a screen (mark a longer text only: "pdf")' : ''}`);
+        if (total > max(L.textTotal)) say(p, `${total} words; at most ${max(L.textTotal)}${t === 0 ? ' on a screen (mark a longer text only: "pdf")' : ''}`);
         break;
       }
       case 'scenes':
@@ -303,10 +290,10 @@ export function lintProblems(book: Book): Problem[] {
   function scenes(s: ScenesScreen, p: string, max: (l: Lim) => number) {
     count(p, 'people', s.people.length, max(L.people));
     count(p, 'scenes', s.scenes.length, max(L.scenes));
-    if (s.scenes.length < 2) say('GR-V02', p, 'a scene chart needs at least two scenes');
+    if (s.scenes.length < 2) say(p, 'a scene chart needs at least two scenes');
     s.people.forEach((x, i) => {
       limit(`${p}.people[${i}]`, 'name', x.name, max(L.person));
-      if (x.name.length > NAME_CHARS) say('GR-L03', `${p}.people[${i}]`, `name over ${NAME_CHARS} characters: use the short form the book uses`);
+      if (x.name.length > NAME_CHARS) say(`${p}.people[${i}]`, `name over ${NAME_CHARS} characters: use the short form the book uses`);
     });
     s.scenes.forEach((sc, i) => {
       const sp = `${p}.scenes[${i}]`;
@@ -314,7 +301,7 @@ export function lintProblems(book: Book): Problem[] {
       const when = sc.text.match(/\{[^{}]+\}/g)?.length ?? 0;
       const where = sc.text.match(/\[[^[\]]+\]/g)?.length ?? 0;
       // The time and the place the book gives, one of each; the book may give only one of them.
-      if (when > 1 || where > 1 || when + where === 0) say('GR-V01', sp, `scene text needs the {when} and [where] the book gives: one of each, at least one (has ${when} and ${where})`);
+      if (when > 1 || where > 1 || when + where === 0) say(sp, `scene text needs the {when} and [where] the book gives: one of each, at least one (has ${when} and ${where})`);
     });
   }
 
@@ -324,19 +311,19 @@ export function lintProblems(book: Book): Problem[] {
     const named: { name: string; note?: string }[] = [...c.centre.map((name) => ({ name })), ...c.nodes];
     for (const n of named) {
       limit(p, `name "${n.name}"`, n.name, max(L.netName));
-      if (n.name.length > NAME_CHARS) say('GR-L03', p, `name "${n.name}" is over ${NAME_CHARS} characters`);
+      if (n.name.length > NAME_CHARS) say(p, `name "${n.name}" is over ${NAME_CHARS} characters`);
       limit(p, `note of "${n.name}"`, n.note, max(L.netNote));
     }
     const ring = c.nodes.map((n) => n.name);
     c.links.forEach((l, i) => {
       const lp = `${p}.links[${i}]`;
       limit(lp, 'label', l.label, max(L.netLabel));
-      if (l.label && l.label.length > NAME_CHARS) say('GR-L03', lp, `label over ${NAME_CHARS} characters`);
+      if (l.label && l.label.length > NAME_CHARS) say(lp, `label over ${NAME_CHARS} characters`);
       const a = ring.indexOf(l.from);
       const b = ring.indexOf(l.to);
       if (a >= 0 && b >= 0) {
         const d = Math.abs(a - b);
-        if (d !== 1 && d !== ring.length - 1) say('GR-V03', lp, `"${l.from}" and "${l.to}" are not next to each other on the ring: reorder "nodes" so linked names are neighbours, or link one of them to the centre`);
+        if (d !== 1 && d !== ring.length - 1) say(lp, `"${l.from}" and "${l.to}" are not next to each other on the ring: reorder "nodes" so linked names are neighbours, or link one of them to the centre`);
       }
     });
   }

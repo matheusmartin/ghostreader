@@ -313,27 +313,6 @@ export function validateBook(raw: unknown): ValidationResult {
       if (raw.source.kind !== 'book-file' && raw.source.kind !== 'summaries') err('source', '"kind" must be "book-file" or "summaries"');
       str(raw.source, 'file', 'source', false);
       str(raw.source, 'skill', 'source', false);
-      str(raw.source, 'spec', 'source', false);
-      const checks = raw.source.checks;
-      if (checks !== undefined) {
-        if (!isObj(checks)) err('source', '"checks" must be an object');
-        else {
-          const recall = checks.recall;
-          if (recall !== undefined) {
-            if (!isObj(recall)) err('source.checks', '"recall" must be an object');
-            else {
-              for (const [k, v] of Object.entries(recall)) {
-                if (!(STYLES as readonly string[]).includes(k)) err('source.checks.recall', `"${k}" is not a style`);
-                else if (typeof v !== 'number' || v < 0 || v > 1) err('source.checks.recall', `"${k}" must be a number from 0 to 1`);
-              }
-            }
-          }
-          if (checks.unsupported_claims !== undefined && !(Number.isInteger(checks.unsupported_claims) && (checks.unsupported_claims as number) >= 0)) {
-            err('source.checks', '"unsupported_claims" must be a whole number, 0 or more');
-          }
-          bool(checks, 'judge_independent', 'source.checks');
-        }
-      }
       if (raw.source.written !== undefined && !(typeof raw.source.written === 'string' && DATE.test(raw.source.written))) {
         err('source', '"written" must be a date, YYYY-MM-DD');
       }

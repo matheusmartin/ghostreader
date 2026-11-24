@@ -16,9 +16,8 @@ describe('bundled books', () => {
     const file = path.replace(/^.*\//, '');
     it(`${file} is a valid book`, () => {
       const { errors } = validateBook(raw);
-      // Format errors are rule GR-F01 (spec/rules.md).
-      expect(errors, errors.map((e) => `GR-F01 ${e}`).join('\n')).toEqual([]);
-      expect((raw as { id: string }).id, 'GR-F02 the id must match the file name').toBe(file.replace(/\.json$/, ''));
+      expect(errors, errors.join('\n')).toEqual([]);
+      expect((raw as { id: string }).id, 'the id must match the file name').toBe(file.replace(/\.json$/, ''));
     });
     it(`${file} follows the content rules`, () => {
       const { book } = validateBook(raw);
@@ -31,10 +30,10 @@ describe('bundled books', () => {
     const books = Object.values(files) as Book[];
     const guides = new Map<string, string[]>();
     for (const b of books) {
-      expect(b.guide, `GR-F03 ${b.id}: every book file belongs to a guide ("guide")`).toBeTruthy();
+      expect(b.guide, `${b.id}: every book file belongs to a guide ("guide")`).toBeTruthy();
       guides.set(b.guide!, [...(guides.get(b.guide!) ?? []), b.style ?? 'map']);
     }
-    for (const [guide, styles] of guides) expect(styles.sort(), `GR-F03 ${guide}: all four styles`).toEqual(['layers', 'map', 'recall', 'recap']);
+    for (const [guide, styles] of guides) expect(styles.sort(), guide).toEqual(['layers', 'map', 'recall', 'recap']);
   });
 
   it('keeps title, author, parts and chapters the same across the styles of a guide', () => {
@@ -43,7 +42,7 @@ describe('bundled books', () => {
       b.parts.map((p) => [p.label, p.title, p.chapters.map((c) => [c.id, c.number, c.title])])]);
     for (const b of books) {
       const map = books.find((m) => m.guide === b.guide && m.style === 'map');
-      expect(shape(b), `GR-F03 ${b.id}: same title, author, type, limit, parts and chapters as the Map file`).toBe(shape(map!));
+      expect(shape(b), b.id).toBe(shape(map!));
     }
   });
 });

@@ -30,12 +30,6 @@ import json
 import os
 import re
 import sys
-from pathlib import Path
-
-sys.path.insert(0, str(Path(__file__).resolve().parent))  # schema_lite.py, next to this file
-from schema_lite import validate  # noqa: E402
-
-STYLES_SCHEMA = Path(__file__).resolve().parents[4] / 'schemas' / 'styles.schema.json'
 
 STYLES = ('recap', 'recall', 'layers')
 GUIDE_MADE = {'S', 'B', 'K', 'W', 'T', 'M'}  # overview chapters of earlier versions: not allowed
@@ -130,20 +124,18 @@ class Guide:
                     self.info[ch['id']] = ch
 
     def part_point(self, pid, written):
-        # The part's point: in "parts", or in the "part_point" of its last written chapter.
-        given = self.notes.get('parts', {}).get(pid) or self.chapters.get(written[-1], {}).get('part_point')
+        given = self.notes.get('parts', {}).get(pid)
         if given:
             return given
         if len(written) == 1:
             return self.chapters[written[0]]['point']
-        fail(f'styles file: "parts" needs a point for part "{pid}" (it has {len(written)} chapters), '
-             f'or its last chapter "{written[-1]}" a "part_point"')
+        fail(f'styles file: "parts" needs a point for part "{pid}" (it has {len(written)} chapters)')
 
     def argument_so_far(self, cid):
         """Items of Layers' "argument so far": the finished parts, then the current part's earlier chapters."""
         i = self.order.index(cid)
         if i == 0:
-            return self.notes.get('first_items') or self.chapters[cid].get('first_items', [])
+            return self.notes.get('first_items', [])
         pid = self.part_of[cid]
         frame = []
         for part_id, written in self.parts:
@@ -235,7 +227,6 @@ def layers(cid, screens, n, g):
     points = first(screens, 'points', 'Key points') or first(screens, 'points', style_not='box')
     if points:
         points['label'] = 'In three points'
-        points['items'] = points['items'][:3]  # a Reading guide's "Key concepts" can have four
         out.append(points)
     if items:
         out.append({'type': 'chart', 'chart': 'flow', 'label': 'The argument so far', 'start': g.question,
@@ -260,9 +251,6 @@ def main():
         map_book = json.load(f)
     with open(args.styles_file) as f:
         notes = json.load(f)
-    errors = validate(notes, json.loads(STYLES_SCHEMA.read_text()))
-    if errors:
-        fail('the styles file does not match schemas/styles.schema.json:\n  GR-F04 ' + '\n  GR-F04 '.join(errors))
     if map_book.get('style') != 'map':
         fail('the first file must be the Map file ("style": "map")')
     out_dir = os.path.dirname(os.path.abspath(args.map_file))

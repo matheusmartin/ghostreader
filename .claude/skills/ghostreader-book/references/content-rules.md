@@ -46,10 +46,10 @@ order**; summaries also leave out key events and give too much weight to the end
 ## Restrictions
 
 - **No quotations from the book**, not even short ones: paraphrase. A term the author coined may
-  name a concept ("the commons trap"). The validator reports quoted passages of six words or more.
+  name a concept ("the Silicon Curtain"). The validator reports quoted passages of six words or more.
 - No numbers the book does not give. A bar chart shows only numbers from the book.
 - No opinions: no ratings, praise, criticism or critics' views, unless the chapter itself
-  discusses them. When the author judges real people or groups, attribute it ("the author argues").
+  discusses them. When the author judges real people or groups, attribute it ("Harari argues").
 - No icons, emoji, photos, clip art, book covers or logos: only the app's shapes, lines and text.
 - No personal data: no highlights, notes, ratings or reading progress. The book only.
 
@@ -100,10 +100,8 @@ the reader opens the last chapter they read).
 The repository and the GitHub Pages site are public. A guide is a summary in your own words, with
 diagrams; it never reproduces the book's text.
 
-- `work/` (the book file, its extracted text, the working files) is in `.gitignore`. Never commit
-  it, never paste its text into a book file, a commit message or a pull request.
-- The anchors in the working files hold 3–12-word quotes, so a script can confirm them. They stay
-  in `work/`; a guide never shows them.
+- `work/` (the book file, its extracted text, the fact sheets) is in `.gitignore`. Never commit it,
+  never paste its text into a book file, a commit message or a pull request.
 - Paraphrase; keep scene texts and synopses short and in your own words.
 - The PDF holds more detail than the app, but the same rules: no quotations, no long close
   paraphrase of a passage.

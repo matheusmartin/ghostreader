@@ -6,14 +6,14 @@ one of them, record it with its anchor, and show it as a picture, not only name 
 
 ## What counts
 
-| Kind | What it looks like in the text | Example (an invented book on cities) |
+| Kind | What it looks like in the text | Nexus |
 |---|---|---|
-| **Defined concept** | A term the author names and explains: "I call this…", "by X I mean…", a word in italics followed by a definition | The commons trap: a shared resource that each user overuses because no one owns it |
-| **Typology** | A set of kinds: "three levels", "two types", "first… second… third…" | Three kinds of trust: personal, institutional and algorithmic |
-| **Contrast** | Two things set against each other: "X, not Y", "unlike", "whereas", "on the one hand" | Planned cities versus grown cities |
-| **Views or uses** | Rival ways to see or use the same thing, often each with a name | Two views of traffic: build more roads, or make fewer car trips |
-| **Indirect distinction** | A contrast the author builds across a chapter or the whole book without one sentence that names it: paired examples, the same two terms set against each other again and again | Old town centres and new suburbs, set against each other in many chapters and never named as a pair |
-| **Fiction: the story's own concepts** | Invented words, ranks, rules of a world, factions, a magic system, social codes the plot depends on | (The sample story, `fixtures/sample/`: the keeper's rule, by which a keeper who breaks the clock's hour loses the tower) |
+| **Defined concept** | A term the author names and explains: "I call this…", "by X I mean…", a word in italics followed by a definition | Self-correcting mechanism; the alignment problem |
+| **Typology** | A set of kinds: "three levels", "two types", "first… second… third…" | Objective, subjective and intersubjective reality |
+| **Contrast** | Two things set against each other: "X, not Y", "unlike", "whereas", "on the one hand" | Information as representation versus information as connection |
+| **Views or uses** | Rival ways to see or use the same thing, often each with a name | The naive and the populist views of information; information to find truth or to make order |
+| **Indirect distinction** | A contrast the author builds across a chapter or the whole book without one sentence that names it: paired examples, the same two terms set against each other again and again | Distributed versus centralised networks, shown through democracy and dictatorship in many chapters |
+| **Fiction: the story's own concepts** | Invented words, ranks, rules of a world, factions, a magic system, social codes the plot depends on | (Pride and Prejudice: the entail that passes Longbourn to Mr Collins) |
 
 Leave out ordinary words used in their ordinary sense, and concepts the author only mentions in
 passing. When unsure whether the author defines something or only uses it, check whether the
@@ -26,29 +26,25 @@ distinction in the author's own terms; never name it with a term the book does n
 
 ## Record it (step 5)
 
-Each concept or distinction is a fact of type `concept` in the fact sheet of the chapter that
-introduces it (`references/working-files.md`):
+Each chapter's fact sheet has a section `## Concepts and distinctions`, one line per item:
 
-```json
-{ "id": "F14", "type": "concept", "basis": "stated",
-  "text": "Trust comes in three kinds: personal, institutional and algorithmic",
-  "anchor": { "file": "011", "p": [22, 25], "quote": "…" },
-  "concept": { "name": "Three kinds of trust", "kind": "typology", "mode": "explicit", "members": [
-    { "name": "Personal", "definition": "Trust in someone you know", "example": "A neighbour" },
-    { "name": "Institutional", "definition": "Trust in a body and its rules", "example": "A bank" },
-    { "name": "Algorithmic", "definition": "Trust in a system's scores", "example": "A ride-hailing rating" } ] } }
+```
+## Concepts and distinctions
+- {Three kinds of reality} typology · explicit · objective (exists whatever people think: stones) /
+  subjective (in one mind: pain) / intersubjective (between many minds: money, nations) · 011 p22–p25
+- {Truth versus order} contrast · explicit · every network must both find truth and keep order;
+  order is often easier with fiction · 011 p59–p62
+- {Distributed versus centralised networks} contrast · indirect · democracy spreads information
+  among independent nodes; dictatorship sends it to one hub · 014 p4–p9
 ```
 
-`name` in the book's words · `kind` (concept, typology, contrast, views, fiction) · `mode`
-(explicit or indirect) · the members with a definition and an example each, in your own words ·
-the anchor. A contrast has two members ("Distributed networks", "Centralised networks"), indirect
-when the author builds it across a chapter without one sentence that names it.
+`{name}` in the book's words · kind (concept, typology, contrast, views, fiction) · explicit or
+indirect · the members with a definition and an example each, in your own words · anchor.
 
-Then `check_guide.py concepts <guide>` gathers every concept of every fact sheet into one
-**concept inventory**, `work/<guide>/concepts.json`, in book order, with the chapter that
-introduces each. Mark a concept that later chapters build on `"core": true`: it always gets a
-chart in the chapter that introduces it, and later chapters may name it again in their points.
-The script keeps the marks when it runs again.
+Then, in the plan (step 4, kept as a list in `work/<id>/concepts.md`), gather every item from every
+fact sheet into one **concept inventory**, in book order, with the chapter that introduces each. A
+concept that later chapters build on is marked **core**: it always gets a chart in the chapter
+that introduces it, and later chapters may name it again in their points.
 
 ## Show it (step 6)
 
@@ -79,15 +75,14 @@ Then:
   been shown: it still needs its chart.
 - **Stable cues.** A core concept keeps its inventory name, in the book's words, on every screen
   of every chapter and style; a later chart that shows it again uses the same chart kind and the
-  same labels for its members (the three kinds of trust are always "Personal", "Institutional" and
-  "Algorithmic", in the same order). A cue the reader learned must work again.
+  same labels for its members (the three kinds of reality are always "Objective", "Subjective" and
+  "Intersubjective", in the same order). A cue the reader learned must work again.
 - With a limit (`upTo`): only concepts introduced up to the limit.
 
 ## Check it (step 7)
 
-Run `check_guide.py concepts <guide>`: it reports each concept whose name (or the names of all
-its members) is on no screen of the chapter that introduces it (GR-V05). Then go through the
-inventory line by line and confirm the right kind of screen: its chart (minor items excepted), a
-key point or its row in "Terms". Add what is missing. Then read the chapter's
+Go through the inventory line by line and find each item on a screen of the chapter that
+introduces it: its chart (minor items excepted), a key point or its row in "Terms". Add what is
+missing. Then read the chapter's
 text once more for a distinction you did not record: a pair of terms set against each other more
 than once is the most common miss.
