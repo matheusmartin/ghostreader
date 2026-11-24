@@ -484,7 +484,7 @@ its products (the user chose it, knowing this).
 | Must-carry items missing in a style | 0 | 4 | 0 | 0 | 0 |
 | Core concepts in the guide's text | 0 of 1 | 0 of 1 | 10 of 13 | 8 of 13 | 90% |
 | Gold-set recall (the other family reads and scores) | 83% | 42% | 75% | 64% | 80% |
-| Blind recall, own questions, Map | running | 76% | 98% | 100% | 80% |
+| Blind recall, own questions, Map | 100% | 76% | 98% | 100% | 80% |
 
 ### 10.3 · What the pilot shows
 
