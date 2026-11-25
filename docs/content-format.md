@@ -211,7 +211,8 @@ screen. In the PDF, the scene text is on the left of each band.
 
 Every chart takes an optional `label` and `caption` (one line under data charts: what the marks mean).
 `bars`, `compare`, `flow`, `timeline`, `matrix` and `branches` are HTML and reflow to any width;
-`network`, `threads`, `cycle` and `layers` are SVG, laid out for a phone (and wider in the PDF).
+`network`, `threads`, `cycle`, `layers`, `mindmap` and `xy` are SVG, laid out for a phone (and wider in
+the PDF).
 
 **bars** — real numbers only. `focus` draws a bar in the accent colour.
 
@@ -281,6 +282,33 @@ ring is the key element.
 ```json
 { "type": "chart", "chart": "cycle", "centre": "The loop feeds itself",
   "nodes": [{ "title": "Algorithm", "text": "Optimises clicks" }, { "title": "Outrage wins", "key": true }, { "title": "Feeds" }] }
+```
+
+**mindmap** — a topic and its concepts: `centre` (the topic, ≤ 8 words) in the middle, 2–6
+`branches` (concepts, ≤ 4 words, optional `note`) in boxes on either side, and under each concept up
+to three `leaves`: the book's examples of it (≤ 5 words), unboxed. Concepts are boxed, examples are
+not. One `key` branch in the accent colour.
+
+```json
+{ "type": "chart", "chart": "mindmap", "label": "How stories build networks", "centre": "Stories link strangers",
+  "branches": [{ "title": "Fake memories", "leaves": ["The Passover"] },
+               { "title": "Intersubjective reality", "key": true, "leaves": ["The bitcoin pizzas", "Kosovo"] }] }
+```
+
+**xy** — items placed on two axes. Default `"mode": "scale"`: the book's own two dimensions, each
+axis with a `label` and the book's words for its `low` and `high` ends, and each point at 0–4 on
+each axis (none, little, some, much, most) as the book describes it; `quadrants` names the four
+corners (top left, top right, bottom left, bottom right; "" for none). `"mode": "data"`: a scatter
+plot of the book's real numbers, each axis with a `unit` ("%", "$bn", "year"). `arrows` show a move
+the book describes, from one point to another. One `key` point. A point's `side` (right, left, above,
+below) fixes where its label goes when the automatic place collides with an arrow.
+
+```json
+{ "type": "chart", "chart": "xy", "label": "Two kinds of network",
+  "x": { "label": "Information flow", "low": "Centralised", "high": "Distributed" },
+  "y": { "label": "Self-correction", "low": "Weak", "high": "Strong" },
+  "quadrants": ["", "Democracy", "Totalitarianism", ""],
+  "points": [{ "label": "Soviet Union", "x": 0, "y": 0 }, { "label": "United States", "x": 4, "y": 4, "key": true }] }
 ```
 
 ### figure — a hand-made SVG diagram

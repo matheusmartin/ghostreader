@@ -1,6 +1,7 @@
 // The library: every src/books/<id>.json file is a book. Drop a file in that folder and it
 // appears in the library after the next build. Each file loads only when needed.
-// A guide comes in four styles, one file each ("<guide>-<style>"); the library groups them.
+// A story or reading guide comes in four styles, one file each ("<guide>-<style>"); the library
+// groups them. A book summary is one file, with no styles.
 
 import { validateBook } from '../model/validate.ts';
 import { STYLES, type Book, type Style } from '../model/types.ts';
@@ -78,10 +79,13 @@ export function guideStyles(book: Book): Style[] {
 }
 
 /**
- * The file to open for an id in a link. Links made before a guide had four styles name the guide
- * itself ("nexus-summary"): they open its Map file.
+ * The file to open for an id in a link. A guide with styles: a link that names the guide itself
+ * opens its Map file. A book summary, which has no styles: a link to one of its old style files
+ * ("nexus-summary-recap") opens the book.
  */
 export function resolveBookId(id: string): string | null {
   if (loaders.has(id)) return id;
-  return loaders.has(`${id}-map`) ? `${id}-map` : null;
+  if (loaders.has(`${id}-map`)) return `${id}-map`;
+  const m = id.match(new RegExp(`^(.+)-(${STYLES.join('|')})$`));
+  return m && loaders.has(m[1]) ? m[1] : null;
 }

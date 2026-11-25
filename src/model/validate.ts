@@ -11,7 +11,7 @@ export interface ValidationResult {
 
 const BOOK_TYPES = ['fiction', 'reading', 'done'];
 export const SCREEN_TYPES = ['summary', 'points', 'steps', 'list', 'quiz', 'text', 'scenes', 'chart', 'figure'];
-export const CHART_KINDS = ['bars', 'compare', 'flow', 'timeline', 'network', 'threads', 'cycle', 'matrix', 'branches', 'layers'];
+export const CHART_KINDS = ['bars', 'compare', 'flow', 'timeline', 'network', 'threads', 'cycle', 'matrix', 'branches', 'layers', 'mindmap', 'xy'];
 const ID = /^[a-z0-9][a-z0-9-]*$/i;
 const DATE = /^\d{4}-\d{2}-\d{2}$/;
 
@@ -200,6 +200,52 @@ export function validateBook(raw: unknown): ValidationResult {
         if (rings.length > 5) err(p, 'layers take 2–5 rings');
         break;
       }
+      case 'mindmap': {
+        str(s, 'centre', p);
+        const branches = objList(s, 'branches', p, (b, bp) => {
+          str(b, 'title', bp);
+          str(b, 'note', bp, false);
+          optStrList(b, 'leaves', bp);
+          bool(b, 'key', bp);
+        }, 2);
+        names(branches.map((b) => b.title).filter(isStr), p, 'branch title');
+        atMostOneKey(branches, p);
+        break;
+      }
+      case 'xy': {
+        const data = s.mode === 'data';
+        if (s.mode !== undefined && s.mode !== 'scale' && s.mode !== 'data') err(p, '"mode" must be "scale" or "data"');
+        for (const axis of ['x', 'y'] as const) {
+          const a = s[axis] as Obj | undefined;
+          if (!a || typeof a !== 'object') { err(p, `missing "${axis}"`); continue; }
+          str(a, 'label', `${p}.${axis}`);
+          str(a, 'low', `${p}.${axis}`, !data);
+          str(a, 'high', `${p}.${axis}`, !data);
+          str(a, 'unit', `${p}.${axis}`, false);
+        }
+        const points = objList(s, 'points', p, (pt, pp) => {
+          str(pt, 'label', pp);
+          str(pt, 'note', pp, false);
+          bool(pt, 'key', pp);
+          if (pt.side !== undefined && !['right', 'left', 'above', 'below'].includes(pt.side as string)) err(pp, '"side" must be right, left, above or below');
+          for (const k of ['x', 'y'] as const) {
+            const v = pt[k];
+            if (typeof v !== 'number' || !Number.isFinite(v)) err(pp, `"${k}" must be a number`);
+            else if (!data && (v < 0 || v > 4)) err(pp, `"${k}" must be 0–4 on the book's scale (none, little, some, much, most); use "mode": "data" for the book's numbers`);
+          }
+        }, 2);
+        const all = names(points.map((pt) => pt.label).filter(isStr), p, 'label');
+        atMostOneKey(points, p);
+        if (s.quadrants !== undefined && (!Array.isArray(s.quadrants) || s.quadrants.length !== 4 || s.quadrants.some((q) => typeof q !== 'string'))) err(p, '"quadrants" must be four strings: top left, top right, bottom left, bottom right ("" for none)');
+        if (data && s.quadrants !== undefined) err(p, '"quadrants" are for "scale" mode only');
+        if (s.arrows !== undefined) objList(s, 'arrows', p, (a, ap) => {
+          str(a, 'from', ap);
+          str(a, 'to', ap);
+          str(a, 'label', ap, false);
+          known(all, [a.from, a.to].filter(isStr), ap, 'point labels');
+        }, 0);
+        break;
+      }
     }
   };
 
@@ -297,6 +343,7 @@ export function validateBook(raw: unknown): ValidationResult {
   if (typeof raw.id === 'string' && !ID.test(raw.id)) err('', '"id" may use only letters, digits and hyphens');
   if (!BOOK_TYPES.includes(raw.type as string)) err('', `"type" must be one of ${BOOK_TYPES.join(', ')}`);
   if (raw.style !== undefined && !STYLES.includes(raw.style as never)) err('', `"style" must be one of ${STYLES.join(', ')}`);
+  if (raw.type === 'done' && (raw.style !== undefined || raw.guide !== undefined)) err('', 'a book summary is one file with no styles: remove "style" and "guide"');
   if (raw.guide !== undefined) {
     if (typeof raw.guide !== 'string' || !ID.test(raw.guide)) err('', '"guide" may use only letters, digits and hyphens');
     else if (raw.style === undefined) err('', 'a file with "guide" needs "style"');

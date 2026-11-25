@@ -1,5 +1,5 @@
 // Charts drawn from data. HTML and CSS charts (bars, compare, flow, timeline, matrix, branches)
-// reflow to any width; SVG charts (network, threads, cycle, layers, and the scene chart) are laid
+// reflow to any width; SVG charts (network, threads, cycle, layers, mindmap, xy, and the scene chart) are laid
 // out for a design width: 340 on a phone, 640 in the PDF.
 // The design system: one key element (accent) per diagram, soft rounded shapes, labels inside the
 // shapes, no legends.
@@ -9,13 +9,14 @@ import type {
   BarsChart, BranchesChart, ChartKind, ChartScreen, CompareChart, FlowChart, MatrixChart, TimelineChart,
 } from '../model/types.ts';
 import { cycle, layers } from './loops.ts';
+import { mindmap, xy } from './maps.ts';
 import { network } from './network.ts';
 import { threadChart } from './scenes.ts';
 
 export const PHONE_WIDTH = 340;
 export const PRINT_WIDTH = 640;
 
-const SVG_KINDS: ChartKind[] = ['network', 'threads', 'cycle', 'layers'];
+const SVG_KINDS: ChartKind[] = ['network', 'threads', 'cycle', 'layers', 'mindmap', 'xy'];
 /** SVG charts take the free height of a screen and keep their proportions. */
 export const isSvgChart = (kind: ChartKind) => SVG_KINDS.includes(kind);
 
@@ -36,6 +37,8 @@ export function renderChart(c: ChartScreen, width = PHONE_WIDTH): Element {
     case 'threads': return threadChart(c, width);
     case 'cycle': return cycle(c, width);
     case 'layers': return layers(c, width);
+    case 'mindmap': return mindmap(c, width);
+    case 'xy': return xy(c, width);
   }
 }
 

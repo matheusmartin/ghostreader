@@ -9,13 +9,19 @@ is who and how they relate), **Reading guide** (non-fiction, while you read) and
 (non-fiction, a finished book). A guide holds only the book's own parts and chapters, in the
 book's order: no overview or key concepts chapter of its own.
 
-Every guide comes in four styles, to help you go back to a book after a long pause: **Map**
-(diagrams first), **Recap** (the story so far, in words), **Recall** (questions first, answers on a
-tap) and **Layers** (one line, three points, then the detail). The library shows one tile per book.
-The style is in the menu: in the library it sets the style that books open in (the app remembers
-it), and in a book it switches style at the same chapter. Research and recipes: `.claude/skills/ghostreader-book/references/styles.md`.
+A **book summary** is one file, and every chapter has the same five sections: **Before this
+chapter** (the earlier parts and chapters, one line each), **Recap** (the chapter in short prose),
+**In short** (its main points and the takeaway), **Key moments** (everything the chapter discusses,
+as diagrams: a mind map of its concepts and the book's examples, the argument as a flow, concept
+maps with arrows, x/y charts and more) and **Where it stands**. The chapter opener lists the five
+sections, so you can jump to the one you need.
 
-**Coming back after a pause.** Open the last chapter you read, in any style, and swipe through it.
+**Story guides** and **reading guides** come in four styles: **Map** (diagrams first), **Recap**
+(the story so far, in words), **Recall** (questions first, answers on a tap) and **Layers** (one
+line, three points, then the detail). The library shows one tile per book; the style is in the
+menu. Research and recipes: `.claude/skills/ghostreader-book/references/styles.md`.
+
+**Coming back after a pause.** Open the last chapter you read and swipe through it.
 Every chapter ends with **Where it stands** (fiction: when and where, who is there, what they
 want, what just happened; non-fiction: the book's question, what is established so far, what this
 chapter adds, where it stops) and **Still open** (the questions the book has raised and not yet
@@ -137,7 +143,7 @@ To write a book file by hand, follow [docs/content-format.md](docs/content-forma
 `npm run validate`.
 
 The library has **Nexus** by Yuval Noah Harari: a book summary of every chapter, written from the
-EPUB, in each of the four styles. Story guides for fiction use the same format: see the scenes and network charts in
+EPUB, in the five sections. Story guides for fiction use the same format: see the scenes and network charts in
 [docs/content-format.md](docs/content-format.md).
 
 ## Code map

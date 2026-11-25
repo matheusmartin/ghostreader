@@ -1,5 +1,9 @@
 # Styles
 
+**Story guides and Reading guides only.** A Book summary has no styles: it is one file whose
+chapters have five sections (`references/guides.md`, Book summary). The resume screens ("Where it
+stands", "Still open") and the research below apply to every type.
+
 The app's main job is to help a reader **go back to a book after a long pause**: remember what
 happened or what was argued, remember the concepts, and continue with the same line of thought. A
 style is a way to summarise for that job. The type (Story guide, Reading guide, Book summary) says

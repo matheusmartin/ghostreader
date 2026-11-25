@@ -27,6 +27,9 @@ chose, on a phone and (wider, with more room) in the PDF; there is nothing to la
 | one situation, 2–4 possible outcomes or scenarios | `chart: "branches"` | the outcome the author argues for |
 | nested levels or scopes (person in family in society) | `chart: "layers"` | the centre ring |
 | real numbers the book gives | `chart: "bars"` | the `focus` bar |
+| a chapter's topic, its concepts and the book's examples of each | `chart: "mindmap"` | the main concept (`key` branch) |
+| items on two dimensions the book names (centralised to distributed, weak to strong) | `chart: "xy"`, scale mode | the item the chapter is about (`key`) |
+| two kinds of real numbers for the same items | `chart: "xy"`, `"mode": "data"` (a scatter plot) | the `key` point |
 | real places | `figure` from `scripts/map.py` + a `list` of places | the key place (section maps) |
 | anything else that needs a drawing | `figure` (hand-made SVG, see below) | one `k` shape |
 
@@ -34,6 +37,28 @@ Every concept or distinction the book introduces gets one of these charts in the
 introduces it (`references/concepts.md`). Vary the diagrams: the same chart kind on at most two chapters in a row (fiction scenes excepted).
 Never put a chart in for decoration: if the chapter's idea has no structure to show, a short
 `steps` or `points` screen is the honest choice, and the next chapter gets the chart.
+
+## Key moments (Book summary)
+
+The section where everything the chapter discusses is drawn. Diagrams only: no text, points, list
+or quiz screen.
+
+1. **The chapter at a glance**: a `mindmap`. `centre` = the chapter's topic or question (≤ 8
+   words); 3–6 `branches` = its concepts and main claims, in the book's words, each with a short
+   `note` (≤ 5 words, the definition); `leaves` = the book's own examples (≤ 5 words), under the
+   concept the book uses them for. One `key` branch: the chapter's main concept. Concepts are boxed
+   and examples are not, so the reader tells them apart at a glance.
+2. **The argument**: a `flow` with `start` = the chapter's question, three steps, `key` = its
+   conclusion. Causes, not sequences.
+3. Then one diagram for each concept, distinction, contrast, sequence, loop or set of numbers the
+   chapter introduces (`references/concepts.md`; the table above): concepts **linked with arrows**
+   (`network` with `arrow: true` and link labels), kinds as a `matrix`, two things side by side as
+   `compare`, rival views as `branches`, stages as a `timeline`, a loop as a `cycle`, nested levels
+   as `layers`, **two dimensions as `xy`**, numbers as `bars` or an `xy` scatter.
+4. **x/y charts** place items only on dimensions the book itself names, at positions the book
+   describes (0–4: none, little, some, much, most; never a measurement it does not give), with a
+   `caption` saying so. `arrows` show a change the book describes ("mass media"). A point's `side`
+   moves its label when the screen check reports an overlap.
 
 ## Rules for every chart
 
