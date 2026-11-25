@@ -26,18 +26,22 @@ describe('bundled books', () => {
     });
   }
 
-  it('writes every guide in all four styles, one file each', () => {
+  it('writes story and reading guides in all four styles, and a book summary as one file', () => {
     const books = Object.values(files) as Book[];
     const guides = new Map<string, string[]>();
     for (const b of books) {
-      expect(b.guide, `${b.id}: every book file belongs to a guide ("guide")`).toBeTruthy();
+      if (b.type === 'done') {
+        expect(b.guide ?? b.style, `${b.id}: a book summary has no styles`).toBeUndefined();
+        continue;
+      }
+      expect(b.guide, `${b.id}: every story or reading guide file belongs to a guide ("guide")`).toBeTruthy();
       guides.set(b.guide!, [...(guides.get(b.guide!) ?? []), b.style ?? 'map']);
     }
     for (const [guide, styles] of guides) expect(styles.sort(), guide).toEqual(['layers', 'map', 'recall', 'recap']);
   });
 
   it('keeps title, author, parts and chapters the same across the styles of a guide', () => {
-    const books = Object.values(files) as Book[];
+    const books = (Object.values(files) as Book[]).filter((b) => b.guide);
     const shape = (b: Book) => JSON.stringify([b.title, b.author, b.type, b.upTo,
       b.parts.map((p) => [p.label, p.title, p.chapters.map((c) => [c.id, c.number, c.title])])]);
     for (const b of books) {
@@ -80,7 +84,7 @@ describe('validateBook', () => {
       '"type" must be one of fiction, reading, done',
       'parts[0]: "theme" is no longer used (one colour for the whole book): remove it',
       'parts[0].chapters[0].screens[0]: missing "text"',
-      'parts[0].chapters[0].screens[1]: "chart" must be one of bars, compare, flow, timeline, network, threads, cycle, matrix, branches, layers',
+      'parts[0].chapters[0].screens[1]: "chart" must be one of bars, compare, flow, timeline, network, threads, cycle, matrix, branches, layers, mindmap, xy',
       'parts[0].chapters[1]: id "c" is used twice',
       'parts[0].chapters[1]: use "screens" or "sections", not both',
       'parts[0].chapters[1]: "screens" needs at least 1 item',
@@ -99,6 +103,10 @@ describe('style', () => {
 
 describe('guide', () => {
   const base = { format: 1, type: 'reading', title: 'T', author: 'A', parts: [{ id: 'p', chapters: [{ id: 'c', number: '1', title: 'One', screens: [{ type: 'summary', label: 'In short', text: 'Text.' }] }] }] };
+  it('allows no style or guide on a book summary', () => {
+    expect(validateBook({ ...base, type: 'done', id: 'x-recap', guide: 'x', style: 'recap' }).errors).toEqual(['a book summary is one file with no styles: remove "style" and "guide"']);
+  });
+
   it('needs a style and the id "<guide>-<style>"', () => {
     expect(validateBook({ ...base, id: 'x-recap', guide: 'x', style: 'recap' }).errors).toEqual([]);
     expect(validateBook({ ...base, id: 'x-recap', guide: 'x' }).errors).toEqual(['a file with "guide" needs "style"']);

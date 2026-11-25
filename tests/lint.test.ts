@@ -78,7 +78,7 @@ describe('lintBook', () => {
     it('passes "Where it stands" last, or followed by "Still open"', () => {
       expect(guide([summary, stands(fiction)])).toEqual([]);
       expect(guide([summary, { ...summary, only: 'pdf' }, stands(fiction), open])).toEqual([]);
-      expect(guide([summary, stands(['The question', 'Established so far', 'This chapter adds', 'Where it stops'])], 'done')).toEqual([]);
+      expect(guide([summary, stands(['The question', 'Established so far', 'This chapter adds', 'Where it stops'])], 'reading')).toEqual([]);
     });
 
     it('reports a missing, misplaced or wrong "Where it stands"', () => {
@@ -94,6 +94,43 @@ describe('lintBook', () => {
     it('needs no resume screens outside a guide, or in a chapter not written yet', () => {
       expect(lintBook(bookWith([summary]))).toEqual([]);
       expect(guide([{ ...summary, only: 'pdf' }])).toEqual([]);
+    });
+  });
+
+  describe('book summary', () => {
+    const stands: Screen = { type: 'points', label: 'Where it stands', items: ['The question', 'Established so far', 'This chapter adds', 'Where it stops'].map((title) => ({ title, text: 'Text.' })) };
+    const chart: Screen = { type: 'chart', chart: 'cycle', nodes: [{ title: 'A' }, { title: 'B' }, { title: 'C' }] };
+    const sections = (withBefore: boolean) => [
+      ...(withBefore ? [{ title: 'Before this chapter', screens: [{ type: 'list', label: 'Before this chapter', rows: [{ name: 'Chapter 1', text: 'Information connects.' }] } as Screen] }] : []),
+      { title: 'Recap', screens: [{ type: 'text', label: 'Recap', paragraphs: ['It happens, so it matters.'] } as Screen] },
+      { title: 'In short', screens: [{ type: 'points', label: 'In short', items: [{ title: 'A point', text: 'Text.' }, { title: 'Takeaway', text: 'Text.' }] } as Screen] },
+      { title: 'Key moments', screens: [chart, { ...chart, label: 'Another' } as Screen] },
+      { title: 'Where it stands', screens: [stands] },
+    ];
+    const summary = (chapters: { id: string; sections: ReturnType<typeof sections> }[]): Book => ({
+      format: 1, id: 's', type: 'done', title: 'S', author: 'A',
+      parts: [{ id: 'p', chapters: chapters.map((c, i) => ({ id: c.id, number: `0${i + 1}`, title: `Chapter ${i + 1}`, sections: c.sections })) }],
+    });
+
+    it('passes the five sections, with no "Before this chapter" in the first chapter', () => {
+      expect(lintBook(summary([{ id: 'a', sections: sections(false) }, { id: 'b', sections: sections(true) }]))).toEqual([]);
+    });
+
+    it('reports missing or misplaced sections', () => {
+      const problems = lintBook(summary([{ id: 'a', sections: sections(true) }, { id: 'b', sections: sections(false) }]));
+      expect(problems[0]).toContain('no "Before this chapter" in the first chapter');
+      expect(problems[1]).toContain('"Before this chapter", "Recap", "In short", "Key moments", "Where it stands", in this order');
+    });
+
+    it('wants diagrams in "Key moments" and a takeaway last in "In short"', () => {
+      const s = sections(false);
+      s[2].screens = [{ type: 'text', paragraphs: ['Words.'] } as Screen, chart];
+      (s[1].screens[0] as { items: { title: string }[] }).items[1].title = 'Last point';
+      const problems = lintBook(summary([{ id: 'a', sections: s }]));
+      expect(problems).toEqual([
+        'parts[0].chapters[0].sections[1]: "In short" ends with an item titled "Takeaway"',
+        'parts[0].chapters[0].sections[2]: "Key moments" holds diagrams (charts, figures, scenes) only',
+      ]);
     });
   });
 

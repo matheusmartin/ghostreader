@@ -84,14 +84,22 @@ class Source:
 # ------------------------------------------------------------------ the guide
 
 def load_guide(books, guide):
+    """The guide's files by style; a book summary is one file, under the key "book"."""
+    single = Path(books) / f'{guide}.json'
+    if single.exists():
+        return {'book': load_json(single)}
     out = {}
     for style in STYLES:
         p = Path(books) / f'{guide}-{style}.json'
         if p.exists():
             out[style] = load_json(p)
     if 'map' not in out:
-        fail(f'no Map file {Path(books) / f"{guide}-map.json"}')
+        fail(f'no {single} and no Map file {Path(books) / f"{guide}-map.json"}')
     return out
+
+
+def main_file(guide):
+    return guide.get('book') or guide['map']
 
 
 def chapters(book):
@@ -159,7 +167,7 @@ def check_anchor(src, sheet_sources, n, p, p2, where, say):
 
 def cmd_facts(args, guide, work, say):
     src = Source(work)
-    book = guide['map']
+    book = main_file(guide)
     fiction = book['type'] == 'fiction'
     facts = Path(work) / 'facts'
     chapter_sources = {}
@@ -312,7 +320,7 @@ def cmd_names(args, guide, work, say):
         ok |= {l.strip() for l in ok_file.read_text().splitlines() if l.strip() and not l.startswith('#')}
     facts = Path(work) / 'facts'
     last_source = {}
-    for _, ch, _ in written(guide['map']):
+    for _, ch, _ in written(main_file(guide)):
         p = facts / f'{ch["id"]}.md'
         if not p.exists():
             fail(f'no fact sheet {p}: the names check needs each chapter\'s "source" line')
@@ -396,6 +404,23 @@ def screen_text(s):
             lines += [f'- {d["label"]}: {d["value"]}' for d in s['data']]
         elif c == 'threads':
             lines += [f'- {th["name"]}: {th.get("text", "")}' for th in s['threads']]
+        elif c == 'mindmap':
+            lines.append(f'Centre: {s["centre"]}')
+            for b in s['branches']:
+                lines.append(f'- {b["title"]}' + (f' ({b["note"]})' if b.get('note') else '') + (' [key]' if b.get('key') else '')
+                             + (f': examples {", ".join(b["leaves"])}' if b.get('leaves') else ''))
+        elif c == 'xy':
+            data = s.get('mode') == 'data'
+            ax = lambda a: f'{a["label"]}' + ('' if data else f' ({a.get("low", "")} → {a.get("high", "")})')
+            lines.append(f'x: {ax(s["x"])} · y: {ax(s["y"])}')
+            if s.get('quadrants'):
+                lines.append('Quadrants: ' + ', '.join(q for q in s['quadrants'] if q))
+            word = ['none', 'little', 'some', 'much', 'most']
+            for pt in s['points']:
+                pos = f'{pt["x"]}, {pt["y"]}' if data else f'x {word[round(pt["x"])]}, y {word[round(pt["y"])]}'
+                lines.append(f'- {pt["label"]} ({pos})' + (f': {pt["note"]}' if pt.get('note') else ''))
+            for a in s.get('arrows', []):
+                lines.append(f'- {a["from"]} → {a["to"]}' + (f': {a["label"]}' if a.get('label') else ''))
         if s.get('key'):
             lines.append(f'Key: {s["key"]}')
         if s.get('caption'):
@@ -419,18 +444,24 @@ def guide_text(book, upto=None, pdf=False):
     return '\n\n'.join(out)
 
 
-def cmd_text(args, guide, work, say):
-    style = args.style or 'map'
+def pick(guide, style):
+    if 'book' in guide:
+        return guide['book']
+    style = style or 'map'
     if style not in guide:
         fail(f'no {style} file')
-    print(guide_text(guide[style], args.upto, args.pdf))
+    return guide[style]
+
+
+def cmd_text(args, guide, work, say):
+    print(guide_text(pick(guide, args.style), args.upto, args.pdf))
 
 
 def cmd_test(args, guide, work, say):
     if not args.upto:
         fail('test needs --upto <chapter-id>')
-    style = args.style or 'map'
-    book = guide[style]
+    style = 'book' if 'book' in guide else (args.style or 'map')
+    book = pick(guide, args.style)
     facts = Path(work) / 'facts'
     questions, key = [], []
     for _, ch, _ in written(book):

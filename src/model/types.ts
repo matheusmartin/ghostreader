@@ -272,7 +272,38 @@ export interface LayersChart extends ChartBase {
   rings: { title: string; text?: string }[];
 }
 
+/**
+ * A topic and its concepts: the topic in the middle, 2–6 concepts in boxes around it, and under each
+ * concept the book's examples of it, unboxed (concepts are boxed, examples are not). One `key`
+ * concept in the accent colour.
+ */
+export interface MindmapChart extends ChartBase {
+  chart: 'mindmap';
+  centre: string;
+  branches: { title: string; note?: string; leaves?: string[]; key?: boolean }[];
+}
+
+/**
+ * Items placed on two axes. "scale" (default): the book's own two dimensions, each from `low` to
+ * `high`, and positions 0–4 (none, little, some, much, most) as the book describes them; optional
+ * names for the four `quadrants` (top left, top right, bottom left, bottom right). "data": a
+ * scatter plot of the book's real numbers, with each axis's `unit` ("%", "$bn", "km"; "year" prints years plainly). `arrows` show a move the book
+ * describes, from one item to another. One `key` item in the accent colour.
+ */
+export interface XYChart extends ChartBase {
+  chart: 'xy';
+  mode?: 'scale' | 'data';
+  x: { label: string; low?: string; high?: string; unit?: string };
+  y: { label: string; low?: string; high?: string; unit?: string };
+  /** `side`: where the label goes when the automatic place collides (right, left, above, below). */
+  points: { label: string; x: number; y: number; note?: string; key?: boolean; side?: 'right' | 'left' | 'above' | 'below' }[];
+  quadrants?: [string, string, string, string];
+  arrows?: { from: string; to: string; label?: string }[];
+}
+
 export type ChartScreen =
+  | MindmapChart
+  | XYChart
   | BarsChart
   | CompareChart
   | FlowChart

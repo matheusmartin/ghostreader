@@ -11,10 +11,12 @@
 //   resume      in a guide file, every written chapter ends with "Where it stands" (four fixed
 //               parts) and, optionally, "Still open": the screens a reader returns to
 //   causes      events are linked by cause ("because", "so"), not by time alone ("and then")
+//   summary     a book summary's chapters have five sections, in order: Before this chapter (not in
+//               the first chapter), Recap, In short, Key moments (diagrams only), Where it stands
 //
 // `npm run validate` fails on any problem in a bundled book.
 
-import type { Book, BookType, NetworkChart, Screen, ScenesScreen } from './types.ts';
+import type { Book, BookType, Chapter, NetworkChart, Screen, ScenesScreen } from './types.ts';
 
 type Target = 'app' | 'pdf';
 
@@ -44,6 +46,8 @@ const L = {
   mxCols: [4, 6], mxRows: [6, 10], mxCol: [2, 2], mxLabel: [4, 5], mxKey: [12, 14],
   brStart: [6, 8], brTitle: [5, 6], brText: [8, 12],
   layerTitle: [3, 3], layerText: [5, 6],
+  mmBranches: [6, 8], mmTitle: [4, 5], mmNote: [5, 6], mmLeaves: [3, 4], mmLeaf: [5, 6], mmCentre: [8, 10],
+  xyPoints: [8, 12], xyLabel: [4, 5], xyNote: [4, 5], xyAxis: [4, 5], xyEnd: [3, 3], xyQuad: [3, 3], xyArrows: [3, 5], xyArrow: [3, 3],
 } as const;
 
 const NAME_CHARS = 22;
@@ -58,6 +62,9 @@ export const STANDS_TITLES: Record<BookType, readonly string[]> = {
   done: ['The question', 'Established so far', 'This chapter adds', 'Where it stops'],
 };
 const STILL_OPEN_ROWS = 3;
+/** The sections of every chapter of a book summary, in this order (skill: references/guides.md). */
+export const SUMMARY_SECTIONS = ['Before this chapter', 'Recap', 'In short', 'Key moments', 'Where it stands'] as const;
+const DIAGRAMS = new Set(['chart', 'figure', 'scenes']);
 /** "and then", or a sentence or item that starts with "Then": order without a cause. */
 const THEN = /\band then\b|(?:^|[.!?;:]\s+)then\b/i;
 
@@ -79,7 +86,7 @@ const IZE = /\b([a-z]{2,})iz(e|es|ed|ing|ation|ations|er|ers)\b/gi;
 const IZE_OK = new Set(['maize', 'baize', 'capsize', 'capsized', 'belize', 'seize', 'seizes', 'seized', 'seizing', 'prize', 'prizes', 'prized', 'assize', 'assizes']);
 const SPOILER = /\b(eventually|ultimately|will turn out|turns out later|in the end|will later|later in the book|will prove)\b/i;
 /** Keys whose strings are not prose: names, ids and settings. */
-const NOT_PROSE = new Set(['type', 'chart', 'only', 'style', 'tag', 'svg', 'from', 'to', 'with', 'off', 'appears', 'major', 'columns']);
+const NOT_PROSE = new Set(['type', 'chart', 'only', 'style', 'tag', 'svg', 'from', 'to', 'with', 'off', 'appears', 'major', 'columns', 'mode', 'unit', 'side']);
 
 const words = (s: string) => s.replace(/[{}[\]*]/g, '').split(/\s+/).filter((w) => /[\p{L}\p{N}]/u.test(w)).length;
 
@@ -101,6 +108,7 @@ export function lintBook(book: Book): string[] {
     if (ws.length >= 2 && ws.every((w) => /^[\p{Lu}]/u.test(w))) say(path, `"${field}" is in title case: use sentence case ("${sentenceCase(text)}")`);
   };
 
+  const firstWritten = book.parts.flatMap((p) => p.chapters).find((c) => (c.screens ?? c.sections?.flatMap((sec) => sec.screens) ?? []).some((s) => s.only !== 'pdf'));
   book.parts.forEach((part, pi) => part.chapters.forEach((ch, ci) => {
     const cp = `parts[${pi}].chapters[${ci}]`;
     if (GUIDE_MADE.has(ch.number)) {
@@ -116,9 +124,47 @@ export function lintBook(book: Book): string[] {
       lab(sp, 'title', sec.title);
       sec.screens.forEach((s, i) => visit(s, `${sp}.screens[${i}]`, sec.only === 'pdf' ? 'pdf' : 'app'));
     });
-    if (book.guide) resume(ch.screens ?? ch.sections?.flatMap((sec) => sec.screens) ?? [], cp);
+    if (book.guide || book.type === 'done') resume(ch.screens ?? ch.sections?.flatMap((sec) => sec.screens) ?? [], cp);
+    if (book.type === 'done') summary(ch, cp, firstWritten === ch);
   }));
   return out;
+
+  /** A book summary chapter: the five sections in order, each with the screens it is made of. */
+  function summary(ch: Chapter, cp: string, first: boolean) {
+    const written = (ch.screens ?? ch.sections?.flatMap((sec) => sec.screens) ?? []).some((s) => s.only !== 'pdf');
+    if (!written) return;
+    const want = SUMMARY_SECTIONS.filter((t) => !(first && t === 'Before this chapter'));
+    const got = (ch.sections ?? []).map((sec) => sec.title);
+    if (got.join('|') !== want.join('|')) {
+      say(cp, `a book summary chapter has the sections ${want.map((t) => `"${t}"`).join(', ')}, in this order${first ? ' (no "Before this chapter" in the first chapter)' : ''} (has ${got.length ? got.map((t) => `"${t}"`).join(', ') : 'none'})`);
+      return;
+    }
+    ch.sections!.forEach((sec, si) => {
+      const sp = `${cp}.sections[${si}]`;
+      const app = sec.screens.filter((s) => s.only !== 'pdf');
+      const kinds = (ok: (s: Screen) => boolean, what: string) => {
+        if (!sec.screens.every(ok)) say(sp, `"${sec.title}" holds ${what} only`);
+      };
+      switch (sec.title) {
+        case 'Before this chapter':
+          kinds((s) => s.type === 'list', 'a list: one row per earlier part, then per earlier chapter of this part');
+          break;
+        case 'Recap':
+          kinds((s) => s.type === 'text', 'text');
+          break;
+        case 'In short': {
+          kinds((s) => s.type === 'points', 'points');
+          const last = app.at(-1);
+          if (last?.type === 'points' && last.items.at(-1)?.title !== 'Takeaway') say(sp, '"In short" ends with an item titled "Takeaway"');
+          break;
+        }
+        case 'Key moments':
+          kinds((s) => DIAGRAMS.has(s.type), 'diagrams (charts, figures, scenes)');
+          if (app.length < 2) say(sp, `"Key moments" needs at least two diagrams on the phone (has ${app.length})`);
+          break;
+      }
+    });
+  }
 
   /** A written chapter ends with "Where it stands", then optionally "Still open", in app and PDF. */
   function resume(screens: Screen[], cp: string) {
@@ -281,6 +327,32 @@ export function lintBook(book: Book): string[] {
               limit(`${p}.rings[${i}]`, 'title', r.title, max(L.layerTitle));
               limit(`${p}.rings[${i}]`, 'text', r.text, max(L.layerText));
             });
+            break;
+          case 'mindmap':
+            limit(p, 'centre', s.centre, max(L.mmCentre));
+            count(p, 'branches', s.branches.length, max(L.mmBranches));
+            s.branches.forEach((b, i) => {
+              const bp = `${p}.branches[${i}]`;
+              limit(bp, 'title', b.title, max(L.mmTitle));
+              limit(bp, 'note', b.note, max(L.mmNote));
+              count(bp, 'leaves', b.leaves?.length ?? 0, max(L.mmLeaves));
+              b.leaves?.forEach((l, k) => limit(bp, `leaves[${k}]`, l, max(L.mmLeaf)));
+            });
+            break;
+          case 'xy':
+            count(p, 'points', s.points.length, max(L.xyPoints));
+            for (const axis of ['x', 'y'] as const) {
+              limit(`${p}.${axis}`, 'label', s[axis].label, max(L.xyAxis));
+              limit(`${p}.${axis}`, 'low', s[axis].low, max(L.xyEnd));
+              limit(`${p}.${axis}`, 'high', s[axis].high, max(L.xyEnd));
+            }
+            s.points.forEach((pt, i) => {
+              limit(`${p}.points[${i}]`, 'label', pt.label, max(L.xyLabel));
+              limit(`${p}.points[${i}]`, 'note', pt.note, max(L.xyNote));
+            });
+            s.quadrants?.forEach((q, i) => limit(p, `quadrants[${i}]`, q, max(L.xyQuad)));
+            count(p, 'arrows', s.arrows?.length ?? 0, max(L.xyArrows));
+            s.arrows?.forEach((a, i) => limit(`${p}.arrows[${i}]`, 'label', a.label, max(L.xyArrow)));
             break;
         }
         break;
