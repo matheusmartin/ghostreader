@@ -71,11 +71,13 @@ events; give those the closest look.
 ## 5 · Blind recall
 
 The direct test of the app's goal: can a reader who has only the guide answer what a returning
-reader needs? For the Map file at the last chapter of each part, and for every other style at the
+reader needs? For a Book summary, the one file at the last chapter of each part and at the end;
+for a styled guide, the Map file at the last chapter of each part and every other style at the
 last written chapter:
 
 ```bash
-python3 -I .claude/skills/ghostreader-book/scripts/check_guide.py test <guide> --style map --upto <chapter-id>
+python3 -I .claude/skills/ghostreader-book/scripts/check_guide.py test <guide> --upto <chapter-id>            # a Book summary
+python3 -I .claude/skills/ghostreader-book/scripts/check_guide.py test <guide> --style map --upto <chapter-id>  # a styled guide
 ```
 
 It writes `work/<guide>/recall-test/<style>-<chapter>.md` (the guide's app screens up to the

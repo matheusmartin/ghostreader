@@ -1,8 +1,8 @@
 ---
 name: ghostreader-book
-description: Writes or updates a book guide for the Ghostreader app in this repository, built to help a reader recall earlier chapters after a pause and continue the book - four files, one per style (Map, Recap, Recall, Layers), src/books/<guide>-<style>.json, each making the swipe screens and an A4 PDF; every chapter ends with "Where it stands" and "Still open". Only the book's own parts and chapters, in the book's order - no overview or other guide-made chapter. Three types, chosen by the user - Story guide (fiction), Reading guide (non-fiction, while reading) and Book summary (non-fiction, a finished book). Reads the book from an EPUB, PDF, text, Markdown or HTML file, or from summaries when no file is given. Diagrams first; every claim anchored to the text and checked. Use when the user asks to add, write, summarise, update or regenerate a book, story guide, reading guide, book summary, infographic or PDF for the app, even if they only name the book. Do not use for a short summary in chat, book recommendations, reviews, or changes to the app's code.
+description: Writes or updates a book guide for the Ghostreader app in this repository, built to help a reader recall earlier chapters after a pause and continue the book. A Book summary is one file, src/books/<guide>.json, whose chapters each have five sections - Before this chapter, Recap, In short, Key moments (diagrams only - mind maps, flows, concept maps with arrows, x/y charts) and Where it stands; a Story or Reading guide is four files, one per style (Map, Recap, Recall, Layers). Each file makes the swipe screens and an A4 PDF. Only the book's own parts and chapters, in the book's order - no overview or other guide-made chapter. Three types, chosen by the user - Story guide (fiction), Reading guide (non-fiction, while reading) and Book summary (non-fiction, a finished book). Reads the book from an EPUB, PDF, text, Markdown or HTML file, or from summaries when no file is given. Diagrams first; every claim anchored to the text and checked. Use when the user asks to add, write, summarise, update or regenerate a book, story guide, reading guide, book summary, infographic or PDF for the app, even if they only name the book. Do not use for a short summary in chat, book recommendations, reviews, or changes to the app's code.
 metadata:
-  version: "1.6.0"
+  version: "1.7.0"
 compatibility: Node 22 with `npm install` done (Vitest; Playwright with Chromium for the screen check and the PDF). Python 3.9+ for the book extractor, the checks and maps; PDF books also need poppler-utils (pdftotext) or the pypdf package.
 ---
 
@@ -10,11 +10,15 @@ compatibility: Node 22 with `npm install` done (Vitest; Playwright with Chromium
 
 ## Overview
 
-A guide is four JSON files, one per style: `src/books/<guide>-map.json`, `-recap.json`,
-`-recall.json` and `-layers.json` (`references/styles.md`). Every guide is always written in all
-four; the library shows them as one tile, and the menu chooses the style. The app shows each file as screens
-(one idea per swipe); the build prints each as an A4 PDF, with the extra detail marked
-`"only": "pdf"`.
+A **Book summary** is one JSON file, `src/books/<guide>.json`, with no styles: every chapter has
+the same five sections, in this order (`references/guides.md`, Book summary): **Before this
+chapter** (a list), **Recap** (text), **In short** (points ending with the takeaway), **Key
+moments** (diagrams only: everything the chapter discusses, as mind maps, flows, concept maps
+with arrows, x/y charts and the other charts) and **Where it stands**. A **Story guide** or
+**Reading guide** is four files, one per style: `src/books/<guide>-map.json`, `-recap.json`,
+`-recall.json` and `-layers.json` (`references/styles.md`); the library shows them as one tile, and
+the menu chooses the style. The app shows each file as screens (one idea per swipe); the build
+prints each as an A4 PDF, with the extra detail marked `"only": "pdf"`.
 
 The app's job: a reader comes back after a pause of days or months, **opens the last chapter they
 read**, remembers it, and continues the book with the same line of thought. So every chapter, in
@@ -43,8 +47,9 @@ Principles:
 | Term | Meaning |
 |---|---|
 | type | `fiction` (Story guide), `reading` (Reading guide) or `done` (Book summary), chosen by the user |
-| style | how a file summarises: `map`, `recap`, `recall` or `layers`. Every guide has all four (`references/styles.md`) |
-| guide | the id the four files share; each file's id is `<guide>-<style>` |
+| style | Story and Reading guides only: how a file summarises, `map`, `recap`, `recall` or `layers`; such a guide has all four (`references/styles.md`). A Book summary has no styles |
+| guide | the guide's id: a Book summary's file is `<guide>.json`; a styled guide's files are `<guide>-<style>.json` |
+| sections | a Book summary chapter's five parts: Before this chapter, Recap, In short, Key moments, Where it stands |
 | screen / block | one item of a chapter's `screens`: one swipe in the app, one block in the PDF |
 | app screen | a screen without `only`, or with `only: "app"`: must fit a phone screen |
 | PDF-only block | `only: "pdf"`: detail for the PDF, with looser limits |
@@ -81,7 +86,7 @@ Edition:  Penguin Classics, 2003             (optional: shown on the cover)
 Copy this checklist into the task list and tick it off:
 
 ```
-- [ ] 1 Inputs: type, title, author, limit, edition, book file (all four styles, always)
+- [ ] 1 Inputs: type, title, author, limit, edition, book file (Book summary: one file; others: four styles)
 - [ ] 2 Read docs/content-format.md, references/guides.md (the type), references/styles.md,
         references/visuals.md, references/concepts.md, references/content-rules.md,
         references/writing-style.md, references/verify.md
@@ -91,10 +96,11 @@ Copy this checklist into the task list and tick it off:
         inventory; fiction: the cast
 - [ ] 5 Fact sheets work/<guide>/facts/<chapter-id>.md (every fact anchored, concepts, must
         carry) and the ledger work/<guide>/ledger.md; check_guide.py facts
-- [ ] 6 Write the Map file src/books/<guide>-map.json chapter by chapter: app screens, PDF-only
-        detail, then "Where it stands" and "Still open"
-- [ ] 6b Write work/<guide>/styles.json and run scripts/build_styles.py: the Recap, Recall and
-        Layers files (references/styles.md)
+- [ ] 6 Book summary: write src/books/<guide>.json chapter by chapter, the five sections, Key
+        moments as diagrams only. Story or Reading guide: the Map file
+        src/books/<guide>-map.json: app screens, PDF-only detail, then the resume screens
+- [ ] 6b Story or Reading guide only: work/<guide>/styles.json and scripts/build_styles.py, for
+        the Recap, Recall and Layers files (references/styles.md)
 - [ ] 7 Verify (references/verify.md): check_guide.py names; claims and must carry with fresh
         subagents; fix what does not hold
 - [ ] 8 Check: npm run validate · npm run check:screens · npm run build, look at the PDF;
@@ -128,7 +134,8 @@ scenes. The fact-sheet, names and recall checks need the book's text, so they do
 
 **4 · Plan.** Decide before writing:
 - **guide id**: title and type in lower case with hyphens: `pride-and-prejudice-story`,
-  `nexus-reading`, `nexus-summary`. The four files are `<guide>-map.json`, `<guide>-recap.json`,
+  `nexus-reading`, `nexus-summary`. A Book summary is `<guide>.json`, with no `"guide"` or
+  `"style"`. A Story or Reading guide is `<guide>-map.json`, `<guide>-recap.json`,
   `<guide>-recall.json` and `<guide>-layers.json`, each with `"guide"` and `"style"`.
 - **Parts and chapters** from `toc.json`: every chapter of the book, in order, with its real
   title (untitled: "Chapter 7"), number and `length` (its word count; all chapters or none). Part
@@ -199,15 +206,23 @@ python3 -I .claude/skills/ghostreader-book/scripts/check_guide.py facts <guide>
 ```
 
 **6 · Write.** Work chapter by chapter from the fact sheets and the ledger, never from memory:
-first the app screens of the type's recipe, then the PDF-only blocks, then "Where it stands" and
-"Still open". Every must-carry item goes on a screen all four styles show: "Key points" first,
-then "In short", "The logic", the main chart or the resume screens (`references/styles.md`, "Must
-carry in every style"); a fact only in a second chart is lost in Recall and Layers. Write each
-chapter into the Map file as soon as it is done, and run `npm run validate` after every few
+the type's recipe (`references/guides.md`).
+
+- **Book summary:** the five sections in order. Key moments carries everything the chapter
+  discusses, as diagrams only: open with a mind map of the chapter (its topic, its concepts in
+  boxes, the book's examples under each), then the argument as a flow, then one diagram for each
+  concept, distinction, contrast and sequence (`references/visuals.md`, Key moments). Every
+  must-carry item is on a screen: In short, the Recap or a Key moments diagram.
+- **Story or Reading guide:** the app screens of the recipe, then the PDF-only blocks, then
+  "Where it stands" and "Still open". Every must-carry item goes on a screen all four styles show:
+  "Key points" first, then "In short", "The logic", the main chart or the resume screens
+  (`references/styles.md`, "Must carry in every style").
+
+Write each chapter into the file as soon as it is done, and run `npm run validate` after every few
 chapters. For more than 30 chapters, send a short progress note after
 each part.
 
-**6b · The other styles.** From the same fact sheets, write `work/<guide>/styles.json`: the
+**6b · The other styles** (Story and Reading guides only). From the same fact sheets, write `work/<guide>/styles.json`: the
 book's question, a point per part, and per chapter one line, the point it adds, a recap, key
 moments, the concepts to remember, three questions, and "before this chapter". The format is in
 `references/styles.md`. Then build the three files:
@@ -256,8 +271,9 @@ npm run build
   work/<guide>/pdf` and open the images. No Chromium: `npx playwright install chromium`.
 - To see the app: `npm run dev`, then `http://localhost:5173/#/read/<id>` (and `#/print/<id>`).
 
-Then the blind recall test (`references/verify.md`, step 5): the Map file at the last chapter of
-each part, every other style at the last written chapter. A fresh subagent answers the
+Then the blind recall test (`references/verify.md`, step 5): a Book summary at the last chapter
+of each part and at the end; a styled guide's Map file at the last chapter of each part, every
+other style at the last written chapter. A fresh subagent answers the
 must-carry questions from the guide alone; 80% or more passes. Carry each missed fact and test
 again.
 
@@ -285,15 +301,21 @@ asked for); never `work/`. Then write:
   are charts, scenes or figures (`references/visuals.md`).
 - Concepts and distinctions the book introduces are shown, not just named: a chart for each in
   the chapter that introduces it (`references/concepts.md`).
-- Tests are welcome but come last in Map: at most one quiz per chapter, after the visuals. Recall
-  puts its quiz first.
+- Book summary: the five sections in every chapter, Key moments as diagrams only, no quiz and no
+  text screen in Key moments. Story and Reading guides: tests come last in Map (at most one quiz
+  per chapter, after the visuals); Recall puts its quiz first.
 - One idea per app screen, within the limits; more detail goes in PDF-only blocks.
 - One colour scheme for the whole book. Only the book's own parts, chapters and sections: no
   overview or key concepts chapter, no invented prologue, introduction or part label.
 
 ## Common mistakes
 
-- Writing only one style → every guide has all four files; the library shows one tile per guide.
+- A Book summary in styles, or a Story or Reading guide in one style → a Book summary is one file
+  with five sections; a styled guide has all four files.
+- A text, points or list screen in Key moments → turn it into a diagram (a flow, a concept map
+  with arrows, a mind map, a matrix) or move the words to the Recap or In short.
+- A mind map whose examples are not the book's own, or hang under the wrong concept → only the
+  book's examples, under the concept the book uses them for.
 - A chapter without "Where it stands", or with other titles in it → the four titles of the type,
   in order, as the last screens (`npm run validate` reports it).
 - "Still open" with a hint of the answer ("Will Wickham's lies be exposed?") → the stakes as the
@@ -335,9 +357,9 @@ asked for); never `work/`. Then write:
 | `references/guides.md` | step 2: the frame, the type's chapter recipe, PDF detail and limits |
 | `references/visuals.md` | steps 4–6: which diagram for which idea; layout rules for each chart |
 | `references/concepts.md` | steps 4–7: find, record and show the book's concepts and distinctions |
-| `references/styles.md` | steps 6 and 6b: the resume rule, the four styles, their research basis, recipes and the styles.json format |
+| `references/styles.md` | steps 6 and 6b: the resume rule; for Story and Reading guides, the four styles, their research basis, recipes and the styles.json format |
 | `references/verify.md` | steps 5, 7 and 8: the checks, the fresh-eyes review and the blind recall test |
-| `scripts/build_styles.py` | step 6b: builds the Recap, Recall and Layers files from the Map file and styles.json |
+| `scripts/build_styles.py` | step 6b (Story and Reading guides): builds the Recap, Recall and Layers files from the Map file and styles.json |
 | `scripts/check_guide.py` | steps 5, 7 and 8 (`--help`): facts, names, text, test |
 | `references/content-rules.md` | step 2: book content only, accuracy, spoilers, summaries mode, copyright |
 | `references/writing-style.md` | step 6: The Economist style, short form |

@@ -79,6 +79,10 @@ Then:
   "Intersubjective", in the same order). A cue the reader learned must work again.
 - With a limit (`upTo`): only concepts introduced up to the limit.
 
+In a **Book summary**, all of this lives in the chapter's Key moments: the mind map names the
+chapter's concepts (boxed) with the book's examples of each (unboxed, under the concept), and each
+concept or distinction then gets its own diagram.
+
 ## Check it (step 7)
 
 Go through the inventory line by line and find each item on a screen of the chapter that

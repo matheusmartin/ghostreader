@@ -251,6 +251,8 @@ def main():
         map_book = json.load(f)
     with open(args.styles_file) as f:
         notes = json.load(f)
+    if map_book.get('type') == 'done':
+        fail('a Book summary has no styles: it is one file with five sections per chapter (references/guides.md)')
     if map_book.get('style') != 'map':
         fail('the first file must be the Map file ("style": "map")')
     out_dir = os.path.dirname(os.path.abspath(args.map_file))

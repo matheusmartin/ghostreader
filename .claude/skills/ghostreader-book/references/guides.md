@@ -1,7 +1,8 @@
 # Guide types
 
-These are the recipes of the Map style, the file every guide starts with. Recap, Recall and Layers
-are built from it (`references/styles.md`); everything else here applies to every style.
+These are the recipes of the three guide types. For a Story or Reading guide, the recipe is the Map
+style, the file every such guide starts with; Recap, Recall and Layers are built from it
+(`references/styles.md`). A Book summary has no styles: its recipe below is the whole file.
 
 Every guide has the same frame: the book's own parts and chapters, in the book's order, under the
 book's names, and nothing else. A book without parts has one part without a label; a prologue or
@@ -134,27 +135,30 @@ argument moves across them.
 
 ## Non-fiction done — Book summary
 
-**Purpose:** a summary of a finished book to keep and review: a short part per chapter of the
-book, in the book's order. Always the whole book.
+**Purpose:** a summary of a finished book to keep and come back to: the same five sections in
+every chapter, in the book's order. Always the whole book. **One file, no styles:**
+`src/books/<guide>.json`, without `"guide"` or `"style"`; the chapter opener lists the five
+sections, so a reader can jump to the one they need.
 
 No overview chapter: no "book in one page" and no key concepts chapter. Each concept is shown
 in the chapter that introduces it (`references/concepts.md`).
 
-### Chapter recipe
+### Chapter recipe: five sections
 
-| Screen | Limit |
-|---|---|
-| `summary` "In short" + "Takeaway" | 2 sentences ≤ 40 words; takeaway ≤ 20 words |
-| The chapter's diagram | as in the reading guide |
-| Concept charts | one chart for each concept or distinction the chapter introduces (`references/concepts.md`) |
-| `points` "Key points" | exactly 3: name ≤ 4 words, ≤ 25 words |
-| `steps` "The logic" | 5 steps; the last is the conclusion |
-| `points` "Examples in the book", `style: "box"` | 2 |
-| `quiz` "Recall" (optional) | 2 questions ≤ 22 words |
-| PDF: `text` "The chapter in full" | 200–400 words |
-| PDF: `points` "All key points", `list` "Terms" | when the chapter has more |
-| `points` "Where it stands" | as in the reading guide |
-| `list` "Still open" | as in the reading guide; in the last chapter, the questions the book leaves open, or leave it out |
+Every chapter uses `sections`, with exactly these titles in this order (`npm run validate` checks
+them; the first chapter has no "Before this chapter"):
+
+| Section | Screens | Content and limits |
+|---|---|---|
+| **Before this chapter** | `list` "Before this chapter" | The frame, then the recent past: one row per finished part (name: the part's label and title, "Part I · Human Networks", or "Prologue"), then one row per earlier chapter of this part (name: "Chapter 3"). Text ≤ 18 words, the point it established, as a cause or a claim. ≤ 8 rows; the last row is the chapter just before |
+| **Recap** | `text` "Recap" | The chapter retold as causes, two short paragraphs, ≤ 120 words, at most six names, each with a role. For the PDF, a fuller `text` "Recap" (200–400 words) marked `only: "pdf"`, with the short one marked `only: "app"` |
+| **In short** | `points` "In short" | 2–3 bullets of the chapter's main claims and must-carry facts (title ≤ 6 words, text ≤ 25 words), then a last item titled "Takeaway" (one sentence ≤ 20 words). The PDF may add `points` "All key points" (`only: "pdf"`) |
+| **Key moments** | diagrams only, 3–10 | Everything the chapter discusses, drawn (`references/visuals.md`, Key moments): first a `mindmap` "The chapter at a glance" (the chapter's topic; its concepts as branches; the book's examples as leaves, under the concept the book uses them for), then the argument as a `flow` "The argument" (start = the chapter's question; three steps; key = its conclusion), then one diagram for each concept, distinction, contrast, sequence, loop or set of numbers. No text, points, list or quiz screens. PDF-only diagrams may add detail |
+| **Where it stands** | `points` "Where it stands" + `list` "Still open" | As in the reading guide; in the last chapter, "Still open" lists the questions the book leaves open, or is left out |
+
+No quiz and no "Terms" list: concepts live in the mind map and their own charts, definitions in a
+branch note or a chart's labels. Every must-carry item (`SKILL.md` step 5) appears in In short,
+the Recap or a Key moments diagram; the blind recall test checks it.
 
 ## Limits the validator applies
 
@@ -181,6 +185,9 @@ They come from `src/model/lint.ts`; a recipe above may be stricter.
 | branches | 2–4 options; titles 5 words; notes 8 words |
 | layers | 2–5 rings; titles 3 words; notes 5 words |
 | bars | 8 · 16 bars; real numbers only |
+| mindmap | 6 · 8 branches; titles 4 words; notes 5 words; 3 · 4 leaves of 5 words; centre 8 words |
+| xy | 8 · 12 points; labels 4 words; notes 4 words; axis names 4 words; axis ends 3 words; quadrant names 3 words; 3 · 5 arrows, labels 3 words |
+| Book summary | the five sections in order; Key moments: diagrams only, at least two on the phone; In short ends with "Takeaway" |
 | Where it stands | `points`, exactly the four titles of the type, in order; the chapter's last screen or the one before "Still open" |
 | Still open | `list`, 1–3 rows; the chapter's last screen |
 | any prose | no "and then", no sentence or item that starts with "Then" (timeline times and `{when}` marks excepted) |
