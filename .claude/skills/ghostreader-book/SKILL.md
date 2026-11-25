@@ -249,7 +249,9 @@ npm run build
   field to fix.
 - `check:screens`: renders every app screen at 360, 390 and 820 px wide. `FIX too full`: shorten
   or split the screen; `FIX chart too small` or `chart overlap`: fewer nodes, rows or links, or
-  reorder them (`references/visuals.md`).
+  reorder them (`references/visuals.md`); `FIX clipped chart text`: a word in a matrix heading,
+  bar label or other HTML chart part is too long for its column: use a shorter word or fewer
+  columns.
 - `build`: writes `dist/pdf/<id>.pdf`. Look at it: `pdftoppm -r 60 -png dist/pdf/<id>.pdf
   work/<guide>/pdf` and open the images. No Chromium: `npx playwright install chromium`.
 - To see the app: `npm run dev`, then `http://localhost:5173/#/read/<id>` (and `#/print/<id>`).

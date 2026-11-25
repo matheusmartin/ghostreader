@@ -8,6 +8,7 @@
 // FIX  too full          the screen still overflows after its type was made 28 % smaller: split it
 // FIX  chart too small   an SVG chart had to shrink below 80 %: fewer rows or nodes, or split it
 // FIX  chart overlap     the chart layout could not keep labels or nodes apart
+// FIX  clipped text      text in an HTML chart part is wider than its box (cut off or spilling out)
 // NOTE smaller type      the type was made smaller to fit (fine, but the screen is full)
 //
 // Exit codes: 0 = no FIX lines, 1 = FIX lines, 2 = setup error.
@@ -66,6 +67,7 @@ for (const id of ids) {
       if (r.overfull) add('FIX', 'too full: split it into two screens or shorten the text');
       if (r.chartScale < 0.8) add('FIX', `chart too small (drawn at ${Math.round(r.chartScale * 100)}%): fewer rows or nodes, or split it`);
       if (r.overlap > 0) add('FIX', 'chart overlap: reorder the nodes (linked nodes next to each other), shorten labels, or use fewer links');
+      for (const text of r.clipped ?? []) add('FIX', `clipped chart text ${text}: use shorter words, or fewer columns`);
       if (!r.overfull && r.fit < 0.86) add('NOTE', `smaller type (${Math.round(r.fit * 100)}%)`);
     }
     await page.close();

@@ -1,14 +1,20 @@
 /* ---- charts drawn from data (src/charts/charts.ts) --------------------------------------------- */
 
-.chart-bars { display: grid; gap: .5em; }
+/* Every row uses the columns of the chart (subgrid): all bars have the same scale, and the value
+   column is as wide as the widest value. A long label wraps. */
+.chart-bars {
+  display: grid;
+  grid-template-columns: minmax(min-content, 40%) 1fr max-content;
+  gap: .5em .54em;
+}
 .bar-row {
   display: grid;
-  grid-template-columns: minmax(5em, 40%) 1fr 2.4em;
+  grid-column: 1 / -1;
+  grid-template-columns: subgrid;
   align-items: center;
-  gap: .6em;
   font-size: .9em;
 }
-.bar-label { text-align: right; color: var(--body); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.bar-label { text-align: right; color: var(--body); line-height: 1.25; }
 .bar-track { height: 1.05em; }
 .bar {
   display: block;
@@ -212,13 +218,21 @@
 /* ---- matrix ------------------------------------------------------------------------------------- */
 
 .chart-matrix { display: flex; flex-direction: column; gap: .6em; }
-.mx-grid { display: flex; flex-direction: column; }
+/* Every row uses the columns of the grid (subgrid), so a column is never narrower than its longest
+   word: a long heading or label takes the room it needs, and the other columns give it up. The gap
+   keeps headings that fill their columns apart. */
+.mx-grid {
+  display: grid;
+  grid-template-columns: minmax(min-content, 1.5fr) repeat(var(--cols, 3), minmax(min-content, 1fr));
+  column-gap: .3em;
+}
 .mx-row {
   display: grid;
-  grid-template-columns: minmax(6em, 1.5fr) repeat(var(--cols, 3), minmax(0, 1fr));
+  grid-column: 1 / -1;
+  grid-template-columns: subgrid;
   align-items: center;
   min-height: 2.6em;
-  padding: 0 .6em;
+  padding: 0 .4em;
   border-bottom: 1px solid var(--hair);
 }
 .mx-headrow { min-height: 0; padding-bottom: .4em; border-bottom: 1px solid var(--line); align-items: end; }
