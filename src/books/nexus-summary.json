@@ -2912,7 +2912,7 @@
                       "note": "same tools, two uses",
                       "leaves": [
                         "Gui Hao found",
-                        "Iran's hijab cameras"
+                        "Iran's cameras, no human review"
                       ]
                     },
                     {
@@ -2945,7 +2945,7 @@
                       "items": [
                         "Watching needs gathering and analysing",
                         "Humans could not do both for everyone",
-                        "Smartphones and algorithms now do both"
+                        "Smartphones we pay for now do both"
                       ]
                     }
                   ],
@@ -3778,9 +3778,10 @@
                     },
                     {
                       "title": "Job turmoil",
-                      "note": "strains the conversation",
+                      "note": "strains young democracies most",
                       "leaves": [
-                        "Weimar and the New Deal"
+                        "Weimar, born in defeat",
+                        "The New Deal"
                       ]
                     },
                     {
@@ -4582,7 +4583,10 @@
                   "branches": [
                     {
                       "title": "A global problem",
-                      "note": "humanity was never united"
+                      "note": "few lax states endanger all",
+                      "leaves": [
+                        "Like climate change"
+                      ]
                     },
                     {
                       "title": "Digital empires",
@@ -4630,7 +4634,7 @@
                   "groups": [
                     {
                       "items": [
-                        "AI is a global problem",
+                        "A few reckless states can endanger all",
                         "Data colonies or a Silicon Curtain",
                         "Cyber weapons tempt first strikes"
                       ]
