@@ -1222,44 +1222,59 @@
                   "type": "chart",
                   "chart": "mindmap",
                   "label": "The chapter at a glance",
-                  "centre": "Why states need documents",
+                  "centre": "Why do large networks need documents?",
                   "branches": [
                     {
-                      "title": "Lists",
-                      "note": "brains remember them poorly",
+                      "title": "Stories and lists",
+                      "note": "inspire versus run states",
                       "leaves": [
-                        "Taxes and debts"
+                        "Bialik and Herzl's dreams",
+                        "Taxes and sewers need lists",
+                        "Ramayana remembered, tax records not"
                       ]
                     },
                     {
-                      "title": "Documents",
-                      "note": "create new realities",
+                      "title": "Documents create reality",
+                      "note": "not records but realities",
                       "leaves": [
-                        "Who owns a field",
-                        "Killing a loan"
+                        "Ownership on paper",
+                        "Old Assyrian killed loans",
+                        "Ur tablet's wrong total"
                       ]
                     },
                     {
                       "title": "Bureaucracy",
-                      "note": "sorts the world into drawers",
+                      "note": "drawers to find documents",
+                      "key": true,
                       "leaves": [
-                        "Official forms"
-                      ],
-                      "key": true
-                    },
-                    {
-                      "title": "Biological dramas",
-                      "note": "why stories miss bureaucracy",
-                      "leaves": [
-                        "Kafka's Trial"
+                        "Forests ordered, archives not",
+                        "Departments split a pandemic",
+                        "Species break the drawers"
                       ]
                     },
                     {
-                      "title": "Lives saved and ruined",
-                      "note": "it depends on use",
+                      "title": "Saves lives",
+                      "note": "the sewage deep state",
                       "leaves": [
-                        "John Snow, 1854",
-                        "Romania, 1938"
+                        "John Snow's cholera lists",
+                        "Clean India's latrines"
+                      ]
+                    },
+                    {
+                      "title": "Power hard to see",
+                      "note": "so it breeds suspicion",
+                      "leaves": [
+                        "Human-to-document chains",
+                        "Kafka's Trial",
+                        "Rebels burn archives"
+                      ]
+                    },
+                    {
+                      "title": "Crushes lives",
+                      "note": "a label decides fate",
+                      "leaves": [
+                        "Bruno Luttinger's lost citizenship",
+                        "Endangered or vulnerable"
                       ]
                     }
                   ]
@@ -1268,17 +1283,26 @@
                   "type": "chart",
                   "chart": "flow",
                   "label": "The argument",
-                  "start": "How do stories become states?",
+                  "start": "What do large networks need besides stories?",
                   "groups": [
                     {
+                      "label": "Documents",
                       "items": [
-                        "States run on lists, not poems",
-                        "Documents create ownership and debt",
-                        "Bureaucracy sorts the world into drawers"
+                        "Brains forget lists such as taxes",
+                        "So states rely on written documents",
+                        "Documents create realities, like ownership"
+                      ]
+                    },
+                    {
+                      "label": "Bureaucracy",
+                      "items": [
+                        "Finding documents needs bureaucracy's drawers",
+                        "Drawers keep order but distort truth",
+                        "Its power is hard to understand"
                       ]
                     }
                   ],
-                  "key": "Like mythology, bureaucracy trades truth for order"
+                  "key": "Bureaucracy can save or ruin lives, by design"
                 },
                 {
                   "type": "chart",
@@ -1290,147 +1314,127 @@
                   ],
                   "rows": [
                     [
-                      "Easy to remember",
-                      "Hard to remember"
+                      "Inspire nations: Bialik, Herzl",
+                      "Run them: taxes, guns, sewers"
                     ],
                     [
-                      "The Ramayana, recited by heart",
-                      "Tax records, kept in writing"
+                      "Brains retain them: the Ramayana",
+                      "Brains forget them: tax records"
                     ],
                     [
-                      "Inspire nations",
-                      "Run taxes, armies and sewers"
-                    ],
-                    [
-                      "Legitimise the tax records",
+                      "Legitimise tax records",
                       "Turn stories into schools and hospitals"
                     ]
                   ],
-                  "key": "Large societies need both: mythology fascinates, bureaucracy breeds suspicion"
-                },
-                {
-                  "type": "chart",
-                  "chart": "flow",
-                  "label": "From story to bureaucracy",
-                  "start": "Stories cannot run a state",
-                  "groups": [
-                    {
-                      "items": [
-                        "Taxes and services run on lists",
-                        "Brains remember lists poorly",
-                        "Documents store lists, creating new realities",
-                        "Finding documents needs bureaucracy's drawers"
-                      ]
-                    }
-                  ],
-                  "key": "Order, often at the expense of truth"
+                  "key": "Brains forget lists, so states need written documents"
                 },
                 {
                   "type": "chart",
                   "chart": "compare",
-                  "label": "Who owns a field",
+                  "label": "Owning a field",
                   "columns": [
                     "Oral community",
                     "Literate state"
                   ],
                   "rows": [
                     [
-                      "The neighbours' agreement makes you owner",
-                      "A written document makes you owner"
+                      "Neighbours agree the field is yours",
+                      "A document says it is yours"
                     ],
                     [
-                      "The local community decides",
-                      "A central authority holds the records"
+                      "Control stays local",
+                      "A distant authority can control it"
                     ],
                     [
-                      "Neighbours may bar a sale to foreigners",
-                      "Sell by handing over the document"
+                      "Rights often communal",
+                      "Sell without asking the neighbours"
                     ]
                   ],
-                  "key": "Documents create reality instead of representing it"
+                  "key": "Documents do not record ownership; they create it"
                 },
                 {
                   "type": "chart",
                   "chart": "flow",
-                  "label": "Human-to-document chains",
-                  "start": "Who holds authority in a network?",
+                  "label": "How lists saved London",
+                  "start": "Cholera strikes London, 1854",
                   "groups": [
                     {
-                      "label": "Tribal society",
                       "items": [
-                        "Human-to-human chains",
-                        "Human-to-story chains",
-                        "Mythmakers control the junctions"
-                      ]
-                    },
-                    {
-                      "label": "Bureaucratic society",
-                      "items": [
-                        "Adds human-to-document chains",
-                        "Documents become the junctions",
-                        "Administrators, accountants and lawyers gain power"
+                        "Bad air is the leading theory",
+                        "Snow lists patients and their water",
+                        "Data points to the Broad Street pump",
+                        "Officials disable it; the outbreak ends"
                       ]
                     }
                   ],
-                  "key": "The centre gains power that citizens struggle to understand"
+                  "key": "Sewage bureaucracy has saved millions since"
+                },
+                {
+                  "type": "chart",
+                  "chart": "compare",
+                  "label": "Who holds power",
+                  "columns": [
+                    "Tribal society",
+                    "Bureaucratic society"
+                  ],
+                  "rows": [
+                    [
+                      "Human-to-human and human-to-story chains",
+                      "Adds human-to-document chains"
+                    ],
+                    [
+                      "Power: mythmakers and orators",
+                      "Power: administrators, accountants, lawyers"
+                    ],
+                    [
+                      "A friend or a bully: easy to tell",
+                      "Taxes for a sewer or a dacha? Hard"
+                    ]
+                  ],
+                  "key": "Documents strengthen the centre and widen the gap to citizens"
                 },
                 {
                   "type": "chart",
                   "chart": "flow",
-                  "label": "Biological dramas",
-                  "start": "Plots that evolution scripted for our minds",
+                  "label": "Why art misses bureaucracy",
+                  "start": "Can art explain bureaucracy?",
                   "groups": [
                     {
-                      "label": "Parents and siblings",
+                      "label": "Biological dramas",
                       "items": [
-                        "Rama banished so Bharata inherits",
-                        "Hyena cubs kill their siblings"
+                        "Parental neglect: Rama banished",
+                        "Sibling rivalry: Cain and Abel",
+                        "Rivals over a lover: Rama, Ravana",
+                        "Purity versus impurity: caste"
                       ]
                     },
                     {
-                      "label": "Romantic triangle",
+                      "label": "Bureaucratic dramas",
                       "items": [
-                        "Ravana kidnaps Sita, Rama's lover"
-                      ]
-                    },
-                    {
-                      "label": "Purity and impurity",
-                      "items": [
-                        "Castes ranked by purity",
-                        "Hutu and Nazi propaganda"
+                        "Kafka's Trial: an unfathomable agency",
+                        "Catch-22: the mail clerk's power",
+                        "The Big Short: CDOs nobody understands"
                       ]
                     }
                   ],
-                  "key": "Documents have no siblings or romance, so art misses bureaucracy"
+                  "key": "Minds primed for death by tiger miss death by document"
                 },
                 {
                   "type": "chart",
-                  "chart": "bars",
-                  "label": "Romania, 1938",
-                  "caption": "Thousands of people: official 1936 figures, claims of Prime Minister Octavian Goga, and the 1938 losses",
-                  "data": [
+                  "chart": "flow",
+                  "label": "Death by document",
+                  "start": "Goga claims 1.5 million Jews, not the official 758,000",
+                  "groups": [
                     {
-                      "label": "Jews, 1936 official count",
-                      "value": 758
-                    },
-                    {
-                      "label": "Jews, Goga's claim",
-                      "value": 1500
-                    },
-                    {
-                      "label": "Refugees, 1936 official count",
-                      "value": 11
-                    },
-                    {
-                      "label": "Illegal entrants, Goga's claim",
-                      "value": 500
-                    },
-                    {
-                      "label": "Jews who lost citizenship",
-                      "value": 367,
-                      "focus": true
+                      "items": [
+                        "1938 law: Jews must prove their birth",
+                        "Lost archives, fees, bribes, misspelt names",
+                        "367,000 of 758,000 Jews lose citizenship",
+                        "Bruno Luttinger, Harari's grandfather, among them"
+                      ]
                     }
-                  ]
+                  ],
+                  "key": "Most who lost citizenship were murdered; Bruno escaped"
                 }
               ]
             },
