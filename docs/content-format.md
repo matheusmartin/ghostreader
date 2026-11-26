@@ -285,13 +285,15 @@ ring is the key element.
 ```
 
 **mindmap** — a topic and its concepts: `centre` (the topic, ≤ 8 words) in the middle, 2–6
-`branches` (concepts, ≤ 4 words, optional `note`) in boxes on either side, and under each concept up
-to three `leaves`: the book's examples of it (≤ 5 words), unboxed. Concepts are boxed, examples are
-not. One `key` branch in the accent colour.
+`branches` (main claims or concepts, ≤ 4 words, optional `note`) in boxes on either side, and under
+each up to three `leaves` (≤ 5 words), unboxed: the book's examples of it, or a concept that serves
+it with its example after a colon. Main concepts are boxed, what serves them is not. One `key`
+branch in the accent colour.
 
 ```json
 { "type": "chart", "chart": "mindmap", "label": "How stories build networks", "centre": "Stories link strangers",
-  "branches": [{ "title": "Fake memories", "leaves": ["The Passover"] },
+  "branches": [{ "title": "Human-to-story chains", "note": "strangers share one story",
+                 "leaves": ["Brands: Stalin, Cher Ami", "Fake memories: Passover"] },
                { "title": "Intersubjective reality", "key": true, "leaves": ["The bitcoin pizzas", "Kosovo"] }] }
 ```
 

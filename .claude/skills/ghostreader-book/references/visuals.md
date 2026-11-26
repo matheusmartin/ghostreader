@@ -1,64 +1,121 @@
 # Visuals
 
-Seeing is faster than reading. Every chapter has at least one chart, and at least half of a
-chapter's app screens are charts, scenes or figures. Text screens carry what a picture cannot: the
-point of the chapter in two sentences, the meaning of a term, a test question.
+Seeing is faster than reading when the picture shows how ideas fit. A diagram earns its place by
+showing relations (by arrows, places and groups) that text can only list one after another. Text
+carries what a picture cannot: the point of the chapter in two sentences, the meaning of a term, a
+test question.
 
-The fields of every type are in `docs/content-format.md`. This page says which visual to use and
-how to make it read well. The app draws every chart from data, in the theme the reader
-chose, on a phone and (wider, with more room) in the PDF; there is nothing to lay out by hand.
+The fields of every type are in `docs/content-format.md`. This page says how to turn the book's
+relations into diagrams, which chart fits which shape, and how to make it read well. The app draws
+every chart from data, in the theme the reader chose, on a phone and (wider, with more room) in
+the PDF; there is nothing to lay out by hand.
 
-## Which visual for which idea
+## From relations to diagrams
 
-| The content is… | Use | Key element (accent) |
+A student who studies a chapter writes its outline, then draws the parts that are hard to hold in
+words. The guide does the same, from the fact sheet's outline, examples and relations
+(`references/concepts.md`):
+
+1. **The outline.** The chapter's claims in its own order, with the concepts and examples under
+   the claim each serves. In a Book summary it is the mind map "The chapter at a glance" (Key
+   moments, below).
+2. **Group the relations.** Relations that share items, and answer one question the chapter asks,
+   form a group: how stories build networks; why order often wins over truth. Each group is a
+   candidate diagram.
+3. **The shape of the group picks the chart**, not the kind of concept: a chain, a web, a loop, a
+   tree, two sides (the table below).
+4. **Examples go with their claim**, in the same diagram: evidence under the claim it supports, a
+   counter-example next to the view it refutes, an illustration with its concept (a mind map leaf,
+   a node's `note`, a matrix row).
+5. **The author's stance is part of the picture**: `key` for what the book argues for, `negative`
+   for what it rejects, and the book's reason where the chart has room (a row, a link label, an
+   option's text).
+6. **Each relation once per chapter**, in the diagram where it fits best. The mind map may name a
+   concept that a later diagram draws in full, but no two diagrams show the same links.
+7. **The chapter's order.** Diagrams follow the order in which the chapter takes up their
+   questions, so a reader who remembers "first it was about X" finds X first.
+8. **A map that grows.** When a chapter extends or revises an earlier concept, draw the earlier
+   diagram again, with the same chart kind and labels, and mark the new part as the key element. A
+   concept from an earlier chapter that a diagram needs as context carries `note: "Ch 2"`.
+
+### The usefulness test
+
+Keep a diagram only when all four hold:
+
+- It shows at least one relation, by an arrow, a place or a group, that the Recap can only state.
+- A student who read the chapter would know it as the chapter's own structure, not one the guide
+  imposed on it.
+- Every box is the book's concept, claim or example, in the book's words.
+- No other diagram of the chapter shows the same links.
+
+A group that fails goes into words: the Recap, In short or a key point. No number of diagrams, and
+no number of any chart kind, is set: a chapter gets one diagram for each group of relations that
+passes. (A Book summary's Key moments always open with the mind map and the argument; the
+validator asks for those two.) Diagrams that do not serve the point cost the reader attention and
+lower learning (Mayer, coherence principle).
+
+## Which chart for which shape
+
+| The relations form… | Chart | Key element (accent) |
 |---|---|---|
-| who is in which scene, who meets whom (fiction chapter) | `scenes` | the turning-point scene |
-| who is who and how people relate (fiction chapter: "Relations now") | `chart: "network"` (relations) | the main character (centre) |
-| where each plotline moves across chapters | `chart: "threads"` (not in the recipes: a guide has no overview chapter to hold it) | none: a data chart |
-| how concepts connect; what supports or weakens what | `chart: "network"` (concept map), `arrow: true` for direction | the central idea (centre) |
-| kinds the book defines (three kinds of reality), each with a definition | `chart: "flow"`, one group per kind | the `key`: what the set means |
+| a chain: each step leads to the next (causes; an argument from a question to a conclusion) | `chart: "flow"` | the conclusion (`key`) |
+| two or three chains side by side (two ways, two mechanisms, the parts of an argument) | `chart: "flow"`, one group each | the `key` |
+| a web: one item with three or more links, or links that cross; what supports or weakens what | `chart: "network"` (concept map), `arrow: true`, link labels | the central item (centre) |
+| a loop: the last step feeds the first (vicious or virtuous circle) | `chart: "cycle"` | the node that drives the loop |
+| a tree: a topic, its parts or kinds, and their examples | `chart: "mindmap"` | the main branch (`key`) |
+| kinds, each with a definition and examples (three kinds of reality) | `chart: "flow"`, one group per kind | the `key`: what the set means |
 | kinds told apart by examples or features | `chart: "matrix"` (kinds as columns or rows) | the `focus` row, the `key` |
-| rival views or uses of the same thing (naive and populist views) | `chart: "branches"` | the book's own view (`key`) |
-| a chain of causes or steps; an argument from a question to a conclusion | `chart: "flow"` | the conclusion (`key`) |
-| a process that feeds itself (vicious or virtuous circle) | `chart: "cycle"` | the node that drives the loop |
-| two things contrasted point by point (X vs Y, before vs after) | `chart: "compare"` | the verdict (`key`) |
-| 3–6 items compared on 2–4 features | `chart: "matrix"` | the verdict (`key`), a `focus` row |
-| events or stages in order, with times the book gives | `chart: "timeline"` | the turning point |
-| one situation, 2–4 possible outcomes or scenarios | `chart: "branches"` | the outcome the author argues for |
-| nested levels or scopes (person in family in society) | `chart: "layers"` | the centre ring |
-| real numbers the book gives | `chart: "bars"` | the `focus` bar |
-| a chapter's topic, its concepts and the book's examples of each | `chart: "mindmap"` | the main concept (`key` branch) |
-| items on two dimensions the book names (centralised to distributed, weak to strong) | `chart: "xy"`, scale mode | the item the chapter is about (`key`) |
-| two kinds of real numbers for the same items | `chart: "xy"`, `"mode": "data"` (a scatter plot) | the `key` point |
+| nesting: levels inside levels (person in family in society) | `chart: "layers"` | the centre ring |
+| two things or positions, point against point, with the book's reason | `chart: "compare"`, the reason as a row | the verdict (`key`) |
+| one situation and its possible outcomes, or rival answers to one question | `chart: "branches"` | the book's own answer (`key`) |
+| items placed on two dimensions the book names (centralised to distributed, weak to strong) | `chart: "xy"`, scale mode | the item the chapter is about (`key`) |
+| stages in time, with the times the book gives | `chart: "timeline"` | the turning point |
+| real numbers the book gives | `chart: "bars"`; two kinds of number for the same items: `chart: "xy"`, `"mode": "data"` | the `focus` bar, the `key` point |
+| fiction: who is in which scene, who meets whom | `scenes` | the turning-point scene |
+| fiction: who is who and how people relate ("Relations now") | `chart: "network"` (relations) | the main character (centre) |
+| fiction: where each plotline moves across chapters | `chart: "threads"` (not in the recipes: a guide has no overview chapter to hold it) | none: a data chart |
 | real places | `figure` from `scripts/map.py` + a `list` of places | the key place (section maps) |
-| anything else that needs a drawing | `figure` (hand-made SVG, see below) | one `k` shape |
+| any other shape | `figure` (hand-made SVG, see below) | one `k` shape |
 
-Every concept or distinction the book introduces gets one of these charts in the chapter that
-introduces it (`references/concepts.md`). Vary the diagrams: the same chart kind on at most two chapters in a row (fiction scenes excepted).
-Never put a chart in for decoration: if the chapter's idea has no structure to show, a short
-`steps` or `points` screen is the honest choice, and the next chapter gets the chart.
+When a group fits two shapes, choose the one that shows its main relation. A contrast whose two
+sides each lead somewhere is two chains (`flow`, two groups), not a table; a contrast of features
+with no links between them is a `compare`. A web drawn as a list of boxes loses its links: draw it
+as a `network`.
 
 ## Key moments (Book summary)
 
-The section where everything the chapter discusses is drawn. Diagrams only: no text, points, list
-or quiz screen.
+The section where the chapter's structure is drawn. Diagrams only: no text, points, list or quiz
+screen.
 
-1. **The chapter at a glance**: a `mindmap`. `centre` = the chapter's topic or question (≤ 8
-   words); 3–6 `branches` = its concepts and main claims, in the book's words, each with a short
-   `note` (≤ 5 words, the definition); `leaves` = the book's own examples (≤ 5 words), under the
-   concept the book uses them for. One `key` branch: the chapter's main concept. Concepts are boxed
-   and examples are not, so the reader tells them apart at a glance.
-2. **The argument**: a `flow` with `start` = the chapter's question, three steps, `key` = its
-   conclusion. Causes, not sequences.
-3. Then one diagram for each concept, distinction, contrast, sequence, loop or set of numbers the
-   chapter introduces (`references/concepts.md`; the table above): concepts **linked with arrows**
-   (`network` with `arrow: true` and link labels), kinds as a `matrix`, two things side by side as
-   `compare`, rival views as `branches`, stages as a `timeline`, a loop as a `cycle`, nested levels
-   as `layers`, **two dimensions as `xy`**, numbers as `bars` or an `xy` scatter.
+1. **The chapter at a glance**: a `mindmap`, the chapter's outline. `centre` = the chapter's
+   question or topic (≤ 8 words). `branches` = its main claims or concepts, in the order the
+   chapter takes them, in the book's words, each with a short `note` (≤ 5 words: the definition or
+   the point). `leaves` = what serves each branch (≤ 5 words): the book's examples, and a concept
+   that is a means, a kind or a part of the branch, with its example after a colon ("Brands:
+   Stalin, Cher Ami"). A concept that serves another goes under it, never beside it. One `key`
+   branch: the chapter's main concept.
+2. **The argument**: a `flow` from `start` = the chapter's question, through the steps the book
+   takes, to `key` = its conclusion. Each step follows from the one before, or answers it. Test:
+   say the link between two steps ("so", "because", "but stories lift that limit"); when only
+   "and" fits, the flow is a list of topics, not an argument. A chapter with two lines of argument
+   gets two groups side by side.
+3. **Then one diagram for each group of relations** that passes the usefulness test, in the
+   chapter's order ("From relations to diagrams", above). PDF-only diagrams may draw a group in
+   more detail.
 4. **x/y charts** place items only on dimensions the book itself names, at positions the book
    describes (0–4: none, little, some, much, most; never a measurement it does not give), with a
    `caption` saying so. `arrows` show a change the book describes ("mass media"). A point's `side`
    moves its label when the screen check reports an overlap.
+
+Example (Nexus, Chapter 2). Weak: the mind map sets "Brands" and "Fake memories" beside
+"Intersubjective reality", though both are ways stories link strangers; "The argument" runs
+"Stories link strangers → Stories create realities between minds → Fiction keeps order more
+easily", three topics joined only by "and"; "Truth and order" comes back in five diagrams. Better:
+"Brands: Stalin, Cher Ami" and "Fake memories: Passover" as leaves under "Human-to-story chains";
+the argument as a chain ("Personal bonds stop at a few hundred" → "Stories link strangers who
+share them" → "Strangers cooperate in unlimited numbers"); truth and order in one diagram; the
+chimpanzees as the book's reason, a row of "Stories or interests?", next to the Marxist view it
+refutes.
 
 ## Rules for every chart
 
@@ -68,6 +125,8 @@ or quiz screen.
   one-line `caption` saying what the marks mean (the app adds one to `threads` and `scenes`).
 - **No numbers the book does not give**, no invented axes.
 - **Real names**, as the book uses them, short form ("Mr Darcy", not "Fitzwilliam Darcy, Esq.").
+- **Links from the fact sheet.** Every arrow, link label and grouping is a relation or an example
+  line of the fact sheet (`references/concepts.md`); draw no link the sheet does not hold.
 
 ## Fiction charts
 
@@ -123,11 +182,15 @@ a thread ends. Give each a `text`: the app adds the thread list after the chart.
 
 ## Non-fiction charts
 
+- **Network (concept map)**: link labels are the link words of the fact sheet's relations;
+  `arrow: true` on every relation with a direction (causes, needs, limits, corrects); a node from an
+  earlier chapter carries `note: "Ch 2"`.
 - **Flow**: one group is a chain (3–4 items); two or three groups side by side make an argument
   map (`start` = the question, groups = the parts, `key` = the answer). Items ≤ 7 words.
 - **Cycle**: 3–6 nodes; the last leads back to the first. `centre`: a short note ("The loop feeds
   itself"). Mark the node that drives the loop `key`.
-- **Compare**: the same rows on both sides; `negative` greys the side the author rejects.
+- **Compare**: the same rows on both sides; `negative` greys the side the author rejects; when the
+  book gives a reason for its verdict (evidence, a counter-example), it gets a row.
 - **Matrix**: features as columns (one or two words each), items as rows; `focus` tints the row
   the chapter is about.
 - **Timeline**: only times the book gives; without dates, use the book's order words ("First",
