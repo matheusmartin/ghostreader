@@ -125,9 +125,11 @@ Chapter 6" with the book file attached. The **ghostreader-book** skill
 1. Extracts the book's text from an EPUB, PDF, TXT, Markdown or HTML file into `work/<id>/`
    (`scripts/extract_book.py`). `work/` is in `.gitignore`: book text is never committed.
 2. Writes a fact sheet per chapter, every fact with its place in the text, the facts a returning
-   reader must get back ("must carry"), and a ledger of the state at each chapter's end. It lists
-   the book's own concepts and distinctions (for example Nexus's objective, subjective and
-   intersubjective reality); each gets a chart in the chapter that introduces it.
+   reader must get back ("must carry"), and a ledger of the state at each chapter's end. It reads
+   each chapter twice: first for its claims, concepts (for example Nexus's objective, subjective
+   and intersubjective reality) and examples, then for what each passage does and how the book
+   links its ideas, by what the text means, not by key words. Each group of links that is hard to
+   hold in words becomes a diagram in the chapter that introduces it.
 3. Writes the Map file `src/books/<guide>-map.json` from the fact sheets, diagrams first, with
    PDF-only detail and the resume screens; then the texts of the other styles, from which
    `scripts/build_styles.py` builds the Recap, Recall and Layers files.

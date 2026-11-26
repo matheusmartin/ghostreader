@@ -1,8 +1,8 @@
 ---
 name: ghostreader-book
-description: Writes or updates a book guide for the Ghostreader app in this repository, built to help a reader recall earlier chapters after a pause and continue the book. A Book summary is one file, src/books/<guide>.json, whose chapters each have five sections - Before this chapter, Recap, In short, Key moments (diagrams only - mind maps, flows, concept maps with arrows, x/y charts) and Where it stands; a Story or Reading guide is four files, one per style (Map, Recap, Recall, Layers). Each file makes the swipe screens and an A4 PDF. Only the book's own parts and chapters, in the book's order - no overview or other guide-made chapter. Three types, chosen by the user - Story guide (fiction), Reading guide (non-fiction, while reading) and Book summary (non-fiction, a finished book). Reads the book from an EPUB, PDF, text, Markdown or HTML file, or from summaries when no file is given. Diagrams first; every claim anchored to the text and checked. Use when the user asks to add, write, summarise, update or regenerate a book, story guide, reading guide, book summary, infographic or PDF for the app, even if they only name the book. Do not use for a short summary in chat, book recommendations, reviews, or changes to the app's code.
+description: Writes or updates a book guide for the Ghostreader app in this repository, built to help a reader recall earlier chapters after a pause and continue the book. A Book summary is one file, src/books/<guide>.json, whose chapters each have five sections - Before this chapter, Recap, In short, Key moments (diagrams only - mind maps, flows, concept maps with arrows, x/y charts) and Where it stands; a Story or Reading guide is four files, one per style (Map, Recap, Recall, Layers). Each file makes the swipe screens and an A4 PDF. Only the book's own parts and chapters, in the book's order - no overview or other guide-made chapter. Three types, chosen by the user - Story guide (fiction), Reading guide (non-fiction, while reading) and Book summary (non-fiction, a finished book). Reads the book from an EPUB, PDF, text, Markdown or HTML file, or from summaries when no file is given. Reads for the book's claims, concepts, examples and the relations between them, and draws those relations; every claim anchored to the text and checked. Use when the user asks to add, write, summarise, update or regenerate a book, story guide, reading guide, book summary, infographic or PDF for the app, even if they only name the book. Do not use for a short summary in chat, book recommendations, reviews, or changes to the app's code.
 metadata:
-  version: "1.7.0"
+  version: "1.8.0"
 compatibility: Node 22 with `npm install` done (Vitest; Playwright with Chromium for the screen check and the PDF). Python 3.9+ for the book extractor, the checks and maps; PDF books also need poppler-utils (pdftotext) or the pypdf package.
 ---
 
@@ -35,8 +35,11 @@ Principles:
 - **Built for coming back.** Causes, not sequences; a role with every name; the same name for the
   same thing everywhere; the state of play and the open questions at the end of every chapter
   (`references/styles.md`, "The resume rule").
-- **Show, then tell.** Each idea gets the diagram that shows its links: who is with whom, what
-  causes what, what feeds back. Text carries what a picture cannot (`references/visuals.md`).
+- **Read for relations, then draw them.** Read each chapter twice, as a student who must explain
+  it tomorrow: first for its claims, concepts and examples, then for what each passage does and
+  how the book links its ideas, by what the text means, not by key words
+  (`references/concepts.md`). Draw each group of links that is hard to hold in words: who is with
+  whom, what causes what, what feeds back. Text carries the rest (`references/visuals.md`).
 - **Every claim is traceable.** Facts come from the extracted text with an anchor (section and
   paragraph), and every chapter is checked against its anchors before it ships
   (`references/verify.md`).
@@ -94,8 +97,9 @@ Copy this checklist into the task list and tick it off:
         limit, move the files after it to work/<guide>/after-limit/
 - [ ] 4 Plan: id, the book's own parts and chapters (real titles and word counts), concept
         inventory; fiction: the cast
-- [ ] 5 Fact sheets work/<guide>/facts/<chapter-id>.md (every fact anchored, concepts, must
-        carry) and the ledger work/<guide>/ledger.md; check_guide.py facts
+- [ ] 5 Fact sheets work/<guide>/facts/<chapter-id>.md, two reads per chapter (every fact
+        anchored; outline, claims, concepts, examples, relations; must carry) and the ledger
+        work/<guide>/ledger.md; check_guide.py facts
 - [ ] 6 Book summary: write src/books/<guide>.json chapter by chapter, the five sections, Key
         moments as diagrams only. Story or Reading guide: the Map file
         src/books/<guide>-map.json: app screens, PDF-only detail, then the resume screens
@@ -156,24 +160,33 @@ scenes. The fact-sheet, names and recall checks need the book's text, so they do
   terms (≤ 12 words). It opens every "Where it stands" and every "argument so far" chart.
 - Fiction: the cast (who is main, groups, one role each in the book's words), and whether real
   places matter (a map in the chapters where the story moves between them). Non-fiction: the
-  book's own terms, and which diagram fits each chapter.
+  book's own terms. The diagrams are chosen later, from each chapter's relations (step 6).
 
-**5 · Fact sheets and ledger.** Read each chapter's text file in full and write
-`work/<guide>/facts/<chapter-id>.md`: only what the text says, each line with its anchor. The
-first line names the chapter's text files (`source 005`, or `source 005–006`).
+**5 · Fact sheets and ledger.** Read each chapter's text file in full, twice
+(`references/concepts.md`, "Read twice"): first for what is there, then, with that list beside
+you, for what each passage does and how the items relate. Decide each relation from what the text
+means, not from linking words: most links in a book have none. Write
+`work/<guide>/facts/<chapter-id>.md`: only what the text says or shows, each line with its anchor.
+The first line names the chapter's text files (`source 005`, or `source 005–006`).
 
 ```
 # 03 · Chapter 3 · source 005 · 1,722 words
-## Scenes (in order; new scene = new place or time)
+## Scenes (fiction; in order; new scene = new place or time)
 - S1 {Before the ball} [Longbourn] Mr Bennet will not describe Bingley; the women hear of him from Lady Lucas. With: Mr Bennet, Mrs Bennet, daughters. 005 p2
-## People
+## People (fiction)
 - Mr Darcy · first appearance · Bingley's friend · admired, then judged proud. 005 p5–p6
-## Relations
-- Darcy → Elizabeth: will not dance with her; she overhears. 005 p11
-## Claims, terms, examples (non-fiction)
-## Concepts and distinctions (references/concepts.md)
-- {Three kinds of reality} typology · explicit · objective (exists whatever people think: stones) /
+## Outline (non-fiction; second read: each passage, its point and its job)
+- 011 p7–p12 · claim C1 · personal bonds stop at a few hundred people
+## Claims (non-fiction; C0 is the chapter's thesis)
+- C1 · personal bonds stop at a few hundred people · 011 p8
+## Concepts and distinctions
+- {Three kinds of reality} typology · stated · objective (exists whatever people think: stones) /
   subjective (in one mind: pain) / intersubjective (between many minds: money, nations) · 011 p22–p25
+## Examples (each with its job and the claim or concept it serves)
+- {The bitcoin pizzas} evidence · for {Intersubjective reality} · the price changed, the calories did not · 011 p27
+## Relations (between people, or between concepts and claims: stated, shown or joined)
+- Darcy → Elizabeth: will not dance with her; she overhears. 005 p11
+- {Human-to-story chains} · lift the limit of · {Personal bonds} · joined · 011 p8, 011 p12
 ## Must carry (5–8, ranked; from the whole chapter)
 - M1 · state · Elizabeth dislikes Mr Darcy, because she overheard him slight her at the ball · 005 p11
   Q: How does Elizabeth feel about Mr Darcy after the ball, and why?
@@ -208,11 +221,13 @@ python3 -I .claude/skills/ghostreader-book/scripts/check_guide.py facts <guide>
 **6 · Write.** Work chapter by chapter from the fact sheets and the ledger, never from memory:
 the type's recipe (`references/guides.md`).
 
-- **Book summary:** the five sections in order. Key moments carries everything the chapter
-  discusses, as diagrams only: open with a mind map of the chapter (its topic, its concepts in
-  boxes, the book's examples under each), then the argument as a flow, then one diagram for each
-  concept, distinction, contrast and sequence (`references/visuals.md`, Key moments). Every
-  must-carry item is on a screen: In short, the Recap or a Key moments diagram.
+- **Book summary:** the five sections in order. Key moments draws the chapter's structure, as
+  diagrams only (`references/visuals.md`, "From relations to diagrams" and Key moments): open with
+  the mind map, the chapter's outline (its claims and concepts in its order, with the examples and
+  concepts that serve each under it), then the argument as a flow whose steps follow from each
+  other, then one diagram for each group of relations that passes the usefulness test, in the
+  chapter's order. No set number of diagrams or of any chart kind. Every must-carry item is on a
+  screen: In short, the Recap or a Key moments diagram.
 - **Story or Reading guide:** the app screens of the recipe, then the PDF-only blocks, then
   "Where it stands" and "Still open". Every must-carry item goes on a screen all four styles show:
   "Key points" first, then "In short", "The logic", the main chart or the resume screens
@@ -238,9 +253,10 @@ file, so fix those in the Map file and run it again; never edit the generated fi
 Then, for each chapter, start a fresh subagent with the chapter's text, fact sheet and ledger,
 and the chapter in every style (`check_guide.py text`), for a claim-by-claim check and a
 must-carry check. Fix or remove each claim that does not hold; add each missing must-carry item;
-never "improve" a claim from memory. Then go through the concept inventory: every concept and
-distinction must appear on a screen of the chapter that introduces it (a chart for each
-distinction; a chart, a key point or a row in the PDF-only "Terms" list for each concept). Last,
+never "improve" a claim from memory; every link a chart draws is checked against its relation line
+and that line's passages. Then go through the concept inventory: every concept and distinction
+must appear in a diagram of the chapter that introduces it (a minor item: a mind map leaf, a key
+point or a row in the PDF-only "Terms" list). Last,
 compare the guide's contents with the book's contents list: remove any chapter, part or label the
 book does not have.
 
@@ -297,10 +313,11 @@ asked for); never `work/`. Then write:
   for the same thing in every chapter and style.
 - The Economist style: sentence case, British -ise spelling, Mr without a point, words for one to
   ten (`references/writing-style.md`).
-- Diagrams first: every chapter has at least one chart; at least half of a chapter's app screens
-  are charts, scenes or figures (`references/visuals.md`).
-- Concepts and distinctions the book introduces are shown, not just named: a chart for each in
-  the chapter that introduces it (`references/concepts.md`).
+- Diagrams from relations: read twice, for the items and then for how they link, by meaning, not
+  by key words; draw each group of relations that passes the usefulness test, in the chapter's
+  order. No set number of diagrams or of any chart kind (`references/visuals.md`).
+- Concepts and distinctions the book introduces are shown, not just named: each in a diagram of
+  the chapter that introduces it; each example with the claim it serves (`references/concepts.md`).
 - Book summary: the five sections in every chapter, Key moments as diagrams only, no quiz and no
   text screen in Key moments. Story and Reading guides: tests come last in Map (at most one quiz
   per chapter, after the visuals); Recall puts its quiz first.
@@ -316,6 +333,20 @@ asked for); never `work/`. Then write:
   with arrows, a mind map, a matrix) or move the words to the Recap or In short.
 - A mind map whose examples are not the book's own, or hang under the wrong concept → only the
   book's examples, under the concept the book uses them for.
+- A flat mind map: a concept that serves another (a means, a kind, a part) sits beside it as an
+  equal → put it under that concept, as a leaf with its example ("Brands: Stalin, Cher Ami").
+- "The argument" as topics that only "and" joins → steps that follow from each other, from the
+  chapter's question to its conclusion.
+- An example recorded or drawn without the claim it serves → find its point with the removal test
+  (`references/concepts.md`, Examples).
+- A relation found only because a linking word marks it, or missed because none does → decide
+  each relation from what the passage means and where it stands (`references/concepts.md`,
+  Relations).
+- A link of a view the book only reports, drawn as the author's → mark the view, and draw it on
+  the `negative` side.
+- Two diagrams of a chapter that show the same links → keep the one where they fit best.
+- A diagram that adds no relation to what the Recap says → it fails the usefulness test: put its
+  content into words.
 - A chapter without "Where it stands", or with other titles in it → the four titles of the type,
   in order, as the last screens (`npm run validate` reports it).
 - "Still open" with a hint of the answer ("Will Wickham's lies be exposed?") → the stakes as the
@@ -327,14 +358,14 @@ asked for); never `work/`. Then write:
   it; put it in "Key points", "In short" or "The logic" too.
 - Key moments all from the end of the chapter → from the start and the middle too.
 - A concept the book defines, or a contrast it builds across chapters, only mentioned in a text
-  block → give it a chart in the chapter that introduces it (`references/concepts.md`).
+  block → show it in a diagram of the chapter that introduces it (`references/concepts.md`).
 - A chapter, part or label the book's contents list does not have ("Key concepts", "The book in
   one page", "Who's who", "Warm-up", "Overview", "Opening", an invented "Prologue" or
   "Introduction") → remove it. The guide's contents are the book's contents; `npm run validate`
   reports the old overview chapter numbers (S, B, K, W, T, M).
 - Writing from memory or a study guide when the book file is there → write from the fact sheet.
-- A wall of points and steps with one chart → find the diagram: who connects to whom, what leads
-  to what, what loops back.
+- A wall of points and steps with one chart → find the relations: who connects to whom, what
+  leads to what, what loops back; then draw each group that passes the usefulness test.
 - A relations network whose linked nodes sit on opposite sides of the ring → list linked nodes next to
   each other in `nodes`, or link them to the centre.
 - Scene text without `{when}` or `[where]`, or a "when · where" heading in front of it → weave
@@ -355,8 +386,8 @@ asked for); never `work/`. Then write:
 |---|---|
 | `docs/content-format.md` | step 2: every screen and chart type, with its JSON fields |
 | `references/guides.md` | step 2: the frame, the type's chapter recipe, PDF detail and limits |
-| `references/visuals.md` | steps 4–6: which diagram for which idea; layout rules for each chart |
-| `references/concepts.md` | steps 4–7: find, record and show the book's concepts and distinctions |
+| `references/visuals.md` | step 6: from relations to diagrams, the usefulness test, which chart for which shape; layout rules for each chart |
+| `references/concepts.md` | steps 4–7: read twice; find and record claims, concepts, examples and the relations between them, by meaning |
 | `references/styles.md` | steps 6 and 6b: the resume rule; for Story and Reading guides, the four styles, their research basis, recipes and the styles.json format |
 | `references/verify.md` | steps 5, 7 and 8: the checks, the fresh-eyes review and the blind recall test |
 | `scripts/build_styles.py` | step 6b (Story and Reading guides): builds the Recap, Recall and Layers files from the Map file and styles.json |

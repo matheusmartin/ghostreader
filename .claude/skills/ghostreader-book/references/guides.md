@@ -68,7 +68,7 @@ chapter where the book gives it:
   alt text and the caption "Today's borders; places from outside the book". Invented places, or a
   story that stays in one town, get no map.
 - **The story's own concepts** (ranks, laws, codes, invented words, a magic system;
-  `references/concepts.md`): a chart in the chapter that introduces each.
+  `references/concepts.md`): shown in a diagram in the chapter that introduces each.
 
 ### Chapter recipe
 
@@ -121,11 +121,10 @@ argument moves across them.
 |---|---|
 | `summary` "Core idea" + takeaway "Takeaway" | 2–3 sentences ≤ 45 words; takeaway 1 sentence ≤ 20 words |
 | The chapter's diagram | the one chart that shows how the chapter's argument works (`references/visuals.md`) |
-| Concept charts | one chart for each concept or distinction the chapter introduces (`references/concepts.md`); it can be the chapter's diagram |
+| More diagrams | one for each group of relations that passes the usefulness test (`references/visuals.md`, "From relations to diagrams"); every concept and distinction the chapter introduces is in one of them or in the chapter's diagram (`references/concepts.md`) |
 | `points` "Key concepts" | up to 4: name ≤ 4 words, explanation ≤ 28 words |
 | `steps` "The logic" | 5 steps ≤ 14 words; the last is the conclusion |
 | `points` "Examples in the book", `style: "box"` | 2–3: name ≤ 6 words, ≤ 20 words |
-| Optional second diagram | e.g. `network` "How the ideas connect" |
 | `quiz` "Test yourself" | 2–3 questions ≤ 22 words that test understanding (why, how, apply), not trivia; answers ≤ 25 words, from this chapter |
 | PDF: `text` "The chapter in full" | 200–400 words, the argument in order |
 | PDF: `points` "All key concepts" | every concept the chapter introduces (the app shows 4: mark that one `only: "app"`) |
@@ -153,11 +152,11 @@ them; the first chapter has no "Before this chapter"):
 | **Before this chapter** | `list` "Before this chapter" | The frame, then the recent past: one row per finished part (name: the part's label and title, "Part I · Human Networks", or "Prologue"), then one row per earlier chapter of this part (name: "Chapter 3"). Text ≤ 18 words, the point it established, as a cause or a claim. ≤ 8 rows; the last row is the chapter just before |
 | **Recap** | `text` "Recap" | The chapter retold as causes, two short paragraphs, ≤ 120 words, at most six names, each with a role. For the PDF, a fuller `text` "Recap" (200–400 words) marked `only: "pdf"`, with the short one marked `only: "app"` |
 | **In short** | `points` "In short" | 2–3 bullets of the chapter's main claims and must-carry facts (title ≤ 6 words, text ≤ 25 words), then a last item titled "Takeaway" (one sentence ≤ 20 words). The PDF may add `points` "All key points" (`only: "pdf"`) |
-| **Key moments** | diagrams only, 3–10 | Everything the chapter discusses, drawn (`references/visuals.md`, Key moments): first a `mindmap` "The chapter at a glance" (the chapter's topic; its concepts as branches; the book's examples as leaves, under the concept the book uses them for), then the argument as a `flow` "The argument" (start = the chapter's question; three steps; key = its conclusion), then one diagram for each concept, distinction, contrast, sequence, loop or set of numbers. No text, points, list or quiz screens. PDF-only diagrams may add detail |
+| **Key moments** | diagrams only | The chapter's structure, drawn (`references/visuals.md`, Key moments): first a `mindmap` "The chapter at a glance" (the outline: the chapter's claims and concepts in its order, with the book's examples and the concepts that serve each under it), then the argument as a `flow` "The argument" (start = the chapter's question; each step follows from the one before; key = its conclusion), then one diagram for each group of relations that passes the usefulness test, in the chapter's order. No set number of diagrams. No text, points, list or quiz screens. PDF-only diagrams may add detail |
 | **Where it stands** | `points` "Where it stands" + `list` "Still open" | As in the reading guide; in the last chapter, "Still open" lists the questions the book leaves open, or is left out |
 
-No quiz and no "Terms" list: concepts live in the mind map and their own charts, definitions in a
-branch note or a chart's labels. Every must-carry item (`SKILL.md` step 5) appears in In short,
+No quiz and no "Terms" list: concepts live in the mind map and the diagrams of their groups,
+definitions in a branch note or a chart's labels. Every must-carry item (`SKILL.md` step 5) appears in In short,
 the Recap or a Key moments diagram; the blind recall test checks it.
 
 ## Limits the validator applies

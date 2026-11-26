@@ -10,7 +10,7 @@ fixes. Every check works on the files in `work/<guide>/`; none of them is commit
 |---|---|---|
 | 1 Fact sheets and ledger | invented or wrong anchors; a must-carry list missing, too short or bunched at the chapter's end | `check_guide.py facts <guide>` |
 | 2 Names and numbers | outside facts, wrong forms of names, spoilers (a name the book has not given yet) | `check_guide.py names <guide>` |
-| 3 Claims | wrong claims: feelings, motives, relations, order of events, causes | a fresh subagent per chapter, claim by claim |
+| 3 Claims | wrong claims: feelings, motives, relations, order of events, causes; links a chart draws that the book does not make; an example under the wrong claim | a fresh subagent per chapter, claim by claim |
 | 4 Must carry | what a returning reader needs, left out | the same subagent, item by item |
 | 5 Blind recall | whether the guide alone gets a reader back into the book | `check_guide.py test`, then a fresh subagent |
 
@@ -56,15 +56,24 @@ python3 -I .claude/skills/ghostreader-book/scripts/check_guide.py text <guide> -
    **supported** (give the paragraph), **inferred** (a feeling, motive, cause or judgement the
    text does not state: give the paragraph that comes closest) or **unsupported**. Claims about
    the whole book ("the first time", "never again") are checked against the ledger.
+   Every arrow, link label, leaf under its branch and row on a side of a chart is a claim too ("A
+   causes B", "X is the book's evidence for Y"): check it against the passages of its line in the
+   fact sheet's Relations or Examples. A relation marked `shown` or `joined` is supported when its
+   passages, read together, show it: judge what they mean, not whether they use a linking word. A
+   link drawn as the author's that belongs to a view the book only reports is unsupported.
 2. For each must-carry item, quote where the guide carries it **in each style** (style, screen),
    or say "missing in <style>". Recall and Layers show only the main chart: a fact in another
    Map chart is missing there (`references/styles.md`, "Must carry in every style").
 3. Check "Where it stands" and "Still open" against the ledger: the state at the chapter's end,
    nothing from later chapters, every name with a role.
+4. Read the chapter's text against the fact sheet's outline: name each passage whose point or job
+   the outline gets wrong, and each relation between the chapter's main claims that no screen
+   shows.
 
 Fix each unsupported claim or remove it; soften or remove an inferred one unless the text states
 it; add each missing must-carry item where it belongs (a key point, a key moment, "Where it
-stands"). Never "improve" a claim from memory. Research on AI summaries of books found most false
+stands"); fix each wrong outline line in the fact sheet, and put each missing relation in the
+diagram of its group. Never "improve" a claim from memory. Research on AI summaries of books found most false
 statements are about what characters feel, want or know, about relations, and about the order of
 events; give those the closest look.
 
