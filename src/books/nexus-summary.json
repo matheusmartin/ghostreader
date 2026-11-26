@@ -763,7 +763,7 @@
                   "type": "text",
                   "label": "Recap",
                   "paragraphs": [
-                    "Sapiens rule because they cooperate in unlimited numbers: about 70,000 years ago stories gave them human-to-story chains, so strangers sharing a story can cooperate, though personal bonds stop at a few hundred. Followers connect to a crafted story, as Joseph Stalin, centre of a vast personality cult, knew. Stories create intersubjective realities, such as money and states, which exist when enough people agree.",
+                    "Sapiens rule because they cooperate in unlimited numbers: from about 70,000 years ago, stories gave them human-to-story chains, so strangers sharing a story can cooperate, though personal bonds stop at a few hundred. Followers connect to a crafted story, as Joseph Stalin, centre of a vast personality cult, knew. Stories create intersubjective realities, such as money and states, which exist when enough people agree.",
                     "Power needs truth and order, and those who keep order usually command those who know the truth: Robert Oppenheimer, a Manhattan Project physicist, took orders. Fiction keeps order more easily, being simple and comforting, so every network must balance truth and order. A fiction that admits it is one, like the US Constitution, can be amended."
                   ],
                   "only": "app"
@@ -773,10 +773,10 @@
                   "label": "Recap",
                   "only": "pdf",
                   "paragraphs": [
-                    "Sapiens rule the world because they alone can cooperate flexibly in unlimited numbers. Humans can keep close personal ties with only a few hundred people, but about 70,000 years ago Sapiens began to tell fictional stories and believe them. Stories gave them human-to-story chains: strangers need only know the same story, which works like a central connector. Followers connect to a crafted story about a leader, a brand, as Joseph Stalin, at the centre of a vast personality cult, told his son. Even the tale of Cher Ami, the war pigeon, was partly army branding, and shared stories give strangers family memories, as the Passover does.",
-                    "Before stories there were two levels of reality: objective (stones, asteroids) and subjective (pain, love). Stories add a third, intersubjective reality: laws, gods, nations, money and corporations, which exist in the stories many minds share. A pizza's calories are objective, but its price is intersubjective, as the soaring value of bitcoin shows. A state exists if enough people agree that it does, so no sonar scan or DNA survey can settle a dispute over one.",
+                    "Sapiens rule the world because they alone can cooperate flexibly in unlimited numbers. Humans can keep close personal ties with only a few hundred people, but about 70,000 years ago Sapiens bands began to cooperate, apparently because changes in brain and language let them tell and believe fictional stories. Stories gave them human-to-story chains: strangers need only know the same story, which works like a central connector. Followers connect to a crafted story about a leader, a brand, as Joseph Stalin, at the centre of a vast personality cult, told his son. Even the tale of Cher Ami, the war pigeon, was partly army branding, and shared stories give strangers family memories, as the Passover does. The story of Jesus, born of projection rather than deliberate lies, outweighed the man.",
+                    "Before stories there were two levels of reality: objective (stones, asteroids) and subjective (pain, love). Stories add a third, intersubjective reality: laws, gods, nations, money and corporations, which exist in the stories many minds share. A pizza's calories are objective, but its price is intersubjective, as the soaring value of bitcoin shows. A state exists if enough people agree that it does, so no sonar scan or DNA survey can settle a dispute over one. Such stories matter most: belief that Jesus was a god did more for the church than memories of the Last Supper.",
                     "Story-based tribes spread risk and shared know-how, which made Sapiens the most powerful animal. Harari calls the Marxist view of stories as a smoke screen for material interests wrong: large-scale identities are always intersubjective, and chimpanzees, with the same material interests, form no nations. Because history is shaped by stories, talk can avert conflict; Germans' choice of the Nazi story in 1933 was a tragic mistake, not fate.",
-                    "Power depends on truth and on order, and those who keep order usually command those who know the truth: Robert Oppenheimer, a Manhattan Project physicist, took orders, and in Iran nuclear physicists follow theologians. Fiction unites more easily because it can be simple and comforting; Plato, in his Republic, proposed a noble lie to justify hierarchy. A third option is a fiction that admits it is one: the US Constitution could be amended to abolish slavery, while the Ten Commandments, claiming divine origin, cannot change. Every network walks a tightrope between truth and order. One that privileges order, as Nazi Germany did with rocket science but not race theory, grows powerful but unwise, and faster information technology only makes the balance more urgent."
+                    "Power depends on truth and on order, and those who keep order usually command those who know the truth: Robert Oppenheimer, a Manhattan Project physicist, took orders, and in Iran nuclear physicists follow theologians. Fiction unites more easily because it can be simple and comforting; Plato, in his Republic, proposed a noble lie to secure citizens' loyalty and justify hierarchy. A third option is a fiction that admits it is one: the US Constitution could be amended to abolish slavery, while the Ten Commandments, claiming divine origin, cannot change. Every network walks a tightrope between truth and order. One that privileges order, as Nazi Germany did with rocket science but not race theory, can grow powerful but unwise, and faster information technology only makes the balance more urgent."
                   ]
                 }
               ]
@@ -790,7 +790,7 @@
                   "items": [
                     {
                       "title": "Human-to-story chains",
-                      "text": "About 70,000 years ago Sapiens began telling fictions, so strangers could cooperate through a shared story, or a leader's brand such as Stalin's, rather than personal bonds."
+                      "text": "From about 70,000 years ago, shared fictions let strangers cooperate through a story, or a leader's brand such as Stalin's, rather than personal bonds."
                     },
                     {
                       "title": "Intersubjective reality",
@@ -846,7 +846,7 @@
                       ]
                     },
                     {
-                      "title": "Stories, not interests",
+                      "title": "Not only interests",
                       "note": "the Marxist view fails",
                       "leaves": [
                         "Chimpanzees form no nations",
@@ -890,8 +890,8 @@
                       "label": "The dilemma",
                       "items": [
                         "Power needs truth and order",
-                        "Fiction keeps order more easily",
-                        "Truth can threaten that order"
+                        "The binding stories are often fictions",
+                        "Fiction's ease sets truth against order"
                       ]
                     }
                   ],
@@ -982,11 +982,11 @@
                       "Chimpanzees share our interests, yet form no nations"
                     ],
                     [
-                      "No point in talking",
+                      "History: power struggles alone",
                       "Talk and new stories can make peace"
                     ],
                     [
-                      "Nazism: outcome of material interests",
+                      "Nazism: inevitable outcome of interests",
                       "Nazism: a tragic mistake, not fate"
                     ]
                   ],
@@ -996,7 +996,7 @@
                   "type": "chart",
                   "chart": "flow",
                   "label": "Truth and order",
-                  "start": "Power needs truth and order",
+                  "start": "Neither naive nor populist: power needs truth and order",
                   "groups": [
                     {
                       "label": "Discover truth",
@@ -1100,15 +1100,15 @@
                     },
                     {
                       "title": "Established so far",
-                      "text": "Power has grown faster than wisdom, which the naive view cannot explain. Chapter 1: information connects more than it informs; truth is rare and costly."
+                      "text": "Power outgrew wisdom, and the naive view cannot explain why. Chapter 1: information is defined by connection, not representation; truth is rare and costly."
                     },
                     {
                       "title": "This chapter adds",
-                      "text": "Shared stories let strangers cooperate and create intersubjective realities, but because fiction keeps order more easily than truth, networks must balance truth and order."
+                      "text": "Shared stories let strangers cooperate and create intersubjective realities, identities included; networks need truth and order, which clash because fiction unites more easily."
                     },
                     {
                       "title": "Where it stops",
-                      "text": "A network that puts order above truth can grow powerful but unwise: Nazi Germany fostered rocket science while barring any questioning of racism."
+                      "text": "History is a tightrope walk between truth and order, not a march of progress; faster technology only makes the balance more urgent."
                     }
                   ]
                 },
