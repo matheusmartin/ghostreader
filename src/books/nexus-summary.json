@@ -365,8 +365,8 @@
                   "only": "pdf",
                   "paragraphs": [
                     "Harari studies what information has done in history rather than seeking a universal definition. Almost anything can become information in a fitting context: the note that Cher Ami, a military carrier pigeon, carried for a trapped American battalion in October 1918; the window shutter with which Sarah Aaronsohn, a commander of the NILI spy ring, signalled British ships; or a stray NILI pigeon that told the Ottomans a spy ring was at work. The naive view holds that something is information when it tries to represent reality, and that a successful representation is truth.",
-                    "The book accepts that truth means representing reality accurately, but stresses that truth is not reality itself. There is one universal reality, with objective and subjective levels, and on both levels facts can be told from errors. Yet no account captures every aspect and viewpoint: a map as large as the land it shows, as Jorge Luis Borges imagined in a story, would be no map at all. Truth draws attention to some aspects and ignores others, though some accounts are more truthful than others.",
-                    "Most information, however, does not represent anything. Astrology has shaped history for thousands of years; music connects people without being true or false; zebra DNA holds no representation of lions or of the zebra's own heart, yet it helps build a body that can flee. The Bible errs about human origins and epidemics, yet it joined billions into religious networks. Errors, lies and fictions are information too. What information does is connect: it puts things in formation and so creates new realities.",
+                    "The book accepts that truth means representing reality accurately, but stresses that truth is not reality itself. There is one universal reality, with objective and subjective levels, and on both levels facts can be told from errors. Yet no account captures every aspect and viewpoint: a map as large as the land it shows, as Jorge Luis Borges imagined in a story, would be no map at all. Truth draws attention to some aspects and ignores others, though some accounts come closer than others.",
+                    "Much information, however, represents reality badly or not at all. Astrology, whatever its accuracy, has shaped history for thousands of years; music connects people without being true or false; zebra DNA holds no representation of lions or of the zebra's own heart, yet it helps build a body that can flee. The Bible errs about human origins and epidemics, yet it joined billions into religious networks. Errors, lies and fictions are information too. What information does is connect: it puts things in formation and so creates new realities.",
                     "Rejecting the naive view does not mean rejecting truth or embracing the populist view. Some information strives to connect people by representing reality accurately, but that takes a special effort. Truthful accounts are rare and costly while other information is cheap, so more information alone tends to swamp the truth. History shows constantly rising connectivity without a matching rise in truthfulness or wisdom: Nazi and Stalinist delusions about race and class helped tens of millions march together. The next chapters turn to the first information technology, the story."
                   ]
                 }
@@ -410,11 +410,11 @@
                   "branches": [
                     {
                       "title": "Anything, in context",
-                      "note": "information or not, by use",
+                      "note": "information or not, by context",
                       "leaves": [
-                        "Cher Ami's message",
+                        "Stars, rainbows, pigeons",
                         "NILI's shutter and pigeon",
-                        "Ink: orders or termites' dinner"
+                        "Paper: army news, termites' dinner"
                       ]
                     },
                     {
@@ -447,7 +447,11 @@
                     },
                     {
                       "title": "Truth needs effort",
-                      "note": "cheap information swamps it",
+                      "note": "else cheap information swamps it"
+                    },
+                    {
+                      "title": "Connection, not wisdom",
+                      "note": "delusions bind networks",
                       "leaves": [
                         "Nazi and Soviet delusions"
                       ]
@@ -477,19 +481,30 @@
                   "start": "Can an account capture all of reality?",
                   "groups": [
                     {
+                      "label": "Too many aspects",
                       "items": [
-                        "Counting soldiers hides veterans and recruits",
-                        "One reality holds many viewpoints",
-                        "A one-to-one map is the territory itself"
+                        "Counting soldiers hides veterans and recruits"
+                      ]
+                    },
+                    {
+                      "label": "Too many viewpoints",
+                      "items": [
+                        "Israelis and Palestinians judge Aaronsohn differently"
+                      ]
+                    },
+                    {
+                      "label": "A full account",
+                      "items": [
+                        "A one-to-one map is the land itself"
                       ]
                     }
                   ],
-                  "key": "Truth shows some aspects; some accounts are more truthful"
+                  "key": "Truth shows some aspects; some accounts come closer"
                 },
                 {
                   "type": "chart",
                   "chart": "matrix",
-                  "label": "Two levels of reality",
+                  "label": "Two levels: Sarah Aaronsohn",
                   "columns": [
                     "Objective",
                     "Subjective",
@@ -498,7 +513,7 @@
                   ],
                   "rows": [
                     {
-                      "label": "Her 1917 suicide",
+                      "label": "Aaronsohn's 1917 suicide",
                       "cells": [
                         true,
                         false,
@@ -516,7 +531,7 @@
                       ]
                     },
                     {
-                      "label": "Israelis see a hero",
+                      "label": "Israelis call her hero",
                       "cells": [
                         false,
                         true,
@@ -556,7 +571,7 @@
                       "Errors, lies and fictions are information too"
                     ],
                     [
-                      "Astrology is mere misinformation",
+                      "Astrology is misinformation or disinformation",
                       "Astrology swayed Roman emperors and, allegedly, Myanmar's junta"
                     ],
                     [
@@ -588,15 +603,6 @@
                     },
                     {
                       "label": "Moon-hoax video",
-                      "cells": [
-                        false,
-                        true,
-                        false,
-                        true
-                      ]
-                    },
-                    {
-                      "label": "Astrology",
                       "cells": [
                         false,
                         true,
@@ -661,14 +667,20 @@
                   "start": "Information grows in amount and speed",
                   "groups": [
                     {
+                      "label": "Truth",
                       "items": [
-                        "Truth is rare and costly to produce",
-                        "Most information is cheap and common",
-                        "So cheap information swamps the truth"
+                        "Rare and costly to produce",
+                        "Needs a special effort"
+                      ]
+                    },
+                    {
+                      "label": "Other information",
+                      "items": [
+                        "Cheap and common"
                       ]
                     }
                   ],
-                  "key": "Connection rises; truth needs special effort"
+                  "key": "Unless steps tilt the balance, cheap information swamps truth"
                 }
               ]
             },
@@ -685,11 +697,11 @@
                     },
                     {
                       "title": "Established so far",
-                      "text": "Power has grown faster than wisdom, which the naive view of information cannot explain: large networks bind people with fictions, and AI decides by itself."
+                      "text": "Power has grown faster than wisdom, because fictions bind large networks; AI is the first technology that decides by itself."
                     },
                     {
                       "title": "This chapter adds",
-                      "text": "Information's defining feature is connection, not representation, so more information tends to swamp rare, costly truth unless special effort tilts the balance."
+                      "text": "Information's defining feature is connection, not representation; connectivity has risen without wisdom, and cheap information swamps costly truth without special effort."
                     },
                     {
                       "title": "Where it stops",
@@ -706,8 +718,12 @@
                       "text": "What extra steps can tilt the flood of information in favour of truth?"
                     },
                     {
-                      "name": "The first technology",
-                      "text": "How did the story, the first information technology, connect so many people?"
+                      "name": "Trusting algorithms",
+                      "text": "Can computer algorithms be trusted to decide wisely on our behalf?"
+                    },
+                    {
+                      "name": "A divided world",
+                      "text": "Will rival blocs split the world, leaving us prey to runaway AI, or can we unite?"
                     }
                   ]
                 }
@@ -799,43 +815,59 @@
                   "type": "chart",
                   "chart": "mindmap",
                   "label": "The chapter at a glance",
-                  "centre": "How stories link strangers",
+                  "centre": "How did Sapiens come to rule the world?",
                   "branches": [
                     {
-                      "title": "Fake memories",
+                      "title": "Human-to-story chains",
+                      "note": "strangers share one story",
                       "leaves": [
-                        "Passover"
-                      ]
-                    },
-                    {
-                      "title": "Brands",
-                      "note": "stories about products or people",
-                      "leaves": [
-                        "Stalin and his son",
-                        "Cher Ami as a brand"
+                        "Brands: Stalin, Cher Ami",
+                        "Fake memories: Passover",
+                        "Jesus: story over person"
                       ]
                     },
                     {
                       "title": "Intersubjective reality",
                       "note": "exists between many minds",
+                      "key": true,
                       "leaves": [
                         "The bitcoin pizzas",
-                        "Kosovo"
-                      ],
-                      "key": true
-                    },
-                    {
-                      "title": "Truth and order",
-                      "note": "the perennial dilemma",
-                      "leaves": [
-                        "The Manhattan Project"
+                        "Kosovo, not Loch Ness",
+                        "Billionaire's useless banknotes"
                       ]
                     },
                     {
-                      "title": "Acknowledged fiction",
-                      "note": "a story that admits it",
+                      "title": "The power of stories",
+                      "note": "tribes beat lone bands",
                       "leaves": [
-                        "Constitution and Commandments"
+                        "500 Sapiens, 50 Neanderthals",
+                        "Tribes as insurance",
+                        "Shared know-how"
+                      ]
+                    },
+                    {
+                      "title": "Stories, not interests",
+                      "note": "the Marxist view fails",
+                      "leaves": [
+                        "Chimpanzees form no nations",
+                        "Nazism: a tragic mistake"
+                      ]
+                    },
+                    {
+                      "title": "Truth and order",
+                      "note": "power needs both",
+                      "leaves": [
+                        "Oppenheimer obeyed Roosevelt",
+                        "Fiction: simple, comforting",
+                        "Nazi rocket science"
+                      ]
+                    },
+                    {
+                      "title": "Admitted fiction",
+                      "note": "a third option",
+                      "leaves": [
+                        "Not Plato's noble lie",
+                        "US Constitution: amendable"
                       ]
                     }
                   ]
@@ -847,14 +879,23 @@
                   "start": "How did Sapiens come to rule the world?",
                   "groups": [
                     {
+                      "label": "Stories connect",
                       "items": [
-                        "Stories link strangers in unlimited numbers",
-                        "Stories create realities between minds",
-                        "Fiction keeps order more easily than truth"
+                        "Personal bonds stop at a few hundred",
+                        "Stories link strangers who share them",
+                        "So Sapiens cooperate in unlimited numbers"
+                      ]
+                    },
+                    {
+                      "label": "The dilemma",
+                      "items": [
+                        "Power needs truth and order",
+                        "Fiction keeps order more easily",
+                        "Truth can threaten that order"
                       ]
                     }
                   ],
-                  "key": "Networks must balance truth and order"
+                  "key": "Networks walk a tightrope between truth and order"
                 },
                 {
                   "type": "chart",
@@ -867,15 +908,7 @@
                   ],
                   "rows": [
                     {
-                      "label": "A stone",
-                      "cells": [
-                        true,
-                        false,
-                        false
-                      ]
-                    },
-                    {
-                      "label": "A pizza's calories",
+                      "label": "An asteroid",
                       "cells": [
                         true,
                         false,
@@ -891,15 +924,15 @@
                       ]
                     },
                     {
-                      "label": "Love",
+                      "label": "A pizza's calories",
                       "cells": [
-                        false,
                         true,
+                        false,
                         false
                       ]
                     },
                     {
-                      "label": "A pizza's price",
+                      "label": "A bitcoin's value",
                       "cells": [
                         false,
                         false,
@@ -908,7 +941,15 @@
                       "focus": true
                     },
                     {
-                      "label": "A nation",
+                      "label": "Loch Ness: sonar test",
+                      "cells": [
+                        true,
+                        false,
+                        false
+                      ]
+                    },
+                    {
+                      "label": "Kosovo: recognition",
                       "cells": [
                         false,
                         false,
@@ -916,81 +957,7 @@
                       ]
                     }
                   ],
-                  "key": "Stories create the third level, between many minds"
-                },
-                {
-                  "type": "chart",
-                  "chart": "network",
-                  "label": "How stories build networks",
-                  "centre": [
-                    "Stories"
-                  ],
-                  "nodes": [
-                    {
-                      "name": "Brands and leaders",
-                      "note": "Stalin, Cher Ami"
-                    },
-                    {
-                      "name": "Shared memories",
-                      "note": "Passover, Last Supper"
-                    },
-                    {
-                      "name": "Gods, nations, money",
-                      "note": "Intersubjective"
-                    },
-                    {
-                      "name": "Large networks",
-                      "note": "Tribes, churches, states"
-                    },
-                    {
-                      "name": "Order"
-                    },
-                    {
-                      "name": "Truth"
-                    }
-                  ],
-                  "links": [
-                    {
-                      "from": "Stories",
-                      "to": "Brands and leaders",
-                      "label": "Craft",
-                      "arrow": true
-                    },
-                    {
-                      "from": "Stories",
-                      "to": "Shared memories",
-                      "label": "Implant",
-                      "arrow": true
-                    },
-                    {
-                      "from": "Stories",
-                      "to": "Gods, nations, money",
-                      "label": "Create",
-                      "arrow": true
-                    },
-                    {
-                      "from": "Gods, nations, money",
-                      "to": "Large networks",
-                      "label": "Bind",
-                      "arrow": true
-                    },
-                    {
-                      "from": "Large networks",
-                      "to": "Order",
-                      "label": "Need"
-                    },
-                    {
-                      "from": "Order",
-                      "to": "Truth",
-                      "label": "Often clash"
-                    },
-                    {
-                      "from": "Stories",
-                      "to": "Order",
-                      "label": "Supply",
-                      "arrow": true
-                    }
-                  ]
+                  "key": "Scans test objective things; agreement makes intersubjective ones"
                 },
                 {
                   "type": "chart",
@@ -1007,16 +974,20 @@
                       "Stories define groups and their interests"
                     ],
                     [
-                      "Group identities are objective",
-                      "Large-scale identities are intersubjective"
+                      "Wars serve elites' material interests",
+                      "Why Iraq's oil, not Norway's gas?"
                     ],
                     [
-                      "Implies no point in talking",
+                      "Group identities are objective",
+                      "Chimpanzees share our interests, yet form no nations"
+                    ],
+                    [
+                      "No point in talking",
                       "Talk and new stories can make peace"
                     ],
                     [
                       "Nazism: outcome of material interests",
-                      "Nazism: a tragic mistake"
+                      "Nazism: a tragic mistake, not fate"
                     ]
                   ],
                   "key": "Since stories shape history, talking can avert conflict"
@@ -1025,24 +996,47 @@
                   "type": "chart",
                   "chart": "flow",
                   "label": "Truth and order",
-                  "start": "Every network must discover truth and create order",
+                  "start": "Power needs truth and order",
                   "groups": [
                     {
                       "label": "Discover truth",
                       "items": [
-                        "Understand medicine, mammoths, nuclear physics",
-                        "Facts are complicated, often painful"
+                        "Physics, medicine, mammoths",
+                        "Truth is complex and often painful"
                       ]
                     },
                     {
                       "label": "Create order",
                       "items": [
-                        "Make millions act together",
-                        "Uses fictions, propaganda, sometimes lies"
+                        "Millions must act together",
+                        "Order-keepers command truth-knowers",
+                        "Fiction unites: simple, comforting"
                       ]
                     }
                   ],
-                  "key": "Privileging order over truth gives power without wisdom"
+                  "key": "Truth and order often pull apart"
+                },
+                {
+                  "type": "chart",
+                  "chart": "branches",
+                  "label": "A third option",
+                  "start": "How to tell a founding story?",
+                  "options": [
+                    {
+                      "title": "Only the truth",
+                      "text": "Essential for science, rarely a winning politics"
+                    },
+                    {
+                      "title": "A noble lie",
+                      "text": "Plato: pass fiction off as true origin",
+                      "negative": true
+                    },
+                    {
+                      "title": "An admitted fiction",
+                      "text": "Easier to amend, harder to agree on",
+                      "key": true
+                    }
+                  ]
                 },
                 {
                   "type": "chart",
@@ -1063,7 +1057,7 @@
                       "Endorses slavery"
                     ],
                     [
-                      "Article V allows amendments",
+                      "Article V lets people amend it",
                       "No way to amend it"
                     ],
                     [
@@ -1071,7 +1065,7 @@
                       "Still endorses slavery today"
                     ]
                   ],
-                  "key": "Admitting human origins makes change easier, agreement harder"
+                  "key": "Claiming God's authorship bars humans from changing a text"
                 },
                 {
                   "type": "chart",
@@ -1080,19 +1074,14 @@
                   "start": "A truth threatens the founding story",
                   "options": [
                     {
-                      "title": "Ban the truth",
+                      "title": "Ban or limit it",
                       "text": "Governments and churches limit teaching evolution",
                       "negative": true
                     },
                     {
                       "title": "Allow only useful truths",
-                      "text": "Nazi rocket science, but no questioning racism",
+                      "text": "Nazi rocket science, no questioning racism",
                       "negative": true
-                    },
-                    {
-                      "title": "Admit the fiction",
-                      "text": "Like the US Constitution, open to amendment",
-                      "key": true
                     }
                   ]
                 }
