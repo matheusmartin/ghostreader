@@ -1239,7 +1239,7 @@
                       "leaves": [
                         "Ownership on paper",
                         "Old Assyrian killed loans",
-                        "Ur tablet's wrong total"
+                        "Rebels burn debt archives"
                       ]
                     },
                     {
@@ -1264,14 +1264,14 @@
                       "title": "Power hard to see",
                       "note": "so it breeds suspicion",
                       "leaves": [
+                        "Twin pillar with mythology",
                         "Human-to-document chains",
-                        "Kafka's Trial",
-                        "Rebels burn archives"
+                        "Helpless, or seeing conspiracy"
                       ]
                     },
                     {
-                      "title": "Crushes lives",
-                      "note": "a label decides fate",
+                      "title": "Labels decide fates",
+                      "note": "a label can decide life",
                       "leaves": [
                         "Bruno Luttinger's lost citizenship",
                         "Endangered or vulnerable"
@@ -1297,8 +1297,14 @@
                       "label": "Bureaucracy",
                       "items": [
                         "Finding documents needs bureaucracy's drawers",
-                        "Drawers keep order but distort truth",
-                        "Its power is hard to understand"
+                        "Drawers keep order but distort truth"
+                      ]
+                    },
+                    {
+                      "label": "Hidden power",
+                      "items": [
+                        "Documents change how power flows",
+                        "So citizens can hardly see it"
                       ]
                     }
                   ],
@@ -1361,13 +1367,13 @@
                     {
                       "items": [
                         "Bad air is the leading theory",
-                        "Snow lists patients and their water",
-                        "Data points to the Broad Street pump",
-                        "Officials disable it; the outbreak ends"
+                        "Snow suspects the water instead",
+                        "He lists patients and their water",
+                        "Data points to the Broad Street pump"
                       ]
                     }
                   ],
-                  "key": "Sewage bureaucracy has saved millions since"
+                  "key": "Pump disabled; sewage bureaucracy has saved millions"
                 },
                 {
                   "type": "chart",
@@ -1379,16 +1385,16 @@
                   ],
                   "rows": [
                     [
-                      "Human-to-human and human-to-story chains",
-                      "Adds human-to-document chains"
+                      "Chains of people and stories",
+                      "Adds chains of documents"
                     ],
                     [
                       "Power: mythmakers and orators",
                       "Power: administrators, accountants, lawyers"
                     ],
                     [
-                      "A friend or a bully: easy to tell",
-                      "Taxes for a sewer or a dacha? Hard"
+                      "Authority at the myths' junctions",
+                      "Power in budgets, loopholes, committees"
                     ]
                   ],
                   "key": "Documents strengthen the centre and widen the gap to citizens"
@@ -1413,7 +1419,7 @@
                       "items": [
                         "Kafka's Trial: an unfathomable agency",
                         "Catch-22: the mail clerk's power",
-                        "The Big Short: CDOs nobody understands"
+                        "The Big Short: CDOs only bankers understand"
                       ]
                     }
                   ],
@@ -1455,7 +1461,7 @@
                     },
                     {
                       "title": "This chapter adds",
-                      "text": "Because brains remember lists poorly, states rely on documents, which create realities like ownership; bureaucracy files them in drawers, trading some truth for order."
+                      "text": "States need documents, which create realities; bureaucracy files them, trading truth for order; with mythology it is a twin pillar, for good or ill."
                     },
                     {
                       "title": "Where it stops",
@@ -1476,8 +1482,8 @@
                       "text": "What happens when a network believes itself incapable of error?"
                     },
                     {
-                      "name": "AI bureaucrats and mythmakers",
-                      "text": "What happens when AI takes on the roles of bureaucrats and mythmakers?"
+                      "name": "The right balance",
+                      "text": "Can any network find a lasting balance between truth and order?"
                     }
                   ]
                 }
@@ -1577,46 +1583,61 @@
                   "type": "chart",
                   "chart": "mindmap",
                   "label": "The chapter at a glance",
-                  "centre": "Who can be trusted with errors?",
+                  "centre": "How do networks deal with their own errors?",
                   "branches": [
                     {
-                      "title": "Infallible source",
-                      "note": "a dream beyond human error",
+                      "title": "Infallible sources",
+                      "note": "religion's superhuman legitimacy",
                       "leaves": [
-                        "The bribed Pythia"
+                        "Baninge's failed apocalypse",
+                        "The bribed Pythia",
+                        "Musk's TruthGPT"
                       ]
                     },
                     {
                       "title": "Holy books",
-                      "note": "need human curators",
+                      "note": "fixed text, identical copies",
                       "leaves": [
-                        "Thecla and 1 Timothy",
-                        "Dead Sea Scrolls"
+                        "Dead Sea Scrolls: Enoch too",
+                        "Mishnah, then Talmud",
+                        "1 Timothy, not Thecla"
                       ]
                     },
                     {
-                      "title": "Interpreters",
-                      "note": "gain the power",
+                      "title": "Church power",
+                      "note": "curators and interpreters rule",
                       "leaves": [
-                        "The Catholic Church"
+                        "Sermon read as heresy hunt",
+                        "Cambridge's 122 books",
+                        "The echo chamber"
                       ]
                     },
                     {
-                      "title": "Free market of information",
-                      "note": "rewards outrage, not truth",
+                      "title": "Print and witches",
+                      "note": "more information, more delusion",
                       "leaves": [
                         "The Hammer of the Witches",
-                        "The Würzburg chancellor"
+                        "40,000–50,000 executed",
+                        "Copernicus, a worst seller"
                       ]
                     },
                     {
                       "title": "Self-correcting mechanisms",
-                      "note": "expose one's own errors",
+                      "note": "find and fix own errors",
+                      "key": true,
                       "leaves": [
-                        "Quasicrystals",
-                        "The DSM"
-                      ],
-                      "key": true
+                        "Church weak, science strong",
+                        "DSM drops homosexuality, 1974",
+                        "Shechtman's quasicrystals"
+                      ]
+                    },
+                    {
+                      "title": "The cost: order",
+                      "note": "doubt undermines myths",
+                      "leaves": [
+                        "Science leaves order to police",
+                        "US Vietnam, Soviet Afghanistan"
+                      ]
                     }
                   ]
                 },
@@ -1624,63 +1645,169 @@
                   "type": "chart",
                   "chart": "flow",
                   "label": "The argument",
-                  "start": "Can any source be free of human error?",
+                  "start": "How can a network correct its own errors?",
                   "groups": [
                     {
+                      "label": "Infallible books",
                       "items": [
-                        "Holy books needed human curators",
-                        "So power passed to interpreters",
-                        "Print spread witch hunts, not truth"
+                        "Self-correction needs legitimacy",
+                        "Holy books try to bypass humans",
+                        "Interpreters gain the power instead"
+                      ]
+                    },
+                    {
+                      "label": "Free information",
+                      "items": [
+                        "Print spreads witch fantasies",
+                        "Outrage outsells truth"
+                      ]
+                    },
+                    {
+                      "label": "Self-correction",
+                      "items": [
+                        "Science admits ignorance",
+                        "It rewards exposing its own errors"
                       ]
                     }
                   ],
-                  "key": "Science earns trust by exposing its own errors"
+                  "key": "Strong self-correction finds truth, at a cost to order"
                 },
                 {
                   "type": "chart",
-                  "chart": "branches",
-                  "label": "How to deal with error",
-                  "start": "How to deal with human error?",
-                  "options": [
+                  "chart": "flow",
+                  "label": "Whom to trust?",
+                  "start": "How can people know what the gods want?",
+                  "groups": [
                     {
-                      "title": "An infallible holy book",
-                      "text": "Interpreters take power and build echo chambers",
-                      "negative": true
+                      "items": [
+                        "Messengers: Baninge's apocalypse never came",
+                        "Institutions: the Pythia took bribes",
+                        "Holy books: humans compiled and copied them"
+                      ]
+                    }
+                  ],
+                  "key": "Every route still meant trusting fallible humans"
+                },
+                {
+                  "type": "chart",
+                  "chart": "cycle",
+                  "label": "The interpreters' loop",
+                  "centre": "Bible, Mishnah, Talmud",
+                  "nodes": [
+                    {
+                      "title": "An infallible book",
+                      "text": "Meant to bypass humans"
                     },
                     {
-                      "title": "A free market of information",
-                      "text": "The naive view: print spread witch-hunting fantasies",
-                      "negative": true
+                      "title": "Words need reading",
+                      "text": "What counts as Sabbath work?"
                     },
                     {
-                      "title": "Self-correcting curation institutions",
-                      "text": "Science seeks out and exposes its own errors",
+                      "title": "Interpreters gain power",
+                      "text": "Rabbis, then bishops",
                       "key": true
+                    },
+                    {
+                      "title": "A new holy book",
+                      "text": "Their reading is canonised"
+                    }
+                  ]
+                },
+                {
+                  "type": "chart",
+                  "chart": "compare",
+                  "label": "Which texts made the canon",
+                  "columns": [
+                    "1 Timothy",
+                    "Acts of Paul and Thecla"
+                  ],
+                  "rows": [
+                    [
+                      "Women must be quiet and submit",
+                      "Thecla baptises herself and preaches"
+                    ],
+                    [
+                      "Possibly a forgery ascribed to Paul",
+                      "Hugely popular for a time"
+                    ],
+                    [
+                      "Kept in the New Testament",
+                      "Left out at Hippo and Carthage"
+                    ]
+                  ],
+                  "key": "Choosing texts shaped Christian attitudes to women"
+                },
+                {
+                  "type": "chart",
+                  "chart": "flow",
+                  "label": "The echo chamber",
+                  "start": "Before print, copying a book was very costly",
+                  "groups": [
+                    {
+                      "items": [
+                        "The church controls copyists, archives, libraries",
+                        "Heretics cannot spread a hundred copies",
+                        "Nearly every book supports the church"
+                      ]
+                    }
+                  ],
+                  "key": "So people trust the church: an echo chamber"
+                },
+                {
+                  "type": "chart",
+                  "chart": "timeline",
+                  "label": "How the witch craze spread",
+                  "items": [
+                    {
+                      "when": "Tenth century",
+                      "text": "The Canon Episcopi, the church's doctrine, calls witchcraft mostly an illusion"
+                    },
+                    {
+                      "when": "1420s–1430s",
+                      "text": "Alpine churchmen and scholars invent a global satanic conspiracy of witches"
+                    },
+                    {
+                      "when": "1485",
+                      "text": "Heinrich Kramer, an inquisitor, is expelled from the Tyrol by sceptical local churchmen"
+                    },
+                    {
+                      "when": "Within two years",
+                      "title": "The Hammer of the Witches",
+                      "text": "Kramer prints his manual of torture and execution; it becomes a best seller",
+                      "key": true
+                    },
+                    {
+                      "when": "1500",
+                      "text": "Kramer is made a papal representative and an inquisitor"
+                    },
+                    {
+                      "when": "1500s–1600s",
+                      "text": "Pamphlets and fake statistics fuel trials; 40,000 to 50,000 innocent people are executed"
                     }
                   ]
                 },
                 {
                   "type": "chart",
                   "chart": "cycle",
-                  "label": "From book to interpreters",
-                  "centre": "Each book needs new interpreters",
+                  "label": "How information made witches",
+                  "centre": "Like money, made real by talk",
                   "nodes": [
                     {
-                      "title": "Bypass fallible humans",
-                      "text": "Messengers err; the Pythia took bribes"
+                      "title": "Accusations",
+                      "text": "Torture extracts names and confessions"
                     },
                     {
-                      "title": "Canonise a holy book",
-                      "text": "Bible, Mishnah, Talmud in turn"
+                      "title": "Reports pile up",
+                      "text": "Archives, printed forms, pamphlets"
                     },
                     {
-                      "title": "The book needs interpreting",
-                      "text": "Is tearing paper Sabbath work?"
-                    },
-                    {
-                      "title": "Interpreters gain power",
-                      "text": "Rabbis, bishops, the church",
+                      "title": "Witches seem real",
+                      "text": "Too much data to doubt",
                       "key": true
+                    },
+                    {
+                      "title": "Doubters accused",
+                      "text": "Edelin confessed under torture"
                     }
                   ]
                 },
@@ -1690,134 +1817,48 @@
                   "label": "Weak and strong self-correction",
                   "columns": [
                     "Catholic Church",
-                    "Scientific institutions"
+                    "Science"
                   ],
                   "negative": 0,
                   "rows": [
                     [
-                      "Claims infallibility",
-                      "Starts from the discovery of ignorance"
+                      "Claims an infallible book",
+                      "Starts from admitted ignorance"
+                    ],
+                    [
+                      "Blames errant members, not the church",
+                      "Admits institutional errors: Tuskegee, racism"
+                    ],
+                    [
+                      "Changes teachings, but denies it",
+                      "Celebrates corrections: the DSM, 1974"
                     ],
                     [
                       "Rewards conformity",
-                      "Rewards exposing mistakes"
+                      "Publish or perish rewards new findings"
                     ],
                     [
-                      "Blames errors on some members",
-                      "Admits errors of the whole institution"
-                    ],
-                    [
-                      "Changes but denies it",
-                      "DSM removed homosexuality after 22 years"
+                      "Heretics were burned",
+                      "Dissenters lose grants, not lives: Shechtman"
                     ]
                   ],
-                  "key": "Trust comes from self-correction, not from claims of infallibility"
+                  "key": "Admitting error speeds correction; denying it slows it"
                 },
                 {
                   "type": "chart",
-                  "chart": "matrix",
-                  "label": "What counts as self-correction",
-                  "columns": [
-                    "Outside correction",
-                    "Self-correction"
-                  ],
-                  "rows": [
+                  "chart": "flow",
+                  "label": "The price of self-correction",
+                  "start": "Strong self-correction costs order",
+                  "groups": [
                     {
-                      "label": "Teacher corrects an essay",
-                      "cells": [
-                        true,
-                        false
+                      "items": [
+                        "It breeds doubts, rifts, broken myths",
+                        "Science leaves order to the police",
+                        "Can order-keepers self-correct too?"
                       ]
-                    },
-                    {
-                      "label": "Judge jails a criminal",
-                      "cells": [
-                        true,
-                        false
-                      ]
-                    },
-                    {
-                      "label": "Allies dismantle Nazi regime",
-                      "cells": [
-                        true,
-                        false
-                      ]
-                    },
-                    {
-                      "label": "Child learns to walk",
-                      "cells": [
-                        false,
-                        true
-                      ]
-                    },
-                    {
-                      "label": "Body adjusts blood pressure",
-                      "cells": [
-                        false,
-                        true
-                      ]
-                    },
-                    {
-                      "label": "Journal corrects earlier paper",
-                      "cells": [
-                        false,
-                        true
-                      ],
-                      "focus": true
                     }
                   ],
-                  "key": "Only corrections an entity makes to itself count"
-                },
-                {
-                  "type": "chart",
-                  "chart": "timeline",
-                  "label": "The witch craze",
-                  "items": [
-                    {
-                      "when": "Tenth century",
-                      "text": "The Canon Episcopi, a church text, calls witchcraft mostly an illusion"
-                    },
-                    {
-                      "when": "1420s–30s",
-                      "text": "Alpine churchmen invent a global satanic conspiracy; trials in the Valais execute more than 200"
-                    },
-                    {
-                      "when": "1453",
-                      "text": "Guillaume Edelin, a theologian, calls witchcraft an illusion; accused himself, he confesses under torture"
-                    },
-                    {
-                      "when": "1485",
-                      "title": "The Hammer of the Witches",
-                      "text": "Expelled from the Tyrol, Heinrich Kramer, an inquisitor, prints a witch-hunting manual within two years",
-                      "key": true
-                    },
-                    {
-                      "when": "1600",
-                      "text": "Munich tortures the Pappenheimer family, ten-year-old Hansel first, into confessions; all are executed"
-                    },
-                    {
-                      "when": "1625–31",
-                      "text": "In Bamberg, a city of under 12,000, up to 900 people are executed"
-                    }
-                  ]
-                },
-                {
-                  "type": "chart",
-                  "chart": "bars",
-                  "label": "Print did not make science",
-                  "caption": "Million volumes in Europe; print spread witch-hunting manuals as well as science",
-                  "only": "pdf",
-                  "data": [
-                    {
-                      "label": "Hand-copied, previous thousand years",
-                      "value": 11
-                    },
-                    {
-                      "label": "Printed, 1454–1500",
-                      "value": 12,
-                      "focus": true
-                    }
-                  ]
+                  "key": "Democracies say yes; dictatorships say no"
                 }
               ]
             },
