@@ -42,8 +42,8 @@
                   "paragraphs": [
                     "Humans call themselves Homo sapiens, the wise human, yet after 100,000 years of discovery and conquest they face ecological collapse, AI that could escape their control and a possible new world war. Why, then, is so wise a species so self-destructive? Old fables, such as the Greek myth of Phaethon, the boy who loses control of the sun's chariot, and The Sorcerer's Apprentice, a poem by Johann Wolfgang von Goethe, blame flawed individual psychology and leave us waiting for a god or a sorcerer to save us.",
                     "Harari rejects that answer because power never comes from one person: it arises when great numbers of humans cooperate. Large networks are built in a way that inclines them to misuse power, and more precisely this is an information problem. Large networks bind their members and keep order with fictions and mass delusions, which is why Nazism and Stalinism, two of the strongest networks ever, rested on deluded ideas. Delusional networks are not doomed to fail.",
-                    "The naive view of information, the semi-official ideology of the computer age, holds that enough information yields truth, and truth yields power and wisdom. It proved right about child mortality: only three of 12 children in Goethe's family reached adulthood, while by 2020, thanks to shared medical data, 95.6% of children worldwide lived beyond 15. Yet every smartphone holds more information than Alexandria's ancient library, and humanity has never been nearer to destroying itself.",
-                    "AI is the first technology that can decide and invent new ideas on its own, and experts warn of a Silicon Curtain that could divide rival human powers, or all humans from AI overlords. The populist view, voiced by populist leaders like Donald Trump and Jair Bolsonaro, treats information as a weapon and power as the only reality; it starts by distrusting all elites and often ends by trusting one leader. Information is neither the raw material of truth nor a mere weapon, and the book explores the middle ground. History is not deterministic, so informed choices can still prevent the worst."
+                    "The naive view of information, the near-official creed of the computer age, holds that enough information yields truth, and truth yields power and wisdom. It proved right about child mortality: only three of 12 children in Goethe's family reached adulthood, while by 2020, thanks to shared medical data, 95.6% of children worldwide reached 15. Yet every smartphone holds more information than Alexandria's ancient library, and humanity has never been nearer to destroying itself.",
+                    "AI is the first technology that can decide and invent new ideas on its own. Experts warn of two dangers, which Harari pictures as a Silicon Curtain: one that divides rival human powers, or one that divides all humans from AI overlords. The populist view, voiced by populist leaders like Donald Trump and Jair Bolsonaro, treats information as a weapon and power as the only reality; it starts by distrusting all elites and often ends by trusting one leader. Information is neither the raw material of truth nor a mere weapon, and the book explores the middle ground. History is not deterministic, so informed choices can still prevent the worst."
                   ]
                 }
               ]
@@ -64,12 +64,12 @@
                       "text": "It expects enough information to bring truth, and truth to bring power and wisdom. It held for child mortality, yet with more information than ever, humanity nears self-destruction."
                     },
                     {
-                      "title": "AI decides",
-                      "text": "Unlike knives or bombs, AI can make decisions and invent new ideas by itself; computers already decide on mortgages, jobs and prison sentences."
+                      "title": "The populist view",
+                      "text": "Populists treat information as a weapon and power as the only reality; Harari seeks a middle ground between the two views."
                     },
                     {
                       "title": "Takeaway",
-                      "text": "AI, the first technology that can decide and create ideas by itself, raises the stakes."
+                      "text": "Cooperation gives humans power, but the fictions that bind their networks make them use it unwisely."
                     }
                   ]
                 }
@@ -89,7 +89,7 @@
                       "note": "not individual psychology",
                       "key": true,
                       "leaves": [
-                        "Fables blame one person",
+                        "Not the fables' hubris",
                         "Germans voting for Hitler",
                         "Nazism and Stalinism"
                       ]
@@ -98,9 +98,9 @@
                       "title": "The naive view",
                       "note": "information brings truth, wisdom",
                       "leaves": [
-                        "Goethe's children",
+                        "Right on child mortality",
                         "Google's mission",
-                        "Smartphones and Alexandria"
+                        "Yet nearer self-destruction"
                       ]
                     },
                     {
@@ -118,15 +118,12 @@
                       "leaves": [
                         "Trump, Bolsonaro, QAnon",
                         "Roots: Marx, Foucault",
-                        "Own research, scripture, leader"
+                        "Same advice as the fables"
                       ]
                     },
                     {
                       "title": "A middle ground",
-                      "note": "neither truth nor weapon",
-                      "leaves": [
-                        "Choices can prevent the worst"
-                      ]
+                      "note": "between naive and populist"
                     }
                   ]
                 },
@@ -147,8 +144,8 @@
                     {
                       "label": "The way out",
                       "items": [
-                        "The naive view sees only part",
-                        "The populist view is wrong too",
+                        "The naive view is only partly right",
+                        "Populism: right to doubt, wrong on power",
                         "Neither raw material of truth nor weapon"
                       ]
                     }
@@ -171,14 +168,14 @@
                     ],
                     [
                       "Phaethon, the sorcerer's apprentice",
-                      "Most Germans in 1933 were not psychopaths"
+                      "Hitler's voters: mostly not psychopaths"
                     ],
                     [
                       "Wait for a god or sorcerer",
                       "Do the hard work ourselves"
                     ]
                   ],
-                  "key": "Our problem is a network problem, not individual psychology"
+                  "key": "The fault lies in how networks are built, not in individuals"
                 },
                 {
                   "type": "chart",
@@ -191,7 +188,8 @@
                       "items": [
                         "More information leads to truth",
                         "Truth brings power and wisdom",
-                        "More information fixes errors and racism"
+                        "More information fixes errors and racism",
+                        "Deluded networks are aberrations, bound to lose"
                       ]
                     },
                     {
@@ -199,11 +197,12 @@
                       "items": [
                         "Shared medical data cut child deaths",
                         "Smartphones hold more than Alexandria's library",
-                        "Yet humanity nears self-destruction"
+                        "Yet humanity nears self-destruction",
+                        "Nazism and Stalinism were among the strongest"
                       ]
                     }
                   ],
-                  "key": "The naive view sees only part of the picture"
+                  "key": "The naive view is only partly right"
                 },
                 {
                   "type": "chart",
@@ -265,13 +264,8 @@
                       "negative": true
                     },
                     {
-                      "title": "Trust scripture",
-                      "text": "Doubt modern institutions, believe ancient holy books",
-                      "negative": true
-                    },
-                    {
-                      "title": "Trust a charismatic leader",
-                      "text": "Distrust of elites ends in trusting one human",
+                      "title": "Trust revelation or a leader",
+                      "text": "Scripture, or all power to one human",
                       "negative": true
                     }
                   ]
@@ -291,7 +285,7 @@
                     },
                     {
                       "title": "Established so far",
-                      "text": "The book starts here: the prologue sets out the question and the two views of information it rejects, the naive and the populist."
+                      "text": "The book starts here. Deluded networks are not doomed; the naive view is only partly right, the populist view wrong; a middle ground lies between."
                     },
                     {
                       "title": "This chapter adds",
