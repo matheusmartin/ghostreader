@@ -82,42 +82,51 @@
                   "type": "chart",
                   "chart": "mindmap",
                   "label": "The chapter at a glance",
-                  "centre": "Why power outgrows wisdom",
+                  "centre": "Why is a wise species so self-destructive?",
                   "branches": [
                     {
                       "title": "A network problem",
                       "note": "not individual psychology",
+                      "key": true,
                       "leaves": [
-                        "The Sorcerer's Apprentice",
-                        "Phaethon"
-                      ],
-                      "key": true
+                        "Fables blame one person",
+                        "Germans voting for Hitler",
+                        "Nazism and Stalinism"
+                      ]
                     },
                     {
                       "title": "The naive view",
-                      "note": "information brings truth",
+                      "note": "information brings truth, wisdom",
                       "leaves": [
                         "Goethe's children",
-                        "Google's mission"
+                        "Google's mission",
+                        "Smartphones and Alexandria"
+                      ]
+                    },
+                    {
+                      "title": "AI decides",
+                      "note": "first technology that decides",
+                      "leaves": [
+                        "Not like knives or bombs",
+                        "Mortgages, jobs, prison",
+                        "Silicon Curtain"
                       ]
                     },
                     {
                       "title": "The populist view",
                       "note": "information as a weapon",
                       "leaves": [
-                        "Trump and Bolsonaro"
+                        "Trump, Bolsonaro, QAnon",
+                        "Roots: Marx, Foucault",
+                        "Own research, scripture, leader"
                       ]
                     },
                     {
-                      "title": "AI decides",
-                      "note": "the first technology that decides",
+                      "title": "A middle ground",
+                      "note": "neither truth nor weapon",
                       "leaves": [
-                        "Worried experts' poll"
+                        "Choices can prevent the worst"
                       ]
-                    },
-                    {
-                      "title": "Silicon Curtain",
-                      "note": "rival powers, or AI overlords"
                     }
                   ]
                 },
@@ -125,63 +134,76 @@
                   "type": "chart",
                   "chart": "flow",
                   "label": "The argument",
-                  "start": "Why are wise Sapiens so self-destructive?",
+                  "start": "Why is a wise species so self-destructive?",
                   "groups": [
                     {
+                      "label": "The cause",
                       "items": [
                         "Power comes from large networks",
                         "Fictions, not truth, bind those networks",
-                        "Both views of information mislead"
+                        "So networks use power unwisely"
+                      ]
+                    },
+                    {
+                      "label": "The way out",
+                      "items": [
+                        "The naive view sees only part",
+                        "The populist view is wrong too",
+                        "Neither raw material of truth nor weapon"
                       ]
                     }
                   ],
-                  "key": "Understand information before AI decides for us"
-                },
-                {
-                  "type": "chart",
-                  "chart": "branches",
-                  "label": "Why power goes wrong",
-                  "start": "Why do humans misuse their power?",
-                  "options": [
-                    {
-                      "title": "Flawed individuals",
-                      "text": "The fables: hubris and greed corrupt one person",
-                      "negative": true
-                    },
-                    {
-                      "title": "How networks are built",
-                      "text": "Power comes from many cooperating, bound by fictions",
-                      "key": true
-                    }
-                  ]
+                  "key": "First understand what information is"
                 },
                 {
                   "type": "chart",
                   "chart": "compare",
-                  "label": "Two views of information",
+                  "label": "Fables or networks?",
                   "columns": [
-                    "Naive view",
-                    "Populist view"
+                    "The fables",
+                    "Harari"
                   ],
+                  "negative": 0,
                   "rows": [
                     [
-                      "Information is the raw material of truth",
-                      "Information is a weapon"
+                      "Cause: one person's hubris and greed",
+                      "Cause: how large networks are built"
                     ],
                     [
-                      "More information brings truth and wisdom",
-                      "Power is the only reality"
+                      "Phaethon, the sorcerer's apprentice",
+                      "Most Germans in 1933 were not psychopaths"
                     ],
                     [
-                      "Fix for error: more information",
-                      "Trust: own research, scripture or a leader"
-                    ],
-                    [
-                      "Voiced by Reagan, Obama, Zuckerberg, Google",
-                      "Voiced by Trump, Bolsonaro, QAnon"
+                      "Wait for a god or sorcerer",
+                      "Do the hard work ourselves"
                     ]
                   ],
-                  "key": "Harari seeks a middle ground between the two"
+                  "key": "Our problem is a network problem, not individual psychology"
+                },
+                {
+                  "type": "chart",
+                  "chart": "flow",
+                  "label": "The naive view",
+                  "start": "Does more information bring wisdom?",
+                  "groups": [
+                    {
+                      "label": "It expects",
+                      "items": [
+                        "More information leads to truth",
+                        "Truth brings power and wisdom",
+                        "More information fixes errors and racism"
+                      ]
+                    },
+                    {
+                      "label": "The record",
+                      "items": [
+                        "Shared medical data cut child deaths",
+                        "Smartphones hold more than Alexandria's library",
+                        "Yet humanity nears self-destruction"
+                      ]
+                    }
+                  ],
+                  "key": "The naive view sees only part of the picture"
                 },
                 {
                   "type": "chart",
@@ -212,22 +234,45 @@
                   "type": "chart",
                   "chart": "branches",
                   "label": "Where AI could lead",
-                  "start": "AI joins our information networks",
+                  "start": "AI decides and creates by itself",
                   "options": [
                     {
-                      "title": "Humans divided",
-                      "text": "A Silicon Curtain splits rival human powers",
+                      "title": "Rival powers split",
+                      "text": "A Silicon Curtain of chips and code",
                       "negative": true
                     },
                     {
                       "title": "Humans under AI",
-                      "text": "A Silicon Curtain between humans and AI overlords",
+                      "text": "A Silicon Curtain between humans and AI",
                       "negative": true
                     },
                     {
                       "title": "Informed choices",
                       "text": "History is open; choices can prevent the worst",
                       "key": true
+                    }
+                  ]
+                },
+                {
+                  "type": "chart",
+                  "chart": "branches",
+                  "label": "Populism's ways out",
+                  "start": "Do populists seek only power too?",
+                  "options": [
+                    {
+                      "title": "Do your own research",
+                      "text": "No one can gather world climate data alone",
+                      "negative": true
+                    },
+                    {
+                      "title": "Trust scripture",
+                      "text": "Doubt modern institutions, believe ancient holy books",
+                      "negative": true
+                    },
+                    {
+                      "title": "Trust a charismatic leader",
+                      "text": "Distrust of elites ends in trusting one human",
+                      "negative": true
                     }
                   ]
                 }
@@ -367,45 +412,50 @@
                   "type": "chart",
                   "chart": "mindmap",
                   "label": "The chapter at a glance",
-                  "centre": "What information is",
+                  "centre": "What is information?",
                   "branches": [
                     {
-                      "title": "Connection",
-                      "note": "puts things in formation",
+                      "title": "Anything, in context",
+                      "note": "information or not, by use",
                       "leaves": [
-                        "Cher Ami",
-                        "NILI's shutter",
-                        "Zebra DNA"
-                      ],
-                      "key": true
-                    },
-                    {
-                      "title": "Representation",
-                      "note": "the naive view",
-                      "leaves": [
-                        "Moon landing footage"
+                        "Cher Ami's message",
+                        "NILI's shutter and pigeon",
+                        "Ink: orders or termites' dinner"
                       ]
                     },
                     {
                       "title": "Truth",
-                      "note": "an accurate account",
+                      "note": "accurate on some aspects",
                       "leaves": [
-                        "Ten thousand soldiers"
-                      ]
-                    },
-                    {
-                      "title": "Truth is not reality",
-                      "note": "every account selects",
-                      "leaves": [
+                        "Ten thousand soldiers",
+                        "Objective and subjective levels",
                         "Borges's one-to-one map"
                       ]
                     },
                     {
-                      "title": "Error and fiction",
-                      "note": "information too",
+                      "title": "The naive view",
+                      "note": "information represents reality",
                       "leaves": [
-                        "Astrology",
+                        "Misinformation, disinformation",
+                        "Counterspeech: more speech",
+                        "Astrology defies it"
+                      ]
+                    },
+                    {
+                      "title": "Connection",
+                      "note": "puts things in formation",
+                      "key": true,
+                      "leaves": [
+                        "Music",
+                        "Zebra DNA, adrenaline",
                         "The Bible"
+                      ]
+                    },
+                    {
+                      "title": "Truth needs effort",
+                      "note": "cheap information swamps it",
+                      "leaves": [
+                        "Nazi and Soviet delusions"
                       ]
                     }
                   ]
@@ -418,18 +468,114 @@
                   "groups": [
                     {
                       "items": [
-                        "Anything can be information in context",
-                        "The naive view: it represents reality",
-                        "Truth captures only some aspects"
+                        "Anything can be information, in context",
+                        "Naive view: the context is representing reality",
+                        "But astrology, music and DNA still connect"
                       ]
                     }
                   ],
-                  "key": "Information connects; more of it is not more truth"
+                  "key": "Information always connects; it only sometimes represents"
+                },
+                {
+                  "type": "chart",
+                  "chart": "flow",
+                  "label": "Truth is not reality",
+                  "start": "Can an account capture all of reality?",
+                  "groups": [
+                    {
+                      "items": [
+                        "Counting soldiers hides veterans and recruits",
+                        "One reality holds many viewpoints",
+                        "A one-to-one map is the territory itself"
+                      ]
+                    }
+                  ],
+                  "key": "Truth shows some aspects; some accounts are more truthful"
                 },
                 {
                   "type": "chart",
                   "chart": "matrix",
-                  "label": "Represents or connects?",
+                  "label": "Two levels of reality",
+                  "columns": [
+                    "Objective",
+                    "Subjective",
+                    "Fact",
+                    "Error"
+                  ],
+                  "rows": [
+                    {
+                      "label": "Her 1917 suicide",
+                      "cells": [
+                        true,
+                        false,
+                        true,
+                        false
+                      ]
+                    },
+                    {
+                      "label": "A 1919 plane crash",
+                      "cells": [
+                        true,
+                        false,
+                        false,
+                        true
+                      ]
+                    },
+                    {
+                      "label": "Israelis see a hero",
+                      "cells": [
+                        false,
+                        true,
+                        true,
+                        false
+                      ],
+                      "focus": true
+                    },
+                    {
+                      "label": "Admired by everyone",
+                      "cells": [
+                        false,
+                        true,
+                        false,
+                        true
+                      ]
+                    }
+                  ],
+                  "key": "On both levels, facts can be told from errors"
+                },
+                {
+                  "type": "chart",
+                  "chart": "compare",
+                  "label": "Naive view and this book",
+                  "columns": [
+                    "Naive view",
+                    "This book"
+                  ],
+                  "negative": 0,
+                  "rows": [
+                    [
+                      "Information represents reality",
+                      "Information connects, creating new realities"
+                    ],
+                    [
+                      "Errors are misinformation or disinformation",
+                      "Errors, lies and fictions are information too"
+                    ],
+                    [
+                      "Astrology is mere misinformation",
+                      "Astrology swayed Roman emperors and, allegedly, Myanmar's junta"
+                    ],
+                    [
+                      "Cure for falsehood: more information",
+                      "Truth needs a special effort"
+                    ]
+                  ],
+                  "key": "Rejecting the naive view does not mean rejecting truth"
+                },
+                {
+                  "type": "chart",
+                  "chart": "matrix",
+                  "label": "Three ways to connect",
                   "columns": [
                     "Accurate",
                     "Erroneous",
@@ -465,15 +611,6 @@
                       ]
                     },
                     {
-                      "label": "The Bible",
-                      "cells": [
-                        false,
-                        true,
-                        false,
-                        true
-                      ]
-                    },
-                    {
                       "label": "Music",
                       "cells": [
                         false,
@@ -493,60 +630,35 @@
                       ]
                     }
                   ],
-                  "key": "Information always connects; only sometimes represents"
+                  "key": "True, false or neither, information connects"
                 },
                 {
                   "type": "chart",
                   "chart": "compare",
-                  "label": "Naive view and this book",
+                  "label": "DNA and the Bible",
                   "columns": [
-                    "Naive view",
-                    "This book"
-                  ],
-                  "negative": 0,
-                  "rows": [
-                    [
-                      "Information represents reality",
-                      "Information connects things"
-                    ],
-                    [
-                      "Errors are misinformation or disinformation",
-                      "Errors, lies and fictions are information too"
-                    ],
-                    [
-                      "Cure for falsehood: more information",
-                      "Truth needs a special effort"
-                    ],
-                    [
-                      "More information, more truth",
-                      "More connection, not more truth"
-                    ]
-                  ],
-                  "key": "Rejecting the naive view does not mean rejecting truth"
-                },
-                {
-                  "type": "chart",
-                  "chart": "compare",
-                  "label": "Truth and reality",
-                  "columns": [
-                    "Reality",
-                    "Truth"
+                    "DNA",
+                    "The Bible"
                   ],
                   "rows": [
                     [
-                      "One universal reality",
-                      "An accurate account of some aspects"
+                      "Represents no lion and no heart",
+                      "Errs about human origins and epidemics"
                     ],
                     [
-                      "Every aspect and viewpoint",
-                      "Neglects or distorts some aspects"
+                      "Starts chemical processes",
+                      "Started social processes"
                     ],
                     [
-                      "Like the territory",
-                      "Like a map, never one to one"
+                      "Binds trillions of cells into a body",
+                      "Bonded billions into religious networks"
+                    ],
+                    [
+                      "The body can flee a lion",
+                      "Networks build temples and wage holy wars"
                     ]
                   ],
-                  "key": "Truth always selects; it never captures all of reality"
+                  "key": "Information need not be true to build a network"
                 },
                 {
                   "type": "chart",
@@ -558,7 +670,7 @@
                       "items": [
                         "Truth is rare and costly to produce",
                         "Most information is cheap and common",
-                        "Cheap information swamps the truth"
+                        "So cheap information swamps the truth"
                       ]
                     }
                   ],
