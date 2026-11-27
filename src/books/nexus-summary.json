@@ -1566,11 +1566,11 @@
                     },
                     {
                       "title": "More information, more witches",
-                      "text": "Print made The Hammer of the Witches, an inquisitor's manual, a best seller; more information made witches seem real, and 40,000 to 50,000 were executed."
+                      "text": "Print made The Hammer of the Witches, an inquisitor's manual, a best seller; more information made witches an intersubjective reality, and 40,000 to 50,000 were executed."
                     },
                     {
                       "title": "Takeaway",
-                      "text": "Trust rests on exposing one's own errors, not on claiming to have none."
+                      "text": "Science earns trust by exposing its own errors; the church, by claiming to have none."
                     }
                   ]
                 }
@@ -1658,19 +1658,19 @@
                     {
                       "label": "Free information",
                       "items": [
-                        "Print spreads witch fantasies",
-                        "Outrage outsells truth"
+                        "The naive cure: a free market",
+                        "Print spreads witch fantasies; outrage sells"
                       ]
                     },
                     {
-                      "label": "Self-correction",
+                      "label": "Curation",
                       "items": [
-                        "Science admits ignorance",
-                        "It rewards exposing its own errors"
+                        "Truth needs curators, who can censor",
+                        "Science's curators correct themselves"
                       ]
                     }
                   ],
-                  "key": "Strong self-correction finds truth, at a cost to order"
+                  "key": "Self-correction, not print, drove science, at a cost to order"
                 },
                 {
                   "type": "chart",
@@ -1704,7 +1704,7 @@
                     },
                     {
                       "title": "Interpreters gain power",
-                      "text": "Rabbis, then bishops",
+                      "text": "The rabbinate grows",
                       "key": true
                     },
                     {
@@ -1773,12 +1773,12 @@
                     {
                       "when": "Within two years",
                       "title": "The Hammer of the Witches",
-                      "text": "Kramer prints his manual of torture and execution; it becomes a best seller",
+                      "text": "Kramer prints his manual of torture and execution; eight editions appear by 1500",
                       "key": true
                     },
                     {
                       "when": "1500",
-                      "text": "Kramer is made a papal representative and an inquisitor"
+                      "text": "Kramer becomes papal representative and inquisitor of Bohemia and Moravia"
                     },
                     {
                       "when": "1500s–1600s",
@@ -1807,7 +1807,7 @@
                     },
                     {
                       "title": "Doubters accused",
-                      "text": "Edelin confessed under torture"
+                      "text": "Objectors were tortured as witches"
                     }
                   ]
                 },
@@ -1839,7 +1839,7 @@
                     ],
                     [
                       "Heretics were burned",
-                      "Dissenters lose grants, not lives: Shechtman"
+                      "Dissenters lose posts, not lives: Shechtman"
                     ]
                   ],
                   "key": "Admitting error speeds correction; denying it slows it"
@@ -1879,7 +1879,7 @@
                     },
                     {
                       "title": "This chapter adds",
-                      "text": "Holy books meant to bypass human error needed curators and interpreters, so rabbis and churches gained power; science earns trust by exposing its own errors."
+                      "text": "Holy books empowered interpreters; free information spread witch fantasies; science exposes its own errors, while infallible churches deny theirs."
                     },
                     {
                       "title": "Where it stops",
@@ -2005,50 +2005,61 @@
                   "type": "chart",
                   "chart": "mindmap",
                   "label": "The chapter at a glance",
-                  "centre": "Two kinds of information network",
+                  "centre": "Democracy and dictatorship as information networks",
                   "branches": [
                     {
-                      "title": "Democracy",
-                      "note": "distributed, strong self-correction",
+                      "title": "Two kinds of network",
+                      "note": "one hub or many nodes",
+                      "key": true,
                       "leaves": [
-                        "Athens",
-                        "Three Mile Island"
-                      ],
-                      "key": true
-                    },
-                    {
-                      "title": "Dictatorship",
-                      "note": "centralised, assumes it is right",
-                      "leaves": [
-                        "Chernobyl",
-                        "Stalin's stroke"
+                        "Self-correction: weak or strong",
+                        "Autonomy: by-product or ideal",
+                        "A continuum, not a binary"
                       ]
                     },
                     {
-                      "title": "Votes settle desires",
-                      "note": "not truth",
+                      "title": "Not majority rule",
+                      "note": "rights beyond the majority",
                       "leaves": [
-                        "Iraq, 2002–3"
+                        "Human and civil rights",
+                        "Strongmen dismantle courts, media",
+                        "Iraq: the majority erred"
                       ]
                     },
                     {
-                      "title": "Populism",
-                      "note": "one people, one will"
+                      "title": "The populist assault",
+                      "note": "we alone are the people",
+                      "leaves": [
+                        "Chávez, Erdoğan",
+                        "Power the only reality",
+                        "Trust in institutions collapses"
+                      ]
                     },
                     {
-                      "title": "Mass media",
-                      "note": "made large scale possible",
+                      "title": "Media made mass democracy",
+                      "note": "a conversation needs reach",
                       "leaves": [
-                        "The Courante, 1618",
-                        "Nixon-Kennedy debates"
+                        "Rome: no conversation possible",
+                        "Dutch newspapers self-correct",
+                        "Nixon–Kennedy, 70 million viewers"
                       ]
                     },
                     {
                       "title": "Totalitarianism",
-                      "note": "control of all life",
+                      "note": "needs modern technology",
                       "leaves": [
-                        "The kulaks",
-                        "The Great Terror"
+                        "Qin's ambition, Nero's limits",
+                        "Government, party, secret police",
+                        "Kulaks, like witches"
+                      ]
+                    },
+                    {
+                      "title": "Blocked arteries",
+                      "note": "order over truth",
+                      "leaves": [
+                        "Chernobyl hushed",
+                        "Stalin's untreated stroke",
+                        "Soviet chips, first PC 1984"
                       ]
                     }
                   ]
@@ -2057,17 +2068,31 @@
                   "type": "chart",
                   "chart": "flow",
                   "label": "The argument",
-                  "start": "How do democracies and dictatorships differ?",
+                  "start": "How do democracy and dictatorship differ as information networks?",
                   "groups": [
                     {
+                      "label": "Two networks",
                       "items": [
-                        "Democracy distributes; dictatorship centralises",
-                        "Votes settle desires, not truth",
-                        "Mass media made both large"
+                        "Dictatorship: one hub, weak self-correction",
+                        "Democracy: many nodes, strong self-correction"
+                      ]
+                    },
+                    {
+                      "label": "Technology sets the scale",
+                      "items": [
+                        "Mass democracy needs mass media",
+                        "The same media enable totalitarianism"
+                      ]
+                    },
+                    {
+                      "label": "The trade-off",
+                      "items": [
+                        "Totalitarianism risks ossifying",
+                        "Democracy risks fracturing"
                       ]
                     }
                   ],
-                  "key": "AI reopens the contest between the two"
+                  "key": "AI reopens the contest, and may split humans from AI"
                 },
                 {
                   "type": "chart",
@@ -2133,391 +2158,325 @@
                 },
                 {
                   "type": "chart",
-                  "chart": "compare",
-                  "label": "Two kinds of network",
-                  "columns": [
-                    "Democracy",
-                    "Dictatorship"
-                  ],
-                  "negative": 1,
-                  "rows": [
-                    [
-                      "Many independent nodes talk directly",
-                      "Information flows to one central hub"
-                    ],
-                    [
-                      "Assumes everyone errs, even majorities",
-                      "Assumes the centre is infallible"
-                    ],
-                    [
-                      "Courts, press and elections expose errors",
-                      "Independent courts and assemblies neutralised"
-                    ],
-                    [
-                      "Three Mile Island: news out in hours",
-                      "Chernobyl: news suppressed"
-                    ],
-                    [
-                      "Risk: fracturing into anarchy",
-                      "Risk: ossification and collapse"
-                    ]
-                  ],
-                  "key": "Democracy is a conversation; dictatorship, a monologue"
-                },
-                {
-                  "type": "chart",
                   "chart": "flow",
-                  "label": "Beyond the majority's reach",
-                  "start": "A majority rightly decides war, taxes and most policy",
+                  "label": "The strongman's playbook",
+                  "start": "A strongman wins power through elections",
                   "groups": [
                     {
-                      "label": "Human rights",
                       "items": [
-                        "Life, work, privacy, movement, religion",
-                        "Keep democracy decentralised",
-                        "Live freely if harming no one"
-                      ]
-                    },
-                    {
-                      "label": "Civil rights",
-                      "items": [
-                        "Vote, free press, academic freedom, assembly",
-                        "Enshrine the self-correcting mechanisms",
-                        "Change only by broad consensus"
+                        "Weakens or packs the courts",
+                        "Closes free media, builds propaganda",
+                        "Smears critics as traitors, foreign agents",
+                        "Rigs elections, keeps them as ritual"
                       ]
                     }
                   ],
-                  "key": "No majority, however large, may take them away"
+                  "key": "Self-correcting mechanisms fall one by one"
                 },
                 {
                   "type": "chart",
                   "chart": "compare",
-                  "label": "The people versus the truth",
+                  "label": "What a majority may decide",
                   "columns": [
-                    "Desire: voters decide",
-                    "Truth: beyond any vote"
+                    "The majority may",
+                    "Even a majority may not"
                   ],
                   "rows": [
                     [
-                      "Whether to invade Iraq",
-                      "Whether Iraq had weapons of mass destruction"
+                      "Go to war or make peace",
+                      "Exterminate a minority: human rights"
                     ],
                     [
-                      "What to do about climate change",
-                      "Whether climate change is real"
+                      "Raise or cut taxes",
+                      "Disenfranchise rivals: civil rights"
                     ],
                     [
-                      "Whom to elect",
-                      "Whether a popular leader took bribes"
+                      "Choose a climate policy",
+                      "Declare climate change a hoax"
                     ],
                     [
-                      "Settled by elections",
-                      "Sought by courts, media and science"
+                      "Back the Iraq war: 72% did",
+                      "Decide the facts: Iraq had no such weapons"
                     ]
                   ],
-                  "key": "Elections settle desires, not truth, so truth needs independent institutions"
+                  "key": "Democracy means freedom and equality for all, not majority rule"
                 },
                 {
                   "type": "chart",
                   "chart": "flow",
-                  "label": "The populist logic",
-                  "start": "In a democracy the people is the only source of political authority",
+                  "label": "Populist alchemy",
+                  "start": "In a democracy, the people is the only source of power",
                   "groups": [
                     {
-                      "label": "Who the people are",
                       "items": [
-                        "Müller: populists alone represent the people",
-                        "The people has a single will",
-                        "Dissenters are deceived or outsiders"
-                      ]
-                    },
-                    {
-                      "label": "What follows",
-                      "items": [
-                        "Everything is a power struggle",
-                        "Courts, media and science are cliques",
-                        "The strongman must control them"
+                        "Populists: we alone represent the people",
+                        "Critics are deceived, or not the people",
+                        "The people's will must rule courts, media",
+                        "Trust in every institution collapses"
                       ]
                     }
                   ],
-                  "key": "Populism hollows out democracy and turns totalitarian"
+                  "key": "One leader embodying the people takes all power"
                 },
                 {
                   "type": "chart",
                   "chart": "timeline",
-                  "label": "How mass democracy became possible",
+                  "label": "How media made mass democracy",
                   "items": [
                     {
                       "when": "Stone Age",
-                      "text": "Bands of a few dozen share information easily, so democracy is the typical system"
+                      "text": "Bands of a few dozen can all join the conversation"
                     },
                     {
-                      "when": "5th–4th centuries BCE",
-                      "text": "Athens is a city-state democracy, but only 25–30 percent of adults hold full rights"
+                      "when": "Fifth century BCE",
+                      "text": "Athens: only 25–30% of adults have full political rights"
                     },
                     {
-                      "when": "212 CE",
-                      "text": "Caracalla, a Roman emperor, makes all free adult males citizens, yet one unelected emperor decides everything"
+                      "when": "Third century CE",
+                      "text": "Rome's 60–75 million people, mostly illiterate and without media, cannot hold a conversation"
                     },
                     {
                       "when": "1618",
-                      "title": "Newspapers",
-                      "text": "Amsterdam's Courante appears in regular issues, so it can correct its mistakes and win trust",
-                      "key": true
+                      "text": "Amsterdam's Courante, an early newspaper, can correct its mistakes from issue to issue"
                     },
                     {
                       "when": "1824",
-                      "text": "US election: 352,780 people vote, out of about five million adults"
+                      "text": "Only 7% of American adults vote, but a free press checks power"
                     },
                     {
                       "when": "1960",
-                      "text": "About 39 percent of Americans watch the Nixon-Kennedy debates live on television"
+                      "title": "Mass democracy",
+                      "text": "About 70 million Americans watch the Nixon–Kennedy debates live",
+                      "key": true
                     }
                   ]
                 },
                 {
                   "type": "chart",
-                  "chart": "matrix",
-                  "label": "Democracy and scale",
+                  "chart": "compare",
+                  "label": "Autocracy and totalitarianism",
                   "columns": [
-                    "Democratic",
-                    "Large scale"
+                    "Autocracy: Nero's Rome",
+                    "Totalitarianism: Stalin's USSR"
                   ],
                   "rows": [
-                    {
-                      "label": "Stone Age bands",
-                      "cells": [
-                        true,
-                        false
-                      ]
-                    },
-                    {
-                      "label": "Athens",
-                      "cells": [
-                        true,
-                        false
-                      ]
-                    },
-                    {
-                      "label": "Roman Empire",
-                      "cells": [
-                        false,
-                        true
-                      ]
-                    },
-                    {
-                      "label": "Qin Empire",
-                      "cells": [
-                        false,
-                        true
-                      ]
-                    },
-                    {
-                      "label": "Soviet Union",
-                      "cells": [
-                        false,
-                        true
-                      ]
-                    },
-                    {
-                      "label": "United States, 1820s",
-                      "cells": [
-                        true,
-                        true
-                      ],
-                      "focus": true
-                    }
+                    [
+                      "No legal limits, many technical ones",
+                      "Modern technology removes most limits"
+                    ],
+                    [
+                      "Kills courtiers; slums speak freely",
+                      "Watches what everyone says, even thinks"
+                    ],
+                    [
+                      "10,000 administrators, 350,000 soldiers",
+                      "1.6m officials, 2.4m party members, NKVD"
+                    ],
+                    [
+                      "Emperors toppled by their own generals",
+                      "No provincial governor ever rebelled"
+                    ]
                   ],
-                  "key": "Large-scale democracy needed modern information technology"
-                },
-                {
-                  "type": "chart",
-                  "chart": "flow",
-                  "label": "What a conversation needs",
-                  "start": "A democracy needs an ongoing conversation, not just elections",
-                  "groups": [
-                    {
-                      "label": "Hearing range",
-                      "items": [
-                        "Voices must carry across the territory",
-                        "Rome had no radio or daily papers"
-                      ]
-                    },
-                    {
-                      "label": "Basic understanding",
-                      "items": [
-                        "Schools and media explain distant issues",
-                        "Only 10–20 percent of Roman adults read"
-                      ]
-                    }
-                  ],
-                  "key": "So before mass media, large democracies were unworkable"
-                },
-                {
-                  "type": "chart",
-                  "chart": "matrix",
-                  "label": "Three kinds of political network",
-                  "columns": [
-                    "Distributed",
-                    "Self-correcting",
-                    "Legal limits",
-                    "Total control"
-                  ],
-                  "rows": [
-                    {
-                      "label": "Democracy",
-                      "cells": [
-                        true,
-                        true,
-                        true,
-                        false
-                      ]
-                    },
-                    {
-                      "label": "Autocracy",
-                      "cells": [
-                        false,
-                        false,
-                        false,
-                        false
-                      ]
-                    },
-                    {
-                      "label": "Totalitarianism",
-                      "cells": [
-                        false,
-                        false,
-                        false,
-                        true
-                      ],
-                      "focus": true
-                    }
-                  ],
-                  "key": "Autocrats lacked the means of total control; modern technology supplied them"
+                  "key": "The Qin dreamed of total control; only modern technology allowed it"
                 },
                 {
                   "type": "chart",
                   "chart": "network",
                   "label": "The totalitarian trinity",
                   "centre": [
-                    "Stalin"
+                    "Secret police"
                   ],
                   "nodes": [
                     {
                       "name": "Government",
-                      "note": "Ministries, Red Army"
+                      "note": "1.6m officials"
                     },
                     {
                       "name": "Party",
-                      "note": "2.4 million members"
+                      "note": "2.4m members"
                     },
                     {
-                      "name": "Secret police",
-                      "note": "Watches all citizens"
+                      "name": "Red Army",
+                      "note": "officers purged"
+                    },
+                    {
+                      "name": "Citizens",
+                      "note": "kartoteki files"
                     }
                   ],
                   "links": [
                     {
-                      "from": "Stalin",
+                      "from": "Secret police",
                       "to": "Government",
-                      "label": "Heads the state"
+                      "label": "Watches",
+                      "arrow": true
                     },
                     {
-                      "from": "Stalin",
+                      "from": "Secret police",
                       "to": "Party",
-                      "label": "Heads the party"
+                      "label": "Watches, purges",
+                      "arrow": true
                     },
                     {
                       "from": "Party",
                       "to": "Government",
-                      "label": "Watches the governor",
+                      "label": "Commissars watch",
                       "arrow": true
                     },
                     {
                       "from": "Secret police",
-                      "to": "Government",
-                      "label": "Informers among staff",
+                      "to": "Red Army",
+                      "label": "Purges officers",
                       "arrow": true
                     },
                     {
                       "from": "Secret police",
-                      "to": "Party",
-                      "label": "Watches and purges",
+                      "to": "Citizens",
+                      "label": "Millions of informers",
                       "arrow": true
                     }
                   ]
                 },
                 {
                   "type": "chart",
-                  "chart": "flow",
-                  "label": "How kulaks were made",
-                  "start": "December 1929: Stalin calls for wiping out the kulaks as a class",
-                  "groups": [
+                  "chart": "timeline",
+                  "label": "Collectivisation",
+                  "items": [
                     {
-                      "label": "Down the chain",
-                      "items": [
-                        "Politburo sets targets per region (January 1930)",
-                        "Regions set numbers for each county",
-                        "Rural soviets receive quotas, often inflated",
-                        "Villages pick by property, grudges, lots, votes"
-                      ]
+                      "when": "1928",
+                      "text": "The first Five-Year Plan puts collective farms at the top of the agenda"
+                    },
+                    {
+                      "when": "June 1929",
+                      "text": "Only 4% of peasant households belong to collective farms"
+                    },
+                    {
+                      "when": "December 1929",
+                      "text": "Stalin calls for eliminating the kulaks as a class",
+                      "key": true
+                    },
+                    {
+                      "when": "March 1930",
+                      "text": "57% of households are now in collective farms"
+                    },
+                    {
+                      "when": "1929–1936",
+                      "text": "Confiscation and man-made famines kill 4.5 to 8.5 million people"
+                    },
+                    {
+                      "when": "April 1937",
+                      "text": "97% of rural households are confined to 235,000 collective farms"
                     }
+                  ]
+                },
+                {
+                  "type": "chart",
+                  "chart": "compare",
+                  "label": "Witches and kulaks",
+                  "columns": [
+                    "Witches",
+                    "Kulaks"
                   ],
-                  "key": "By 1933 some five million were driven from their homes"
+                  "rows": [
+                    [
+                      "Satan's global conspiracy",
+                      "Global capitalism's conspiracy"
+                    ],
+                    [
+                      "Conjure hailstorms that ruin crops",
+                      "Sabotage the Soviet economy"
+                    ],
+                    [
+                      "Torture extracts names of accomplices",
+                      "Quotas: find 17 families"
+                    ],
+                    [
+                      "Three centuries to kill about 50,000",
+                      "Two years planned to remove millions"
+                    ],
+                    [
+                      "Hansel Pappenheimer, aged ten",
+                      "Antonina Golovina, aged eleven"
+                    ]
+                  ],
+                  "key": "Mythmakers invent a category; bureaucrats impose it"
                 },
                 {
                   "type": "chart",
                   "chart": "compare",
                   "label": "Church and party",
                   "columns": [
-                    "Premodern church",
+                    "Medieval church",
                     "Totalitarian party"
                   ],
                   "rows": [
                     [
-                      "Independent check on autocrats (Canossa, 1077)",
-                      "Works with state and secret police"
+                      "Often clashed with the state: Canossa, 1077",
+                      "Fused with state and secret police"
                     ],
                     [
-                      "Traditionalist; resisted fast change (icons)",
-                      "Revolutionary; built within one generation"
+                      "Traditional, slow to change: icons kept",
+                      "Revolutionary, built in one generation"
                     ],
                     [
-                      "Pope's orders took months via bishops",
-                      "Cells a phone call from Moscow"
-                    ],
-                    [
-                      "Local saints, rites and doctrines",
-                      "One line from the centre"
+                      "Pope's orders took months to arrive",
+                      "Moscow is a phone call away"
                     ]
                   ],
-                  "key": "Only modern technology made total control possible"
+                  "key": "Churches gained such reach only with radio"
                 },
                 {
                   "type": "chart",
-                  "chart": "timeline",
-                  "label": "The technological pendulum",
-                  "items": [
-                    {
-                      "when": "1960s",
-                      "text": "Western democracies admit new voices and face violence; behind the Iron Curtain, stifled talk keeps order"
-                    },
-                    {
-                      "when": "Twenty years on",
-                      "title": "Soviet ossification",
-                      "text": "Gerontocrats cannot handle the information flooding Moscow, so the system ossifies and collapses"
-                    },
-                    {
-                      "when": "Early 21st century",
-                      "text": "Democracy's victory seems final, credited to distributed networks' better information processing"
-                    },
-                    {
-                      "when": "2020s",
-                      "title": "A new round",
-                      "text": "AI and social media flood the conversation with new voices and give totalitarian regimes fresh hope",
-                      "key": true
-                    }
-                  ]
+                  "chart": "compare",
+                  "label": "Chernobyl and Three Mile Island",
+                  "columns": [
+                    "Chernobyl, 1986",
+                    "Three Mile Island, 1979"
+                  ],
+                  "negative": 0,
+                  "rows": [
+                    [
+                      "News suppressed; phone lines cut",
+                      "A local radio station reports it"
+                    ],
+                    [
+                      "Sweden detects radiation two days later",
+                      "The public knows within two hours"
+                    ],
+                    [
+                      "Inquiry deflects blame",
+                      "Inquiries find deep causes, shared openly"
+                    ]
+                  ],
+                  "key": "Distributed networks route news around blocked channels"
+                },
+                {
+                  "type": "chart",
+                  "chart": "compare",
+                  "label": "Ossify or fracture",
+                  "columns": [
+                    "Soviet bloc",
+                    "Western democracies"
+                  ],
+                  "rows": [
+                    [
+                      "All information flows to one hub",
+                      "Many channels, many voices"
+                    ],
+                    [
+                      "1960s: orderly, revolts crushed",
+                      "1960s: unrest, assassinations, 1968"
+                    ],
+                    [
+                      "1980s: ossified; first PC in 1984",
+                      "1980s: dynamic; 11 million US PCs"
+                    ],
+                    [
+                      "Danger: a heart attack",
+                      "Danger: falling apart"
+                    ]
+                  ],
+                  "key": "New technology may give centralisation a fresh chance"
                 }
               ]
             },
