@@ -5262,8 +5262,8 @@
                   "type": "text",
                   "label": "Recap",
                   "paragraphs": [
-                    "Leaders expecting AI to go like print or industrialisation underestimate its novelty and those revolutions' catastrophes. Information technologies reshape history, because information weaves networks, and AI, the first that decides, may matter most. So engineers choosing its code and data are like Bishop Athanasius, who chose the Bible's books: their choices may last for ages.",
-                    "Harari rejects the naive view that more information brings truth, and the populist view that only power matters, which Salazar Frías, a truth-seeking inquisitor, disproves. Our networks, not our nature, make us self-destructive, because they privilege order over truth. Since power raises the danger a network poses to itself, the main takeaway is to drop both views and fantasies of infallibility, and build self-correcting institutions."
+                    "Politics rests on readings of history, as Than Shwe, Myanmar's dictator, showed Kofi Annan, the UN secretary-general. Hopes that AI will go like print or industrialisation forget those revolutions' catastrophes. Information weaves networks, and AI, the first technology that decides, may matter most, so engineers choosing its code and data are like Bishop Athanasius, who helped choose the Bible's books.",
+                    "Harari rejects the naive view that more information brings truth, and the populist view that only power matters: Salazar Frías, an inquisitor, sought truth. Our networks, not our nature, make us self-destructive by privileging order over truth. As power raises a network's danger to itself, the takeaway is to drop both views and fantasies of infallibility, and build self-correcting institutions."
                   ],
                   "only": "app"
                 },
@@ -5272,9 +5272,9 @@
                   "label": "Recap",
                   "only": "pdf",
                   "paragraphs": [
-                    "In late 2016 Harari published his book Homo Deus and, though a historian of medieval and early modern warfare, found himself discussing AI with scientists, entrepreneurs and leaders. Over eight years the tone changed from idle speculation to emergency. History matters because politics is about priorities, and priorities rest on readings of history, as the history lectures of Than Shwe, Myanmar's dictator, and Benjamin Netanyahu, Israel's prime minister, show. Leaders who expect AI to bring knowledge, as print did, or who hope to muddle through as with the Industrial Revolution, forget that those revolutions also brought witch hunts, religious wars, imperialism and Nazism.",
+                    "In late 2016 Harari published his book Homo Deus and, though a historian of medieval and early modern warfare, found himself discussing AI with scientists, entrepreneurs and leaders. Over eight years the tone changed from idle speculation to emergency. History matters because politics is about priorities, and priorities rest on readings of history, as the history lectures that Than Shwe, Myanmar's dictator, gave Kofi Annan, the UN secretary-general, and that Benjamin Netanyahu, Israel's prime minister, gave Barack Obama show. Leaders who expect AI to bring knowledge, as print did, or who hope to muddle through as with the Industrial Revolution, forget that those revolutions also brought witch hunts, religious wars, imperialism and Nazism.",
                     "One lesson is that new information technology always drives major change, because information weaves new networks rather than representing reality: clay tablets helped forge city-states, holy books spread religions, and newspapers and telegraphs opened the way to large-scale democracy and totalitarianism. AI may matter more than writing, because it is the first technology that makes decisions and creates ideas, and it joins every network as a member. Engineers who write its code and choose its training data are like Bishop Athanasius, a church father who helped choose the books of the Bible.",
-                    "We should avoid two errors. The naive view forgets that information is not truth and that more of it can mean more witch hunts. The cynical, populist view forgets that people genuinely care about truth, as Alonso de Salazar Frías, a Spanish inquisitor, showed; because they do, conflicts can sometimes be resolved by talking and revising our stories.",
+                    "We should avoid two errors. The naive view forgets that information is not truth and that more of it can mean more witch hunts; AI is not infallible either, and without strong self-correction it can spread distorted worldviews, as in Myanmar and Brazil. The cynical, populist view forgets that people genuinely care about truth, as Alonso de Salazar Frías, a Spanish inquisitor, showed; because they do, conflicts can sometimes be resolved by talking and revising our stories.",
                     "Why is a wise species so self-destructive? Not because of our nature but because our networks have privileged order over truth, gaining power without wisdom. The more powerful a network, the more it needs self-correction: humanity now resembles Tiberius, a Roman emperor, on Capri, mighty yet easily manipulated by its own creations, and a mishandled AI might put out the light of consciousness. The task is no miracle technology but the hard, ordinary work of building institutions that correct their own errors, the way life itself evolved by trial and error."
                   ]
                 }
@@ -5288,12 +5288,12 @@
                   "label": "In short",
                   "items": [
                     {
-                      "title": "Both views mislead",
-                      "text": "The naive view forgets more information can mean witch hunts; the populist forgets people genuinely seek truth, as Salazar Frías, a Spanish inquisitor, showed, so talk can settle some conflicts."
+                      "title": "History sets priorities",
+                      "text": "Politics rests on readings of history, as Than Shwe, Myanmar's dictator, showed by lecturing Kofi Annan, the UN secretary-general; history's lesson makes AI an urgent political priority."
                     },
                     {
-                      "title": "AI canonisation",
-                      "text": "AI engineers choosing code and training data are like Bishop Athanasius, a church father who picked the Bible's books: their choices may last for ages."
+                      "title": "Both views mislead",
+                      "text": "The naive view forgets more information can mean witch hunts; the populist forgets people genuinely seek truth, as Salazar Frías, a Spanish inquisitor, showed, so talk can settle some conflicts."
                     },
                     {
                       "title": "Order over truth",
@@ -5303,7 +5303,35 @@
                       "title": "Takeaway",
                       "text": "The book's main lesson: drop the naive and populist views and fantasies of infallibility, and build institutions with strong self-correction."
                     }
-                  ]
+                  ],
+                  "only": "app"
+                },
+                {
+                  "type": "points",
+                  "label": "All key points",
+                  "items": [
+                    {
+                      "title": "History sets priorities",
+                      "text": "Politics rests on readings of history, as Than Shwe, Myanmar's dictator, showed by lecturing Kofi Annan, the UN secretary-general; history's lesson makes AI an urgent political priority."
+                    },
+                    {
+                      "title": "Both views mislead",
+                      "text": "The naive view forgets more information can mean witch hunts; the populist forgets people genuinely seek truth, as Salazar Frías, a Spanish inquisitor, showed, so talk can settle some conflicts."
+                    },
+                    {
+                      "title": "AI canonisation",
+                      "text": "AI engineers choosing code and training data are like Bishop Athanasius, one of the church fathers who chose the Bible's books: their choices may last for ages."
+                    },
+                    {
+                      "title": "Order over truth",
+                      "text": "Networks that privilege order over truth gain power without wisdom; since power raises the danger a network poses to itself, it needs ever stronger self-correction."
+                    },
+                    {
+                      "title": "Takeaway",
+                      "text": "The book's main lesson: drop the naive and populist views and fantasies of infallibility, and build institutions with strong self-correction."
+                    }
+                  ],
+                  "only": "pdf"
                 }
               ]
             },
@@ -5314,7 +5342,7 @@
                   "type": "chart",
                   "chart": "mindmap",
                   "label": "The chapter at a glance",
-                  "centre": "If we are so wise, why so self-destructive?",
+                  "centre": "History's lessons for the AI age",
                   "branches": [
                     {
                       "title": "History sets priorities",
@@ -5328,9 +5356,9 @@
                       "title": "Information weaves networks",
                       "note": "a catalyst of change",
                       "leaves": [
-                        "Tablets made city-states",
+                        "Tablets helped forge city-states",
                         "Holy books spread religions",
-                        "AI acts as a member"
+                        "But AI is a member"
                       ]
                     },
                     {
@@ -5354,17 +5382,16 @@
                       "note": "order over truth",
                       "key": true,
                       "leaves": [
-                        "Nazi Germany's war machine",
-                        "Soviet man-made famine",
-                        "Humanity as Tiberius"
+                        "Nazi Germany: power without wisdom"
                       ]
                     },
                     {
                       "title": "Self-correcting institutions",
-                      "note": "life's own method",
+                      "note": "more vital as power grows",
                       "leaves": [
-                        "Trial, error, self-correction",
-                        "Terminal error or new chapter"
+                        "Soviet man-made famine",
+                        "Humanity as Tiberius",
+                        "Life evolved by trial, error"
                       ]
                     }
                   ]
@@ -5384,7 +5411,7 @@
                       ]
                     }
                   ],
-                  "key": "Build institutions with strong self-correcting mechanisms"
+                  "key": "Build institutions that catch and fix their own errors"
                 },
                 {
                   "type": "chart",
@@ -5408,7 +5435,7 @@
                       "Imperialism and Nazism came first"
                     ]
                   ],
-                  "key": "AI is unprecedented, and its experiments could be worse"
+                  "key": "If AI brings similar experiments, can we muddle through again?"
                 },
                 {
                   "type": "chart",
@@ -5445,7 +5472,7 @@
                   ],
                   "rows": [
                     [
-                      "Chose 1 Timothy, not Thecla",
+                      "Helped keep 1 Timothy, drop Thecla",
                       "Choose code and training data"
                     ],
                     [
@@ -5467,7 +5494,7 @@
                   "options": [
                     {
                       "title": "Naive: more means truer",
-                      "text": "More information can mean more witch hunts",
+                      "text": "Fallible AI spreads witch hunts: Myanmar, Brazil",
                       "negative": true
                     },
                     {
@@ -5489,10 +5516,16 @@
                   "start": "A network grows more powerful",
                   "groups": [
                     {
+                      "label": "Against outside threats",
                       "items": [
-                        "Outside threats shrink: famines, epidemics, hurricanes",
+                        "Famines, epidemics, hurricanes do less harm"
+                      ]
+                    },
+                    {
+                      "label": "Against itself",
+                      "items": [
                         "Its own fantasies grow deadlier: Soviet famine",
-                        "Its errors could now endanger the species"
+                        "Its errors could endanger the species"
                       ]
                     }
                   ],
@@ -5502,8 +5535,13 @@
                   "type": "chart",
                   "chart": "branches",
                   "label": "Where our choices lead",
-                  "start": "What could our choices lead to?",
+                  "start": "History is open: where next?",
                   "options": [
+                    {
+                      "title": "An AI-armed Stalin",
+                      "text": "Weakening self-correction can win power",
+                      "negative": true
+                    },
                     {
                       "title": "Humans gone",
                       "text": "The universe waits; perhaps intelligent rats",
@@ -5532,7 +5570,7 @@
                   "items": [
                     {
                       "title": "The question",
-                      "text": "Why is a wise species so self-destructive? Harari finds the cause in how our networks of cooperation are built, not in individual psychology."
+                      "text": "Why is a wise species so self-destructive? The epilogue answers: our information networks, which privilege order over truth, not human nature."
                     },
                     {
                       "title": "Established so far",
@@ -5540,7 +5578,7 @@
                     },
                     {
                       "title": "This chapter adds",
-                      "text": "Our networks, not our nature, make us self-destructive, because they privilege order over truth; so the task is to build strong self-correcting mechanisms into institutions."
+                      "text": "Networks, not nature, make us self-destructive by privileging order over truth; as power grows, self-correction matters more, so drop the naive and populist views and build self-correcting institutions."
                     },
                     {
                       "title": "Where it stops",
