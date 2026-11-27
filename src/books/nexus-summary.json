@@ -2050,7 +2050,7 @@
                       "leaves": [
                         "Qin's ambition, Nero's limits",
                         "Government, party, secret police",
-                        "Kulaks, like witches"
+                        "Kulaks: witch hunt, but faster"
                       ]
                     },
                     {
@@ -2379,7 +2379,7 @@
                       "Antonina Golovina, aged eleven"
                     ]
                   ],
-                  "key": "Mythmakers invent a category; bureaucrats impose it"
+                  "key": "Mythmakers invent, bureaucrats impose: kulak terror struck millions, far faster"
                 },
                 {
                   "type": "chart",
@@ -2585,7 +2585,7 @@
                     },
                     {
                       "title": "Takeaway",
-                      "text": "Computers that pursue goals by themselves are new members, which changes the network's very structure."
+                      "text": "Computers that pursue goals by themselves are new members with an alien, not human-like, intelligence, which changes the network's structure."
                     }
                   ]
                 }
@@ -2616,7 +2616,7 @@
                       "leaves": [
                         "Bacteria and plants",
                         "Planes without feathers",
-                        "AI: alien intelligence"
+                        "Alien, not artificial, intelligence"
                       ]
                     },
                     {
@@ -3225,7 +3225,7 @@
                 {
                   "type": "chart",
                   "chart": "timeline",
-                  "label": "Iran's automated hijab law",
+                  "label": "Privacy ends: Iran's hijab law",
                   "items": [
                     {
                       "when": "After 1979",
