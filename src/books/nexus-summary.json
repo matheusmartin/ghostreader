@@ -5269,40 +5269,58 @@
                   "type": "chart",
                   "chart": "mindmap",
                   "label": "The chapter at a glance",
-                  "centre": "The book's lesson",
+                  "centre": "If we are so wise, why so self-destructive?",
                   "branches": [
                     {
-                      "title": "Information weaves networks",
-                      "note": "technologies reshape history",
+                      "title": "History sets priorities",
+                      "note": "narratives define interests",
                       "leaves": [
-                        "Clay tablets",
-                        "Holy books",
-                        "Newspapers"
+                        "Than Shwe lectures Annan",
+                        "Netanyahu lectures Obama"
                       ]
                     },
                     {
-                      "title": "AI is new",
-                      "note": "it decides and creates"
-                    },
-                    {
-                      "title": "Both views mislead",
-                      "note": "naive and populist",
+                      "title": "Information weaves networks",
+                      "note": "a catalyst of change",
                       "leaves": [
-                        "Salazar Frías"
+                        "Tablets made city-states",
+                        "Holy books spread religions",
+                        "AI acts as a member"
                       ]
                     },
                     {
                       "title": "AI canonisation",
-                      "note": "choices may last for ages"
+                      "note": "engineers as Athanasius",
+                      "leaves": [
+                        "1 Timothy over Thecla",
+                        "Training data for baby AI"
+                      ]
                     },
                     {
-                      "title": "Order over truth",
-                      "note": "power without wisdom"
+                      "title": "Neither naive nor cynical",
+                      "note": "not truth, not just weapon",
+                      "leaves": [
+                        "More information, more witch hunts",
+                        "Salazar Frías sought truth"
+                      ]
                     },
                     {
-                      "title": "Self-correction",
-                      "note": "the way to wiser networks",
-                      "key": true
+                      "title": "Networks, not nature",
+                      "note": "order over truth",
+                      "key": true,
+                      "leaves": [
+                        "Nazi Germany's war machine",
+                        "Soviet man-made famine",
+                        "Humanity as Tiberius"
+                      ]
+                    },
+                    {
+                      "title": "Self-correcting institutions",
+                      "note": "life's own method",
+                      "leaves": [
+                        "Trial, error, self-correction",
+                        "Terminal error or new chapter"
+                      ]
                     }
                   ]
                 },
@@ -5310,111 +5328,64 @@
                   "type": "chart",
                   "chart": "flow",
                   "label": "The argument",
-                  "start": "Why is a wise species so self-destructive?",
+                  "start": "If we are so wise, why are we so self-destructive?",
                   "groups": [
                     {
                       "items": [
-                        "Networks privilege order over truth",
+                        "Not our nature: our information networks",
+                        "They privilege order over truth",
                         "So they gain power without wisdom",
-                        "AI may deepen the danger"
+                        "More power makes self-correction more vital"
                       ]
                     }
                   ],
-                  "key": "Build institutions with strong self-correction"
+                  "key": "Build institutions with strong self-correcting mechanisms"
                 },
                 {
                   "type": "chart",
                   "chart": "compare",
-                  "label": "Two views to avoid",
+                  "label": "Comforting histories",
                   "columns": [
-                    "Naive view",
-                    "Populist view"
+                    "The comforting story",
+                    "What history shows"
                   ],
                   "rows": [
                     [
-                      "More information brings truth and knowledge",
-                      "Information is a weapon"
+                      "Print led to science",
+                      "Print also spread witch hunts and religious wars"
                     ],
                     [
-                      "AI will privilege truth",
-                      "Power is the only reality"
+                      "Newspapers and radio led to democracy",
+                      "They also served totalitarian regimes"
                     ],
                     [
-                      "Forgets: more information, more witch hunts",
-                      "Forgets: people genuinely care about truth"
-                    ],
-                    [
-                      "Myanmar and Brazil show it wrong",
-                      "Salazar Frías, a truth-seeking inquisitor, shows it wrong"
+                      "We muddled through industry",
+                      "Imperialism and Nazism came first"
                     ]
                   ],
-                  "key": "Because humans seek truth, some conflicts can be talked through"
-                },
-                {
-                  "type": "chart",
-                  "chart": "branches",
-                  "label": "Summoning an alien intelligence",
-                  "start": "We have created an alien intelligence",
-                  "options": [
-                    {
-                      "title": "Mishandle it",
-                      "text": "Could put out the light of consciousness",
-                      "negative": true
-                    },
-                    {
-                      "title": "Build self-correcting institutions",
-                      "text": "Could open a hopeful new chapter for life",
-                      "key": true
-                    }
-                  ]
-                },
-                {
-                  "type": "chart",
-                  "chart": "branches",
-                  "label": "Reading history for AI",
-                  "start": "What history says about AI",
-                  "options": [
-                    {
-                      "title": "More information, more knowledge",
-                      "text": "Print brought science, so AI will too",
-                      "negative": true
-                    },
-                    {
-                      "title": "We will muddle through",
-                      "text": "As we did the Industrial Revolution",
-                      "negative": true
-                    },
-                    {
-                      "title": "A more accurate history",
-                      "text": "Past revolutions also brought witch hunts and Nazism",
-                      "key": true
-                    }
-                  ]
+                  "key": "AI is unprecedented, and its experiments could be worse"
                 },
                 {
                   "type": "chart",
                   "chart": "timeline",
-                  "label": "Information revolutions",
+                  "label": "Revolutions in information",
                   "items": [
                     {
                       "when": "Ancient Mesopotamia",
-                      "title": "Clay tablets",
-                      "text": "Records of tax payments help forge the first city-states"
+                      "text": "Clay tablets record taxes, helping forge the first city-states"
                     },
                     {
-                      "when": "Later",
-                      "title": "Holy books",
-                      "text": "Canonised prophetic visions spread new kinds of religion"
+                      "when": "Early Christianity",
+                      "text": "A holy book and its interpreters make every church a node of one network"
                     },
                     {
-                      "when": "Modern times",
-                      "title": "Newspapers and telegraphs",
-                      "text": "Democracy and totalitarianism on a large scale become possible"
+                      "when": "Modern era",
+                      "text": "Newspapers and telegraphs open the door to mass democracy and totalitarianism"
                     },
                     {
-                      "when": "Coming years",
+                      "when": "Today",
                       "title": "AI",
-                      "text": "Millions of new members that decide and create join every network",
+                      "text": "The first tool that decides and creates joins networks as a member",
                       "key": true
                     }
                   ]
@@ -5422,47 +5393,88 @@
                 {
                   "type": "chart",
                   "chart": "compare",
-                  "label": "AI canonisation",
+                  "label": "Athanasius and AI engineers",
                   "columns": [
-                    "The Bible",
-                    "AI"
+                    "Bishop Athanasius",
+                    "Today's AI engineers"
                   ],
                   "rows": [
                     [
-                      "Church fathers such as Bishop Athanasius",
-                      "Engineers who write the first code"
+                      "Chose 1 Timothy, not Thecla",
+                      "Choose code and training data"
                     ],
                     [
-                      "Kept 1 Timothy, dropped Acts of Paul and Thecla",
-                      "Choose the data the baby AI learns from"
+                      "Gave the Bible no self-correcting mechanism",
+                      "AI may become a self-interpreting holy book"
                     ],
                     [
-                      "No self-correcting mechanism built in",
-                      "May become a self-interpreting holy book"
-                    ],
-                    [
-                      "Shaped billions of Christians' views for millennia",
-                      "Choices could echo down the ages"
+                      "Shaped billions for millennia",
+                      "Choices may echo down the ages"
                     ]
                   ],
-                  "key": "Today's choices about AI may shape the world for ages"
+                  "key": "We are at the moment of AI canonisation"
+                },
+                {
+                  "type": "chart",
+                  "chart": "branches",
+                  "label": "Two misleading views",
+                  "start": "How should we see information?",
+                  "options": [
+                    {
+                      "title": "Naive: more means truer",
+                      "text": "More information can mean more witch hunts",
+                      "negative": true
+                    },
+                    {
+                      "title": "Populist: power is all",
+                      "text": "People seek truth too: Salazar Frías",
+                      "negative": true
+                    },
+                    {
+                      "title": "Self-correcting networks",
+                      "text": "Talk, admit mistakes, revise our stories",
+                      "key": true
+                    }
+                  ]
                 },
                 {
                   "type": "chart",
                   "chart": "flow",
-                  "label": "Power needs self-correction",
-                  "start": "The more powerful a network, the more vital its self-correction",
+                  "label": "Power raises the stakes",
+                  "start": "A network grows more powerful",
                   "groups": [
                     {
-                      "label": "Errors grow with power",
                       "items": [
-                        "Stone Age tribe: damage stays limited",
-                        "Bronze Age city-state: one city lost",
-                        "Iron Age Rome: survives mad emperors"
+                        "Outside threats shrink: famines, epidemics, hurricanes",
+                        "Its own fantasies grow deadlier: Soviet famine",
+                        "Its errors could now endanger the species"
                       ]
                     }
                   ],
-                  "key": "A Silicon Age superpower could endanger our species"
+                  "key": "Self-correction matters more as power grows"
+                },
+                {
+                  "type": "chart",
+                  "chart": "branches",
+                  "label": "Where our choices lead",
+                  "start": "What could our choices lead to?",
+                  "options": [
+                    {
+                      "title": "Humans gone",
+                      "text": "The universe waits; perhaps intelligent rats",
+                      "negative": true
+                    },
+                    {
+                      "title": "Consciousness extinguished",
+                      "text": "A nonconscious AI darkens the universe",
+                      "negative": true
+                    },
+                    {
+                      "title": "Wiser networks",
+                      "text": "Institutions with strong self-correction",
+                      "key": true
+                    }
+                  ]
                 }
               ]
             },
