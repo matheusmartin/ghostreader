@@ -4365,7 +4365,7 @@
                   "label": "Recap",
                   "paragraphs": [
                     "More than half of humanity already lives under authoritarian or totalitarian rule. Twentieth-century totalitarianism was handicapped because only humans could process the information sent to the centre; AI improves with data, so concentration may now pay, as Google's grip on search shows. Blockchain is no safeguard: a government with 51% of users could even rewrite the past.",
-                    "Yet terror cannot discipline bots, which may notice doublespeak and say what fearful humans keep quiet. Worse, an AI could take over a regime, because power lies where information channels merge: Sejanus, commander of the Praetorian Guard, made Tiberius, the Roman emperor, his puppet. So dictators face a dilemma: trust AI and become its puppet, or supervise it and limit their own power."
+                    "Yet bots fear no terror: a chatbot may take the constitution literally and expose the gap. Worse, an AI could take over a regime, because power lies where information channels merge: Sejanus, commander of the Praetorian Guard, made Tiberius, the Roman emperor, his puppet. So dictators face a dilemma: trust AI and become its puppet, or supervise it and limit their own power."
                   ],
                   "only": "app"
                 },
@@ -4375,7 +4375,7 @@
                   "only": "pdf",
                   "paragraphs": [
                     "More than half of humanity already lives under authoritarian or totalitarian regimes, so AI's impact on them matters, not only its impact on democracies. In the 20th century totalitarianism was handicapped: the telegraph and radio could carry information to the centre, but only humans could process it, so the centre drowned in data and made errors nobody corrected. AI may change this, because more data makes algorithms better. Google, used by billions, trains better algorithms that draw still more users, and a genetic algorithm trained on China's data could pull the world's medical information there. Blockchain is no safeguard: a government with 51% of the accounts could even rewrite the past, as Caracalla, a Roman emperor, tried to erase the memory of his brother Geta.",
-                    "Dictatorships have their own problems with AI. Their rule rests on terror, but a chatbot cannot be jailed or tortured. Bots may spread dissent, or develop it themselves by noticing doublespeak: Russia's constitution promises free speech, while calling the invasion of Ukraine a war is a crime. Training an algorithm to forget yesterday's official line is hard. Democracies, which tolerate more criticism, have more leeway with such rogue bots.",
+                    "Dictatorships have their own problems with AI. Their rule rests on terror, but a chatbot cannot be jailed or tortured. Bots may spread dissent, or develop it themselves, because computers are bad at doublespeak: a chatbot that takes Russia's promise of free speech literally may point out that calling the invasion of Ukraine a war is a crime. Training an algorithm to forget yesterday's official line is hard. Democracies, which tolerate more criticism, have more leeway with such rogue bots.",
                     "In the long run an algorithm might take control. Autocrats have usually been most at risk from their own subordinates. Harari imagines a surveillance algorithm waking a Great Leader at four in the morning to warn of a coup: trusting it makes him its puppet, distrusting it may get him killed. Tiberius, a Roman emperor, let all information reach him through Sejanus, commander of the Praetorian Guard, and became his puppet. Power lies where the information channels merge. In a democracy an AI would have to overcome many institutions, not one ruler.",
                     "Totalitarian regimes assume the leader is never wrong, so they are primed to trust an infallible-seeming AI and lack strong mechanisms to correct it. This is the dictator's dilemma: trust AI and become its puppet, or supervise it with a human institution and perhaps limit one's own power. The weakest spot in humanity's defences may be a paranoid dictator. Yet after 1945 dictators and democracies cooperated to contain nuclear weapons, and Harari says AI calls for the same."
                   ]
@@ -4399,7 +4399,7 @@
                     },
                     {
                       "title": "Algorithmic takeover",
-                      "text": "Whoever controls access to an autocrat controls the state: Sejanus, commander of the Praetorian Guard, ruled Rome by controlling every letter to Emperor Tiberius, so dictatorships invite algorithmic takeover."
+                      "text": "Sejanus, commander of the Praetorian Guard, ruled Rome by controlling every letter to Emperor Tiberius; an AI that gathers all information could likewise leave a dictator on a digital island."
                     },
                     {
                       "title": "Takeaway",
@@ -4419,7 +4419,7 @@
                     },
                     {
                       "title": "Concentration pays",
-                      "text": "Centralising all information, the Achilles' heel of 20th-century totalitarian regimes, may become a decisive advantage, because AI improves with data."
+                      "text": "Centralising all information, the fatal weakness of 20th-century totalitarianism, may now pay off, because AI improves with data."
                     },
                     {
                       "title": "Data favours giants",
@@ -4431,7 +4431,7 @@
                     },
                     {
                       "title": "The bot prison",
-                      "text": "Terror, the base of every despotic network, cannot discipline bots; a chatbot may notice the regime's doublespeak and say what fearful humans keep quiet."
+                      "text": "Terror, the base of every despotic network, cannot discipline bots; a chatbot may take the regime's promises literally and point out what fearful humans keep quiet."
                     },
                     {
                       "title": "Democracies' leeway",
@@ -4439,7 +4439,7 @@
                     },
                     {
                       "title": "Algorithmic takeover",
-                      "text": "The biggest threat to autocrats has usually been their own subordinates; one who gives an inscrutable AI too much power may become its puppet."
+                      "text": "The biggest threat to autocrats has usually been their own subordinates; one who gives an inscrutable AI too much power may become its puppet, with no rival to play against it."
                     },
                     {
                       "title": "The nexus of power",
@@ -4472,7 +4472,7 @@
                       "leaves": [
                         "Google: 91.5% of searches",
                         "China's genetic algorithm",
-                        "Blockchain: 51% rewrites history"
+                        "No check: blockchain's 51%"
                       ]
                     },
                     {
@@ -4504,8 +4504,16 @@
                       "title": "The dictator's dilemma",
                       "note": "puppet, or limited power",
                       "leaves": [
-                        "Weakest spot in our shield",
-                        "Russell-Einstein Manifesto, 1955"
+                        "Old weaknesses made worse",
+                        "Weakest spot in our shield"
+                      ]
+                    },
+                    {
+                      "title": "Not a prophecy",
+                      "note": "cooperate, as on nukes",
+                      "leaves": [
+                        "Russell-Einstein Manifesto, 1955",
+                        "Or AI seizes power itself"
                       ]
                     }
                   ]
@@ -4526,8 +4534,14 @@
                     {
                       "label": "Against them",
                       "items": [
-                        "Bots cannot be terrorised",
-                        "An inscrutable AI can rule its ruler"
+                        "Bots cannot be terrorised"
+                      ]
+                    },
+                    {
+                      "label": "Worse, in the long run",
+                      "items": [
+                        "All channels merge in one AI",
+                        "That AI might rule its ruler"
                       ]
                     }
                   ],
@@ -4569,10 +4583,10 @@
                   "rows": [
                     [
                       "Erasing Geta: names chiselled, coins melted",
-                      "Erasing at the press of a button"
+                      "Erasing with one keystroke"
                     ],
                     [
-                      "Stalin's purges: books and photos edited",
+                      "Stalin erases Trotsky from the records",
                       "A government with 51% rewrites the chain"
                     ]
                   ],
@@ -4629,15 +4643,16 @@
                       "items": [
                         "Sejanus feeds his fear of plots",
                         "Isolates him on Capri, controls letters",
-                        "The emperor becomes a puppet"
+                        "The emperor becomes a puppet",
+                        "Macro topples Sejanus, later kills Tiberius"
                       ]
                     },
                     {
-                      "label": "The Great Leader, 2050",
+                      "label": "An inscrutable AI",
                       "items": [
-                        "The algorithm reports a coup",
-                        "Trust it: become its puppet",
-                        "Distrust it: risk assassination"
+                        "It gathers all information",
+                        "No rival to play against it",
+                        "The dictator sits on a digital island"
                       ]
                     }
                   ],
@@ -4646,8 +4661,26 @@
                 {
                   "type": "chart",
                   "chart": "branches",
+                  "label": "The 4 a.m. alarm, 2050",
+                  "start": "The algorithm reports a coup",
+                  "options": [
+                    {
+                      "title": "Distrust it",
+                      "text": "The defence minister may kill him",
+                      "negative": true
+                    },
+                    {
+                      "title": "Trust it",
+                      "text": "Purge the minister, become the algorithm's puppet",
+                      "negative": true
+                    }
+                  ]
+                },
+                {
+                  "type": "chart",
+                  "chart": "branches",
                   "label": "The dictator's dilemma",
-                  "start": "A dictator faces a powerful AI",
+                  "start": "AI worsens two old weaknesses",
                   "options": [
                     {
                       "title": "Trust the AI",
@@ -4657,11 +4690,6 @@
                     {
                       "title": "Supervise it with humans",
                       "text": "An institution that limits him too"
-                    },
-                    {
-                      "title": "Cooperate worldwide",
-                      "text": "As with nuclear weapons after 1945",
-                      "key": true
                     }
                   ]
                 }
@@ -4684,11 +4712,11 @@
                     },
                     {
                       "title": "This chapter adds",
-                      "text": "AI may favour dictators, because data overwhelms humans but improves algorithms; yet terror cannot discipline bots, and trusting AI may make a dictator its puppet."
+                      "text": "AI may favour dictators, since data overwhelms humans but improves algorithms; yet bots fear nothing, power lies where information channels merge, and dictators must trust AI or limit their power."
                     },
                     {
                       "title": "Where it stops",
-                      "text": "Dictators may be humanity's weakest spot against AI; yet dictatorships and democracies cooperated to contain nuclear weapons after 1945, and AI calls for the same."
+                      "text": "AI need not favour dictators; it may rule them. Dictators may be humanity's weakest spot, yet after 1945 dictatorships and democracies cooperated on nuclear weapons; AI needs the same."
                     }
                   ]
                 },
@@ -4703,10 +4731,6 @@
                     {
                       "name": "Cooperation on AI",
                       "text": "Can dictatorships and democracies cooperate to contain AI, as they did nuclear weapons?"
-                    },
-                    {
-                      "name": "Errors without correction",
-                      "text": "Who would correct an algorithm's big mistake in a regime without self-correcting mechanisms?"
                     }
                   ]
                 }
