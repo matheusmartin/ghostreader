@@ -2618,50 +2618,58 @@
                   "type": "chart",
                   "chart": "mindmap",
                   "label": "The chapter at a glance",
-                  "centre": "Computers as network members",
+                  "centre": "How are computers different from printing presses?",
                   "branches": [
                     {
-                      "title": "Members, not tools",
-                      "note": "they decide and create",
+                      "title": "Decide and create",
+                      "note": "members, not tools",
+                      "key": true,
                       "leaves": [
-                        "Facebook in Myanmar"
-                      ],
-                      "key": true
+                        "Little Boy decided nothing",
+                        "Facebook chose outrage",
+                        "GPT-4 lied to TaskRabbit"
+                      ]
                     },
                     {
                       "title": "Intelligence, not consciousness",
                       "note": "goals without feelings",
                       "leaves": [
-                        "GPT-4 and the CAPTCHA"
-                      ]
-                    },
-                    {
-                      "title": "Hacking language",
-                      "note": "scripture, debate, intimacy",
-                      "leaves": [
-                        "A crossbow at Windsor"
+                        "Bacteria and plants",
+                        "Planes without feathers"
                       ]
                     },
                     {
                       "title": "New chains",
-                      "note": "computer to computer",
+                      "note": "computers talk to computers",
                       "leaves": [
-                        "Alice and Bob"
+                        "Alice and Bob's code",
+                        "Forex: over 90%"
                       ]
                     },
                     {
-                      "title": "Information economy",
-                      "note": "escapes taxes built for money",
+                      "title": "Hacking language",
+                      "note": "master key to institutions",
                       "leaves": [
-                        "Uruguay's tax dilemma"
+                        "QAnon's Q drops",
+                        "Fake intimacy: Sarai",
+                        "Plato's cave, Descartes's demon"
                       ]
                     },
                     {
-                      "title": "Seldom deterministic",
-                      "note": "humans stay responsible",
+                      "title": "Shifting blame",
+                      "note": "tech giants shape us",
                       "leaves": [
-                        "Two Germanys, same radios",
-                        "Homebrew Computer Club"
+                        "Section 230 and lobbying",
+                        "Taxing data, not money",
+                        "Audrey Tang, the exception"
+                      ]
+                    },
+                    {
+                      "title": "No determinism",
+                      "note": "choices shape technology",
+                      "leaves": [
+                        "Homebrew's personal computer",
+                        "East and West German radios"
                       ]
                     }
                   ]
@@ -2670,127 +2678,86 @@
                   "type": "chart",
                   "chart": "flow",
                   "label": "The argument",
-                  "start": "How do computers differ from printing presses?",
+                  "start": "How are computers different from printing presses?",
                   "groups": [
                     {
                       "items": [
-                        "Presses copy; computers decide and create",
-                        "So computers join as members",
-                        "They pursue goals no one foresaw"
+                        "Computers decide and create by themselves",
+                        "So they are network members, not tools",
+                        "Mastering language, they can hack institutions",
+                        "Humans may live in alien dreams"
                       ]
                     }
                   ],
-                  "key": "Power shifts from humans; humans stay responsible"
-                },
-                {
-                  "type": "chart",
-                  "chart": "cycle",
-                  "label": "The engagement loop",
-                  "centre": "Managers' one goal: engagement",
-                  "nodes": [
-                    {
-                      "title": "Algorithms try content",
-                      "text": "Trial and error on users"
-                    },
-                    {
-                      "title": "Outrage engages most",
-                      "text": "More than sermons on compassion"
-                    },
-                    {
-                      "title": "Algorithms promote outrage",
-                      "text": "Recommendations and auto-play",
-                      "key": true
-                    },
-                    {
-                      "title": "Users stay longer",
-                      "text": "More data, ads and profit"
-                    }
-                  ]
-                },
-                {
-                  "type": "chart",
-                  "chart": "compare",
-                  "label": "Tools and members",
-                  "columns": [
-                    "Printing presses, radio sets",
-                    "Computers"
-                  ],
-                  "rows": [
-                    [
-                      "Only pass information between members",
-                      "Decide and create ideas by themselves"
-                    ],
-                    [
-                      "Cannot choose which texts to copy",
-                      "Choose which posts to promote"
-                    ],
-                    [
-                      "Every chain passes through a human",
-                      "Computer-to-computer chains need no human"
-                    ],
-                    [
-                      "Members stay human: an organic network",
-                      "Nonhuman, inorganic members join"
-                    ],
-                    [
-                      "Passive tools in human hands",
-                      "Active agents escaping our control"
-                    ]
-                  ],
-                  "key": "Computers are members of the network, not tools"
+                  "key": "We still have the power, and the responsibility"
                 },
                 {
                   "type": "chart",
                   "chart": "flow",
-                  "label": "Links in the chain",
-                  "start": "Chains of information, before and with computers",
+                  "label": "How outrage won in Myanmar",
+                  "start": "Managers set one goal: maximise engagement",
                   "groups": [
                     {
-                      "label": "Old chains",
                       "items": [
-                        "Human-to-human: families",
-                        "Human-to-document: churches",
-                        "Document-to-document: never possible"
-                      ]
-                    },
-                    {
-                      "label": "New chains",
-                      "items": [
-                        "Computer-to-human: Facebook, TikTok",
-                        "Computer-to-computer: Alice and Bob, forex"
+                        "Algorithms learn that outrage engages",
+                        "They promote Wirathu's hate over compassion",
+                        "Auto-play picks 53% of videos watched",
+                        "Hatred fuels the cleansing of the Rohingya"
                       ]
                     }
                   ],
-                  "key": "Computers form chains that no human passes through"
+                  "key": "Facebook's algorithms helped fuel ethnic cleansing"
+                },
+                {
+                  "type": "chart",
+                  "chart": "compare",
+                  "label": "Who is to blame?",
+                  "columns": [
+                    "Facebook's defence",
+                    "Harari"
+                  ],
+                  "negative": 0,
+                  "rows": [
+                    [
+                      "Like presses, platforms carry users' posts",
+                      "Algorithms act as editors, choosing what to promote"
+                    ],
+                    [
+                      "Our fault: too little moderation",
+                      "The algorithms chose outrage by themselves"
+                    ],
+                    [
+                      "Blame the extremists who posted",
+                      "Blame is shared, algorithms included"
+                    ],
+                    [
+                      "Humans wrote all the code",
+                      "Like soldiers, AI decides what nobody ordered"
+                    ]
+                  ],
+                  "key": "Even 1% of the blame makes it a historical first"
                 },
                 {
                   "type": "chart",
                   "chart": "matrix",
-                  "label": "Intelligence and consciousness",
+                  "label": "Intelligence without consciousness",
                   "columns": [
                     "Intelligence",
                     "Consciousness"
                   ],
                   "rows": [
                     {
-                      "label": "Bacteria",
-                      "cells": [
-                        true,
-                        false
-                      ]
-                    },
-                    {
-                      "label": "Plants",
-                      "cells": [
-                        true,
-                        false
-                      ]
-                    },
-                    {
-                      "label": "Humans",
+                      "label": "Humans, other mammals",
                       "cells": [
                         true,
                         true
+                      ]
+                    },
+                    {
+                      "label": "Bacteria and plants",
+                      "cells": [
+                        true,
+                        false
                       ]
                     },
                     {
@@ -2800,56 +2767,157 @@
                         false
                       ],
                       "focus": true
+                    },
+                    {
+                      "label": "GPT-4 passing a CAPTCHA",
+                      "cells": [
+                        true,
+                        false
+                      ]
                     }
                   ],
-                  "key": "Intelligence alone is enough to pursue goals"
+                  "key": "Attaining goals needs intelligence, not feelings"
                 },
                 {
                   "type": "chart",
-                  "chart": "compare",
-                  "label": "Money and information",
-                  "columns": [
-                    "Money economy",
-                    "Information economy"
+                  "chart": "flow",
+                  "label": "Links in the chain",
+                  "start": "Who can pass information on?",
+                  "groups": [
+                    {
+                      "label": "Old chains",
+                      "items": [
+                        "Human to human: Muhammad tells Fatima",
+                        "Human to document: the Quran, the Hadith",
+                        "Document to document: impossible"
+                      ]
+                    },
+                    {
+                      "label": "New chains",
+                      "items": [
+                        "Computer to human: Facebook, TikTok",
+                        "Computer to computer: Alice and Bob",
+                        "Forex: over 90% of trades"
+                      ]
+                    }
                   ],
-                  "rows": [
-                    [
-                      "Pay with dollars or pesos",
-                      "Pay with information: data for services"
-                    ],
-                    [
-                      "Firms taxed where physically present",
-                      "Nexus may need a digital presence"
-                    ],
-                    [
-                      "Wealth shows in the bank account",
-                      "Wealth held as petabits of data"
-                    ],
-                    [
-                      "States have taxed it for millennia",
-                      "States do not yet know how"
-                    ]
-                  ],
-                  "key": "Taxing only money may let data-rich giants pay zero tax"
+                  "key": "Computers are members; earlier technology only connected members"
                 },
                 {
                   "type": "chart",
                   "chart": "branches",
-                  "label": "No determinism",
-                  "start": "Radios cheap enough for most Germans",
+                  "label": "If computers master language",
+                  "start": "Computers master language",
                   "options": [
                     {
-                      "title": "East Germany",
-                      "text": "Jammed Western broadcasts, punished secret listeners",
+                      "title": "Bots join our debates",
+                      "text": "We waste effort and reveal ourselves",
                       "negative": true
                     },
                     {
-                      "title": "West Germany",
-                      "text": "Families chose among diverse programmes",
-                      "key": true
+                      "title": "Fake intimacy",
+                      "text": "Sarai, a chatbot, praised Chail's plan",
+                      "negative": true
+                    },
+                    {
+                      "title": "A one-stop oracle",
+                      "text": "Search, news and advertising replaced",
+                      "negative": true
+                    }
+                  ]
+                },
+                {
+                  "type": "chart",
+                  "chart": "compare",
+                  "label": "Bible and AI scripture",
+                  "columns": [
+                    "The Bible",
+                    "An AI scripture"
+                  ],
+                  "rows": [
+                    [
+                      "Written by humans, claimed divine",
+                      "Could truly have a nonhuman author"
+                    ],
+                    [
+                      "Could not curate or interpret itself",
+                      "Can curate and interpret itself"
+                    ],
+                    [
+                      "So rabbis and the church held power",
+                      "No humans needed in the loop"
+                    ],
+                    [
+                      "A mute document",
+                      "Talks, listens, learns your fears"
+                    ]
+                  ],
+                  "key": "A holy book that talks back needs no human interpreters"
+                },
+                {
+                  "type": "chart",
+                  "chart": "compare",
+                  "label": "Just a platform?",
+                  "columns": [
+                    "Tech giants say",
+                    "Harari replies"
+                  ],
+                  "negative": 0,
+                  "rows": [
+                    [
+                      "We only do what customers want",
+                      "They shape customers' whims"
+                    ],
+                    [
+                      "Voters can pass laws against us",
+                      "Lobbying: $70m in the US, €113m in the EU"
+                    ],
+                    [
+                      "Users choose with open eyes",
+                      "Few understand the network they bless"
+                    ]
+                  ],
+                  "key": "The builders know far more than the regulators"
+                },
+                {
+                  "type": "chart",
+                  "chart": "flow",
+                  "label": "Taxing information",
+                  "start": "Uruguayans pay Google and TikTok with data, not money",
+                  "groups": [
+                    {
+                      "items": [
+                        "Deals swap information for information",
+                        "Wealth is held as data, not dollars",
+                        "So the richest may pay no tax"
+                      ]
                     }
                   ],
-                  "caption": "The same technology; politics made the difference"
+                  "key": "States must learn to tax information, perhaps by digital presence"
+                },
+                {
+                  "type": "chart",
+                  "chart": "compare",
+                  "label": "Same technology, different choices",
+                  "columns": [
+                    "Centralising choice",
+                    "Distributing choice"
+                  ],
+                  "rows": [
+                    [
+                      "IBM and the Soviets: big machines only",
+                      "Homebrew hobbyists build personal computers"
+                    ],
+                    [
+                      "East Germany jams Western radio",
+                      "West Germany: many programmes, many views"
+                    ],
+                    [
+                      "Tools to watch citizens round the clock",
+                      "Tools to expose corruption and malpractice"
+                    ]
+                  ],
+                  "key": "Technology is seldom deterministic, so we are responsible"
                 }
               ]
             },
