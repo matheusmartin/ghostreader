@@ -3941,7 +3941,7 @@
                   "type": "text",
                   "label": "Recap",
                   "paragraphs": [
-                    "Learning industrial technology cost disasters, and mightier AI leaves less room for error, so democracy's self-correction is the best guard. Four old principles can keep surveillance democratic. Automation means job turmoil; unemployment toppled the young Weimar Republic, not US democracy. Fast change may explain the conservative suicide, as Donald Trump and other unconservative leaders made parties revolutionary.",
+                    "Learning industrial technology cost disasters, and mightier AI leaves less room for error, so democracy's self-correction is the best guard. Four old principles can keep surveillance democratic. Automation means constant job turmoil; fast change may explain the conservative suicide, led by Donald Trump, yet the US adapted where the young Weimar Republic fell.",
                     "Self-correction needs understanding: the Topeka school board was human, so its racism was plain and overturned. But COMPAS, a secret algorithm that helped send Eric Loomis, a defendant, to prison, weighed more data points than anyone could follow, so a right to an explanation needs auditing institutions. Because bots may push debate into anarchy, Daniel Dennett, a philosopher, would outlaw counterfeit humans."
                   ],
                   "only": "app"
@@ -3952,7 +3952,7 @@
                   "only": "pdf",
                   "paragraphs": [
                     "New technologies often bring disaster, not because they are bad but because humans take time to learn to use them. Industrial societies tried imperialism, Stalinism and Nazism before finding better ways, and humanity scraped a pass; with AI there is less room for error. Liberal democracy's strong self-correcting mechanisms are the best chance to catch mistakes, but can democracy survive the new network?",
-                    "Total surveillance is possible, not inevitable: in the 1970s Denmark and Canada chose not to copy the Romanian dictatorship's informers. Four old principles can guide democracies: use data to help people, not manipulate them; never concentrate all information in one place; watch governments and corporations as closely as they watch citizens; and let people both change and rest, so that algorithms are neither too rigid nor too demanding. Automation threatens constant job turmoil, and common assumptions mislead: chess proved easier to automate than dish washing, and AI can read emotions. Unemployment of about 25% helped destroy the young Weimar Republic but not US democracy, which adapted through the New Deal. Yet since the 2010s many conservative parties, taken over by Donald Trump and other unconservative leaders, turned revolutionary: the conservative suicide.",
+                    "Total surveillance is possible, not inevitable: in the 1970s Denmark and Canada chose not to copy the Romanian dictatorship's informers. Four old principles can guide democracies: use data to help people, not manipulate them; never concentrate all information in one place; watch governments and corporations as closely as they watch citizens; and let people both change and rest, so that algorithms are neither too rigid nor too demanding. Automation threatens constant job turmoil, and common assumptions mislead: chess proved easier to automate than dish washing, and AI can read emotions. Jobs will keep changing, so people must retrain again and again. Since the 2010s many conservative parties, taken over by Donald Trump and other unconservative leaders, have turned revolutionary: the conservative suicide. Yet the middle path works: unemployment of about 25% helped destroy the young Weimar Republic, which lacked robust institutions, but US democracy adapted through the New Deal.",
                     "Self-correction needs understanding. The Topeka school board that turned away the daughter of Oliver Brown, a Black parent, was human, so its racism was plain and in 1954 the US Supreme Court struck down school segregation. COMPAS, which rated Eric Loomis, a Wisconsin defendant, high risk, kept its method a trade secret, and the makers of AlphaGo, DeepMind's go-playing AI, could not explain its move 37. Because algorithms weigh thousands of data points while humans look for a single cause, people who cannot follow them turn to conspiracy theories and charismatic leaders. A right to an explanation needs institutions that audit algorithms with computers' help, and artists who explain them, as Nosedive, an episode of the series Black Mirror, did.",
                     "Last, bots and algorithms may push the conversation into digital anarchy: bots wrote almost a fifth of tweets in one 2016 election sample, people trusted AI-made disinformation, and algorithms increasingly set the rules of debate. Democracies should outlaw counterfeit humans, as the philosopher Daniel Dennett suggests, and have a human institution vet how algorithms curate debate. Americans can no longer agree on basic facts, and nobody is sure why. If democracy collapses, it will most likely be a failure to regulate, not technological fate."
                   ]
@@ -3972,7 +3972,7 @@
                     },
                     {
                       "title": "A right to an explanation",
-                      "text": "The GDPR, EU law since 2018, grants it, but a bank's algorithm weighs thousands of data points, so only institutions that audit algorithms with computers' help can enforce it."
+                      "text": "The GDPR, EU law since 2018, grants it, but a bank's algorithm weighs a thousand data points, so only institutions that audit algorithms with computers' help can enforce it."
                     },
                     {
                       "title": "The conservative suicide",
@@ -4007,9 +4007,9 @@
                       "title": "Four principles",
                       "note": "keep surveillance democratic",
                       "leaves": [
-                        "Benevolence: the family doctor",
-                        "Separate databases",
-                        "Mutuality; room to change, rest"
+                        "Benevolence, decentralisation",
+                        "Mutuality",
+                        "Room to change and rest"
                       ]
                     },
                     {
@@ -4073,14 +4073,20 @@
                   "start": "Industrial technology spreads in the 19th century",
                   "groups": [
                     {
+                      "label": "Costly experiments",
                       "items": [
-                        "Costly experiments: empires, Stalinism, Nazism",
-                        "World wars; species die out",
-                        "Humanity scrapes a C minus"
+                        "Empires, Stalinism, Nazism",
+                        "World wars"
+                      ]
+                    },
+                    {
+                      "label": "Still unpaid",
+                      "items": [
+                        "Up to 58,000 species lost a year"
                       ]
                     }
                   ],
-                  "key": "AI is mightier: this time we must do better"
+                  "key": "A C minus on industry; AI demands better"
                 },
                 {
                   "type": "chart",
@@ -4148,11 +4154,11 @@
                       "Nursing: bandages, injections"
                     ],
                     [
-                      "Reading emotions: ChatGPT beats most humans",
-                      "Bonds with conscious beings: athletes, priests"
+                      "Reading emotions: ChatGPT beats the average human",
+                      "Bonds with conscious beings, perhaps only for now"
                     ]
                   ],
-                  "key": "Invest in motor and social skills, and in flexibility"
+                  "key": "Jobs will churn: retrain again and again; stay flexible"
                 },
                 {
                   "type": "chart",
@@ -4183,7 +4189,7 @@
                   "type": "chart",
                   "chart": "flow",
                   "label": "Why parties turn revolutionary",
-                  "start": "Fast change makes conserving seem hopeless",
+                  "start": "One hypothesis: fast change makes conserving seem hopeless",
                   "groups": [
                     {
                       "items": [
@@ -4206,11 +4212,11 @@
                   "rows": [
                     [
                       "Human members, visible biases",
-                      "A trade secret nobody could inspect"
+                      "A trade secret the judge and defendant could not see"
                     ],
                     [
                       "Racism traced to familiar myths",
-                      "Biases picked up from training data"
+                      "Studies suggest biases from training data"
                     ],
                     [
                       "Overturned: Brown v. Board, 1954",
@@ -4229,7 +4235,8 @@
                       "items": [
                         "Humans look for a single cause",
                         "The algorithm weighed a thousand data points",
-                        "Its explanation runs to hundreds of pages"
+                        "Its explanation runs to hundreds of pages",
+                        "Opacity feeds populism and conspiracy theories"
                       ]
                     }
                   ],
@@ -4305,7 +4312,7 @@
                   "rows": [
                     {
                       "name": "What drives people apart",
-                      "text": "If ideological gaps are no wider than in the 1960s, what is driving Americans apart?"
+                      "text": "If ideological gaps are no wider than in the 1960s, what is driving people in democracies apart?"
                     },
                     {
                       "name": "Dictators and AI",
@@ -4804,49 +4811,60 @@
                   "type": "chart",
                   "chart": "mindmap",
                   "label": "The chapter at a glance",
-                  "centre": "AI and the world order",
+                  "centre": "Global empire or global split?",
                   "branches": [
                     {
                       "title": "A global problem",
-                      "note": "few lax states endanger all",
+                      "note": "humanity was never united",
                       "leaves": [
-                        "Like climate change"
+                        "A dictator's AI with nukes",
+                        "An AI-designed pandemic",
+                        "Weapons of social destruction"
                       ]
                     },
                     {
                       "title": "Digital empires",
-                      "note": "hubs rule data colonies",
+                      "note": "firms first, then states",
                       "leaves": [
-                        "Tonga, Tuvalu and Qatar",
-                        "Cat pictures",
-                        "Textile jobs"
-                      ],
-                      "key": true
-                    },
-                    {
-                      "title": "Silicon Curtain",
-                      "note": "rival spheres, rival code",
-                      "leaves": [
-                        "China and the US"
+                        "Cat images trained AI",
+                        "AlphaGo woke governments",
+                        "China's plan for 2030"
                       ]
                     },
                     {
-                      "title": "Cyber war",
-                      "note": "stealthy and unpredictable"
-                    },
-                    {
-                      "title": "Global cooperation",
-                      "note": "exchange, not sameness",
+                      "title": "Data colonialism",
+                      "note": "data out, algorithms back",
+                      "key": true,
                       "leaves": [
-                        "The World Cup"
+                        "Egypt's cotton, Malaya's rubber",
+                        "Pakistan's textile jobs",
+                        "70% of gains: China, America"
                       ]
                     },
                     {
-                      "title": "War is not destiny",
-                      "note": "it declined after 1945",
+                      "title": "The Silicon Curtain",
+                      "note": "from web to cocoon",
                       "leaves": [
-                        "Jebel Sahaba",
-                        "Military budgets"
+                        "Different software and hardware",
+                        "Chip export bans",
+                        "Mind-body split: avatars, AI rights"
+                      ]
+                    },
+                    {
+                      "title": "Code war, hot war",
+                      "note": "no assured destruction",
+                      "leaves": [
+                        "Hidden logic bombs",
+                        "Tempting first strikes"
+                      ]
+                    },
+                    {
+                      "title": "The global bond",
+                      "note": "cooperation needs only conversation",
+                      "leaves": [
+                        "Patriotism fits global rules",
+                        "Jungles run on symbiosis",
+                        "Military budgets: about 7%"
                       ]
                     }
                   ]
@@ -4855,117 +4873,240 @@
                   "type": "chart",
                   "chart": "flow",
                   "label": "The argument",
-                  "start": "Will AI unite or split humanity?",
+                  "start": "How will AI change relations between societies?",
                   "groups": [
                     {
                       "items": [
-                        "A few reckless states can endanger all",
-                        "Data colonies or a Silicon Curtain",
-                        "Cyber weapons tempt first strikes"
+                        "AI favours concentration: new digital empires",
+                        "Data colonies supply data, buy algorithms",
+                        "Rival spheres split behind a Silicon Curtain",
+                        "Cyber war lacks assured destruction"
                       ]
                     }
                   ],
-                  "key": "Cooperation needs information exchange, not sameness"
+                  "key": "Cooperation remains a human choice"
+                },
+                {
+                  "type": "chart",
+                  "chart": "compare",
+                  "label": "Railways and AI",
+                  "columns": [
+                    "The railway race",
+                    "The AI race"
+                  ],
+                  "rows": [
+                    [
+                      "Private firms build the first lines, 1830",
+                      "Private firms gather the world's data"
+                    ],
+                    [
+                      "Governments see the imperial potential later",
+                      "AlphaGo wakes governments, 2016"
+                    ],
+                    [
+                      "Laggards like China are conquered",
+                      "China vows never to miss the train again"
+                    ]
+                  ],
+                  "key": "The leader in AI may come to rule the world"
+                },
+                {
+                  "type": "chart",
+                  "chart": "bars",
+                  "label": "Recognising cats",
+                  "caption": "ImageNet: share of cat images identified correctly, %",
+                  "data": [
+                    {
+                      "label": "Best algorithm, 2010",
+                      "value": 72
+                    },
+                    {
+                      "label": "2011",
+                      "value": 75
+                    },
+                    {
+                      "label": "AlexNet, 2012",
+                      "value": 85,
+                      "focus": true
+                    },
+                    {
+                      "label": "Humans",
+                      "value": 95
+                    },
+                    {
+                      "label": "Microsoft, 2015",
+                      "value": 96
+                    }
+                  ]
                 },
                 {
                   "type": "chart",
                   "chart": "flow",
-                  "label": "Towards a Silicon Curtain",
-                  "start": "Computers let a few hubs gather information and power",
+                  "label": "Why information concentrates",
+                  "start": "How far can wealth and power gather in one place?",
                   "groups": [
                     {
-                      "label": "A new imperial era",
+                      "label": "Land: Rome",
                       "items": [
-                        "A few hubs harvest the world's data",
-                        "Data colonies get algorithms, not profits"
+                        "Provincial landowners keep power",
+                        "The Nile valley cannot move"
                       ]
                     },
                     {
-                      "label": "A Silicon Curtain split",
+                      "label": "Machines: Britain",
                       "items": [
-                        "Rival spheres run on different code",
-                        "Separate cocoons replace one shared reality"
+                        "Factories at home, raw materials abroad",
+                        "Kirkuk's oil wells cannot move"
+                      ]
+                    },
+                    {
+                      "label": "Information",
+                      "items": [
+                        "Data moves at light speed",
+                        "All algorithms can sit in one hub"
                       ]
                     }
                   ],
-                  "key": "A divided humanity could hardly avoid war or regulate AI"
+                  "key": "Information allows the greatest concentration ever"
+                },
+                {
+                  "type": "chart",
+                  "chart": "flow",
+                  "label": "Left behind",
+                  "start": "Automation makes textiles cheap to produce in Europe",
+                  "groups": [
+                    {
+                      "items": [
+                        "Pakistan: textiles give 40% of jobs",
+                        "Bangladesh: 84% of export earnings",
+                        "No money to retrain workers"
+                      ]
+                    }
+                  ],
+                  "key": "China and North America may take 70% of AI's gains"
                 },
                 {
                   "type": "chart",
                   "chart": "compare",
                   "label": "Two digital spheres",
                   "columns": [
-                    "China",
-                    "United States"
+                    "Chinese sphere",
+                    "American sphere"
                   ],
                   "rows": [
                     [
-                      "Technology strengthens the state",
+                      "Technology serves the state",
                       "Technology enriches the tech giants"
                     ],
                     [
-                      "Watched online and offline",
-                      "Offline lives better protected"
+                      "High surveillance; social credit",
+                      "More offline privacy; social credit rejected"
                     ],
                     [
-                      "Far ahead in social credit systems",
-                      "Social credit widely rejected"
+                      "Baidu, Alibaba, WeChat",
+                      "Google, Facebook, Wikipedia"
                     ],
                     [
-                      "WeChat and Baidu; no Google",
-                      "Google and Facebook; few use WeChat"
-                    ],
-                    [
-                      "Pushed to build a separate sphere",
-                      "Blocks chip exports to China"
+                      "Pushed to build its own chips",
+                      "Bans exports of advanced chips"
                     ]
                   ],
-                  "key": "Not mirror images: the web may give way to cocoons"
+                  "key": "From web to cocoons: one shared reality may end"
                 },
                 {
                   "type": "chart",
-                  "chart": "flow",
-                  "label": "What global cooperation means",
-                  "start": "Not a global empire, open borders or lost loyalties",
-                  "groups": [
-                    {
-                      "label": "Some global rules",
-                      "items": [
-                        "Rules for relations between nations",
-                        "Like agreeing the World Cup's rules"
-                      ]
-                    },
-                    {
-                      "label": "Long-term interests first",
-                      "items": [
-                        "Sometimes all humans before a few",
-                        "No doping; limit autonomous weapons"
-                      ]
-                    }
+                  "chart": "compare",
+                  "label": "The mind-body split",
+                  "columns": [
+                    "Body first",
+                    "Mind first"
                   ],
-                  "key": "Patriotism and global cooperation go together"
+                  "rows": [
+                    [
+                      "Early Christians: resurrection of the flesh",
+                      "Luther: faith alone matters"
+                    ],
+                    [
+                      "Online life is a delusion",
+                      "Online life is liberation"
+                    ],
+                    [
+                      "Care for sewage pipes and ecosystems",
+                      "A kingdom of God in cyberspace"
+                    ],
+                    [
+                      "AIs are not persons",
+                      "AIs may be legal persons"
+                    ]
+                  ],
+                  "key": "Rival cocoons might split over identity, as sects once did"
+                },
+                {
+                  "type": "chart",
+                  "chart": "compare",
+                  "label": "Cold war and code war",
+                  "columns": [
+                    "Nuclear weapons",
+                    "Cyber weapons"
+                  ],
+                  "rows": [
+                    [
+                      "One use: destruction",
+                      "Versatile: grids, elections, a single phone"
+                    ],
+                    [
+                      "Visible: mushroom cloud, launch trail",
+                      "Stealthy: who attacked, if anyone?"
+                    ],
+                    [
+                      "Certain destruction deters",
+                      "Hidden logic bombs tempt a first strike"
+                    ]
+                  ],
+                  "key": "Mutually assured destruction weakens in a code war"
+                },
+                {
+                  "type": "chart",
+                  "chart": "compare",
+                  "label": "Patriots and globalists",
+                  "columns": [
+                    "Populists say",
+                    "Harari replies"
+                  ],
+                  "negative": 0,
+                  "rows": [
+                    [
+                      "Globalists against patriots",
+                      "Patriots cooperate: a German vaccine for Brazil"
+                    ],
+                    [
+                      "Global rules erase nations",
+                      "Rules only regulate relations: the World Cup"
+                    ],
+                    [
+                      "National interest first",
+                      "Sometimes humanity's long-term interest: no doping"
+                    ]
+                  ],
+                  "key": "An AI out of control endangers every nation"
                 },
                 {
                   "type": "chart",
                   "chart": "bars",
-                  "label": "War in state budgets",
-                  "caption": "Military spending as % of government budget; Russia's figure is an estimate",
+                  "label": "War's share of budgets",
+                  "caption": "Military share of state budgets, %, from the book; Russia's is an estimate",
                   "data": [
                     {
-                      "label": "Song dynasty, 1065",
+                      "label": "Song China, 1065",
                       "value": 83
                     },
                     {
-                      "label": "Britain, 1685–1813 average",
+                      "label": "Britain, 1685–1813",
                       "value": 75
                     },
                     {
-                      "label": "Germany, World War I",
+                      "label": "Germany, First World War",
                       "value": 91
-                    },
-                    {
-                      "label": "US, World War II",
-                      "value": 71
                     },
                     {
                       "label": "Soviet Union, 1970s",
@@ -4977,198 +5118,8 @@
                       "focus": true
                     },
                     {
-                      "label": "US, early 21st century",
-                      "value": 13
-                    },
-                    {
-                      "label": "Russia, war on Ukraine",
+                      "label": "Russia, about 2022",
                       "value": 30
-                    }
-                  ]
-                },
-                {
-                  "type": "chart",
-                  "chart": "compare",
-                  "label": "Old and new colonies",
-                  "columns": [
-                    "Industrial empires",
-                    "Digital empires"
-                  ],
-                  "rows": [
-                    [
-                      "Colonies sent cotton and rubber",
-                      "Colonies send raw data"
-                    ],
-                    [
-                      "Finished goods were sold back",
-                      "Algorithms are exported back"
-                    ],
-                    [
-                      "Land, mills and oil wells stay put",
-                      "Data moves at almost light speed"
-                    ],
-                    [
-                      "Profits stayed in the imperial hub",
-                      "Profits stay in San Francisco or Beijing"
-                    ]
-                  ],
-                  "key": "One hub could hold the world's algorithmic power"
-                },
-                {
-                  "type": "chart",
-                  "chart": "compare",
-                  "label": "The global mind-body split",
-                  "columns": [
-                    "The body matters",
-                    "Only belief matters"
-                  ],
-                  "rows": [
-                    [
-                      "Ancient Jews and the earliest Christians",
-                      "Luther and many later Christians"
-                    ],
-                    [
-                      "A life on screens is a delusion",
-                      "A life on screens is liberation"
-                    ],
-                    [
-                      "Care for sewage pipes and ecosystems",
-                      "Seek a Kingdom of God in cyberspace"
-                    ],
-                    [
-                      "AIs unlikely to count as persons",
-                      "AIs may become legal persons"
-                    ]
-                  ],
-                  "key": "A split over identity could dwarf the Catholic–Protestant split"
-                },
-                {
-                  "type": "chart",
-                  "chart": "compare",
-                  "label": "Nuclear and cyber war",
-                  "columns": [
-                    "Nuclear weapons",
-                    "Cyber weapons"
-                  ],
-                  "rows": [
-                    [
-                      "A mushroom cloud and a visible trail",
-                      "Hidden: at times unclear who attacked"
-                    ],
-                    [
-                      "Weapons of mass destruction",
-                      "Versatile: from power grids to one phone"
-                    ],
-                    [
-                      "Certain destruction: a hyperrational chess game",
-                      "Nobody knows whose weapons will work"
-                    ],
-                    [
-                      "Mutually assured destruction deters war",
-                      "A first strike may look winnable"
-                    ]
-                  ],
-                  "key": "In the age of AI the danger of escalation is bigger"
-                },
-                {
-                  "type": "chart",
-                  "chart": "compare",
-                  "label": "Is war human nature?",
-                  "columns": [
-                    "Veneer theory",
-                    "Harari's view"
-                  ],
-                  "negative": 0,
-                  "rows": [
-                    [
-                      "States want only power",
-                      "States are built on trust"
-                    ],
-                    [
-                      "The jungle is ruthless",
-                      "Real jungles are full of cooperation"
-                    ],
-                    [
-                      "Humans are Stone Age hunters at heart",
-                      "First clear evidence of organised war: about 13,000 years ago"
-                    ],
-                    [
-                      "Human nature never changes",
-                      "War declined after 1945 by choice"
-                    ]
-                  ],
-                  "key": "Conflict is not destiny; human choices decide"
-                },
-                {
-                  "type": "chart",
-                  "chart": "flow",
-                  "label": "Why war declined after 1945",
-                  "start": "War's intensity depends on shifting factors, not fixed nature",
-                  "groups": [
-                    {
-                      "label": "Technology",
-                      "items": [
-                        "Nuclear weapons raised war's price",
-                        "Victory would be suicidal"
-                      ]
-                    },
-                    {
-                      "label": "Economy",
-                      "items": [
-                        "Know-how cannot be conquered",
-                        "Defeated Germany and Japan prospered"
-                      ]
-                    },
-                    {
-                      "label": "Culture",
-                      "items": [
-                        "Militaristic ideals declined",
-                        "Leaders dreamed of domestic reform"
-                      ]
-                    }
-                  ],
-                  "key": "Most governments stopped seeing aggression as a useful tool"
-                },
-                {
-                  "type": "chart",
-                  "chart": "timeline",
-                  "label": "The AI race",
-                  "only": "pdf",
-                  "items": [
-                    {
-                      "when": "2002",
-                      "text": "Larry Page of Google tells Kevin Kelly, founding editor of Wired, that Google is really making an AI"
-                    },
-                    {
-                      "when": "September 2012",
-                      "title": "AlexNet",
-                      "text": "A convolutional neural network wins the ImageNet challenge with 85% accuracy, trained on annotated images such as cats"
-                    },
-                    {
-                      "when": "2015",
-                      "text": "A Microsoft algorithm reaches 96%, beating humans at identifying cat images"
-                    },
-                    {
-                      "when": "March 2016",
-                      "title": "AlphaGo",
-                      "text": "Google's AlphaGo beats Lee Sedol, the go champion, which alerts governments, above all in East Asia",
-                      "key": true
-                    },
-                    {
-                      "when": "2017",
-                      "text": "China's AI plan aims for world leadership by 2030; Putin, Russia's president, says the AI leader will rule the world"
-                    },
-                    {
-                      "when": "2018",
-                      "text": "Modi, India's prime minister, says whoever controls data will control the world"
-                    },
-                    {
-                      "when": "2019",
-                      "text": "Trump, the US president, signs an executive order on American AI leadership"
-                    },
-                    {
-                      "when": "2022",
-                      "text": "The Biden administration bars US firms from selling high-performance AI chips to China"
                     }
                   ]
                 }
