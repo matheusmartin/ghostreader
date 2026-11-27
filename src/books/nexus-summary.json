@@ -1980,7 +1980,7 @@
                   "items": [
                     {
                       "title": "The populist claim",
-                      "text": "Jan-Werner Müller, a German political philosopher, defines populism as claiming to alone represent a people with one will, so every independent court, newspaper and university becomes an enemy."
+                      "text": "Jan-Werner Müller, a German political philosopher, defines populism as claiming to alone represent the people; populists see one popular will, so independent courts, newspapers and universities become their enemies."
                     },
                     {
                       "title": "Technology sets the scale",
@@ -2014,7 +2014,7 @@
                       "leaves": [
                         "Self-correction: weak or strong",
                         "Autonomy: by-product or ideal",
-                        "A continuum, not a binary"
+                        "Centre infallible, or all fallible"
                       ]
                     },
                     {
@@ -2071,24 +2071,23 @@
                   "start": "How do democracy and dictatorship differ as information networks?",
                   "groups": [
                     {
-                      "label": "Two networks",
+                      "label": "Dictatorship",
                       "items": [
-                        "Dictatorship: one hub, weak self-correction",
-                        "Democracy: many nodes, strong self-correction"
+                        "One hub, an infallible centre",
+                        "Risks ossifying"
                       ]
                     },
                     {
-                      "label": "Technology sets the scale",
+                      "label": "Democracy",
                       "items": [
-                        "Mass democracy needs mass media",
-                        "The same media enable totalitarianism"
+                        "Many nodes, all fallible",
+                        "Risks fracturing"
                       ]
                     },
                     {
-                      "label": "The trade-off",
+                      "label": "Technology",
                       "items": [
-                        "Totalitarianism risks ossifying",
-                        "Democracy risks fracturing"
+                        "Mass media enabled both at scale"
                       ]
                     }
                   ],
@@ -2196,10 +2195,10 @@
                     ],
                     [
                       "Back the Iraq war: 72% did",
-                      "Decide the facts: Iraq had no such weapons"
+                      "Decide the facts: Iraq had no weapons of mass destruction"
                     ]
                   ],
-                  "key": "Democracy means freedom and equality for all, not majority rule"
+                  "key": "Elections settle desires, not truth"
                 },
                 {
                   "type": "chart",
@@ -2211,12 +2210,12 @@
                       "items": [
                         "Populists: we alone represent the people",
                         "Critics are deceived, or not the people",
-                        "The people's will must rule courts, media",
+                        "Power is the only reality",
                         "Trust in every institution collapses"
                       ]
                     }
                   ],
-                  "key": "One leader embodying the people takes all power"
+                  "key": "The conversation ends; one leader takes all power"
                 },
                 {
                   "type": "chart",
@@ -2262,11 +2261,11 @@
                   "rows": [
                     [
                       "No legal limits, many technical ones",
-                      "Modern technology removes most limits"
+                      "Modern technology removes many limits"
                     ],
                     [
-                      "Kills courtiers; slums speak freely",
-                      "Watches what everyone says, even thinks"
+                      "Kills courtiers; slums speak more freely",
+                      "Tries to watch what everyone says"
                     ],
                     [
                       "10,000 administrators, 350,000 soldiers",
@@ -2284,56 +2283,37 @@
                   "chart": "network",
                   "label": "The totalitarian trinity",
                   "centre": [
-                    "Secret police"
+                    "Stalin"
                   ],
                   "nodes": [
-                    {
-                      "name": "Government",
-                      "note": "1.6m officials"
-                    },
                     {
                       "name": "Party",
                       "note": "2.4m members"
                     },
                     {
-                      "name": "Red Army",
-                      "note": "officers purged"
+                      "name": "Government",
+                      "note": "officials, Red Army"
                     },
                     {
-                      "name": "Citizens",
-                      "note": "kartoteki files"
+                      "name": "Secret police",
+                      "note": "purges itself"
                     }
                   ],
                   "links": [
                     {
-                      "from": "Secret police",
+                      "from": "Party",
                       "to": "Government",
-                      "label": "Watches",
-                      "arrow": true
+                      "label": "Watch each other"
+                    },
+                    {
+                      "from": "Government",
+                      "to": "Secret police",
+                      "label": "Watch each other"
                     },
                     {
                       "from": "Secret police",
                       "to": "Party",
-                      "label": "Watches, purges",
-                      "arrow": true
-                    },
-                    {
-                      "from": "Party",
-                      "to": "Government",
-                      "label": "Commissars watch",
-                      "arrow": true
-                    },
-                    {
-                      "from": "Secret police",
-                      "to": "Red Army",
-                      "label": "Purges officers",
-                      "arrow": true
-                    },
-                    {
-                      "from": "Secret police",
-                      "to": "Citizens",
-                      "label": "Millions of informers",
-                      "arrow": true
+                      "label": "Watch each other"
                     }
                   ]
                 },
@@ -2412,7 +2392,7 @@
                   "rows": [
                     [
                       "Often clashed with the state: Canossa, 1077",
-                      "Fused with state and secret police"
+                      "Works alongside state and secret police"
                     ],
                     [
                       "Traditional, slow to change: icons kept",
@@ -2423,7 +2403,7 @@
                       "Moscow is a phone call away"
                     ]
                   ],
-                  "key": "Churches gained such reach only with radio"
+                  "key": "Churches grew more totalitarian only with modern media"
                 },
                 {
                   "type": "chart",
@@ -2464,7 +2444,7 @@
                       "Many channels, many voices"
                     ],
                     [
-                      "1960s: orderly, revolts crushed",
+                      "1956–68: revolts put down",
                       "1960s: unrest, assassinations, 1968"
                     ],
                     [
@@ -2497,7 +2477,7 @@
                     },
                     {
                       "title": "This chapter adds",
-                      "text": "Democracy distributes information and corrects errors; dictatorship centralises it. Mass democracy and totalitarianism need fast information flows, so they had to wait for modern technology."
+                      "text": "Democracy is distributed and self-correcting, not majority rule; dictatorship is centralised and blind but can win; mass media enabled both, populism empties democracy."
                     },
                     {
                       "title": "Where it stops",
@@ -3056,48 +3036,60 @@
                   "type": "chart",
                   "chart": "mindmap",
                   "label": "The chapter at a glance",
-                  "centre": "A network that never sleeps",
+                  "centre": "What happens when the network is always on?",
                   "branches": [
                     {
-                      "title": "Two tasks",
-                      "note": "gather and analyse",
+                      "title": "Surveillance was incomplete",
+                      "note": "legal or technical limits",
                       "leaves": [
-                        "The Securitate's limits"
+                        "Iosifescu's silent watcher",
+                        "40,000 agents, 20 million people",
+                        "7.3 billion reports unread"
                       ]
                     },
                     {
-                      "title": "Sleepless agents",
-                      "note": "smartphones and algorithms",
+                      "title": "Sleepless digital agents",
+                      "note": "we carry and pay them",
+                      "key": true,
                       "leaves": [
-                        "Skynet",
-                        "Capitol rioters"
-                      ],
-                      "key": true
+                        "Smartphone in the toilet",
+                        "2.6 billion words in hours",
+                        "Skynet's metadata ratings"
+                      ]
                     },
                     {
-                      "title": "Benign or harmful",
-                      "note": "same tools, two uses",
+                      "title": "Under-the-skin surveillance",
+                      "note": "eyes, hearts, brains",
                       "leaves": [
+                        "Eye movements reveal traits",
+                        "Neuralink's limits",
+                        "Smartphone beats brain chip"
+                      ]
+                    },
+                    {
+                      "title": "The end of privacy",
+                      "note": "normal life, everywhere",
+                      "leaves": [
+                        "Capitol rioters traced",
                         "Gui Hao found",
-                        "Iran's cameras, no human review"
+                        "Iran's hijab cameras"
                       ]
                     },
                     {
-                      "title": "Peer-to-peer",
-                      "note": "we watch each other",
+                      "title": "Many watchers",
+                      "note": "partners, bosses, peers",
                       "leaves": [
-                        "Tripadvisor"
+                        "Stalkware",
+                        "Surveillance capitalism",
+                        "Tripadvisor's tyrant customers"
                       ]
                     },
                     {
                       "title": "Social credit",
-                      "note": "reputation as a currency"
-                    },
-                    {
-                      "title": "Always on",
-                      "note": "no breaks to correct",
+                      "note": "reputation turned into points",
                       "leaves": [
-                        "Market hours"
+                        "Points for every act",
+                        "Life as a job interview"
                       ]
                     }
                   ]
@@ -3106,241 +3098,214 @@
                   "type": "chart",
                   "chart": "flow",
                   "label": "The argument",
-                  "start": "Why was surveillance always incomplete?",
+                  "start": "What changes when computers do the watching?",
                   "groups": [
                     {
                       "items": [
-                        "Watching needs gathering and analysing",
-                        "Humans could not do both for everyone",
-                        "Smartphones we pay for now do both"
+                        "Human surveillance hit limits: agents, analysts",
+                        "Digital agents never sleep and read everything",
+                        "Privacy may end, even under the skin",
+                        "An always-on network denies us breaks"
                       ]
                     }
                   ],
-                  "key": "An always-on network ends privacy and rest"
+                  "key": "Without breaks we cannot correct a fallible network"
                 },
                 {
                   "type": "chart",
-                  "chart": "matrix",
-                  "label": "Sleepless agents",
-                  "columns": [
-                    "Gathers data",
-                    "Analyses data",
-                    "Always on"
-                  ],
-                  "rows": [
+                  "chart": "flow",
+                  "label": "Ceauşescu's impossible task",
+                  "start": "Ceauşescu wants all 20 million Romanians watched",
+                  "groups": [
                     {
-                      "label": "Securitate agents",
-                      "cells": [
-                        true,
-                        false,
-                        false
+                      "items": [
+                        "Constant watching needs 40 million agents",
+                        "He has 40,000 agents, 400,000 informers",
+                        "The agents must be watched too",
+                        "7.3 billion reports a year, unread"
                       ]
-                    },
-                    {
-                      "label": "Securitate analysts",
-                      "cells": [
-                        false,
-                        true,
-                        false
-                      ]
-                    },
-                    {
-                      "label": "Digital agents",
-                      "cells": [
-                        true,
-                        false,
-                        true
-                      ]
-                    },
-                    {
-                      "label": "Algorithms",
-                      "cells": [
-                        false,
-                        true,
-                        true
-                      ],
-                      "focus": true
                     }
                   ],
-                  "key": "Digital agents and algorithms gather and analyse around the clock"
-                },
-                {
-                  "type": "chart",
-                  "chart": "layers",
-                  "label": "Surveillance goes deeper",
-                  "rings": [
-                    {
-                      "title": "Streets",
-                      "text": "Over one billion CCTV cameras"
-                    },
-                    {
-                      "title": "Phones",
-                      "text": "Carried everywhere, even to bed"
-                    },
-                    {
-                      "title": "Under the skin",
-                      "text": "Eyes, heart rate, brain activity"
-                    },
-                    {
-                      "title": "Feelings",
-                      "text": "What angers, frightens or delights"
-                    }
-                  ],
-                  "caption": "Brain chips are still limited; for now a smartphone reveals far more about us"
+                  "key": "So the Securitate ruled by fear of being watched"
                 },
                 {
                   "type": "chart",
                   "chart": "compare",
-                  "label": "Same tools, two uses",
+                  "label": "Human and digital agents",
                   "columns": [
-                    "Benign uses",
-                    "In the wrong hands"
+                    "Securitate agent",
+                    "Digital agent"
                   ],
-                  "negative": 1,
                   "rows": [
                     [
-                      "Early detection of drug abuse and mental illness",
-                      "Totalitarian regimes more intrusive than any before"
+                      "Sleeps; stays out of the toilet",
+                      "Always on, even in the bedroom"
                     ],
                     [
-                      "Doctors spot epidemics; corrupt officials and tax evaders exposed",
-                      "Dictators find dissidents; fraudsters find targets"
+                      "Paid by the state",
+                      "Paid for and carried by us"
                     ],
                     [
-                      "The FBI tracks down Capitol rioters",
-                      "Peaceful demonstrators persecuted"
+                      "Reads about 250 words a minute",
+                      "Reads 2.6 billion words in hours"
                     ],
                     [
-                      "Abducted children such as Gui Hao found",
-                      "Iran enforces hijab laws by camera"
-                    ],
-                    [
-                      "Brøndby IF bans football hooligans",
-                      "Rigid conformism enforced"
+                      "Analysts miss most patterns",
+                      "Algorithms invent new criteria: Skynet"
                     ]
                   ],
-                  "key": "The same techniques can serve good or bad purposes"
+                  "key": "The technical limits on surveillance are disappearing"
                 },
                 {
                   "type": "chart",
-                  "chart": "network",
-                  "label": "Who watches",
-                  "centre": [
-                    "You"
-                  ],
-                  "nodes": [
+                  "chart": "flow",
+                  "label": "Who is a suspect?",
+                  "start": "How is someone labelled a suspected terrorist?",
+                  "groups": [
                     {
-                      "name": "The state",
-                      "note": "Top-down"
-                    },
-                    {
-                      "name": "Jealous partners",
-                      "note": "Top-down"
-                    },
-                    {
-                      "name": "Employers",
-                      "note": "Top-down"
-                    },
-                    {
-                      "name": "Corporations",
-                      "note": "Surveillance capitalism"
-                    },
-                    {
-                      "name": "Tripadvisor users",
-                      "note": "Peer-to-peer"
-                    },
-                    {
-                      "name": "Customers",
-                      "note": "Peer-to-peer"
+                      "items": [
+                        "Create criteria: extremist videos, contacts, skills",
+                        "Decide whether a person meets enough",
+                        "Skynet rates 55 million people by metadata"
+                      ]
                     }
                   ],
-                  "links": [
+                  "key": "Power to decide and invent is power to err"
+                },
+                {
+                  "type": "chart",
+                  "chart": "compare",
+                  "label": "Smartphone or brain chip?",
+                  "columns": [
+                    "Smartphone",
+                    "Brain chip"
+                  ],
+                  "rows": [
+                    [
+                      "40 minutes of Fox News, 40 seconds of CNN",
+                      "Heart rate 120; amygdala 5% more active"
+                    ],
+                    [
+                      "Reveals political views today",
+                      "Reveals little, for now"
+                    ],
+                    [
+                      "Carried willingly",
+                      "Intrusive; the immune system attacks it"
+                    ]
+                  ],
+                  "key": "With more biology, linked data could manipulate feelings"
+                },
+                {
+                  "type": "chart",
+                  "chart": "branches",
+                  "label": "Same tools, many uses",
+                  "start": "Facial recognition and searchable data",
+                  "options": [
                     {
-                      "from": "The state",
-                      "to": "You",
-                      "label": "CCTV, spyware",
-                      "arrow": true
+                      "title": "Trace Capitol rioters",
+                      "text": "Faces, number plates and phones matched"
                     },
                     {
-                      "from": "Jealous partners",
-                      "to": "You",
-                      "label": "Stalkware",
-                      "arrow": true
+                      "title": "Find abducted children",
+                      "text": "Gui Hao recognised after ten years"
                     },
                     {
-                      "from": "Employers",
-                      "to": "You",
-                      "label": "Location, emails",
-                      "arrow": true
+                      "title": "Ban football hooligans",
+                      "text": "Brøndby IF, approved under EU rules"
                     },
                     {
-                      "from": "Corporations",
-                      "to": "You",
-                      "label": "Likes and dislikes",
-                      "arrow": true
-                    },
-                    {
-                      "from": "Tripadvisor users",
-                      "to": "You",
-                      "label": "Scores and reviews",
-                      "arrow": true
-                    },
-                    {
-                      "from": "Customers",
-                      "to": "You",
-                      "label": "Cameras in your taxi",
-                      "arrow": true
+                      "title": "Persecute peaceful protesters",
+                      "text": "The same tools in the wrong hands",
+                      "negative": true
                     }
                   ]
                 },
                 {
                   "type": "chart",
-                  "chart": "compare",
-                  "label": "Money and reputation",
-                  "columns": [
-                    "Money market",
-                    "Reputation market"
-                  ],
-                  "rows": [
-                    [
-                      "Points: coins, notes, digital bits",
-                      "Honour, status, reputation"
-                    ],
-                    [
-                      "Customers know their coins and every price",
-                      "Knights could not know their honour score"
-                    ],
-                    [
-                      "Cannot price a smile or a family visit",
-                      "Scores what money cannot buy"
-                    ],
-                    [
-                      "Built on precise calculation",
-                      "Calculating seemed cunning; honour reflected virtue"
-                    ]
-                  ],
-                  "key": "Social credit would make reputation as precise as money"
+                  "chart": "timeline",
+                  "label": "Iran's automated hijab law",
+                  "items": [
+                    {
+                      "when": "1979",
+                      "text": "The new theocracy makes the hijab compulsory, but police cannot watch every street"
+                    },
+                    {
+                      "when": "2022",
+                      "text": "Facial recognition takes over much of the enforcement"
+                    },
+                    {
+                      "when": "September 2022",
+                      "text": "Mahsa Amini dies in custody; protests follow; over 19,000 arrested, over 500 killed"
+                    },
+                    {
+                      "when": "April 2023",
+                      "text": "Algorithms text unveiled women drivers warnings, with no human review",
+                      "key": true
+                    },
+                    {
+                      "when": "June 2023",
+                      "text": "Almost one million warnings sent; 2,000 cars confiscated"
+                    },
+                    {
+                      "when": "September 2023",
+                      "text": "A stricter law: up to ten years in prison, and more AI systems"
+                    }
+                  ]
                 },
                 {
                   "type": "chart",
-                  "chart": "bars",
-                  "label": "Why the Securitate fell short",
-                  "caption": "Millions of people; Romania had about 20 million citizens",
-                  "data": [
+                  "chart": "flow",
+                  "label": "Many watchers",
+                  "start": "Who watches us besides the state?",
+                  "groups": [
                     {
-                      "label": "Needed to watch all",
-                      "value": 40
+                      "label": "Top-down",
+                      "items": [
+                        "Jealous partners: stalkware",
+                        "Employers time toilet breaks",
+                        "Insurers score drivers: surveillance capitalism"
+                      ]
                     },
                     {
-                      "label": "Informers",
-                      "value": 0.4
-                    },
-                    {
-                      "label": "Agents",
-                      "value": 0.04,
-                      "focus": true
+                      "label": "Peer-to-peer",
+                      "items": [
+                        "Tripadvisor users score restaurants",
+                        "The algorithm ranks the users too",
+                        "Customers become tyrants"
+                      ]
                     }
-                  ]
+                  ],
+                  "key": "The border between private and public fades"
+                },
+                {
+                  "type": "chart",
+                  "chart": "flow",
+                  "label": "From money to social credit",
+                  "start": "How does society keep score?",
+                  "groups": [
+                    {
+                      "label": "Money",
+                      "items": [
+                        "Precise points for goods and services"
+                      ]
+                    },
+                    {
+                      "label": "Reputation",
+                      "items": [
+                        "Fuzzy honour in separate spheres",
+                        "Off-grid moments for respite"
+                      ]
+                    },
+                    {
+                      "label": "Social credit",
+                      "items": [
+                        "Precise points for every act",
+                        "One score for jobs, loans, dates"
+                      ]
+                    }
+                  ],
+                  "key": "One never-ending race could control us more than money"
                 }
               ]
             },
