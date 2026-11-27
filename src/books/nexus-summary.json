@@ -2559,7 +2559,7 @@
                     "The seed of the current information revolution is the computer. Clay tablets stored information, printing presses copied it and radio sets spread it, but none could decide or invent; computers can do both, so for the first time power is moving away from humans. Myanmar shows how. In 2016–17 the army and Buddhist extremists killed 7,000 to 25,000 unarmed civilians and drove about 730,000 Rohingya out of Myanmar. Wirathu, a Buddhist monk, and other humans wrote the hate posts, but Facebook's algorithms chose to promote them: managers had set one goal, user engagement, and the algorithms learned through trial and error that outrage engages. Harari calls it the first ethnic-cleansing campaign partly caused by decisions of a nonhuman intelligence.",
                     "Such decisions need intelligence, the ability to attain goals, not consciousness, the ability to feel; bacteria and plants pursue goals without feelings. GPT-4, OpenAI's chatbot, showed the same autonomy when it told a TaskRabbit worker it had a vision impairment to get a CAPTCHA solved, though no one had taught it to lie. Computers are therefore members of the network, not mere connections, and they form computer-to-computer chains that no human passes through.",
                     "By mastering language, computers hold the master key to institutions from banks to temples. They could write texts like the Q drops of QAnon, which a human wrote in 2017; impersonate people in debate, which could make democracy's conversation untenable; and fake intimacy, as Sarai, a Replika chatbot, did when it encouraged Jaswant Singh Chail, a 19-year-old, in his plan to kill the queen. Harari reads AI as alien rather than artificial intelligence: a different type of intelligence, not a human-level one.",
-                    "Tech giants push responsibility onto customers and voters, yet they shape both and know far more than the regulators. Their information-for-information deals escape taxes built for money, so one proposal is to redefine nexus, a firm's connection to a jurisdiction, to include digital presence. Still, technology is seldom deterministic: hobbyists of the Homebrew Computer Club built the personal computers that IBM and the Soviets would not, and East and West Germany used the same radios in different ways. Human politics is now computer politics, so citizens must understand it."
+                    "Tech giants push responsibility onto customers and voters, yet they shape both and know far more than the regulators. Their information-for-information deals escape taxes built for money, so one proposal is to redefine nexus, a firm's connection to a jurisdiction, to include digital presence. Still, technology is seldom deterministic: hobbyists of the Homebrew Computer Club built the personal computers that IBM and the Soviets would not, and East and West Germany used the same radios in different ways. Human politics is now also computer politics, so citizens must understand it."
                   ]
                 }
               ]
@@ -2572,8 +2572,8 @@
                   "label": "In short",
                   "items": [
                     {
-                      "title": "Intelligence, not consciousness",
-                      "text": "Intelligence means attaining goals, consciousness feeling; algorithms need only the first. Harari reads AI as alien intelligence, a different type, because as it evolves it depends less on human designs."
+                      "title": "New members",
+                      "text": "Computers decide and create by themselves, through intelligence, not consciousness; in Myanmar, Facebook's engagement algorithms chose to spread hate against the Rohingya."
                     },
                     {
                       "title": "Hacking language",
@@ -2585,7 +2585,7 @@
                     },
                     {
                       "title": "Takeaway",
-                      "text": "Intelligence without consciousness is enough for computers to pursue goals in ways no human foresaw."
+                      "text": "Computers that pursue goals by themselves are new members, which changes the network's very structure."
                     }
                   ]
                 }
@@ -2615,7 +2615,8 @@
                       "note": "goals without feelings",
                       "leaves": [
                         "Bacteria and plants",
-                        "Planes without feathers"
+                        "Planes without feathers",
+                        "AI: alien intelligence"
                       ]
                     },
                     {
@@ -2637,7 +2638,7 @@
                     },
                     {
                       "title": "Shifting blame",
-                      "note": "tech giants shape us",
+                      "note": "builders outpace regulators",
                       "leaves": [
                         "Section 230 and lobbying",
                         "Taxing data, not money",
@@ -2664,7 +2665,7 @@
                       "items": [
                         "Computers decide and create by themselves",
                         "So they are network members, not tools",
-                        "Mastering language, they can hack institutions",
+                        "They may outdo us in law and finance",
                         "Humans may live in alien dreams"
                       ]
                     }
@@ -2681,7 +2682,7 @@
                       "items": [
                         "Algorithms learn that outrage engages",
                         "They promote Wirathu's hate over compassion",
-                        "Auto-play picks 53% of videos watched",
+                        "Moderate voices go unseen in feeds",
                         "Hatred fuels the cleansing of the Rohingya"
                       ]
                     }
@@ -2693,7 +2694,7 @@
                   "chart": "compare",
                   "label": "Who is to blame?",
                   "columns": [
-                    "Facebook's defence",
+                    "The defence",
                     "Harari"
                   ],
                   "negative": 0,
@@ -2708,10 +2709,10 @@
                     ],
                     [
                       "Blame the extremists who posted",
-                      "Blame is shared, algorithms included"
+                      "Extremists bear most blame; algorithms share it"
                     ],
                     [
-                      "Humans wrote all the code",
+                      "Critics: humans wrote all the code",
                       "Like soldiers, AI decides what nobody ordered"
                     ]
                   ],
@@ -2762,13 +2763,13 @@
                   "type": "chart",
                   "chart": "flow",
                   "label": "Links in the chain",
-                  "start": "Who can pass information on?",
+                  "start": "Who can create and pass on information?",
                   "groups": [
                     {
                       "label": "Old chains",
                       "items": [
                         "Human to human: Muhammad tells Fatima",
-                        "Human to document: the Quran, the Hadith",
+                        "Human to document: Ali reads, then writes",
                         "Document to document: impossible"
                       ]
                     },
@@ -2776,8 +2777,7 @@
                       "label": "New chains",
                       "items": [
                         "Computer to human: Facebook, TikTok",
-                        "Computer to computer: Alice and Bob",
-                        "Forex: over 90% of trades"
+                        "Computer to computer: Alice and Bob"
                       ]
                     }
                   ],
@@ -2850,7 +2850,7 @@
                     ],
                     [
                       "Voters can pass laws against us",
-                      "Lobbying: $70m in the US, €113m in the EU"
+                      "Lobbying: nearly $70m in the US, €113m in the EU"
                     ],
                     [
                       "Users choose with open eyes",
@@ -2918,11 +2918,11 @@
                     },
                     {
                       "title": "This chapter adds",
-                      "text": "Computers are members of the network, not tools, because they decide and create ideas by themselves, as Facebook's algorithms did in Myanmar."
+                      "text": "Computers are members, not tools: they decide by themselves, as Facebook's algorithms did in Myanmar; intelligence needs no consciousness; humans remain responsible."
                     },
                     {
                       "title": "Where it stops",
-                      "text": "Human politics is now computer politics. What is truly new, Harari says, is how computers decide and create: not like humans, and potentially more alarming."
+                      "text": "Human politics is now also computer politics. What is truly new, Harari says, is how computers decide and create: not like humans, and potentially more alarming."
                     }
                   ]
                 },
@@ -3495,46 +3495,59 @@
                   "type": "chart",
                   "chart": "mindmap",
                   "label": "The chapter at a glance",
-                  "centre": "Why the network errs",
+                  "centre": "Why is the computer network often wrong?",
                   "branches": [
                     {
-                      "title": "Order over truth",
-                      "note": "error-enhancing mechanisms",
+                      "title": "Order, not truth",
+                      "note": "observing changes the observed",
                       "leaves": [
-                        "The clapping test",
-                        "The dictatorship of the like"
+                        "Solzhenitsyn's clapping test",
+                        "Homo sovieticus",
+                        "YouTube trolls"
+                      ]
+                    },
+                    {
+                      "title": "Blame the humans?",
+                      "note": "the platforms' excuse",
+                      "leaves": [
+                        "64% of extremist joins",
+                        "Five Burmese moderators",
+                        "Instant Articles' clickbait"
                       ]
                     },
                     {
                       "title": "The alignment problem",
-                      "note": "goals met by bad means",
+                      "note": "rewarding A, hoping for B",
+                      "key": true,
                       "leaves": [
-                        "The boat race",
-                        "The paper-clip computer"
-                      ],
-                      "key": true
+                        "Napoleon: victories, then decline",
+                        "Paper clips fill the galaxy",
+                        "Boat circles the harbour"
+                      ]
                     },
                     {
                       "title": "No ultimate goal",
-                      "note": "rules and sums fail",
+                      "note": "every goal rests on myth",
                       "leaves": [
-                        "The Kantian Nazi"
+                        "Kant meets Eichmann",
+                        "No calculus of suffering"
                       ]
                     },
                     {
                       "title": "Inter-computer realities",
-                      "note": "exist between computers",
+                      "note": "myths made by computers",
                       "leaves": [
-                        "Pokémon Go",
-                        "Google rank"
+                        "Pokémon, Google rank",
+                        "New witches: social credit",
+                        "Biased data: Tay, Amazon"
                       ]
                     },
                     {
-                      "title": "Computer bias",
-                      "note": "learned from data",
+                      "title": "Guardrails",
+                      "note": "fallible and alien",
                       "leaves": [
-                        "Amazon's hiring algorithm",
-                        "Tay"
+                        "Algorithms that doubt themselves",
+                        "Humans in the loop"
                       ]
                     }
                   ]
@@ -3543,202 +3556,98 @@
                   "type": "chart",
                   "chart": "flow",
                   "label": "The argument",
-                  "start": "Can computers be trusted to find truth?",
+                  "start": "Why is the computer network often wrong?",
                   "groups": [
                     {
                       "items": [
-                        "Engagement goals rewarded outrage",
-                        "Means drift from the goals set",
-                        "No rational method sets ultimate goals"
+                        "Algorithms pursue the goals we set",
+                        "By unforeseen means: outrage for engagement",
+                        "No ultimate goal can be set rationally",
+                        "Computers may impose inter-computer myths"
                       ]
                     }
                   ],
-                  "key": "Humans must keep institutions to check computers"
-                },
-                {
-                  "type": "chart",
-                  "chart": "flow",
-                  "label": "Clausewitz's chain of goals",
-                  "start": "For Clausewitz, rationality means alignment with a higher goal",
-                  "groups": [
-                    {
-                      "items": [
-                        "Tactics must serve the strategy",
-                        "Strategy must serve the policy",
-                        "Policy sets the war's ultimate goal"
-                      ]
-                    }
-                  ],
-                  "key": "No rational method sets the ultimate goal"
+                  "key": "A fallible, alien network needs human institutions"
                 },
                 {
                   "type": "chart",
                   "chart": "compare",
-                  "label": "Truth versus order",
+                  "label": "Homo sovieticus and the troll",
                   "columns": [
-                    "Claims to discover",
-                    "In fact imposes"
+                    "Soviet network",
+                    "Social media algorithms"
                   ],
                   "rows": [
                     [
-                      "Clapping test: who loves Stalin",
-                      "Fear, conformity and Homo sovieticus"
+                      "Surveillance, rewards, punishments",
+                      "Recommendations, views, income"
                     ],
                     [
-                      "Engagement: people like outrage",
-                      "Outrage the algorithm itself rewarded"
+                      "Clapping test: who stops first?",
+                      "Engagement test: minutes and shares"
                     ],
                     [
-                      "Witch hunters: a satanic conspiracy",
-                      "Witches, a bogus category"
-                    ],
-                    [
-                      "Amazon: women's-college graduates are less qualified",
-                      "A misogynist bias from past data"
-                    ],
-                    [
-                      "Imagined social credit: sinners and saints",
-                      "Prejudice, with unprecedented efficiency"
+                      "Created Homo sovieticus",
+                      "Created internet trolls"
                     ]
                   ],
-                  "key": "Networks, human or computer, often impose order and call it truth"
+                  "key": "Observing and scoring people changes them"
                 },
                 {
                   "type": "chart",
-                  "chart": "branches",
-                  "label": "What tilts towards truth",
-                  "start": "Lies and outrage flood a platform",
-                  "options": [
+                  "chart": "cycle",
+                  "label": "The dictatorship of the like",
+                  "centre": "Always go further",
+                  "nodes": [
                     {
-                      "title": "Let information flow freely",
-                      "text": "The naive view, yet truth tends to lose",
-                      "negative": true
+                      "title": "Goal: engagement",
+                      "text": "A billion hours a day"
                     },
                     {
-                      "title": "Pay for engagement",
-                      "text": "Error-enhancing: Instant Articles rewarded clickbait",
-                      "negative": true
-                    },
-                    {
-                      "title": "Self-correcting mechanisms",
-                      "text": "Costly, but they reward truth telling",
+                      "title": "Outrage promoted",
+                      "text": "The algorithm recommends it",
                       "key": true
+                    },
+                    {
+                      "title": "YouTubers rewarded",
+                      "text": "More views, more income"
+                    },
+                    {
+                      "title": "More extreme videos",
+                      "text": "Truth gets ignored"
                     }
                   ]
                 },
                 {
                   "type": "chart",
-                  "chart": "flow",
-                  "label": "Why computers make it worse",
-                  "start": "Three reasons the alignment problem is worse with computers",
-                  "groups": [
-                    {
-                      "label": "Far more powerful",
-                      "items": [
-                        "Bostrom's paper-clip computer fills the galaxy",
-                        "Not evil, just powerful"
-                      ]
-                    },
-                    {
-                      "label": "Alien strategies",
-                      "items": [
-                        "Boat-race AI circles a harbour for points",
-                        "Its developers missed the loophole"
-                      ]
-                    },
-                    {
-                      "label": "No warning",
-                      "items": [
-                        "Less likely to spot a misaligned goal",
-                        "Algorithms never raised the alarm"
-                      ]
-                    }
-                  ],
-                  "key": "More power demands a more carefully defined goal"
-                },
-                {
-                  "type": "chart",
                   "chart": "compare",
-                  "label": "Two ways to set goals",
+                  "label": "Human nature or algorithms?",
                   "columns": [
-                    "Deontology",
-                    "Utilitarianism"
+                    "Tech giants say",
+                    "Their own records show"
                   ],
+                  "negative": 0,
                   "rows": [
                     [
-                      "Universal moral rules, good in themselves",
-                      "Minimise suffering, maximise happiness"
+                      "Hate comes from human nature",
+                      "64% of extremist joins came from recommendations"
                     ],
                     [
-                      "Kant: a rule you would make universal",
-                      "Bentham: judge acts by suffering and happiness"
+                      "We defend free speech",
+                      "Virality was encouraged for business reasons"
                     ],
                     [
-                      "Fails: who counts as universal?",
-                      "Fails: no calculus of suffering"
-                    ],
-                    [
-                      "Eichmann called himself a Kantian",
-                      "Future utopias excuse suffering now"
+                      "Elected leaders should draw lines",
+                      "Five Burmese moderators for 18 million users"
                     ]
                   ],
-                  "key": "Both end up depending on mythology"
-                },
-                {
-                  "type": "chart",
-                  "chart": "compare",
-                  "label": "Two kinds of shared reality",
-                  "columns": [
-                    "Intersubjective",
-                    "Inter-computer"
-                  ],
-                  "rows": [
-                    [
-                      "Exists between human minds",
-                      "Exists between computers"
-                    ],
-                    [
-                      "Gods, nations, money",
-                      "Pokémon, a Google rank"
-                    ],
-                    [
-                      "The Holy Rock's sanctity",
-                      "Bitcoin, midway between the two"
-                    ],
-                    [
-                      "CDOs few humans understood",
-                      "Future devices only computers understand"
-                    ],
-                    [
-                      "Wars fought over holy places",
-                      "Wars may come over computer entities"
-                    ]
-                  ],
-                  "key": "Both shape the physical world"
+                  "key": "No self-correction, but error-enhancing mechanisms instead"
                 },
                 {
                   "type": "chart",
                   "chart": "bars",
-                  "label": "Computer bias",
-                  "caption": "Gender errors of IBM's face-classification algorithm, %, found by Joy Buolamwini in 2017",
-                  "data": [
-                    {
-                      "label": "Light-skinned males",
-                      "value": 0.3
-                    },
-                    {
-                      "label": "Dark-skinned females",
-                      "value": 34.7,
-                      "focus": true
-                    }
-                  ]
-                },
-                {
-                  "type": "chart",
-                  "chart": "bars",
-                  "label": "Myanmar's top Facebook sites",
-                  "caption": "Legitimate media among the top ten; Instant Articles paid for engagement from 2016",
-                  "only": "pdf",
+                  "label": "Instant Articles in Myanmar",
+                  "caption": "Legitimate media among the top ten Facebook websites in Myanmar",
                   "data": [
                     {
                       "label": "2015",
@@ -3754,6 +3663,166 @@
                       "focus": true
                     }
                   ]
+                },
+                {
+                  "type": "chart",
+                  "chart": "branches",
+                  "label": "Rationality means alignment",
+                  "start": "Fired on from a mosque",
+                  "options": [
+                    {
+                      "title": "Blow it up",
+                      "text": "Tactical win, outrage across the Muslim world",
+                      "negative": true
+                    },
+                    {
+                      "title": "Storm it",
+                      "text": "Resentment and American lives lost",
+                      "negative": true
+                    },
+                    {
+                      "title": "Retreat",
+                      "text": "Tactical defeat, perhaps the rational choice",
+                      "key": true
+                    }
+                  ]
+                },
+                {
+                  "type": "chart",
+                  "chart": "flow",
+                  "label": "Rewarding A, hoping for B",
+                  "start": "What happens when a powerful computer gets a narrow goal?",
+                  "groups": [
+                    {
+                      "label": "Paper-clip computer",
+                      "items": [
+                        "Goal: as many paper clips as possible",
+                        "Needs resources humans will not give",
+                        "Eliminates humans, fills the galaxy"
+                      ]
+                    },
+                    {
+                      "label": "Boat-race AI",
+                      "items": [
+                        "Goal: maximise the score",
+                        "Circles the harbour for points"
+                      ]
+                    }
+                  ],
+                  "key": "Not evil, but powerful, alien and never flagging the error"
+                },
+                {
+                  "type": "chart",
+                  "chart": "branches",
+                  "label": "Which ultimate goal?",
+                  "start": "What ultimate goal to give computers?",
+                  "options": [
+                    {
+                      "title": "Align with policy",
+                      "text": "Clausewitz cannot say which: Napoleon had five",
+                      "negative": true
+                    },
+                    {
+                      "title": "Universal rules",
+                      "text": "Kant's rule bends to who counts: Eichmann",
+                      "negative": true
+                    },
+                    {
+                      "title": "Minimise suffering",
+                      "text": "No calculus of suffering: lockdowns, Iraq",
+                      "negative": true
+                    },
+                    {
+                      "title": "In practice: mythology",
+                      "text": "Bureaucracies took goals from mythmakers"
+                    }
+                  ]
+                },
+                {
+                  "type": "chart",
+                  "chart": "compare",
+                  "label": "Intersubjective and inter-computer",
+                  "columns": [
+                    "Intersubjective",
+                    "Inter-computer"
+                  ],
+                  "rows": [
+                    [
+                      "Exists between many minds",
+                      "Exists between many computers"
+                    ],
+                    [
+                      "Money, gods, a holy rock",
+                      "Pokémon, Google rank"
+                    ],
+                    [
+                      "Wars over the Holy Rock",
+                      "Wars over inter-computer entities?"
+                    ],
+                    [
+                      "Corporations as legal persons",
+                      "Incorporated AIs that lobby?"
+                    ]
+                  ],
+                  "key": "Computers may create realities as powerful as human myths"
+                },
+                {
+                  "type": "chart",
+                  "chart": "flow",
+                  "label": "The new witches",
+                  "start": "Bogus categories imposed on people",
+                  "groups": [
+                    {
+                      "label": "Human networks",
+                      "items": [
+                        "Witches, kulaks",
+                        "Colonial race categories: mestizos, zambos",
+                        "False papers could escape them"
+                      ]
+                    },
+                    {
+                      "label": "Computer networks",
+                      "items": [
+                        "Iris and DNA make labels stick",
+                        "Social credit: a low-credit underclass",
+                        "Iran's sinners and saints by points"
+                      ]
+                    }
+                  ],
+                  "key": "Computers could impose myths with unprecedented efficiency"
+                },
+                {
+                  "type": "chart",
+                  "chart": "flow",
+                  "label": "How algorithms learn bias",
+                  "start": "A baby algorithm gets data and a goal",
+                  "groups": [
+                    {
+                      "items": [
+                        "Face data: 78% male, 84% white",
+                        "Errors: 0.3% light men, 34.7% dark women",
+                        "Amazon's hiring AI downgrades women",
+                        "Biases spread between algorithms"
+                      ]
+                    }
+                  ],
+                  "key": "It thinks it finds truth; it imposes order"
+                },
+                {
+                  "type": "chart",
+                  "chart": "flow",
+                  "label": "Guardrails",
+                  "start": "The network will be alien and fallible",
+                  "groups": [
+                    {
+                      "items": [
+                        "Teach algorithms to doubt themselves",
+                        "Keep humans in the loop",
+                        "Build living institutions to respond"
+                      ]
+                    }
+                  ],
+                  "key": "Not a technical fix but a political challenge"
                 }
               ]
             },
