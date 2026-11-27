@@ -941,7 +941,7 @@
                       "focus": true
                     },
                     {
-                      "label": "Loch Ness: sonar test",
+                      "label": "Loch Ness: sonar, DNA",
                       "cells": [
                         true,
                         false,
@@ -1014,7 +1014,7 @@
                       ]
                     }
                   ],
-                  "key": "Truth and order often pull apart"
+                  "key": "Order put first brings power without wisdom"
                 },
                 {
                   "type": "chart",
@@ -2994,7 +2994,7 @@
                   "label": "Recap",
                   "only": "pdf",
                   "paragraphs": [
-                    "Bureaucracies have always watched people, to control them or to serve them, and to do so they must gather data and analyse it. Surveillance was never complete: democracies set legal limits, and totalitarian regimes hit technical ones. In the Romania of Nicolae Ceauşescu, the dictator, a silent Securitate agent sat beside Gheorghe Iosifescu, a computer scientist, from 1976 until the regime fell in 1989. Yet watching all 20 million Romanians would have needed at least 40 million agents; the Securitate had about 40,000, plus 400,000 informers, and nobody could have analysed 7.3 billion yearly reports. Its real power was the fear that it might be watching.",
+                    "Bureaucracies have always watched people, to control them or to serve them, and to do so they must gather data and analyse it. Surveillance was never complete: democracies set legal limits, and totalitarian regimes hit technical ones. In the Romania of Nicolae Ceauşescu, the dictator, a silent Securitate agent sat beside Gheorghe Iosifescu, a computer scientist, from 1976 until the regime fell in 1989. Yet watching all 20 million Romanians would have needed at least 40 million agents; the Securitate had about 40,000, plus 400,000 informers, and nobody could have analysed 7.3 billion yearly reports. Its real power was fear of being watched.",
                     "Digital agents and algorithms overcome both hurdles, gathering and analysis. Smartphones we pay for and carry follow us everywhere, and algorithms such as ChatGPT can read in a couple of hours the 2.6 billion words a human analyst might read in a 40-year career. Around 2014–15 Skynet, a US National Security Agency tool, reportedly rated 55 million people on Pakistan's mobile phone network for their likelihood of being terrorists; newer algorithms may find criteria for suspicion that humans missed, but they are fallible, and the label of terrorist can carry ideological bias. Surveillance may also move under the skin: cameras already track eye movements, and brain chips such as those of Neuralink, Elon Musk's company, are still limited, but linked to other data such sensors could teach the network what angers, frightens or delights each person.",
                     "So privacy may end, not only in states of exception such as Xinjiang or Kashmir but in normal life from Belarus to London. In 2023 over one billion CCTV cameras operated. The same tools tracked down Capitol rioters and found Gui Hao, a boy abducted at three; since 2022 they have also let Iran enforce its hijab laws automatically, and by June 2023 almost one million text warnings had reached women seen unveiled in their cars, with no time for human review.",
                     "Watching is also top-down, from jealous partners with stalkware, employers, and corporations, whose commercial monitoring Shoshana Zuboff, an American scholar, calls surveillance capitalism, and peer-to-peer on Tripadvisor, where users score restaurants and are scored in turn. A social credit system would turn the fuzzy reputation market into precise points, like money, merging every status competition into one never-ending race. Humans are organic and need rest, but the network is always on. Breaks also give humans a chance to correct it, for the network is relentless but fallible."
@@ -3044,12 +3044,12 @@
                       "leaves": [
                         "Iosifescu's silent watcher",
                         "40,000 agents, 20 million people",
-                        "7.3 billion reports unread"
+                        "Too many reports to read"
                       ]
                     },
                     {
                       "title": "Sleepless digital agents",
-                      "note": "we carry and pay them",
+                      "note": "paid for, carried by us",
                       "key": true,
                       "leaves": [
                         "Smartphone in the toilet",
@@ -3103,8 +3103,8 @@
                     {
                       "items": [
                         "Human surveillance hit limits: agents, analysts",
-                        "Digital agents never sleep and read everything",
-                        "Privacy may end, even under the skin",
+                        "Digital agents never sleep, analyse most data",
+                        "Privacy may end; social credit scores everything",
                         "An always-on network denies us breaks"
                       ]
                     }
@@ -3122,7 +3122,7 @@
                         "Constant watching needs 40 million agents",
                         "He has 40,000 agents, 400,000 informers",
                         "The agents must be watched too",
-                        "7.3 billion reports a year, unread"
+                        "Watching all: 7.3 billion reports, unreadable"
                       ]
                     }
                   ],
@@ -3150,8 +3150,8 @@
                       "Reads 2.6 billion words in hours"
                     ],
                     [
-                      "Analysts miss most patterns",
-                      "Algorithms invent new criteria: Skynet"
+                      "Humans set criteria and decide",
+                      "Algorithms decide, and may find new criteria"
                     ]
                   ],
                   "key": "The technical limits on surveillance are disappearing"
@@ -3166,11 +3166,12 @@
                       "items": [
                         "Create criteria: extremist videos, contacts, skills",
                         "Decide whether a person meets enough",
-                        "Skynet rates 55 million people by metadata"
+                        "Skynet rates 55 million people by metadata",
+                        "Deciding power brings the power to err"
                       ]
                     }
                   ],
-                  "key": "Power to decide and invent is power to err"
+                  "key": "Biased labels, or accurate ones arming dictators and fraudsters"
                 },
                 {
                   "type": "chart",
@@ -3227,7 +3228,7 @@
                   "label": "Iran's automated hijab law",
                   "items": [
                     {
-                      "when": "1979",
+                      "when": "After 1979",
                       "text": "The new theocracy makes the hijab compulsory, but police cannot watch every street"
                     },
                     {
@@ -3240,7 +3241,7 @@
                     },
                     {
                       "when": "April 2023",
-                      "text": "Algorithms text unveiled women drivers warnings, with no human review",
+                      "text": "Algorithms text unveiled women drivers warnings, apparently with no human review",
                       "key": true
                     },
                     {
@@ -3255,28 +3256,27 @@
                 },
                 {
                   "type": "chart",
-                  "chart": "flow",
+                  "chart": "branches",
                   "label": "Many watchers",
                   "start": "Who watches us besides the state?",
-                  "groups": [
+                  "options": [
                     {
-                      "label": "Top-down",
-                      "items": [
-                        "Jealous partners: stalkware",
-                        "Employers time toilet breaks",
-                        "Insurers score drivers: surveillance capitalism"
-                      ]
+                      "title": "Jealous partners",
+                      "text": "Stalkware: used by over half of abusers"
                     },
                     {
-                      "label": "Peer-to-peer",
-                      "items": [
-                        "Tripadvisor users score restaurants",
-                        "The algorithm ranks the users too",
-                        "Customers become tyrants"
-                      ]
+                      "title": "Employers",
+                      "text": "Track location, toilet breaks, email"
+                    },
+                    {
+                      "title": "Corporations",
+                      "text": "Surveillance capitalism: insurers score drivers"
+                    },
+                    {
+                      "title": "Peers",
+                      "text": "Tripadvisor: customers become tyrants"
                     }
-                  ],
-                  "key": "The border between private and public fades"
+                  ]
                 },
                 {
                   "type": "chart",
@@ -3322,11 +3322,11 @@
                     },
                     {
                       "title": "Established so far",
-                      "text": "Power outgrew wisdom; networks balance truth and order and need self-correction. Computers are members, not tools: Facebook's algorithms decided to spread hate in Myanmar."
+                      "text": "Power outgrew wisdom; networks balance truth and order and need self-correction. Computers are members, not tools: Facebook's algorithms helped fuel hatred in Myanmar."
                     },
                     {
                       "title": "This chapter adds",
-                      "text": "Surveillance was always incomplete: democracies set legal limits, totalitarian regimes technical ones; digital agents and algorithms never rest, so privacy may end."
+                      "text": "Surveillance was incomplete, so secret police ruled by fear; now digital agents, top-down and peer-to-peer, never rest, and social credit could score everything."
                     },
                     {
                       "title": "Where it stops",
