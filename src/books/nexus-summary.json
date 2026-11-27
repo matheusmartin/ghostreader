@@ -3968,42 +3968,59 @@
                   "type": "chart",
                   "chart": "mindmap",
                   "label": "The chapter at a glance",
-                  "centre": "Can democracy survive AI?",
+                  "centre": "Can democracies still hold a conversation?",
                   "branches": [
                     {
+                      "title": "Lessons of industry",
+                      "note": "a C minus, barely passing",
+                      "leaves": [
+                        "Empires, Nazism, Stalinism",
+                        "Less room for error now"
+                      ]
+                    },
+                    {
                       "title": "Four principles",
-                      "note": "for data and algorithms",
+                      "note": "keep surveillance democratic",
                       "leaves": [
-                        "A health algorithm"
+                        "Benevolence: the family doctor",
+                        "Separate databases",
+                        "Mutuality; room to change, rest"
                       ]
                     },
                     {
-                      "title": "Job turmoil",
-                      "note": "strains young democracies most",
+                      "title": "Jobs in turmoil",
+                      "note": "flexibility is the key skill",
                       "leaves": [
-                        "Weimar, born in defeat",
-                        "The New Deal"
+                        "Weimar: almost 25% unemployed",
+                        "Nurses harder to automate",
+                        "The conservative suicide"
                       ]
-                    },
-                    {
-                      "title": "The conservative suicide",
-                      "note": "progressives guard institutions"
                     },
                     {
                       "title": "Unfathomable algorithms",
-                      "note": "too complex to explain",
+                      "note": "self-correction needs understanding",
+                      "key": true,
                       "leaves": [
-                        "Oliver Brown, Topeka",
-                        "Eric Loomis",
-                        "Move 37"
-                      ],
-                      "key": true
+                        "COMPAS and Eric Loomis",
+                        "AlphaGo's move 37",
+                        "Nosedive: art that explains"
+                      ]
                     },
                     {
-                      "title": "Counterfeit humans",
-                      "note": "bots in the conversation",
+                      "title": "Digital anarchy",
+                      "note": "bots flood the conversation",
                       "leaves": [
-                        "Bots on Twitter"
+                        "Bots: a fifth of tweets",
+                        "AI disinformation believed",
+                        "Algorithms set debate rules"
+                      ]
+                    },
+                    {
+                      "title": "Ban the bots",
+                      "note": "no rights for fake people",
+                      "leaves": [
+                        "Fake humans, like fake money",
+                        "Vet the curating algorithms"
                       ]
                     }
                   ]
@@ -4012,242 +4029,223 @@
                   "type": "chart",
                   "chart": "flow",
                   "label": "The argument",
-                  "start": "Can democracies stay in control of AI?",
+                  "start": "Can democracy survive the computer network?",
                   "groups": [
                     {
                       "items": [
-                        "New technology brings disasters while we learn",
-                        "Self-correction is the best guard",
-                        "It fails if the network is unfathomable"
+                        "Its self-correction is our best guard",
+                        "Surveillance, job turmoil and opacity threaten it",
+                        "Bots could turn debate into anarchy"
                       ]
                     }
                   ],
-                  "key": "Democracies must regulate AI to survive"
+                  "key": "Democracies can regulate, and their survival depends on it"
                 },
                 {
                   "type": "chart",
-                  "chart": "compare",
-                  "label": "Threats and answers",
-                  "columns": [
-                    "Threat",
-                    "Democratic answer"
+                  "chart": "flow",
+                  "label": "The industrial lesson",
+                  "start": "Industrial technology spreads in the 19th century",
+                  "groups": [
+                    {
+                      "items": [
+                        "Costly experiments: empires, Stalinism, Nazism",
+                        "World wars; species die out",
+                        "Humanity scrapes a C minus"
+                      ]
+                    }
                   ],
-                  "negative": 0,
-                  "rows": [
-                    [
-                      "Total surveillance",
-                      "Benevolence, decentralisation, mutuality, change and rest"
-                    ],
-                    [
-                      "Job market turmoil",
-                      "Flexibility and retraining"
-                    ],
-                    [
-                      "Unfathomable algorithms",
-                      "Right to an explanation, auditing institutions"
-                    ],
-                    [
-                      "Bots and digital anarchy",
-                      "Outlaw counterfeit humans, as with fake money; vet curation"
-                    ]
-                  ],
-                  "key": "A collapse would be a failure to regulate, not fate"
+                  "key": "AI is mightier: this time we must do better"
                 },
                 {
                   "type": "chart",
                   "chart": "branches",
                   "label": "Four democratic principles",
-                  "start": "How democracies can use surveillance",
+                  "start": "How can surveillance stay democratic?",
                   "options": [
                     {
                       "title": "Benevolence",
-                      "text": "Use data to help people, not manipulate them"
+                      "text": "Use data to help, like a family doctor"
                     },
                     {
                       "title": "Decentralisation",
-                      "text": "Never keep all information in one place"
+                      "text": "Never merge medical, police and bank data"
                     },
                     {
                       "title": "Mutuality",
-                      "text": "Watch governments and corporations as well"
+                      "text": "Watch governments and firms as they watch us"
                     },
                     {
                       "title": "Change and rest",
-                      "text": "Leave room to change and to rest"
+                      "text": "Neither caste rigidity nor endless remaking"
                     }
                   ]
                 },
                 {
                   "type": "chart",
-                  "chart": "branches",
-                  "label": "A health algorithm",
-                  "start": "An algorithm monitors your health",
-                  "options": [
-                    {
-                      "title": "Too rigid",
-                      "text": "Predicts illness; insurers and banks write you off",
-                      "negative": true
-                    },
-                    {
-                      "title": "Too demanding",
-                      "text": "Turns tyrant, demanding change or reporting you",
-                      "negative": true
-                    },
-                    {
-                      "title": "Middle path",
-                      "text": "Helps you avoid illness; self-correction stops excess",
-                      "key": true
-                    }
-                  ]
-                },
-                {
-                  "type": "chart",
-                  "chart": "flow",
-                  "label": "Three mistaken assumptions",
-                  "start": "Three common assumptions about which jobs AI can take",
-                  "groups": [
-                    {
-                      "label": "Intellect is hardest to automate",
-                      "items": [
-                        "Chess proved easier than dish washing",
-                        "Diagnosis easier than nursing"
-                      ]
-                    },
-                    {
-                      "label": "Creativity is uniquely human",
-                      "items": [
-                        "Often defined as spotting and breaking patterns",
-                        "Computers already out-create us at chess"
-                      ]
-                    },
-                    {
-                      "label": "Emotional intelligence needs emotions",
-                      "items": [
-                        "Emotions are patterns AI can learn",
-                        "ChatGPT outscored average humans on emotional awareness"
-                      ]
-                    }
+                  "chart": "compare",
+                  "label": "Rigid or dynamic algorithm?",
+                  "columns": [
+                    "Rigid algorithm",
+                    "Dynamic algorithm"
                   ],
-                  "key": "So people must retrain again and again"
+                  "rows": [
+                    [
+                      "Predicts a 91% chance of a heart attack at 50",
+                      "Suggests diet and exercise to avoid it"
+                    ],
+                    [
+                      "Insurers, banks and spouses write you off",
+                      "Helps you change your future"
+                    ],
+                    [
+                      "Like a caste system",
+                      "Can become a tyrant demanding change"
+                    ]
+                  ],
+                  "key": "Self-correction must keep algorithms neither too rigid nor too demanding"
+                },
+                {
+                  "type": "chart",
+                  "chart": "compare",
+                  "label": "What automates easily",
+                  "columns": [
+                    "Easier to automate",
+                    "Harder to automate"
+                  ],
+                  "rows": [
+                    [
+                      "Playing chess",
+                      "Washing dishes"
+                    ],
+                    [
+                      "Diagnosis: pattern recognition",
+                      "Nursing: bandages, injections"
+                    ],
+                    [
+                      "Reading emotions: ChatGPT beats most humans",
+                      "Bonds with conscious beings: athletes, priests"
+                    ]
+                  ],
+                  "key": "Invest in motor and social skills, and in flexibility"
                 },
                 {
                   "type": "chart",
                   "chart": "compare",
                   "label": "The conservative suicide",
                   "columns": [
-                    "Conservatives",
-                    "Progressives"
+                    "Burkean conservatism",
+                    "Trumpian parties"
                   ],
+                  "negative": 1,
                   "rows": [
                     [
-                      "Society works, if messily: do not meddle",
-                      "Society is a mess we can repair"
+                      "Conserve what works; change slowly",
+                      "Destroy institutions; start afresh"
                     ],
                     [
-                      "Change little and slowly, as Burke taught",
-                      "Build better structures from scratch"
+                      "Respect scientists and civil servants",
+                      "Contempt for serving elites"
                     ],
                     [
-                      "About pace, not any one creed",
-                      "Play down traditions and institutions"
-                    ],
-                    [
-                      "Since the 2010s: attack elections and elites",
-                      "Since the 2010s: guard established institutions"
+                      "Horror at the storming of the Bastille",
+                      "Enthusiasm at the storming of the Capitol"
                     ]
                   ],
-                  "key": "Democracies stay agile while both sides stay loyal to institutions"
+                  "key": "Progressives became guardians of the old order"
+                },
+                {
+                  "type": "chart",
+                  "chart": "flow",
+                  "label": "Why parties turn revolutionary",
+                  "start": "Fast change makes conserving seem hopeless",
+                  "groups": [
+                    {
+                      "items": [
+                        "Conservatives strike first, as in the 1930s",
+                        "Yet the US survived 25% unemployment",
+                        "The New Deal, not Hitler or Lenin"
+                      ]
+                    }
+                  ],
+                  "key": "Democracies adapt when both sides stay loyal"
                 },
                 {
                   "type": "chart",
                   "chart": "compare",
-                  "label": "Human and algorithmic decisions",
+                  "label": "Human board, opaque algorithm",
                   "columns": [
-                    "Human bureaucracy",
-                    "Algorithms"
+                    "Topeka school board, 1951",
+                    "COMPAS algorithm, 2013"
                   ],
                   "rows": [
                     [
-                      "Topeka board: its racism plain to see",
-                      "COMPAS: its method a trade secret"
+                      "Human members, visible biases",
+                      "A trade secret nobody could inspect"
                     ],
                     [
-                      "Explains itself by a single cause",
-                      "Weighs many data points at once"
+                      "Racism traced to familiar myths",
+                      "Biases picked up from training data"
                     ],
                     [
-                      "Bible, Constitution: amended or reinterpreted",
-                      "Even a Wisconsin Supreme Court justice struggled to follow it"
-                    ],
-                    [
-                      "A judge's hidden biases cannot be checked",
-                      "Every weight can, in principle, be audited"
+                      "Overturned: Brown v. Board, 1954",
+                      "Upheld: Loomis v. Wisconsin, 2016"
                     ]
                   ],
-                  "key": "Democracy needs institutions that make algorithms understandable"
+                  "key": "Self-correction needs understanding; opacity defeats it"
                 },
                 {
                   "type": "chart",
-                  "chart": "timeline",
-                  "label": "Law meets the algorithm",
-                  "items": [
+                  "chart": "flow",
+                  "label": "The right to an explanation",
+                  "start": "An algorithm refuses your loan",
+                  "groups": [
                     {
-                      "when": "2013",
-                      "text": "COMPAS, a secret algorithm, rates Eric Loomis high risk, so his judge gives him six years"
-                    },
-                    {
-                      "when": "2016",
-                      "text": "The Wisconsin Supreme Court allows risk scores whose method is not disclosed"
-                    },
-                    {
-                      "when": "2017",
-                      "text": "The US Supreme Court declines to hear the case"
-                    },
-                    {
-                      "when": "2018",
-                      "title": "GDPR",
-                      "text": "EU law gives a right to an explanation of algorithmic decisions",
-                      "key": true
-                    },
-                    {
-                      "when": "2021",
-                      "text": "The proposed EU AI Act bans social credit systems"
+                      "items": [
+                        "Humans look for a single cause",
+                        "The algorithm weighed a thousand data points",
+                        "Its explanation runs to hundreds of pages"
+                      ]
                     }
-                  ]
+                  ],
+                  "key": "Only institutions armed with AI can audit AI"
                 },
                 {
                   "type": "chart",
-                  "chart": "matrix",
-                  "label": "What democracy needs",
+                  "chart": "flow",
+                  "label": "Towards digital anarchy",
+                  "start": "Democracy needs free debate and basic order",
+                  "groups": [
+                    {
+                      "items": [
+                        "Social media removes the gatekeepers",
+                        "Bots write a fifth of posts",
+                        "People believe AI disinformation",
+                        "Algorithms set the rules of debate"
+                      ]
+                    }
+                  ],
+                  "key": "Anarchy, then dictatorship, as people trade liberty for certainty"
+                },
+                {
+                  "type": "chart",
+                  "chart": "compare",
+                  "label": "Counterfeit money, counterfeit humans",
                   "columns": [
-                    "Free debate",
-                    "Order"
+                    "Counterfeit money",
+                    "Counterfeit humans"
                   ],
                   "rows": [
-                    {
-                      "label": "Digital totalitarianism",
-                      "cells": [
-                        false,
-                        true
-                      ]
-                    },
-                    {
-                      "label": "Digital anarchy",
-                      "cells": [
-                        true,
-                        false
-                      ]
-                    },
-                    {
-                      "label": "Democracy",
-                      "cells": [
-                        true,
-                        true
-                      ],
-                      "focus": true
-                    }
+                    [
+                      "Always possible to forge",
+                      "Now possible with AI"
+                    ],
+                    [
+                      "Outlawed, so trust in money held",
+                      "Should be outlawed to keep trust in humans"
+                    ]
                   ],
-                  "key": "Democracy needs a free conversation and a minimum of order"
+                  "key": "Bots have no free speech; ban them from posing as people"
                 }
               ]
             },
