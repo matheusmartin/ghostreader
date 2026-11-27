@@ -4783,7 +4783,7 @@
                   "label": "Recap",
                   "paragraphs": [
                     "Because humanity has never been united, AI is a global problem. Governments joined the firms' AI race after AlphaGo beat Lee Sedol, the go champion, in 2016; China, after its century of humiliations, vowed not to miss this train. Since data moves almost at light speed, a few hubs could rule data colonies that send data and receive algorithms.",
-                    "China's state-driven sphere and America's corporate one run different code, so they may drift into cocoons behind a Silicon Curtain. Versatile, stealthy, unpredictable cyber weapons weaken mutually assured destruction, tempting a first strike. Yet cooperation needs only information exchange, and patriotism, loving compatriots, fits global rules. War declined after 1945 as technology, economics and culture changed, so it is not destiny."
+                    "China's state-driven sphere and America's corporate one run different code, so they may drift into cocoons behind a Silicon Curtain. Versatile, stealthy, unpredictable cyber weapons weaken mutually assured destruction, tempting a first strike. Yet cooperation needs information exchange, not similarity, and patriotism, loving compatriots, fits global rules. War declined after 1945 as technology, economics and culture changed: it is not destiny."
                   ],
                   "only": "app"
                 },
@@ -4796,7 +4796,7 @@
                     "Private firms led the industrial race at first, and states that ignored it, from Burma to China, were conquered or exploited. The AI race also began with companies such as Google; governments woke up when Google's AlphaGo beat Lee Sedol, the go champion, in 2016. China, having suffered what it calls the century of humiliations, vowed not to miss this train, and Vladimir Putin, Russia's president, said the AI leader would rule the world.",
                     "Empires now need data, not gunboats. Data colonies would send raw data to the hub and receive algorithms, while profits stay in San Francisco or Beijing. Land kept wealth with provincial landowners, and Britain could not move Calcutta's cotton mills; data moves almost at light speed, so algorithmic power can sit in one hub. Automation also threatens textile countries such as Pakistan and Bangladesh, which cannot afford to retrain workers.",
                     "China's sphere serves the state; America's serves the tech giants and protects privacy more. Because they use different software and hardware, and code and behaviour shape each other, the spheres may drift into separate cocoons, perhaps split even over the mind-body problem: are people their bodies or their online selves? Cyber weapons, stealthy and unpredictable, undermine the mutually assured destruction that kept the Cold War from turning hot.",
-                    "Yet cooperation needs only the ability to exchange information. Patriotism means loving compatriots, and caring for them often requires global rules, which leave national loyalties intact, as in the World Cup. Realist thinkers such as John Mearsheimer see a law of the jungle, but real jungles are full of cooperation. War declined after 1945 because nuclear weapons raised its price, know-how could not be conquered and militarism faded, so military budgets fell to about 7% worldwide. That was a human choice, so it can be reversed, as Putin's 2022 assault on Ukraine shows; the responsibility for good choices is ours."
+                    "Yet cooperation needs not similarity but the ability to exchange information, though AI agreements will also need unprecedented trust. Patriotism means loving compatriots, and caring for them often requires global rules, which leave national loyalties intact, as in the World Cup. Realist thinkers such as John Mearsheimer see a law of the jungle, but real jungles are full of cooperation. War declined after 1945 because nuclear weapons raised its price, know-how could not be conquered and militarism faded, so military budgets fell to about 7% worldwide. That was a human choice, so it can be reversed: Putin's 2022 assault on Ukraine crossed a threshold that could open a new era of war. Because conflict is not inevitable, the responsibility for good choices is ours."
                   ]
                 }
               ]
@@ -4818,11 +4818,11 @@
                     },
                     {
                       "title": "War is not destiny",
-                      "text": "War declined after 1945 because technology, economics and culture changed, so military budgets fell to about 7%; but human choices can reverse it, as Russia's 2022 assault on Ukraine did."
+                      "text": "War declined after 1945 as technology, economics and culture changed, and military budgets fell to about 7%; but choices can reverse it: Russia's 2022 assault on Ukraine crossed a threshold."
                     },
                     {
                       "title": "Takeaway",
-                      "text": "Cooperation needs no sameness, only the ability to exchange information and to agree on some rules."
+                      "text": "Cooperation needs not sameness but the ability to exchange information; AI agreements will also need unprecedented trust."
                     }
                   ]
                 }
@@ -4862,7 +4862,7 @@
                       "leaves": [
                         "Egypt's cotton, Malaya's rubber",
                         "Pakistan's textile jobs",
-                        "70% of gains: China, America"
+                        "70% to China, North America"
                       ]
                     },
                     {
@@ -4884,7 +4884,7 @@
                     },
                     {
                       "title": "The global bond",
-                      "note": "cooperation needs only conversation",
+                      "note": "conversation, not sameness",
                       "leaves": [
                         "Patriotism fits global rules",
                         "Jungles run on symbiosis",
@@ -4900,11 +4900,25 @@
                   "start": "How will AI change relations between societies?",
                   "groups": [
                     {
+                      "label": "The danger",
                       "items": [
                         "AI favours concentration: new digital empires",
                         "Data colonies supply data, buy algorithms",
-                        "Rival spheres split behind a Silicon Curtain",
-                        "Cyber war lacks assured destruction"
+                        "Rival spheres split behind a Silicon Curtain"
+                      ]
+                    },
+                    {
+                      "label": "Why it matters",
+                      "items": [
+                        "Code war lacks assured destruction",
+                        "A split humanity cannot regulate AI"
+                      ]
+                    },
+                    {
+                      "label": "The hope",
+                      "items": [
+                        "Cooperation needs conversation, not sameness",
+                        "After 1945, war declined by choice"
                       ]
                     }
                   ],
@@ -4928,7 +4942,7 @@
                       "AlphaGo wakes governments, 2016"
                     ],
                     [
-                      "Laggards like China are conquered",
+                      "Laggards like China are conquered or exploited",
                       "China vows never to miss the train again"
                     ]
                   ],
@@ -4972,21 +4986,21 @@
                     {
                       "label": "Land: Rome",
                       "items": [
-                        "Provincial landowners keep power",
-                        "The Nile valley cannot move"
+                        "The Nile valley cannot move",
+                        "Provincial landowners keep power"
                       ]
                     },
                     {
                       "label": "Machines: Britain",
                       "items": [
                         "Factories at home, raw materials abroad",
-                        "Kirkuk's oil wells cannot move"
+                        "Limit: Kirkuk's oil wells stay put"
                       ]
                     },
                     {
                       "label": "Information",
                       "items": [
-                        "Data moves at light speed",
+                        "Data moves almost at light speed",
                         "All algorithms can sit in one hub"
                       ]
                     }
@@ -5000,10 +5014,17 @@
                   "start": "Automation makes textiles cheap to produce in Europe",
                   "groups": [
                     {
+                      "label": "Pakistan",
                       "items": [
-                        "Pakistan: textiles give 40% of jobs",
-                        "Bangladesh: 84% of export earnings",
-                        "No money to retrain workers"
+                        "Textiles employ 40% of workers",
+                        "Jobs lost, no money to retrain"
+                      ]
+                    },
+                    {
+                      "label": "Bangladesh",
+                      "items": [
+                        "Textiles earn 84% of exports",
+                        "Jobs lost, no money to retrain"
                       ]
                     }
                   ],
@@ -5031,7 +5052,7 @@
                       "Google, Facebook, Wikipedia"
                     ],
                     [
-                      "Pushed to build its own chips",
+                      "Will be pushed to a separate sphere",
                       "Bans exports of advanced chips"
                     ]
                   ],
@@ -5040,7 +5061,7 @@
                 {
                   "type": "chart",
                   "chart": "compare",
-                  "label": "The mind-body split",
+                  "label": "Mind and body: a speculation",
                   "columns": [
                     "Body first",
                     "Mind first"
@@ -5075,7 +5096,7 @@
                   ],
                   "rows": [
                     [
-                      "One use: destruction",
+                      "Far less versatile",
                       "Versatile: grids, elections, a single phone"
                     ],
                     [
@@ -5108,7 +5129,7 @@
                       "Rules only regulate relations: the World Cup"
                     ],
                     [
-                      "National interest first",
+                      "We rejected globalism (Trump, 2020)",
                       "Sometimes humanity's long-term interest: no doping"
                     ]
                   ],
@@ -5166,11 +5187,11 @@
                     },
                     {
                       "title": "This chapter adds",
-                      "text": "Because humanity has never been united, AI is a global problem: rival digital empires may rule data colonies and split humanity behind a Silicon Curtain."
+                      "text": "Humanity was never united, so AI is a global problem: digital empires may rule data colonies, split behind a Silicon Curtain and risk code wars; yet patriotism fits global rules."
                     },
                     {
                       "title": "Where it stops",
-                      "text": "War declined after 1945 as technology, economics and culture changed; Russia's 2022 assault on Ukraine shows choices can reverse it, so the responsibility is ours."
+                      "text": "War declined after 1945 through human choices, which Russia's 2022 assault on Ukraine shows can be reversed; because conflict is not inevitable, the responsibility is ours."
                     }
                   ]
                 },
