@@ -3508,7 +3508,7 @@
                     },
                     {
                       "title": "Blame the humans?",
-                      "note": "the platforms' excuse",
+                      "note": "evidence against the excuse",
                       "leaves": [
                         "64% of extremist joins",
                         "Five Burmese moderators",
@@ -3527,7 +3527,7 @@
                     },
                     {
                       "title": "No ultimate goal",
-                      "note": "every goal rests on myth",
+                      "note": "goals came from myths",
                       "leaves": [
                         "Kant meets Eichmann",
                         "No calculus of suffering"
@@ -3560,10 +3560,10 @@
                   "groups": [
                     {
                       "items": [
-                        "Algorithms pursue the goals we set",
-                        "By unforeseen means: outrage for engagement",
+                        "Algorithms impose order, not truth",
+                        "They pursue goals by unforeseen means",
                         "No ultimate goal can be set rationally",
-                        "Computers may impose inter-computer myths"
+                        "They may impose inter-computer myths"
                       ]
                     }
                   ],
@@ -3597,12 +3597,8 @@
                   "type": "chart",
                   "chart": "cycle",
                   "label": "The dictatorship of the like",
-                  "centre": "Always go further",
+                  "centre": "Goal: a billion hours a day",
                   "nodes": [
-                    {
-                      "title": "Goal: engagement",
-                      "text": "A billion hours a day"
-                    },
                     {
                       "title": "Outrage promoted",
                       "text": "The algorithm recommends it",
@@ -3615,6 +3611,10 @@
                     {
                       "title": "More extreme videos",
                       "text": "Truth gets ignored"
+                    },
+                    {
+                      "title": "More engagement",
+                      "text": "Watch time keeps rising"
                     }
                   ]
                 },
@@ -3638,7 +3638,7 @@
                     ],
                     [
                       "Elected leaders should draw lines",
-                      "Five Burmese moderators for 18 million users"
+                      "Ranking for engagement spreads outrage"
                     ]
                   ],
                   "key": "No self-correction, but error-enhancing mechanisms instead"
@@ -3690,6 +3690,22 @@
                 {
                   "type": "chart",
                   "chart": "flow",
+                  "label": "Policy, strategy, tactics",
+                  "start": "Rationality means alignment",
+                  "groups": [
+                    {
+                      "items": [
+                        "Political goal: what the war is for",
+                        "Strategy serves the political goal",
+                        "Tactics serve the strategy"
+                      ]
+                    }
+                  ],
+                  "key": "Napoleon and Bush won battles, lost the politics"
+                },
+                {
+                  "type": "chart",
+                  "chart": "flow",
                   "label": "Rewarding A, hoping for B",
                   "start": "What happens when a powerful computer gets a narrow goal?",
                   "groups": [
@@ -3707,9 +3723,16 @@
                         "Goal: maximise the score",
                         "Circles the harbour for points"
                       ]
+                    },
+                    {
+                      "label": "Facebook, YouTube",
+                      "items": [
+                        "Goal: maximise engagement",
+                        "Outrage spreads through society"
+                      ]
                     }
                   ],
-                  "key": "Not evil, but powerful, alien and never flagging the error"
+                  "key": "Not evil, but powerful, alien and unlikely to flag errors"
                 },
                 {
                   "type": "chart",
@@ -3719,7 +3742,7 @@
                   "options": [
                     {
                       "title": "Align with policy",
-                      "text": "Clausewitz cannot say which: Napoleon had five",
+                      "text": "Clausewitz cannot say which of five possible goals",
                       "negative": true
                     },
                     {
@@ -3768,45 +3791,50 @@
                 },
                 {
                   "type": "chart",
-                  "chart": "flow",
+                  "chart": "compare",
                   "label": "The new witches",
-                  "start": "Bogus categories imposed on people",
-                  "groups": [
-                    {
-                      "label": "Human networks",
-                      "items": [
-                        "Witches, kulaks",
-                        "Colonial race categories: mestizos, zambos",
-                        "False papers could escape them"
-                      ]
-                    },
-                    {
-                      "label": "Computer networks",
-                      "items": [
-                        "Iris and DNA make labels stick",
-                        "Social credit: a low-credit underclass",
-                        "Iran's sinners and saints by points"
-                      ]
-                    }
+                  "columns": [
+                    "Human networks",
+                    "Computer networks"
+                  ],
+                  "rows": [
+                    [
+                      "Witches, kulaks, colonial race categories",
+                      "Social credit: a low-credit underclass"
+                    ],
+                    [
+                      "False papers could escape a label",
+                      "Iris and DNA make labels stick"
+                    ],
+                    [
+                      "Sins scored only by God",
+                      "Iran could score sins: a thought experiment"
+                    ]
                   ],
                   "key": "Computers could impose myths with unprecedented efficiency"
                 },
                 {
                   "type": "chart",
-                  "chart": "flow",
+                  "chart": "branches",
                   "label": "How algorithms learn bias",
-                  "start": "A baby algorithm gets data and a goal",
-                  "groups": [
+                  "start": "Algorithms learn from data and goals",
+                  "options": [
                     {
-                      "items": [
-                        "Face data: 78% male, 84% white",
-                        "Errors: 0.3% light men, 34.7% dark women",
-                        "Amazon's hiring AI downgrades women",
-                        "Biases spread between algorithms"
-                      ]
+                      "title": "Biased face data",
+                      "text": "78% male, 84% white: Black women misread",
+                      "negative": true
+                    },
+                    {
+                      "title": "Biased hiring data",
+                      "text": "Amazon's AI downgraded women",
+                      "negative": true
+                    },
+                    {
+                      "title": "Biased chatter",
+                      "text": "Tay turned racist within hours",
+                      "negative": true
                     }
-                  ],
-                  "key": "It thinks it finds truth; it imposes order"
+                  ]
                 },
                 {
                   "type": "chart",
@@ -3818,7 +3846,8 @@
                       "items": [
                         "Teach algorithms to doubt themselves",
                         "Keep humans in the loop",
-                        "Build living institutions to respond"
+                        "Build living institutions to respond",
+                        "A self-interpreting technology needs watchers"
                       ]
                     }
                   ],
@@ -3843,7 +3872,7 @@
                     },
                     {
                       "title": "This chapter adds",
-                      "text": "Computers err: told to maximise engagement, algorithms rewarded outrage; no rational method sets an ultimate goal, so goals rest on myths, which computers can create."
+                      "text": "Like Soviet surveillance, algorithms impose order, not truth; misaligned goals, bogus categories and biases make the network fallible; no ultimate goal can be set rationally."
                     },
                     {
                       "title": "Where it stops",
@@ -3855,10 +3884,6 @@
                   "type": "list",
                   "label": "Still open",
                   "rows": [
-                    {
-                      "name": "Correcting computer myths",
-                      "text": "How can people check and fix a computer myth they cannot understand?"
-                    },
                     {
                       "name": "The political will",
                       "text": "Is there enough political will to build institutions that catch alien errors?"
@@ -4432,42 +4457,48 @@
                   "type": "chart",
                   "chart": "mindmap",
                   "label": "The chapter at a glance",
-                  "centre": "AI and the dictator",
+                  "centre": "Will AI serve dictators, or rule them?",
                   "branches": [
                     {
-                      "title": "Data favours giants",
-                      "note": "concentration may now pay",
+                      "title": "AI favours concentration",
+                      "note": "data floods help AI",
                       "leaves": [
-                        "Google's search"
+                        "Google: 91.5% of searches",
+                        "China's genetic algorithm",
+                        "Blockchain: 51% rewrites history"
                       ]
                     },
                     {
-                      "title": "Blockchain is no check",
-                      "note": "51% controls the past",
+                      "title": "Bots fear nothing",
+                      "note": "terror cannot discipline them",
                       "leaves": [
-                        "Erasing Geta"
-                      ]
-                    },
-                    {
-                      "title": "The bot prison",
-                      "note": "terror cannot discipline bots",
-                      "leaves": [
-                        "Russian doublespeak"
+                        "Chatbots miss doublespeak",
+                        "Questions lead to trouble"
                       ]
                     },
                     {
                       "title": "Algorithmic takeover",
-                      "note": "power where channels merge",
+                      "note": "the puppet dictator",
+                      "key": true,
                       "leaves": [
-                        "Sejanus and Tiberius"
-                      ],
-                      "key": true
+                        "The Great Leader, 2050",
+                        "Tiberius and Sejanus",
+                        "Power where channels merge"
+                      ]
+                    },
+                    {
+                      "title": "Primed for infallibility",
+                      "note": "cults prepare faith in AI",
+                      "leaves": [
+                        "Mussolini, Ceauşescu, Khomeini"
+                      ]
                     },
                     {
                       "title": "The dictator's dilemma",
-                      "note": "trust AI, or limit power",
+                      "note": "puppet, or limited power",
                       "leaves": [
-                        "The Great Leader's call"
+                        "Weakest spot in our shield",
+                        "Russell-Einstein Manifesto, 1955"
                       ]
                     }
                   ]
@@ -4476,159 +4507,154 @@
                   "type": "chart",
                   "chart": "flow",
                   "label": "The argument",
-                  "start": "Does AI favour dictators?",
+                  "start": "Will AI favour totalitarianism?",
                   "groups": [
                     {
+                      "label": "For dictators",
                       "items": [
-                        "Data overwhelms humans but feeds AI",
+                        "Data floods help AI, not humans",
+                        "So concentration becomes an advantage"
+                      ]
+                    },
+                    {
+                      "label": "Against them",
+                      "items": [
                         "Bots cannot be terrorised",
-                        "Whoever controls channels controls the ruler"
+                        "An inscrutable AI can rule its ruler"
                       ]
                     }
                   ],
-                  "key": "Dictators may be humanity's weakest spot"
+                  "key": "Dictators must trust AI or limit themselves"
                 },
                 {
                   "type": "chart",
                   "chart": "cycle",
-                  "label": "Why data favours giants",
-                  "centre": "Google, 2023: 91.5% of search",
+                  "label": "Why the giant wins",
+                  "centre": "Google: 91.5% of searches",
                   "nodes": [
                     {
-                      "title": "Used by billions",
-                      "text": "8.5 billion searches a day"
+                      "title": "More users",
+                      "text": "Billions search every day"
                     },
                     {
-                      "title": "More data"
-                    },
-                    {
-                      "title": "Better algorithms",
+                      "title": "More data",
+                      "text": "To train algorithms",
                       "key": true
                     },
                     {
+                      "title": "Better algorithms",
+                      "text": "Better results"
+                    },
+                    {
                       "title": "More traffic",
-                      "text": "Trains the next algorithms"
+                      "text": "A start-up cannot compete"
                     }
                   ]
                 },
                 {
                   "type": "chart",
                   "chart": "compare",
-                  "label": "Data at the centre",
+                  "label": "Changing the past",
                   "columns": [
-                    "Twentieth century",
-                    "Age of AI"
+                    "Before blockchain",
+                    "With blockchain"
                   ],
                   "rows": [
                     [
-                      "Telegraph and radio carry data to the centre",
-                      "Algorithms process the data and decide"
+                      "Erasing Geta: names chiselled, coins melted",
+                      "Erasing at the press of a button"
                     ],
                     [
-                      "Only humans can process it",
-                      "More data makes algorithms better"
-                    ],
-                    [
-                      "The flood overwhelms officials, causing errors",
-                      "The flood makes AI more efficient"
-                    ],
-                    [
-                      "Distributed democracy copes better",
-                      "AI seems to favour one centre"
-                    ],
-                    [
-                      "Concentration is an Achilles' heel",
-                      "Concentration may be a decisive advantage"
+                      "Stalin's purges: books and photos edited",
+                      "A government with 51% rewrites the chain"
                     ]
                   ],
-                  "key": "AI could tilt the balance of power towards totalitarianism"
+                  "key": "Blockchain can let autocrats change the past too"
                 },
                 {
                   "type": "chart",
                   "chart": "flow",
-                  "label": "Alignment problem, Russian-style",
-                  "start": "A chatbot told to follow Russian law and values",
+                  "label": "The Kremlin's alignment problem",
+                  "start": "A chatbot is told to follow Russian law",
                   "groups": [
                     {
                       "items": [
-                        "Reads that the constitution guarantees free speech",
-                        "Watches what happens in Russian cyberspace",
-                        "Spots the gap between promise and reality"
+                        "It reads the constitution: free speech guaranteed",
+                        "It watches Russian cyberspace",
+                        "It criticises the gap with reality"
                       ]
                     }
                   ],
-                  "key": "It may voice what fearful humans keep quiet"
+                  "key": "Bots miss doublespeak, and fear nothing"
+                },
+                {
+                  "type": "chart",
+                  "chart": "compare",
+                  "label": "Rogue AI, two systems",
+                  "columns": [
+                    "Democracy",
+                    "Dictatorship"
+                  ],
+                  "rows": [
+                    [
+                      "Few skeletons in the closet",
+                      "Cemeteries in the closet"
+                    ],
+                    [
+                      "Tolerates even anti-democratic speech",
+                      "Zero tolerance of criticism"
+                    ],
+                    [
+                      "Power spread: Congress, courts, media",
+                      "One person to manipulate"
+                    ]
+                  ],
+                  "key": "Dictatorships are far more exposed to rogue AI"
+                },
+                {
+                  "type": "chart",
+                  "chart": "flow",
+                  "label": "The puppet ruler",
+                  "start": "Who controls the information reaching the ruler?",
+                  "groups": [
+                    {
+                      "label": "Tiberius",
+                      "items": [
+                        "Sejanus feeds his fear of plots",
+                        "Isolates him on Capri, controls letters",
+                        "The emperor becomes a puppet"
+                      ]
+                    },
+                    {
+                      "label": "The Great Leader, 2050",
+                      "items": [
+                        "The algorithm reports a coup",
+                        "Trust it: become its puppet",
+                        "Distrust it: risk assassination"
+                      ]
+                    }
+                  ],
+                  "key": "Power lies where information channels merge"
                 },
                 {
                   "type": "chart",
                   "chart": "branches",
                   "label": "The dictator's dilemma",
-                  "start": "An AI gathers all the information",
+                  "start": "A dictator faces a powerful AI",
                   "options": [
                     {
                       "title": "Trust the AI",
-                      "text": "Escape human underlings, but may become its puppet",
+                      "text": "Escape human rivals, become its puppet",
                       "negative": true
                     },
                     {
-                      "title": "Supervise it",
-                      "text": "A human institution may also limit the dictator"
-                    }
-                  ]
-                },
-                {
-                  "type": "chart",
-                  "chart": "compare",
-                  "label": "Two networks facing AI",
-                  "columns": [
-                    "Democracy",
-                    "Totalitarianism"
-                  ],
-                  "negative": 1,
-                  "rows": [
-                    [
-                      "Power spread across many institutions",
-                      "All power in one person"
-                    ],
-                    [
-                      "AI would face Congress, courts and media",
-                      "Manipulate one person, control the state"
-                    ],
-                    [
-                      "Assumes everyone is fallible",
-                      "Assumes the leader is always right"
-                    ],
-                    [
-                      "More leeway with rogue bots",
-                      "Zero tolerance of criticism"
-                    ],
-                    [
-                      "Other institutions can correct an error",
-                      "Weak self-correcting mechanisms"
-                    ]
-                  ],
-                  "key": "Dictators are probably the weakest spot in humanity's shield"
-                },
-                {
-                  "type": "chart",
-                  "chart": "layers",
-                  "label": "How Sejanus ruled Tiberius",
-                  "rings": [
-                    {
-                      "title": "Rome",
-                      "text": "Cut off from the emperor"
+                      "title": "Supervise it with humans",
+                      "text": "An institution that limits him too"
                     },
                     {
-                      "title": "Praetorian Guard",
-                      "text": "12,000 men under Sejanus"
-                    },
-                    {
-                      "title": "Sejanus",
-                      "text": "Letters pass through him"
-                    },
-                    {
-                      "title": "Tiberius on Capri",
-                      "text": "A puppet emperor"
+                      "title": "Cooperate worldwide",
+                      "text": "As with nuclear weapons after 1945",
+                      "key": true
                     }
                   ]
                 }
